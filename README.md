@@ -1,5 +1,5 @@
 # TheSwimSchool
-A class management and payment processing system for a small local swim school. This application uses Laravel for the framwework, Vuejs for reacativity, MySQL for its database and Uikit for its theme. 
+A class management and payment processing system for a small local swim school. This application uses Laravel for the framwework, Vuejs for reacativity, MySQL for its database, and Uikit for the theme. 
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
