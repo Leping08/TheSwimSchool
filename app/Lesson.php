@@ -8,11 +8,6 @@ use App\Swimmer;
 
 class Lesson extends Model
 {
-    public function Swimmers()
-    {
-        return $this->hasMany(Swimmer::class);
-    }
-
     protected $dates = [
         'created_at',
         'updated_at',
@@ -23,4 +18,9 @@ class Lesson extends Model
         'class_end_date',
         'registration_open'
     ];
+
+    public function Swimmers()
+    {
+        return $this->hasMany(Swimmer::class);
+    }
 }
