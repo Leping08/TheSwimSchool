@@ -4,8 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Swimmer;
-
 class Lesson extends Model
 {
     protected $dates = [
@@ -23,4 +21,21 @@ class Lesson extends Model
     {
         return $this->hasMany(Swimmer::class);
     }
+
+    public function Season()
+    {
+        return $this->belongsTo(Season::class);
+    }
+
+    public function Group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
+    public function Location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+
 }

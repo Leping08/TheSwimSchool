@@ -57,7 +57,7 @@ class LessonController extends Controller
         $lesson = Lesson::findOrFail($id);
         try{
             $swimmer = Swimmer::findOrFail($request->swimmerId);
-            \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+            \StrStripe::setApiKey(config('services.stripe.secret'));
             $charge = \Stripe\Charge::create(array(
                 "amount" => $lesson->price * 100,
                 "currency" => "usd",

@@ -15,13 +15,11 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('season');
+            $table->string('season_id');
+            $table->string('group_id');
+            $table->string('location_id');
             $table->integer('price')->default(60);
-            $table->string('ages');
-            $table->longText('description');
-            $table->string('location');
             $table->string('days');
-            $table->string('class_type');
             $table->integer('class_size')->default(10);
             $table->integer('open_spots')->default(10);
             $table->dateTime('class_start_date');
