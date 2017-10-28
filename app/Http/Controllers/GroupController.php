@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -14,8 +15,35 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $groups = Group::all();
+        return view('groups.list', compact('groups'));
     }
+
+
+
+
+    //list details of the lesson
+    public function classDetails($groupType)
+    {
+        $activeLessons = [];
+        //get the group with all lessons
+        $group = Group::with('Lessons')
+                        ->where('type', $groupType)
+                        ->get();
+
+        foreach ($group[0]->lessons as $lesson)
+        {
+            //lesson must have open registration and can not be over
+            if($lesson->registration_open <= Carbon::now() && $lesson->class_end_date >= Carbon::now()){
+                //make array of active lessons
+                array_push($activeLessons, array($lesson));
+            }
+        }
+
+        return view('groups.details', compact('activeLessons', 'group'));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

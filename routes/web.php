@@ -22,10 +22,10 @@ Route::get('/home', 'HomeController@index');
 
 
 //list lessons
-Route::get('/lessons', 'LessonController@index');
+Route::get('/lessons', 'GroupController@index');
 
 //list details of the lesson
-Route::get('/lessons/{classType}', 'LessonController@classDetails');
+Route::get('/lessons/{groupType}', 'GroupController@classDetails');
 
 //sign up form for that lesson
 Route::get('/lessons/{classType}/{id}', 'LessonController@signUp');
