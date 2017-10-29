@@ -13,12 +13,19 @@
 
 Auth::routes();
 
-//aka dashboard
-Route::get('/home', 'HomeController@index');
 
+//Auth routes
+Route::middleware('auth')->group(function () {
+    //Swimmers
+    Route::get('/swimmers', 'SwimmerController@index');
+    Route::get('/swimmers/{id}', 'SwimmerController@show');
+    Route::delete('/swimmers/{id}', 'SwimmerController@destroy');
+    Route::get('/swimmers/{id}/edit', 'SwimmerController@edit');
+    Route::patch('/swimmers/{id}/edit', 'SwimmerController@update');
 
-
-
+    //Dashboard
+    Route::get('/dashboard', 'DashboardController@index');
+});
 
 
 //list lessons
@@ -31,35 +38,13 @@ Route::get('/lessons/{groupType}', 'GroupController@classDetails');
 Route::get('/lessons/{classType}/{id}', 'GroupController@signUp');
 
 //save the results of the sign up form
-Route::post('/lessons/{classType}/{id}', 'LessonController@store');
-
-//credit card form if online payment
-//Route::get('/lessons/{classType}/{id}/card', 'LessonController@cardForm');
+Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 
 //charge the credit card for the lesson
-Route::post('/{id}/card/test', 'LessonController@cardCharge');
-//Route::post('/lessons/{classType}/{id}/card/test', 'LessonController@cardCharge');
+Route::post('/{id}/card/checkout', 'LessonController@cardCharge');
 
 //show the terms and conditions page
 Route::get('/lessons/{classType}/{id}/terms', 'GroupController@terms');
-
-
-
-
-
-
-
-//swimmers
-Route::get('/swimmers', 'SwimmerController@index');
-
-Route::get('/swimmers/{id}', 'SwimmerController@show');
-
-Route::delete('/swimmers/{id}', 'SwimmerController@destroy');
-
-Route::get('/swimmers/{id}/edit', 'SwimmerController@edit');
-
-Route::patch('/swimmers/{id}/edit', 'SwimmerController@update');
-
 
 
 
@@ -98,14 +83,14 @@ Route::get('/contact-us', function(){
 
 
 //WP Contact Forms
-Route::post('/contact-us', 'EmailController@contactUs');
+Route::post('/contact-us', 'ContactFormController@contactUs');
 
-Route::post('/lifeguarding', 'EmailController@lifeguardingEmail');
+Route::post('/lifeguarding', 'ContactFormController@lifeguardingEmail');
 
-Route::post('/cpr-first-aid', 'EmailController@cprFirstAidEmail');
+Route::post('/cpr-first-aid', 'ContactFormController@cprFirstAidEmail');
 
-Route::get('/email-test', 'EmailController@testEmail');
+Route::get('/email-test', 'ContactFormController@testEmail');
 
-Route::get('/email', 'EmailController@index');
+Route::get('/email', 'ContactFormController@index');
 
 

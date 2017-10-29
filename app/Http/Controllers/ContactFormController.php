@@ -12,7 +12,7 @@ use Validator;
 use Carbon\Carbon;
 use App\Jobs\SendEmails;
 
-class EmailController extends Controller
+class ContactFormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +21,8 @@ class EmailController extends Controller
      */
     public function index()
     {
-        Mail::to('dereks008@gmail.com')->send(new ContactUs);
-        return 'all done';
+        //Mail::to('dereks008@gmail.com')->send(new ContactUs);
+        //return 'all done';
     }
 
 

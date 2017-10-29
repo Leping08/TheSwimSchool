@@ -7,7 +7,7 @@ Card Details
 @section('content')
 <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
-            <form class="uk-form-stacked" action="/{{{$lesson->id}}}/card/test" method="POST" id="payment-form">
+            <form class="uk-form-stacked" action="/{{{$lesson->id}}}/card/checkout" method="POST" id="payment-form">
             {{ csrf_field() }}
             <input name="swimmerId" type="hidden" value="{{{$newSwimmer->id}}}">
             <div class="group">
