@@ -5,11 +5,20 @@ Search Swimmers
 @endsection
 
 @section('content')
-<div class="uk-section-default uk-section-overlap uk-section">
-    <div class="uk-container">
-        <div id="search" class="uk-margin-top uk-margin-bottom">
-            <search :allswimmers="{{json_encode($swimmers)}}"></search>
+    <div class="uk-section-default uk-section-overlap uk-section">
+        <div class="uk-container">
+            @if($swimmers)
+                <div id="search" class="uk-margin-top uk-margin-bottom">
+                    <search :allswimmers="{{json_encode($swimmers)}}"></search>
+                </div>
+            @else
+                <ul class="uk-list uk-list-striped">
+                    <li><b>Swimmers</b></li>
+                    <li>
+                        No Swimmers are signed up.
+                    </li>
+                </ul>
+            @endif
         </div>
     </div>
-</div>
 @endsection

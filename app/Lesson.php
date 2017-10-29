@@ -37,5 +37,8 @@ class Lesson extends Model
         return $this->belongsTo(Location::class);
     }
 
-
+    public function DaysOfTheWeek()
+    {
+        return $this->belongsToMany(DaysOfTheWeek::class);
+    }
 }

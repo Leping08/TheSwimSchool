@@ -29,16 +29,24 @@
                             {{$swimmer->street}}<br>
                             {{$swimmer->city}} {{$swimmer->state}}, {{$swimmer->zip}} 
                         </a>
-                    </dd>
+                    </dd><hr>
 
-                    <dt>Lesson:</dt>
-                    <dd><a href="/lessons/{{{$swimmer->lesson->class_type}}}">{{$swimmer->lesson->class_type}}</a></dd>
 
-                    @if($swimmer->parent)
-                        <dt>Parent/Guardian:</dt>
-                        <dd>{{$swimmer->parent}}</dd>
-                    @endif
-                </dl><hr>
+
+                    <h4>Lesson Info</h4>
+                    <dl class="uk-description-list-horizontal">
+                        <dt>Group:</dt>
+                        <!-- TODO: make linkable -->
+                        <dd>{{$swimmer->lesson->group->type}}</dd>
+                        <dt>Ages:</dt>
+                        <dd>{{$swimmer->lesson->group->ages}}</dd>
+                        <dt>Location:</dt>
+                        <!-- TODO: make linkable -->
+                        <dd>{{$swimmer->lesson->location->name}}</dd>
+                        <dt>Season:</dt>
+                        <!-- TODO: make linkable -->
+                        <dd>{{$swimmer->lesson->season->season}} {{$swimmer->lesson->season->year}}</dd>
+                    </dl><hr>
 
 
                 <h4>Payment Info</h4>

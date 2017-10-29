@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 
     //Dashboard
     Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard/season/current', 'DashboardController@swimmersForCurrentSeason');
 });
 
 
