@@ -32,13 +32,21 @@ Dashboard
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <div class="uk-card-header">
-                        <h3 class="el-title uk-margin uk-h2">Add Lesson</h3>
+                        <h3 class="el-title uk-margin uk-h2">Today's Lessons</h3>
                     </div>
                     <div class="uk-card-body">
-                        Form Here
-                    </div>
-                    <div class="uk-card-footer">
-                        <a href="/swimmers" class="uk-button uk-button-primary">Add Lesson</a>
+                        @if(count($todaysLessons))
+                        <ul class="uk-list uk-list-striped">
+                            <li><strong>Swimmers</strong></li>
+                            @foreach ($todaysLessons as $lesson)
+                                <li><a href="/swimmers/{{{$lesson->id}}}" class="list-group-item list-group-item-action justify-content-between">
+                                        {{$lesson->group->type}}
+                                    </a></li>
+                            @endforeach
+                        </ul>
+                        @else
+                            No lessons today.
+                        @endif
                     </div>
                 </div>
             </div>
