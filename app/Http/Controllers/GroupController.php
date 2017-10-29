@@ -47,6 +47,13 @@ class GroupController extends Controller
     }
 
 
+    //Get request to the terms and conditions url
+    public function terms($classType, $id)
+    {
+        return view('groups.terms');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

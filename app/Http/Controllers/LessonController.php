@@ -118,15 +118,4 @@ class LessonController extends Controller
             $request->session()->flash('danger', 'Oops. Looks like something went wrong.');
         }
     }
-
-
-
-
-
-    //Get request to the terms and conditions url
-    public function terms($classType, $id)
-    {
-        return view('lessons.terms', compact('lessons', 'classType', 'id'));
-    }
-
 }

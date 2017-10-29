@@ -8,9 +8,6 @@ Group Swim Lesson Policies & Procedures
 <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
         
-        
-        
-        
         <dl class="uk-description-list uk-description-list-divider">
 
                 <dt>Facility Use:</dt>
@@ -22,7 +19,7 @@ Group Swim Lesson Policies & Procedures
 
 
                 <dt>Schedule:</dt>
-                <dd>Students may not be moved to a different class or time once classes are full. Additional classes may be scheduled due to demand. Class times are subject to change from session to session.</p>
+                <dd>Students may not be moved to a different class or time once classes are full. Additional classes may be scheduled due to demand. Class times are subject to change from session to session.</dd>
 
 
                 <dt>Equipment:</dt>
@@ -30,7 +27,7 @@ Group Swim Lesson Policies & Procedures
 
 
                 <dt>Swim Level:</dt>
-                <dd>The instructor reserves the right to change a student’s swim level and class in accordance with their swimming abilities as necessary throughout the duration of a swim lesson session.</p>
+                <dd>The instructor reserves the right to change a student’s swim level and class in accordance with their swimming abilities as necessary throughout the duration of a swim lesson session.</dd>
 
 
                 <dt>Safety:</dt>
@@ -54,15 +51,23 @@ Group Swim Lesson Policies & Procedures
 
                 <ol>                
                     <li>
-                        <p>In-water participation of a parent, guardian, or other trusted adult is required for all children attending a Parent & Toddler swim lesson class.</p>                </li>               <li>                <p>Students must wear swim diapers.</p>             </li>       <li>                 <p>Please remember all children learn at different rates. Don’t be upset if your child’s initial reaction to the water is to cry. It may take a few times for your child to become accustomed to the surroundings. Be patient with your child and praise him or her as they attempt new skills.</p>             </li>            <li>             <p>Submersions controlled by an adult will be practiced but limited. Voluntary face submersions and swallowing water by children under 24 months must be limited and monitored by parents and instructors.</p>       </li>
+                        <p>In-water participation of a parent, guardian, or other trusted adult is required for all children attending a Parent & Toddler swim lesson class.</p>
+                    </li>
+                    <li>
+                        <p>Students must wear swim diapers.</p>
+                    </li>
+                    <li>
+                        <p>Please remember all children learn at different rates. Don’t be upset if your child’s initial reaction to the water is to cry. It may take a few times for your child to become accustomed to the surroundings. Be patient with your child and praise him or her as they attempt new skills.</p>
+                    </li>
+                    <li>
+                        <p>Submersions controlled by an adult will be practiced but limited. Voluntary face submersions and swallowing water by children under 24 months must be limited and monitored by parents and instructors.</p>
+                    </li>
                 </ol>
-
-
 
                 <dt>Ens Of Session:</dt>
                 <dd>At the conclusion of a swim lesson session, each student will receive a progress report and a certificate of participation. The instructor will indicate on the progress report which level the student should register for in the next session.</dd>
+        </dl>
 
-        </div>
     </div>
 </div>
 @endsection

@@ -41,7 +41,7 @@ Route::post('/{id}/card/test', 'LessonController@cardCharge');
 //Route::post('/lessons/{classType}/{id}/card/test', 'LessonController@cardCharge');
 
 //show the terms and conditions page
-Route::get('/lessons/{classType}/{id}/terms', 'LessonController@terms');
+Route::get('/lessons/{classType}/{id}/terms', 'GroupController@terms');
 
 
 
