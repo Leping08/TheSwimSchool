@@ -6,25 +6,27 @@ Lessons
 
 @section('content')
     <!-- If active lessons exist display them -->
-    @if($activeLessons)
+    @if($group->lessons)
         <div class="uk-section-default uk-section-overlap uk-section">
             <div class="uk-container ">
-                @foreach($activeLessons[0] as $lesson)
+                @foreach($group->lessons as $lesson)
                 <div class="uk-card uk-card-default uk-margin-top">
                     <div class="uk-card-header">
-                        <div class="uk-card-title f-24 uk-heading-bullet">{{$group[0]->type}}</div>
+                        <div class="uk-card-title f-24 uk-heading-bullet">{{$group->type}}</div>
                     </div>
                     <div class="uk-card-body">
                         <div class="uk-child-width-expand@s" uk-grid>
                             <div><i class="fa fa-users fa-lg" aria-hidden="true"></i> <strong>Class Size:</strong> {{$lesson->class_size}}</div>
                             <div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$lesson->price}}</div>
                             <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Meeting Days:</strong> {{$lesson->days}}</div>
+                            <div><i class="fa fa-life-ring fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}</div>
                         </div>
 
                         <div class="uk-child-width-expand@s" uk-grid>
                             <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->Swimmers->count()}}</div>
                             <div><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <strong>Dates:</strong> {{$lesson->class_start_date->toFormattedDateString()}} - {{$lesson->class_end_date->toFormattedDateString()}}</div>
                             <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Times:</strong> {{$lesson->class_start_time->format('H:i A')}} - {{$lesson->class_end_time->format('H:i A')}}</div>
+                            <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Address:</strong> <br>{{$lesson->location->street}}, <br>{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}</div>
                         </div>
 
                         @if (Auth::guest())
@@ -46,7 +48,7 @@ Lessons
                     </div>
                     <div class="uk-card-footer">
                         @if($lesson->class_size - $lesson->Swimmers->count() > 0)
-                            <a href="/lessons/{{{$group[0]->type}}}/{{{$group[0]->id}}}" class="uk-button uk-button-primary">Sign Up</a>
+                            <a href="/lessons/{{{$group->type}}}/{{{$lesson->id}}}" class="uk-button uk-button-primary">Sign Up</a>
                         @else
                             <button class="uk-button uk-button-primary" disabled>Class Full</button>
                         @endif

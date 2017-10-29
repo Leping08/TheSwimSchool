@@ -28,7 +28,7 @@ Route::get('/lessons', 'GroupController@index');
 Route::get('/lessons/{groupType}', 'GroupController@classDetails');
 
 //sign up form for that lesson
-Route::get('/lessons/{classType}/{id}', 'LessonController@signUp');
+Route::get('/lessons/{classType}/{id}', 'GroupController@signUp');
 
 //save the results of the sign up form
 Route::post('/lessons/{classType}/{id}', 'LessonController@store');

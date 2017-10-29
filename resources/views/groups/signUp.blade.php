@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('heading')
-{{$lesson->class_type}}
+{{$lesson->group->type}}
 @endsection
 
 @section('content')
@@ -139,7 +139,7 @@
                     <div class="uk-width-1-1@s">
                         <div class="uk-form-controls">
                             <label><input class="uk-checkbox" type="checkbox" name="Terms and Conditions" required>
-                                    I agree to the <a href="/lessons/{{{$lesson->class_type}}}/{{{$lesson->id}}}/terms" target="_blank">Group Swim Lesson Policies & Procedures</a>
+                                    I agree to the <a href="/lessons/{{{$lesson->group->type}}}/{{{$lesson->id}}}/terms" target="_blank">Group Swim Lesson Policies & Procedures</a>
                             </label>
                         </div>
                     </div>

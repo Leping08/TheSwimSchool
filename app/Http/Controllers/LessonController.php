@@ -15,42 +15,6 @@ use Illuminate\Support\Facades\Mail;
 
 class LessonController extends Controller
 {
-    //list lessons
-    public function index()
-    {
-        $lessons = collect(Lesson::all())->unique('class_type');
-        return view('lessons.list', compact('lessons'));
-    }
-
-    //list details of the lesson
-    public function classDetails($classType)
-    {
-        $now = Carbon::now();
-        $lessons = Lesson::where('class_type', $classType)
-                            //make sure today is after the registration open date
-                            ->where('registration_open','<=',$now)
-                            //make sure today is before the class end date date
-                            ->where('class_end_date','>=',$now)
-                            ->get();
-        //check to see if any clesses are avalable                 
-        if($lessons->count() <= 0){
-            //if none show the none view
-            return view('lessons.classDetailsNone');
-        }else{
-            //if one or more show the details view
-            return view('lessons.classDetails', compact('lessons'));
-        }
-    }
-
-    //sign up form for that lesson
-    public function signUp($classType, $id)
-    {
-        $lesson = Lesson::findOrFail($id);
-        return view('lessons.signUp', compact('lesson', 'classType', 'id'));
-    }
-
-
-
     //Charge the card for the correct ammount and mark as payed in DB
     public function cardCharge(Request $request, $id)
     {

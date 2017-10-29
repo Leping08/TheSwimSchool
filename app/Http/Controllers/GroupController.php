@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Lesson;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -25,22 +26,24 @@ class GroupController extends Controller
     //list details of the lesson
     public function classDetails($groupType)
     {
-        $activeLessons = [];
-        //get the group with all lessons
-        $group = Group::with('Lessons')
-                        ->where('type', $groupType)
-                        ->get();
+        //Get all lessons that are open for registration and have not already ended
+        $group = Group::with(['Lessons' => function ($query) {
+                $query->where('registration_open', '<=', Carbon::now())
+                      ->where('class_end_date', '>=', Carbon::now())
+                      ->with('location');
+            }])->where('type', $groupType)->get();
+        $group = $group[0];
+        return view('groups.details', compact('group'));
+    }
 
-        foreach ($group[0]->lessons as $lesson)
-        {
-            //lesson must have open registration and can not be over
-            if($lesson->registration_open <= Carbon::now() && $lesson->class_end_date >= Carbon::now()){
-                //make array of active lessons
-                array_push($activeLessons, array($lesson));
-            }
-        }
 
-        return view('groups.details', compact('activeLessons', 'group'));
+
+    //sign up form for that lesson
+    public function signUp($groupType, $id)
+    {
+        $lesson = Lesson::with(['group', 'location', 'season'])->where('id', $id)->get();
+        $lesson = $lesson[0];
+        return view('groups.signUp', compact('lesson'));
     }
 
 
