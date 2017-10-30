@@ -37,9 +37,9 @@ Dashboard
                     <div class="uk-card-body">
                         @if(count($todaysLessons))
                         <ul class="uk-list uk-list-striped">
-                            <li><strong>Swimmers</strong></li>
+                            <li><strong>Lessons</strong></li>
                             @foreach ($todaysLessons as $lesson)
-                                <li><a href="/swimmers/{{{$lesson->id}}}" class="list-group-item list-group-item-action justify-content-between">
+                                <li><a href="/lesson/{{{$lesson->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                         {{$lesson->group->type}}
                                     </a></li>
                             @endforeach

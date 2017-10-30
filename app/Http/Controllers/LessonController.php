@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Log;
 
 class LessonController extends Controller
 {
+    public function show($id)
+    {
+        $lesson = Lesson::with(['Group', 'Location', 'Season', 'DaysOfTheWeek'])
+            ->where('id', '=', $id)
+            ->get();
+        $days = Lesson::findorfail($id)->DaysOfTheWeek()->get();
+        return view('lessons.show', compact('lesson', 'days'));
+    }
+
+
     //Charge the card for the correct ammount and mark as payed in DB
     public function cardCharge(Request $request, $id)
     {
