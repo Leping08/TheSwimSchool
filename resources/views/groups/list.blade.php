@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('heading')
-    Groups
+    Swimmer Level
 @endsection
 
 @section('content')

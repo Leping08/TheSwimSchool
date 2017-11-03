@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/season/current', 'DashboardController@swimmersForCurrentSeason');
 
     //Group
+    Route::post('/add/group/', 'GroupController@store');
+
+    //Location
     Route::post('/add/location/', 'LocationController@store');
 
     //Lessons

@@ -61,7 +61,7 @@ Dashboard
                         <div uk-grid>
                             <div class="uk-width-auto@m">
                                 <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
-                                    <li><a href="#">Group</a></li>
+                                    <li><a href="#">Swimmer Level</a></li>
                                     <li><a href="#">Lesson</a></li>
                                     <li><a href="#">Location</a></li>
                                 </ul>
@@ -69,7 +69,7 @@ Dashboard
                             <div class="uk-width-expand@m">
                                 <ul id="component-tab-left" class="uk-switcher">
                                     <li>
-                                        <form class="uk-grid-small" uk-grid action="/add/location/" method="POST">
+                                        <form class="uk-grid-small" uk-grid action="/add/group/" method="POST">
                                             {{ csrf_field() }}
                                             <div class="uk-margin uk-width-1-1@s">
                                                 <label class="uk-form-label uk-heading-bullet" for="name">Type</label>
@@ -81,19 +81,19 @@ Dashboard
                                             <div class="uk-margin uk-width-1-1@s">
                                                 <label class="uk-form-label uk-heading-bullet" for="name">Ages</label>
                                                 <div class="uk-form-controls">
-                                                    <input type="text" class="uk-input" id="type" name="type" placeholder="12-36 Months" value="{{ old('name') }}" required>
+                                                    <input type="text" class="uk-input" id="ages" name="ages" placeholder="12-36 Months" value="{{ old('name') }}" required>
                                                 </div>
                                             </div>
 
                                             <div class="uk-margin uk-width-1-1@s">
                                                 <label class="uk-form-label uk-heading-bullet" for="name">Description</label>
                                                 <div class="uk-form-controls">
-                                                    <textarea class="uk-textarea" id="type" name="type" rows="4" placeholder="A water adjustment course where toddlers learn basic water skills through songs and structured......"></textarea>
+                                                    <textarea class="uk-textarea" id="description" name="description" rows="4" placeholder="A water adjustment course where toddlers learn basic water skills through songs and structured......"></textarea>
                                                 </div>
                                             </div>
 
                                             <p uk-margin>
-                                                <button type="submit" class="uk-button uk-button-primary">Add Group</button>
+                                                <button type="submit" class="uk-button uk-button-primary">Add Level</button>
                                             </p>
                                         </form>
                                     </li>
