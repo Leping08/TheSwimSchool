@@ -35,7 +35,20 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'street' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zip' => 'required|digits:5',
+            'phoneNumber' => 'required|string'
+        ]);
+
+        $location = (new Location($request->only('name', 'street', 'city', 'state', 'zip', 'phoneNumber')));
+
+        $location->save();
+
+        return back();
     }
 
     /**

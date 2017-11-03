@@ -55,7 +55,7 @@ Dashboard
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <div class="uk-card-header">
-                        <h3 class="el-title uk-margin uk-h2">Add Everything</h3>
+                        <h3 class="el-title uk-margin uk-h2">New</h3>
                     </div>
                     <div class="uk-card-body">
                         <div uk-grid>
@@ -149,7 +149,7 @@ Dashboard
                                             <div class="uk-margin uk-width-1-1@s">
                                                 <label class="uk-form-label uk-heading-bullet" for="name">Phone</label>
                                                 <div class="uk-form-controls">
-                                                    <input type="text" class="uk-input" id="phone" name="phone" placeholder="941-999-9999" value="{{ old('name') }}" required>
+                                                    <input type="text" class="uk-input" id="phoneNumber" name="phoneNumber" placeholder="941-999-9999" value="{{ old('name') }}" required>
                                                 </div>
                                             </div>
 
