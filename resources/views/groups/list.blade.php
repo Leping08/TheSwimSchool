@@ -6,6 +6,11 @@
 
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section">
+        @if(Auth::check())
+            <div class="uk-container">
+                <a class="uk-button uk-button-primary uk-align-right uk-icon" uk-icon="icon: plus" href=""></a>
+            </div>
+        @endif
         <div class="uk-container">
             @foreach($groups as $group)
                 <div class="uk-margin-top">

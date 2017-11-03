@@ -24,9 +24,6 @@ Home
 
 
 
-
-
-
 <div class="uk-section-muted uk-section-overlap uk-section">
     <div class="uk-container">
         <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
@@ -38,7 +35,7 @@ Home
         <div class="uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a href="/swim-lessons/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a href="/lessons/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <div class="uk-card-media-top"><img src="http://theswimschool.deltavcreative.com//wp-content/uploads/1-1.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Lessons</h3>
@@ -79,15 +76,13 @@ Home
 
 
 
-
-
-
 <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
         <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-width-1-1@m uk-first-column">
                 <h2 class="uk-text-center uk-h1 uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
-        Testimonials    </h2>
+                    Testimonials
+                </h2>
                 <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
             </div>
         </div>
@@ -97,8 +92,8 @@ Home
                     <div class="uk-first-column">
                         <div uk-scrollspy-class="" class="el-item uk-card uk-card-secondary uk-card-body uk-scrollspy-inview uk-animation-slide-bottom-medium">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-line uk-margin-remove-adjacent">
-        <span>Jenny Spears</span>
-    </h3>
+                                Jenny Spears
+                            </h3>
                             <div class="el-meta uk-margin uk-text-meta">June 20, 2016</div>
                             <div class="el-content uk-margin">"Ms. Hilary is Amazing!! When my son started swim lessons he had sensory issues and did not want to put his face under water or participate much. After only 2 four week sessions he is swimming on his own without a float at 4 years old and is willing to try everything. She is so patient and creative. I will definitely use her for my daughter as well."</div>
                         </div>
@@ -106,8 +101,8 @@ Home
                     <div>
                         <div uk-scrollspy-class="" class="el-item uk-card uk-card-secondary uk-card-body uk-scrollspy-inview uk-animation-slide-bottom-medium">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-line uk-margin-remove-adjacent">
-        <span>Kenny Mitchell</span>
-    </h3>
+                                Kenny Mitchell
+                            </h3>
                             <div class="el-meta uk-margin uk-text-meta">May 11, 2016</div>
                             <div class="el-content uk-margin">"Hilary is the best instructor around! Although she has the best prices around, It's not about money. She is more than just a teacher, she really cares about the kids she works with; she goes above &amp; beyond for their success."</div>
                         </div>
@@ -115,8 +110,8 @@ Home
                     <div>
                         <div uk-scrollspy-class="" class="el-item uk-card uk-card-secondary uk-card-body uk-scrollspy-inview uk-animation-slide-bottom-medium">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-line uk-margin-remove-adjacent">
-        <span>Jennifer McCarthy-Murray</span>
-    </h3>
+                                Jennifer McCarthy-Murray
+                            </h3>
                             <div class="el-meta uk-margin uk-text-meta">March 12, 2016</div>
                             <div class="el-content uk-margin">"She is amazing and seems to work miracles! Definitely the best at what she does. And her pricing is the best too."</div>
                         </div>
@@ -128,18 +123,12 @@ Home
             <div class="uk-width-1-1@m uk-first-column">
                 <div class="uk-text-center uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="uk-animation-slide-bottom-medium">
                     <a class="el-content uk-button uk-button-primary uk-button-large" href="/testimonials/" title="Explore More">
-                                View All                
-            </a>
+                        View All
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
 @endsection
 
