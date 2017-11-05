@@ -1,5 +1,10 @@
 @extends('layouts.app-uikit')
 
+@section('seo')
+    <title>About The Swim School</title>
+    <meta name="description" content="Meta Here."/>
+@endsection
+
 @section('heading')
 About The Swim School
 @endsection
