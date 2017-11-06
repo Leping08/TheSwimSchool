@@ -21,6 +21,38 @@ class LessonController extends Controller
         return view('lessons.show', compact('lesson', 'days'));
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'season_id' => 'required|digits_between:1,6',
+            'group_id' => 'required|digits_between:1,6',
+            'location_id' => 'required|digits_between:1,6',
+            'price' => 'required|digits_between:1,3',
+            'registration_open' => 'required|date',
+            'class_size' => 'required|digits_between:1,3',
+            'class_start_time' => 'required|string',
+            'class_end_time' => 'required|string',
+            'class_start_date' => 'required|date',
+            'class_end_date' => 'required|date'
+        ]);
+
+
+        $lesson = (new Lesson($request->only('season_id', 'group_id', 'location_id', 'price', 'registration_open', 'class_size', 'class_start_time', 'class_end_time', 'class_start_date', 'class_end_date')));
+
+        $lesson->save();
+
+        $newLesson = Lesson::orderBy('created_at', 'desc')->first();
+
+
+        /*
+        TODO: Add the pivot table logic for days of the week
+        if($request->monday){
+            $newLesson->id do stuff here
+        }
+        */
+        return back();
+    }
+
 
     //Charge the card for the correct ammount and mark as payed in DB
     public function cardCharge(Request $request, $id)

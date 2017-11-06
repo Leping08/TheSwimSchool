@@ -7,14 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'registration_open',
         'class_start_time',
         'class_end_time',
         'class_start_date',
         'class_end_date',
-        'registration_open'
+    ];
+
+    protected $fillable = [
+        'season_id',
+        'group_id',
+        'location_id',
+        'price',
+        'registration_open',
+        'class_size',
+        'class_start_time',
+        'class_end_time',
+        'class_start_date',
+        'class_end_date',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday'
     ];
 
     public function Swimmers()

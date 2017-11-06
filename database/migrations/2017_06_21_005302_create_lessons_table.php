@@ -22,9 +22,9 @@ class CreateLessonsTable extends Migration
             $table->string('days');
             $table->integer('class_size')->default(10);
             $table->integer('open_spots')->default(10);
-            $table->dateTime('class_start_date');
-            $table->dateTime('class_end_date');
-            $table->dateTime('registration_open');
+            $table->date('class_start_date');
+            $table->date('class_end_date');
+            $table->date('registration_open');
             $table->dateTime('class_start_time');
             $table->dateTime('class_end_time');
             $table->timestamps();

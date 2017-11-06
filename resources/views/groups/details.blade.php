@@ -18,7 +18,14 @@ Lessons
                         <div class="uk-child-width-expand@s" uk-grid>
                             <div><i class="fa fa-users fa-lg" aria-hidden="true"></i> <strong>Class Size:</strong> {{$lesson->class_size}}</div>
                             <div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$lesson->price}}</div>
-                            <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Meeting Days:</strong> {{$lesson->days}}</div>
+                            <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Meeting Days:</strong>
+                                @foreach($lesson->DaysOfTheWeek as $day)
+                                    {{$day->day}}
+                                    @if (!$loop->last)
+                                        ,
+                                    @endif
+                                @endforeach
+                            </div>
                             <div><i class="fa fa-life-ring fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}</div>
                         </div>
 

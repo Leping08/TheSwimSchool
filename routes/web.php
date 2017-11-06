@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/add/location/', 'LocationController@store');
 
     //Lessons
+    Route::post('/add/lesson/', 'LessonController@store');
     Route::get('/lesson/{id}', 'LessonController@show');
 });
 

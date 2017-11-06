@@ -128,9 +128,9 @@ Dashboard
                                             </div>
 
                                             <div class="uk-margin uk-width-1-1@s">
-                                                <label class="uk-form-label uk-heading-bullet" for="locations_id">Location</label>
+                                                <label class="uk-form-label uk-heading-bullet" for="location_id">Location</label>
                                                 <div class="uk-form-controls">
-                                                    <select class="uk-select" name="locations_id" id="locations_id">
+                                                    <select class="uk-select" name="location_id" id="location_id">
                                                         @foreach($locations as $location)
                                                             <option value="{{$location->id}}">{{$location->name}}</option>
                                                         @endforeach
@@ -189,11 +189,15 @@ Dashboard
                                             </div>
 
                                             <div class="uk-margin uk-width-1-1@s">
-                                                <label class="uk-form-label uk-heading-bullet" for="class_end_time">Day of the Week</label>
+                                                <label class="uk-form-label uk-heading-bullet">Day of the Week</label>
                                                 <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                                    @foreach($daysOfTheWeek as $day)
-                                                        <label><input class="uk-checkbox" name="day" type="checkbox">{{$day->day}}</label>
-                                                    @endforeach
+                                                    <label><input class="uk-checkbox" name="monday" type="checkbox">Monday</label>
+                                                    <label><input class="uk-checkbox" name="tuesday" type="checkbox">Tuesday</label>
+                                                    <label><input class="uk-checkbox" name="wednesday" type="checkbox">Wednesday</label>
+                                                    <label><input class="uk-checkbox" name="thursday" type="checkbox">Thursday</label>
+                                                    <label><input class="uk-checkbox" name="friday" type="checkbox">Friday</label>
+                                                    <label><input class="uk-checkbox" name="saturday" type="checkbox">Saturday</label>
+                                                    <label><input class="uk-checkbox" name="sunday" type="checkbox">Sunday</label>
                                                 </div>
                                             </div>
 
