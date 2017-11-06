@@ -103,14 +103,103 @@ Dashboard
                                         </form>
                                     </li>
                                     <li>
-                                        <form class="uk-grid-small" uk-grid action="/" method="POST">
+                                        <form class="uk-grid-small" uk-grid action="/add/lesson" method="POST">
                                             {{ csrf_field() }}
                                             <div class="uk-margin uk-width-1-1@s">
-                                                <label class="uk-form-label uk-heading-bullet" for="name">Swimmer Name</label>
+                                                <label class="uk-form-label uk-heading-bullet" for="season_id">Season</label>
                                                 <div class="uk-form-controls">
-                                                    <input type="text" class="uk-input" id="name" name="name" placeholder="Name" value="{{ old('name') }}" required>
+                                                    <select class="uk-select" name="season_id" id="season_id">
+                                                        @foreach($seasons as $season)
+                                                            <option value="{{$season->id}}">{{$season->season}} {{$season->year}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="group_id">Level</label>
+                                                <div class="uk-form-controls">
+                                                    <select class="uk-select" name="group_id" id="group_id">
+                                                        @foreach($groups as $group)
+                                                            <option value="{{$group->id}}">{{$group->type}} ({{$group->ages}})</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="locations_id">Location</label>
+                                                <div class="uk-form-controls">
+                                                    <select class="uk-select" name="locations_id" id="locations_id">
+                                                        @foreach($locations as $location)
+                                                            <option value="{{$location->id}}">{{$location->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="price">Price</label>
+                                                <div class="uk-form-controls">
+                                                    <input type="number" class="uk-input" id="price" name="price" placeholder="$60" value="{{ old('name') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="class_size">Class Size</label>
+                                                <div class="uk-form-controls">
+                                                    <input type="number" class="uk-input" id="class_size" name="class_size" placeholder="10" value="{{ old('name') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <!-- TODO: Fix old value for inputs -->
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="registration_open">Registration Opens</label>
+                                                <div class="uk-form-controls">
+                                                    <input type="date" class="uk-input" id="registration_open" name="registration_open" placeholder="10" value="{{ old('name') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="class_start_date">Start Date</label>
+                                                <div class="uk-form-controls">
+                                                    <input type="date" class="uk-input" id="class_start_date" name="class_start_date" value="{{ old('name') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="class_end_date">End Date</label>
+                                                <div class="uk-form-controls">
+                                                    <input type="date" class="uk-input" id="class_end_date" name="class_end_date" placeholder="10" value="{{ old('name') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="class_start_time">Start Time</label>
+                                                <div class="uk-form-controls">
+                                                    <input type="time" class="uk-input" id="class_start_time" name="class_start_time" value="{{ old('name') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="class_end_time">End Time</label>
+                                                <div class="uk-form-controls">
+                                                    <input type="time" class="uk-input" id="class_end_time" name="class_end_time" value="{{ old('name') }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="uk-margin uk-width-1-1@s">
+                                                <label class="uk-form-label uk-heading-bullet" for="class_end_time">Day of the Week</label>
+                                                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                                    @foreach($daysOfTheWeek as $day)
+                                                        <label><input class="uk-checkbox" name="day" type="checkbox">{{$day->day}}</label>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+
+                                            <p uk-margin>
+                                                <button type="submit" class="uk-button uk-button-primary">Add Lesson</button>
+                                            </p>
                                         </form>
                                     </li>
                                     <li>
