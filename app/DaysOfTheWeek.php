@@ -8,6 +8,6 @@ class DaysOfTheWeek extends Model
 {
     public function Lessons()
     {
-        return $this->belongsToMany(Lessons::class);
+        return $this->belongsToMany(Lessons::class)->withTimestamps();
     }
 }

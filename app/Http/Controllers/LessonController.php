@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\User;
+use Carbon\Carbon;
 use App\Lesson;
 use App\Swimmer;
 use Stripe\Error\Card;
@@ -23,33 +24,49 @@ class LessonController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $lesson = $request->validate([
             'season_id' => 'required|digits_between:1,6',
             'group_id' => 'required|digits_between:1,6',
             'location_id' => 'required|digits_between:1,6',
             'price' => 'required|digits_between:1,3',
-            'registration_open' => 'required|date',
+            'registration_open' => 'required|string',
             'class_size' => 'required|digits_between:1,3',
             'class_start_time' => 'required|string',
             'class_end_time' => 'required|string',
-            'class_start_date' => 'required|date',
-            'class_end_date' => 'required|date'
+            'class_start_date' => 'required|string',
+            'class_end_date' => 'required|string'
         ]);
 
+        $lesson['registration_open'] = Carbon::parse($lesson['registration_open']);
+        $lesson['class_start_time'] = Carbon::parse($lesson['class_start_time']);
+        $lesson['class_end_time'] = Carbon::parse($lesson['class_end_time']);
+        $lesson['class_start_date'] = Carbon::parse($lesson['class_start_date']);
+        $lesson['class_end_date'] = Carbon::parse($lesson['class_end_date']);
 
-        $lesson = (new Lesson($request->only('season_id', 'group_id', 'location_id', 'price', 'registration_open', 'class_size', 'class_start_time', 'class_end_time', 'class_start_date', 'class_end_date')));
+        $newLesson = Lesson::create($lesson);
 
-        $lesson->save();
-
-        $newLesson = Lesson::orderBy('created_at', 'desc')->first();
-
-
-        /*
-        TODO: Add the pivot table logic for days of the week
-        if($request->monday){
-            $newLesson->id do stuff here
+        if($request['sunday']){
+            $newLesson->DaysOfTheWeek()->attach(1);
         }
-        */
+        if($request['monday']){
+            $newLesson->DaysOfTheWeek()->attach(2);
+        }
+        if($request['tuesday']){
+            $newLesson->DaysOfTheWeek()->attach(3);
+        }
+        if($request['wednesday']){
+            $newLesson->DaysOfTheWeek()->attach(4);
+        }
+        if($request['thursday']){
+            $newLesson->DaysOfTheWeek()->attach(5);
+        }
+        if($request['friday']){
+            $newLesson->DaysOfTheWeek()->attach(6);
+        }
+        if($request['saturday']){
+            $newLesson->DaysOfTheWeek()->attach(7);
+        }
+
         return back();
     }
 
