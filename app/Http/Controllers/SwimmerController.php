@@ -184,8 +184,8 @@ class SwimmerController extends Controller
     {
         $swimmerToDelete = Swimmer::findOrFail($id);
         if($swimmerToDelete){
-            $swimmerToDelete->delete();
             session()->flash('success', $swimmerToDelete->name.' has been deleted.');
+            $swimmerToDelete->delete();
         }
         return redirect('/swimmers');
     }

@@ -35,7 +35,7 @@ class GroupController extends Controller
         $group = Group::with(['Lessons' => function ($query) {
                 $query->where('registration_open', '<=', Carbon::now())
                       ->where('class_end_date', '>=', Carbon::now())
-                      ->with('location')
+                      ->with('locations')
                       ->with('DaysOfTheWeek');
             }])->where('type', $groupType)->get();
         $group = $group[0];
@@ -47,7 +47,7 @@ class GroupController extends Controller
     //sign up form for that lesson
     public function signUp($groupType, $id)
     {
-        $lesson = Lesson::with(['group', 'location', 'season'])->where('id', $id)->get();
+        $lesson = Lesson::with(['group', 'locations', 'season'])->where('id', $id)->get();
         $lesson = $lesson[0];
         return view('groups.signUp', compact('lesson'));
     }

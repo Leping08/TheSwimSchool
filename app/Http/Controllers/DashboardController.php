@@ -21,6 +21,7 @@ class DashboardController extends Controller
         $groups = Group::all();
         $locations = Location::all();
         $daysOfTheWeek = DaysOfTheWeek::all();
+        $lessons = Lesson::all();
 
         $todaysLessons = Lesson::whereHas('DaysOfTheWeek', function ($query) {
             $query->where('days_of_the_weeks.id', '=', Carbon::now()->dayOfWeek + 1);
@@ -29,7 +30,7 @@ class DashboardController extends Controller
         ->where('class_end_date', '>=', Carbon::now())
         ->get();
 
-        return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek'));
+        return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons'));
     }
 
     public function swimmersForCurrentSeason()

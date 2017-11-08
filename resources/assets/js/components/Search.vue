@@ -1,29 +1,26 @@
 <template>
-<div>
-<div class="uk-card uk-card-default">
-    <div class="uk-card-header">
-        <form>
-            <div class="uk-margin">
-                <div class="uk-inline uk-width-1-1">
-                    <span class="uk-form-icon" uk-icon="icon: search"></span>
-                    <input class="uk-input" type="text" v-model="search" placeholder="Swimmer Name">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-header">
+            <form>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: search"></span>
+                        <input class="uk-input" type="text" v-model="search" placeholder="Swimmer Name">
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 
-    <div class="uk-card-body">
-        <ul class="uk-list uk-list-striped">
-            <li><strong>Swimmers</strong></li>
-            <li v-for="swimmer in filteredArticles"><a v-bind:href="'/swimmers/'+swimmer.id" class="list-group-item list-group-item-action justify-content-between">
-                {{swimmer.name}}
-                
-            </a></li>
-        </ul>
-    </div>
-</div>
-</div>
+        <div class="uk-card-body">
+            <ul class="uk-list uk-list-striped">
+                <li><strong>Swimmers</strong></li>
+                <li v-for="swimmer in filteredArticles"><a v-bind:href="'/swimmers/'+swimmer.id" class="list-group-item list-group-item-action justify-content-between">
+                    {{swimmer.name}}
 
+                </a></li>
+            </ul>
+        </div>
+    </div>
 </template>
 
 <script>
