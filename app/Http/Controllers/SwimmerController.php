@@ -24,14 +24,7 @@ class SwimmerController extends Controller
     {
         //check to see if any swimmers are singed up
         $swimmers = Swimmer::orderBy('id', 'desc')->get();
-        $count = $swimmers->count();
-        if($count > 0){
-            //return all the swimmers
-            return view('swimmers.list', compact('swimmers'));
-        }else{
-            //return the no swimmers view
-            return view('swimmers.listNoCount', compact('swimmers'));
-        }
+        return view('swimmers.list', compact('swimmers'));
     }
 
     /**

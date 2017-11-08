@@ -35,7 +35,7 @@ class GroupController extends Controller
         $group = Group::with(['Lessons' => function ($query) {
                 $query->where('registration_open', '<=', Carbon::now())
                       ->where('class_end_date', '>=', Carbon::now())
-                      ->with('locations')
+                      ->with('location')
                       ->with('DaysOfTheWeek');
             }])->where('type', $groupType)->get();
         $group = $group[0];
@@ -47,7 +47,7 @@ class GroupController extends Controller
     //sign up form for that lesson
     public function signUp($groupType, $id)
     {
-        $lesson = Lesson::with(['group', 'locations', 'season'])->where('id', $id)->get();
+        $lesson = Lesson::with(['group', 'location', 'season'])->where('id', $id)->get();
         $lesson = $lesson[0];
         return view('groups.signUp', compact('lesson'));
     }
@@ -56,15 +56,15 @@ class GroupController extends Controller
     //Sign a swimmer up for a lesson and send them to the card payment page or back to the lesson page.
     public function store(Request $request)
     {
-        $request->validate([
+        $group = $request->validate([
             'type' => 'required|string',
             'ages' => 'required|string',
             'description' => 'required|string'
         ]);
 
-        $group = (new Group($request->only('type', 'ages', 'city', 'description')));
+        $newGroup = Group::create($group);
 
-        $group->save();
+        session()->flash('success', "$newGroup->type was created");
 
         return back();
     }

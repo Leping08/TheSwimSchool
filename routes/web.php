@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('group', 'GroupController');
     Route::resource('locations', 'LocationController');
-    Route::resource('lesson', 'LessonController');
+    //Route::resource('lesson', 'LessonController');
 });
 
 
