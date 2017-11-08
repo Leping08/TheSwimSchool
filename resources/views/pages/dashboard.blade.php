@@ -88,16 +88,6 @@ Dashboard
                             <li>
                             <form class="uk-grid-small" uk-grid action="/lesson" method="POST">
                                 {{ csrf_field() }}
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="season_id">Season</label>
-                                    <div class="uk-form-controls">
-                                        <select class="uk-select" name="season_id" id="season_id">
-                                            @foreach($seasons as $season)
-                                                <option value="{{$season->id}}">{{$season->season}} {{$season->year}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
 
                                 <div class="uk-margin uk-width-1-1@s">
                                     <label class="uk-form-label uk-heading-bullet" for="group_id">Level</label>
@@ -199,7 +189,7 @@ Dashboard
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <div class="uk-card-header">
-                        <h3 class="el-title uk-margin uk-h2">Swimmer Level</h3>
+                        <h3 class="el-title uk-margin uk-h2">Swimmer Levels</h3>
                     </div>
                     <div class="uk-card-body">
                         <ul uk-tab>
@@ -259,7 +249,7 @@ Dashboard
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <div class="uk-card-header">
-                        <h3 class="el-title uk-margin uk-h2">Location</h3>
+                        <h3 class="el-title uk-margin uk-h2">Locations</h3>
                     </div>
                     <div class="uk-card-body">
                         <ul uk-tab>

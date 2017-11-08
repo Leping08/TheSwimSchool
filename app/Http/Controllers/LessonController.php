@@ -25,7 +25,6 @@ class LessonController extends Controller
     public function store(Request $request)
     {
         $lesson = $request->validate([
-            'season_id' => 'required|digits_between:1,6',
             'group_id' => 'required|digits_between:1,6',
             'location_id' => 'required|digits_between:1,6',
             'price' => 'required|digits_between:1,3',
@@ -42,6 +41,7 @@ class LessonController extends Controller
         $lesson['class_end_time'] = Carbon::parse($lesson['class_end_time']);
         $lesson['class_start_date'] = Carbon::parse($lesson['class_start_date']);
         $lesson['class_end_date'] = Carbon::parse($lesson['class_end_date']);
+        $lesson['season_id'] =  GetSeason::getSeasonFromDate($lesson['class_start_date'])->id;
 
         $newLesson = Lesson::create($lesson);
 
