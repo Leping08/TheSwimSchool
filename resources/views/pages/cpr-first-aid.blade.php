@@ -29,7 +29,7 @@ CPR and First Aid Training
             <div class="uk-width-1-1@m uk-first-column">
                 <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
                     <div class="uk-card uk-card-default uk-card-body">
-                        <div class="uk-h2">Sign Up For Training</div>
+                        <div class="uk-h2">Schedule Training</div>
                             <form action="" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
@@ -50,6 +50,12 @@ CPR and First Aid Training
                                         <input type="tel" name="phone" value="{{ old('phone') }}" class="uk-input" placeholder="999 999-9999" required>
                                     </div>
                                 </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Message</label>
+                                    <div class="uk-form-controls">
+                                        <textarea name="message" rows="5" class="uk-textarea" placeholder="I would like to schedule CPR and/or First Aid training." required>{{ old('message') }}</textarea>
+                                    </div>
+                                </div>
                                 <div uk-grid="" class="uk-grid">
                                     <div class="uk-width-1-2@s uk-margin">
                                         <input type="submit" value="Sign Up" class="uk-button-primary uk-button uk-button-large">
@@ -61,8 +67,6 @@ CPR and First Aid Training
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 

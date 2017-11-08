@@ -88,14 +88,8 @@ Route::get('/contact-us', function(){
 
 
 //WP Contact Forms
-Route::post('/contact-us', 'ContactFormController@contactUs');
-
-Route::post('/lifeguarding', 'ContactFormController@lifeguardingEmail');
-
-Route::post('/cpr-first-aid', 'ContactFormController@cprFirstAidEmail');
-
-Route::get('/email-test', 'ContactFormController@testEmail');
-
-Route::get('/email', 'ContactFormController@index');
+Route::post('/contact-us', 'ContactFormsController@contactUs');
+Route::post('/lifeguarding', 'ContactFormsController@lifeguarding');
+Route::post('/cpr-first-aid', 'ContactFormsController@cprFirstAid');
 
 

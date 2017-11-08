@@ -42,7 +42,7 @@ Lifeguarding
             <div class="uk-width-1-1@m uk-first-column">
                 <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
                     <div class="uk-card uk-card-default uk-card-body">
-                        <div class="uk-h2">Book A Lifeguard</div>
+                        <div class="uk-h2">Request A Lifeguard</div>
                             <form action="" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
