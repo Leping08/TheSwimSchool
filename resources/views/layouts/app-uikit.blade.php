@@ -10,6 +10,11 @@
     <!-- uikit stuff -->
     <link rel='stylesheet' id='theme-style-css'  href='http://theswimschool.deltavcreative.com/wp-content/themes/yootheme/css/theme.css?ver=1499371170' type='text/css' media='all' />
     <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        window.laravelConfig = JSON.parse('{!! json_encode([
+            'STRIPE_PUBLIC' => env('STRIPE_PUBLIC')
+        ]) !!}');
+    </script>
 </head>
 <body>
     

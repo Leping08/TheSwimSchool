@@ -46,7 +46,7 @@ Route::get('/lessons/{classType}/{id}', 'GroupController@signUp');
 Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 
 //charge the credit card for the lesson
-Route::post('/{id}/card/checkout', 'LessonController@cardCharge');
+Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 
 //show the terms and conditions page
 Route::get('/lessons/{classType}/{id}/terms', 'GroupController@terms');

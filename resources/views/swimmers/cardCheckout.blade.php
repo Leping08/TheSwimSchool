@@ -119,7 +119,7 @@ label > span {
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-    var stripe = Stripe('pk_test_IsSKy35BLDv1INihMjtgEhIi');
+    var stripe = Stripe(window.laravelConfig.STRIPE_PUBLIC);
     var elements = stripe.elements();
 
     var card = elements.create('card', {
