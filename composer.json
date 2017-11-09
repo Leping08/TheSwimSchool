@@ -11,7 +11,9 @@
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "laravel/cashier": "^7.0",
         "laravel/framework": "5.5.*",
+        "laravel/horizon": "^1.0",
         "laravel/tinker": "~1.0",
+        "predis/predis": "^1.1",
         "stripe/stripe-php": "^5.1"
     },
     "require-dev": {

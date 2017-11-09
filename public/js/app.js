@@ -11836,7 +11836,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Leping-Gaming\\Desktop\\laravel projects\\TheSwimSchool\\resources\\assets\\js\\components\\Search.vue"
+Component.options.__file = "/Users/Derk/TheSwimSchool/resources/assets/js/components/Search.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Search.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -11894,7 +11894,7 @@ exports = module.exports = __webpack_require__(10)(undefined);
 
 
 // module
-exports.push([module.i, "\n.primary-blue{\r\n    background-color: #0275d8!important;\n}\n.white{\r\n    color: white;\n}\r\n", ""]);
+exports.push([module.i, "\n.primary-blue{\n    background-color: #0275d8!important;\n}\n.white{\n    color: white;\n}\n", ""]);
 
 // exports
 
@@ -12363,9 +12363,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['allswimmers'],
@@ -12408,7 +12405,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', {
     staticClass: "uk-card uk-card-default"
   }, [_c('div', {
     staticClass: "uk-card-header"
@@ -12452,8 +12449,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "href": '/swimmers/' + swimmer.id
       }
-    }, [_vm._v("\r\n                " + _vm._s(swimmer.name) + "\r\n                \r\n            ")])])
-  })], 2)])])])
+    }, [_vm._v("\n                " + _vm._s(swimmer.name) + "\n\n            ")])])
+  })], 2)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('strong', [_vm._v("Swimmers")])])
 }]}
