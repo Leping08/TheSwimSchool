@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\Http\Request;
+use App\Jobs\SendEmails;
 use Carbon\Carbon;
 
 class ContactFormsController extends Controller
@@ -32,8 +33,12 @@ class ContactFormsController extends Controller
         //Assign this contact us contact type
         $validData['contact_type_id'] = 1;
 
-        Contact::create($validData);
+        //Contact::create($validData);
+        $leadDestEmails = config('mail.leadDestEmails');
 
+        foreach($leadDestEmails as $email){
+            SendEmails::dispatch($validData, "Contact Us", $email)->delay(Carbon::now()->addMinutes(10));;
+        }
         //TODO: Dispatch email job
 
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');

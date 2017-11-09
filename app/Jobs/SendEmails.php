@@ -17,17 +17,20 @@ class SendEmails implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-
     protected $data;
+    protected $subject;
+    protected $email;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($data, $subject, $email)
     {
         $this->data = $data;
+        $this->subject = $subject;
+        $this->email = $email;
     }
 
     /**
@@ -37,13 +40,7 @@ class SendEmails implements ShouldQueue
      */
     public function handle()
     {
-        $leadDestEmails = config('mail.leadDestEmails');
-        $time = Carbon::now('America/New_York');
-
-        foreach($leadDestEmails as $emailAddress){
-            Mail::to($emailAddress)->send(new ContactUs($this->data));
-            //Mail::to($emailAddress)->send(new Test);
-            Log::info('Email sent to: '.$emailAddress.' at '.$time->toDayDateTimeString());
-        }
+        Mail::to($this->email)->send(new ContactUs($this->data, $this->subject));
+        Log::info("$this->subject Email sent to: $this->email.");
     }
 }
