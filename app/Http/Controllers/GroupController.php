@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Stripe\Error\Card;
 use Illuminate\Support\Facades\Log;
-use App\Mail\LessonSignUp;
+use App\Mail\SignUp;
 use Illuminate\Support\Facades\Mail;
 
 class GroupController extends Controller

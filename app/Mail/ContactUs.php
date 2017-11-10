@@ -11,8 +11,8 @@ class ContactUs extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
-    public $subject;
+    protected $data;
+    protected $subject;
 
     /**
      * Create a new message instance.

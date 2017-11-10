@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Contact;
 use App\ContactType;
 use Illuminate\Http\Request;
-use App\Jobs\SendEmails;
+use App\Jobs\ContactEmail;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -49,7 +49,7 @@ function sendEmails($validData)
     $leadDestEmails = config('mail.leadDestEmails');
     $subject = ContactType::find($validData['contact_type_id']);
     foreach($leadDestEmails as $email){
-        SendEmails::dispatch($validData, $subject->name, $email);
+        ContactEmail::dispatch($validData, $subject->name, $email);
     }
 }
 

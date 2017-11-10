@@ -2,23 +2,21 @@
 
 namespace App\Jobs;
 
+use App\Mail\SignUp;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactUs;
-use App\Mail\Test;
 use Log;
-use Carbon\Carbon;
+use App\Lesson;
 
-class SendEmails implements ShouldQueue
+class SignupEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $data;
-    protected $subject;
+    protected $lesson;
     protected $email;
 
     /**
@@ -26,10 +24,9 @@ class SendEmails implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($data, $subject, $email)
+    public function __construct(Lesson $lesson, $email)
     {
-        $this->data = $data;
-        $this->subject = $subject;
+        $this->lesson = $lesson;
         $this->email = $email;
     }
 
@@ -40,7 +37,7 @@ class SendEmails implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->email)->send(new ContactUs($this->data, $this->subject));
-        Log::info("$this->subject Email sent to: $this->email.");
+        Mail::to($this->email)->send(new SignUp($this->lesson));
+        Log::info("Sing-up email sent to: $this->email.");
     }
 }

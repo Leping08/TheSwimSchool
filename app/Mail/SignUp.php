@@ -5,20 +5,22 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Lesson;
 
-class Test extends Mailable
+class SignUp extends Mailable
 {
     use Queueable, SerializesModels;
+
+    protected $lesson;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Lesson $lesson)
     {
-        //
+        $this->lesson = $lesson;
     }
 
     /**
@@ -28,6 +30,7 @@ class Test extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.test');
+        return $this->markdown('email.lessonSignUp')
+                    ->with(['lesson', $this->lesson]);
     }
 }
