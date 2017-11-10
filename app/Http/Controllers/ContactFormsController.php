@@ -3,65 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\ContactType;
 use Illuminate\Http\Request;
 use App\Jobs\SendEmails;
+use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
 class ContactFormsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-
-    //Contact us form
     public function contactUs(Request $request)
     {
-        $validData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'message' => 'required'
-        ]);
-
-        //Assign this contact us contact type
+        $validData = getVaildData($request);
         $validData['contact_type_id'] = 1;
-
-        //Contact::create($validData);
-        $leadDestEmails = config('mail.leadDestEmails');
-
-        foreach($leadDestEmails as $email){
-            SendEmails::dispatch($validData, "Contact Us", $email)->delay(Carbon::now()->addMinutes(10));;
-        }
-        //TODO: Dispatch email job
-
+        Contact::create($validData);
+        sendEmails($validData);
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
         return back();
     }
 
-    //Lifeguarding form
+
     public function lifeguarding(Request $request)
     {
-        $validData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'message' => 'required'
-        ]);
-
-        //Assign lifeguarding contact type
+        $validData = getVaildData($request);
         $validData['contact_type_id'] = 2;
-
         Contact::create($validData);
-
-        //TODO: Dispatch email job
-
+        sendEmails($validData);
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
         return back();
     }
@@ -69,22 +35,30 @@ class ContactFormsController extends Controller
     //cprFirstAid form
     public function cprFirstAid(Request $request)
     {
-        $validData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'message' => 'required'
-        ]);
-
-        //Assign cprFirstAid contact type
+        $validData = getVaildData($request);
         $validData['contact_type_id'] = 3;
-
         Contact::create($validData);
-
-        //TODO: Dispatch email job
-
+        sendEmails($validData);
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
         return back();
     }
+}
 
+function sendEmails($validData)
+{
+    $leadDestEmails = config('mail.leadDestEmails');
+    $subject = ContactType::find($validData['contact_type_id']);
+    foreach($leadDestEmails as $email){
+        SendEmails::dispatch($validData, $subject->name, $email);
+    }
+}
+
+function getVaildData($request)
+{
+    return $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'phone' => 'required',
+        'message' => 'required'
+    ]);
 }
