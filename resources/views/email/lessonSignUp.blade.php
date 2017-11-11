@@ -9,9 +9,9 @@ The first class is {{$lesson->class_start_date->format('l F jS')}} at {{$lesson-
 @endcomponent
 
 @component('mail::panel')
-### Place
-{{$lesson->location->street}},
-{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}
+    ### Place
+    {{$lesson->location->street}},
+    {{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}
 @endcomponent
 
 @component('mail::button', ['url' => ''])

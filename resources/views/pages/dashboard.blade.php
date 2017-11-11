@@ -44,7 +44,7 @@ Dashboard
                         <ul class="uk-list uk-list-striped">
                             <li><strong>Lessons</strong></li>
                             @foreach ($todaysLessons as $lesson)
-                                <li><a href="/lesson/{{{$lesson->id}}}" class="list-group-item list-group-item-action justify-content-between">
+                                <li><a href="/lessons/{{{$lesson->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                         {{$lesson->group->type}}
                                     </a></li>
                             @endforeach
@@ -75,7 +75,7 @@ Dashboard
                                     <ul class="uk-list uk-list-striped">
                                         <li><strong>Levels</strong></li>
                                         @foreach ($lessons as $lesson)
-                                            <li><a href="/group/{{{$lesson->id}}}" class="list-group-item list-group-item-action justify-content-between">
+                                            <li><a href="/groups/{{{$lesson->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                                     {{$lesson->group->type}}
                                                 </a></li>
                                         @endforeach
@@ -86,7 +86,7 @@ Dashboard
                             </li>
                             <!-- Lesson -->
                             <li>
-                            <form class="uk-grid-small" uk-grid action="/lesson" method="POST">
+                            <form class="uk-grid-small" uk-grid action="/lessons/" method="POST">
                                 {{ csrf_field() }}
 
                                 <div class="uk-margin uk-width-1-1@s">
@@ -162,7 +162,7 @@ Dashboard
                                 </div>
 
                                 <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet">Day of the Week</label>
+                                    <label class="uk-form-label uk-heading-bullet">Days of the Week</label>
                                     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                                         <label><input class="uk-checkbox" name="monday" type="checkbox">Monday</label>
                                         <label><input class="uk-checkbox" name="tuesday" type="checkbox">Tuesday</label>
@@ -214,7 +214,7 @@ Dashboard
                             </li>
                             <li>
                                 <!-- Swimmer Level -->
-                                <form class="uk-grid-small" uk-grid action="/group/" method="POST">
+                                <form class="uk-grid-small" uk-grid action="/groups/" method="POST">
                                     {{ csrf_field() }}
                                     <div class="uk-margin uk-width-1-1@s">
                                         <label class="uk-form-label uk-heading-bullet" for="name">Type</label>
@@ -274,7 +274,7 @@ Dashboard
                             </li>
                             <li>
                                 <!-- Location -->
-                                <form class="uk-grid-small" uk-grid action="/location" method="POST">
+                                <form class="uk-grid-small" uk-grid action="/locations/" method="POST">
                                     {{ csrf_field() }}
                                     <div class="uk-margin uk-width-1-1@s">
                                         <label class="uk-form-label uk-heading-bullet" for="name">Name</label>

@@ -27,8 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/dashboard/season/current', 'DashboardController@swimmersForCurrentSeason');
 
-    Route::resource('group', 'GroupController');
+    Route::resource('groups', 'GroupController');
     Route::resource('locations', 'LocationController');
+
+    Route::get('lessons/{id}', 'LessonController@show');
+    Route::post('/lessons', 'LessonController@store');
     //Route::resource('lesson', 'LessonController');
 });
 

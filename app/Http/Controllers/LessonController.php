@@ -62,7 +62,7 @@ class LessonController extends Controller
             $newLesson->DaysOfTheWeek()->attach(7);
         }
 
-        session()->flash('success', $newLesson->group->type.' was created');
+        session()->flash('success', $newLesson->group->type.' lesson was created');
 
         return back();
     }

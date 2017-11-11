@@ -17,7 +17,7 @@ class CreateGroupsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('ages');
-            $table->string('description');
+            $table->string('description', 8000);
             $table->timestamps();
         });
     }
