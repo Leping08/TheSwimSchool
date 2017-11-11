@@ -11,8 +11,8 @@ class ContactUs extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $data;
-    protected $subject;
+    public $data;
+    public $subject;
 
     /**
      * Create a new message instance.
@@ -34,6 +34,7 @@ class ContactUs extends Mailable
     {
         return $this->subject($this->subject)
                     ->markdown('email.contactUs')
-                    ->with(['data', $this->data]);
+                    ->with(['data', $this->data])
+                    ->with(['subject', $this->subject]);
     }
 }

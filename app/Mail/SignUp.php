@@ -11,7 +11,7 @@ class SignUp extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $lesson;
+    public $lesson;
 
     /**
      * Create a new message instance.
@@ -30,7 +30,8 @@ class SignUp extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.lessonSignUp')
+        return $this->subject($this->lesson->group->type)
+                    ->markdown('email.lessonSignUp')
                     ->with(['lesson', $this->lesson]);
     }
 }

@@ -1,5 +1,5 @@
 @component('mail::message')
-Contact Us Contact Form
+{{$subject}}
 
 - Name: {{$data['name']}}
 - Phone: {{$data['phone']}}
