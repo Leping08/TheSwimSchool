@@ -30,7 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('groups', 'GroupController');
     Route::resource('locations', 'LocationController');
 
-    Route::get('lessons/{id}', 'LessonController@show');
+    //TODO: Fix admin view for a single lesson
+    //Route::get('lessons/{id}', 'LessonController@show');
     Route::post('/lessons', 'LessonController@store');
     //Route::resource('lesson', 'LessonController');
 });
