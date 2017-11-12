@@ -9,7 +9,7 @@ Lessons
     @if(count($group->lessons))
         <div class="uk-section-default uk-section-overlap uk-section">
             <div class="uk-container ">
-                @foreach($group->lessons as $lesson)
+                @foreach($group->OpenSignUps as $lesson)
                 <div class="uk-card uk-card-default uk-margin-top">
                     <div class="uk-card-header">
                         <div class="uk-card-title f-24 uk-heading-bullet">{{$group->type}}</div>

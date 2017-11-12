@@ -32,12 +32,7 @@ class GroupController extends Controller
     public function classDetails($groupType)
     {
         //Get all lessons that are open for registration and have not already ended
-        $group = Group::with(['Lessons' => function ($query) {
-                $query->where('registration_open', '<=', Carbon::now())
-                      ->where('class_end_date', '>=', Carbon::now())
-                      ->with('location')
-                      ->with('DaysOfTheWeek');
-            }])->where('type', $groupType)->get();
+        $group = Group::where('type', $groupType)->get();
         $group = $group[0];
         return view('groups.details', compact('group'));
     }

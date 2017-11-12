@@ -89,7 +89,7 @@ Eddit {{$swimmer->name}}
 
                     
                     <div>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="uk-button uk-button-primary">Update</button>
                     </div>
                 </form>
             </div>
