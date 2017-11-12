@@ -117,6 +117,8 @@ label > span {
 }
 </style>
 
+
+<script src="https://js.stripe.com/v3/"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
     var stripe = Stripe(window.laravelConfig.STRIPE_PUBLIC);

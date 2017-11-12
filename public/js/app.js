@@ -11836,7 +11836,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/Derk/TheSwimSchool/resources/assets/js/components/Search.vue"
+Component.options.__file = "C:\\Users\\Leping-Gaming\\Desktop\\laravel projects\\TheSwimSchool\\resources\\assets\\js\\components\\Search.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Search.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -11894,7 +11894,7 @@ exports = module.exports = __webpack_require__(10)(undefined);
 
 
 // module
-exports.push([module.i, "\n.primary-blue{\n    background-color: #0275d8!important;\n}\n.white{\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n.primary-blue{\r\n    background-color: #0275d8!important;\n}\n.white{\r\n    color: white;\n}\r\n", ""]);
 
 // exports
 

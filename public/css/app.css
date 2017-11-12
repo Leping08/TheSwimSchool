@@ -45,7 +45,7 @@
 }
 
 #page\#1 .uk-grid {
-  background: url(http://theswimschool.deltavcreative.com/wp-content/uploads/home-header-splash.png) 50% 50% no-repeat;
+  background: url(/img/home-header-splash.png) 50% 50% no-repeat;
   background-size: contain;
   padding: 175px 50px;
 }

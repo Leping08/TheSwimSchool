@@ -8,8 +8,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- uikit stuff -->
-    <link rel='stylesheet' id='theme-style-css'  href='http://theswimschool.deltavcreative.com/wp-content/themes/yootheme/css/theme.css?ver=1499371170' type='text/css' media='all' />
-    <script src="https://js.stripe.com/v3/"></script>
+    <link rel='stylesheet' id='theme-style-css'  href='https://demo.yootheme.com/themes/wordpress/2017/fjord/wp-content/themes/yootheme/css/theme.css?ver=1510057293' type='text/css' media='all' />
     <script>
         window.laravelConfig = JSON.parse('{!! json_encode([
             'STRIPE_PUBLIC' => env('STRIPE_PUBLIC')
@@ -50,9 +49,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Font Awesome CDN -->
     <script src="https://use.fontawesome.com/2df15bc632.js"></script>
-    <!-- Uikit -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit-icons.min.js"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.34/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.34/js/uikit-icons.min.js"></script>
 </body>
 </html>

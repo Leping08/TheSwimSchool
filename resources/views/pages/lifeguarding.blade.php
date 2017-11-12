@@ -33,7 +33,7 @@ Lifeguarding
             </div>
             <div class="uk-width-expand@m">
                 <div class="uk-margin">
-                    <img src="http://theswimschool.deltavcreative.com/wp-content/uploads/150712-F-SN009-010.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="">
+                    <img src="/img/lifeguard.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="">
                 </div>
             </div>
         </div>

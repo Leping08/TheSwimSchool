@@ -21,7 +21,7 @@ About The Swim School
             </div>
             <div class="uk-width-expand@m">
                 <div class="uk-margin">
-                    <img src="http://theswimschool.deltavcreative.com/wp-content/uploads/13567433_1825415874353618_6848051280883057313_n.jpg" class="el-image" alt="">
+                    <img src="/img/about.jpg" class="el-image" alt="">
                 </div>
             </div>
         </div>

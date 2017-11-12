@@ -1,11 +1,11 @@
-<div class="tm-footer uk-section-muted uk-section-overlap uk-section" uk-scrollspy="{&quot;target&quot;:&quot;[uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-bottom-medium&quot;,&quot;delay&quot;:300}">
+<div class="tm-footer uk-section-muted uk-section-overlap uk-section" uk-scrollspy="{&quot;target&quot;:&quot;[uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-bottom-medium&quot;,&quot;delay&quot;:200}">
     <div class="uk-container">
         <div class="uk-child-width-expand uk-text-center" uk-grid>
             <div></div>
             <div class="uk-visible@s"></div>
             <div>
                 <div class="uk-margin uk-text-center@m uk-text-center" uk-scrollspy-class>
-                    <a href="/index.php" class="el-link"><img src="/images/footer_logo.png" class="uk-responsive-width" alt=""></a>    
+                    <a href="/" class="el-link"><img src="/img/footer-logo.png" class="uk-responsive-width" alt=""></a>
                 </div>
             </div>
             <div class="uk-visible@s"></div>
@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-<div class="uk-section-secondary uk-section-overlap uk-section uk-section-small" uk-scrollspy="{&quot;target&quot;:&quot;[uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-bottom-medium&quot;,&quot;delay&quot;:false}">
+<div class="uk-section-secondary uk-section-overlap uk-section uk-section-small" uk-scrollspy="{&quot;target&quot;:&quot;[uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-bottom-medium&quot;,&quot;delay&quot;:200}">
     <div class="uk-container">
         <div class="uk-grid-margin" uk-grid>
             <div class="uk-width-expand@m">

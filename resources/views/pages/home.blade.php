@@ -11,7 +11,7 @@ Home
 
 @section('content')
 <div id="page#1" class="uk-section-secondary uk-section-overlap">
-    <div style="background-image: url('http://theswimschool.deltavcreative.com//wp-content/uploads/pool-water-1439770501OqV.jpg'); background-color: #1e3040;" class="uk-background-norepeat uk-background-cover uk-background-bottom-center uk-background-fixed uk-section uk-padding-remove-vertical">
+    <div style="background-image: url('/img/pool-water.jpg'); background-color: #1e3040;" class="uk-background-norepeat uk-background-cover uk-background-bottom-center uk-background-fixed uk-section uk-padding-remove-vertical">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
@@ -41,7 +41,7 @@ Home
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a href="/lessons/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
-                    <div class="uk-card-media-top"><img src="http://theswimschool.deltavcreative.com//wp-content/uploads/1-1.jpg" class="el-image uk-border-rounded" alt=""></div>
+                    <div class="uk-card-media-top"><img src="/img/swim-lessons.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Lessons</h3>
                         <div class="el-content uk-margin">The Swim School features aquatics programs to meet the specific needs of various age groups and skill levels.</div>
@@ -51,7 +51,7 @@ Home
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a href="/lifeguarding/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
-                    <div class="uk-card-media-top"><img src="http://theswimschool.deltavcreative.com//wp-content/uploads/150712-F-SN009-010.jpg" class="el-image uk-border-rounded" alt=""></div>
+                    <div class="uk-card-media-top"><img src="/img/lifeguard.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Lifeguarding</h3>
                         <div class="el-content uk-margin">Hire The Swim School to supervise your next pool party or event by the water. We have certified lifeguards to keep everyone safe while you enjoy the party!</div>
@@ -61,7 +61,7 @@ Home
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a href="/cpr-first-aid/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
-                    <div class="uk-card-media-top"><img src="http://theswimschool.deltavcreative.com//wp-content/uploads/Aqua_Aerobics.jpg" class="el-image uk-border-rounded" alt=""></div>
+                    <div class="uk-card-media-top"><img src="/img/water-aerobics.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">CPR/First Aid</h3>
                         <div class="el-content uk-margin">Need CPR and/or First Aid training? The Swim School can certify you with these life-saving skills. Individual and group instruction is available.</div>

@@ -3,7 +3,7 @@
         <nav class="uk-navbar-container" uk-navbar>
             <div class="uk-navbar-left">
                 <a class="uk-navbar-item uk-logo" href="/">
-                    <img src="http://theswimschool.deltavcreative.com/wp-content/uploads/imageedit_5_3918357837.png" class="uk-responsive-height" alt>
+                    <img src="/img/main-logo.png" class="uk-responsive-height" alt>
                 </a>
             </div>
             <div class="uk-navbar-right">
@@ -83,7 +83,7 @@
                 <nav class="uk-navbar" uk-navbar>
                     <div class="uk-navbar-left">
                         <a href="/" class="uk-navbar-item uk-logo">
-                            <img src="http://theswimschool.deltavcreative.com/wp-content/uploads/imageedit_5_3918357837.png" class="uk-responsive-height" alt>
+                            <img src="/img/main-logo.png" class="uk-responsive-height" alt>
                         </a>
                     </div>
                     <div class="uk-navbar-center">
