@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LocationController extends Controller
 {
@@ -35,6 +36,8 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info("Start to store a Location.");
+
         $location = $request->validate([
             'name' => 'required|string',
             'street' => 'required|string',
@@ -44,9 +47,15 @@ class LocationController extends Controller
             'phoneNumber' => 'required|string'
         ]);
 
+        Log::info("Creating a new location.");
+
         $newLocation = Location::create($location);
 
+        Log::info("Location added.");
+
         session()->flash('success', "$newLocation->name was created");
+
+        Log::info("Set flash message going back.");
 
         return back();
     }

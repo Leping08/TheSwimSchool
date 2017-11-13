@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LessonController extends Controller
 {
@@ -19,6 +20,8 @@ class LessonController extends Controller
 
     public function store(Request $request)
     {
+        Log::info("Start to store a lesson.");
+
         $lesson = $request->validate([
             'group_id' => 'required|digits_between:1,6',
             'location_id' => 'required|digits_between:1,6',
@@ -38,7 +41,11 @@ class LessonController extends Controller
         $lesson['class_end_date'] = Carbon::parse($lesson['class_end_date']);
         $lesson['season_id'] =  GetSeason::getSeasonFromDate($lesson['class_start_date'])->id;
 
+        Log::info("Lesson data is valid.");
+
         $newLesson = Lesson::create($lesson);
+
+        Log::info("Lesson added.");
 
         if($request['sunday']){
             $newLesson->DaysOfTheWeek()->attach(1);
@@ -63,6 +70,8 @@ class LessonController extends Controller
         }
 
         session()->flash('success', $newLesson->group->type.' lesson was created');
+
+        Log::info("Flash message sent going back.");
 
         return back();
     }
