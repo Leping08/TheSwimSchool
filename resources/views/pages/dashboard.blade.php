@@ -86,7 +86,7 @@ Dashboard
                             </li>
                             <!-- Lesson -->
                             <li>
-                            <form class="uk-grid-small" uk-grid action="/lessons/" method="POST">
+                            <form class="uk-grid-small" uk-grid action="/lessons" method="POST">
                                 {{ csrf_field() }}
 
                                 <div class="uk-margin uk-width-1-1@s">
@@ -214,7 +214,7 @@ Dashboard
                             </li>
                             <li>
                                 <!-- Swimmer Level -->
-                                <form class="uk-grid-small" uk-grid action="/groups/" method="POST">
+                                <form class="uk-grid-small" uk-grid action="/groups" method="POST">
                                     {{ csrf_field() }}
                                     <div class="uk-margin uk-width-1-1@s">
                                         <label class="uk-form-label uk-heading-bullet" for="name">Type</label>
@@ -274,7 +274,7 @@ Dashboard
                             </li>
                             <li>
                                 <!-- Location -->
-                                <form class="uk-grid-small" uk-grid action="/locations/" method="POST">
+                                <form class="uk-grid-small" uk-grid action="/locations" method="POST">
                                     {{ csrf_field() }}
                                     <div class="uk-margin uk-width-1-1@s">
                                         <label class="uk-form-label uk-heading-bullet" for="name">Name</label>
