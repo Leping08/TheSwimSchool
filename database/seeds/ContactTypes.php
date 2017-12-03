@@ -28,5 +28,11 @@ class ContactTypes extends Seeder
             'created_at' => new DateTime,
             'updated_at' => new DateTime
         ]);
+
+        DB::table('contact_types')->insert([
+            'name' => 'Request Private Lessons',
+            'created_at' => new DateTime,
+            'updated_at' => new DateTime
+        ]);
     }
 }

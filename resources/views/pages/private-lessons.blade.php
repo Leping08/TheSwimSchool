@@ -1,0 +1,71 @@
+@extends('layouts.app-uikit')
+
+@section('seo')
+    <title>Private Swim Lessons</title>
+    <meta name="description" content="Meta Here."/>
+@endsection
+
+@section('heading')
+    Private Swim Lessons
+@endsection
+
+@section('content')
+    <div class="uk-section-default uk-section uk-section-small">
+        <div class="uk-container">
+            <div class="uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-width-3-4@m uk-first-column">
+                    <div class="uk-margin uk-dropcap">
+                        These lessons are designed to give the swimmer individualized attention to improve or master their swimming skills.
+                        The curriculum is customized in order to meet these goals of the swimmer.
+                    </div>
+                </div>
+                <div class="uk-width-expand@m">
+                    <div class="uk-margin">
+                        <img src="/img/private-lessons.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
+                <div class="uk-width-1-1@m uk-first-column">
+                    <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <div class="uk-h2">Request Private Lessons</div>
+                            <form action="" method="post">
+                                {{ csrf_field() }}
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Name</label>
+                                    <div class="uk-form-controls">
+                                        <input type="text" name="name" value="{{ old('name') }}" class="uk-input" placeholder="Full Name" required>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Email</label>
+                                    <div class="uk-form-controls">
+                                        <input type="email" name="email" value="{{ old('email') }}" class="uk-input" placeholder="Email@email.com" required>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Phone</label>
+                                    <div class="uk-form-controls">
+                                        <input type="tel" name="phone" value="{{ old('phone') }}" class="uk-input" placeholder="999 999-9999" required>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Message</label>
+                                    <div class="uk-form-controls">
+                                        <textarea name="message" rows="5" class="uk-textarea" placeholder="I would like to schedule private lessons." required>{{ old('message') }}</textarea>
+                                    </div>
+                                </div>
+                                <div uk-grid="" class="uk-grid">
+                                    <div class="uk-width-1-2@s uk-margin">
+                                        <input type="submit" value="Send" class="uk-button-primary uk-button uk-button-large">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

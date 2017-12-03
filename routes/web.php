@@ -31,9 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('locations', 'LocationController');
 
     //TODO: Fix admin view for a single lesson
-    //Route::get('lessons/{id}', 'LessonController@show');
+    Route::get('lessons/{id}/admin', 'LessonController@show');
     Route::post('/lessons', 'LessonController@store');
-    //Route::resource('lesson', 'LessonController');
 });
 
 
@@ -88,6 +87,10 @@ Route::get('/contact-us', function(){
     return view('pages.contact-us');
 });
 
+Route::get('/private/lessons', function (){
+   return view('pages.private-lessons');
+});
+
 
 
 
@@ -95,5 +98,6 @@ Route::get('/contact-us', function(){
 Route::post('/contact-us', 'ContactFormsController@contactUs');
 Route::post('/lifeguarding', 'ContactFormsController@lifeguarding');
 Route::post('/cpr-first-aid', 'ContactFormsController@cprFirstAid');
+Route::post('/private/lessons', 'ContactFormsController@privateLessons');
 
 

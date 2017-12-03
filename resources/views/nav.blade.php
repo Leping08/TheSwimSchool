@@ -24,6 +24,7 @@
                                     <a href="/services/">Services</a>
                                     <ul class="uk-nav-sub">
                                         <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Swim Lessons</a></li>
+                                        <li class="{{{ (Request::segment(1) === 'private' ? 'uk-active' : null) }}} "><a href="/private/lessons">Private Lessons</a></li>
                                         <li class="{{{ (Request::segment(1) === 'lifeguarding' ? 'uk-active' : null) }}} "><a href="/lifeguarding/">Lifeguarding</a></li>
                                         <li class="{{{ (Request::segment(1) === 'cpr-first-aid' ? 'uk-active' : null) }}} "><a href="/cpr-first-aid/">CPR/First Aid</a></li>
                                     </ul>
@@ -95,7 +96,8 @@
                                     <div class="uk-navbar-dropdown-grid uk-child-width-1-1" uk-grid>
                                         <div>
                                             <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Swim Lessons</a></li>
+                                                <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
+                                                <li class="{{{ (Request::segment(1) === 'private' ? 'uk-active' : null) }}} "><a href="/private/lessons">Private Lessons</a></li>
                                                 <li class="{{{ (Request::segment(1) === 'lifeguarding' ? 'uk-active' : null) }}} "><a href="/lifeguarding/">Lifeguarding</a></li>
                                                 <li class="{{{ (Request::segment(1) === 'cpr-first-aid' ? 'uk-active' : null) }}} "><a href="/cpr-first-aid/">CPR/First Aid</a></li>
                                             </ul>

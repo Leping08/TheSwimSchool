@@ -30,9 +30,9 @@
 
                             <dt>Class Time:</dt>
                             <dd>
-                            @foreach($days as $day)
-                                {{$day->day}}: {{$lesson[0]->class_start_time->format('g:i a')}} - {{$lesson[0]->class_end_time->format('g:i a')}}<br>
-                            @endforeach
+                                @foreach($days as $day)
+                                    {{$day->day}}: {{$lesson[0]->class_start_time->format('g:i a')}} - {{$lesson[0]->class_end_time->format('g:i a')}}<br>
+                                @endforeach
                             </dd>
                         </dl><hr>
 

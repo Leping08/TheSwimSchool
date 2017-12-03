@@ -42,6 +42,16 @@ class ContactFormsController extends Controller
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
         return back();
     }
+
+    public function privateLessons(Request $request)
+    {
+        $validData = getVaildData($request);
+        $validData['contact_type_id'] = 4;
+        Contact::create($validData);
+        sendEmails($validData);
+        $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
+        return back();
+    }
 }
 
 function sendEmails($validData)
