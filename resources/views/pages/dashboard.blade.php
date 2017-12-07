@@ -44,7 +44,7 @@ Dashboard
                         <ul class="uk-list uk-list-striped">
                             <li><strong>Lessons</strong></li>
                             @foreach ($todaysLessons as $lesson)
-                                <li><a href="/lessons/{{$lesson->id}}/admin" class="list-group-item list-group-item-action justify-content-between">
+                                <li><a href="/lesson/{{$lesson->id}}" class="list-group-item list-group-item-action justify-content-between">
                                         {{$lesson->group->type}}
                                     </a></li>
                             @endforeach
@@ -75,7 +75,7 @@ Dashboard
                                     <ul class="uk-list uk-list-striped">
                                         <li><strong>Levels</strong></li>
                                         @foreach ($lessons as $lesson)
-                                            <li><a href="/lessons/{{$lesson->id}}/admin" class="list-group-item list-group-item-action justify-content-between">
+                                            <li><a href="/lesson/{{$lesson->id}}" class="list-group-item list-group-item-action justify-content-between">
                                                     {{$lesson->group->type}}
                                                 </a></li>
                                         @endforeach

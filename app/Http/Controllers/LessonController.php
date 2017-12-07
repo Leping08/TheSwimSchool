@@ -67,4 +67,49 @@ class LessonController extends Controller
 
         return back();
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Lesson  $lesson
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Lesson $lesson)
+    {
+        $lesson = Lesson::find($lesson);
+        if($lesson){
+            return view('lessons.edit', compact('lesson'));
+        }else{
+            session()->flash('warning', "We couldn't find that lesson.");
+            return back();
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Lesson  $lesson
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Lesson $lesson)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Lesson  $lesson
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Lesson $lesson)
+    {
+        $lesson = Lesson::find($lesson);
+        if($lesson){
+            session()->flash('success', "$lesson->name was deleted.");
+            $lesson->delete();
+        }
+        return redirect('/dashboard');
+    }
 }

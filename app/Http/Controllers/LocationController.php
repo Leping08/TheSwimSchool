@@ -15,7 +15,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        //In Dashboard View
     }
 
     /**
@@ -25,7 +25,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        //In Dashboard View
     }
 
     /**
