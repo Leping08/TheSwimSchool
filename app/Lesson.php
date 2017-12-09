@@ -3,15 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Lesson extends Model
 {
+    use SoftDeletes;
+
     protected $dates = [
         'registration_open',
         'class_start_time',
         'class_end_time',
         'class_start_date',
         'class_end_date',
+        'deleted_at'
     ];
 
     protected $fillable = [

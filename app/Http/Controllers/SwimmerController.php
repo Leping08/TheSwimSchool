@@ -176,9 +176,9 @@ class SwimmerController extends Controller
      * @param  \App\Swimmer  $swimmer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Swimmer $swimmer, $id)
+    public function destroy(Swimmer $swimmer)
     {
-        $swimmerToDelete = Swimmer::findOrFail($id);
+        $swimmerToDelete = Swimmer::find($swimmer);
         if($swimmerToDelete){
             session()->flash('success', $swimmerToDelete->name.' has been deleted.');
             $swimmerToDelete->delete();

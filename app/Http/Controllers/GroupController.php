@@ -124,6 +124,11 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+        $group = Group::find($group);
+        if($group){
+            session()->flash('success', "$group->name was deleted.");
+            $group->delete();
+        }
+        return redirect('/dashboard');
     }
 }
