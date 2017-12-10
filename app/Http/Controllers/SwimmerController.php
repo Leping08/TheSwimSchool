@@ -85,13 +85,13 @@ class SwimmerController extends Controller
         //If the user is using a card for payment, send them to the card view with the user id.
         if(request('payment') === 'card'){
             //TODO: add signup email to the que
-            //Mail::to($newSwimmer->email)->send(new SignUp($lesson));
+            Mail::to($newSwimmer->email)->send(new SignUp($lesson));
             return view('swimmers.cardCheckout', compact('newSwimmer', 'lesson'));
             //If they are paying in person, redirect them to the class they signed up for with success alert.
         }elseif(request('payment') === 'check'){
             //TODO: add signup email to the que
-            SignupEmail::dispatch($lesson, $newSwimmer->email);
-            //Mail::to($newSwimmer->email)->send(new SignUp($lesson));
+            //SignupEmail::dispatch($lesson, $newSwimmer->email);
+            Mail::to($newSwimmer->email)->send(new SignUp($lesson));
             $request->session()->flash('success', 'You are all signed up! First lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A').'. Be sure to bring cash or check for $'.$lesson->price.' to the first lesson.');
             return redirect('lessons/'.$lesson->class_type);
         }else{
