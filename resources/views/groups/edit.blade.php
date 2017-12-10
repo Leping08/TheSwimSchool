@@ -14,7 +14,7 @@
                         <input type="hidden" name="_method" value="PATCH">
                         <h3 class="uk-heading-bullet">Lesson</h3>
                         <div class="uk-margin">
-                            <label for="name"  class="uk-form-label">Lesson Name</label>
+                            <label for="type"  class="uk-form-label">Lesson Name</label>
                             <input type="text" class="uk-input" id="type" name="type" placeholder="Type" value="{{ old('type') ?? $group->type }}" required>
                         </div>
                         <div class="uk-margin">
@@ -22,7 +22,7 @@
                             <input type="text" class="uk-input" id="ages" name="ages" placeholder="5-7 Years" value="{{ old('age') ?? $group->ages }}" required>
                         </div>
                         <div class="uk-margin">
-                            <label for="parent"  class="uk-form-label">Lesson Description</label>
+                            <label for="description"  class="uk-form-label">Lesson Description</label>
                             <textarea class="uk-textarea" rows="5" id="description" name="description">{{ old('description') ?? $group->description }}</textarea>
                         </div>
                         <hr>
