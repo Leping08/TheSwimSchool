@@ -86,7 +86,7 @@ Dashboard
                             </li>
                             <!-- Lesson -->
                             <li>
-                            <form class="uk-grid-small" uk-grid action="/lessons" method="POST">
+                            <form class="uk-grid-small" uk-grid action="/lesson" method="POST">
                                 {{ csrf_field() }}
 
                                 <div class="uk-margin uk-width-1-1@s">
