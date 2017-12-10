@@ -36,7 +36,7 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        $location = $request->validate([
+        $request->validate([
             'name' => 'required|string',
             'street' => 'required|string',
             'city' => 'required|string',
@@ -45,7 +45,7 @@ class LocationController extends Controller
             'phoneNumber' => 'required|string'
         ]);
 
-        $newLocation = Location::create($location);
+        $newLocation = Location::create($request->all());
 
         session()->flash('success', "$newLocation->name was created");
 
@@ -60,7 +60,7 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        $location = Location::find($location);
+        $location = Location::find($location->id);
         return view('locations.show', compact('location'));
     }
 
@@ -72,7 +72,7 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        $location = Location::find($location);
+        $location = Location::find($location->id);
         return view('locations.edit', compact('location'));
     }
 
@@ -85,7 +85,18 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'street' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zip' => 'required|digits:5',
+            'phoneNumber' => 'required|string'
+        ]);
+
+        Location::find($location->id)->update($request->all());
+        session()->flash('success_msg', "$location->name has been updated");
+        return redirect('/dashboard');
     }
 
     /**
@@ -96,11 +107,15 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        $location = Location::find($location);
-        if($location){
+        $location = Location::find($location->id);
+        $locations = $location->Lessons()->get();
+        if($locations->isEmpty()){
             session()->flash('success', "$location->name was deleted.");
             $location->delete();
+            return redirect('/dashboard');
+        }else{
+            session()->flash('warning', "$location->name can not be deleted. It has lessons associated with it.");
+            return back();
         }
-        return redirect('/locations');
     }
 }

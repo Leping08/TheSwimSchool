@@ -15,15 +15,15 @@
                         <h3 class="uk-heading-bullet">Lesson</h3>
                         <div class="uk-margin">
                             <label for="name"  class="uk-form-label">Lesson Name</label>
-                            <input type="text" class="uk-input" id="type" name="type" placeholder="Type" value="{{ old('name') ?? $group->type }}" required>
+                            <input type="text" class="uk-input" id="type" name="type" placeholder="Type" value="{{ old('type') ?? $group->type }}" required>
                         </div>
                         <div class="uk-margin">
                             <label for="age"  class="uk-form-label">Lesson Age</label>
-                            <input type="text" class="uk-input" id="ages" name="ages" placeholder="Ages" value="{{ old('age') ?? $group->ages }}" required>
+                            <input type="text" class="uk-input" id="ages" name="ages" placeholder="5-7 Years" value="{{ old('age') ?? $group->ages }}" required>
                         </div>
                         <div class="uk-margin">
                             <label for="parent"  class="uk-form-label">Lesson Description</label>
-                            <textarea class="uk-textarea" rows="5" id="description" name="description">{{ old('notes') ?? $group->description }}</textarea>
+                            <textarea class="uk-textarea" rows="5" id="description" name="description">{{ old('description') ?? $group->description }}</textarea>
                         </div>
                         <hr>
 

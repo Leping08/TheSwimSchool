@@ -27,16 +27,14 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        $group = $request->validate([
+        $request->validate([
             'type' => 'required|string',
             'ages' => 'required|string',
             'description' => 'required|string'
         ]);
 
-        $newGroup = Group::create($group);
-
+        $newGroup = Group::create($request->all());
         session()->flash('success', "$newGroup->type was created");
-
         return back();
     }
 
@@ -58,6 +56,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
+        $group = Group::find($group->id);
         return view('groups.show', compact('group'));
     }
 
@@ -69,6 +68,7 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
+        $group = Group::find($group->id);
         return view('groups.edit', compact('group'));
     }
 
@@ -81,11 +81,13 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        //validate post data
         $request->validate([
-            'type' => 'required|string',
-            'ages' => 'required|string',
-            'description' => 'required|string'
+            'name' => 'required|string',
+            'street' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zip' => 'required|digits:5',
+            'phoneNumber' => 'required|string'
         ]);
 
         Group::find($group->id)->update($request->all());

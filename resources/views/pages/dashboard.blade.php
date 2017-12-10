@@ -263,7 +263,7 @@ Dashboard
                                     <ul class="uk-list uk-list-striped">
                                         <li><strong>Locations</strong></li>
                                         @foreach ($locations as $location)
-                                            <li><a href="/location/{{$location->id}}" class="list-group-item list-group-item-action justify-content-between">
+                                            <li><a href="/locations/{{$location->id}}" class="list-group-item list-group-item-action justify-content-between">
                                                     {{$location->name}}
                                                 </a></li>
                                         @endforeach
