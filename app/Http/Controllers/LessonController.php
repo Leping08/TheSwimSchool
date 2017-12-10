@@ -63,8 +63,8 @@ class LessonController extends Controller
             $newLesson->DaysOfTheWeek()->attach(7);
         }
 
+        Log::info($newLesson->group->typee." lesson was created. Lesson ID: $newLesson->id.");
         session()->flash('success', $newLesson->group->type.' lesson was created');
-
         return back();
     }
 
@@ -76,13 +76,7 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        $lesson = Lesson::find($lesson);
-        if($lesson){
-            return view('lessons.edit', compact('lesson'));
-        }else{
-            session()->flash('warning', "We couldn't find that lesson.");
-            return back();
-        }
+        //TODO: Edit a lesson
     }
 
     /**
@@ -94,7 +88,7 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //
+        //TODO: update a lesson
     }
 
     /**
@@ -105,11 +99,6 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        $lesson = Lesson::find($lesson);
-        if($lesson){
-            session()->flash('success', "$lesson->name was deleted.");
-            $lesson->delete();
-        }
-        return redirect('/dashboard');
+        //TODO: destroy a lesson
     }
 }

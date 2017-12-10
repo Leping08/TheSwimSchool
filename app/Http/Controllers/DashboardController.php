@@ -11,6 +11,7 @@ use App\Group;
 use App\DaysOfTheWeek;
 use Carbon\Carbon;
 use App\Http\Controllers\GetSeason;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {

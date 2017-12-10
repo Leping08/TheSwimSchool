@@ -15,30 +15,31 @@ class ContactFormsController extends Controller
     {
         $validData = getVaildData($request);
         $validData['contact_type_id'] = 1;
-        Contact::create($validData);
+        $contact = Contact::create($validData);
         sendEmails($validData);
+        Log::info("$request->name filled out the contact us contact form. Contact ID: $contact->id");
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
         return back();
     }
-
 
     public function lifeguarding(Request $request)
     {
         $validData = getVaildData($request);
         $validData['contact_type_id'] = 2;
-        Contact::create($validData);
+        $contact = Contact::create($validData);
         sendEmails($validData);
+        Log::info("$request->name filled out the lifeguarding contact form. Contact ID: $contact->id");
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
         return back();
     }
 
-    //cprFirstAid form
     public function cprFirstAid(Request $request)
     {
         $validData = getVaildData($request);
         $validData['contact_type_id'] = 3;
-        Contact::create($validData);
+        $contact = Contact::create($validData);
         sendEmails($validData);
+        Log::info("$request->name filled out the CPR First Aid contact form. Contact ID: $contact->id");
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
         return back();
     }
@@ -47,8 +48,9 @@ class ContactFormsController extends Controller
     {
         $validData = getVaildData($request);
         $validData['contact_type_id'] = 4;
-        Contact::create($validData);
+        $contact = Contact::create($validData);
         sendEmails($validData);
+        Log::info("$request->name filled out the Private Swim Lessons contact form. Contact ID: $contact->id");
         $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
         return back();
     }

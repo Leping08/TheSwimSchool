@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class GroupController extends Controller
 {
@@ -15,8 +16,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Group::all();
-        return view('groups.list', compact('groups'));
+        //Done in dashboard
     }
 
     /**
@@ -34,6 +34,7 @@ class GroupController extends Controller
         ]);
 
         $newGroup = Group::create($request->all());
+        Log::info("$newGroup->type has been created. Group ID: $newGroup->id");
         session()->flash('success', "$newGroup->type was created");
         return back();
     }
@@ -45,7 +46,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        //Done in dashboard
     }
 
     /**
@@ -82,15 +83,13 @@ class GroupController extends Controller
     public function update(Request $request, Group $group)
     {
         $request->validate([
-            'name' => 'required|string',
-            'street' => 'required|string',
-            'city' => 'required|string',
-            'state' => 'required|string',
-            'zip' => 'required|digits:5',
-            'phoneNumber' => 'required|string'
+            'type' => 'required|string',
+            'ages' => 'required|string',
+            'description' => 'required|string'
         ]);
 
         Group::find($group->id)->update($request->all());
+        Log::info("$group->type has been updated. Group ID: $group->id");
         session()->flash('success_msg', "$group->type has been updated");
         return redirect('/dashboard');
     }
@@ -105,10 +104,12 @@ class GroupController extends Controller
     {
         $lessons = $group->Lessons()->get();
         if($lessons->isEmpty()){
+            Log::info("$group->type was deleted. Group ID: $group->id");
             session()->flash('success', "$group->type was deleted.");
             $group->delete();
             return redirect('/dashboard');
         }else{
+            Log::info("$group->type can not be deleted. It has lessons associated with it. Group ID: $group->id");
             session()->flash('warning', "$group->type can not be deleted. It has lessons associated with it.");
             return back();
         }

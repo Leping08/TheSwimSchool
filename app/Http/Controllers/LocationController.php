@@ -15,7 +15,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //In Dashboard View
+        //Done in dashboard
     }
 
     /**
@@ -25,7 +25,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //In Dashboard View
+        //Done in dashboard
     }
 
     /**
@@ -46,9 +46,8 @@ class LocationController extends Controller
         ]);
 
         $newLocation = Location::create($request->all());
-
+        Log::info("$newLocation->name has been created. Location ID: $newLocation->id");
         session()->flash('success', "$newLocation->name was created");
-
         return back();
     }
 
@@ -95,6 +94,7 @@ class LocationController extends Controller
         ]);
 
         Location::find($location->id)->update($request->all());
+        Log::info("$location->name has been updated. Location ID: $location->id");
         session()->flash('success_msg', "$location->name has been updated");
         return redirect('/dashboard');
     }
@@ -111,9 +111,11 @@ class LocationController extends Controller
         $locations = $location->Lessons()->get();
         if($locations->isEmpty()){
             session()->flash('success', "$location->name was deleted.");
+            Log::info("$location->name was deleted. Location ID: $location->id");
             $location->delete();
             return redirect('/dashboard');
         }else{
+            Log::info("$location->name can not be deleted. It has lessons associated with it. Location ID: $location->id");
             session()->flash('warning', "$location->name can not be deleted. It has lessons associated with it.");
             return back();
         }

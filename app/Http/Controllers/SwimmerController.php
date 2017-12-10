@@ -47,8 +47,7 @@ class SwimmerController extends Controller
     //Sign a swimmer up for a lesson and send them to the card payment page or back to the lesson page.
     public function store(Request $request, $classType, $id)
     {
-        //valadate data
-        $this->validate(request(), [
+        $request->validate([
             'name' => 'required|string|max:191',
             'age' => 'required|digits_between:1,3',
             'email' => 'required|string|email|max:191',
@@ -66,35 +65,25 @@ class SwimmerController extends Controller
 
         $lesson = Lesson::findOrFail($id);
 
-        $newSwimmer = Swimmer::create([
-            'name' => request('name'),
-            'age' => request('age'),
-            'email' => request('email'),
-            'phone' => request('phone'),
-            'parent' => request('parent'),
-            'street' => request('street'),
-            'city' => request('city'),
-            'state' => request('state'),
-            'zip' => request('zip'),
-            'emergencyName' => request('emergencyName'),
-            'emergencyRelationship' => request('emergencyRelationship'),
-            'emergencyPhone' => request('emergencyPhone'),
-            'lesson_id' => $lesson->id
-        ]);
+        $newSwimmer = Swimmer::create($request->all());
+        Log::info("Swimmer ID: $newSwimmer->id was added to the DB.");
+
+        //TODO: add signup email to the que
+        Mail::to($newSwimmer->email)->send(new SignUp($lesson));
+        Log::info("Group Lesson sign up email sent to $newSwimmer->email. Swimmer ID: $newSwimmer->id Lesson ID: $lesson->id.");
+        //SignupEmail::dispatch($lesson, $newSwimmer->email);
+
 
         //If the user is using a card for payment, send them to the card view with the user id.
         if(request('payment') === 'card'){
-            //TODO: add signup email to the que
-            Mail::to($newSwimmer->email)->send(new SignUp($lesson));
+            Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
             return view('swimmers.cardCheckout', compact('newSwimmer', 'lesson'));
-            //If they are paying in person, redirect them to the class they signed up for with success alert.
         }elseif(request('payment') === 'check'){
-            //TODO: add signup email to the que
-            //SignupEmail::dispatch($lesson, $newSwimmer->email);
-            Mail::to($newSwimmer->email)->send(new SignUp($lesson));
+            Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by cash or check!");
             $request->session()->flash('success', 'You are all signed up! First lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A').'. Be sure to bring cash or check for $'.$lesson->price.' to the first lesson.');
             return redirect('lessons/'.$lesson->class_type);
         }else{
+            Log::warning("Something went wrong with Swimmer ID: $newSwimmer->id when they tried to sign up for Lesson ID: $lesson->id");
             $request->session()->flash('danger', 'Looks like something went wrong.');
         }
     }
@@ -132,8 +121,7 @@ class SwimmerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //valadate data
-        $this->validate(request(), [
+        $request->validate([
             'name' => 'required|string|max:191',
             'age' => 'required|digits_between:1,3',
             'email' => 'required|string|email|max:191',
@@ -148,25 +136,10 @@ class SwimmerController extends Controller
             'emergencyPhone' => 'required|max:20'
         ]);
 
-        $swimmer = Swimmer::findOrFail($id);
-        $swimmer->name = $request->input('name');
-        $swimmer->age = $request->input('age');
-        $swimmer->parent = $request->input('parent');
-        $swimmer->street = $request->input('street');
-        $swimmer->city = $request->input('city');
-        $swimmer->state = $request->input('state');
-        $swimmer->zip = $request->input('zip');
-        $swimmer->phone = $request->input('phone');
-        $swimmer->email = $request->input('email');
-        $swimmer->emergencyName = $request->input('emergencyName');
-        $swimmer->emergencyRelationship = $request->input('emergencyRelationship');
-        $swimmer->emergencyPhone = $request->input('emergencyPhone');
-        $swimmer->notes = $request->input('notes');
-
-        $swimmer->update();
-
+        $swimmer = Swimmer::find($id);
+        $swimmer->update($request->all());
+        Log::info("Swimmer ID: $swimmer->id has been updated.");
         session()->flash('info', $swimmer->name.' has been updated.');
-
         return redirect('/swimmers/'.$swimmer->id);
     }
 
@@ -178,11 +151,11 @@ class SwimmerController extends Controller
      */
     public function destroy(Swimmer $swimmer)
     {
-        $swimmerToDelete = Swimmer::find($swimmer);
-        if($swimmerToDelete){
-            session()->flash('success', $swimmerToDelete->name.' has been deleted.');
-            $swimmerToDelete->delete();
-        }
+
+        $swimmerToDelete = Swimmer::find($swimmer->id);
+        session()->flash('success', $swimmerToDelete->name.' has been deleted.');
+        Log::info("Swimmer ID: $swimmerToDelete->id was deleted.");
+        $swimmerToDelete->delete();
         return redirect('/swimmers');
     }
 }
