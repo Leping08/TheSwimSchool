@@ -203,7 +203,7 @@ Dashboard
                                     <ul class="uk-list uk-list-striped">
                                         <li><strong>Levels</strong></li>
                                         @foreach ($groups as $group)
-                                            <li><a href="/group/{{{$group->id}}}" class="list-group-item list-group-item-action justify-content-between">
+                                            <li><a href="/groups/{{{$group->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                                     {{$group->type}}
                                                 </a></li>
                                         @endforeach
