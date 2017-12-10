@@ -6,7 +6,7 @@ Lessons
 
 @section('content')
     <!-- If active lessons exist display them -->
-    @if(count($group->lessons))
+    @if(count($group->OpenSignUps))
         <div class="uk-section-default uk-section-overlap uk-section">
             <div class="uk-container ">
                 @foreach($group->OpenSignUps as $lesson)
