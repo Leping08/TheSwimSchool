@@ -16,7 +16,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //Done in dashboard
+        $groups = Group::all();
+        return view('groups.list', compact('groups'));
     }
 
     /**
