@@ -21,6 +21,7 @@ The first class is {{$lesson->class_start_date->format('l F jS')}}, {{$lesson->c
 * Goggles
 @endcomponent
 
+<!-- TODO: Make the button link to the lesson -->
 @component('mail::button', ['url' => ''])
 View Lesson Details
 @endcomponent

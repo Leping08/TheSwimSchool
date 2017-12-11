@@ -2,7 +2,7 @@
 
 @section('seo')
     <title>The Swim School Dashboard</title>
-    <meta name="description" content="Meta Here."/>
+    <meta name="description" content="Meta Here."/>wwwwwwww
 @endsection
 
 @section('heading')
@@ -114,50 +114,49 @@ Dashboard
                                 <div class="uk-margin uk-width-1-1@s">
                                     <label class="uk-form-label uk-heading-bullet" for="price">Price</label>
                                     <div class="uk-form-controls">
-                                        <input type="number" class="uk-input" id="price" name="price" placeholder="$60" value="{{ old('name') }}" required>
+                                        <input type="number" class="uk-input" id="price" name="price" placeholder="$60" value="{{ old('price') }}" required>
                                     </div>
                                 </div>
 
                                 <div class="uk-margin uk-width-1-1@s">
                                     <label class="uk-form-label uk-heading-bullet" for="class_size">Class Size</label>
                                     <div class="uk-form-controls">
-                                        <input type="number" class="uk-input" id="class_size" name="class_size" placeholder="10" value="{{ old('name') }}" required>
+                                        <input type="number" class="uk-input" id="class_size" name="class_size" placeholder="10" value="{{ old('class_size') }}" required>
                                     </div>
                                 </div>
 
-                                <!-- TODO: Fix old value for inputs -->
                                 <div class="uk-margin uk-width-1-1@s">
                                     <label class="uk-form-label uk-heading-bullet" for="registration_open">Registration Opens</label>
                                     <div class="uk-form-controls">
-                                        <input type="date" class="uk-input" id="registration_open" name="registration_open" placeholder="10" value="{{ old('name') }}" required>
+                                        <input type="date" class="uk-input" id="registration_open" name="registration_open" placeholder="10" value="{{ old('registration_open') }}" required>
                                     </div>
                                 </div>
 
                                 <div class="uk-margin uk-width-1-1@s">
                                     <label class="uk-form-label uk-heading-bullet" for="class_start_date">Start Date</label>
                                     <div class="uk-form-controls">
-                                        <input type="date" class="uk-input" id="class_start_date" name="class_start_date" value="{{ old('name') }}" required>
+                                        <input type="date" class="uk-input" id="class_start_date" name="class_start_date" value="{{ old('class_start_date') }}" required>
                                     </div>
                                 </div>
 
                                 <div class="uk-margin uk-width-1-1@s">
                                     <label class="uk-form-label uk-heading-bullet" for="class_end_date">End Date</label>
                                     <div class="uk-form-controls">
-                                        <input type="date" class="uk-input" id="class_end_date" name="class_end_date" placeholder="10" value="{{ old('name') }}" required>
+                                        <input type="date" class="uk-input" id="class_end_date" name="class_end_date" placeholder="10" value="{{ old('class_end_date') }}" required>
                                     </div>
                                 </div>
 
                                 <div class="uk-margin uk-width-1-1@s">
                                     <label class="uk-form-label uk-heading-bullet" for="class_start_time">Start Time</label>
                                     <div class="uk-form-controls">
-                                        <input type="time" class="uk-input" id="class_start_time" name="class_start_time" value="{{ old('name') }}" required>
+                                        <input type="time" class="uk-input" id="class_start_time" name="class_start_time" value="{{ old('class_start_time') }}" required>
                                     </div>
                                 </div>
 
                                 <div class="uk-margin uk-width-1-1@s">
                                     <label class="uk-form-label uk-heading-bullet" for="class_end_time">End Time</label>
                                     <div class="uk-form-controls">
-                                        <input type="time" class="uk-input" id="class_end_time" name="class_end_time" value="{{ old('name') }}" required>
+                                        <input type="time" class="uk-input" id="class_end_time" name="class_end_time" value="{{ old('class_end_time') }}" required>
                                     </div>
                                 </div>
 
