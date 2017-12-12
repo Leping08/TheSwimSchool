@@ -1,43 +1,30 @@
-@extends('layouts.app')
+@extends('layouts.app-uikit')
+
+@section('heading')
+Reset Password
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <div class="uk-section-default uk-section-overlap uk-section">
+        <div class="uk-container">
+            <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-width-expand@m uk-first-column">
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <form class="uk-form-stacked" role="form" method="POST" action="{{ route('password.email') }}">
+                            {{ csrf_field() }}
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="uk-margin">
+                                <label for="email" class="uk-form-label uk-heading-bullet">E-Mail Address</label>
+                                <input id="email" type="email" class="uk-input" name="email" value="{{ old('email') }}" required>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="uk-margin">
+                                <button type="submit" class="uk-button uk-button-primary">
                                     Send Password Reset Link
                                 </button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

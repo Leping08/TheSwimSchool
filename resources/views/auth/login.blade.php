@@ -13,54 +13,30 @@ Admin Login
                     <form class="uk-form-stacked" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="uk-margin {{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="uk-margin">
                             <label for="email" class="uk-form-label uk-heading-bullet">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="uk-input" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            <input id="email" type="email" class="uk-input" name="email" value="{{ old('email') }}" required autofocus>
                         </div>
 
-                        <div class="uk-margin {{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="uk-margin">
                             <label for="password" class="uk-form-label uk-heading-bullet">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="uk-input" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            <input id="password" type="password" class="uk-input" name="password" required>
                         </div>
 
                         <div class="uk-margin">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input class="uk-checkbox" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
+                            <label>
+                                <input class="uk-checkbox" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                            </label>
                         </div>
 
                         <div class="uk-margin">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="uk-button uk-button-primary">
-                                    Login
-                                </button>
+                            <button type="submit" class="uk-button uk-button-primary">
+                                Login
+                            </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
+                            <a class="uk-button uk-button-secondary" href="{{ route('password.request') }}">
+                                Forgot Your Password?
+                            </a>
                         </div>
                     </form>
                 </div>
