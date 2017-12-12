@@ -41,25 +41,25 @@ class LessonController extends Controller
 
         $newLesson = Lesson::create($lesson);
 
-        if($request['sunday']){
+        if($request['monday']){
             $newLesson->DaysOfTheWeek()->attach(1);
         }
-        if($request['monday']){
+        if($request['tuesday']){
             $newLesson->DaysOfTheWeek()->attach(2);
         }
-        if($request['tuesday']){
+        if($request['wednesday']){
             $newLesson->DaysOfTheWeek()->attach(3);
         }
-        if($request['wednesday']){
+        if($request['thursday']){
             $newLesson->DaysOfTheWeek()->attach(4);
         }
-        if($request['thursday']){
+        if($request['friday']){
             $newLesson->DaysOfTheWeek()->attach(5);
         }
-        if($request['friday']){
+        if($request['saturday']){
             $newLesson->DaysOfTheWeek()->attach(6);
         }
-        if($request['saturday']){
+        if($request['sunday']){
             $newLesson->DaysOfTheWeek()->attach(7);
         }
 

@@ -21,6 +21,7 @@ class CreateLessonsTable extends Migration
             $table->integer('price')->default(60);
             $table->string('days');
             $table->integer('class_size')->default(10);
+            //TODO: Remove open spots
             $table->integer('open_spots')->default(10);
             $table->date('class_start_date');
             $table->date('class_end_date');
