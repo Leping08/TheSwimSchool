@@ -27,10 +27,12 @@ class DashboardController extends Controller
         $leads = Contact::all();
 
         $todaysLessons = Lesson::whereHas('DaysOfTheWeek', function ($query) {
-            $query->where('days_of_the_weeks.id', '=', Carbon::now()->dayOfWeek);
+            $query->where([
+                    ['days_of_the_weeks.id', '=', Carbon::now()->dayOfWeek],
+                    ['class_start_date', '<=', Carbon::now()],
+                    ['class_end_date', '>=', Carbon::now()]
+                ]);
         })
-        ->where('class_start_date', '<=', Carbon::now())
-        ->where('class_end_date', '>=', Carbon::now())
         ->get();
 
         return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads'));
