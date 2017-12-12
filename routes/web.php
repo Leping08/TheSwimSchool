@@ -13,10 +13,6 @@
 
 Auth::routes();
 
-Route::get('/home', function(){
-    return "How did you get here?!";
-});
-
 
 //Auth protected routes
 Route::middleware('auth')->group(function () {
