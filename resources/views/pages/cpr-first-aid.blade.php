@@ -58,7 +58,7 @@ CPR and First Aid Training
                                 </div>
                                 <div uk-grid="" class="uk-grid">
                                     <div class="uk-width-1-2@s uk-margin">
-                                        <input type="submit" value="Sign Up" class="uk-button-primary uk-button uk-button-large">
+                                        <input type="submit" value="Send" class="uk-button-primary uk-button uk-button-large">
                                     </div>
                                 </div>
                             </form>

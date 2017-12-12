@@ -13,6 +13,7 @@ Reset Password
                         <form class="uk-form-stacked" role="form" method="POST" action="{{ route('password.email') }}">
                             {{ csrf_field() }}
 
+                            <!-- TODO: Add confirmation of email password reset email being sent -->
                             <div class="uk-margin">
                                 <label for="email" class="uk-form-label uk-heading-bullet">E-Mail Address</label>
                                 <input id="email" type="email" class="uk-input" name="email" value="{{ old('email') }}" required>

@@ -27,6 +27,7 @@
                         </div>
                         <hr>
 
+                        <!-- TODO: Add a cancel button -->
                         <div>
                             <button type="submit" class="uk-button uk-button-primary">Update</button>
                         </div>

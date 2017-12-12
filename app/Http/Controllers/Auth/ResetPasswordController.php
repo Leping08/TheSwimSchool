@@ -18,6 +18,8 @@ class ResetPasswordController extends Controller
     |
     */
 
+    //TODO: Password Reset Link on the server is not working
+
     use ResetsPasswords;
 
     /**

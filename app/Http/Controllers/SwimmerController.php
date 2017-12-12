@@ -52,7 +52,7 @@ class SwimmerController extends Controller
             'age' => 'required|digits_between:1,3',
             'email' => 'required|string|email|max:191',
             'phone' => 'required|max:20',
-            'parent' => 'required|max:191',
+            'parent' => 'nullable|max:191',
             'street' => 'required|max:191',
             'city' => 'required|max:191',
             'state' => 'required|max:191',
@@ -63,9 +63,11 @@ class SwimmerController extends Controller
             'payment' => 'required'
         ]);
 
-        $lesson = Lesson::findOrFail($id);
+        $lesson = Lesson::find($id);
 
         $newSwimmer = Swimmer::create($request->all());
+        $newSwimmer->update(['lesson_id' => $lesson->id]);
+
         Log::info("Swimmer ID: $newSwimmer->id was added to the DB.");
 
         //TODO: add signup email to the que
@@ -151,7 +153,6 @@ class SwimmerController extends Controller
      */
     public function destroy(Swimmer $swimmer)
     {
-
         $swimmerToDelete = Swimmer::find($swimmer->id);
         session()->flash('success', $swimmerToDelete->name.' has been deleted.');
         Log::info("Swimmer ID: $swimmerToDelete->id was deleted.");

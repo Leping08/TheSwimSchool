@@ -2,7 +2,7 @@
 
 @section('seo')
     <title>The Swim School Dashboard</title>
-    <meta name="description" content="Meta Here."/>wwwwwwww
+    <meta name="description" content="Meta Here."/>
 @endsection
 
 @section('heading')
@@ -327,7 +327,29 @@ Dashboard
                 </div>
             </div>
         </div>
-
+        <div class="uk-grid-margin uk-grid" uk-grid="">
+            <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
+                <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
+                    <div class="uk-card-header">
+                        <h3 class="el-title uk-margin uk-h2">Leads</h3>
+                    </div>
+                    <div class="uk-card-body">
+                        @if(count($leads))
+                            <ul class="uk-list uk-list-striped">
+                                <li><strong>Leads</strong></li>
+                                @foreach ($leads as $lead)
+                                    <li><a href="/lead/{{$lead->id}}" class="list-group-item list-group-item-action justify-content-between">
+                                            {{$lead->name}}
+                                        </a></li>
+                                @endforeach
+                            </ul>
+                        @else
+                            No leads.
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

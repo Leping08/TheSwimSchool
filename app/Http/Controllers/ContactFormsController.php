@@ -18,7 +18,7 @@ class ContactFormsController extends Controller
         $contact = Contact::create($validData);
         sendEmails($validData);
         Log::info("$request->name filled out the contact us contact form. Contact ID: $contact->id");
-        $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
+        $request->session()->flash('success', 'We will be in contact with you shortly.');
         return back();
     }
 
@@ -29,7 +29,7 @@ class ContactFormsController extends Controller
         $contact = Contact::create($validData);
         sendEmails($validData);
         Log::info("$request->name filled out the lifeguarding contact form. Contact ID: $contact->id");
-        $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
+        $request->session()->flash('success', 'We will be in contact with you shortly.');
         return back();
     }
 
@@ -40,7 +40,7 @@ class ContactFormsController extends Controller
         $contact = Contact::create($validData);
         sendEmails($validData);
         Log::info("$request->name filled out the CPR First Aid contact form. Contact ID: $contact->id");
-        $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
+        $request->session()->flash('success', 'We will be in contact with you shortly.');
         return back();
     }
 
@@ -51,7 +51,7 @@ class ContactFormsController extends Controller
         $contact = Contact::create($validData);
         sendEmails($validData);
         Log::info("$request->name filled out the Private Swim Lessons contact form. Contact ID: $contact->id");
-        $request->session()->flash('success', 'Message Sent! We will be in contact with you shortly.');
+        $request->session()->flash('success', 'We will be in contact with you shortly.');
         return back();
     }
 }

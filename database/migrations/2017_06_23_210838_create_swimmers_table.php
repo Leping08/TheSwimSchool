@@ -30,7 +30,7 @@ class CreateSwimmersTable extends Migration
             $table->string('emergencyName');
             $table->string('emergencyRelationship');
             $table->string('emergencyPhone');
-            $table->integer('lesson_id');
+            $table->integer('lesson_id')->nullable();
             $table->timestamps();
         });
     }

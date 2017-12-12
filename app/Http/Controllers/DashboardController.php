@@ -8,6 +8,7 @@ use App\Lesson;
 use App\Season;
 use App\Location;
 use App\Group;
+use App\Contact;
 use App\DaysOfTheWeek;
 use Carbon\Carbon;
 use App\Http\Controllers\GetSeason;
@@ -23,6 +24,7 @@ class DashboardController extends Controller
         $locations = Location::all();
         $daysOfTheWeek = DaysOfTheWeek::all();
         $lessons = Lesson::all();
+        $leads = Contact::all();
 
         $todaysLessons = Lesson::whereHas('DaysOfTheWeek', function ($query) {
             $query->where('days_of_the_weeks.id', '=', Carbon::now()->dayOfWeek);
@@ -31,7 +33,7 @@ class DashboardController extends Controller
         ->where('class_end_date', '>=', Carbon::now())
         ->get();
 
-        return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons'));
+        return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads'));
     }
 
     public function swimmersForCurrentSeason()
