@@ -123,6 +123,14 @@ return [
     'leadDestEmails' => [
             'derek@deltavcreative.com', 
             'dereks008@gmail.com',
-    ]
+    ],
+
+    'stream' => [
+    'ssl' => [
+        'allow_self_signed' => true,
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+    ],
+],
 
 ];
