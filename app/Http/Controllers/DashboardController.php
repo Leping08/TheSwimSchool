@@ -30,7 +30,7 @@ class DashboardController extends Controller
             $query->where([
                     ['days_of_the_weeks.id', '=', Carbon::now()->dayOfWeek],
                     ['class_start_date', '<=', Carbon::now()],
-                    ['class_end_date', '>=', Carbon::now()]
+                    ['class_end_date', '>=',Carbon::now()]
                 ]);
         })
         ->get();
