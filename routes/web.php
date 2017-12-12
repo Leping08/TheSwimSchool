@@ -13,8 +13,12 @@
 
 Auth::routes();
 
+Route::get('/home', function(){
+    return "How did you get here?!";
+});
 
-//Auth routes
+
+//Auth protected routes
 Route::middleware('auth')->group(function () {
     //Swimmers
     Route::get('/swimmers', 'SwimmerController@index');
