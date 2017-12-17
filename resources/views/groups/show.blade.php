@@ -20,7 +20,7 @@
                         <dt>Age:</dt>
                         <dd>{{$group->ages}}</dd>
 
-                        <dt>Email:</dt>
+                        <dt>Description:</dt>
                         <dd>{{$group->description}}</dd>
                     </dl>
                 </div>

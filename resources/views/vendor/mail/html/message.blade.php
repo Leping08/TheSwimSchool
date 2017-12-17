@@ -21,7 +21,11 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            &copy; {{ date('Y') }} The Swim School. All rights reserved.
+
+            <p>
+                <!-- TODO: add Facebook, phone, email icons with links -->
+                &copy; {{ date('Y') }} The Swim School. All rights reserved.<br>
+            </p>
         @endcomponent
     @endslot
 @endcomponent

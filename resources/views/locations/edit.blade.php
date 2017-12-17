@@ -12,7 +12,7 @@
                     <form method="POST" action="/locations/{{{$location->id}}}" class="uk-form-stacked">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="_method" value="PATCH">
-                        <h3 class="uk-heading-bullet">Location</h3>
+                        <h3 class="uk-heading-bullet uk-margin-remove-top">Location</h3>
                         <div class="uk-margin">
                             <label for="name"  class="uk-form-label">Name</label>
                             <input type="text" class="uk-input" id="name" name="name" placeholder="Name" value="{{ old('name') ?? $location->name }}" required>
@@ -40,9 +40,9 @@
 
                         <hr>
 
-                        <!-- TODO: Add a cancel button -->
                         <div>
                             <button type="submit" class="uk-button uk-button-primary">Update</button>
+                            <a href="/locations/{{$location->id}}" class="uk-button uk-button-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

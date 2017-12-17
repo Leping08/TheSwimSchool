@@ -25,6 +25,9 @@
                             <dt>Open Spots:</dt>
                             <dd>{{$lesson[0]->class_size - count($lesson[0]->swimmers)}}</dd>
 
+                            <dt>Registration Open:</dt>
+                            <dd>{{$lesson[0]->registration_open->format('m/d/Y')}}</dd>
+
                             <dt>Class Length:</dt>
                             <dd>{{$lesson[0]->class_start_date->format('m/d/Y')}} - {{$lesson[0]->class_end_date->format('m/d/Y')}}</dd>
 

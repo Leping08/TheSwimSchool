@@ -40,8 +40,7 @@
                         <dt>Ages:</dt>
                         <dd>{{$swimmer->lesson->group->ages}}</dd>
                         <dt>Location:</dt>
-                        <!-- TODO: make linkable -->
-                        <dd>{{$swimmer->lesson->location->name}}</dd>
+                        <dd><a href="/locations/{{$swimmer->lesson->location->id}}">{{$swimmer->lesson->location->name}}</a></dd>
                         <dt>Season:</dt>
                         <!-- TODO: make linkable -->
                         <dd>{{$swimmer->lesson->season->season}} {{$swimmer->lesson->season->year}}</dd>

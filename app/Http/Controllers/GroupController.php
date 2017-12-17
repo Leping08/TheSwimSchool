@@ -16,7 +16,6 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //TODO: Show only active lessons
         $groups = Group::all();
         return view('groups.list', compact('groups'));
     }
