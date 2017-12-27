@@ -27,6 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/dashboard/season/current', 'DashboardController@swimmersForCurrentSeason');
 
+    //Leads
+    Route::get('/lead/{id}', 'LeadController@show');
+
     Route::resource('groups', 'GroupController');
     Route::resource('locations', 'LocationController');
     Route::resource('lesson', 'LessonController');
@@ -92,9 +95,9 @@ Route::get('/private/lessons', function (){
 
 
 //WP Contact Forms
-Route::post('/contact-us', 'ContactFormsController@contactUs');
-Route::post('/lifeguarding', 'ContactFormsController@lifeguarding');
-Route::post('/cpr-first-aid', 'ContactFormsController@cprFirstAid');
-Route::post('/private/lessons', 'ContactFormsController@privateLessons');
+Route::post('/contact-us', 'LeadController@contactUs');
+Route::post('/lifeguarding', 'LeadController@lifeguarding');
+Route::post('/cpr-first-aid', 'LeadController@cprFirstAid');
+Route::post('/private/lessons', 'LeadController@privateLessons');
 
 

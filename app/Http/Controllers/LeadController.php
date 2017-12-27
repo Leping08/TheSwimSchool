@@ -9,8 +9,14 @@ use App\Jobs\ContactEmail;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
-class ContactFormsController extends Controller
+class LeadController extends Controller
 {
+    public function show($id)
+    {
+        $lead = Contact::find($id);
+        return view('leads.show', compact('lead'));
+    }
+
     public function contactUs(Request $request)
     {
         $validData = getVaildData($request);
