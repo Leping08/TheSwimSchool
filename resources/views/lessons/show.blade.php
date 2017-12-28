@@ -68,7 +68,9 @@
                         </ul>
                     </div>
                     <div class="uk-card-footer">
-                        <a class="uk-button uk-button-primary" href="/swimmers/{{{$lesson[0]->id}}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                        <a class="uk-button uk-button-default" disabled><i class="fa fa-pencil" aria-hidden="true"></i> Edit Coming Soon</a>
+                        <!-- TODO: Edit a lesson button -->
+                        <!-- <a class="uk-button uk-button-primary" href="/lessons/{{{$lesson[0]->id}}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a> -->
                         <button class="uk-button uk-button-danger" uk-toggle="target: #delete-modal" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                     </div>
                 @else

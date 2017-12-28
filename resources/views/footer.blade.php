@@ -5,7 +5,7 @@
             <div class="uk-visible@s"></div>
             <div>
                 <div class="uk-margin uk-text-center@m uk-text-center" uk-scrollspy-class>
-                    <a href="/" class="el-link"><img src="/img/footer-logo.png" class="uk-responsive-width" alt=""></a>
+                    <a href="/" class="el-link"><img src="/img/main-logo.png" class="uk-responsive-width" alt=""></a>
                 </div>
             </div>
             <div class="uk-visible@s"></div>

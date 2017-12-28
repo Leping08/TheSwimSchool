@@ -40,7 +40,7 @@
                     <div class="uk-card-footer">
                         <!--<a class="uk-button uk-button-primary" href="/lead/{{{$lead->id}}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>-->
                         <!-- TODO: Implement a followed up bool to leads -->
-                        <button class="uk-button uk-button-primary" uk-toggle="" type="button"><i class="fa fa-check" aria-hidden="true"></i> Followed Up</button>
+                        <a class="uk-button uk-button-default" disabled><i class="fa fa-check" aria-hidden="true"></i> Followed Up Coming Soon</a>
                     </div>
                 @else
                     <div class="uk-card-body">
