@@ -12,8 +12,9 @@ class Swimmer extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name',
-        'age',
+        'firstName',
+        'lastName',
+        'birthDate',
         'email',
         'phone',
         'paid',
@@ -27,7 +28,7 @@ class Swimmer extends Model
         'emergencyName',
         'emergencyRelationship',
         'emergencyPhone',
-        'stripechargeid'
+        'stripeChargeId'
     ];
 
     public function Lesson()
