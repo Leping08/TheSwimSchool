@@ -15,12 +15,13 @@ class CreateSwimmersTable extends Migration
     {
         Schema::create('swimmers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('firstName');
+            $table->string('lastName');
             $table->string('email');
             $table->string('phone');
-            $table->integer('age');
+            $table->integer('birthDate');
             $table->boolean('paid')->default(0);
-            $table->string('stripechargeid')->nullable();
+            $table->string('stripeChargeId')->nullable();
             $table->string('parent')->nullable();
             $table->longText('notes')->nullable();
             $table->string('street');

@@ -15,7 +15,8 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-3-4@m uk-first-column">
                     <div class="uk-margin uk-dropcap">
-                        Copy Here
+                        <!-- TODO: Add content to the other services page -->
+                        Content here.
                     </div>
                 </div>
             </div>
