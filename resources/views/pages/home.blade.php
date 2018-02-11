@@ -43,28 +43,32 @@ Home
                     <a href="/lessons/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <div class="uk-card-media-top"><img src="/img/swim-lessons.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
-                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Lessons</h3>
+                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Group Lessons</h3>
                         <div class="el-content uk-margin">The Swim School features aquatics programs to meet the specific needs of various age groups and skill levels.</div>
                     </div>
                 </div>
             </div>
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a href="/lifeguarding/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a href="/semi-private/lessons" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <!-- TODO: Get new image for private swim lessons -->
                     <div class="uk-card-media-top"><img src="/img/lifeguard.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
-                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Lifeguarding</h3>
-                        <div class="el-content uk-margin">Hire The Swim School to supervise your next pool party or event by the water. We have certified lifeguards to keep everyone safe while you enjoy the party!</div>
+                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Semi Private Lessons</h3>
+                        <!-- TODO: Add copy for private swim lessons -->
+                        <div class="el-content uk-margin">Copy Here</div>
                     </div>
                 </div>
             </div>
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a href="/cpr-first-aid/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a href="/private/lessons" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <!-- TODO: Get new image for semi private swim lessons -->
                     <div class="uk-card-media-top"><img src="/img/water-aerobics.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
-                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">CPR/First Aid</h3>
-                        <div class="el-content uk-margin">Need CPR and/or First Aid training? The Swim School can certify you with these life-saving skills. Individual and group instruction is available.</div>
+                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>
+                        <!-- TODO: Add copy for semi private swim lessons -->
+                        <div class="el-content uk-margin">Copy Here</div>
                     </div>
                 </div>
             </div>

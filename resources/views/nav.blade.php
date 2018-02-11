@@ -23,10 +23,10 @@
                                 <li class="{{{ (Request::segment(1) === 'lifeguarding' || Request::segment(1) === 'lessons' ||  Request::segment(1) === 'services' ||  Request::segment(1) === 'cpr-first-aid'  ? 'uk-active' : null) }}} uk-parent">
                                     <a href="/services/">Services</a>
                                     <ul class="uk-nav-sub">
-                                        <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Swim Lessons</a></li>
+                                        <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
+                                        <li class="{{{ (Request::segment(1) === 'semi-private' ? 'uk-active' : null) }}} "><a href="/semi-private/lessons">Semi Private Lessons</a></li>
                                         <li class="{{{ (Request::segment(1) === 'private' ? 'uk-active' : null) }}} "><a href="/private/lessons">Private Lessons</a></li>
-                                        <li class="{{{ (Request::segment(1) === 'lifeguarding' ? 'uk-active' : null) }}} "><a href="/lifeguarding/">Lifeguarding</a></li>
-                                        <li class="{{{ (Request::segment(1) === 'cpr-first-aid' ? 'uk-active' : null) }}} "><a href="/cpr-first-aid/">CPR/First Aid</a></li>
+                                        <li class="{{{ (Request::segment(1) === 'lifeguarding' ? 'uk-active' : null) }}} "><a href="/other-services/">Other Services</a></li>
                                     </ul>
                                 </li>
                                 <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a href="/about/">About</a></li>
@@ -97,9 +97,9 @@
                                         <div>
                                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                                 <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
+                                                <li class="{{{ (Request::segment(1) === 'semi-private' ? 'uk-active' : null) }}} "><a href="/semi-private/lessons">Semi Private Lessons</a></li>
                                                 <li class="{{{ (Request::segment(1) === 'private' ? 'uk-active' : null) }}} "><a href="/private/lessons">Private Lessons</a></li>
-                                                <li class="{{{ (Request::segment(1) === 'lifeguarding' ? 'uk-active' : null) }}} "><a href="/lifeguarding/">Lifeguarding</a></li>
-                                                <li class="{{{ (Request::segment(1) === 'cpr-first-aid' ? 'uk-active' : null) }}} "><a href="/cpr-first-aid/">CPR/First Aid</a></li>
+                                                <li class="{{{ (Request::segment(1) === 'lifeguarding' ? 'uk-active' : null) }}} "><a href="/other-services/">Other Services</a></li>
                                             </ul>
                                         </div>
                                     </div>

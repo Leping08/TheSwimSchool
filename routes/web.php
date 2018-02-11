@@ -87,8 +87,16 @@ Route::get('/contact-us', function(){
     return view('pages.contact-us');
 });
 
+Route::get('/semi-private/lessons', function (){
+    return view('pages.semi-private-lessons');
+});
+
 Route::get('/private/lessons', function (){
-   return view('pages.private-lessons');
+    return view('pages.private-lessons');
+});
+
+Route::get('/other-services', function (){
+   return view('pages.other-services');
 });
 
 
