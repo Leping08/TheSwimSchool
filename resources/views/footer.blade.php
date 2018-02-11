@@ -89,7 +89,7 @@
             <div class="uk-width-1-1@m">
                 <hr  uk-scrollspy-class>
                 <div class="uk-margin uk-text-center uk-text-meta" uk-scrollspy-class>
-                    Copyright &copy; 2017</br>
+                    Copyright &copy; {{date("Y")}}</br>
                     <a href="http://www.deltavcreative.com/" target="_blank">DeltaV Creative</a><br>
                     <a href="#" uk-totop uk-scroll></a>
                 </div>
