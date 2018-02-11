@@ -12,7 +12,7 @@ Edit {{$swimmer->name}}
                 <form method="POST" action="" class="uk-form-stacked">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="PATCH">
-                    <h3 class="uk-heading-bullet">Swimmer Infomation</h3>
+                    <h3 class="uk-heading-bullet">Swimmer Information</h3>
                     <div class="uk-margin">
                         <label for="name"  class="uk-form-label">Swimmer Name</label>
                         <input type="text" class="uk-input" id="name" name="name" placeholder="Name" value="{{ old('name') ?? $swimmer->name }}" required>
@@ -49,7 +49,7 @@ Edit {{$swimmer->name}}
                         <input type="numbers" class="uk-input" id="zip" name="zip" placeholder="Zip Code" value="{{ old('zip') ?? $swimmer->zip }}" required>
                     </div>
                     <hr>
-                    <h3 class="uk-heading-bullet">Contact Infomation</h3>
+                    <h3 class="uk-heading-bullet">Contact Information</h3>
                     
                     <div class="uk-margin">
                         <label for="phone" class="uk-form-label">Phone</label>
@@ -61,7 +61,7 @@ Edit {{$swimmer->name}}
                     </div>
 
                     <hr>
-                    <h3 class="uk-heading-bullet">Emergency Contact Infomation</h3>
+                    <h3 class="uk-heading-bullet">Emergency Contact Information</h3>
                     
                     <div class="uk-margin">
                         <label for="emergencyName" class="uk-form-label">Emergency Contact Name</label>

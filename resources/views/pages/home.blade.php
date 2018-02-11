@@ -15,7 +15,7 @@ Home
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
-                    <h2 class="text-black uk-margin-remove-vertical uk-text-center uk-heading-primary uk-scrollspy-inview uk-animation-slide-top" uk-scrollspy-class="">
+                    <h2 class="text-black uk-margin-remove-vertical uk-text-center uk-heading-primary uk-scrollspy-inview uk-animation-slide-top" uk-scrollspy-class="" style="font-family:sans-serif;">
                         The Swim School
                     </h2>
                     <div class="text-black uk-margin-small uk-text-center uk-text-lead uk-scrollspy-inview uk-animation-slide-bottom" uk-scrollspy-class="uk-animation-slide-bottom">
