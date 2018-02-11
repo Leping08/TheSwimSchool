@@ -11,8 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ContactTypes::class);
-        $this->call(DaysOfTheWeek::class);
-        $this->call(Seasons::class);
+        $this->call([
+            ContactTypes::class,
+            DaysOfTheWeek::class,
+            Seasons::class
+        ]);
     }
 }
