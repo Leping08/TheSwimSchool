@@ -12,11 +12,17 @@
                 <h4>Swimmer Info</h4>
                 <dl class="uk-description-list-horizontal">
                     <dt>Name:</dt>
-                    <dd>{{$swimmer->name}}</dd>
+                    <dd>{{$swimmer->firstName}} {{$swimmer->lastName}}</dd>
+
+                    <dt>Birth Date:</dt>
+                    <dd>{{$swimmer->birthDate->toDateString()}}</dd>
 
                     <dt>Age:</dt>
-                    <dd>{{$swimmer->age}}</dd>
-
+                    @if($swimmer->yearsOld() < 2)
+                        <dd>{{$swimmer->monthsOld()}} Months</dd>
+                    @else
+                        <dd>{{$swimmer->yearsOld()}} Years</dd>
+                    @endif
                     <dt>Email:</dt>
                     <dd><a href="mailto:{{{$swimmer->email}}}">{{$swimmer->email}}</a></dd>
 

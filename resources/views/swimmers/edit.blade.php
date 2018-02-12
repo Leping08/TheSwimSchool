@@ -14,12 +14,18 @@ Edit {{$swimmer->name}}
                     <input type="hidden" name="_method" value="PATCH">
                     <h3 class="uk-heading-bullet">Swimmer Information</h3>
                     <div class="uk-margin">
-                        <label for="name"  class="uk-form-label">Swimmer Name</label>
-                        <input type="text" class="uk-input" id="name" name="name" placeholder="Name" value="{{ old('name') ?? $swimmer->name }}" required>
+                        <label for="firstName"  class="uk-form-label">Swimmer Name</label>
+                        <input type="text" class="uk-input" id="firstName" name="firstName" placeholder="First Name" value="{{ old('firstName') ?? $swimmer->firstName }}" required>
                     </div>
+
                     <div class="uk-margin">
-                        <label for="age"  class="uk-form-label">Swimmer Age</label>
-                        <input type="number" class="uk-input" id="age" name="age" placeholder="Age" value="{{ old('age') ?? $swimmer->age }}" required>
+                        <label for="lastName"  class="uk-form-label">Swimmer Last Name</label>
+                        <input type="text" class="uk-input" id="lastName" name="lastName" placeholder="Last Name" value="{{ old('firstName') ?? $swimmer->lastName }}" required>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label for="birthDate"  class="uk-form-label">Swimmer Birth Date</label>
+                        <input type="date" class="uk-input" id="birthDate" name="birthDate" placeholder="Birth Date" value="{{ old('birthDate') ?? $swimmer->birthDate->format('Y-m-d') }}" required>
                     </div>
                     <div class="uk-margin">
                         <label for="parent"  class="uk-form-label">Name of Parent/Guardian (if applicable)</label>

@@ -19,18 +19,24 @@
                         Swimmer Infomation
                     </div>
                     <div class="uk-margin uk-width-1-2@m uk-width-1-1@s">
-                        <label class="uk-form-label uk-heading-bullet" for="name">Swimmer Name</label>
+                        <label class="uk-form-label uk-heading-bullet" for="firstName">First Name</label>
                         <div class="uk-form-controls">
-                            <input type="text" class="uk-input" id="name" name="name" placeholder="Name" value="{{ old('name') }}" required>
+                            <input type="text" class="uk-input" id="firstName" name="firstName" placeholder="First Name" value="{{ old('firstName') }}" required>
                         </div>
                     </div>
                     <div class="uk-margin uk-width-1-2@m uk-width-1-1@s">
-                        <label class="uk-form-label uk-heading-bullet" for="age">Swimmer Age</label>
+                        <label class="uk-form-label uk-heading-bullet" for="lastName">Last Name</label>
                         <div class="uk-form-controls">
-                            <input type="number" class="uk-input" id="age" name="age" placeholder="Age" value="{{ old('age') }}" required>
+                            <input type="text" class="uk-input" id="lastName" name="lastName" placeholder="Last Name" value="{{ old('lastName') }}" required>
                         </div>
                     </div>
-                    <div class="uk-margin uk-width-1-1">
+                    <div class="uk-margin uk-width-1-2@m uk-width-1-1@s">
+                        <label class="uk-form-label uk-heading-bullet" for="birthDate">Birth Date</label>
+                        <div class="uk-form-controls">
+                            <input type="date" class="uk-input" id="birthDate" name="birthDate" value="{{ old('birthDate') }}" required>
+                        </div>
+                    </div>
+                    <div class="uk-margin uk-width-1-2@m uk-width-1-1@s">
                         <label class="uk-form-label uk-heading-bullet" for="parent">Name of Parent/Guardian (if applicable)</label>
                         <div class="uk-form-controls">
                             <input type="text" class="uk-input" id="parent" name="parent" placeholder="Parent/Guardian" value="{{ old('parent') }}">

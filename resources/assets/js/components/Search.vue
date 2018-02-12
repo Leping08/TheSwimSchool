@@ -15,8 +15,7 @@
             <ul class="uk-list uk-list-striped">
                 <li><strong>Swimmers</strong></li>
                 <li v-for="swimmer in filteredArticles"><a v-bind:href="'/swimmers/'+swimmer.id" class="list-group-item list-group-item-action justify-content-between">
-                    {{swimmer.name}}
-
+                    {{swimmer.firstName}} {{swimmer.lastName}}
                 </a></li>
             </ul>
         </div>
@@ -48,10 +47,10 @@
                 searchString = searchString.trim().toLowerCase();
 
                 swimmers_object = swimmers_object.filter(function(item){
-                    if(item.name.toLowerCase().indexOf(searchString) !== -1){
+                    if((item.firstName.toLowerCase().indexOf(searchString) !== -1) || (item.lastName.toLowerCase().indexOf(searchString) !== -1)){
                         return item;
                     }
-                })
+                });
 
                 // Return an array with the filtered data.
                 return swimmers_object;

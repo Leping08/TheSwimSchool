@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Swimmer extends Model
 {
     use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'birthDate'];
 
     protected $fillable = [
         'firstName',
@@ -34,5 +35,13 @@ class Swimmer extends Model
     public function Lesson()
     {
         return $this->belongsTo(Lesson::class);
+    }
+
+    public function yearsOld() {
+        return $this->birthDate->diffInYears(Carbon::now());
+    }
+
+    public function monthsOld() {
+        return $this->birthDate->diffInMonths(Carbon::now());
     }
 }

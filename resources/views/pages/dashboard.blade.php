@@ -24,7 +24,7 @@ Dashboard
                             <li><strong>Swimmers</strong></li>
                             @foreach ($swimmers as $swimmer)
                             <li><a href="/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
-                                {{$swimmer->name}}                               
+                                {{$swimmer->firstName}} {{$swimmer->lastName}}
                             </a></li>
                             @endforeach
                         </ul>
@@ -284,37 +284,37 @@ Dashboard
                                     </div>
 
                                     <div class="uk-margin uk-width-1-1@s">
-                                        <label class="uk-form-label uk-heading-bullet" for="name">Street</label>
+                                        <label class="uk-form-label uk-heading-bullet" for="street">Street</label>
                                         <div class="uk-form-controls">
-                                            <input type="text" class="uk-input" id="street" name="street" placeholder="12345 Street Address" value="{{ old('name') }}" required>
+                                            <input type="text" class="uk-input" id="street" name="street" placeholder="12345 Street Address" value="{{ old('street') }}" required>
                                         </div>
                                     </div>
 
                                     <div class="uk-margin uk-width-1-1@s">
-                                        <label class="uk-form-label uk-heading-bullet" for="name">City</label>
+                                        <label class="uk-form-label uk-heading-bullet" for="city">City</label>
                                         <div class="uk-form-controls">
-                                            <input type="text" class="uk-input" id="city" name="city" placeholder="City" value="{{ old('name') }}" required>
+                                            <input type="text" class="uk-input" id="city" name="city" placeholder="City" value="{{ old('city') }}" required>
                                         </div>
                                     </div>
 
                                     <div class="uk-margin uk-width-1-1@s">
-                                        <label class="uk-form-label uk-heading-bullet" for="name">State</label>
+                                        <label class="uk-form-label uk-heading-bullet" for="state">State</label>
                                         <div class="uk-form-controls">
-                                            <input type="text" class="uk-input" id="state" name="state" placeholder="FL" value="{{ old('name') }}" required>
+                                            <input type="text" class="uk-input" id="state" name="state" placeholder="FL" value="{{ old('state') }}" required>
                                         </div>
                                     </div>
 
                                     <div class="uk-margin uk-width-1-1@s">
-                                        <label class="uk-form-label uk-heading-bullet" for="name">Zip</label>
+                                        <label class="uk-form-label uk-heading-bullet" for="zip">Zip</label>
                                         <div class="uk-form-controls">
-                                            <input type="text" class="uk-input" id="zip" name="zip" placeholder="12345" value="{{ old('name') }}" required>
+                                            <input type="text" class="uk-input" id="zip" name="zip" placeholder="12345" value="{{ old('zip') }}" required>
                                         </div>
                                     </div>
 
                                     <div class="uk-margin uk-width-1-1@s">
-                                        <label class="uk-form-label uk-heading-bullet" for="name">Phone</label>
+                                        <label class="uk-form-label uk-heading-bullet" for="phoneNumber">Phone</label>
                                         <div class="uk-form-controls">
-                                            <input type="text" class="uk-input" id="phoneNumber" name="phoneNumber" placeholder="941-999-9999" value="{{ old('name') }}" required>
+                                            <input type="text" class="uk-input" id="phoneNumber" name="phoneNumber" placeholder="941-999-9999" value="{{ old('phoneNumber') }}" required>
                                         </div>
                                     </div>
 

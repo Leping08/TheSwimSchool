@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Mail\SignUp;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class SwimmerController extends Controller
 {
@@ -47,9 +48,10 @@ class SwimmerController extends Controller
     //Sign a swimmer up for a lesson and send them to the card payment page or back to the lesson page.
     public function store(Request $request, $classType, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:191',
-            'age' => 'required|digits_between:1,3',
+        $swimmer = $request->validate([
+            'firstName' => 'required|string|max:191',
+            'lastName' => 'required|string|max:191',
+            'birthDate' => 'required|string',
             'email' => 'required|string|email|max:191',
             'phone' => 'required|max:20',
             'parent' => 'nullable|max:191',
@@ -63,12 +65,14 @@ class SwimmerController extends Controller
             'payment' => 'required'
         ]);
 
+        $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
+
         $lesson = Lesson::find($id);
 
-        $newSwimmer = Swimmer::create($request->all());
+        $newSwimmer = Swimmer::create($swimmer);
         $newSwimmer->update(['lesson_id' => $lesson->id]);
 
-        Log::info("Swimmer ID: $newSwimmer->id was added to the DB.");
+        Log::info("Swimmer: $newSwimmer->firstName $newSwimmer->lastName with ID: $newSwimmer->id signed up for lesson ID: $newSwimmer->lesson_id");
 
         //TODO: add signup email to the que
         Mail::to($newSwimmer->email)->send(new SignUp($lesson));
@@ -123,9 +127,10 @@ class SwimmerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:191',
-            'age' => 'required|digits_between:1,3',
+        $swimmer = $request->validate([
+            'firstName' => 'required|string|max:191',
+            'lastName' => 'required|string|max:191',
+            'birthDate' => 'required|string',
             'email' => 'required|string|email|max:191',
             'phone' => 'required|max:20',
             'parent' => 'required|max:191',
@@ -138,11 +143,13 @@ class SwimmerController extends Controller
             'emergencyPhone' => 'required|max:20'
         ]);
 
-        $swimmer = Swimmer::find($id);
-        $swimmer->update($request->all());
-        Log::info("Swimmer ID: $swimmer->id has been updated.");
-        session()->flash('info', $swimmer->name.' has been updated.');
-        return redirect('/swimmers/'.$swimmer->id);
+        $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
+
+        $oldSwimmer = Swimmer::find($id);
+        $oldSwimmer->update($swimmer);
+        Log::info("Swimmer ID: $oldSwimmer->id has been updated.");
+        session()->flash('info', $oldSwimmer->name.' has been updated.');
+        return redirect('/swimmers/'.$oldSwimmer->id);
     }
 
     /**

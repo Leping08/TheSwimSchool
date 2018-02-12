@@ -19,7 +19,7 @@ class CreateSwimmersTable extends Migration
             $table->string('lastName');
             $table->string('email');
             $table->string('phone');
-            $table->integer('birthDate');
+            $table->date('birthDate');
             $table->boolean('paid')->default(0);
             $table->string('stripeChargeId')->nullable();
             $table->string('parent')->nullable();

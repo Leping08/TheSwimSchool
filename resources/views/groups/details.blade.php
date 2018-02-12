@@ -44,9 +44,9 @@ Lessons
                                 @foreach($lesson->Swimmers as $swimmer)
                                     <li><a href="/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                     @if($swimmer->paid == 1)
-                                        {{$swimmer->name}}
+                                        {{$swimmer->firstName}} {{$swimmer->lastName}}p
                                     @elseif($swimmer->paid == 0)
-                                        {{$swimmer->name}}
+                                        {{$swimmer->firstName}} {{$swimmer->lastName}}
                                     @endif
                                     </a></li>
                                 @endforeach
