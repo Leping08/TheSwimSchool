@@ -5,9 +5,10 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Lesson;
 
-class SignUp extends Mailable
+class ClassFull extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,8 +32,7 @@ class SignUp extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->lesson->group->type)
-                    ->markdown('email.lessonSignUp')
-                    ->with(['lesson', $this->lesson]);
+        return $this->subject($this->lesson->group->type.' lesson is full.')
+                    ->markdown('email.classFull');
     }
 }

@@ -16,8 +16,9 @@ class ContactUs extends Mailable
 
     /**
      * Create a new message instance.
-     *
-     * @return void
+     * @param $data
+     * @param $subject
+     * @return $this
      */
     public function __construct($data, $subject)
     {

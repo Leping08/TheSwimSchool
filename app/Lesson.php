@@ -62,4 +62,12 @@ class Lesson extends Model
     {
         return $this->belongsToMany(DaysOfTheWeek::class)->withTimestamps();
     }
+
+    public function isLessonFull(): bool
+    {
+        if($this->class_size <= $this->Swimmers->count()){
+            return true;
+        }
+        return false;
+    }
 }

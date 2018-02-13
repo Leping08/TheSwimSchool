@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SignupEmail;
+use App\Mail\ClassFull;
 use App\Swimmer;
 use App\Lesson;
 use Illuminate\Http\Request;
@@ -48,6 +49,14 @@ class SwimmerController extends Controller
     //Sign a swimmer up for a lesson and send them to the card payment page or back to the lesson page.
     public function store(Request $request, $classType, $id)
     {
+        $lesson = Lesson::find($id);
+
+        //Check to see if the lesson is full
+        if($lesson->isLessonFull()){
+            $request->session()->flash('danger', 'The lesson is full.');
+            return back();
+        }
+
         $swimmer = $request->validate([
             'firstName' => 'required|string|max:191',
             'lastName' => 'required|string|max:191',
@@ -65,12 +74,19 @@ class SwimmerController extends Controller
             'payment' => 'required'
         ]);
 
+        //TODO: Logic to check the age of the swimmer against what the lesson age is
         $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
-
-        $lesson = Lesson::find($id);
 
         $newSwimmer = Swimmer::create($swimmer);
         $newSwimmer->update(['lesson_id' => $lesson->id]);
+
+
+        //Send lesson full email if this user filled up the lesson
+        if($lesson->isLessonFull()){
+            foreach(config('mail.leadDestEmails') as $emailAddress){
+                Mail::to($emailAddress)->send(new ClassFull($lesson));
+            }
+        }
 
         Log::info("Swimmer: $newSwimmer->firstName $newSwimmer->lastName with ID: $newSwimmer->id signed up for lesson ID: $newSwimmer->lesson_id");
 
