@@ -2,7 +2,6 @@
 
 @component('mail::panel')
 ###{{$subject}} Lead
-
 * Name: {{$data['name']}}
 * Phone: {{$data['phone']}}
 * Email: {{$data['email']}}

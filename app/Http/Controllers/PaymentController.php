@@ -30,6 +30,7 @@ class PaymentController extends Controller
             $swimmer[0]->stripechargeid = $charge->id;
             $swimmer[0]->save();
             Log::info("Swimmer ID: ".$swimmer[0]->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
+            $swimmer[0]->update(['lesson_id' => $lesson->id]);
             $request->session()->flash('success', 'Thanks for your payment of $'.$lesson->price.'. First lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A'));
             return redirect('lessons/'.$lesson->class_type);
         } catch(Card $e){

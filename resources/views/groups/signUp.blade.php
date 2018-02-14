@@ -130,15 +130,15 @@
                     <div class="uk-h2 uk-margin uk-width-1-1">
                         Price ${{$lesson->price}}
                     </div>
-                    <div class="uk-width-1-1@s">
+                    <!--<div class="uk-width-1-1@s">
                         <label class="uk-form-label uk-heading-bullet" for="payment">Payment Method</label>
                         <div class="uk-form-controls">
                             <select class="uk-select" name="payment" id="payment" v-model="selected" value="{{ old('payment') }}" required>
-                                <option value="check">Cash or Check (In Person)</option>
                                 <option value="card">Card (Online)</option>
+                                <option value="check">Cash or Check (In Person)</option>
                             </select>
                         </div>
-                    </div>
+                    </div>-->
 
 
 
@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="uk-margin uk-width-1-1@s">
-                        <button type="submit" class="uk-button uk-button-primary">Submit</button>
+                        <button type="submit" class="uk-button uk-button-primary">Payment Method</button>
                     </div>
                 </form>
             </div>

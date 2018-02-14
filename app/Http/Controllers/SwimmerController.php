@@ -60,7 +60,7 @@ class SwimmerController extends Controller
         $swimmer = $request->validate([
             'firstName' => 'required|string|max:191',
             'lastName' => 'required|string|max:191',
-            'birthDate' => 'required|string',
+            'birthDate' => 'required|date|before:today',
             'email' => 'required|string|email|max:191',
             'phone' => 'required|max:20',
             'parent' => 'nullable|max:191',
@@ -70,15 +70,17 @@ class SwimmerController extends Controller
             'zip' => 'required|max:15',
             'emergencyName' => 'required|max:191',
             'emergencyRelationship' => 'required|max:191',
-            'emergencyPhone' => 'required|max:20',
-            'payment' => 'required'
+            'emergencyPhone' => 'required|max:20'
+            //'payment' => 'required'
         ]);
 
         //TODO: Logic to check the age of the swimmer against what the lesson age is
         $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
 
         $newSwimmer = Swimmer::create($swimmer);
-        $newSwimmer->update(['lesson_id' => $lesson->id]);
+
+        //Don't set the lesson ID until the swimmer has payed
+        //$newSwimmer->update(['lesson_id' => $lesson->id]);
 
 
         //Send lesson full email if this user filled up the lesson
@@ -96,8 +98,11 @@ class SwimmerController extends Controller
         //SignupEmail::dispatch($lesson, $newSwimmer->email);
 
 
+        Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
+        return view('swimmers.cardCheckout', compact('newSwimmer', 'lesson'));
+
         //If the user is using a card for payment, send them to the card view with the user id.
-        if(request('payment') === 'card'){
+        /*if(request('payment') === 'card'){
             Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
             return view('swimmers.cardCheckout', compact('newSwimmer', 'lesson'));
         }elseif(request('payment') === 'check'){
@@ -107,7 +112,7 @@ class SwimmerController extends Controller
         }else{
             Log::warning("Something went wrong with Swimmer ID: $newSwimmer->id when they tried to sign up for Lesson ID: $lesson->id");
             $request->session()->flash('danger', 'Looks like something went wrong.');
-        }
+        }*/
     }
 
     /**
