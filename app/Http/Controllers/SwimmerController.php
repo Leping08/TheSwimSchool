@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SignupEmail;
+
 use App\Mail\ClassFull;
 use App\Swimmer;
 use App\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Mail\SignUp;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
@@ -81,21 +80,6 @@ class SwimmerController extends Controller
 
         //Don't set the lesson ID until the swimmer has payed
         //$newSwimmer->update(['lesson_id' => $lesson->id]);
-
-
-        //Send lesson full email if this user filled up the lesson
-        if($lesson->isLessonFull()){
-            foreach(config('mail.leadDestEmails') as $emailAddress){
-                Mail::to($emailAddress)->send(new ClassFull($lesson));
-            }
-        }
-
-        Log::info("Swimmer: $newSwimmer->firstName $newSwimmer->lastName with ID: $newSwimmer->id signed up for lesson ID: $newSwimmer->lesson_id");
-
-        //TODO: add signup email to the que
-        Mail::to($newSwimmer->email)->send(new SignUp($lesson));
-        Log::info("Group Lesson sign up email sent to $newSwimmer->email. Swimmer ID: $newSwimmer->id Lesson ID: $lesson->id.");
-        //SignupEmail::dispatch($lesson, $newSwimmer->email);
 
 
         Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Lesson;
 use App\Swimmer;
+use App\Mail\SignUp;
 use Stripe\Error\Card;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -16,6 +17,12 @@ class PaymentController extends Controller
         //TODO: Validate the email and name here
         $lesson = Lesson::find($id);
         $swimmer = Swimmer::find($request->swimmerId);
+
+        //Check to see if the lesson is full
+        if($lesson->isLessonFull()){
+            $request->session()->flash('danger', 'Sorry the lesson is full.');
+            return back();
+        }
 
         try{
             \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -30,9 +37,24 @@ class PaymentController extends Controller
             $swimmer->paid = 1;
             $swimmer->stripechargeid = $charge->id;
             $swimmer->save();
+
+            Log::info("Swimmer: $swimmer->firstName $swimmer->lastName with ID: $swimmer->id signed up for lesson ID: $swimmer->lesson_id");
+            Mail::to($swimmer->email)->send(new SignUp($lesson));
+            Log::info("Group Lesson sign up email sent to $swimmer->email. Swimmer ID: $swimmer->id Lesson ID: $lesson->id.");
+            //TODO: add signup email to the que
+            //SignupEmail::dispatch($lesson, $newSwimmer->email);
+
             Log::info("Swimmer ID: ".$swimmer->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
             $swimmer->update(['lesson_id' => $lesson->id]);
             $request->session()->flash('success', 'Thanks for your payment of $'.$lesson->price.'. First lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A'));
+
+            //Send lesson full email if this user filled up the lesson
+            if($lesson->isLessonFull()){
+                foreach(config('mail.leadDestEmails') as $emailAddress){
+                    Mail::to($emailAddress)->send(new ClassFull($lesson));
+                }
+            }
+
             return redirect('lessons/'.$lesson->class_type);
         } catch(Card $e){
             //Card decline error
