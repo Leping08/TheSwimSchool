@@ -13,24 +13,25 @@ class PaymentController extends Controller
     //Charge the card for the correct ammount and mark as payed in DB
     public function ChargeCardForLesson(Request $request, $id)
     {
-        //return $request;
+        //TODO: Validate the email and name here
         $lesson = Lesson::find($id);
-        $swimmer = Swimmer::find($request);
+        $swimmer = Swimmer::find($request->swimmerId);
 
         try{
             \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
             $charge = \Stripe\Charge::create(array(
                 "amount" => $lesson->price * 100,
                 "currency" => "usd",
-                "source" => "$request->stripeToken", //Obtained with Stripe.js
-                "description" => "Class: ".$lesson->group->type.",\n Swimmer Name: ".$swimmer[0]->name.",\n Card Name: $request->cardholderName,\n Email: $request->cardholderEmail\n"
+                "receipt_email" => "$request->cardholderEmail",
+                "description" => $lesson->group->type." swim lessons for $swimmer->firstName $swimmer->lastName through The Swim School.",
+                "source" => "$request->stripeToken" //Obtained with Stripe.js
             ));
             //Mark the as swimmer as payed in the database and save the stripe charge id
-            $swimmer[0]->paid = 1;
-            $swimmer[0]->stripechargeid = $charge->id;
-            $swimmer[0]->save();
-            Log::info("Swimmer ID: ".$swimmer[0]->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
-            $swimmer[0]->update(['lesson_id' => $lesson->id]);
+            $swimmer->paid = 1;
+            $swimmer->stripechargeid = $charge->id;
+            $swimmer->save();
+            Log::info("Swimmer ID: ".$swimmer->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
+            $swimmer->update(['lesson_id' => $lesson->id]);
             $request->session()->flash('success', 'Thanks for your payment of $'.$lesson->price.'. First lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A'));
             return redirect('lessons/'.$lesson->class_type);
         } catch(Card $e){

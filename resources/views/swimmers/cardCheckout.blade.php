@@ -13,12 +13,12 @@ Card Details
             <div class="group">
                 <label class="uk-form-label">
                     <span>Name</span>
-                    <input name="cardholderName" class="field" placeholder="First Last" value="{{{$newSwimmer->name}}}"/>
+                    <input name="cardholderName" class="field" placeholder="First Last" value="{{{$newSwimmer->name}}}" required/>
                 </label>
 
                 <label class="uk-form-label">
                     <span>Email</span>
-                    <input name="cardholderEmail" class="field" placeholder="expamle@gmail.com" value="{{{$newSwimmer->email}}}"/>
+                    <input name="cardholderEmail" class="field" placeholder="expamle@gmail.com" value="{{{$newSwimmer->email}}}" required/>
                 </label>
                 <!--<label>
                 <span>Phone</span>
@@ -125,20 +125,19 @@ document.addEventListener("DOMContentLoaded", function(){
     var elements = stripe.elements();
 
     var card = elements.create('card', {
-    style: {
-        base: {
-        iconColor: '#666EE8',
-        color: '#31325F',
-        lineHeight: '40px',
-        fontWeight: 300,
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSize: '15px',
-
-        '::placeholder': {
-            color: '#CFD7E0',
-        },
-        },
-    }
+        style: {
+            base: {
+            iconColor: '#666EE8',
+            color: '#31325F',
+            lineHeight: '40px',
+            fontWeight: 300,
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSize: '15px',
+            '::placeholder': {
+                color: '#CFD7E0'
+            },
+            },
+        }
     });
     card.mount('#card-element');
 

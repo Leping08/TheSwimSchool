@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::get('/test', function(){
    $lesson = App\Lesson::first();
-   return (new App\Mail\ClassFull($lesson));
+   return (new App\Mail\signUp($lesson));
 });
 //Auth protected routes
 Route::middleware('auth')->group(function () {
@@ -40,21 +40,27 @@ Route::middleware('auth')->group(function () {
 
 
 //list lessons
+/* @see GroupController::index() */
 Route::get('/lessons', 'GroupController@index');
 
 //list details of the lesson
+/* @see GroupController::classDetails() */
 Route::get('/lessons/{groupType}', 'GroupController@classDetails');
 
 //sign up form for that lesson
+/* @see GroupController::signUp() */
 Route::get('/lessons/{classType}/{id}', 'GroupController@signUp');
 
 //save the results of the sign up form
+/* @see SwimmerController::store() */
 Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 
 //charge the credit card for the lesson
+/* @see PaymentController::ChargeCardForLesson() */
 Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 
 //show the terms and conditions page
+/* @see GroupController::terms() */
 Route::get('/lessons/{classType}/{id}/terms', 'GroupController@terms');
 
 
@@ -106,9 +112,16 @@ Route::get('/other-services', function (){
 
 
 //WP Contact Forms
+/* @see LeadController::contactUs() */
 Route::post('/contact-us', 'LeadController@contactUs');
+
+/* @see LeadController::lifeguarding() */
 Route::post('/lifeguarding', 'LeadController@lifeguarding');
+
+/* @see LeadController::cprFirstAid() */
 Route::post('/cpr-first-aid', 'LeadController@cprFirstAid');
+
+/* @see LeadController::privateLessons() */
 Route::post('/private/lessons', 'LeadController@privateLessons');
 
 
