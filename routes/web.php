@@ -76,12 +76,12 @@ Route::get('/services', function(){
     return view('pages.services');
 });
 
-Route::get('/lifeguarding', function(){
-    return view('pages.lifeguarding');
+Route::get('/swim-team', function(){
+    return view('pages.swim-team');
 });
 
-Route::get('/cpr-first-aid', function(){
-    return view('pages.cpr-first-aid');
+Route::get('/private-semi-private', function(){
+    return view('pages.private-semi-private-lessons');
 });
 
 Route::get('/about', function(){
@@ -94,14 +94,6 @@ Route::get('/testimonials', function(){
 
 Route::get('/contact-us', function(){
     return view('pages.contact-us');
-});
-
-Route::get('/semi-private/lessons', function (){
-    return view('pages.semi-private-lessons');
-});
-
-Route::get('/private/lessons', function (){
-    return view('pages.private-lessons');
 });
 
 Route::get('/other-services', function (){

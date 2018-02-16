@@ -1,0 +1,26 @@
+@extends('layouts.app-uikit')
+
+@section('seo')
+    <title>Swim Team</title>
+    <meta name="description" content="Meta Here."/>
+@endsection
+
+@section('heading')
+    North River Swim Team
+@endsection
+
+@section('content')
+    <div class="uk-section-default uk-section uk-section-small">
+        <div class="uk-container">
+            <div class="uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-width-3-4@m uk-first-column">
+                    <div class="uk-margin uk-dropcap">
+                        <!-- TODO: Add content to the other services page -->
+                        Coming Soon!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+

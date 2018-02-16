@@ -40,7 +40,7 @@ Home
         <div class="uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a href="/lessons/" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a href="/lessons" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <div class="uk-card-media-top"><img src="/img/group-lessons.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Group Lessons</h3>
@@ -51,7 +51,7 @@ Home
             </div>
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a href="/semi-private/lessons" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a href="/private-semi-private" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <!-- TODO: Get new image for private swim lessons -->
                     <div class="uk-card-media-top"><img src="/img/swim-lessons.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
@@ -64,7 +64,7 @@ Home
             </div>
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a href="/private/lessons" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a href="/swim-team" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <!-- TODO: Get new image for semi private swim lessons -->
                     <div class="uk-card-media-top"><img src="/img/water-aerobics.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">

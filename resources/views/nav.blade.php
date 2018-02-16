@@ -1,154 +1,153 @@
-
-    <div class="tm-header-mobile uk-hidden@m">
-        <nav class="uk-navbar-container" uk-navbar>
-            <div class="uk-navbar-left">
-                <a class="uk-navbar-item uk-logo" href="/">
-                    <img src="/img/main-logo.png" class="uk-responsive-height" alt>
-                </a>
-            </div>
-            <div class="uk-navbar-right">
-                <a class="uk-navbar-toggle" href="#tm-mobile" uk-toggle>
-                    <div uk-navbar-toggle-icon></div>
-                </a>
-            </div>
-        </nav>
-        <div id="tm-mobile" uk-offcanvas="overlay: true; flip: true;">
-            <div class="uk-offcanvas-bar">
-                <button class="uk-offcanvas-close" type="button" uk-close></button>
-                <div class="uk-child-width-1-1" uk-grid>
-                    <div>
-                        <div class="uk-panel">
-                            <ul class="uk-nav uk-nav-default">
-                                <li class="{{{ (Request::is('/') ? 'uk-active' : null )}}}"><a href="/">Home</a></li>
-                                <li class="{{{ (Request::segment(1) === 'lifeguarding' || Request::segment(1) === 'lessons' ||  Request::segment(1) === 'services' ||  Request::segment(1) === 'cpr-first-aid'  ? 'uk-active' : null) }}} uk-parent">
-                                    <a href="/services/">Services</a>
-                                    <ul class="uk-nav-sub">
-                                        <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
-                                        <li class="{{{ (Request::segment(1) === 'semi-private' ? 'uk-active' : null) }}} "><a href="/semi-private/lessons">Semi Private Lessons</a></li>
-                                        <li class="{{{ (Request::segment(1) === 'private' ? 'uk-active' : null) }}} "><a href="/private/lessons">Private Lessons</a></li>
-                                        <li class="{{{ (Request::segment(1) === 'lifeguarding' ? 'uk-active' : null) }}} "><a href="/other-services/">Other Services</a></li>
-                                    </ul>
-                                </li>
-                                <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a href="/about/">About</a></li>
-                                <li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a href="/testimonials/">Testimonials</a></li>
-                                <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a href="/contact-us/">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <hr>
-                    @if (Auth::guest())
-
-                    @else
-                    
+<div class="tm-header-mobile uk-hidden@m">
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="/">
+                <img src="/img/main-logo.png" class="uk-responsive-height" alt>
+            </a>
+        </div>
+        <div class="uk-navbar-right">
+            <a class="uk-navbar-toggle" href="#tm-mobile" uk-toggle>
+                <div uk-navbar-toggle-icon></div>
+            </a>
+        </div>
+    </nav>
+    <div id="tm-mobile" uk-offcanvas="overlay: true; flip: true;">
+        <div class="uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <div class="uk-child-width-1-1" uk-grid>
+                <div>
                     <div class="uk-panel">
                         <ul class="uk-nav uk-nav-default">
-                            <li class="uk-parent">
-                                <a href="#"> {{ Auth::user()->name }}</a>
-                                <div class="uk-nav uk-nav-default">
-                                    <ul class="uk-nav-sub">
-                                        <li><a href="/dashboard"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
-                                        <li><a href="/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
-                                        <li><a href="/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
-                                        <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Logout
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr>
-                    @endif
-                    <div>
-                        <div class="uk-panel widget-text" id="widget-text-8">
-                            <div class="textwidget"><a href="tel:941-773-1424"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Call</button></a>
-                                <a href="mailto:theswimschoolfl@gmail.com"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Email</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="tm-header uk-visible@m">
-        <div class="uk-navbar-container" uk-sticky cls-active="uk-active uk-navbar-sticky">
-            <div class="uk-container uk-container-expand">
-                <nav class="uk-navbar" uk-navbar>
-                    <div class="uk-navbar-left">
-                        <a href="/" class="uk-navbar-item uk-logo">
-                            <img src="/img/main-logo.png" class="uk-responsive-height" alt>
-                        </a>
-                    </div>
-                    <div class="uk-navbar-center">
-                        <ul class="uk-navbar-nav">
                             <li class="{{{ (Request::is('/') ? 'uk-active' : null )}}}"><a href="/">Home</a></li>
-                            <li class="{{{ (Request::segment(1) === 'lifeguarding' || Request::segment(1) === 'lessons' ||  Request::segment(1) === 'services' ||  Request::segment(1) === 'cpr-first-aid'  ? 'uk-active' : null) }}} uk-parent">
+                            <li class="{{{ (Request::segment(1) === 'lessons' || Request::segment(1) === 'private-semi-private' ||  Request::segment(1) === 'swim-team' ||  Request::segment(1) === 'other-services'  ? 'uk-active' : null) }}} uk-parent">
                                 <a href="/services/">Services</a>
-                                <div class="uk-navbar-dropdown">
-                                    <div class="uk-navbar-dropdown-grid uk-child-width-1-1" uk-grid>
-                                        <div>
-                                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
-                                                <li class="{{{ (Request::segment(1) === 'semi-private' ? 'uk-active' : null) }}} "><a href="/semi-private/lessons">Semi Private Lessons</a></li>
-                                                <li class="{{{ (Request::segment(1) === 'private' ? 'uk-active' : null) }}} "><a href="/private/lessons">Private Lessons</a></li>
-                                                <li class="{{{ (Request::segment(1) === 'lifeguarding' ? 'uk-active' : null) }}} "><a href="/other-services/">Other Services</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <ul class="uk-nav-sub">
+                                    <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
+                                    <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a href="/private-semi-private">Private & Semi Private Lessons</a></li>
+                                    <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a href="/swim-team">Swim Team</a></li>
+                                    <li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a href="/other-services/">Other Services</a></li>
+                                </ul>
                             </li>
                             <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a href="/about/">About</a></li>
                             <li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a href="/testimonials/">Testimonials</a></li>
                             <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a href="/contact-us/">Contact Us</a></li>
                         </ul>
                     </div>
-                    <div class="uk-navbar-right">
-                        @if (Auth::guest())
-                            
-                        @else    
-                        <ul class="uk-navbar-nav">
-                            <li>
-                                <a href="#"> {{ Auth::user()->name }} <span uk-icon="icon: triangle-down"></span></a>
-                                <div class="uk-navbar-dropdown">
-                                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        <li><a href="/dashboard"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
-                                        <li><a href="/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
-                                        <li><a href="/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
-                                        <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Logout
-                                            </a>
+                </div>
+                <hr>
+                @if (Auth::guest())
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                        @endif
-                        <div class="uk-navbar-item">
-                            <ul class="uk-grid-small uk-flex-inline uk-flex-middle uk-flex-nowrap" uk-grid>
-                                <li>
-                                    <a href="https://www.facebook.com/theswimschoolfl/" class="uk-icon-button" target="_blank" uk-icon="facebook"></a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/theswimschoolfl/" class="uk-icon-button" target="_blank" uk-icon="instagram"></a>
-                                </li>
-                            </ul>
+                @else
+
+                <div class="uk-panel">
+                    <ul class="uk-nav uk-nav-default">
+                        <li class="uk-parent">
+                            <a href="#"> {{ Auth::user()->name }}</a>
+                            <div class="uk-nav uk-nav-default">
+                                <ul class="uk-nav-sub">
+                                    <li><a href="/dashboard"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+                                    <li><a href="/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
+                                    <li><a href="/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
+                                    <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <hr>
+                @endif
+                <div>
+                    <div class="uk-panel widget-text" id="widget-text-8">
+                        <div class="textwidget"><a href="tel:941-773-1424"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Call</button></a>
+                            <a href="mailto:theswimschoolfl@gmail.com"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Email</button></a>
                         </div>
                     </div>
-                </nav>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="tm-header uk-visible@m">
+    <div class="uk-navbar-container" uk-sticky cls-active="uk-active uk-navbar-sticky">
+        <div class="uk-container uk-container-expand">
+            <nav class="uk-navbar" uk-navbar>
+                <div class="uk-navbar-left">
+                    <a href="/" class="uk-navbar-item uk-logo">
+                        <img src="/img/main-logo.png" class="uk-responsive-height" alt>
+                    </a>
+                </div>
+                <div class="uk-navbar-center">
+                    <ul class="uk-navbar-nav">
+                        <li class="{{{ (Request::is('/') ? 'uk-active' : null )}}}"><a href="/">Home</a></li>
+                        <li class="{{{ (Request::segment(1) === 'lessons' || Request::segment(1) === 'private-semi-private' ||  Request::segment(1) === 'swim-team' ||  Request::segment(1) === 'other-services'  ? 'uk-active' : null) }}} uk-parent">
+                            <a href="/services/">Services</a>
+                            <div class="uk-navbar-dropdown">
+                                <div class="uk-navbar-dropdown-grid uk-child-width-1-1" uk-grid>
+                                    <div>
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
+                                            <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a href="/private-semi-private">Private & Semi Private Lessons</a></li>
+                                            <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a href="/swim-team">Swim Team</a></li>
+                                            <li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a href="/other-services/">Other Services</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a href="/about/">About</a></li>
+                        <li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a href="/testimonials/">Testimonials</a></li>
+                        <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a href="/contact-us/">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right">
+                    @if (Auth::guest())
+
+                    @else
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a href="#"> {{ Auth::user()->name }} <span uk-icon="icon: triangle-down"></span></a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="/dashboard"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+                                    <li><a href="/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
+                                    <li><a href="/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
+                                    <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    @endif
+                    <div class="uk-navbar-item">
+                        <ul class="uk-grid-small uk-flex-inline uk-flex-middle uk-flex-nowrap" uk-grid>
+                            <li>
+                                <a href="https://www.facebook.com/theswimschoolfl/" class="uk-icon-button" target="_blank" uk-icon="facebook"></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/theswimschoolfl/" class="uk-icon-button" target="_blank" uk-icon="instagram"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@
 @endsection
 
 @section('heading')
-    Private Swim Lessons
+    Private & Semi Private Lessons
 @endsection
 
 @section('content')
