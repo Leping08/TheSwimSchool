@@ -19,7 +19,7 @@ Home
                         The Swim School
                     </h2>
                     <div class="text-black uk-margin-small uk-text-center uk-text-lead uk-scrollspy-inview uk-animation-slide-bottom" uk-scrollspy-class="uk-animation-slide-bottom">
-                        Group Lessons – Private & Semi Private Lessons – Swim Team
+                        Group Lessons – Private & Semi-Private Lessons – Swim Team
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@ Home
                     <!-- TODO: Get new image for private swim lessons -->
                     <div class="uk-card-media-top"><img src="/img/swim-lessons.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
-                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private & Semi Private Lessons</h3>
+                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private & Semi-Private Lessons</h3>
                         <!-- TODO: Add copy for private swim lessons -->
                         <div class="el-content uk-margin">The Swim School offers packages of individualized lessons available to adults and children (12 months+) of all ability levels at our pool or yours! Swim instruction is customized to meet the needs
                             and goals of each participant. These lessons are also great if group swim lessons do not accommodate your schedule.</div>

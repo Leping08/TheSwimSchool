@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Swim Team</title>
+    <title>North River Swim Team</title>
     <meta name="description" content="Meta Here."/>
 @endsection
 
@@ -10,13 +10,28 @@
 @endsection
 
 @section('content')
-    <div class="uk-section-default uk-section uk-section-small">
+    <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
-            <div class="uk-grid-margin uk-grid" uk-grid="">
-                <div class="uk-width-3-4@m uk-first-column">
-                    <div class="uk-margin uk-dropcap">
-                        <!-- TODO: Add content to the other services page -->
-                        Coming Soon!
+            <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-width-expand@m uk-first-column">
+                    <div class="uk-dropcap">
+                        <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team is holding tryouts at the River Wilderness Country Club. Registration for pre-season tryouts opens April 1st, 2018.</p>
+                    </div>
+                    <div>
+                        <h3 class="uk-heading-line"><span>2018 Pre-Season Tryout Date Options</span></h3>
+                        <ul class="uk-list uk-list-bullet">
+                            <li>Wed. 4/18 6:30PM</li>
+                            <li>Thurs. 4/19 6:30PM</li>
+                            <li>Sat. 4/21 10:00AM</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a class="uk-button uk-button-default" disabled> Registration Coming Soon</a>
+                    </div>
+                </div>
+                <div class="uk-width-expand@m">
+                    <div class="uk-margin">
+                        <img src="/img/swim-lessons.jpg" class="el-image" alt="">
                     </div>
                 </div>
             </div>

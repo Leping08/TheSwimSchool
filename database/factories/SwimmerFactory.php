@@ -15,21 +15,22 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Swimmer::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
+        'firstName' => $faker->firstName,
+        'lastName' => $faker->lastName,
+        'email' => $faker->safeEmail,
         'phone' => $faker->phoneNumber,
         'paid' => $faker->boolean,
-        'age' => $faker->numberBetween(1, 100),
-        'lesson_id' => $faker->numberBetween(1, 12),
+        'birthDate' => $faker->dateTimeBetween($startDate = '-30 years', $endDate = 'now'),
+        'lesson_id' => factory('App\Lesson')->create()->id,
         'parent' => $faker->name,
         'notes' => $faker->paragraph,
         'street' => $faker->streetName,
         'city' => $faker->city,
-        'state' => $faker->state,
+        'state' => $faker->word,
         'zip' => $faker->postcode,
         'emergencyName' => $faker->firstNameFemale,
         'emergencyRelationship' => 'Mom',
         'emergencyPhone' => $faker->phoneNumber,
-        'stripechargeid' => $faker->creditCardNumber
+        //'stripechargeid' => $faker->creditCardNumber
     ];
 });
