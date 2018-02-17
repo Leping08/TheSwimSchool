@@ -1,35 +1,35 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Private & Semi-Private Lessons</title>
+    <title>About The Swim School</title>
     <meta name="description" content="Meta Here."/>
 @endsection
 
 @section('heading')
-    Private & Semi-Private Lessons
+    CPR and First Aid Training
 @endsection
 
 @section('content')
-    <div class="uk-section-default uk-section uk-section-small">
+    <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-3-4@m uk-first-column">
                     <div class="uk-margin uk-dropcap">
-                        These lessons are designed to give the swimmer individualized attention to improve or master their swimming skills.
-                        The curriculum is customized in order to meet these goals of the swimmer.
+                        Need CPR and/or First Aid training? The Swim School can certify you with these life-saving skills. Our instructiors have years of experience teaching people CPR and first aid. Individual and group instruction is available.
                     </div>
                 </div>
-                <div class="uk-width-expand@m">
+                <div class="uk-width-1-4@m">
                     <div class="uk-margin">
-                        <img src="/img/swim-lessons.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="">
+                        <img src="/img/cpr-first-aid.jpg" class="el-image uk-border-rounded uk-box-shadow-small" alt="">
                     </div>
                 </div>
             </div>
+
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
                     <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
                         <div class="uk-card uk-card-default uk-card-body">
-                            <div class="uk-h2">Request Private Lessons</div>
+                            <div class="uk-h2">Schedule Training</div>
                             <form action="" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
@@ -53,7 +53,7 @@
                                 <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Message</label>
                                     <div class="uk-form-controls">
-                                        <textarea name="message" rows="5" class="uk-textarea" placeholder="I would like to schedule private lessons." required>{{ old('message') }}</textarea>
+                                        <textarea name="message" rows="5" class="uk-textarea" placeholder="I would like to schedule CPR and/or First Aid training." required>{{ old('message') }}</textarea>
                                     </div>
                                 </div>
                                 <div uk-grid="" class="uk-grid">
@@ -68,4 +68,5 @@
             </div>
         </div>
     </div>
+
 @endsection

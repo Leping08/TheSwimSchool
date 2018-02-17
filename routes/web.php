@@ -100,6 +100,13 @@ Route::get('/other-services', function (){
    return view('pages.other-services');
 });
 
+Route::get('/lifeguarding', function (){
+    return view('pages.lifeguarding');
+});
+
+Route::get('/cpr-first-aid', function(){
+    return view('pages.cpr-first-aid');
+});
 
 
 
@@ -114,6 +121,6 @@ Route::post('/lifeguarding', 'LeadController@lifeguarding');
 Route::post('/cpr-first-aid', 'LeadController@cprFirstAid');
 
 /* @see LeadController::privateLessons() */
-Route::post('/private/lessons', 'LeadController@privateLessons');
+Route::post('/private-semi-private', 'LeadController@privateLessons');
 
 

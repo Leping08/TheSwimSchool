@@ -66,7 +66,7 @@ Home
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a href="/swim-team" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <!-- TODO: Get new image for semi private swim lessons -->
-                    <div class="uk-card-media-top"><img src="/img/water-aerobics.jpg" class="el-image uk-border-rounded" alt=""></div>
+                    <div class="uk-card-media-top"><img src="/img/private-lessons.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Team</h3>
                         <!-- TODO: Add copy for semi private swim lessons -->
@@ -76,13 +76,13 @@ Home
                 </div>
             </div>
         </div>
-        <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
+        <!--<div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-width-1-1@m uk-first-column">
                 <div class="uk-text-center uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="uk-animation-slide-bottom-medium">
                     <a class="el-content uk-button uk-button-primary uk-button-large" href="/services/" title="Explore More">Explore More</a>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 
