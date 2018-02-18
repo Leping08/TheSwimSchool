@@ -122,7 +122,7 @@ return [
 
     'leadDestEmails' => [
             'theswimschoolfl@gmail.com',
-            'dereks008@gmail.com',
+            'derek@deltavcreative.com'
     ],
 
     'stream' => [
