@@ -12,10 +12,10 @@
                     <div class="uk-margin-top">
                         <div class="uk-card uk-card-default uk-width-1-1@s" uk-scrollspy="cls: uk-animation-slide-bottom; delay: 250">
                             <div class="uk-card-header">
-                                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                <div class="uk-grid-small" uk-grid>
                                     <div class="uk-width-expand">
-                                        <div class="uk-card-badge uk-label">{{$group->ages}}</div>
                                         <h3 class="uk-card-title f-24 uk-heading-bullet">{{$group->type}}</h3>
+                                        <div class="uk-card-badge uk-label">{{$group->ages}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -34,5 +34,13 @@
                 </div>
             @endif
         </div>
+        <style>
+            @media (max-width: 640px) {
+                .uk-card-badge {
+                    position: inherit;
+                    top: 5px;
+                }
+            }
+        </style>
     </div>
 @endsection
