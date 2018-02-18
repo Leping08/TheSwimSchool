@@ -62,7 +62,7 @@
                     <dd>${{$swimmer->lesson->price}}</dd>
 
                     <dt>Stripe Charge Id:</dt>
-                    <dd>{{$swimmer->stripechargeid}}</dd>
+                    <dd>{{$swimmer->stripeChargeId}}</dd>
                 </dl><hr>
                 @elseif($swimmer->paid == 0)
                 <dl class="uk-description-list-horizontal">
