@@ -53,7 +53,7 @@ Home
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a href="/private-semi-private" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <!-- TODO: Get new image for private swim lessons -->
-                    <div class="uk-card-media-top"><img src="/img/swim-lessons.jpg" class="el-image uk-border-rounded" alt=""></div>
+                    <div class="uk-card-media-top"><img src="/img/kids-floating.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private & Semi-Private Lessons</h3>
                         <!-- TODO: Add copy for private swim lessons -->
