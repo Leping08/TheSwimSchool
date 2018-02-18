@@ -9,16 +9,16 @@ Card Details
     <div class="uk-container">
             <form class="uk-form-stacked" action="/{{{$lesson->id}}}/card/checkout" method="POST" id="payment-form">
             {{ csrf_field() }}
-            <input name="swimmerId" type="hidden" value="{{{$newSwimmer->id}}}">
+            <input name="swimmerId" type="hidden" value="{{{old('swimmerId') ? old('swimmerId') : $newSwimmer->id}}}" required>
             <div class="group">
                 <label class="uk-form-label">
                     <span>Name</span>
-                    <input name="cardholderName" class="field" placeholder="First Last" value="{{{$newSwimmer->name}}}" required/>
+                    <input name="cardholderName" class="field" placeholder="First Last" value="{{{old('cardholderName') ? old('cardholderName') : $newSwimmer->name}}}" required/>
                 </label>
 
                 <label class="uk-form-label">
                     <span>Email</span>
-                    <input name="cardholderEmail" class="field" placeholder="expamle@gmail.com" value="{{{$newSwimmer->email}}}" required/>
+                    <input name="cardholderEmail" class="field" placeholder="expamle@gmail.com" value="{{{old('cardholderEmail') ? old('cardholderEmail') : $newSwimmer->email}}}" required/>
                 </label>
                 <!--<label>
                 <span>Phone</span>

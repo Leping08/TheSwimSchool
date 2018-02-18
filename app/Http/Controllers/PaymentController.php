@@ -8,15 +8,23 @@ use App\Mail\SignUp;
 use Stripe\Error\Card;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
     //Charge the card for the correct ammount and mark as payed in DB
     public function ChargeCardForLesson(Request $request, $id)
     {
+        $request->validate([
+            'cardholderName' => 'required',
+            'cardholderEmail' => 'required',
+            'swimmerId' => 'required'
+        ]);
+
         //TODO: Validate the email and name here
         $lesson = Lesson::find($id);
         $swimmer = Swimmer::find($request->swimmerId);
+        $newSwimmer = $swimmer;
 
         //Check to see if the lesson is full
         if($lesson->isLessonFull()){
@@ -46,7 +54,7 @@ class PaymentController extends Controller
 
             Log::info("Swimmer ID: ".$swimmer->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
             $swimmer->update(['lesson_id' => $lesson->id]);
-            $request->session()->flash('success', 'Thanks for your payment of $'.$lesson->price.'. First lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A'));
+            $request->session()->flash('success', 'Thanks for signing up! The first lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A'));
 
             //Send lesson full email if this user filled up the lesson
             if($lesson->isLessonFull()){
@@ -57,26 +65,23 @@ class PaymentController extends Controller
 
             return redirect('lessons/'.$lesson->class_type);
         } catch(Card $e){
-            //Card decline error
             $body = $e->getJsonBody();
             $err  = $body['error'];
             Log::error($err['message']);
-            $request->session()->flash('error', $err['message'].' Dont worry you are signed up. Just bring a check or cash for $'.$lesson->price.' to the first lesson.');
-            return redirect('lessons/'.$lesson->class_type);
+            $request->session()->flash('error', $err['message']);
+            return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
         } catch (InvalidRequest $e){
-            //Invalid parameters were supplied to Stripe's API
             Log::error('Invalid parameters were supplied to Stripes API');
-            $request->session()->flash('error', 'Oops, something went wrong with the payment. Dont worry you are signed up. Just bring a check or cash for $'.$lesson->price.' to the first lesson.');
-            return redirect('lessons/'.$lesson->class_type);
+            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
+            return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
         } catch (Authentication $e){
-            //Authentication with Stripe's API failed (maybe you changed API keys recently)
             Log::error('Authentication with Stripes API failed (maybe you changed API keys recently)');
-            $request->session()->flash('error', 'Oops, something went wrong with the payment. Dont worry you are signed up. Just bring a check or cash for $'.$lesson->price.' to the first lesson.');
-            return redirect('lessons/'.$lesson->class_type);
+            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
+            return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
         }  catch (Base $e) {
             Log::error('Generic error occurred');
-            $request->session()->flash('error', 'Oops, something went wrong with the payment. Dont worry you are signed up. Just bring a check or cash for $'.$lesson->price.' to the first lesson.');
-            return redirect('lessons/'.$lesson->class_type);
+            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
+            return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
         }
     }
 }

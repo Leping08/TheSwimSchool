@@ -23,7 +23,7 @@
                                 <a>Services</a>
                                 <ul class="uk-nav-sub">
                                     <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
-                                    <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a href="/private-semi-private">Private & Semi Private Lessons</a></li>
+                                    <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a href="/private-semi-private">Private & Semi-Private Lessons</a></li>
                                     <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a href="/swim-team">Swim Team</a></li>
                                     <li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a href="/other-services/">Other Services</a></li>
                                 </ul>
@@ -96,7 +96,7 @@
                                     <div>
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
                                             <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
-                                            <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a href="/private-semi-private">Private & Semi Private Lessons</a></li>
+                                            <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a href="/private-semi-private">Private & Semi-Private Lessons</a></li>
                                             <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a href="/swim-team">Swim Team</a></li>
                                             <li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a href="/other-services/">Other Services</a></li>
                                         </ul>
