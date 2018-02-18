@@ -35,7 +35,7 @@
             @endif
         </div>
         <style>
-            @media (max-width: 640px) {
+            @media (max-width: 960px) {
                 .uk-card-badge {
                     position: inherit;
                     top: 5px;
