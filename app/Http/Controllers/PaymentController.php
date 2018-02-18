@@ -54,7 +54,7 @@ class PaymentController extends Controller
 
             Log::info("Swimmer ID: ".$swimmer->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
             $swimmer->update(['lesson_id' => $lesson->id]);
-            $request->session()->flash('success', 'Thanks for signing up! The first lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A'));
+            $request->session()->flash('success', 'Thanks for signing up! The first lesson is '.$lesson->class_start_date->format('g:ia').' at '.$lesson->class_start_time->format('H:i A'));
 
             //Send lesson full email if this user filled up the lesson
             if($lesson->isLessonFull()){

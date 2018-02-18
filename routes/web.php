@@ -13,10 +13,7 @@
 
 Auth::routes();
 
-Route::get('/test', function(){
-   $lesson = App\Lesson::first();
-   return (new App\Mail\signUp($lesson));
-});
+
 //Auth protected routes
 Route::middleware('auth')->group(function () {
     //Swimmers
