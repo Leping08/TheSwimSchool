@@ -41,6 +41,12 @@
                     top: 5px;
                 }
             }
+            @media (min-width: 960px) {
+                .uk-label {
+                    font-size: 12px;
+                    padding: 5px 16px !important;
+                }
+            }
         </style>
     </div>
 @endsection

@@ -20,7 +20,7 @@
                         <ul class="uk-nav uk-nav-default">
                             <li class="{{{ (Request::is('/') ? 'uk-active' : null )}}}"><a href="/">Home</a></li>
                             <li class="{{{ (Request::segment(1) === 'lessons' || Request::segment(1) === 'private-semi-private' ||  Request::segment(1) === 'swim-team' ||  Request::segment(1) === 'other-services'  ? 'uk-active' : null) }}} uk-parent">
-                                <a href="/services/">Services</a>
+                                <a>Services</a>
                                 <ul class="uk-nav-sub">
                                     <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a href="/lessons/">Group Lessons</a></li>
                                     <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a href="/private-semi-private">Private & Semi Private Lessons</a></li>
@@ -66,7 +66,7 @@
                 <hr>
                 @endif
                 <div>
-                    <div class="uk-panel widget-text" id="widget-text-8">
+                    <div class="uk-panel widget-text uk-margin-top" id="widget-text-8">
                         <div class="textwidget"><a href="tel:941-773-1424"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Call</button></a>
                             <a href="mailto:theswimschoolfl@gmail.com"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Email</button></a>
                         </div>
@@ -90,7 +90,7 @@
                     <ul class="uk-navbar-nav">
                         <li class="{{{ (Request::is('/') ? 'uk-active' : null )}}}"><a href="/">Home</a></li>
                         <li class="{{{ (Request::segment(1) === 'lessons' || Request::segment(1) === 'private-semi-private' ||  Request::segment(1) === 'swim-team' ||  Request::segment(1) === 'other-services'  ? 'uk-active' : null) }}} uk-parent">
-                            <a href="/services/">Services</a>
+                            <a>Services</a>
                             <div class="uk-navbar-dropdown">
                                 <div class="uk-navbar-dropdown-grid uk-child-width-1-1" uk-grid>
                                     <div>
