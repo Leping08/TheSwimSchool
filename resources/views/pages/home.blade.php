@@ -19,7 +19,7 @@ Home
                         The Swim School
                     </h2>
                     <div class="text-black uk-margin-small uk-text-center uk-text-lead uk-scrollspy-inview uk-animation-slide-bottom" uk-scrollspy-class="uk-animation-slide-bottom">
-                        Group Lessons – Private & Semi-Private Lessons – Swim Team
+                        Taking School To The Pool
                     </div>
                 </div>
             </div>
