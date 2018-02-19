@@ -18,7 +18,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $swimmers = Swimmer::orderBy('created_at', 'desc')->limit(10)->get();
+        $swimmers = Swimmer::where('paid', '=', '1')->orderBy('created_at', 'desc')->limit(10)->get();
         $seasons = Season::all();
         $groups = Group::all();
         $locations = Location::all();

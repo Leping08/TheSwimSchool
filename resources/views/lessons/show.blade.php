@@ -58,12 +58,8 @@
                         <ul class="uk-list uk-list-striped">
                             @foreach($lesson[0]->swimmers as $swimmer)
                                 <li><a href="/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
-                                        @if($swimmer->paid == 1)
-                                            {{$swimmer->name}}
-                                        @elseif($swimmer->paid == 0)
-                                            {{$swimmer->name}}
-                                        @endif
-                                    </a></li>
+                                        {{$swimmer->firstName}} {{$swimmer->lastName}}
+                                </a></li>
                             @endforeach
                         </ul>
                     </div>

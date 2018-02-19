@@ -11,10 +11,11 @@ class LessonController extends Controller
 {
     public function show($id)
     {
-        $lesson = Lesson::with(['Group', 'Location', 'Season', 'DaysOfTheWeek'])
-            ->where('id', '=', $id)
-            ->get();
-        $days = Lesson::findorfail($id)->DaysOfTheWeek()->get();
+        $lesson = Lesson::find($id)->with(['Group', 'Location', 'Season', 'DaysOfTheWeek', 'Swimmers'])->get();
+        //$lesson = Lesson::with(['Group', 'Location', 'Season', 'DaysOfTheWeek'])
+        //    ->where('id', '=', $id)
+        //    ->get();
+        $days = Lesson::find($id)->DaysOfTheWeek()->get();
         return view('lessons.show', compact('lesson', 'days'));
     }
 
