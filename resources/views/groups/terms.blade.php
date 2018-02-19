@@ -35,7 +35,7 @@ Group Swim Lesson Policies & Procedures
 
 
                 <dt>Class Observation:</dt>
-                <dd>In order to foster the best learning environment for each student enrolled in The Swim School programs, the least amount of distraction is equired. For students to remain focused and fully attentive to their instructor during swim lesson classes, parents and other family members are permitted on the pool deck but must view students from the designated observation area (except for the Parent & Toddler class). We know this may be difficult, but students respond better to the instructor when they are without direct parent or family member involvement. If a student does not participate right away, it’s OK. They will watch and learn. If there is a problem, the instructor will come to you.</dd>
+                <dd>In order to foster the best learning environment for each student enrolled in The Swim School programs, the least amount of distraction is required. For students to remain focused and fully attentive to their instructor during swim lesson classes, parents and other family members are permitted on the pool deck but must view students from the designated observation area (except for the Parent & Infant-Toddler class). We know this may be difficult, but students respond better to the instructor when they are without direct parent or family member involvement. If a student does not participate right away, it’s OK. They will watch and learn. If there is a problem, the instructor will come to you.</dd>
 
 
                 <dt>Inclement Weather:</dt>
@@ -43,15 +43,15 @@ Group Swim Lesson Policies & Procedures
 
 
                 <dt>Makeup Classes:</dt>
-                <dd>Makeup classes will only be scheduled for swim lesson classes cancelled by the instructor. Makeup classes for weekday sessions will take place on Fridays at their regularly scheduled class times. Makeup classes for Sunday sessions will take place on Sundays following the session at their regularly scheduled class times. Because of the progressive nature of The Swim School programs and limited class sizes, no special make up classes will be offered for lessons missed by participants due to holidays, vacation, illness, etc. However, it may be possible to accommodate a makeup class for a student if the same class is available on a different day/time that is not full.</dd>
+                <dd>Makeup classes will only be scheduled for swim lesson classes cancelled by the instructor. Makeup classes for weekday sessions will take place on Fridays at their regularly scheduled class times. Makeup classes for weekend sessions will take place on the weekend following the session at their regularly scheduled class times. Because of the progressive nature of The Swim School programs and limited class sizes, no special make up classes will be offered for lessons missed by participants due to holidays, vacation, illness, etc. However, it may be possible to accommodate a makeup class for a student if the same class is available on a different day/time that is not full.</dd>
 
 
-                <dt>Parent & Toddler Class:</dt>
-                <dd><u>This is NOT an infant survival course.</u> The purpose of The Swim School Parent & Toddler program is to provide children with a positive experience in the water. Children will learn basic water skills through songs and play to develop trust and confidence in the water.</dd>
+                <dt>Parent & Infant-Toddler Class:</dt>
+                <dd><u>This is NOT an infant survival course.</u> The purpose of The Swim School Parent & Infant-Toddler program is to provide children with a positive experience in the water. Children will learn basic water skills through songs and play to develop trust and confidence in the water.</dd>
 
                 <ol>                
                     <li>
-                        <p>In-water participation of a parent, guardian, or other trusted adult is required for all children attending a Parent & Toddler swim lesson class.</p>
+                        <p>In-water participation of a parent, guardian, or other trusted adult is required for all children attending a Parent & Infant-Toddler swim lesson class.</p>
                     </li>
                     <li>
                         <p>Students must wear swim diapers.</p>
@@ -64,7 +64,7 @@ Group Swim Lesson Policies & Procedures
                     </li>
                 </ol>
 
-                <dt>Ens Of Session:</dt>
+                <dt>End Of Session:</dt>
                 <dd>At the conclusion of a swim lesson session, each student will receive a progress report and a certificate of participation. The instructor will indicate on the progress report which level the student should register for in the next session.</dd>
         </dl>
 

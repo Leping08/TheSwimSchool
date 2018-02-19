@@ -16,7 +16,7 @@
                 <form class="uk-grid-small" uk-grid action="" method="POST">
                     {{ csrf_field() }}
                     <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
-                        Swimmer Infomation
+                        Swimmer Information
                     </div>
                     <div class="uk-margin uk-width-1-2@m uk-width-1-1@s">
                         <label class="uk-form-label uk-heading-bullet" for="firstName">First Name</label>
@@ -82,7 +82,7 @@
 
                     <hr class="uk-width-1-1">
                     <div class="uk-h2 uk-margin uk-width-1-1">
-                        Contact Infomation
+                        Contact Information
                     </div>
                     <div class="uk-margin uk-width-1-1@s uk-width-1-2@m">
                         <label class="uk-form-label uk-heading-bullet" for="phone">Phone</label>
@@ -102,7 +102,7 @@
 
                     <hr class="uk-width-1-1">
                     <div class="uk-h2 uk-margin uk-width-1-1">
-                        Emergency Contact Infomation
+                        Emergency Contact Information
                     </div>
                     <div class="uk-margin uk-width-1-1@s uk-width-1-3@m">
                         <label class="uk-form-label uk-heading-bullet" for="emergencyName">Emergency Contact Name</label>
