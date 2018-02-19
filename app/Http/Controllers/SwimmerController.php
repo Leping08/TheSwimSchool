@@ -25,7 +25,7 @@ class SwimmerController extends Controller
     public function index()
     {
         //check to see if any swimmers are singed up
-        $swimmers = Swimmer::orderBy('id', 'desc')->get();
+        $swimmers = Swimmer::where('paid', '=', '1')->orderBy('id', 'desc')->get();
         return view('swimmers.list', compact('swimmers'));
     }
 
