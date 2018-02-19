@@ -13,6 +13,11 @@ Group Swim Lesson Policies & Procedures
                 <dt>Liability:</dt>
                 <dd>The enrolled participant and/or the parent/guardian of the participant recognize and understand that swimming is a Physical activity. In such there are risks inherent in the instruction and sport of swimming including but not limited to paralyzing injuries and the possibility of death. The participant hereby agrees to participate in The Swim School program and hereby agrees to indemnify and hold harmless The Swim School, its coaches, teachers, instructors, officers, directors, agents and employees against any liability resulting from any injury that may occur to the participant while participating in The Swim School aquatics programs. The participant also agrees to indemnify The Swim School for any damages incurred arising from any claim, demand, action or cause of action by the participant. The participant and/or parent/guardian authorizes any representative, coaches, teachers, instructors, officers, directors, agents or employees of The Swim School to have the participant treated in any medical emergency during their participation in the swim program. Further, the participant and/or parent/guardian agree to pay all costs associated with medical care and transportation for the participant. I have noted on this form any medical/health problems of which the staff should be aware.</dd>
 
+
+                <dt>Photo and Video Policy:</dt>
+                <dd>I am aware that individual and group publicity photos and videos are taken from time to time and in consideration for my or my child(ren)'s participation, I hereby grant my permission for my or my child(ren)'s likeness to be used in company publicity and/or advertising.</dd>
+
+
                 <dt>Facility Use:</dt>
                 <dd>Facility use outside of swim instruction is for residents only.</dd>
 
