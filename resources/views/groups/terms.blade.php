@@ -7,15 +7,18 @@ Group Swim Lesson Policies & Procedures
 @section('content')
 <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
-        
+
         <dl class="uk-description-list uk-description-list-divider">
+
+                <dt>Liability:</dt>
+                <dd>The enrolled participant and/or the parent/guardian of the participant recognize and understand that swimming is a Physical activity. In such there are risks inherent in the instruction and sport of swimming including but not limited to paralyzing injuries and the possibility of death. The participant hereby agrees to participate in The Swim School program and hereby agrees to indemnify and hold harmless The Swim School, its coaches, teachers, instructors, officers, directors, agents and employees against any liability resulting from any injury that may occur to the participant while participating in The Swim School aquatics programs. The participant also agrees to indemnify The Swim School for any damages incurred arising from any claim, demand, action or cause of action by the participant. The participant and/or parent/guardian authorizes any representative, coaches, teachers, instructors, officers, directors, agents or employees of The Swim School to have the participant treated in any medical emergency during their participation in the swim program. Further, the participant and/or parent/guardian agree to pay all costs associated with medical care and transportation for the participant. I have noted on this form any medical/health problems of which the staff should be aware.</dd>
 
                 <dt>Facility Use:</dt>
                 <dd>Facility use outside of swim instruction is for residents only.</dd>
 
 
                 <dt>Payment:</dt>
-                <dd>Payment must be made on the first day of a swim lesson session. {Something about online payment here!!!!!!!!}</dd>
+                <dd>Payment must be made by the first swim lesson session. All online payments are non refundable after the completion of the first swim lesson session.</dd>
 
 
                 <dt>Schedule:</dt>
