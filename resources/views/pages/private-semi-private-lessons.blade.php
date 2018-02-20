@@ -24,6 +24,60 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <div class="uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-width-4-4@m uk-first-column">
+                    <h2 class="uk-heading-bullet">Private Lesson Package Options</h2>
+                    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+                        <div>
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <ul class="uk-list uk-list-bullet">
+                                    <li>Four 30 Minute Lessons (1x/week)</li>
+                                    <li>Our Pool = $140/Month</li>
+                                    <li>Your Pool = $180/Month</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <ul class="uk-list uk-list-bullet">
+                                    <li>Eight 30 Minute Lessons (2x/week)</li>
+                                    <li>Our Pool = $280/Month</li>
+                                    <li>Your Pool = $360/Month</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-width-4-4@m uk-first-column">
+                    <h2 class="uk-heading-bullet">Semi-Private Lesson Package Options</h2>
+                    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+                        <div>
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <ul class="uk-list uk-list-bullet">
+                                    <li>Four 30 Minute Lessons (1x/week)</li>
+                                    <li>Our Pool = $80/Month per child</li>
+                                    <li>Your Pool = $100/Month per child</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <ul class="uk-list uk-list-bullet">
+                                    <li>Eight 30 Minute Lessons (2x/week)</li>
+                                    <li>Our Pool = $160/Month per child</li>
+                                    <li>Your Pool = $200/Month per child</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
                     <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
@@ -52,7 +106,7 @@
                                 <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Message</label>
                                     <div class="uk-form-controls">
-                                        <textarea name="message" rows="5" class="uk-textarea" placeholder="I would like to schedule private lessons." required>{{ old('message') }}</textarea>
+                                        <textarea name="message" rows="5" class="uk-textarea" placeholder="I would like to schedule private and/or semi-private lessons." required>{{ old('message') }}</textarea>
                                     </div>
                                 </div>
                                 <div uk-grid="" class="uk-grid">
