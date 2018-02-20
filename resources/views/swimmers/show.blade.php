@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('heading')
-{{$swimmer->name}}
+{{$swimmer->firstName}} {{$swimmer->lastName}}
 @endsection
 
 @section('content')
