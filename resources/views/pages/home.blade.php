@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The Swim School</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Manatee County Swim School | Parrish Swimming Lessons | Lakewood Ranch</title>
+    <meta name="description" content="Enjoy the convenience of private, semi-private, or small group Parrish swimming lessons for all ability levels with The Swim School! We are your Manatee County swim school, located near Lakewood Ranch and Bradenton. Reserve your class today!"/>
 @endsection
 
 @section('heading')

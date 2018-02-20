@@ -1,5 +1,10 @@
 @extends('layouts.app-uikit')
 
+@section('seo')
+    <title>Ellenton Group Lessons | Bradenton Swimming Classes | Manatee County</title>
+    <meta name="description" content="Bradenton swimming classes are available in a group setting for swimmers of all levels, from infants to advanced youth. Find more information here about our Manatee County and Ellenton group lessons."/>
+@endsection
+
 @section('heading')
     Group Lessons
 @endsection

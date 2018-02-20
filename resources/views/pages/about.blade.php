@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>About The Swim School</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Parrish Swim School | Lakewood Ranch Swimming Classes | Myakka City</title>
+    <meta name="description" content="Not only does our Parrish swim school offer Myakka City and Lakewood Ranch swimming classes, we are also proud to be the founder of the North River Rapids Swim Team. Find out more about us here."/>
 @endsection
 
 @section('heading')

@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Contact The Swim School</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Bradenton Swim Club | Parrish Swimming Classes | Manatee County Ellenton</title>
+    <meta name="description" content="For more information on the Parrish Swimming Classes we offer and our Bradenton Swim Club, we invite you to contact us today! Serving Ellenton and all of Manatee County."/>
 @endsection
 
 @section('heading')

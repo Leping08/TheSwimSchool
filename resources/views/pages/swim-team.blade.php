@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>North River Swim Team</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Manatee County Swim Team | Myakka City Swimming | Lakewood Ranch Ellenton</title>
+    <meta name="description" content="Like to swim in Lakewood Ranch and Ellenton? Come join our Manatee County swim team! The North River Swim School will be holding Myakka City swimming tryouts throughout April."/>
 @endsection
 
 @section('heading')

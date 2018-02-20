@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Private & Semi-Private Lessons</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Bradenton Private Swim Lessons | Parrish Swim Instructors | Ellenton</title>
+    <meta name="description" content="Our Ellenton and Parrish swim instructors at The Swim School are available to help you achieve your swimming goals! Request your Bradenton private swim lessons here."/>
 @endsection
 
 @section('heading')

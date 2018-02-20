@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The Swim School Services</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Parrish Swim School Lifeguarding | Bradenton CPR/First Aid | Palmetto</title>
+    <meta name="description" content="We are also proud to offer Parrish swim school lifeguarding, along with Bradenton CPR/first aid training! Contact The Swim School near Palmetto today for more information."/>
 @endsection
 
 @section('heading')

@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The Swim School Testimonials</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Manatee County Swim Instruction | Parrish Testimonials | Lakewood Ranch</title>
+    <meta name="description" content="Our Lakewood Ranch and Parrish testimonials speak for themselves! You'll discover our clients love the Manatee County swim instruction and private swim lessons we provide."/>
 @endsection
 
 @section('heading')
