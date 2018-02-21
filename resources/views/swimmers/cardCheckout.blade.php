@@ -8,31 +8,31 @@ Card Details
 <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
             <form class="uk-form-stacked" action="/{{{$lesson->id}}}/card/checkout" method="POST" id="payment-form">
-            {{ csrf_field() }}
-            <input name="swimmerId" type="hidden" value="{{{old('swimmerId') ? old('swimmerId') : $newSwimmer->id}}}" required>
-            <div class="group">
-                <label class="uk-form-label">
-                    <span>Name</span>
-                    <input name="cardholderName" class="field" placeholder="First Last" value="{{{old('cardholderName') ? old('cardholderName') : $newSwimmer->name}}}" required/>
-                </label>
+                {{ csrf_field() }}
+                <input name="swimmerId" type="hidden" value="{{{old('swimmerId') ? old('swimmerId') : $newSwimmer->id}}}" required>
+                <div class="group">
+                    <label class="uk-form-label">
+                        <span>Name</span>
+                        <input name="cardholderName" class="field" placeholder="First Last" value="{{{old('cardholderName') ? old('cardholderName') : $newSwimmer->name}}}" required/>
+                    </label>
 
-                <label class="uk-form-label">
-                    <span>Email</span>
-                    <input name="cardholderEmail" class="field" placeholder="expamle@gmail.com" value="{{{old('cardholderEmail') ? old('cardholderEmail') : $newSwimmer->email}}}" required/>
-                </label>
-                <!--<label>
-                <span>Phone</span>
-                <input class="field" placeholder="(123) 456-7890" type="tel" />
-                </label>-->
-            </div>
-            <div class="group">
-                <label class="uk-form-label">
-                <span>Card</span>
-                <div id="card-element" class="field"></div>
-                </label>
-            </div>
-            <!-- Used to display form errors -->
-            <div id="card-errors" role="alert"></div>
+                    <label class="uk-form-label">
+                        <span>Email</span>
+                        <input name="cardholderEmail" class="field" placeholder="expamle@gmail.com" value="{{{old('cardholderEmail') ? old('cardholderEmail') : $newSwimmer->email}}}" required/>
+                    </label>
+                    <!--<label>
+                    <span>Phone</span>
+                    <input class="field" placeholder="(123) 456-7890" type="tel" />
+                    </label>-->
+                </div>
+                <div class="group">
+                    <label class="uk-form-label">
+                    <span>Card</span>
+                    <div id="card-element" class="field"></div>
+                    </label>
+                </div>
+                <!-- Used to display form errors -->
+                <div id="card-errors" role="alert"></div>
                 <button class="uk-button uk-button-primary" type="submit">Pay ${{$lesson->price}}</button>
             </form>
         </div>
@@ -133,10 +133,10 @@ document.addEventListener("DOMContentLoaded", function(){
             fontWeight: 300,
             fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
             fontSize: '15px',
-            '::placeholder': {
-                color: '#CFD7E0'
-            },
-            },
+                '::placeholder': {
+                    color: '#CFD7E0'
+                }
+            }
         }
     });
     card.mount('#card-element');
@@ -172,16 +172,23 @@ document.addEventListener("DOMContentLoaded", function(){
 
     // Create a token when the form is submitted.
     var form = document.getElementById('payment-form');
+    var formSubmitted = false;
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        createToken();
+        if(!formSubmitted) {
+            formSubmitted = true;
+            e.preventDefault();
+            createToken();
+        }
     });
 
     card.addEventListener('change', function(event) {
         var displayError = document.getElementById('card-errors');
         if (event.error) {
+            formSubmitted = false;
             displayError.textContent = event.error.message;
+
         } else {
+            formSubmitted = false;
             displayError.textContent = '';
         }
     });

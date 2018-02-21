@@ -126,8 +126,9 @@ class GroupController extends Controller
     public function classDetails($groupType)
     {
         //Get all lessons that are open for registration and have not already ended
-        $group = Group::where('type', $groupType)->get();
-        $group = $group[0];
+        Log::info("Trying to find Group Type: $groupType");
+        $group = Group::where('type', $groupType)->firstOrFail();
+        Log::info("Found group ID: $group->id Group Type: $group->type");
         return view('groups.details', compact('group'));
     }
 
@@ -136,8 +137,10 @@ class GroupController extends Controller
     //sign up form for that lesson
     public function signUp($groupType, $id)
     {
-        $lesson = Lesson::with(['group', 'location', 'season'])->where('id', $id)->get();
-        $lesson = $lesson[0];
+        //TODO: LOOK into this Undefined offset: 0 error
+        Log::info("Trying to find Lesson ID: $id");
+        $lesson = Lesson::with(['group', 'location', 'season'])->where('id', $id)->firstOrFail();
+        Log::info("Found lesson ID: $lesson->id. The Group id for that lesson is: $lesson->group_id");
         return view('groups.signUp', compact('lesson'));
     }
 
