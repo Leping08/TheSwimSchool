@@ -70,4 +70,31 @@ class Lesson extends Model
         }
         return false;
     }
+
+    public function path(): string
+    {
+        return '/lessons/'.$this->Group->type;
+    }
+
+    public function DaysOfTheWeekArray(): array
+    {
+        return collect($this->DaysOfTheWeek)->map(function ($item) {
+            return $item->day;
+        })->toArray();
+    }
+
+    public function DaysOfTheWeekIdsArray(): array
+    {
+        return collect($this->DaysOfTheWeek)->map(function ($item) {
+            return $item->id;
+        })->toArray();
+    }
+
+    public function hasSwimmers(): bool
+    {
+        if($this->Swimmers()->count() > 0){
+            return true;
+        }
+        return false;
+    }
 }

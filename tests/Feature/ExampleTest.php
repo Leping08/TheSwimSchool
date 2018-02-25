@@ -9,15 +9,15 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
+    use DatabaseMigrations;
 
-        $response->assertStatus(200);
+    /** @test **/
+    public function a_user_can_see_groups()
+    {
+        $group = factory('App\Group')->create();
+        $response = $this->get('/lessons');
+        $response->assertSee($group->type);
+        $response->assertSee($group->description);
+        $response->assertSee($group->ages);
     }
 }

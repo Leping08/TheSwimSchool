@@ -59,7 +59,6 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        $location = Location::find($location->id);
         return view('locations.show', compact('location'));
     }
 
@@ -71,7 +70,6 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        $location = Location::find($location->id);
         return view('locations.edit', compact('location'));
     }
 
@@ -93,9 +91,9 @@ class LocationController extends Controller
             'phoneNumber' => 'required|string'
         ]);
 
-        Location::find($location->id)->update($request->all());
+        $location->update($request->all());
         Log::info("$location->name has been updated. Location ID: $location->id");
-        session()->flash('success_msg', "$location->name has been updated");
+        session()->flash('success', "$location->name has been updated");
         return redirect('/dashboard');
     }
 
@@ -107,12 +105,11 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        $location = Location::find($location->id);
-        $locations = $location->Lessons()->get();
-        if($locations->isEmpty()){
-            session()->flash('success', "$location->name was deleted.");
-            Log::info("$location->name was deleted. Location ID: $location->id");
+        $lessons = $location->Lessons()->get();
+        if($lessons->isEmpty()){
             $location->delete();
+            Log::info("$location->name was deleted. Location ID: $location->id");
+            session()->flash('success', "$location->name was deleted.");
             return redirect('/dashboard');
         }else{
             Log::info("$location->name can not be deleted. It has lessons associated with it. Location ID: $location->id");

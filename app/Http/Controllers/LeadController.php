@@ -19,7 +19,7 @@ class LeadController extends Controller
 
     public function contactUs(Request $request)
     {
-        $validData = getVaildData($request);
+        $validData = validateRequest($request);
         $validData['contact_type_id'] = 1;
         $contact = Contact::create($validData);
         sendEmails($validData);
@@ -30,7 +30,7 @@ class LeadController extends Controller
 
     public function lifeguarding(Request $request)
     {
-        $validData = getVaildData($request);
+        $validData = validateRequest($request);
         $validData['contact_type_id'] = 2;
         $contact = Contact::create($validData);
         sendEmails($validData);
@@ -41,7 +41,7 @@ class LeadController extends Controller
 
     public function cprFirstAid(Request $request)
     {
-        $validData = getVaildData($request);
+        $validData = validateRequest($request);
         $validData['contact_type_id'] = 3;
         $contact = Contact::create($validData);
         sendEmails($validData);
@@ -52,7 +52,7 @@ class LeadController extends Controller
 
     public function privateLessons(Request $request)
     {
-        $validData = getVaildData($request);
+        $validData = validateRequest($request);
         $validData['contact_type_id'] = 4;
         $contact = Contact::create($validData);
         sendEmails($validData);
@@ -71,7 +71,7 @@ function sendEmails($validData)
     }
 }
 
-function getVaildData($request)
+function validateRequest($request)
 {
     return $request->validate([
         'name' => 'required',

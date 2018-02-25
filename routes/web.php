@@ -23,15 +23,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/swimmers/{id}/edit', 'SwimmerController@edit');
     Route::patch('/swimmers/{id}/edit', 'SwimmerController@update');
 
-    //Dashboard
+    /* @see DashboardController::index() */
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/dashboard/season/current', 'DashboardController@swimmersForCurrentSeason');
 
-    //Leads
+    /* @see LeadController::show() */
     Route::get('/lead/{id}', 'LeadController@show');
 
+    /* @see GroupController */
     Route::resource('groups', 'GroupController');
+    /* @see LocationController */
     Route::resource('locations', 'LocationController');
+    /* @see LessonController */
     Route::resource('lesson', 'LessonController');
 });
 

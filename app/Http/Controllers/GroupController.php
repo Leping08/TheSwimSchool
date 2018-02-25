@@ -58,7 +58,6 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        $group = Group::find($group->id);
         return view('groups.show', compact('group'));
     }
 
@@ -70,7 +69,6 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        $group = Group::find($group->id);
         return view('groups.edit', compact('group'));
     }
 
@@ -89,7 +87,7 @@ class GroupController extends Controller
             'description' => 'required|string'
         ]);
 
-        Group::find($group->id)->update($request->all());
+        $group->update($request->all());
         Log::info("$group->type has been updated. Group ID: $group->id");
         session()->flash('success_msg', "$group->type has been updated");
         return redirect('/dashboard');
@@ -137,7 +135,6 @@ class GroupController extends Controller
     //sign up form for that lesson
     public function signUp($groupType, $id)
     {
-        //TODO: LOOK into this Undefined offset: 0 error
         Log::info("Trying to find Lesson ID: $id");
         $lesson = Lesson::with(['group', 'location', 'season'])->where('id', $id)->firstOrFail();
         Log::info("Found lesson ID: $lesson->id. The Group id for that lesson is: $lesson->group_id");

@@ -344,6 +344,7 @@ Dashboard
                                         </a></li>
                                 @endforeach
                             </ul>
+                            {{ $leads->links() }}
                         @else
                             No leads.
                         @endif

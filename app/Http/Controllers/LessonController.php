@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
+use App\Location;
 use Carbon\Carbon;
 use App\Lesson;
 use Illuminate\Http\Request;
@@ -13,59 +15,19 @@ class LessonController extends Controller
     {
         $lesson = Lesson::with(['Group', 'Location', 'Season', 'DaysOfTheWeek'])
             ->where('id', '=', $id)
-            ->get();
+            ->firstOrFail();
         $days = Lesson::find($id)->DaysOfTheWeek()->get();
         return view('lessons.show', compact('lesson', 'days'));
     }
 
     public function store(Request $request)
     {
-        $lesson = $request->validate([
-            'group_id' => 'required|digits_between:1,6',
-            'location_id' => 'required|digits_between:1,6',
-            'price' => 'required|digits_between:1,3',
-            'registration_open' => 'required|string',
-            'class_size' => 'required|digits_between:1,3',
-            'class_start_time' => 'required|string',
-            'class_end_time' => 'required|string',
-            'class_start_date' => 'required|string',
-            'class_end_date' => 'required|string'
-        ]);
-
-        $lesson['registration_open'] = Carbon::parse($lesson['registration_open']);
-        $lesson['class_start_time'] = Carbon::parse($lesson['class_start_time']);
-        $lesson['class_end_time'] = Carbon::parse($lesson['class_end_time']);
-        $lesson['class_start_date'] = Carbon::parse($lesson['class_start_date']);
-        $lesson['class_end_date'] = Carbon::parse($lesson['class_end_date']);
-        $lesson['season_id'] =  GetSeason::getSeasonFromDate($lesson['class_start_date'])->id;
-
+        $lesson = validateLesson($request);
         $newLesson = Lesson::create($lesson);
-
-        if($request['monday']){
-            $newLesson->DaysOfTheWeek()->attach(1);
-        }
-        if($request['tuesday']){
-            $newLesson->DaysOfTheWeek()->attach(2);
-        }
-        if($request['wednesday']){
-            $newLesson->DaysOfTheWeek()->attach(3);
-        }
-        if($request['thursday']){
-            $newLesson->DaysOfTheWeek()->attach(4);
-        }
-        if($request['friday']){
-            $newLesson->DaysOfTheWeek()->attach(5);
-        }
-        if($request['saturday']){
-            $newLesson->DaysOfTheWeek()->attach(6);
-        }
-        if($request['sunday']){
-            $newLesson->DaysOfTheWeek()->attach(7);
-        }
-
-        Log::info($newLesson->group->typee." lesson was created. Lesson ID: $newLesson->id.");
+        attachDaysOfTheWeeks($request, $newLesson);
+        Log::info($newLesson->group->type." lesson was created. Lesson ID: $newLesson->id.");
         session()->flash('success', $newLesson->group->type.' lesson was created');
-        return back();
+        return redirect('/dashboard');
     }
 
     /**
@@ -76,7 +38,10 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        //TODO: Edit a lesson
+        $locations = Location::all();
+        $groups = Group::all();
+        $daysOfTheWeekArray = $lesson->DaysOfTheWeekArray();
+        return view('lessons.edit', compact('lesson', 'locations', 'groups', 'daysOfTheWeekArray'));
     }
 
     /**
@@ -88,7 +53,16 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //TODO: update a lesson
+        $lesson->update(validateLesson($request));
+        $lesson->DaysOfTheWeek()->detach();
+        attachDaysOfTheWeeks($request, $lesson);
+        Log::info($lesson->group->type." lesson was updated. Lesson ID: $lesson->id.");
+        if($lesson->hasSwimmers()){
+            session()->flash('success', $lesson->group->type.' lesson was updated. Make sure to notify all swimmers in the lesson of the changes.');
+        }else{
+            session()->flash('success', $lesson->group->type.' lesson was updated.');
+        }
+        return redirect('/lesson/'.$lesson->id);
     }
 
     /**
@@ -99,6 +73,65 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //TODO: destroy a lesson
+        if(!$lesson->hasSwimmers()){
+            Log::info("Lesson ID: $lesson->id was deleted.");
+            session()->flash('success', "The lesson was deleted.");
+            $lesson->DaysOfTheWeek()->detach();
+            $lesson->delete();
+            return redirect('/dashboard');
+        }else{
+            Log::info("$lesson->id can not be deleted. It has swimmers in it.");
+            session()->flash('warning', "This lesson can not be deleted. It has swimmers in it.");
+            return back();
+        }
+    }
+}
+
+function validateLesson(Request $request)
+{
+    $lesson = $request->validate([
+        'group_id' => 'required|digits_between:1,6',
+        'location_id' => 'required|digits_between:1,6',
+        'price' => 'required|digits_between:1,3',
+        'registration_open' => 'required|string',
+        'class_size' => 'required|digits_between:1,3',
+        'class_start_time' => 'required|string',
+        'class_end_time' => 'required|string',
+        'class_start_date' => 'required|string',
+        'class_end_date' => 'required|string'
+    ]);
+
+    $lesson['registration_open'] = Carbon::parse($lesson['registration_open']);
+    $lesson['class_start_time'] = Carbon::parse($lesson['class_start_time']);
+    $lesson['class_end_time'] = Carbon::parse($lesson['class_end_time']);
+    $lesson['class_start_date'] = Carbon::parse($lesson['class_start_date']);
+    $lesson['class_end_date'] = Carbon::parse($lesson['class_end_date']);
+    $lesson['season_id'] =  GetSeason::getSeasonFromDate($lesson['class_start_date'])->id;
+
+    return $lesson;
+}
+
+function attachDaysOfTheWeeks(Request $request, Lesson $lesson)
+{
+    if($request['monday']){
+        $lesson->DaysOfTheWeek()->attach(1);
+    }
+    if($request['tuesday']){
+        $lesson->DaysOfTheWeek()->attach(2);
+    }
+    if($request['wednesday']){
+        $lesson->DaysOfTheWeek()->attach(3);
+    }
+    if($request['thursday']){
+        $lesson->DaysOfTheWeek()->attach(4);
+    }
+    if($request['friday']){
+        $lesson->DaysOfTheWeek()->attach(5);
+    }
+    if($request['saturday']){
+        $lesson->DaysOfTheWeek()->attach(6);
+    }
+    if($request['sunday']){
+        $lesson->DaysOfTheWeek()->attach(7);
     }
 }
