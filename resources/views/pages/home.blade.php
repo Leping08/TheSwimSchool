@@ -70,7 +70,7 @@ Home
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Team</h3>
                         <!-- TODO: Add copy for semi private swim lessons -->
-                        <div class="el-content uk-margin">Love to swim? Join the North River Swim Team, a seasonal program run by The Swim School. Quality level coaches provide a fun atmosphere for children ages 4-19 to improve their technique
+                        <div class="el-content uk-margin">Love to swim? Join the North River Swim Team, a seasonal program run by The Swim School. Quality level coaches provide a fun atmosphere for children ages 5-18 to improve their technique
                             of the four competitive strokes, build endurance and learn about sportsmanship through local competition. </div>
                     </div>
                 </div>

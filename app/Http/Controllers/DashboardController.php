@@ -29,7 +29,7 @@ class DashboardController extends Controller
 
         $todaysLessons = Lesson::whereHas('DaysOfTheWeek', function ($query) {
             $query->where([
-                    ['days_of_the_weeks.id', '=', Carbon::now()->dayOfWeek], //TODO: Fix this day of the week to display today's lessons
+                    ['days_of_the_weeks.id', '=', (Carbon::now()->subDay(1)->dayOfWeek + 1)], //TODO: Fix this day of the week to display today's lessons
                     ['class_start_date', '<=', Carbon::now()],
                     ['class_end_date', '>=',Carbon::now()]
                 ]);
