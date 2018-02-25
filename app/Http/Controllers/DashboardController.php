@@ -26,16 +26,7 @@ class DashboardController extends Controller
         $daysOfTheWeek = DaysOfTheWeek::all();
         $lessons = Lesson::all();
         $leads = Contact::latest()->paginate(8, ['*'], 'leads');
-
-        $todaysLessons = Lesson::whereHas('DaysOfTheWeek', function ($query) {
-            $query->where([
-                    ['days_of_the_weeks.id', '=', (Carbon::now()->subDay(1)->dayOfWeek + 1)], //TODO: Fix this day of the week to display today's lessons
-                    ['class_start_date', '<=', Carbon::now()],
-                    ['class_end_date', '>=',Carbon::now()]
-                ]);
-        })
-        ->get();
-
+        $todaysLessons = getTodaysLessons();
         return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads'));
     }
 
@@ -46,4 +37,15 @@ class DashboardController extends Controller
             $query->where('season_id', '=', $season->id);
         })->get();
     }
+}
+
+function getTodaysLessons()
+{
+    return Lesson::whereHas('DaysOfTheWeek', function ($query) {
+        $query->where([
+            ['days_of_the_weeks.id', '=', (Carbon::now()->subDay(1)->dayOfWeek + 1)], //TODO: Fix this day of the week to display today's lessons
+            ['class_start_date', '<=', Carbon::now()],
+            ['class_end_date', '>=',Carbon::now()]
+        ]);
+    })->get();
 }

@@ -15,19 +15,17 @@ class GetSeason
     public static function getCurrentSeason()
     {
         $now = Carbon::now();
-        $season = Season::where('year', '=', $now->year)
+        return Season::where('year', '=', $now->year)
             ->where('season', '=', GetSeason::getSeasonString($now->month))
-            ->get();
-        return $season[0];
+            ->first();
     }
 
     public static function getSeasonFromDate($date)
     {
         $carbonDate = Carbon::parse($date);
-        $season = Season::where('year', '=', $carbonDate->year)
+        return Season::where('year', '=', $carbonDate->year)
             ->where('season', '=', GetSeason::getSeasonString($carbonDate->month))
-            ->get();
-        return $season[0];
+            ->first();
     }
 
     public static function getSeasonString($currentMonth)
