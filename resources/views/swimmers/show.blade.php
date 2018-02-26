@@ -42,7 +42,7 @@
                     <h4>Lesson Info</h4>
                     <dl class="uk-description-list-horizontal">
                         <dt>Group:</dt>
-                        <dd><a href="/lesson/{{$swimmer->lesson->group->id}}">{{$swimmer->lesson->group->type}}</a></dd>
+                        <dd><a href="/lesson/{{$swimmer->lesson->id}}">{{$swimmer->lesson->group->type}}</a></dd>
                         <dt>Ages:</dt>
                         <dd>{{$swimmer->lesson->group->ages}}</dd>
                         <dt>Location:</dt>
