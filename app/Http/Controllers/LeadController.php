@@ -66,8 +66,12 @@ function sendEmails($validData)
 {
     $leadDestEmails = config('mail.leadDestEmails');
     $subject = ContactType::find($validData['contact_type_id']);
-    foreach($leadDestEmails as $email){
-        ContactEmail::dispatch($validData, $subject->name, $email);
+    try {
+        foreach($leadDestEmails as $email){
+            ContactEmail::dispatch($validData, $subject->name, $email);
+        }
+    } catch (\Exception $e) {
+        Log::error("Contact Email Error: ".$e);
     }
 }
 

@@ -45,23 +45,32 @@ class PaymentController extends Controller
             $swimmer->paid = 1;
             $swimmer->stripechargeid = $charge->id;
             $swimmer->save();
-
-            Log::info("Swimmer: $swimmer->firstName $swimmer->lastName with ID: $swimmer->id signed up for lesson ID: $swimmer->lesson_id");
-            Mail::to($swimmer->email)->send(new SignUp($lesson));
-            Log::info("Group Lesson sign up email sent to $swimmer->email. Swimmer ID: $swimmer->id Lesson ID: $lesson->id.");
-            //TODO: add signup email to the que
-            //SignupEmail::dispatch($lesson, $newSwimmer->email);
-
             Log::info("Swimmer ID: ".$swimmer->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
+
             $swimmer->update(['lesson_id' => $lesson->id]);
-            $request->session()->flash('success', 'Thanks for signing up! The first lesson is '.$lesson->class_start_date->format('g:ia').' at '.$lesson->class_start_time->format('H:i A'));
+            Log::info("Swimmer: $swimmer->firstName $swimmer->lastName with ID: $swimmer->id signed up for lesson ID: $swimmer->lesson_id");
+
+            try {
+                Mail::to($swimmer->email)->send(new SignUp($lesson));
+                Log::info("Group Lesson sign up email sent to $swimmer->email. Swimmer ID: $swimmer->id Lesson ID: $lesson->id.");
+                //Add signup email to the que
+                //SignupEmail::dispatch($lesson, $newSwimmer->email);
+            } catch (\Exception $e) {
+                Log::error("Email error: ".$e);
+            }
 
             //Send lesson full email if this user filled up the lesson
             if($lesson->isLessonFull()){
-                foreach(config('mail.leadDestEmails') as $emailAddress){
-                    Mail::to($emailAddress)->send(new ClassFull($lesson));
+                try {
+                    foreach(config('mail.leadDestEmails') as $emailAddress){
+                        Mail::to($emailAddress)->send(new ClassFull($lesson));
+                    }
+                } catch (\Exception $e) {
+                    Log::error("Email error: ".$e);
                 }
             }
+
+            $request->session()->flash('success', 'Thanks for signing up! The first lesson is '.$lesson->class_start_date->format('g:ia').' at '.$lesson->class_start_time->format('H:i A'));
 
             return redirect('lessons/'.$lesson->class_type);
         } catch(Card $e){
