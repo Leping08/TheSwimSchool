@@ -18,22 +18,17 @@ Lessons
                         <div class="uk-child-width-expand@s" uk-grid>
                             <div><i class="fa fa-users fa-lg" aria-hidden="true"></i> <strong>Class Size:</strong> {{$lesson->class_size}}</div>
                             <div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$lesson->price}}</div>
-                            <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Class Days:</strong>
-                                @foreach($lesson->DaysOfTheWeek as $day)
-                                    {{$day->day}}
-                                    @if (!$loop->last)
-                                        ,
-                                    @endif
-                                @endforeach
-                            </div>
-                            <div><i class="fa fa-life-ring fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}</div>
+                            <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Dates:</strong> {{$lesson->class_start_date->toFormattedDateString()}} - {{$lesson->class_end_date->toFormattedDateString()}}</div>
                         </div>
 
                         <div class="uk-child-width-expand@s" uk-grid>
                             <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->Swimmers->count()}}</div>
-                            <div><i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i> <strong>Dates:</strong> {{$lesson->class_start_date->toFormattedDateString()}} - {{$lesson->class_end_date->toFormattedDateString()}}</div>
-                            <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Times:</strong> {{$lesson->class_start_time->format('g:ia')}} - {{$lesson->class_end_time->format('g:ia')}}</div>
-                            <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Address:</strong> <br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{{$lesson->location->street}}}+{{{$lesson->location->city}}}+{{{$lesson->location->state}}}+{{{$lesson->location->zip}}}">{{$lesson->location->street}}, <br>{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}</a></div>
+                            <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{{$lesson->location->street}}}+{{{$lesson->location->city}}}+{{{$lesson->location->state}}}+{{{$lesson->location->zip}}}">{{$lesson->location->street}}, <br>{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}</a></div>
+                            <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Times:</strong><br>
+                                @foreach($lesson->DaysOfTheWeek as $day)
+                                    {{$day->day}} {{$lesson->class_start_time->format('g:i a')}} - {{$lesson->class_end_time->format('g:i a')}}<br>
+                                @endforeach
+                            </div>
                         </div>
 
                         @if (Auth::guest())
