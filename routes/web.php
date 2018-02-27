@@ -111,16 +111,16 @@ Route::get('/cpr-first-aid', function(){
 
 
 //WP Contact Forms
-/* @see LeadController::contactUs() */
-Route::post('/contact-us', 'LeadController@contactUs');
+/* @see LeadController::contact() */
+Route::post('/contact-us', 'LeadController@contact');
 
-/* @see LeadController::lifeguarding() */
-Route::post('/lifeguarding', 'LeadController@lifeguarding');
+/* @see LeadController::contact() */
+Route::post('/lifeguarding', 'LeadController@contact');
 
-/* @see LeadController::cprFirstAid() */
-Route::post('/cpr-first-aid', 'LeadController@cprFirstAid');
+/* @see LeadController::contact() */
+Route::post('/cpr-first-aid', 'LeadController@contact');
 
-/* @see LeadController::privateLessons() */
-Route::post('/private-semi-private', 'LeadController@privateLessons');
+/* @see LeadController::contact() */
+Route::post('/private-semi-private', 'LeadController@contact');
 
 

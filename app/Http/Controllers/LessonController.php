@@ -22,9 +22,9 @@ class LessonController extends Controller
 
     public function store(Request $request)
     {
-        $lesson = validateLesson($request);
+        $lesson = $this->validateLesson($request);
         $newLesson = Lesson::create($lesson);
-        attachDaysOfTheWeeks($request, $newLesson);
+        $this->attachDaysOfTheWeeks($request, $newLesson);
         Log::info($newLesson->group->type." lesson was created. Lesson ID: $newLesson->id.");
         session()->flash('success', $newLesson->group->type.' lesson was created');
         return redirect('/dashboard');
@@ -53,9 +53,9 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        $lesson->update(validateLesson($request));
+        $lesson->update($this->validateLesson($request));
         $lesson->DaysOfTheWeek()->detach();
-        attachDaysOfTheWeeks($request, $lesson);
+        $this->attachDaysOfTheWeeks($request, $lesson);
         Log::info($lesson->group->type." lesson was updated. Lesson ID: $lesson->id.");
         if($lesson->hasSwimmers()){
             session()->flash('success', $lesson->group->type.' lesson was updated. Make sure to notify all swimmers in the lesson of the changes.');
@@ -85,53 +85,53 @@ class LessonController extends Controller
             return back();
         }
     }
-}
 
-function validateLesson(Request $request)
-{
-    $lesson = $request->validate([
-        'group_id' => 'required|digits_between:1,6',
-        'location_id' => 'required|digits_between:1,6',
-        'price' => 'required|digits_between:1,3',
-        'registration_open' => 'required|string',
-        'class_size' => 'required|digits_between:1,3',
-        'class_start_time' => 'required|string',
-        'class_end_time' => 'required|string',
-        'class_start_date' => 'required|string',
-        'class_end_date' => 'required|string'
-    ]);
+    private function validateLesson(Request $request)
+    {
+        $lesson = $request->validate([
+            'group_id' => 'required|digits_between:1,6',
+            'location_id' => 'required|digits_between:1,6',
+            'price' => 'required|digits_between:1,3',
+            'registration_open' => 'required|string',
+            'class_size' => 'required|digits_between:1,3',
+            'class_start_time' => 'required|string',
+            'class_end_time' => 'required|string',
+            'class_start_date' => 'required|string',
+            'class_end_date' => 'required|string'
+        ]);
 
-    $lesson['registration_open'] = Carbon::parse($lesson['registration_open']);
-    $lesson['class_start_time'] = Carbon::parse($lesson['class_start_time']);
-    $lesson['class_end_time'] = Carbon::parse($lesson['class_end_time']);
-    $lesson['class_start_date'] = Carbon::parse($lesson['class_start_date']);
-    $lesson['class_end_date'] = Carbon::parse($lesson['class_end_date']);
-    $lesson['season_id'] =  GetSeason::getSeasonFromDate($lesson['class_start_date'])->id;
+        $lesson['registration_open'] = Carbon::parse($lesson['registration_open']);
+        $lesson['class_start_time'] = Carbon::parse($lesson['class_start_time']);
+        $lesson['class_end_time'] = Carbon::parse($lesson['class_end_time']);
+        $lesson['class_start_date'] = Carbon::parse($lesson['class_start_date']);
+        $lesson['class_end_date'] = Carbon::parse($lesson['class_end_date']);
+        $lesson['season_id'] =  GetSeason::getSeasonFromDate($lesson['class_start_date'])->id;
 
-    return $lesson;
-}
+        return $lesson;
+    }
 
-function attachDaysOfTheWeeks(Request $request, Lesson $lesson)
-{
-    if($request['monday']){
-        $lesson->DaysOfTheWeek()->attach(1);
-    }
-    if($request['tuesday']){
-        $lesson->DaysOfTheWeek()->attach(2);
-    }
-    if($request['wednesday']){
-        $lesson->DaysOfTheWeek()->attach(3);
-    }
-    if($request['thursday']){
-        $lesson->DaysOfTheWeek()->attach(4);
-    }
-    if($request['friday']){
-        $lesson->DaysOfTheWeek()->attach(5);
-    }
-    if($request['saturday']){
-        $lesson->DaysOfTheWeek()->attach(6);
-    }
-    if($request['sunday']){
-        $lesson->DaysOfTheWeek()->attach(7);
+    private function attachDaysOfTheWeeks(Request $request, Lesson $lesson)
+    {
+        if($request['monday']){
+            $lesson->DaysOfTheWeek()->attach(1);
+        }
+        if($request['tuesday']){
+            $lesson->DaysOfTheWeek()->attach(2);
+        }
+        if($request['wednesday']){
+            $lesson->DaysOfTheWeek()->attach(3);
+        }
+        if($request['thursday']){
+            $lesson->DaysOfTheWeek()->attach(4);
+        }
+        if($request['friday']){
+            $lesson->DaysOfTheWeek()->attach(5);
+        }
+        if($request['saturday']){
+            $lesson->DaysOfTheWeek()->attach(6);
+        }
+        if($request['sunday']){
+            $lesson->DaysOfTheWeek()->attach(7);
+        }
     }
 }
