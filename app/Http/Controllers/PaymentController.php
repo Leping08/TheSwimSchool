@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Lesson;
 use App\Swimmer;
 use App\Mail\SignUp;
+use App\Mail\ClassFull;
 use Stripe\Error\Card;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -60,6 +61,7 @@ class PaymentController extends Controller
             }
 
             //Send lesson full email if this user filled up the lesson
+            //TODO: Test to see if this works
             if($lesson->isLessonFull()){
                 try {
                     foreach(config('mail.leadDestEmails') as $emailAddress){
