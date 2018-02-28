@@ -37,21 +37,21 @@ Dashboard
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <div class="uk-card-header">
-                        <h3 class="el-title uk-margin uk-h2">Today's Lessons</h3>
+                        <h3 class="el-title uk-margin uk-h2">Leads</h3>
                     </div>
-                    <!-- TODO: Make today's lessons show today's lessons -->
                     <div class="uk-card-body">
-                        @if(count($todaysLessons))
-                        <ul class="uk-list uk-list-striped">
-                            <li><strong>Lessons</strong></li>
-                            @foreach ($todaysLessons as $lesson)
-                                <li><a href="/lesson/{{$lesson->id}}" class="list-group-item list-group-item-action justify-content-between">
-                                        {{$lesson->group->type}}
-                                    </a></li>
-                            @endforeach
-                        </ul>
+                        @if(count($leads))
+                            <ul class="uk-list uk-list-striped">
+                                <li><strong>Leads</strong></li>
+                                @foreach ($leads as $lead)
+                                    <li><a href="/lead/{{$lead->id}}" class="list-group-item list-group-item-action justify-content-between">
+                                            {{$lead->name}}
+                                        </a></li>
+                                @endforeach
+                            </ul>
+                            {{ $leads->links() }}
                         @else
-                            No lessons today.
+                            No leads.
                         @endif
                     </div>
                 </div>
@@ -329,24 +329,25 @@ Dashboard
             </div>
         </div>
         <div class="uk-grid-margin uk-grid" uk-grid="">
+
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <div class="uk-card-header">
-                        <h3 class="el-title uk-margin uk-h2">Leads</h3>
+                        <h3 class="el-title uk-margin uk-h2">Today's Lessons</h3>
                     </div>
+                    <!-- TODO: Make today's lessons show today's lessons -->
                     <div class="uk-card-body">
-                        @if(count($leads))
+                        @if(count($todaysLessons))
                             <ul class="uk-list uk-list-striped">
-                                <li><strong>Leads</strong></li>
-                                @foreach ($leads as $lead)
-                                    <li><a href="/lead/{{$lead->id}}" class="list-group-item list-group-item-action justify-content-between">
-                                            {{$lead->name}}
+                                <li><strong>Lessons</strong></li>
+                                @foreach ($todaysLessons as $lesson)
+                                    <li><a href="/lesson/{{$lesson->id}}" class="list-group-item list-group-item-action justify-content-between">
+                                            {{$lesson->group->type}}
                                         </a></li>
                                 @endforeach
                             </ul>
-                            {{ $leads->links() }}
                         @else
-                            No leads.
+                            No lessons today.
                         @endif
                     </div>
                 </div>

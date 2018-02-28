@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $locations = Location::all();
         $daysOfTheWeek = DaysOfTheWeek::all();
         $lessons = Lesson::all();
-        $leads = Contact::latest()->paginate(8, ['*'], 'leads');
+        $leads = Contact::latest()->paginate(10, ['*'], 'leads');
         $todaysLessons = getTodaysLessons();
         return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads'));
     }
