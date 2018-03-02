@@ -17,8 +17,10 @@ Lessons are on @foreach($lesson->DaysOfTheWeek as $day){{$day->day}}{{$loop->las
 
 @component('mail::panel')
 ### What To Bring
-* Swimwear
+* Bathing Suit
 * Towel
+* Sun Screen
+* Pool Deck Shoes
 @endcomponent
 
 Thanks,<br>
