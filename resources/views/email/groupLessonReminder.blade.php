@@ -24,8 +24,11 @@ Don't forget about your swim lessons tomorrow {{$lesson->class_start_time->forma
 {{$day->day}}: {{$lesson->class_start_time->format('g:i a')}} - {{$lesson->class_end_time->format('g:i a')}}<br>
 @endforeach
 {{$lesson->class_start_date->format('F jS')}} - {{$lesson->class_end_date->format('F jS')}}
-
 @endcomponent
+
+<!-- TODO: Add something about weather -->
+
+<!-- TODO: Add group lesson terms and conditions -->
 
 Thanks,<br>
 The Swim School

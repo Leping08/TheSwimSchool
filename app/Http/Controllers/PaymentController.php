@@ -61,10 +61,11 @@ class PaymentController extends Controller
             }
 
             //Send lesson full email if this user filled up the lesson
-            //TODO: Test to see if this works
+            //TODO: Test to see if lesson full email works
             if($lesson->isLessonFull()){
                 try {
                     foreach(config('mail.leadDestEmails') as $emailAddress){
+                        Log::info("Sending lesson full email to $emailAddress");
                         Mail::to($emailAddress)->send(new ClassFull($lesson));
                     }
                 } catch (\Exception $e) {
