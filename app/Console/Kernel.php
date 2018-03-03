@@ -28,9 +28,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        //TODO: Add cron to the server
-        $schedule->exec(Log::info('The Cron is working'))->everyMinute();
-        $schedule->command("send-reminder-emails")->dailyAt('8:00');
+        //TODO: Make sure emails are ready to go out
+        //$schedule->command("send-reminder-emails")->dailyAt('8:00');
     }
 
     /**
