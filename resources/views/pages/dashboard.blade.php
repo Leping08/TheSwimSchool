@@ -77,9 +77,10 @@ Dashboard
                                         <li><strong>Levels</strong></li>
                                         @foreach ($lessons as $lesson)
                                             <li><a href="/lesson/{{$lesson->id}}" class="list-group-item list-group-item-action justify-content-between">
-                                                    {{$lesson->group->type}}
+                                                    {{$lesson->id}}. {{$lesson->group->type}}
                                                 </a></li>
                                         @endforeach
+                                        {{ $lessons->links() }}
                                     </ul>
                                 @else
                                     No lessons.
