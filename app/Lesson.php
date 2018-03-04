@@ -65,10 +65,11 @@ class Lesson extends Model
 
     public function isLessonFull(): bool
     {
-        if($this->class_size <= $this->Swimmers->count()){
+        if($this->class_size <= $this->Swimmers()->count()){
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     public function path(): string

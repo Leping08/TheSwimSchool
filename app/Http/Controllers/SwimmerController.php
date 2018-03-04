@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use App\Mail\ClassFull;
 use App\Swimmer;
 use App\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 class SwimmerController extends Controller
@@ -70,7 +68,6 @@ class SwimmerController extends Controller
             'emergencyName' => 'required|max:191',
             'emergencyRelationship' => 'required|max:191',
             'emergencyPhone' => 'required|max:20'
-            //'payment' => 'required'
         ]);
 
         //TODO: Logic to check the age of the swimmer against what the lesson age is
@@ -78,25 +75,8 @@ class SwimmerController extends Controller
 
         $newSwimmer = Swimmer::create($swimmer);
 
-        //Don't set the lesson ID until the swimmer has payed
-        //$newSwimmer->update(['lesson_id' => $lesson->id]);
-
-
         Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
         return view('swimmers.cardCheckout', compact('newSwimmer', 'lesson'));
-
-        //If the user is using a card for payment, send them to the card view with the user id.
-        /*if(request('payment') === 'card'){
-            Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
-            return view('swimmers.cardCheckout', compact('newSwimmer', 'lesson'));
-        }elseif(request('payment') === 'check'){
-            Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by cash or check!");
-            $request->session()->flash('success', 'You are all signed up! First lesson is '.$lesson->class_start_date->toFormattedDateString().' at '.$lesson->class_start_time->format('H:i A').'. Be sure to bring cash or check for $'.$lesson->price.' to the first lesson.');
-            return redirect('lessons/'.$lesson->class_type);
-        }else{
-            Log::warning("Something went wrong with Swimmer ID: $newSwimmer->id when they tried to sign up for Lesson ID: $lesson->id");
-            $request->session()->flash('danger', 'Looks like something went wrong.');
-        }*/
     }
 
     /**
