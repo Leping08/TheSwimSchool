@@ -11,7 +11,7 @@ Group Swim Lesson Policies & Procedures
         <dl class="uk-description-list uk-description-list-divider">
 
                 <dt>Liability:</dt>
-                <dd>The enrolled participant and/or the parent/guardian of the participant recognize and understand that swimming is a Physical activity. In such there are risks inherent in the instruction and sport of swimming including but not limited to paralyzing injuries and the possibility of death. The participant hereby agrees to participate in The Swim School program and hereby agrees to indemnify and hold harmless The Swim School, its coaches, teachers, instructors, officers, directors, agents and employees against any liability resulting from any injury that may occur to the participant while participating in The Swim School aquatics programs. The participant also agrees to indemnify The Swim School for any damages incurred arising from any claim, demand, action or cause of action by the participant. The participant and/or parent/guardian authorizes any representative, coaches, teachers, instructors, officers, directors, agents or employees of The Swim School to have the participant treated in any medical emergency during their participation in the swim program. Further, the participant and/or parent/guardian agree to pay all costs associated with medical care and transportation for the participant. I have noted on this form any medical/health problems of which the staff should be aware.</dd>
+                <dd>The enrolled participant and/or the parent/guardian of the participant recognize and understand that swimming is a Physical activity. In such there are risks inherent in the instruction and sport of swimming including but not limited to paralyzing injuries and the possibility of death. The participant hereby agrees to participate in The Swim School program and hereby agrees to indemnify and hold harmless The Swim School, its coaches, teachers, instructors, officers, directors, agents and employees against any liability resulting from any injury that may occur to the participant while participating in The Swim School aquatics programs. The participant also agrees to indemnify The Swim School for any damages incurred arising from any claim, demand, action or cause of action by the participant. The participant and/or parent/guardian authorizes any representative, coaches, teachers, instructors, officers, directors, agents or employees of The Swim School to have the participant treated in any medical emergency during their participation in the swim program. Further, the participant and/or parent/guardian agree to pay all costs associated with medical care and transportation for the participant. Please notify staff of any medical/health problems they should be aware of prior to the start of lessons.</dd>
 
 
                 <dt>Photo and Video Policy:</dt>
@@ -23,7 +23,7 @@ Group Swim Lesson Policies & Procedures
 
 
                 <dt>Payment:</dt>
-                <dd>Payment must be made by the first swim lesson session. All online payments are non refundable after the completion of the first swim lesson session.</dd>
+                <dd>Payment must be made by the first class of the lesson. All online payments are non refundable after the completion of the first swim lesson session.</dd>
 
 
                 <dt>Schedule:</dt>
@@ -31,7 +31,7 @@ Group Swim Lesson Policies & Procedures
 
 
                 <dt>Equipment:</dt>
-                <dd>Goggles are highly recommended for improved vision, comfort and performance. Please supply yourself or your child(ren) with a pair of goggles for swim lesson classes. Towels will not be supplied so please have a towel for yourself or your child(ren) as well. Long hair should be tied back with a hair tie. All other equipment will be supplied by The Swim School.</dd>
+                <dd>Goggles are highly recommended for improved vision, comfort and performance (except for Parent & Infant-Toddler program participants). Please supply yourself or your child(ren) with a pair of goggles for swim lesson classes. Towels will not be supplied so please have a towel for yourself or your child(ren) as well. Long hair should be tied back with a hair tie. All other equipment will be supplied by The Swim School.</dd>
 
 
                 <dt>Swim Level:</dt>

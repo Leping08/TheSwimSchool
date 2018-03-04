@@ -17,7 +17,7 @@ The first lesson is tomorrow {{$lesson->class_start_time->format('g:ia')}} - {{$
 @endcomponent
 
 @component('mail::panel')
-### Pool Deck Instructions
+### Pool Access Instructions
 <!-- TODO: Make this dynamic -->
 All swim lesson participants are asked to please access the pool using the side pool gate entrance located around the back of the clubhouse. Please be reminded facility use outside of swim instruction is for Harrison Ranch residents only.
 @endcomponent
