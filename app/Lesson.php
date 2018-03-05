@@ -71,6 +71,16 @@ class Lesson extends Model
             return false;
         }
     }
+//
+//    public function isPrivate()
+//    {
+//        return $this->Group()->type;
+//        if(strpos($group->type, 'Private') !== false){
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     public function path(): string
     {

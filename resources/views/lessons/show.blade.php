@@ -54,6 +54,10 @@
                             <dd>{{$lesson->season->season}} {{$lesson->season->year}}</dd>
                         </dl>
 
+                        @if($lesson->class_size - $lesson->Swimmers->count() > 0)
+                            <a href="/lessons/{{{$lesson->group->type}}}/{{{$lesson->id}}}" class="uk-button uk-button-primary" target="_blank">Sign Up Link</a>
+                        @endif
+
                         <h4>Swimmers</h4>
                         <ul class="uk-list uk-list-striped">
                             @foreach($lesson->swimmers as $swimmer)

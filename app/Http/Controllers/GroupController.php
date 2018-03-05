@@ -16,7 +16,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Group::all();
+        //Don't show any groups with the word private in them
+        $groups = Group::where('type', 'NOT LIKE', '%Private%')->get();
         return view('groups.list', compact('groups'));
     }
 
@@ -125,7 +126,7 @@ class GroupController extends Controller
     {
         //Get all lessons that are open for registration and have not already ended
         Log::info("Trying to find Group Type: $groupType");
-        $group = Group::where('type', $groupType)->firstOrFail();
+        $group = Group::where('type', $groupType)->first();
         Log::info("Found group ID: $group->id Group Type: $group->type");
         return view('groups.details', compact('group'));
     }
