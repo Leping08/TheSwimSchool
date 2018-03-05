@@ -122,9 +122,3 @@ Route::post('/cpr-first-aid', 'LeadController@contact');
 
 /* @see LeadController::contact() */
 Route::post('/private-semi-private', 'LeadController@contact');
-
-
-Route::get('/test', function () {
-    return new App\Mail\ClassFull(App\Lesson::find(4));
-});
-
