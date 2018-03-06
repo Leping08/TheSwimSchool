@@ -336,7 +336,6 @@ Dashboard
                     <div class="uk-card-header">
                         <h3 class="el-title uk-margin uk-h2">Today's Lessons</h3>
                     </div>
-                    <!-- TODO: Make today's lessons show today's lessons -->
                     <div class="uk-card-body">
                         @if(count($todaysLessons))
                             <ul class="uk-list uk-list-striped">

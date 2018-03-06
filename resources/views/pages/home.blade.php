@@ -52,11 +52,9 @@ Home
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a href="/private-semi-private" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
-                    <!-- TODO: Get new image for private swim lessons -->
                     <div class="uk-card-media-top"><img src="/img/kids-floating.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private & Semi-Private Lessons</h3>
-                        <!-- TODO: Add copy for private swim lessons -->
                         <div class="el-content uk-margin">The Swim School offers packages of individualized lessons available to adults and children (12 months+) of all ability levels at our pool or yours! Swim instruction is customized to meet the needs
                             and goals of each participant. These lessons are also great if group swim lessons do not accommodate your schedule.</div>
                     </div>
@@ -65,11 +63,9 @@ Home
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a href="/swim-team" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
-                    <!-- TODO: Get new image for semi private swim lessons -->
                     <div class="uk-card-media-top"><img src="/img/private-lessons.jpg" class="el-image uk-border-rounded" alt=""></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Team</h3>
-                        <!-- TODO: Add copy for semi private swim lessons -->
                         <div class="el-content uk-margin">Love to swim? Join the North River Swim Team, a seasonal program run by The Swim School. Quality level coaches provide a fun atmosphere for children ages 5-18 to improve their technique
                             of the four competitive strokes, build endurance and learn about sportsmanship through local competition. </div>
                     </div>

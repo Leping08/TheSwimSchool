@@ -6,7 +6,6 @@
 
 @section('content')
 
-    <!-- TODO: Add form to edit lesson -->
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div class="uk-card uk-card-default uk-width-1-1@s">
