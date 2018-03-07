@@ -20,7 +20,7 @@
                 </div>
                 <div class="uk-width-1-4@m">
                     <div class="uk-margin">
-                        <img src="/img/cpr-first-aid.jpg" class="el-image uk-border-rounded uk-box-shadow-small" alt="">
+                        <img src="/img/cpr-first-aid.jpg" class="el-image uk-border-rounded uk-box-shadow-small" alt="Lakewood Ranch CPR training">
                     </div>
                 </div>
             </div>

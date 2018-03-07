@@ -26,7 +26,7 @@
                         </ul>
                     </div>
                     <div>
-                        <p>The North River Swim Team practices at the River Wilderness Country Club and competes in the Suncoast Swim League, a seasonal developmental league that runs May 1st - August 31st.</p>
+                        <p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs May 1st - August 31st.</p>
                     </div>
                     <div>
                         <a class="uk-button uk-button-default" disabled> Registration Coming Soon</a>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="uk-width-expand@m">
                     <div class="uk-margin">
-                        <img src="/img/private-lessons.jpg" class="el-image" alt="">
+                        <img src="/img/private-lessons.jpg" class="el-image" alt="Bradenton Learn to Swim">
                     </div>
                 </div>
             </div>

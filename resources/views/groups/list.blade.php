@@ -28,7 +28,7 @@
                                 <p>{{$group->description}}</p>
                             </div>
                             <div class="uk-card-footer">
-                                <a href="/lessons/{{{$group->type}}}" class="uk-button uk-button-primary">Find Classes</a>
+                                <a title="Manatee County Swimming Classes" href="/lessons/{{{$group->type}}}" class="uk-button uk-button-primary">Find Classes</a>
                             </div>
                         </div>
                     </div>

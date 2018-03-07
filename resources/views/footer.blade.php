@@ -5,7 +5,7 @@
             <div class="uk-visible@s"></div>
             <div>
                 <div class="uk-margin uk-text-center@m uk-text-center" uk-scrollspy-class>
-                    <a href="/" class="el-link"><img src="/img/main-logo.png" class="uk-responsive-width" alt=""></a>
+                    <a title="Parrish swimming lessons" href="/" class="el-link"><img src="/img/main-logo.png" class="uk-responsive-width" alt="Bradenton Swim School"></a>
                 </div>
             </div>
             <div class="uk-visible@s"></div>
@@ -53,7 +53,7 @@
                             </div>
                             <div>
                                 <div class="el-content">
-                                    (941) 773-1424            
+                                    <a title="The Swim School" href="tel+:9417731424">(941) 773-1424</a>
                                 </div>
                             </div>
                         </div>
@@ -76,10 +76,10 @@
                 <div class="uk-margin uk-text-center" uk-scrollspy-class>
                     <div class="uk-child-width-auto uk-grid-small uk-flex-center" uk-grid>
                         <div>
-                            <a uk-icon="icon: facebook" href="https://www.facebook.com/theswimschoolfl/" class="el-link uk-icon-button"></a>
+                            <a title="The Swim School Facebook" uk-icon="icon: facebook" href="https://www.facebook.com/theswimschoolfl/" class="el-link uk-icon-button"></a>
                         </div>
                         <div>
-                            <a uk-icon="icon: instagram" href="https://www.instagram.com/theswimschoolfl/" class="el-link uk-icon-button"></a>
+                            <a title="The Swim School Instagram" uk-icon="icon: instagram" href="https://www.instagram.com/theswimschoolfl/" class="el-link uk-icon-button"></a>
                         </div>
                     </div>
                 </div>
