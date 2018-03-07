@@ -1,7 +1,7 @@
 <div class="tm-header-mobile uk-hidden@m">
     <nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="/">
+            <a title="Parrish Swimming Lessons" class="uk-navbar-item uk-logo" href="/">
                 <img src="/img/main-logo.png" class="uk-responsive-height" alt="Lakewood Ranch Swim Lessons">
             </a>
         </div>

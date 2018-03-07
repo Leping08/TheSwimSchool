@@ -53,7 +53,7 @@
                             </div>
                             <div>
                                 <div class="el-content">
-                                    <a title="The Swim School" href="tel+:9417731424">(941) 773-1424</a>
+                                    <a title="The Swim School" href="tel:+19417731424">(941) 773-1424</a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             </div>
                             <div>
                                 <div class="el-content">
-                                    theswimschoolfl@gmail.com          
+                                    <a title="Manatee County Swimming Lessons" href="mailto:theswimschoolfl@gmail.com">theswimschoolfl@gmail.com</a>
                                 </div>
                             </div>
                         </div>
