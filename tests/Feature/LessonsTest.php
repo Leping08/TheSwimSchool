@@ -10,14 +10,20 @@ class LessonsTest extends TestCase
 {
     use DatabaseMigrations;
 
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->lesson = factory('App\Lesson')->create();
+    }
+
     /** @test  **/
     public function a_user_can_see_the_details_of_a_lesson()
     {
-        $lesson = factory('App\Lesson')->create();
-        $this->get($lesson->path())
-            ->assertSee($lesson->Group->type)
-            ->assertSee($lesson->Location->name)
-            ->assertSee($lesson->Location->street)
-            ->assertSee($lesson->Location->zip);
+        $this->get($this->lesson->path())
+            ->assertSee($this->lesson->Group->type)
+            ->assertSee($this->lesson->Location->name)
+            ->assertSee($this->lesson->Location->street)
+            ->assertSee($this->lesson->Location->zip);
     }
 }
