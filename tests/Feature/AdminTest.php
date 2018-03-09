@@ -28,7 +28,7 @@ class AdminTest extends TestCase
     }
 
     /** @test */
-    public function a_admin_can_view_see_swimmers_in_a_lesson()
+    public function a_admin_can_see_swimmers_in_a_lesson()
     {
         $swimmer = factory('App\Swimmer')->create();
         $lesson = Lesson::first();
@@ -41,15 +41,12 @@ class AdminTest extends TestCase
     }
 
     /** @test */
-    public function a_normal_person_can_not_see_swimmers()
+    public function a_normal_person_can_not_see_swimmers_in_a_lesson()
     {
         $swimmer = factory('App\Swimmer')->create();
         $lesson = Lesson::first();
-        $user = factory('App\User')->create();
 
-        $this->actingAs($user)
-            ->get("/lesson/$lesson->id")
-            ->assertSee($swimmer->firstName)
-            ->assertSee($swimmer->lastName);
+            $this->get("/lesson/$lesson->id")
+                ->assertRedirect('/login');
     }
 }

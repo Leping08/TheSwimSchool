@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Carbon\Carbon;
 
 class LessonsTest extends TestCase
 {
@@ -14,16 +15,101 @@ class LessonsTest extends TestCase
     {
         parent::setUp();
 
-        $this->lesson = factory('App\Lesson')->create();
+        $this->registrationNotOpenYet = factory('App\Lesson')->create();
+        $this->registrationNotOpenYet->class_start_date = Carbon::now()->addDays(3);
+        $this->registrationNotOpenYet->registration_open = Carbon::now()->addDays(2);
+        $this->registrationNotOpenYet->class_end_date = Carbon::now()->addDays(5);
+        $this->registrationNotOpenYet->update();
+
+        $this->registrationOpen = factory('App\Lesson')->create();
+        $this->registrationOpen->class_start_date = Carbon::tomorrow();
+        $this->registrationOpen->registration_open = Carbon::yesterday();
+        $this->registrationOpen->class_end_date = Carbon::now()->addDays(2);
+        $this->registrationOpen->update();
+
+        $this->lessonInProgress = factory('App\Lesson')->create();
+        $this->lessonInProgress->class_start_date = Carbon::now()->subDays(2);
+        $this->lessonInProgress->registration_open = Carbon::now()->subDays(4);
+        $this->lessonInProgress->class_end_date = Carbon::now()->addDays(2);
+        $this->lessonInProgress->update();
+
+        $this->lessonFinished = factory('App\Lesson')->create();
+        $this->lessonFinished->class_start_date = Carbon::now()->subDays(4);
+        $this->lessonFinished->registration_open = Carbon::now()->subDays(6);
+        $this->lessonFinished->class_end_date = Carbon::now()->subDays(2);
+        $this->lessonFinished->update();
+    }
+
+
+    /** @test  **/
+    public function a_user_can_not_see_a_lesson_in_progress()
+    {
+        $this->get($this->lessonInProgress->path())
+            ->assertDontSee($this->lessonInProgress->Group->type)
+            ->assertDontSee($this->lessonInProgress->Group->description);
     }
 
     /** @test  **/
-    public function a_user_can_see_the_details_of_a_lesson()
+    public function a_user_can_not_see_a_lesson_that_does_not_have_open_registration_yet()
     {
-        $this->get($this->lesson->path())
-            ->assertSee($this->lesson->Group->type)
-            ->assertSee($this->lesson->Location->name)
-            ->assertSee($this->lesson->Location->street)
-            ->assertSee($this->lesson->Location->zip);
+        $this->get($this->registrationNotOpenYet->path())
+            ->assertSee('Sorry No Classes Available At This Time');
+    }
+
+    /** @test  **/
+    public function a_user_can_not_see_a_lesson_that_has_finished()
+    {
+        $this->get($this->lessonFinished->path())
+            ->assertSee('Sorry No Classes Available At This Time');
+    }
+
+    /** @test  **/
+    public function a_user_can_see_the_groups_for_each_lesson()
+    {
+        $this->get('/lessons')
+            ->assertSee($this->registrationOpen->Group->type)
+            ->assertSee($this->registrationOpen->Group->description)
+            ->assertSee($this->lessonFinished->Group->type)
+            ->assertSee($this->lessonFinished->Group->description)
+            ->assertSee($this->lessonInProgress->Group->type)
+            ->assertSee($this->lessonInProgress->Group->description)
+            ->assertSee($this->registrationNotOpenYet->Group->type)
+            ->assertSee($this->registrationNotOpenYet->Group->description);
+    }
+
+    /** @test  **/
+    public function a_user_can_see_the_details_of_a_lesson_that_is_open_for_registration()
+    {
+        $this->get($this->registrationOpen->path())
+            ->assertSee($this->registrationOpen->Group->type)
+            ->assertSee($this->registrationOpen->Location->name)
+            ->assertSee($this->registrationOpen->Location->street)
+            ->assertSee($this->registrationOpen->Location->zip)
+            ->assertSee(strval($this->registrationOpen->class_size))
+            ->assertSee('$'.$this->registrationOpen->price);
+    }
+
+    /** @test  **/
+    public function a_user_can_sign_up_for_a_lesson_that_is_not_full()
+    {
+        $this->get($this->registrationOpen->path())
+            ->assertSee('Sign Up');
+    }
+
+    /** @test  **/
+    public function a_user_can_not_sign_up_for_a_lesson_that_is_full()
+    {
+        $this->registrationOpen->class_size = 1;
+        $this->registrationOpen->update();
+
+        $this->get($this->registrationOpen->path())
+            ->assertSee('Sign Up');
+
+        $swimmer = factory('App\Swimmer')->create();
+        $swimmer->lesson_id = $this->registrationOpen->id;
+        $swimmer->update();
+
+        $this->get($this->registrationOpen->path())
+            ->assertSee('Class Full');
     }
 }
