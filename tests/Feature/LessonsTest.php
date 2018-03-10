@@ -46,8 +46,7 @@ class LessonsTest extends TestCase
     public function a_user_can_not_see_a_lesson_in_progress()
     {
         $this->get($this->lessonInProgress->path())
-            ->assertDontSee($this->lessonInProgress->Group->type)
-            ->assertDontSee($this->lessonInProgress->Group->description);
+            ->assertSee('Sorry No Classes Available At This Time');
     }
 
     /** @test  **/
