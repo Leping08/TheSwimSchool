@@ -10,6 +10,7 @@ use App\Group;
 use App\Contact;
 use App\DaysOfTheWeek;
 use Carbon\Carbon;
+use Charts;
 
 class DashboardController extends Controller
 {
@@ -25,6 +26,39 @@ class DashboardController extends Controller
         $leads = Contact::latest()->paginate(10, ['*'], 'leads');
         $todaysLessons = $this->getTodaysLessons();
         return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads'));
+    }
+
+    public function analytics()
+    {
+        $swimmerRegistrations = Charts::database(Swimmer::where('paid', '=', '1')->get(), 'area', 'highcharts')->dateFormat('m/d')
+            ->elementLabel("Swimmers")
+            ->title("Swimmer Registrations Per Day")
+            ->responsive(true)
+            ->lastByDay(28, true);
+
+        $days = collect(Swimmer::where('paid', '=', '1')->get()->groupBy(function($date) {
+            return Carbon::parse($date->created_at)->format('l');
+        }));
+
+        $count = collect();
+
+        foreach($days as $day){
+            $count->push($day->count());
+        }
+
+        $swimmerRegistrationDays = Charts::create('area', 'highcharts')
+            ->labels($days->keys())
+            ->elementLabel("Swimmers")
+            ->title("Swimmer Registrations Per Day Of The Week")
+            ->values($count)
+            ->responsive(true);
+
+
+        return view('pages.analytics', [
+            'swimmerRegistrations' => $swimmerRegistrations,
+            'swimmerRegistrationDays' => $swimmerRegistrationDays
+        ]);
+
     }
 
     public function swimmersForCurrentSeason()

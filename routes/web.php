@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 
     /* @see DashboardController::index() */
     Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/analytics', 'DashboardController@analytics');
     Route::get('/dashboard/season/current', 'DashboardController@swimmersForCurrentSeason');
 
     /* @see LeadController::show() */

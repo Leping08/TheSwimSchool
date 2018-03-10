@@ -46,6 +46,7 @@
                             <div class="uk-nav uk-nav-default">
                                 <ul class="uk-nav-sub">
                                     <li><a href="/dashboard"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+                                    <li><a href="/analytics"><i class="fa fa-area-chart fa-lg" aria-hidden="true"></i> Analytics</a></li>
                                     <li><a href="/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
                                     <li><a href="/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
                                     <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
@@ -119,6 +120,7 @@
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li><a href="/dashboard"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+                                    <li><a href="/analytics"><i class="fa fa-area-chart fa-lg" aria-hidden="true"></i> Analytics</a></li>
                                     <li><a href="/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
                                     <li><a href="/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
                                     <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
