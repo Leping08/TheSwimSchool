@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Carbon\Carbon;
+use App\Group;
 
 class LessonsTest extends TestCase
 {
@@ -111,5 +112,63 @@ class LessonsTest extends TestCase
 
         $this->get($this->registrationOpen->path())
             ->assertSee('Class Full');
+    }
+
+    /** @test  **/
+    public function a_user_can_not_see_private_lesson_groups()
+    {
+        $lesson = factory('App\Lesson')->create();
+        $group = factory('App\Group')->create();
+        $lesson->group_id = $group->id;
+        $lesson->update();
+        $group->type = 'Private Lesson';
+        $group->update();
+
+        $testSet = Group::where('type', 'NOT LIKE', '%Private%')->get();
+
+        $this->assertNotContains('Private Lesson', $testSet);
+    }
+
+    /** @test  **/
+    public function a_user_can_see_the_private_lesson_sign_up_page_with_a_link()
+    {
+        $lesson = factory('App\Lesson')->create();
+        $group = factory('App\Group')->create();
+        $lesson->group_id = $group->id;
+        $lesson->update();
+        $group->type = 'Private Lesson';
+        $group->update();
+
+        $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
+            ->assertSee($lesson->Group->type)
+            ->assertSee($lesson->Location->name)
+            ->assertSee($lesson->Location->street)
+            ->assertSee($lesson->Location->zip)
+            ->assertSee(strval($lesson->class_size))
+            ->assertSee('$'.$lesson->price)
+            ->assertSee('Swimmer Information')
+            ->assertSee('Address')
+            ->assertSee('Contact Information')
+            ->assertSee('Emergency Contact Information')
+            ->assertSee('Payment Method');
+    }
+
+    /** @test  **/
+    public function a_user_can_not_sign_up_for_a_private_lesson_if_it_is_full()
+    {
+        $lesson = factory('App\Lesson')->create();
+        $group = factory('App\Group')->create();
+        $lesson->group_id = $group->id;
+        $lesson->class_size = 1;
+        $lesson->update();
+        $group->type = 'Private Lesson';
+        $group->update();
+
+        $swimmer = factory('App\Swimmer')->create();
+        $swimmer->lesson_id = $lesson->id;
+        $swimmer->update();
+
+        $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
+            ->assertSee('Sorry this lesson is full.');
     }
 }
