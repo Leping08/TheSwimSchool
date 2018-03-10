@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('heading')
-Group Swim Lesson Policies & Procedures
+The Swim School Policies & Procedures
 @endsection
 
 @section('content')

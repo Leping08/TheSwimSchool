@@ -99,7 +99,6 @@ class SwimmerController extends Controller
      */
     public function edit(Swimmer $swimmer, $id)
     {
-        $swimmer = Swimmer::findOrFail($id);
         return view('swimmers.edit', compact('swimmer'));
     }
 
@@ -145,10 +144,9 @@ class SwimmerController extends Controller
      */
     public function destroy(Swimmer $swimmer)
     {
-        $swimmerToDelete = Swimmer::find($swimmer->id);
-        session()->flash('success', $swimmerToDelete->name.' has been deleted.');
-        Log::info("Swimmer ID: $swimmerToDelete->id was deleted.");
-        $swimmerToDelete->delete();
+        session()->flash('success', $swimmer->name.' has been deleted.');
+        Log::info("Swimmer ID: $swimmer->id was deleted.");
+        $swimmer->delete();
         return redirect('/swimmers');
     }
 }

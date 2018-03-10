@@ -7,12 +7,34 @@
 @section('content')
 <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
-
     @if($lesson->class_size - $lesson->Swimmers->count() <= 0)
-        <h4>Sorry this lesson is full. Sign up for a different lesson <a href="/lessons">here</a>.</h4>
+            <div class="uk-card uk-card-default">
+                <div class="uk-card-body">
+                    <div>Sorry this lesson is full. Sign up for a different lesson <a href="/lessons">here</a>.</div>
+                </div>
+            </div>
     @else
         <div class="uk-card uk-card-default">
             <div class="uk-card-body">
+                <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
+                    Lesson Details
+                </div>
+                <div class="uk-child-width-expand@s" uk-grid>
+                    <div><i class="fa fa-users fa-lg" aria-hidden="true"></i> <strong>Class Size:</strong> {{$lesson->class_size}}</div>
+                    <div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$lesson->price}}</div>
+                    <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Dates:</strong> {{$lesson->class_start_date->toFormattedDateString()}} - {{$lesson->class_end_date->toFormattedDateString()}}</div>
+                </div>
+
+                <div class="uk-child-width-expand@s" uk-grid>
+                    <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->Swimmers->count()}}</div>
+                    <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{{$lesson->location->street}}}+{{{$lesson->location->city}}}+{{{$lesson->location->state}}}+{{{$lesson->location->zip}}}">{{$lesson->location->street}}, <br>{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}</a></div>
+                    <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Times:</strong><br>
+                        @foreach($lesson->DaysOfTheWeek as $day)
+                            {{$day->day}} {{$lesson->class_start_time->format('g:i a')}} - {{$lesson->class_end_time->format('g:i a')}}<br>
+                        @endforeach
+                    </div>
+                </div>
+                <hr class="uk-width-1-1">
                 <form class="uk-grid-small" uk-grid action="" method="POST">
                     {{ csrf_field() }}
                     <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
@@ -145,7 +167,7 @@
                     <div class="uk-width-1-1@s">
                         <div class="uk-form-controls">
                             <label><input class="uk-checkbox" type="checkbox" name="Terms and Conditions" required>
-                                    I agree to the <a href="/lessons/{{{$lesson->group->type}}}/{{{$lesson->id}}}/terms" target="_blank">Group Swim Lesson Policies & Procedures</a>
+                                    I agree to the <a href="/policies-and-procedures" target="_blank">The Swim School Policies & Procedures</a>
                             </label>
                         </div>
                     </div>

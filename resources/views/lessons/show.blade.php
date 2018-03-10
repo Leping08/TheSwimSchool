@@ -54,10 +54,6 @@
                             <dd>{{$lesson->season->season}} {{$lesson->season->year}}</dd>
                         </dl>
 
-                        @if($lesson->class_size - $lesson->Swimmers->count() > 0)
-                            <a href="/lessons/{{{$lesson->group->type}}}/{{{$lesson->id}}}" class="uk-button uk-button-primary" target="_blank">Sign Up Link</a>
-                        @endif
-
                         <h4>Swimmers</h4>
                         <ul class="uk-list uk-list-striped">
                             @foreach($lesson->swimmers as $swimmer)
@@ -68,6 +64,7 @@
                         </ul>
                     </div>
                     <div class="uk-card-footer">
+                        <a href="/lessons/{{{$lesson->group->type}}}/{{{$lesson->id}}}" class="uk-button uk-button-primary" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> Sign Up Link</a>
                         <a class="uk-button uk-button-primary" href="/lesson/{{{$lesson->id}}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                         <button class="uk-button uk-button-danger" uk-toggle="target: #delete-modal" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                     </div>

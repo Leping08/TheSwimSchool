@@ -59,9 +59,9 @@ Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 /* @see PaymentController::ChargeCardForLesson() */
 Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 
-//show the terms and conditions page
-/* @see GroupController::terms() */
-Route::get('/lessons/{classType}/{id}/terms', 'GroupController@terms');
+//The Link to sign up for private lessons
+/* @see SwimmerController::store() */
+Route::get('/private/{classType}/{id}', 'SwimmerController@store');
 
 
 
@@ -106,6 +106,10 @@ Route::get('/lifeguarding', function (){
 
 Route::get('/cpr-first-aid', function(){
     return view('pages.cpr-first-aid');
+});
+
+Route::get('/policies-and-procedures', function(){
+    return view('groups.terms');
 });
 
 

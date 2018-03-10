@@ -36,20 +36,21 @@
                             {{$swimmer->city}} {{$swimmer->state}}, {{$swimmer->zip}} 
                         </a>
                     </dd><hr>
+                </dl>
 
 
 
-                    <h4>Lesson Info</h4>
-                    <dl class="uk-description-list-horizontal">
-                        <dt>Group:</dt>
-                        <dd><a href="/lesson/{{$swimmer->lesson->id}}">{{$swimmer->lesson->group->type}}</a></dd>
-                        <dt>Ages:</dt>
-                        <dd>{{$swimmer->lesson->group->ages}}</dd>
-                        <dt>Location:</dt>
-                        <dd><a href="/locations/{{$swimmer->lesson->location->id}}">{{$swimmer->lesson->location->name}}</a></dd>
-                        <dt>Season:</dt>
-                        <dd>{{$swimmer->lesson->season->season}} {{$swimmer->lesson->season->year}}</dd>
-                    </dl><hr>
+                <h4>Lesson Info</h4>
+                <dl class="uk-description-list-horizontal">
+                    <dt>Group:</dt>
+                    <dd><a href="/lesson/{{$swimmer->lesson->id}}">{{$swimmer->lesson->group->type}}</a></dd>
+                    <dt>Ages:</dt>
+                    <dd>{{$swimmer->lesson->group->ages}}</dd>
+                    <dt>Location:</dt>
+                    <dd><a href="/locations/{{$swimmer->lesson->location->id}}">{{$swimmer->lesson->location->name}}</a></dd>
+                    <dt>Season:</dt>
+                    <dd>{{$swimmer->lesson->season->season}} {{$swimmer->lesson->season->year}}</dd>
+                </dl><hr>
 
 
                 <h4>Payment Info</h4>
