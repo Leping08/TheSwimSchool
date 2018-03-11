@@ -65,7 +65,7 @@
                             </div>
                             <div>
                                 <div class="el-content">
-                                    <a title="Manatee County Swimming Lessons" href="mailto:theswimschoolfl@gmail.com">theswimschoolfl@gmail.com</a>
+                                    <a title="Manatee County Swimming Lessons" href="mailto:info@theswimschool.com">info@theswimschool.com</a>
                                 </div>
                             </div>
                         </div>

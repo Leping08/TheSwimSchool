@@ -37,6 +37,7 @@ Home
                 <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
             </div>
         </div>
+        <!--TODO: Add Locations to each service on the home page -->
         <div class="uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
@@ -54,9 +55,10 @@ Home
                     <a title="Parrish private swim lessons" href="/private-semi-private" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <div class="uk-card-media-top"><img src="/img/kids-floating.jpg" class="el-image uk-border-rounded" alt="Ellenton swimming lessons"></div>
                     <div class="uk-card-body">
-                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private & Semi-Private Lessons</h3>
+                        <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>
                         <div class="el-content uk-margin">The Swim School offers packages of individualized lessons available to adults and children (12 months+) of all ability levels at our pool or yours! Swim instruction is customized to meet the needs
-                            and goals of each participant. These lessons are also great if group swim lessons do not accommodate your schedule.</div>
+                            and goals of each participant. These lessons are also great if group swim lessons do not accommodate your schedule.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,18 +69,12 @@ Home
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Team</h3>
                         <div class="el-content uk-margin">Love to swim? Join the North River Swim Team, a seasonal program run by The Swim School. Quality level coaches provide a fun atmosphere for children ages 5-18 to improve their technique
-                            of the four competitive strokes, build endurance and learn about sportsmanship through local competition. </div>
+                            of the four competitive strokes, build endurance and learn about sportsmanship through local competition.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--<div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
-            <div class="uk-width-1-1@m uk-first-column">
-                <div class="uk-text-center uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="uk-animation-slide-bottom-medium">
-                    <a class="el-content uk-button uk-button-primary uk-button-large" href="/services/" title="Explore More">Explore More</a>
-                </div>
-            </div>
-        </div>-->
     </div>
 </div>
 

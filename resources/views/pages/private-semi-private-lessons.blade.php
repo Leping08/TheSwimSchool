@@ -6,7 +6,7 @@
 @endsection
 
 @section('heading')
-    Private & Semi-Private Lessons
+    Private Lessons
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-3-4@m uk-first-column">
                     <div class="uk-margin uk-dropcap">
-                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="/swim-team">swim team></a>, or a triathlete looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly. Private lessons are conducted one-on-one with an instructor but if you have siblings or friends close in age and ability level who would like to receive swim instruction together, you can also request semi-private lessons. These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or our Harrison Ranch location.
+                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="/swim-team">swim team</a>, or a triathlete looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly. Private lessons are conducted one-on-one with an instructor but if you have siblings or friends close in age and ability level who would like to receive swim instruction together, you can also request semi-private lessons. These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or our Harrison Ranch location.
                     </div>
                 </div>
                 <div class="uk-width-expand@m">
