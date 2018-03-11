@@ -27,6 +27,7 @@ Edit {{$swimmer->name}}
                         <label for="birthDate"  class="uk-form-label">Swimmer Birth Date</label>
                         <input type="date" class="uk-input" id="birthDate" name="birthDate" placeholder="Birth Date" value="{{ old('birthDate') ?? $swimmer->birthDate->format('Y-m-d') }}" required>
                     </div>
+
                     <div class="uk-margin">
                         <label for="parent"  class="uk-form-label">Name of Parent/Guardian (if applicable)</label>
                         <input type="text" class="uk-input" id="parent" name="parent" placeholder="Parent/Guardian" value="{{ old('parent') ?? $swimmer->parent }}">

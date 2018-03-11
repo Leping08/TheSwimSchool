@@ -99,6 +99,7 @@ class SwimmerController extends Controller
      */
     public function edit(Swimmer $swimmer, $id)
     {
+        $swimmer = Swimmer::find($id);
         return view('swimmers.edit', compact('swimmer'));
     }
 
