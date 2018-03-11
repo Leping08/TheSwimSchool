@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>About The Swim School</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Parrish CPR & First Aid Training | Lakewood Ranch Swimming | Bradenton</title>
+    <meta name="description" content="Our swim school is proud to also offer CPR and First Aid training to those in the Lakewood Ranch, Parrish, and Bradenton areas. Contact us today for more info!"/>
 @endsection
 
 @section('heading')
@@ -15,7 +15,7 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-3-4@m uk-first-column">
                     <div class="uk-margin uk-dropcap">
-                        Need CPR and/or First Aid training? The Swim School can certify you with these life-saving skills. Our instructiors have years of experience teaching people CPR and first aid. Individual and group instruction is available.
+                        Need CPR and/or First Aid training? The Swim School can certify you with these life-saving skills. Our instructors have years of experience teaching people CPR and first aid. Individual and group instruction is available.
                     </div>
                 </div>
                 <div class="uk-width-1-4@m">

@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The Swim School Lifeguarding</title>
-    <meta name="description" content="Meta Here."/>
+    <title>Lakewood Ranch Lifeguarding | Myakka City Swim Lessons | Parrish</title>
+    <meta name="description" content="The Swim School provides lifeguarding services to the surrounding areas of Lakewood Ranch, Parrish, and Myakka City. Contact us today for more information!"/>
 @endsection
 
 @section('heading')
