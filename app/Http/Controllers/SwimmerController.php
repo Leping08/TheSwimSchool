@@ -133,7 +133,7 @@ class SwimmerController extends Controller
         $oldSwimmer = Swimmer::find($id);
         $oldSwimmer->update($swimmer);
         Log::info("Swimmer ID: $oldSwimmer->id has been updated.");
-        session()->flash('info', $oldSwimmer->name.' has been updated.');
+        session()->flash('success', $oldSwimmer->firstName.' '.$oldSwimmer->lastName.' has been updated.');
         return redirect('/swimmers/'.$oldSwimmer->id);
     }
 
