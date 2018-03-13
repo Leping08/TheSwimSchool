@@ -38,10 +38,10 @@ class Swimmer extends Model
     }
 
     public function yearsOld() {
-        return $this->birthDate->diffInYears(Carbon::now());
+        return $this->getAttribute('birthDate')->diffInYears(Carbon::now());
     }
 
     public function monthsOld() {
-        return $this->birthDate->diffInMonths(Carbon::now());
+        return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
     }
 }

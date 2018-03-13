@@ -65,7 +65,7 @@ class Lesson extends Model
 
     public function isLessonFull(): bool
     {
-        if($this->class_size <= $this->Swimmers()->count()){
+        if($this->getAttribute('class_size') <= $this->Swimmers()->count()){
             return true;
         } else {
             return false;
@@ -83,19 +83,19 @@ class Lesson extends Model
 
     public function path(): string
     {
-        return '/lessons/'.$this->Group->type;
+        return '/lessons/'.$this->Group()->type;
     }
 
     public function DaysOfTheWeekArray(): array
     {
-        return collect($this->DaysOfTheWeek)->map(function ($item) {
+        return collect($this->DaysOfTheWeek()->get())->map(function ($item) {
             return $item->day;
         })->toArray();
     }
 
     public function DaysOfTheWeekIdsArray(): array
     {
-        return collect($this->DaysOfTheWeek)->map(function ($item) {
+        return collect($this->DaysOfTheWeek()->get())->map(function ($item) {
             return $item->id;
         })->toArray();
     }
