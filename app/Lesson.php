@@ -88,14 +88,14 @@ class Lesson extends Model
 
     public function DaysOfTheWeekArray(): array
     {
-        return collect($this->DaysOfTheWeek())->map(function ($item) {
+        return collect($this->DaysOfTheWeek)->map(function ($item) {
             return $item->day;
         })->toArray();
     }
 
     public function DaysOfTheWeekIdsArray(): array
     {
-        return collect($this->DaysOfTheWeek())->map(function ($item) {
+        return collect($this->DaysOfTheWeek)->map(function ($item) {
             return $item->id;
         })->toArray();
     }
