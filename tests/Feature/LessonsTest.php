@@ -59,7 +59,6 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_has_finished()
     {
-        echo($this->lessonFinished);
         $this->get($this->lessonFinished->path())
             ->assertSee('Sorry No Classes Available At This Time');
     }
