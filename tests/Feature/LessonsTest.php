@@ -16,29 +16,29 @@ class LessonsTest extends TestCase
     {
         parent::setUp();
 
-        $this->registrationNotOpenYet = factory('App\Lesson')->create();
-        $this->registrationNotOpenYet->class_start_date = Carbon::now()->addDays(3);
-        $this->registrationNotOpenYet->registration_open = Carbon::now()->addDays(2);
-        $this->registrationNotOpenYet->class_end_date = Carbon::now()->addDays(5);
-        $this->registrationNotOpenYet->update();
+        $this->registrationNotOpenYet = factory('App\Lesson')->create([
+            'class_start_date' => Carbon::now()->addDays(3),
+            'registration_open' => Carbon::now()->addDays(2),
+            'class_end_date' => Carbon::now()->addDays(5)
+        ]);
 
-        $this->registrationOpen = factory('App\Lesson')->create();
-        $this->registrationOpen->class_start_date = Carbon::tomorrow();
-        $this->registrationOpen->registration_open = Carbon::yesterday();
-        $this->registrationOpen->class_end_date = Carbon::now()->addDays(2);
-        $this->registrationOpen->update();
+        $this->registrationOpen = factory('App\Lesson')->create([
+            'class_start_date' => Carbon::tomorrow(),
+            'registration_open' => Carbon::yesterday(),
+            'class_end_date' => Carbon::now()->addDays(2)
+        ]);
 
-        $this->lessonInProgress = factory('App\Lesson')->create();
-        $this->lessonInProgress->class_start_date = Carbon::now()->subDays(2);
-        $this->lessonInProgress->registration_open = Carbon::now()->subDays(4);
-        $this->lessonInProgress->class_end_date = Carbon::now()->addDays(2);
-        $this->lessonInProgress->update();
+        $this->lessonInProgress = factory('App\Lesson')->create([
+            'class_start_date' => Carbon::now()->subDays(2),
+            'registration_open' => Carbon::now()->subDays(4),
+            'class_end_date' => Carbon::now()->addDays(2)
+        ]);
 
-        $this->lessonFinished = factory('App\Lesson')->create();
-        $this->lessonFinished->class_start_date = Carbon::now()->subDays(4);
-        $this->lessonFinished->registration_open = Carbon::now()->subDays(6);
-        $this->lessonFinished->class_end_date = Carbon::now()->subDays(2);
-        $this->lessonFinished->update();
+        $this->lessonFinished = factory('App\Lesson')->create([
+            'class_start_date' => Carbon::now()->subDays(4),
+            'registration_open' => Carbon::now()->subDays(6),
+            'class_end_date' => Carbon::now()->subDays(2)
+        ]);
     }
 
 
@@ -59,6 +59,7 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_has_finished()
     {
+        echo($this->lessonFinished);
         $this->get($this->lessonFinished->path())
             ->assertSee('Sorry No Classes Available At This Time');
     }

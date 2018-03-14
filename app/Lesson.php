@@ -83,7 +83,7 @@ class Lesson extends Model
 
     public function path(): string
     {
-        return '/lessons/'.$this->Group()->type;
+        return '/lessons/'.$this->Group->type;
     }
 
     public function DaysOfTheWeekArray(): array
