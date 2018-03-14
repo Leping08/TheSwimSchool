@@ -79,14 +79,21 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
-                    <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
+                    <h2 class="uk-heading-bullet">Location</h2>
+                    <p class="uk-text-meta">Private Lessons take place at Harrison Ranch or Any Home/Community Pool within Manatee County.</p>
+                    <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
                         <div class="uk-card uk-card-default uk-card-body">
-                            <div class="uk-h2">Request Private Lessons</div>
+                            <iframe height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-width-1-1@m uk-first-column">
+                    <h2 class="uk-heading-bullet">Request Private Lessons</h2>
+                    <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
+                        <div class="uk-card uk-card-default uk-card-body">
                             <form action="" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
@@ -122,6 +129,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
