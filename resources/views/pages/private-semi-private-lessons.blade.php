@@ -57,7 +57,7 @@
 
                 <div class="uk-width-4-4@m uk-first-column">
                     <h2 class="uk-heading-bullet">Semi-Private Lesson Package Options</h2>
-                    <p class="uk-text-meta">Semi-Private lessons can be requested if you have siblings or friends close in age and ability level who would like to receive swim instruction together</p>
+                    <p class="uk-text-meta">Semi-Private lessons can be requested if you have siblings or friends close in age and ability level who would like to receive swim instruction together.</p>
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">

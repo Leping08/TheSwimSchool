@@ -18,8 +18,8 @@
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
+                                <h5>Weekday Session (8 Classes)</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>Weekday Session (8 Classes)</li>
                                     <li>Flying Fish-Swim Club Level $125.00</li>
                                     <li>All Other Levels $85.00</li>
                                 </ul>
@@ -27,8 +27,8 @@
                         </div>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
+                                <h5>Saturday or Sunday Session (6 Classes)</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>Saturday or Sunday Session (6 Classes)</li>
                                     <li>Flying Fish-Swim Club Level $95.00</li>
                                     <li>All Other Levels $65.00</li>
                                 </ul>
