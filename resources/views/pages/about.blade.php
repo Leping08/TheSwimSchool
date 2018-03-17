@@ -19,7 +19,7 @@ About The Swim School
                 </div>
             </div>
             <div class="uk-width-expand@m uk-first-column">
-                <h2 class="uk-text-center uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">The Start</h2>
+                <h2 class="uk-text-center uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">History</h2>
                 <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                 <div class="uk-margin uk-dropcap">
                     <p>

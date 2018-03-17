@@ -37,7 +37,6 @@ Home
                 <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
             </div>
         </div>
-        <!--TODO: Add Locations to each service on the home page -->
         <div class="uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
