@@ -23,7 +23,7 @@ The Swim School Policies & Procedures
 
 
                 <dt>Payment:</dt>
-                <dd>Payment must be made by the first class of the lesson. All online payments are non refundable after the completion of the first swim lesson session.</dd>
+                <dd>Payment must be made online prior to the first class of the session. All online payments are non refundable after the completion of the first class of the session.</dd>
 
 
                 <dt>Schedule:</dt>
