@@ -115,6 +115,16 @@
                                     </div>
                                 </div>
                                 <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Location</label>
+                                    <div class="uk-form-controls">
+                                        <select class="uk-select" name="location_id" id="location_id">
+                                            @foreach($locations as $location)
+                                                <option value="{{$location->id}}">{{$location->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Message</label>
                                     <div class="uk-form-controls">
                                         <textarea name="message" rows="5" class="uk-textarea" placeholder="I would like to schedule private and/or semi-private lessons." required>{{ old('message') }}</textarea>
