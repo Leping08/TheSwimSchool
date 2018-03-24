@@ -12,7 +12,6 @@ Dashboard
 @section('content')
 <div class="uk-section-muted uk-section-overlap uk-section">
     <div class="uk-container">
-
         <div class="uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
@@ -37,19 +36,19 @@ Dashboard
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <div class="uk-card-header">
-                        <h3 class="el-title uk-margin uk-h2">Leads</h3>
+                        <h3 class="el-title uk-margin uk-h2">Private Lesson Requests</h3>
                     </div>
                     <div class="uk-card-body">
-                        @if(count($leads))
+                        @if(count($privateLessonLeads))
                             <ul class="uk-list uk-list-striped">
-                                <li><strong>Leads</strong></li>
-                                @foreach ($leads as $lead)
-                                    <li><a href="/lead/{{$lead->id}}" class="list-group-item list-group-item-action justify-content-between">
+                                <li><strong>Requests</strong></li>
+                                @foreach ($privateLessonLeads as $lead)
+                                    <li><a href="/private-semi-private/lead/{{$lead->id}}" class="list-group-item list-group-item-action justify-content-between">
                                             {{$lead->name}}
                                         </a></li>
                                 @endforeach
                             </ul>
-                            {{ $leads->links() }}
+                            {{ $privateLessonLeads->links() }}
                         @else
                             No leads.
                         @endif
@@ -330,7 +329,6 @@ Dashboard
             </div>
         </div>
         <div class="uk-grid-margin uk-grid" uk-grid="">
-
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <div class="uk-card-header">
@@ -348,6 +346,29 @@ Dashboard
                             </ul>
                         @else
                             No lessons today.
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
+                <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
+                    <div class="uk-card-header">
+                        <h3 class="el-title uk-margin uk-h2">Leads</h3>
+                    </div>
+                    <div class="uk-card-body">
+                        @if(count($leads))
+                            <ul class="uk-list uk-list-striped">
+                                <li><strong>Leads</strong></li>
+                                @foreach ($leads as $lead)
+                                    <li><a href="/lead/{{$lead->id}}" class="list-group-item list-group-item-action justify-content-between">
+                                            {{$lead->name}}
+                                        </a></li>
+                                @endforeach
+                            </ul>
+                            {{ $leads->links() }}
+                        @else
+                            No leads.
                         @endif
                     </div>
                 </div>

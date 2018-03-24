@@ -36,19 +36,19 @@
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
+                                <h5>Four 30 Minute Lessons (1x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>Four 30 Minute Lessons (1x/week)</li>
-                                    <li>Our Pool = $140/Month</li>
-                                    <li>Your Pool = $180/Month</li>
+                                    <li>Our Pool = $140 per Student</li>
+                                    <li>Your Pool = $180 per Student</li>
                                 </ul>
                             </div>
                         </div>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
+                                <h5>Eight 30 Minute Lessons (2x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>Eight 30 Minute Lessons (2x/week)</li>
-                                    <li>Our Pool = $280/Month</li>
-                                    <li>Your Pool = $360/Month</li>
+                                    <li>Our Pool = $280 per Student</li>
+                                    <li>Your Pool = $360 per Student</li>
                                 </ul>
                             </div>
                         </div>
@@ -61,19 +61,19 @@
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
+                                <h5>Four 30 Minute Lessons (1x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>Four 30 Minute Lessons (1x/week)</li>
-                                    <li>Our Pool = $80/Month per child</li>
-                                    <li>Your Pool = $100/Month per child</li>
+                                    <li>Our Pool = $80 per Student</li>
+                                    <li>Your Pool = $100 per Student</li>
                                 </ul>
                             </div>
                         </div>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
+                                <h5>Eight 30 Minute Lessons (2x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>Eight 30 Minute Lessons (2x/week)</li>
-                                    <li>Our Pool = $160/Month per child</li>
-                                    <li>Your Pool = $200/Month per child</li>
+                                    <li>Our Pool = $160 per Student</li>
+                                    <li>Your Pool = $200 per Student</li>
                                 </ul>
                             </div>
                         </div>
@@ -115,19 +115,36 @@
                                     </div>
                                 </div>
                                 <div class="uk-margin">
-                                    <label class="uk-form-label uk-heading-bullet" for="">Location</label>
+                                    <label class="uk-form-label uk-heading-bullet" for="">Type</label>
                                     <div class="uk-form-controls">
-                                        <select class="uk-select" name="location_id" id="location_id">
-                                            @foreach($locations as $location)
-                                                <option value="{{$location->id}}">{{$location->name}}</option>
-                                            @endforeach
+                                        <select class="uk-select" name="type" id="type">
+                                            <option value="Private Lesson">Private Lesson (One Swimmer)</option>
+                                            <option value="Semi Private Lesson">Semi Private Lesson (Multiple Swimmers)</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
-                                    <label class="uk-form-label uk-heading-bullet" for="">Message</label>
+                                    <label class="uk-form-label uk-heading-bullet" for="">Length</label>
                                     <div class="uk-form-controls">
-                                        <textarea name="message" rows="5" class="uk-textarea" placeholder="I would like to schedule private and/or semi-private lessons." required>{{ old('message') }}</textarea>
+                                        <select class="uk-select" name="length" id="length">
+                                            <option value="4 Lessons">4 Lessons</option>
+                                            <option value="8 Lessons">8 Lessons</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Location</label>
+                                    <div class="uk-form-controls">
+                                        <select class="uk-select" name="location" id="location">
+                                            <option value="Harrison Ranch">Harrison Ranch</option>
+                                            <option value="My Home or Community Pool">My Home or Community Pool (Provide Address Below)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Availability</label>
+                                    <div class="uk-form-controls">
+                                        <textarea name="availability" rows="5" class="uk-textarea" placeholder="I am available Monday from 8am-1pm and Wednesday from 5-9pm." required>{{ old('availability') }}</textarea>
                                     </div>
                                 </div>
                                 <div uk-grid="" class="uk-grid">
@@ -139,7 +156,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/analytics', 'DashboardController@analytics');
     Route::get('/dashboard/season/current', 'DashboardController@swimmersForCurrentSeason');
 
+    /* @see PrivateLessonLeadController::show() */
+    Route::get('/private-semi-private/lead/{id}', 'PrivateLessonLeadController@show');
+
     /* @see LeadController::show() */
     Route::get('/lead/{id}', 'LeadController@show');
 
@@ -40,23 +43,23 @@ Route::middleware('auth')->group(function () {
 });
 
 
-//list lessons
+//List lessons
 /* @see GroupController::index() */
 Route::get('/lessons', 'GroupController@index');
 
-//list details of the lesson
+//List details of the lesson
 /* @see GroupController::classDetails() */
 Route::get('/lessons/{groupType}', 'GroupController@classDetails');
 
-//sign up form for that lesson
+//Sign up form for that lesson
 /* @see GroupController::signUp() */
 Route::get('/lessons/{classType}/{id}', 'GroupController@signUp');
 
-//save the results of the sign up form
+//Save the results of the sign up form
 /* @see SwimmerController::store() */
 Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 
-//charge the credit card for the lesson
+//Charge the credit card for the lesson
 /* @see PaymentController::ChargeCardForLesson() */
 Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 
@@ -68,7 +71,7 @@ Route::get('/private/{classType}/{id}', 'SwimmerController@store');
 
 
 
-//WP pages
+//Static Pages
 Route::get('/', function(){
     return view('pages.home');
 });
@@ -78,11 +81,7 @@ Route::get('/services', function(){
 });
 
 Route::get('/swim-team', function(){
-    return view('pages.swim-team');
-});
-
-Route::get('/private-semi-private', function(){
-    return view('pages.private-semi-private-lessons');
+    return view('swim-team.swim-team');
 });
 
 Route::get('/about', function(){
@@ -113,6 +112,10 @@ Route::get('/policies-and-procedures', function(){
     return view('groups.terms');
 });
 
+Route::get('/private-semi-private', function () {
+    return view('private-lesson-leads.index');
+});
+
 
 
 //WP Contact Forms
@@ -127,3 +130,6 @@ Route::post('/cpr-first-aid', 'LeadController@contact');
 
 /* @see LeadController::contact() */
 Route::post('/private-semi-private', 'LeadController@contact');
+
+/* @see PrivateLessonLeadController::store() */
+Route::post('/private-semi-private', 'PrivateLessonLeadController@store');

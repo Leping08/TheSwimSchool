@@ -10,7 +10,7 @@ use App\Group;
 use App\Contact;
 use App\DaysOfTheWeek;
 use Carbon\Carbon;
-use Charts;
+use App\PrivateLessonLead;
 
 class DashboardController extends Controller
 {
@@ -24,8 +24,9 @@ class DashboardController extends Controller
         $daysOfTheWeek = DaysOfTheWeek::all();
         $lessons = Lesson::latest()->with('group')->paginate(10, ['*'], 'lessons');
         $leads = Contact::latest()->paginate(10, ['*'], 'leads');
+        $privateLessonLeads = PrivateLessonLead::latest()->paginate(10, ['*'], 'private-lesson-leads');
         $todaysLessons = $this->getTodaysLessons();
-        return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads'));
+        return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads', 'privateLessonLeads'));
     }
 
     public function analytics()
