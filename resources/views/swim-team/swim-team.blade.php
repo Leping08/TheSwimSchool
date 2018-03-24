@@ -41,6 +41,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Location</span></h2>
+                <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <iframe height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJf7zB1tYkw4gRegJOom9JbYs&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
