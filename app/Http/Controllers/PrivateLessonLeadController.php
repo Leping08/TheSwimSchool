@@ -42,7 +42,7 @@ class PrivateLessonLeadController extends Controller
         //TODO: Send lead received email to admin
 
         $lead = PrivateLessonLead::create($leadRequest);
-        Log::info("$lead->name sent a private lesson lead. PrivateLessonLead ID: $lead->id");
+        Log::info("$lead->swimmer_name sent a private lesson lead. PrivateLessonLead ID: $lead->id");
         session()->flash('success', 'We will be in contact with you shortly!');
         return back();
     }
