@@ -6,6 +6,7 @@ use App\Location;
 use App\PrivateLessonLead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class PrivateLessonLeadController extends Controller
 {
@@ -25,8 +26,9 @@ class PrivateLessonLeadController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string',
+        $leadRequest = $request->validate([
+            'swimmer_name' => 'required|string',
+            'swimmer_birth_date' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|string',
             'type' => 'required|string',
@@ -35,9 +37,11 @@ class PrivateLessonLeadController extends Controller
             'availability' => 'required|string'
         ]);
 
+        $leadRequest['swimmer_birth_date'] = Carbon::parse($leadRequest['swimmer_birth_date']);
+
         //TODO: Send lead received email to admin
 
-        $lead = PrivateLessonLead::create($request->all());
+        $lead = PrivateLessonLead::create($leadRequest);
         Log::info("$lead->name sent a private lesson lead. PrivateLessonLead ID: $lead->id");
         session()->flash('success', 'We will be in contact with you shortly!');
         return back();

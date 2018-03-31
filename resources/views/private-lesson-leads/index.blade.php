@@ -97,9 +97,15 @@
                             <form action="" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
-                                    <label class="uk-form-label uk-heading-bullet" for="">Swimmer's Name</label>
+                                    <label class="uk-form-label uk-heading-bullet" for="">Swimmer Name</label>
                                     <div class="uk-form-controls">
-                                        <input type="text" name="name" value="{{ old('name') }}" class="uk-input" placeholder="Full Name" required>
+                                        <input type="text" name="swimmer_name" value="{{ old('swimmer_name') }}" class="uk-input" placeholder="Full Name" required>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Swimmer Birth Date</label>
+                                    <div class="uk-form-controls">
+                                        <input type="date" class="uk-input" id="swimmer_birth_date" name="swimmer_birth_date" value="{{ old('swimmer_birth_date') }}" required>
                                     </div>
                                 </div>
                                 <div class="uk-margin">

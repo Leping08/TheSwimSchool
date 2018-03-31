@@ -14,8 +14,17 @@
                         <dt>Id:</dt>
                         <dd>{{$lead->id}}</dd>
 
-                        <dt>Name:</dt>
-                        <dd>{{$lead->name}}</dd>
+                        <dt>Swimmer Name:</dt>
+                        <dd>{{$lead->swimmer_name}}</dd>
+
+                        @if($lead->swimmer_birth_date)
+                            <dt>Swimmer Age:</dt>
+                            @if($lead->yearsOld() < 2)
+                                <dd>{{$lead->monthsOld()}} months old</dd>
+                            @else
+                                <dd>{{$lead->yearsOld()}} years old</dd>
+                            @endif
+                        @endif
 
                         <dt>Email:</dt>
                         <dd>{{$lead->email}}</dd>

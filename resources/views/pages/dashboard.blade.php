@@ -44,7 +44,7 @@ Dashboard
                                 <li><strong>Requests</strong></li>
                                 @foreach ($privateLessonLeads as $lead)
                                     <li><a href="/private-semi-private/lead/{{$lead->id}}" class="list-group-item list-group-item-action justify-content-between">
-                                            {{$lead->name}}
+                                            {{$lead->swimmer_name}}
                                         </a></li>
                                 @endforeach
                             </ul>

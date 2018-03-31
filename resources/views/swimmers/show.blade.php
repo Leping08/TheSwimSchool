@@ -19,9 +19,9 @@
 
                     <dt>Age:</dt>
                     @if($swimmer->yearsOld() < 2)
-                        <dd>{{$swimmer->monthsOld()}} Months</dd>
+                        <dd>{{$swimmer->monthsOld()}} months old</dd>
                     @else
-                        <dd>{{$swimmer->yearsOld()}} Years</dd>
+                        <dd>{{$swimmer->yearsOld()}} years old</dd>
                     @endif
                     <dt>Email:</dt>
                     <dd><a href="mailto:{{{$swimmer->email}}}">{{$swimmer->email}}</a></dd>
