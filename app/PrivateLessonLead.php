@@ -8,6 +8,8 @@ use Carbon\Carbon;
 
 class PrivateLessonLead extends Model
 {
+    use SoftDeletes;
+
     /**
      * @var array
      */
