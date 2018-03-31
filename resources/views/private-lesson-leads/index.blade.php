@@ -36,7 +36,7 @@
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Four 30 Minute Lessons (1x/week)</h5>
+                                <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Our Pool = $140 per Student</li>
                                     <li>Your Pool = $180 per Student</li>
@@ -45,7 +45,7 @@
                         </div>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Eight 30 Minute Lessons (2x/week)</h5>
+                                <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Our Pool = $280 per Student</li>
                                     <li>Your Pool = $360 per Student</li>
@@ -61,7 +61,7 @@
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Four 30 Minute Lessons (1x/week)</h5>
+                                <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Our Pool = $80 per Student</li>
                                     <li>Your Pool = $100 per Student</li>
@@ -70,7 +70,7 @@
                         </div>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Eight 30 Minute Lessons (2x/week)</h5>
+                                <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Our Pool = $160 per Student</li>
                                     <li>Your Pool = $200 per Student</li>
@@ -97,7 +97,7 @@
                             <form action="" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
-                                    <label class="uk-form-label uk-heading-bullet" for="">Name</label>
+                                    <label class="uk-form-label uk-heading-bullet" for="">Swimmer's Name</label>
                                     <div class="uk-form-controls">
                                         <input type="text" name="name" value="{{ old('name') }}" class="uk-input" placeholder="Full Name" required>
                                     </div>
@@ -124,11 +124,11 @@
                                     </div>
                                 </div>
                                 <div class="uk-margin">
-                                    <label class="uk-form-label uk-heading-bullet" for="">Length</label>
+                                    <label class="uk-form-label uk-heading-bullet" for="">Package Option</label>
                                     <div class="uk-form-controls">
                                         <select class="uk-select" name="length" id="length">
-                                            <option value="4 Lessons">4 Lessons</option>
-                                            <option value="8 Lessons">8 Lessons</option>
+                                            <option value="4 Lessons Per Month">4 Lessons Per Month</option>
+                                            <option value="8 Lessons Per Month">8 Lessons Per Month</option>
                                         </select>
                                     </div>
                                 </div>
