@@ -43,6 +43,7 @@ class GroupController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * Done in the dashboard
      *
      * @return \Illuminate\Http\Response
      */
@@ -96,6 +97,9 @@ class GroupController extends Controller
 
 
     /**
+     *
+     * Delete the group
+     *
      * @param Group $group
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
@@ -116,14 +120,10 @@ class GroupController extends Controller
     }
 
 
-
-
-
-
-
-    //list details of the lesson
-
     /**
+     *
+     * List details of the lesson
+     *
      * @param $groupType
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -137,10 +137,10 @@ class GroupController extends Controller
     }
 
 
-
-    //sign up form for that lesson
-
     /**
+     *
+     * Sign up form for that lesson
+     *
      * @param $groupType
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -153,9 +153,10 @@ class GroupController extends Controller
         return view('groups.signUp', compact('lesson'));
     }
 
-    //Get request to the terms and conditions url
-
     /**
+     *
+     * Get request to the terms and conditions url
+     *
      * @param $classType
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

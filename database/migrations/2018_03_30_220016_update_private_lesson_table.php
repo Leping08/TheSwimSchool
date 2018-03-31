@@ -26,6 +26,9 @@ class UpdatePrivateLessonTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('private_lesson_leads', function (Blueprint $table) {
+            $table->renameColumn('swimmer_name', 'name');
+            $table->dropColumn('swimmer_birth_date');
+        });
     }
 }
