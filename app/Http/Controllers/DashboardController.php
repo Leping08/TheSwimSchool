@@ -11,6 +11,7 @@ use App\Contact;
 use App\DaysOfTheWeek;
 use Carbon\Carbon;
 use App\PrivateLessonLead;
+use Charts;
 
 class DashboardController extends Controller
 {
