@@ -97,11 +97,11 @@ class LocationController extends Controller
         return redirect('/dashboard');
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Location  $location
-     * @return \Illuminate\Http\Response
+     * @param Location $location
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(Location $location)
     {

@@ -12,13 +12,15 @@ class ClassFull extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * @var Lesson
+     */
     public $lesson;
 
+
     /**
-     * Create a new message instance.
-     *
-     * @param \App\Lesson $lesson
-     * @return $this
+     * ClassFull constructor.
+     * @param Lesson $lesson
      */
     public function __construct(Lesson $lesson)
     {

@@ -10,8 +10,14 @@ class Swimmer extends Model
 {
     use SoftDeletes;
 
+    /**
+     * @var array
+     */
     protected $dates = ['deleted_at', 'birthDate'];
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'firstName',
         'lastName',
@@ -32,16 +38,27 @@ class Swimmer extends Model
         'stripeChargeId'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function Lesson()
     {
         return $this->belongsTo(Lesson::class);
     }
 
-    public function yearsOld() {
+    /**
+     * @return mixed
+     */
+    public function yearsOld()
+    {
         return $this->getAttribute('birthDate')->diffInYears(Carbon::now());
     }
 
-    public function monthsOld() {
+    /**
+     * @return mixed
+     */
+    public function monthsOld()
+    {
         return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
     }
 }

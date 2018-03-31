@@ -94,11 +94,11 @@ class GroupController extends Controller
         return redirect('/dashboard');
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Group  $group
-     * @return \Illuminate\Http\Response
+     * @param Group $group
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(Group $group)
     {
@@ -122,6 +122,11 @@ class GroupController extends Controller
 
 
     //list details of the lesson
+
+    /**
+     * @param $groupType
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function classDetails($groupType)
     {
         //Get all lessons that are open for registration and have not already ended
@@ -134,6 +139,12 @@ class GroupController extends Controller
 
 
     //sign up form for that lesson
+
+    /**
+     * @param $groupType
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function signUp($groupType, $id)
     {
         Log::info("Trying to find Lesson ID: $id");
@@ -143,6 +154,12 @@ class GroupController extends Controller
     }
 
     //Get request to the terms and conditions url
+
+    /**
+     * @param $classType
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function terms($classType, $id)
     {
         return view('groups.terms');

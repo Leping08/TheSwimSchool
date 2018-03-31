@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function ChargeCardForLesson(Request $request, $id)
     {
         $request->validate([
@@ -39,6 +44,9 @@ class PaymentController extends Controller
         return redirect('lessons/'.$lesson->class_type);
     }
 
+    /**
+     * @param Lesson $lesson
+     */
     private function sendClassFullEmail(Lesson $lesson) {
         if($lesson->isLessonFull()){
             try {
@@ -52,6 +60,10 @@ class PaymentController extends Controller
         }
     }
 
+    /**
+     * @param Lesson $lesson
+     * @param Swimmer $swimmer
+     */
     private function sendClassSignUpEmail(Lesson $lesson, Swimmer $swimmer)
     {
         try {
@@ -62,6 +74,12 @@ class PaymentController extends Controller
         }
     }
 
+    /**
+     * @param Lesson $lesson
+     * @param Request $request
+     * @param Swimmer $swimmer
+     * @return \Illuminate\Http\RedirectResponse
+     */
     private function abortIfLessonIsFull(Lesson $lesson, Request $request, Swimmer $swimmer)
     {
         if($lesson->isLessonFull()){
@@ -71,6 +89,11 @@ class PaymentController extends Controller
         }
     }
 
+    /**
+     * @param Swimmer $swimmer
+     * @param Lesson $lesson
+     * @param $charge
+     */
     private function updateSwimmerWithPayment(Swimmer $swimmer, Lesson $lesson, $charge)
     {
         //Mark the as swimmer as payed in the database and save the stripe charge id
@@ -83,6 +106,12 @@ class PaymentController extends Controller
         Log::info("Swimmer: $swimmer->firstName $swimmer->lastName with ID: $swimmer->id signed up for lesson ID: $swimmer->lesson_id");
     }
 
+    /**
+     * @param Lesson $lesson
+     * @param Request $request
+     * @param Swimmer $swimmer
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\Stripe\Charge
+     */
     private function chargeCard(Lesson $lesson, Request $request, Swimmer $swimmer)
     {
         $newSwimmer = $swimmer;

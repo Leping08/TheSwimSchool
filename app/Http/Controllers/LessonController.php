@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Log;
 
 class LessonController extends Controller
 {
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($id)
     {
         $lesson = Lesson::with(['Group', 'Location', 'Season', 'DaysOfTheWeek'])
@@ -20,6 +24,10 @@ class LessonController extends Controller
         return view('lessons.show', compact('lesson', 'days'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(Request $request)
     {
         $lesson = $this->validateLesson($request);
@@ -65,11 +73,11 @@ class LessonController extends Controller
         return redirect('/lesson/'.$lesson->id);
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Lesson  $lesson
-     * @return \Illuminate\Http\Response
+     * @param Lesson $lesson
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(Lesson $lesson)
     {
@@ -86,6 +94,10 @@ class LessonController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     private function validateLesson(Request $request)
     {
         $lesson = $request->validate([
@@ -110,6 +122,10 @@ class LessonController extends Controller
         return $lesson;
     }
 
+    /**
+     * @param Request $request
+     * @param Lesson $lesson
+     */
     private function attachDaysOfTheWeeks(Request $request, Lesson $lesson)
     {
         if($request['monday']){

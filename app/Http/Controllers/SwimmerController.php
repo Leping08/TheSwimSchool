@@ -11,10 +11,6 @@ use Carbon\Carbon;
 
 class SwimmerController extends Controller
 {
-    public function __construct()
-    {
-        //
-    }
     /**
      * Display a listing of the resource.
      *
@@ -44,6 +40,12 @@ class SwimmerController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Sign a swimmer up for a lesson and send them to the card payment page or back to the lesson page.
+    /**
+     * @param Request $request
+     * @param $classType
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function store(Request $request, $classType, $id)
     {
         $lesson = Lesson::find($id);
@@ -137,11 +139,11 @@ class SwimmerController extends Controller
         return redirect('/swimmers/'.$oldSwimmer->id);
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Swimmer  $swimmer
-     * @return \Illuminate\Http\Response
+     * @param Swimmer $swimmer
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(Swimmer $swimmer)
     {

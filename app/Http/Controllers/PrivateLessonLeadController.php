@@ -9,12 +9,20 @@ use Illuminate\Support\Facades\Log;
 
 class PrivateLessonLeadController extends Controller
 {
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($id)
     {
         $lead = PrivateLessonLead::findOrFail($id);
         return view('private-lesson-leads.show', compact('lead'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $request->validate([

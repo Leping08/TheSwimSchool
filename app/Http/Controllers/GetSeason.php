@@ -12,6 +12,9 @@ use App\Season;
 
 class GetSeason
 {
+    /**
+     * @return mixed
+     */
     public static function getCurrentSeason()
     {
         $now = Carbon::now();
@@ -20,6 +23,10 @@ class GetSeason
             ->first();
     }
 
+    /**
+     * @param $date
+     * @return mixed
+     */
     public static function getSeasonFromDate($date)
     {
         $carbonDate = Carbon::parse($date);
@@ -28,6 +35,10 @@ class GetSeason
             ->first();
     }
 
+    /**
+     * @param $currentMonth
+     * @return string
+     */
     public static function getSeasonString($currentMonth)
     {
         //retrieve season

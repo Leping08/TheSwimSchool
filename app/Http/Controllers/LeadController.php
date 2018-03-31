@@ -10,12 +10,20 @@ use Illuminate\Support\Facades\Log;
 
 class LeadController extends Controller
 {
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($id)
     {
         $lead = Contact::find($id);
         return view('leads.show', compact('lead'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function contact(Request $request)
     {
         $validData = $this->validateRequest($request);
@@ -25,6 +33,10 @@ class LeadController extends Controller
         return back();
     }
 
+    /**
+     * @param $request
+     * @return array
+     */
     private function validateRequest($request): array
     {
         return $request->validate([
@@ -35,6 +47,11 @@ class LeadController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $validData
+     * @return array
+     */
     private function assignRequestContactId(Request $request, $validData): array
     {
         if($request->path() === 'contact-us'){
@@ -55,11 +72,18 @@ class LeadController extends Controller
         return $validData;
     }
 
+    /**
+     * @param $newContact
+     * @return Contact
+     */
     private function createContact($newContact): Contact
     {
         return Contact::create($newContact);
     }
 
+    /**
+     * @param $newContact
+     */
     private function sendEmails($newContact)
     {
         $adminEmails = config('mail.leadDestEmails');

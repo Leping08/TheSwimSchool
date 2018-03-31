@@ -11,12 +11,15 @@ class GroupLessonReminder extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * @var
+     */
     public $lesson;
 
+
     /**
-     * Create a new message instance.
+     * GroupLessonReminder constructor.
      * @param $lesson
-     * @return $this
      */
     public function __construct($lesson)
     {

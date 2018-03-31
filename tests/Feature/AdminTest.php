@@ -21,7 +21,7 @@ class AdminTest extends TestCase
     }
 
     /** @test */
-    public function a_admin_can_not_view_the_dashboard()
+    public function a_non_admin_can_not_view_the_dashboard()
     {
         $this->get('/dashboard')
             ->assertRedirect('/login');
@@ -41,12 +41,13 @@ class AdminTest extends TestCase
     }
 
     /** @test */
-    public function a_normal_person_can_not_see_swimmers_in_a_lesson()
+    public function a_non_admin_can_not_see_swimmers_in_a_lesson()
     {
         $swimmer = factory('App\Swimmer')->create();
         $lesson = Lesson::first();
 
-            $this->get("/lesson/$lesson->id")
-                ->assertRedirect('/login');
+        $this->get("/lesson/$lesson->id")
+            ->assertDontSee($swimmer->firstName)
+            ->assertDontSee($swimmer->lastName);
     }
 }

@@ -9,6 +9,9 @@ class Lesson extends Model
 {
     use SoftDeletes;
 
+    /**
+     * @var array
+     */
     protected $dates = [
         'registration_open',
         'class_start_time',
@@ -18,6 +21,9 @@ class Lesson extends Model
         'deleted_at'
     ];
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'season_id',
         'group_id',
@@ -38,31 +44,49 @@ class Lesson extends Model
         'sunday'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function Swimmers()
     {
         return $this->hasMany(Swimmer::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function Season()
     {
         return $this->belongsTo(Season::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function Group()
     {
         return $this->belongsTo(Group::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function Location()
     {
         return $this->belongsTo(Location::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function DaysOfTheWeek()
     {
         return $this->belongsToMany(DaysOfTheWeek::class)->withTimestamps();
     }
 
+    /**
+     * @return bool
+     */
     public function isLessonFull(): bool
     {
         if($this->getAttribute('class_size') <= $this->Swimmers()->count()){
@@ -72,6 +96,9 @@ class Lesson extends Model
         }
     }
 
+    /**
+     * @return bool
+     */
     public function isPrivate()
     {
         if(strpos($this->Group->type, 'Private') !== false){
@@ -81,11 +108,17 @@ class Lesson extends Model
         }
     }
 
+    /**
+     * @return string
+     */
     public function path(): string
     {
         return '/lessons/'.$this->Group->type;
     }
 
+    /**
+     * @return array
+     */
     public function DaysOfTheWeekArray(): array
     {
         return collect($this->DaysOfTheWeek()->get())->map(function ($item) {
@@ -93,6 +126,9 @@ class Lesson extends Model
         })->toArray();
     }
 
+    /**
+     * @return array
+     */
     public function DaysOfTheWeekIdsArray(): array
     {
         return collect($this->DaysOfTheWeek()->get())->map(function ($item) {
@@ -100,6 +136,9 @@ class Lesson extends Model
         })->toArray();
     }
 
+    /**
+     * @return bool
+     */
     public function hasSwimmers(): bool
     {
         if($this->Swimmers()->count() > 0){

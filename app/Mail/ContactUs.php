@@ -11,14 +11,20 @@ class ContactUs extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * @var
+     */
     public $data;
+    /**
+     * @var
+     */
     public $subject;
 
+
     /**
-     * Create a new message instance.
+     * ContactUs constructor.
      * @param $data
      * @param $subject
-     * @return $this
      */
     public function __construct($data, $subject)
     {

@@ -14,6 +14,9 @@ use App\PrivateLessonLead;
 
 class DashboardController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $swimmers = Swimmer::where('paid', '=', '1')->orderBy('created_at', 'desc')->limit(10)->get();
@@ -29,6 +32,9 @@ class DashboardController extends Controller
         return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads', 'privateLessonLeads'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function analytics()
     {
         $swimmerRegistrations = Charts::database(Swimmer::where('paid', '=', '1')->get(), 'area', 'highcharts')->dateFormat('m/d')
@@ -62,6 +68,9 @@ class DashboardController extends Controller
 
     }
 
+    /**
+     * @return mixed
+     */
     public function swimmersForCurrentSeason()
     {
         $season = GetSeason::getCurrentSeason();
@@ -70,6 +79,9 @@ class DashboardController extends Controller
         })->get();
     }
 
+    /**
+     * @return mixed
+     */
     private function getTodaysLessons()
     {
         return Lesson::whereHas('DaysOfTheWeek', function ($query) {
@@ -79,5 +91,10 @@ class DashboardController extends Controller
                 ['class_end_date', '>=',Carbon::now()]
             ]);
         })->get();
+    }
+
+    public function test()
+    {
+        return Swimmer::find(1)->yearsOld();
     }
 }

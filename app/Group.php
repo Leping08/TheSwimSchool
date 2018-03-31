@@ -10,15 +10,27 @@ class Group extends Model
 {
     use SoftDeletes;
 
+    /**
+     * @var array
+     */
     protected $dates = ['deleted_at'];
 
+    /**
+     * @var array
+     */
     protected $fillable = ['type', 'ages', 'description'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function Lessons()
     {
         return $this->hasMany(Lesson::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Query\Builder|static
+     */
     public function OpenSignUps()
     {
         return $this->hasMany(Lesson::class)

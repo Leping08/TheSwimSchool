@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PrivateLessonLead extends Model
 {
+    /**
+     * @var array
+     */
     protected $dates = ['deleted_at'];
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'name',
         'email',
