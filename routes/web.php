@@ -67,6 +67,16 @@ Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 /* @see SwimmerController::store() */
 Route::get('/private/{classType}/{id}', 'SwimmerController@store');
 
+//The Link to see all tryouts
+/* @see TryoutController::index() */
+Route::get('/swim-team/tryouts', 'TryoutController@index');
+
+//The Link to sign up for a tryout
+/* @see TryoutController::show() */
+Route::get('/swim-team/tryouts/{id}', 'TryoutController@show');
+
+
+
 
 
 
