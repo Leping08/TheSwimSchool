@@ -141,13 +141,13 @@ class SwimmerController extends Controller
 
 
     /**
-     * @param Swimmer $swimmer
+     * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     * @throws \Exception
      */
-    public function destroy(Swimmer $swimmer)
+    public function destroy($id)
     {
-        session()->flash('success', $swimmer->name.' has been deleted.');
+        $swimmer = Swimmer::find($id);
+        session()->flash('success', $swimmer->firstName.' '. $swimmer->lastName .' has been deleted.');
         Log::info("Swimmer ID: $swimmer->id was deleted.");
         $swimmer->delete();
         return redirect('/swimmers');

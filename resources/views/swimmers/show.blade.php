@@ -124,7 +124,7 @@
             <h2 class="uk-modal-title">Delete Warning</h2>
         </div>
         <div class="uk-modal-body">
-            <p>Are you sure you want to delete {{$swimmer->name}}?</p>
+            <p>Are you sure you want to delete {{$swimmer->firstName}} {{$swimmer->lastName}}?</p>
         </div>
         <div class="uk-modal-footer uk-text-right">
             <button class="uk-button uk-button-primary uk-modal-close" type="button">Cancel</button>
