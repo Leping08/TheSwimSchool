@@ -16,7 +16,7 @@ class TryoutController extends Controller
 
     public function show($id)
     {
-        $tryout = Tryout::find($id)->with('location', 'athletes')->get();
-        return view('tryouts.index', compact('tryout'));
+        $tryout = Tryout::with('location', 'athletes')->find($id);
+        return view('tryouts.signup', compact('tryout'));
     }
 }

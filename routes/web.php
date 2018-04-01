@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('locations', 'LocationController');
     /* @see LessonController */
     Route::resource('lesson', 'LessonController');
+
+
 });
 
 
@@ -75,6 +77,9 @@ Route::get('/swim-team/tryouts', 'TryoutController@index');
 /* @see TryoutController::show() */
 Route::get('/swim-team/tryouts/{id}', 'TryoutController@show');
 
+//Save the results of the sign up form
+/* @see AthleteController::store() */
+Route::post('/swim-team/tryouts/{id}', 'AthleteController@store');
 
 
 

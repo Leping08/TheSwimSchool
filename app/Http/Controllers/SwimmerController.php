@@ -34,13 +34,6 @@ class SwimmerController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    //Sign a swimmer up for a lesson and send them to the card payment page or back to the lesson page.
-    /**
      * @param Request $request
      * @param $classType
      * @param $id
