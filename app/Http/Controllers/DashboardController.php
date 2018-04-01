@@ -93,9 +93,4 @@ class DashboardController extends Controller
             ]);
         })->get();
     }
-
-    public function test()
-    {
-        return Swimmer::find(1)->yearsOld();
-    }
 }
