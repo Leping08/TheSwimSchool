@@ -207,7 +207,7 @@ Dashboard
                                         {{ $tryouts->links() }}
                                     </ul>
                                 @else
-                                    No lessons.
+                                    No Tryouts.
                                 @endif
                             </li>
 
