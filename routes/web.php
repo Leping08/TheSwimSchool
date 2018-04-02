@@ -41,7 +41,8 @@ Route::middleware('auth')->group(function () {
     /* @see LessonController */
     Route::resource('lesson', 'LessonController');
 
-
+    /* @see TryoutController */
+    Route::resource('tryouts', 'TryoutController');
 });
 
 
@@ -74,8 +75,8 @@ Route::get('/private/{classType}/{id}', 'SwimmerController@store');
 Route::get('/swim-team/tryouts', 'TryoutController@index');
 
 //The Link to sign up for a tryout
-/* @see TryoutController::show() */
-Route::get('/swim-team/tryouts/{id}', 'TryoutController@show');
+/* @see TryoutController::signUp() */
+Route::get('/swim-team/tryouts/{id}', 'TryoutController@signUp');
 
 //Save the results of the sign up form
 /* @see AthleteController::store() */

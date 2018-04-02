@@ -11,6 +11,7 @@ use App\Contact;
 use App\DaysOfTheWeek;
 use Carbon\Carbon;
 use App\PrivateLessonLead;
+use App\Tryout;
 use Charts;
 
 class DashboardController extends Controller
@@ -30,7 +31,8 @@ class DashboardController extends Controller
         $leads = Contact::latest()->paginate(10, ['*'], 'leads');
         $privateLessonLeads = PrivateLessonLead::latest()->paginate(10, ['*'], 'private-lesson-leads');
         $todaysLessons = $this->getTodaysLessons();
-        return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads', 'privateLessonLeads'));
+        $tryouts = Tryout::latest()->paginate(10, ['*'], 'tryouts');
+        return view('pages.dashboard', compact('swimmers', 'todaysLessons', 'seasons', 'groups', 'locations', 'daysOfTheWeek', 'lessons', 'leads', 'privateLessonLeads', 'tryouts'));
     }
 
     /**

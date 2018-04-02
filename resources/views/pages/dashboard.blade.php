@@ -87,98 +87,171 @@ Dashboard
                             </li>
                             <!-- Lesson -->
                             <li>
-                            <form class="uk-grid-small" uk-grid action="/lesson" method="POST">
-                                {{ csrf_field() }}
+                                <form class="uk-grid-small" uk-grid action="/lesson" method="POST">
+                                    {{ csrf_field() }}
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="group_id">Level</label>
-                                    <div class="uk-form-controls">
-                                        <select class="uk-select" name="group_id" id="group_id">
-                                            @foreach($groups as $group)
-                                                <option value="{{$group->id}}">{{$group->type}} ({{$group->ages}})</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="group_id">Level</label>
+                                        <div class="uk-form-controls">
+                                            <select class="uk-select" name="group_id" id="group_id">
+                                                @foreach($groups as $group)
+                                                    <option value="{{$group->id}}">{{$group->type}} ({{$group->ages}})</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="location_id">Location</label>
-                                    <div class="uk-form-controls">
-                                        <select class="uk-select" name="location_id" id="location_id">
-                                            @foreach($locations as $location)
-                                                <option value="{{$location->id}}">{{$location->name}}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="location_id">Location</label>
+                                        <div class="uk-form-controls">
+                                            <select class="uk-select" name="location_id" id="location_id">
+                                                @foreach($locations as $location)
+                                                    <option value="{{$location->id}}">{{$location->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="price">Price</label>
-                                    <div class="uk-form-controls">
-                                        <input type="number" class="uk-input" id="price" name="price" placeholder="$60" value="{{ old('price') }}" required>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="price">Price</label>
+                                        <div class="uk-form-controls">
+                                            <input type="number" class="uk-input" id="price" name="price" placeholder="$60" value="{{ old('price') }}" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="class_size">Class Size</label>
-                                    <div class="uk-form-controls">
-                                        <input type="number" class="uk-input" id="class_size" name="class_size" placeholder="10" value="{{ old('class_size') }}" required>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="class_size">Class Size</label>
+                                        <div class="uk-form-controls">
+                                            <input type="number" class="uk-input" id="class_size" name="class_size" placeholder="10" value="{{ old('class_size') }}" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="registration_open">Registration Opens</label>
-                                    <div class="uk-form-controls">
-                                        <input type="date" class="uk-input" id="registration_open" name="registration_open" placeholder="10" value="{{ old('registration_open') }}" required>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="registration_open">Registration Opens</label>
+                                        <div class="uk-form-controls">
+                                            <input type="date" class="uk-input" id="registration_open" name="registration_open" placeholder="10" value="{{ old('registration_open') }}" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="class_start_date">Start Date</label>
-                                    <div class="uk-form-controls">
-                                        <input type="date" class="uk-input" id="class_start_date" name="class_start_date" value="{{ old('class_start_date') }}" required>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="class_start_date">Start Date</label>
+                                        <div class="uk-form-controls">
+                                            <input type="date" class="uk-input" id="class_start_date" name="class_start_date" value="{{ old('class_start_date') }}" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="class_end_date">End Date</label>
-                                    <div class="uk-form-controls">
-                                        <input type="date" class="uk-input" id="class_end_date" name="class_end_date" placeholder="10" value="{{ old('class_end_date') }}" required>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="class_end_date">End Date</label>
+                                        <div class="uk-form-controls">
+                                            <input type="date" class="uk-input" id="class_end_date" name="class_end_date" placeholder="10" value="{{ old('class_end_date') }}" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="class_start_time">Start Time</label>
-                                    <div class="uk-form-controls">
-                                        <input type="time" class="uk-input" id="class_start_time" name="class_start_time" value="{{ old('class_start_time') }}" required>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="class_start_time">Start Time</label>
+                                        <div class="uk-form-controls">
+                                            <input type="time" class="uk-input" id="class_start_time" name="class_start_time" value="{{ old('class_start_time') }}" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet" for="class_end_time">End Time</label>
-                                    <div class="uk-form-controls">
-                                        <input type="time" class="uk-input" id="class_end_time" name="class_end_time" value="{{ old('class_end_time') }}" required>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="class_end_time">End Time</label>
+                                        <div class="uk-form-controls">
+                                            <input type="time" class="uk-input" id="class_end_time" name="class_end_time" value="{{ old('class_end_time') }}" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="uk-margin uk-width-1-1@s">
-                                    <label class="uk-form-label uk-heading-bullet">Days of the Week</label>
-                                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                        <label><input class="uk-checkbox" name="monday" type="checkbox">Monday</label>
-                                        <label><input class="uk-checkbox" name="tuesday" type="checkbox">Tuesday</label>
-                                        <label><input class="uk-checkbox" name="wednesday" type="checkbox">Wednesday</label>
-                                        <label><input class="uk-checkbox" name="thursday" type="checkbox">Thursday</label>
-                                        <label><input class="uk-checkbox" name="friday" type="checkbox">Friday</label>
-                                        <label><input class="uk-checkbox" name="saturday" type="checkbox">Saturday</label>
-                                        <label><input class="uk-checkbox" name="sunday" type="checkbox">Sunday</label>
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet">Days of the Week</label>
+                                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                            <label><input class="uk-checkbox" name="monday" type="checkbox">Monday</label>
+                                            <label><input class="uk-checkbox" name="tuesday" type="checkbox">Tuesday</label>
+                                            <label><input class="uk-checkbox" name="wednesday" type="checkbox">Wednesday</label>
+                                            <label><input class="uk-checkbox" name="thursday" type="checkbox">Thursday</label>
+                                            <label><input class="uk-checkbox" name="friday" type="checkbox">Friday</label>
+                                            <label><input class="uk-checkbox" name="saturday" type="checkbox">Saturday</label>
+                                            <label><input class="uk-checkbox" name="sunday" type="checkbox">Sunday</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <p uk-margin>
-                                    <button type="submit" class="uk-button uk-button-primary">Add Lesson</button>
-                                </p>
-                            </form>
-                        </li>
+                                    <p uk-margin>
+                                        <button type="submit" class="uk-button uk-button-primary">Add Lesson</button>
+                                    </p>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
+                <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
+                    <div class="uk-card-header">
+                        <h3 class="el-title uk-margin uk-h2">Swim Team Tryouts</h3>
+                    </div>
+                    <div class="uk-card-body">
+                        <ul uk-tab>
+                            <li><a href="#">View</a></li>
+                            <li><a href="#">Add</a></li>
+                        </ul>
+
+                        <ul class="uk-switcher uk-margin">
+                            <li>
+                                @if(count($tryouts))
+                                    <ul class="uk-list uk-list-striped">
+                                        <li><strong>Levels</strong></li>
+                                        @foreach ($tryouts as $tryout)
+                                            <li><a href="/tryouts/{{$tryout->id}}" class="list-group-item list-group-item-action justify-content-between">
+                                                    {{$tryout->id}}. {{$tryout->event_time->format('l F jS')}}
+                                                </a></li>
+                                        @endforeach
+                                        {{ $tryouts->links() }}
+                                    </ul>
+                                @else
+                                    No lessons.
+                                @endif
+                            </li>
+
+                            <li>
+                                <form class="uk-grid-small" uk-grid action="/tryouts" method="POST">
+                                    {{ csrf_field() }}
+
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="registration_open">Registration Opens</label>
+                                        <div class="uk-form-controls">
+                                            <input type="date" class="uk-input" id="registration_open" name="registration_open" placeholder="10" value="{{ old('registration_open') }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="class_start_date">Tryout Start Time</label>
+                                        <div class="uk-form-controls">
+                                            <input type="datetime-local" class="uk-input" id="event_time" name="event_time" value="{{ old('event_time') }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="class_size">Class Size</label>
+                                        <div class="uk-form-controls">
+                                            <input type="number" class="uk-input" id="class_size" name="class_size" placeholder="10" value="{{ old('class_size') }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-margin uk-width-1-1@s">
+                                        <label class="uk-form-label uk-heading-bullet" for="location_id">Location</label>
+                                        <div class="uk-form-controls">
+                                            <select class="uk-select" name="location_id" id="location_id">
+                                                @foreach($locations as $location)
+                                                    <option value="{{$location->id}}">{{$location->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <p uk-margin>
+                                        <button type="submit" class="uk-button uk-button-primary">Add Tryout</button>
+                                    </p>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </div>
