@@ -15,7 +15,7 @@
         <div class="uk-container">
             <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-expand@m uk-first-column">
-                    @if($tryouts)
+                    @if($tryouts->count() > 0)
                         @foreach($tryouts as $tryout)
                             <div class="uk-card uk-card-default uk-margin-top">
                                 <div class="uk-card-header">
