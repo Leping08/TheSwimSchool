@@ -43,6 +43,9 @@ Route::middleware('auth')->group(function () {
 
     /* @see TryoutController */
     Route::resource('tryouts', 'TryoutController');
+
+    /* @see AthleteController */
+    Route::resource('athlete', 'AthleteController');
 });
 
 

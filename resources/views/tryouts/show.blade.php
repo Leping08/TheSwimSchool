@@ -32,7 +32,6 @@
 
                     <h4>Swimmers</h4>
                     <ul class="uk-list uk-list-striped">
-                        {{--TODO: View the details of an athlete--}}
                         @foreach($tryout->athletes as $athlete)
                             <li><a href="/athletes/{{{$athlete->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                     {{$athlete->firstName}} {{$athlete->lastName}}

@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Log;
 
 class AthleteController extends Controller
 {
+    public function show(Athlete $athlete)
+    {
+        //$athlete = Athlete::find($id);
+        return view('athlete.show', compact('athlete'));
+    }
+
+
     public function store(Request $request, $id)
     {
         $tryout = Tryout::find($id);

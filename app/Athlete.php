@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 /**
  * An athlete is someone who has signed up for a tryout
@@ -49,5 +50,21 @@ class Athlete extends Model
     public function Tryout()
     {
         return $this->belongsTo(Tryout::class);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function yearsOld()
+    {
+        return $this->getAttribute('birthDate')->diffInYears(Carbon::now());
+    }
+
+    /**
+     * @return mixed
+     */
+    public function monthsOld()
+    {
+        return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
     }
 }
