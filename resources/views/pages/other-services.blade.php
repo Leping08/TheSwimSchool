@@ -2,7 +2,7 @@
 
 @section('seo')
     <title>Parrish Swim School Lifeguarding | Bradenton CPR/First Aid | Palmetto</title>
-    <meta name="description" content="We are also proud to offer Parrish swim school lifeguarding, along with Bradenton CPR/first aid training! Contact The Swim School near Palmetto today for more information."/>
+    <meta name="description" content="The Swim School also offers lifeguarding, along with CPR/first aid training! If you're interested, please sign up on our website or call Hillary today at 941-773-1424."/>
 @endsection
 
 @section('heading')

@@ -1,9 +1,9 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <!-- TODO: Add meta and title -->
-    <title></title>
-    <meta name="description" content=""/>
+
+    <title>The North River Swim Team Tryouts Form | The Swim School Parrish FL</title>
+    <meta name="description" content="Are you interested in joining The North River Swim Team? Sign up for tryouts by visiting The Swim School's website or calling 941-773-1424."/>
 @endsection
 
 @section('heading')
@@ -35,7 +35,7 @@
                                     @if($tryout->athletes->count() - $tryout->class_size >= 0)
                                         <button class="uk-button uk-button-primary" disabled>Tryout Full</button>
                                     @else
-                                        <a href="/swim-team/tryouts/{{{$tryout->id}}}" class="uk-button uk-button-primary">Sign Up</a>
+                                        <a title="Parrish Swim Team" href="/swim-team/tryouts/{{{$tryout->id}}}" class="uk-button uk-button-primary">Sign Up</a>
                                     @endif
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="uk-card-body">
                                 <div class="card-text">
-                                    <p>In the mean time check out our <a href="/lessons">group swim lessons</a>.</p>
+                                    <p>In the mean time check out our <a title="Bradenton Group Swimming Lessons" href="/lessons">group swim lessons</a>.</p>
                                 </div>
                             </div>
                         </div>

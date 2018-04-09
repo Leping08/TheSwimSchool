@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
 
     /* @see AthleteController */
     Route::resource('athlete', 'AthleteController');
+
+    Route::post('/lesson-link-email/{id}', 'LessonController@emailSignUpLink');
 });
 
 

@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Parrish Swim School | Lakewood Ranch Swimming Classes | Myakka City</title>
-    <meta name="description" content="Not only does our Parrish swim school offer Myakka City and Lakewood Ranch swimming classes, we are also proud to be the founder of the North River Rapids Swim Team. Find out more about us here."/>
+    <title>Parrish Swim Lessons | Lakewood Ranch Swimming Classes | The Swim School</title>
+    <meta name="description" content="The Swim School near Lakewood Ranch & Parrish is proud to offer private and semi-private swim lessons, as well as group swimming classes! Visit our website for more information."/>
 @endsection
 
 @section('heading')

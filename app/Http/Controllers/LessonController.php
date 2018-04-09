@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use App\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Mail\LessonLink;
+use Illuminate\Support\Facades\Mail;
 
 class LessonController extends Controller
 {
@@ -92,6 +94,20 @@ class LessonController extends Controller
             session()->flash('warning', "This lesson can not be deleted. It has swimmers in it.");
             return back();
         }
+    }
+
+    public function emailSignUpLink(Request $request, $id)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $lesson = Lesson::with('group')->find($id);
+
+        Mail::to($request->email)->send(new LessonLink($lesson));
+        Log::info("Reserve lesson link email sent to: $request->email");
+        session()->flash('success', "Reserve lessons email sent to $request->email.");
+        return back();
     }
 
     /**

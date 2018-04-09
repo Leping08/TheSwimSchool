@@ -53,17 +53,36 @@
                             <dt>Season:</dt>
                             <dd>{{$lesson->season->season}} {{$lesson->season->year}}</dd>
                         </dl>
+                        <hr>
+
+                        <h4>Email Lesson Link</h4>
+                        <div>
+                            <form class="uk-grid-small" uk-grid action="/lesson-link-email/{{{$lesson->id}}}" method="POST">
+                                {{ csrf_field() }}
+                                <div class="uk-width-1-1@s">
+                                    <input type="email" class="uk-input" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                                </div>
+                                <div class="">
+                                    <button type="submit" class="uk-button uk-button-primary">Send Email</button>
+                                </div>
+                            </form>
+                        </div>
+                        <hr>
 
                         <h4>Swimmers</h4>
                         <ul class="uk-list uk-list-striped">
+                            @if($lesson->swimmers->count())
                             @foreach($lesson->swimmers as $swimmer)
                                 <li><a href="/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                         {{$swimmer->firstName}} {{$swimmer->lastName}}
                                 </a></li>
                             @endforeach
+                            @else
+                                No Swimmers
+                            @endif
                         </ul>
                     </div>
-                    <div class="uk-card-footer">
+                    <div class="uk-card-footer" uk-margin>
                         <a href="/lessons/{{{$lesson->group->type}}}/{{{$lesson->id}}}" class="uk-button uk-button-primary" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> Sign Up Link</a>
                         <a class="uk-button uk-button-primary" href="/lesson/{{{$lesson->id}}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                         <button class="uk-button uk-button-danger" uk-toggle="target: #delete-modal" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>

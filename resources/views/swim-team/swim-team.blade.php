@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Manatee County Swim Team | Myakka City Swimming | Lakewood Ranch Ellenton</title>
-    <meta name="description" content="Like to swim in Lakewood Ranch and Ellenton? Come join our Manatee County swim team! The North River Swim School will be holding Myakka City swimming tryouts throughout April."/>
+    <title>The North River Swim Team | Parrish Swimming | The Swim School Florida</title>
+    <meta name="description" content="The Swim School near Parrish Florida invites you to come join our team! The North RIver Swim Team is holding tryouts at the River Wildnerness Country Club. Sign up for tryouts today."/>
 @endsection
 
 @section('heading')

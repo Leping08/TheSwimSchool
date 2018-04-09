@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Ellenton Group Lessons | Bradenton Swimming Classes | Manatee County</title>
-    <meta name="description" content="Bradenton swimming classes are available in a group setting for swimmers of all levels, from infants to advanced youth. Find more information here about our Manatee County and Ellenton group lessons."/>
+    <title>Group Swim Lessons | Parrish Swimming Classes | The Swim School Florida</title>
+    <meta name="description" content="Group swim lessons are available for swimmers of all levels! From infants to advanced youth, The Swim School near Parrish Florida is available for everyone. Sign up online today!"/>
 @endsection
 
 @section('heading')
