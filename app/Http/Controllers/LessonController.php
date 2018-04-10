@@ -104,7 +104,11 @@ class LessonController extends Controller
 
         $lesson = Lesson::with('group')->find($id);
 
-        //TODO: Check if this lesson is full
+        if($lesson->isLessonFull()){
+            session()->flash('error', "This lesson is full. Add more open spots or make a new lesson.");
+            return back();
+        }
+
         Mail::to($request->email)->send(new LessonLink($lesson));
         Log::info("Reserve lesson link email sent to: $request->email");
         session()->flash('success', "Reserve lesson email sent to $request->email.");

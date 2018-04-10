@@ -93,6 +93,6 @@ class DashboardController extends Controller
                 ['class_start_date', '<=', Carbon::now()],
                 ['class_end_date', '>=',Carbon::now()]
             ]);
-        })->get();
+        })->with('group')->get();
     }
 }
