@@ -65,8 +65,8 @@ Lessons
                     </div>
                     <div class="uk-card-body">
                         <div class="card-text">
-                            <!--Mark your Calendars! Next registration begins Monday 3/26/18.-->
-                            <p>In the mean time check out our <a href="/swim-team">swim team</a> or ask about <a href="/private-semi-private">private lessons</a>.</p>
+                            <p>Registration will open for our next session of swim lessons April 23rd. Please check back then.<br>
+                            In the mean time check out our <a href="/swim-team">swim team</a> or ask about <a href="/private-semi-private">private lessons</a>.</p>
                         </div>
                     </div>
                 </div>
