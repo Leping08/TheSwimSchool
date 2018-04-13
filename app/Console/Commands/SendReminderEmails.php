@@ -13,14 +13,14 @@ class SendReminderEmails extends Command
      *
      * @var string
      */
-    protected $signature = 'send-reminder-emails';
+    protected $signature = 'send-lesson-reminder-emails';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send reminder emails if the group lesson starts tomorrow.';
+    protected $description = 'Send lesson reminder emails if the group lesson starts tomorrow.';
 
     /**
      * Create a new command instance.
@@ -39,8 +39,8 @@ class SendReminderEmails extends Command
      */
     public function handle()
     {
-        Log::info("Starting to send reminder emails.");
+        Log::info("Starting to send lesson reminder emails.");
         (new GroupLessonsReminderEmail)->sendReminderEmails();
-        Log::info("Finished sending reminder emails.");
+        Log::info("Finished sending lesson reminder emails.");
     }
 }

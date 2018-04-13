@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Location;
+use Carbon\Carbon;
 use App\PrivateLessonLead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Carbon\Carbon;
+use App\Mail\PrivateLessonLeadEmail;
+use Illuminate\Support\Facades\Mail;
 
 class PrivateLessonLeadController extends Controller
 {
@@ -39,12 +41,30 @@ class PrivateLessonLeadController extends Controller
 
         $leadRequest['swimmer_birth_date'] = Carbon::parse($leadRequest['swimmer_birth_date']);
 
-        //TODO: Send lead received email to admin
         //TODO: Send email to swimmers the day before tryouts start
 
         $lead = PrivateLessonLead::create($leadRequest);
-        Log::info("$lead->swimmer_name sent a private lesson lead. PrivateLessonLead ID: $lead->id");
+
+        $this->sendLeadEmailsToAdmins($lead);
+        Log::info("$lead->swimmer_name sent a private lesson lead. PrivateLessonLeadEmail ID: $lead->id");
         session()->flash('success', 'We will be in contact with you shortly!');
         return back();
+    }
+
+
+    /**
+     * @param PrivateLessonLead $privateLessonLead
+     */
+    private function sendLeadEmailsToAdmins(PrivateLessonLead $privateLessonLead)
+    {
+        $adminEmails = config('mail.leadDestEmails');
+        try {
+            foreach($adminEmails as $email){
+                Log::info("Sending private lesson request email to $email. Private Lesson Request ID: $privateLessonLead->id");
+                Mail::to($email)->send(new PrivateLessonLeadEmail($privateLessonLead));
+            }
+        } catch (\Exception $e) {
+            Log::error("Private Lesson Request Email Error: ".$e);
+        }
     }
 }
