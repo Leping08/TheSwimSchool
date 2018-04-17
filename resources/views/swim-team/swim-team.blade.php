@@ -55,8 +55,8 @@
             </div>
 
             <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Pricing</span></h2>
-                <p>No Registration Fees! 10% Discount for RWCC Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap prior to the first swim meet.</p>
+                <h2 class="uk-heading-line"><span>Season Pricing</span></h2>
+                <p>No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap prior to the first swim meet.</p>
                 <ul class="uk-list uk-list-bullet">
                     <li><b>Ripple:</b> $200</li>
                     <li><b>Splash:</b> $220</li>
