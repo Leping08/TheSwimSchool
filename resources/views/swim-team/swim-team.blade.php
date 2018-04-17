@@ -15,7 +15,7 @@
             <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-expand@m uk-first-column">
                     <div class="uk-dropcap">
-                        <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team is holding tryouts at the River Wilderness Country Club. Registration for pre-season tryouts opens April 1st, 2018. More detailed information regarding practice levels, practice schedules and pricing will be available April 15th, 2018.</p>
+                        <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team is holding tryouts at the River Wilderness Country Club. Registration for pre-season tryouts opens April 1st, 2018.</p>
                     </div>
                     <div>
                         <h3 class="uk-heading-line"><span>2018 Pre-Season Tryout Dates</span></h3>
@@ -42,6 +42,29 @@
                     </div>
                 </div>
             </div>
+
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Groups & Practice Schedules</span></h2>
+                <p>Swim team tryout will determine group placement. Swim meet and special events schedule will be posted in May.</p>
+                <ul class="uk-list uk-list-bullet">
+                    <li><b>Ripple:</b> Tues/Thurs 6PM-6:30PM</li>
+                    <li><b>Splash:</b> Mon/Wed/Fri 5PM-5:45PM</li>
+                    <li><b>Waves:</b> Mon/Wed/Fri 5:45PM-6:45PM, Sat 9:30AM-10:30AM</li>
+                    <li><b>Rapids:</b> Mon/Tues/Wed/Thurs 6:30PM-7:45PM, Sat 8AM-9:30AM</li>
+                </ul>
+            </div>
+
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Pricing</span></h2>
+                <p>No Registration Fees! 10% Discount for RWCC Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap prior to the first swim meet.</p>
+                <ul class="uk-list uk-list-bullet">
+                    <li><b>Ripple:</b> $200</li>
+                    <li><b>Splash:</b> $220</li>
+                    <li><b>Waves:</b> $280</li>
+                    <li><b>Rapids:</b> $340</li>
+                </ul>
+            </div>
+
 
             <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Location</span></h2>
