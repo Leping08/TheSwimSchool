@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SendTryoutReminderEmails;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Console\Commands\SendReminderEmails;
@@ -14,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        SendReminderEmails::class
+        SendReminderEmails::class,
+        SendTryoutReminderEmails::class
     ];
 
     /**
@@ -26,7 +28,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command("send-lesson-reminder-emails")->dailyAt('8:00');
-        //$schedule->command("send-tryout-reminder-emails")->dailyAt('8:00');
+        $schedule->command("send-tryout-reminder-emails")->dailyAt('8:05');
     }
 
     /**
