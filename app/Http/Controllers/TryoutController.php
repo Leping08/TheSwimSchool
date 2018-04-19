@@ -12,7 +12,10 @@ class TryoutController extends Controller
 {
     public function index()
     {
-        $tryouts = Tryout::with('location', 'athletes')->where('registration_open', '<=', Carbon::now())->get();
+        $tryouts = Tryout::whereDate('event_time', '>=', Carbon::now())
+                            ->whereDate('registration_open', '<=', Carbon::now())
+                            ->with('location', 'athletes')
+                            ->get();
         return view('tryouts.index', compact('tryouts'));
     }
 
