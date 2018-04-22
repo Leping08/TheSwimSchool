@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\STInvitation;
+use App\STLevel;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Tryout;
 use App\Athlete;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class AthleteController extends Controller
 {
     public function show(Athlete $athlete)
     {
-        //$athlete = Athlete::find($id);
-        return view('athlete.show', compact('athlete'));
+        $levels = STLevel::all();
+        return view('athlete.show', compact('athlete', 'levels'));
     }
 
 
@@ -51,5 +54,22 @@ class AthleteController extends Controller
         Log::info("Athlete ID: $newAthlete->id signed up for Tryout ID: $tryout->id!");
         session()->flash('success', "Thanks for signing up! Don't forget to mark your calendar for the tryout.");
         return redirect("/swim-team");
+    }
+
+    public function youMadeTheTeamEmail(Request $request)
+    {
+        $request->validate([
+            'level_id' => 'required|integer',
+            'athlete_id' => 'required|integer'
+        ]);
+
+        $athlete = Athlete::find($request->athlete_id);
+        Log::info("Updating Athlete ID: $athlete->id and adding s_t_level of $request->level_id");
+        $athlete->update(['s_t_level' => $request->level_id]);
+
+        Log::info("Sending email to Athlete ID: $athlete->id, Email: $athlete->email a you made the team email for swim school level ID: $request->level_id");
+        Mail::to($athlete->email)->send(new STInvitation($athlete));
+        session()->flash('success', "Sent you made the team email to $athlete->firstName $athlete->lastName.");
+        return back();
     }
 }

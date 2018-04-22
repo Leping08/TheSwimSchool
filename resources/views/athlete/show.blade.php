@@ -80,6 +80,29 @@
                     </dl>
 
                 </div>
+
+                <div class="uk-card-body">
+                    <h4>You Made The Team Email</h4>
+                    <form class="uk-grid-small" uk-grid action="/swim-team/congrats-email" method="POST">
+                        {{ csrf_field() }}
+                        <div class="uk-margin uk-width-1-1@s">
+                            <label class="uk-form-label uk-heading-bullet" for="level_id">Level</label>
+                            <div class="uk-form-controls">
+                                <select class="uk-select" name="level_id" id="level_id">
+                                    @foreach($levels as $level)
+                                        <option value="{{$level->id}}">{{$level->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="athlete_id" value="{{{$athlete->id}}}">
+                        <p uk-margin>
+                            <button class="uk-button uk-button-primary" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Send</button>
+                        </p>
+                    </form>
+                </div>
+
                 <div class="uk-card-footer">
                     <a class="uk-button uk-button-primary" href="/swimmers/{{{$athlete->id}}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                     <button class="uk-button uk-button-danger" uk-toggle="target: #delete-modal" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>

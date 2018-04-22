@@ -40,7 +40,8 @@ class Athlete extends Model
         'zip',
         'emergencyName',
         'emergencyRelationship',
-        'emergencyPhone'
+        'emergencyPhone',
+        's_t_level'
     ];
 
 
@@ -66,5 +67,10 @@ class Athlete extends Model
     public function monthsOld()
     {
         return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
+    }
+
+    public function swimTeamLevel()
+    {
+        return $this->belongsTo(STLevel::class, 's_t_level');
     }
 }

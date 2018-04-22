@@ -13,7 +13,9 @@
 
 Auth::routes();
 
-
+Route::get('/test', function () {
+   return new \App\Mail\STInvitation(\App\Athlete::find(1));
+});
 //Auth protected routes
 Route::middleware('auth')->group(function () {
     //Swimmers
@@ -48,6 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('athlete', 'AthleteController');
 
     Route::post('/lesson-link-email/{id}', 'LessonController@emailSignUpLink');
+
+    /* @see AthleteController::youMadeTheTeamEmail() */
+    Route::post('/swim-team/congrats-email', 'AthleteController@youMadeTheTeamEmail');
 });
 
 
