@@ -56,6 +56,11 @@ class AthleteController extends Controller
         return redirect("/swim-team");
     }
 
+    public function edit(Athlete $athlete)
+    {
+        return view('athlete.edit', compact('athlete'));
+    }
+
     public function youMadeTheTeamEmail(Request $request)
     {
         $request->validate([
@@ -71,5 +76,40 @@ class AthleteController extends Controller
         Mail::to($athlete->email)->send(new STInvitation($athlete));
         session()->flash('success', "Sent you made the team email to $athlete->firstName $athlete->lastName.");
         return back();
+    }
+
+    public function update(Request $request, $id)
+    {
+        $athlete = $request->validate([
+            'firstName' => 'required|string|max:191',
+            'lastName' => 'required|string|max:191',
+            'birthDate' => 'required|string',
+            'email' => 'required|string|email|max:191',
+            'phone' => 'required|max:20',
+            'parent' => 'required|max:191',
+            'street' => 'required|max:191',
+            'city' => 'required|max:191',
+            'state' => 'required|max:191',
+            'zip' => 'required|max:15',
+            'emergencyName' => 'required|max:191',
+            'emergencyRelationship' => 'required|max:191',
+            'emergencyPhone' => 'required|max:20'
+        ]);
+
+        $athlete['birthDate'] = Carbon::parse($athlete['birthDate']);
+
+        $oldAthlete = Athlete::find($id);
+        $oldAthlete->update($athlete);
+        Log::info("Athlete ID: $oldAthlete->id has been updated.");
+        session()->flash('success', $oldAthlete->firstName.' '.$oldAthlete->lastName.' has been updated.');
+        return redirect('/athlete/'.$oldAthlete->id);
+    }
+
+    public function destroy(Athlete $athlete)
+    {
+        session()->flash('success', "$athlete->firstName $athlete->lastName has been deleted.");
+        Log::info("Athlete ID: $athlete->id was deleted.");
+        $athlete->delete();
+        return redirect('/dashboard');
     }
 }

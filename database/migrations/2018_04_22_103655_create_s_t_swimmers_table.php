@@ -31,6 +31,7 @@ class CreateSTSwimmersTable extends Migration
             $table->string('emergencyRelationship');
             $table->string('emergencyPhone');
             $table->integer('s_t_level_id')->nullable();
+            $table->integer('promo_code_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

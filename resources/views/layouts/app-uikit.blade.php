@@ -30,7 +30,7 @@
     @include('nav')
 
 
-    <div uk-height-viewport="offset-top: true; offset-bottom: true">
+    <div id="app" uk-height-viewport="offset-top: true; offset-bottom: true">
         @if(Request::is('/'))
 
         @else

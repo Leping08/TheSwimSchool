@@ -8,7 +8,7 @@ Search Swimmers
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             @if(count($swimmers))
-                <div id="search" class="uk-margin-top uk-margin-bottom">
+                <div class="uk-margin-top uk-margin-bottom">
                     <search :allswimmers="{{json_encode($swimmers)}}"></search>
                 </div>
             @else

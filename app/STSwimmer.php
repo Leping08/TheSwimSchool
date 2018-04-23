@@ -24,7 +24,6 @@ class STSwimmer extends Model
         'birthDate',
         'email',
         'phone',
-        'lesson_id',
         'parent',
         'notes',
         'street',
@@ -34,7 +33,9 @@ class STSwimmer extends Model
         'emergencyName',
         'emergencyRelationship',
         'emergencyPhone',
-        'stripeChargeId'
+        'stripeChargeId',
+        's_t_level_id',
+        'promo_code_id'
     ];
 
     public function level()
@@ -56,5 +57,21 @@ class STSwimmer extends Model
     public function monthsOld()
     {
         return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
+    }
+
+    public function promoCode()
+    {
+        return $this->belongsTo(PromoCode::class);
+    }
+
+    public function promoAppliedPrice()
+    {
+        if($this->promoCode){
+            $discount_percent = ($this->promoCode->discount_percent * .01);
+            $price = $this->level->price;
+            return ($price - ($discount_percent * $price));
+        } else {
+            return $this->level->price;
+        }
     }
 }

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\PromoCode;
+use App\STLevel;
 use App\STSwimmer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class STSwimmerController extends Controller
 {
@@ -12,9 +16,10 @@ class STSwimmerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $level = STLevel::find($id);
+        return view('swim-team.signUp', compact('level'));
     }
 
     /**
@@ -27,15 +32,58 @@ class STSwimmerController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(Request $request, $id)
     {
-        //
+        $swimmer = $request->validate([
+            'firstName' => 'required|string|max:191',
+            'lastName' => 'required|string|max:191',
+            'birthDate' => 'required|date|before:today',
+            'email' => 'required|string|email|max:191',
+            'phone' => 'required|max:20',
+            'parent' => 'nullable|max:191',
+            'street' => 'required|max:191',
+            'city' => 'required|max:191',
+            'state' => 'required|max:191',
+            'zip' => 'required|max:15',
+            'emergencyName' => 'required|max:191',
+            'emergencyRelationship' => 'required|max:191',
+            'emergencyPhone' => 'required|max:20',
+        ]);
+        $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
+
+        $level = STLevel::find($id);
+        $swimmer['s_t_level_id'] = $level->id;
+
+        $swimmer['promo_code_id'] = $this->validatePromoCode($request);
+
+        $newSwimmer = STSwimmer::create($swimmer);
+
+        Log::info("Swim Team Swimmer $newSwimmer->firstName $newSwimmer->lastName, ID: $newSwimmer->id has signed up for Level ID: $newSwimmer->s_t_level_id and is going to pay by card.");
+
+        return redirect('/swim-team/checkout/'.$newSwimmer->id);
+    }
+
+    private function validatePromoCode(Request $request)
+    {
+        if(!empty($request->promo_code)){
+            Log::info("Trying to find Promo for string: $request->promo_code");
+            $userCode = strtoupper($request->promo_code);
+            $promo = PromoCode::where('code', $userCode)->first();
+
+            if(count($promo)){
+                Log::info("Found Promo Code ID: $promo->id");
+                return $promo->id;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    public function checkout($id)
+    {
+        $swimmer = STSwimmer::find($id);
+        return view('swim-team.checkOut', compact('swimmer'));
     }
 
     /**

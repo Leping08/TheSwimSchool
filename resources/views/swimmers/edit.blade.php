@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('heading')
-Edit {{$swimmer->name}}
+Edit {{$swimmer->firstName}} {{$swimmer->lastName}}
 @endsection
 
 @section('content')

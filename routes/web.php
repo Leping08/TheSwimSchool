@@ -13,9 +13,15 @@
 
 Auth::routes();
 
-Route::get('/test', function () {
-   return new \App\Mail\STInvitation(\App\Athlete::find(1));
-});
+/* @see STSwimmerController::index() */
+Route::get('/swim-team/signup/{id}', 'STSwimmerController@index');
+
+/* @see STSwimmerController::store() */
+Route::post('/swim-team/signup/{id}', 'STSwimmerController@store');
+
+/* @see STSwimmerController::checkout() */
+Route::get('/swim-team/checkout/{id}', 'STSwimmerController@checkout');
+
 //Auth protected routes
 Route::middleware('auth')->group(function () {
     //Swimmers

@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="uk-card-footer">
-                    <a class="uk-button uk-button-primary" href="/swimmers/{{{$athlete->id}}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                    <a class="uk-button uk-button-primary" href="/athlete/{{{$athlete->id}}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                     <button class="uk-button uk-button-danger" uk-toggle="target: #delete-modal" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                 </div>
             </div>

@@ -95,9 +95,7 @@
                 csrf: "",
             }
         },
-
         mounted() {
-            console.log(window.Laracasts.csrfToken)
             this.csrf = window.Laracasts.csrfToken
         }
     }

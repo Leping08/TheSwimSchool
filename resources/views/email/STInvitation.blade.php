@@ -20,7 +20,7 @@ Based on tryouts we would like to place you in {{$athlete->swimTeamLevel->name}}
 Parrish, FL 34219
 @endcomponent
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => config('app.url').'swim-team/signup/'.$athlete->swimTeamLevel->id])
 Sign Up
 @endcomponent
 
