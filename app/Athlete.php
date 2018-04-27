@@ -41,7 +41,8 @@ class Athlete extends Model
         'emergencyName',
         'emergencyRelationship',
         'emergencyPhone',
-        's_t_level'
+        's_t_level',
+        's_t_sign_up_email'
     ];
 
 

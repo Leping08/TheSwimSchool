@@ -8,6 +8,10 @@ use App\STSwimmer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Stripe\Error\Authentication;
+use Stripe\Error\Base;
+use Stripe\Error\Card;
+use Stripe\Error\InvalidRequest;
 
 class STSwimmerController extends Controller
 {
@@ -68,7 +72,7 @@ class STSwimmerController extends Controller
     {
         if(!empty($request->promo_code)){
             Log::info("Trying to find Promo for string: $request->promo_code");
-            $userCode = strtoupper($request->promo_code);
+            $userCode = trim(strtoupper($request->promo_code));
             $promo = PromoCode::where('code', $userCode)->first();
 
             if(count($promo)){
@@ -83,8 +87,70 @@ class STSwimmerController extends Controller
     public function checkout($id)
     {
         $swimmer = STSwimmer::find($id);
-        return view('swim-team.checkOut', compact('swimmer'));
+        if(! $swimmer->stripeChargeId){
+            return view('swim-team.checkOut', compact('swimmer'));
+        } else {
+            return redirect('/swim-team');
+        }
     }
+
+    public function pay(Request $request)
+    {
+        $request->validate([
+            'cardholderName' => 'required',
+            'cardholderEmail' => 'required|email',
+            'swimmerId' => 'required'
+        ]);
+
+        $swimmer = STSwimmer::with('level')->find($request->swimmerId);
+
+        try{
+            \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+            $charge = \Stripe\Charge::create(array(
+                "amount" => $swimmer->promoAppliedPrice() * 100,
+                "currency" => "usd",
+                "receipt_email" => "$request->cardholderEmail",
+                "description" => "North River Swim Team ".$swimmer->level->name." Level for ".$swimmer->firstName." ".$swimmer->lastName." through The Swim School.",
+                "source" => "$request->stripeToken" //Obtained with Stripe.js
+            ));
+        } catch(Card $e){
+            $body = $e->getJsonBody();
+            $err  = $body['error'];
+            Log::error($err['message']);
+            $request->session()->flash('error', $err['message']);
+            return view('swim-team.checkOut', compact('swimmer'));
+        } catch (InvalidRequest $e){
+            Log::error('Invalid parameters were supplied to Stripes API');
+            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
+            return view('swim-team.checkOut', compact('swimmer'));
+        } catch (Authentication $e){
+            Log::error('Authentication with Stripes API failed (maybe you changed API keys recently)');
+            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
+            return view('swim-team.checkOut', compact('swimmer'));
+        }  catch (Base $e) {
+            Log::error('Generic error occurred');
+            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
+            return view('swim-team.checkOut', compact('swimmer'));
+        }
+
+        $this->updateSwimmerWithPayment($swimmer, $charge);
+
+        //TODO: Make a swim team sign up email
+        //$this->sendClassSignUpEmail($lesson, $swimmer);
+
+        $request->session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
+
+        return redirect('/swim-team');
+    }
+
+
+    private function updateSwimmerWithPayment(STSwimmer $swimmer, $charge)
+    {
+        $swimmer->stripeChargeId = $charge->id;
+        $swimmer->save();
+        Log::info("Swim Team Swimmer ID: ".$swimmer->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
+    }
+
 
     /**
      * Display the specified resource.

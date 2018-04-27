@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('heading')
-    {{$level->name}} Level
+    North River Swim Team
 @endsection
 
 @section('content')
@@ -14,7 +14,8 @@
                     </div>
                     <div class="uk-child-width-expand@s" uk-grid>
                         <div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$level->price}}</div>
-                        <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Practice Schedule:<br></strong>
+                        <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Season Length:<br></strong> May 1st - August 31st</div>
+                        <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Practice Schedule:<br></strong>
                             @foreach($level->schedule as $day)
                                 {{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
                             @endforeach

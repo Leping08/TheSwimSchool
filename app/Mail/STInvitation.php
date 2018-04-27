@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Athlete;
+use App\PromoCode;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -16,15 +17,21 @@ class STInvitation extends Mailable
      * @var Athlete
      */
     public $athlete;
+    /**
+     * @var PromoCode
+     */
+    public $promoCode;
 
 
     /**
      * STInvitation constructor.
      * @param Athlete $athlete
+     * @param PromoCode $promoCode
      */
-    public function __construct(Athlete $athlete)
+    public function __construct(Athlete $athlete, PromoCode $promoCode = null)
     {
         $this->athlete = $athlete;
+        $this->promoCode = $promoCode;
     }
 
     /**
@@ -35,7 +42,7 @@ class STInvitation extends Mailable
     public function build()
     {
         return $this->subject('North River Swim Team')
-            ->with(['athlete', $this->athlete])
+            ->with(['athlete', $this->athlete], ['promoCode', $this->promoCode])
             ->markdown('email.STInvitation');
     }
 }

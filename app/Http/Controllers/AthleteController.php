@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\STInvitation;
+use App\PromoCode;
 use App\STLevel;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -16,7 +17,8 @@ class AthleteController extends Controller
     public function show(Athlete $athlete)
     {
         $levels = STLevel::all();
-        return view('athlete.show', compact('athlete', 'levels'));
+        $promoCodes = PromoCode::all();
+        return view('athlete.show', compact('athlete', 'levels', 'promoCodes'));
     }
 
 
@@ -68,12 +70,19 @@ class AthleteController extends Controller
             'athlete_id' => 'required|integer'
         ]);
 
+        if($request['promo_id']){
+            $promo = PromoCode::find($request['promo_id']);
+        } else {
+            $promo = null;
+        }
+
         $athlete = Athlete::find($request->athlete_id);
         Log::info("Updating Athlete ID: $athlete->id and adding s_t_level of $request->level_id");
         $athlete->update(['s_t_level' => $request->level_id]);
 
         Log::info("Sending email to Athlete ID: $athlete->id, Email: $athlete->email a you made the team email for swim school level ID: $request->level_id");
-        Mail::to($athlete->email)->send(new STInvitation($athlete));
+        Mail::to($athlete->email)->send(new STInvitation($athlete, $promo));
+        $athlete->update(['s_t_sign_up_email' => 1]);
         session()->flash('success', "Sent you made the team email to $athlete->firstName $athlete->lastName.");
         return back();
     }

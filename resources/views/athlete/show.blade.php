@@ -96,6 +96,27 @@
                             </div>
                         </div>
 
+                        <div class="uk-margin uk-width-1-1@s">
+                            <label class="uk-form-label uk-heading-bullet" for="promo_id">Promo Code</label>
+                            <div class="uk-form-controls">
+                                <select class="uk-select" name="promo_id" id="promo_id">
+                                    <option value="NULL">None</option>
+                                    @foreach($promoCodes as $promo)
+                                        <option value="{{$promo->id}}">{{$promo->code}} - {{$promo->discount_percent}}% Off</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+
+                        @if($athlete->s_t_sign_up_email)
+                            <div class="uk-margin uk-width-1-1@s">
+                                <div class="uk-alert-success" uk-alert>
+                                    <p>Sign Up Email Already Sent</p>
+                                </div>
+                            </div>
+                        @endif
+
                         <input type="hidden" name="athlete_id" value="{{{$athlete->id}}}">
                         <p uk-margin>
                             <button class="uk-button uk-button-primary" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Send</button>

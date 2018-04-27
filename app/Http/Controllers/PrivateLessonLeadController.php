@@ -41,8 +41,6 @@ class PrivateLessonLeadController extends Controller
 
         $leadRequest['swimmer_birth_date'] = Carbon::parse($leadRequest['swimmer_birth_date']);
 
-        //TODO: Send email to swimmers the day before tryouts start
-
         $lead = PrivateLessonLead::create($leadRequest);
 
         $this->sendLeadEmailsToAdmins($lead);

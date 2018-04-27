@@ -1,5 +1,11 @@
 @extends('layouts.app-uikit')
 
+@section('seo')
+    <!-- TODO: Add meta and title -->
+    <title></title>
+    <meta name="description" content=""/>
+@endsection
+
 @section('heading')
 Lessons
 @endsection
