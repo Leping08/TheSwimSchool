@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\STSignUp;
 use App\PromoCode;
 use App\STLevel;
 use App\STSwimmer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Stripe\Error\Authentication;
 use Stripe\Error\Base;
 use Stripe\Error\Card;
@@ -136,7 +138,7 @@ class STSwimmerController extends Controller
         $this->updateSwimmerWithPayment($swimmer, $charge);
 
         //TODO: Make a swim team sign up email
-        //$this->sendClassSignUpEmail($lesson, $swimmer);
+        $this->sendSignUpEmail($swimmer);
 
         $request->session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
 
@@ -149,6 +151,18 @@ class STSwimmerController extends Controller
         $swimmer->stripeChargeId = $charge->id;
         $swimmer->save();
         Log::info("Swim Team Swimmer ID: ".$swimmer->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
+    }
+
+
+    private function sendSignUpEmail(STSwimmer $swimmer)
+    {
+        try {
+            Log::info("Sending swim team tryout sign up email to $swimmer->email for STSwimmer ID: $swimmer->id.");
+            Mail::to($swimmer->email)->send(new STSignUp($swimmer));
+
+        } catch (\Exception $e) {
+            Log::error("Swim Team sign up Email Error: ".$e);
+        }
     }
 
 
