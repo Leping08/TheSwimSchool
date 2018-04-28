@@ -1,5 +1,11 @@
 @extends('layouts.app-uikit')
 
+@section('seo')
+<!-- TODO: SEO this page-->
+<title></title>
+<meta name="description" content=""/>
+@endsection
+
 @section('heading')
 The Swim School Policies & Procedures
 @endsection

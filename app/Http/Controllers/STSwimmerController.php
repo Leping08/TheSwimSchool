@@ -137,7 +137,6 @@ class STSwimmerController extends Controller
 
         $this->updateSwimmerWithPayment($swimmer, $charge);
 
-        //TODO: Make a swim team sign up email
         $this->sendSignUpEmail($swimmer);
 
         $request->session()->flash('success', 'Thanks for signing up for The North River Swim Team!');

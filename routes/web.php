@@ -143,8 +143,12 @@ Route::get('/cpr-first-aid', function(){
     return view('pages.cpr-first-aid');
 });
 
-Route::get('/policies-and-procedures', function(){
+Route::get('/group-lessons/policies-and-procedures', function(){
     return view('groups.terms');
+});
+
+Route::get('/swim-team/policies-and-procedures', function(){
+    return view('swim-team.terms');
 });
 
 Route::get('/private-semi-private', function () {

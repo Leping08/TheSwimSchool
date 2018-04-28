@@ -1,5 +1,11 @@
 @extends('layouts.app-uikit')
 
+@section('seo')
+<!-- TODO: SEO this page-->
+<title></title>
+<meta name="description" content=""/>
+@endsection
+
 @section('heading')
 {{$lesson->group->type}}
 @endsection
@@ -167,7 +173,7 @@
                     <div class="uk-width-1-1@s">
                         <div class="uk-form-controls">
                             <label><input class="uk-checkbox" type="checkbox" name="Terms and Conditions" required>
-                                    I agree to the <a href="/policies-and-procedures" target="_blank">The Swim School Policies & Procedures</a>
+                                    I agree to the <a href="/group-lessons/policies-and-procedures" target="_blank">The Swim School Policies & Procedures</a>
                             </label>
                         </div>
                     </div>
