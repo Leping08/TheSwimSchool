@@ -1,9 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <!-- TODO: SEO this page-->
-    <title></title>
-    <meta name="description" content=""/>
+    <title>The North River Swim Team | Policies and Procedures | Lakewood Ranch</title>
+    <meta name="description" content="In order to be on The North River Swim Team, The Swim School requests that you read and follow the Lakewood Ranch Policies and Procedures listed here. Contact us with any questions."/>
 @endsection
 
 @section('heading')

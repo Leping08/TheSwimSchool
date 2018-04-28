@@ -1,9 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-<!-- TODO: SEO this page-->
-<title></title>
-<meta name="description" content=""/>
+<title>Parrish Swimming Lessons | Lakewood Ranch Group Lessons | Bradenton</title>
+<meta name="description" content="Interested in Parrish swimming lessons? Sign up for group lessons in Lakewood Ranch and Bradenton today be selecting your child's age and level!"/>
 @endsection
 
 @section('heading')
@@ -16,7 +15,7 @@
     @if($lesson->class_size - $lesson->Swimmers->count() <= 0)
             <div class="uk-card uk-card-default">
                 <div class="uk-card-body">
-                    <div>Sorry this lesson is full. Sign up for a different lesson <a href="/lessons">here</a>.</div>
+                    <div>Sorry this lesson is full. Sign up for a different lesson <a title="Bradenton Swimming Lessons"href="/lessons">here</a>.</div>
                 </div>
             </div>
     @else

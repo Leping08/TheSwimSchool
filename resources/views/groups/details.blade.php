@@ -1,9 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <!-- TODO: Add meta and title -->
-    <title></title>
-    <meta name="description" content=""/>
+    <title>Lakewood Ranch Group Lessons | Bradenton Swimming Classes | Parrish</title>
+    <meta name="description" content="Interested in Lakewood Ranch group lessons? Sign up for our Bradenton swimming classes today by choosing your child's age and swimming lesson."/>
 @endsection
 
 @section('heading')
@@ -71,8 +70,8 @@ Lessons
                     </div>
                     <div class="uk-card-body">
                         <div class="card-text">
-                            <p>Registration will open for our next session of swim lessons April 23rd. Please check back then.<br>
-                            In the mean time check out our <a href="/swim-team">swim team</a> or ask about <a href="/private-semi-private">private lessons</a>.</p>
+                            <p>Registration will open for our next session of swim lessons soon. Please check back at another time.<br>
+                            In the mean time check out our <a title="North River Swim Team" href="/swim-team">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="/private-semi-private">private lessons</a>.</p>
                         </div>
                     </div>
                 </div>

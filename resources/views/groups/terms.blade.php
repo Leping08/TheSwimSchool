@@ -1,9 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-<!-- TODO: SEO this page-->
-<title></title>
-<meta name="description" content=""/>
+<title>The Swim School | Policies and Procedures | Parrish Lakewood Ranch</title>
+<meta name="description" content="The Swim School, serving Parrish and Lakewood Ranch, requires all students, parents, and guardians abide by our Policies and Procedures which can be found on this page. Contact us today with any questions."/>
 @endsection
 
 @section('heading')
