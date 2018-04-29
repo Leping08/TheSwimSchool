@@ -13,18 +13,6 @@
 
 Auth::routes();
 
-/* @see STSwimmerController::index() */
-Route::get('/swim-team/signup/{id}', 'STSwimmerController@index');
-
-/* @see STSwimmerController::store() */
-Route::post('/swim-team/signup/{id}', 'STSwimmerController@store');
-
-/* @see STSwimmerController::checkout() */
-Route::get('/swim-team/checkout/{id}', 'STSwimmerController@checkout');
-
-/* @see STSwimmerController::checkout() */
-Route::post('/swim-team/card/checkout', 'STSwimmerController@pay');
-
 //Auth protected routes
 Route::middleware('auth')->group(function () {
     //Swimmers
@@ -65,6 +53,13 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
+
+
+/*
+ * Group Lessons
+ */
+
 //List lessons
 /* @see GroupController::index() */
 Route::get('/lessons', 'GroupController@index');
@@ -89,6 +84,16 @@ Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 /* @see SwimmerController::store() */
 Route::get('/private/{classType}/{id}', 'SwimmerController@store');
 
+
+
+
+
+
+
+/*
+ * Swim Team Tryouts
+ */
+
 //The Link to see all tryouts
 /* @see TryoutController::index() */
 Route::get('/swim-team/tryouts', 'TryoutController@index');
@@ -106,7 +111,38 @@ Route::post('/swim-team/tryouts/{id}', 'AthleteController@store');
 
 
 
-//Static Pages
+
+/*
+ * Swim Team Registration
+ */
+
+/* @see STSwimmerController::index() */
+Route::get('/swim-team/signup/{id}', 'STSwimmerController@index');
+
+/* @see STSwimmerController::store() */
+Route::post('/swim-team/signup/{id}', 'STSwimmerController@store');
+
+/* @see STSwimmerController::checkout() */
+Route::get('/swim-team/checkout/{id}', 'STSwimmerController@checkout');
+
+/* @see STSwimmerController::checkout() */
+Route::post('/swim-team/card/checkout', 'STSwimmerController@pay');
+
+/* @see STSwimmerController::roster() */
+Route::get('/roster', 'STSwimmerController@roster');
+
+
+
+
+
+
+
+
+
+/*
+ * Static Pages
+ */
+
 Route::get('/', function(){
     return view('pages.home');
 });
@@ -157,7 +193,15 @@ Route::get('/private-semi-private', function () {
 
 
 
-//WP Contact Forms
+
+
+
+
+
+/*
+ * Public Contact Forms
+ */
+
 /* @see LeadController::contact() */
 Route::post('/contact-us', 'LeadController@contact');
 

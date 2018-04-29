@@ -156,12 +156,18 @@ class STSwimmerController extends Controller
     private function sendSignUpEmail(STSwimmer $swimmer)
     {
         try {
-            Log::info("Sending swim team tryout sign up email to $swimmer->email for STSwimmer ID: $swimmer->id.");
+            Log::info("Sending swim team sign up email to $swimmer->email for STSwimmer ID: $swimmer->id.");
             Mail::to($swimmer->email)->send(new STSignUp($swimmer));
 
         } catch (\Exception $e) {
             Log::error("Swim Team sign up Email Error: ".$e);
         }
+    }
+
+    public function roster()
+    {
+        $levels = STLevel::with('swimmers')->get();
+        return view('swim-team.roster', compact('levels'));
     }
 
 

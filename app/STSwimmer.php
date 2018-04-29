@@ -74,4 +74,10 @@ class STSwimmer extends Model
             return $this->level->price;
         }
     }
+
+    public function signedUpSwimmers()
+    {
+        return $this->belongsTo(STLevel::class, 's_t_level_id')
+                    ->where('stripeChargeId', '!=', null);
+    }
 }
