@@ -16,7 +16,7 @@
             <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
                     @foreach($levels as $level)
-                        <h2 class="uk-heading-line"><span>{{$level->name}}</span></h2>
+                        <h2 class="uk-heading-line"><span>{{$level->name}} ({{$level->swimmers->count()}})</span></h2>
                         <div class="uk-overflow-auto">
                             <table class="uk-table uk-table-striped uk-table-hover">
                                 <thead>
