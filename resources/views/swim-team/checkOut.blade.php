@@ -9,7 +9,7 @@
         <div class="uk-container">
             <div class="uk-card uk-card-default uk-card-body">
                 <h2 class="uk-heading-line"><span>Card Details</span></h2>
-                <form class="uk-form-stacked" action="/swim-team/card/checkout" method="POST" id="payment-form">
+                <form class="uk-form-stacked" action="/swim-team/checkout" method="POST" id="payment-form">
                     {{ csrf_field() }}
 
                     <input name="swimmerId" type="hidden" value="{{{old('swimmerId') ? old('swimmerId') : $swimmer->id}}}" required>

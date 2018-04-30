@@ -125,8 +125,8 @@ Route::post('/swim-team/signup/{id}', 'STSwimmerController@store');
 /* @see STSwimmerController::checkout() */
 Route::get('/swim-team/checkout/{id}', 'STSwimmerController@checkout');
 
-/* @see STSwimmerController::checkout() */
-Route::post('/swim-team/card/checkout', 'STSwimmerController@pay');
+/* @see STSwimmerController::pay() */
+Route::post('/swim-team/checkout', 'STSwimmerController@pay');
 
 /* @see STSwimmerController::roster() */
 Route::get('/roster', 'STSwimmerController@roster');
