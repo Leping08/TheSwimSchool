@@ -97,6 +97,7 @@ class PaymentController extends Controller
     private function updateSwimmerWithPayment(Swimmer $swimmer, Lesson $lesson, $charge)
     {
         //Mark the as swimmer as payed in the database and save the stripe charge id
+        //TODO if the payment is declined by the bank don't do this step
         $swimmer->paid = 1;
         $swimmer->stripechargeid = $charge->id;
         $swimmer->save();
@@ -114,6 +115,7 @@ class PaymentController extends Controller
      */
     private function chargeCard(Lesson $lesson, Request $request, Swimmer $swimmer)
     {
+        //TODO: Bank declines but they still sign up successfully
         $newSwimmer = $swimmer;
         try{
             \Stripe\Stripe::setApiKey(config('services.stripe.secret'));

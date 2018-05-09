@@ -24,8 +24,8 @@
                                         <th>Name</th>
                                         <th>Phone</th>
                                         <th>Years Old</th>
+                                        <th>Email</th>
                                         <th>Emergency Contact Name</th>
-                                        <th>Emergency Contact Relationship</th>
                                         <th>Emergency Contact Phone</th>
                                     </tr>
                                 </thead>
@@ -35,8 +35,8 @@
                                         <td>{{$swimmer->firstName}} {{$swimmer->lastName}}</td>
                                         <td>{{$swimmer->phone}}</td>
                                         <td>{{$swimmer->yearsOld()}}</td>
+                                        <td>{{$swimmer->email}}</td>
                                         <td>{{$swimmer->emergencyName}}</td>
-                                        <td>{{$swimmer->emergencyRelationship}}</td>
                                         <td>{{$swimmer->emergencyPhone}}</td>
                                     </tr>
                                 @endforeach
