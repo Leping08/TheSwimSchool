@@ -23,6 +23,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Phone</th>
+                                        <th>Date Of Birth</th>
                                         <th>Years Old</th>
                                         <th>Email</th>
                                         <th>Emergency Contact Name</th>
@@ -34,6 +35,7 @@
                                     <tr>
                                         <td>{{$swimmer->firstName}} {{$swimmer->lastName}}</td>
                                         <td>{{$swimmer->phone}}</td>
+                                        <td>{{$swimmer->birthDate->format('m/d/y')}}</td>
                                         <td>{{$swimmer->yearsOld()}}</td>
                                         <td>{{$swimmer->email}}</td>
                                         <td>{{$swimmer->emergencyName}}</td>
