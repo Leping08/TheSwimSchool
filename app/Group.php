@@ -34,7 +34,7 @@ class Group extends Model
     public function OpenSignUps()
     {
         return $this->hasMany(Lesson::class)
-            ->whereDate('class_start_date', '>', Carbon::now())
+            ->whereDate('class_start_date', '>', Carbon::yesterday())
             ->whereDate('registration_open', '<=', Carbon::now());
     }
 }
