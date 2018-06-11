@@ -120,12 +120,43 @@ class SwimmerController extends Controller
             'zip' => 'required|max:15',
             'emergencyName' => 'required|max:191',
             'emergencyRelationship' => 'required|max:191',
-            'emergencyPhone' => 'required|max:20'
+            'emergencyPhone' => 'required|max:20',
+            'lessonId' => 'required|integer'
         ]);
 
         $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
 
-        $oldSwimmer = Swimmer::find($id);
+        try {
+            $newLesson = Lesson::findOrFail($request->lessonId);
+        }catch(\Exception $e){
+            session()->flash('error', "We couldn't find that lesson.");
+            Log::info("Trying to update swimmer ID: $id but could not find Lesson ID: $request->lessonId.");
+            return back();
+        }
+
+        try {
+            $oldSwimmer = Swimmer::findOrFail($id);
+        }catch(\Exception $e){
+            session()->flash('error', "We couldn't find that swimmer.");
+            Log::info("Trying to update Swimmer but could not find Swimmer ID: $id.");
+            return back();
+        }
+
+        try {
+            $oldLesson = Lesson::findOrFail($oldSwimmer->lesson->id);
+        }catch(\Exception $e){
+            session()->flash('error', "The Swimmer ID: $oldSwimmer->id is not associated with a lesson so we couldn't update the Lesson ID.");
+            Log::info("The Swimmer ID: $oldSwimmer->id is not associated with a lesson so we couldn't update the Lesson ID.");
+            return back();
+        }
+
+
+        //Move swimmer to the new lesson
+        if($oldSwimmer->lesson_id != $request->lessonId){
+            $oldSwimmer->lesson_id = $request->lessonId;
+            Log::info("Swimmer ID: $oldSwimmer->id was moved from Lesson ID $oldLesson->id to Lesson ID $newLesson->id.");
+        }
+
         $oldSwimmer->update($swimmer);
         Log::info("Swimmer ID: $oldSwimmer->id has been updated.");
         session()->flash('success', $oldSwimmer->firstName.' '.$oldSwimmer->lastName.' has been updated.');

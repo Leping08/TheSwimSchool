@@ -42,6 +42,8 @@
 
                 <h4>Lesson Info</h4>
                 <dl class="uk-description-list-horizontal">
+                    <dt>Id:</dt>
+                    <dd>{{$swimmer->lesson->id}}</dd>
                     <dt>Group:</dt>
                     <dd><a href="/lesson/{{$swimmer->lesson->id}}">{{$swimmer->lesson->group->type}}</a></dd>
                     <dt>Ages:</dt>

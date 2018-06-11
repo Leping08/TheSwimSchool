@@ -85,6 +85,14 @@ Edit {{$swimmer->firstName}} {{$swimmer->lastName}}
 
                     <hr>
 
+                    <h3 class="uk-heading-bullet">Lesson</h3>
+
+                    <div class="uk-margin">
+                        <label for="lessonId"  class="uk-form-label">Lesson Id</label>
+                        <input type="number" class="uk-input" id="lessonId" name="lessonId" placeholder="Lesson Id" value="{{ old('lessonId') ?? $swimmer->lesson->id }}" required>
+                    </div>
+
+                    <hr>
 
                     <h3 class="uk-heading-bullet">Notes</h3>
                     
