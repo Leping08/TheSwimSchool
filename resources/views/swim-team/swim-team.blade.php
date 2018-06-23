@@ -68,6 +68,20 @@
             </div>
 
             <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Season Schedule</span></h2>
+                <div class="uk-text-center uk-child-width-expand@s" uk-grid>
+                    <div>
+                        <h3 class="el-title uk-margin uk-heading-bullet">Ripple & Splash Schedule</h3>
+                        <a class="uk-button uk-button-primary" href="pdf/NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf" download="NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf">Download</a>
+                    </div>
+                    <div>
+                        <h3 class="el-title uk-margin uk-heading-bullet">Waves & Rapids Groups Schedule</h3>
+                        <a class="uk-button uk-button-primary" href="pdf/NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf" download="NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf">Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Coaches</span></h2>
                 <div class="uk-margin">
                     <ul uk-tab="connect: #js-350;animation: uk-animation-fade" class="uk-margin el-nav uk-tab">
