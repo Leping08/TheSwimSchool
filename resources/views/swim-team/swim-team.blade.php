@@ -72,11 +72,11 @@
                 <div class="uk-text-center uk-child-width-expand@s" uk-grid>
                     <div>
                         <h3 class="el-title uk-margin uk-heading-bullet">Ripple & Splash Schedule</h3>
-                        <a class="uk-button uk-button-primary" href="pdf/NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf" download="NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf">Download</a>
+                        <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf" download="NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf">Download</a>
                     </div>
                     <div>
                         <h3 class="el-title uk-margin uk-heading-bullet">Waves & Rapids Groups Schedule</h3>
-                        <a class="uk-button uk-button-primary" href="pdf/NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf" download="NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf">Download</a>
+                        <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf" download="NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf">Download</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                             <div class="el-content uk-margin">
                                 <p>Hilary is originally from Pennsylvania and started swimming at the age of five. She continued competitively through college in Ohio where she earned a B.A. in Psychology. After receiving her degree in 2003, she returned to PA and worked part-time as a lifeguard, swim lesson instructor, and swim team coach in addition to having a full-time position in the human services field assisting children with special needs.</p>
                                 <p>With a love for the beach and a craving for a warmer climate, Hilary relocated to Florida in 2006 and worked as an Aquatics Director at a YMCA for over eight years where she developed a year round competitive swim team, administered a progressive swim lesson program and conducted water fitness classes at two aquatics facilities. In May 2015, Hilary took her passion for teaching aquatics programs and established The Swim School, offering private, semi-private and group swim lessons in Manatee County for adults and children 12 months of age and older. She is excited to have the opportunity to develop the North River Rapids Swim Team and is looking forward to the 2018 inaugural season.</p>
-                                <a class="uk-button uk-button-default" href="tel:+19417731424"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 773-1424</a>
+                                <a title="Contact Hilary Koppenhaver" class="uk-button uk-button-default" href="tel:+19417731424"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 773-1424</a>
                             </div>
                         </li>
                         <li class="el-item">
@@ -118,7 +118,7 @@
                             <div class="el-content uk-margin">
                                 <p>Matt grew up Florida and has been swimming competitively for many years with various teams, including the Sarasota YMCA Sharks and Lakewood Ranch High School. He has instructed swim lessons for over 10 years and has worked with all levels of ability, from first time swimmers to Olympic Trials qualifiers. Matt has previously coached for year round competitive swim teams and earned a level 2 USA Swimming coaching certification. He was also the Head Swimming and Diving Coach for Lakewood Ranch High School for several seasons, where the team won numerous County, District, and Regional Championships, and produced individual State Champions.</p>
                                 <p>Matt recently graduated Summa Cum Laude from the University of South Florida with a Bachelor of Science in Applied Business. He looks forward to utilizing his extensive swimming background to assist in the coaching and development of swimmers for the North River Swim Team.</p>
-                                <a class="uk-button uk-button-default" href="tel:+19414487971"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 448-7971</a>
+                                <a title="Contact Matt Polk" class="uk-button uk-button-default" href="tel:+19414487971"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 448-7971</a>
                             </div>
                         </li>
                         <li class="el-item">
@@ -127,7 +127,7 @@
                             <div class="el-content uk-margin">
                                 <p>Isabella swam competitively for the Lakewood Ranch YMCA Wave Runners for 4 years and the Lakewood Ranch Swim Association for one year. While participating on the swim team, Isabella also volunteered with swim meets and teaching swim lessons. Isabella continued her swimming career through her 4 years of high school making varsity every year with the Lakewood Ranch HS Mustangs.</p>
                                 <p>Isabella graduated in May of 2017 from Lakewood Ranch High School and is actively continuing her education at the State College of Florida pursing a degree in Pediatric Nursing. She can’t wait to put her experiences as a swimmer into practice and share her love for the sport of swimming to help teach proper technique and instill confidence in the swimmers of the North River Swim Team.</p>
-                                <a class="uk-button uk-button-default" href="tel:+19417737934"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 773-7934</a>
+                                <a title="Contact Isabella Ortiz" class="uk-button uk-button-default" href="tel:+19417737934"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 773-7934</a>
                             </div>
                         </li>
                         <li class="el-item">
@@ -136,15 +136,15 @@
                             <div class="el-content uk-margin">
                                 <p>Zach grew up in New Jersey, where he graduated from Jackson Memorial High school in 2017. Zach played four years of Soccer, Lacrosse and was on the swim team. He was a varsity swimmer for 3 years specializing in the butterfly, and competed in Counties and Regionals. Zach is currently a student at SCF majoring in Biotechnology Science. He has been a lifeguard for over 3 years and currently works for the Manatee YMCA. Zach became a certified scuba diver in 2013 with dives all over Florida and the Caribbean.</p>
                                 <p>Zach is happy to have the opportunity to coach for the North River Swim Team and looks forward to assisting young swimmers with their technique as well as an enthusiasm for swimming.</p>
-                                <a class="uk-button uk-button-default" href="tel:+17326143104"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (732) 614-3104</a>
+                                <a title="Contact Zach Maibach" class="uk-button uk-button-default" href="tel:+17326143104"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (732) 614-3104</a>
                             </div>
                         </li>
                         <li class="el-item">
                             <img src="">
                             <h3 class="el-title uk-margin uk-heading-bullet">Courtney Chapin</h3>
                             <div class="el-content uk-margin">
-                                <p>Courtney has grown up in Florida swimming for nearly 15 years with the Venice Hurricanes and Lakewood Ranch High School where she earned several individual and team titles as captain placing top 3 at States in the backstroke events. She has coached summer league swim teams for three years and summer lessons for two. Courtney has just finished up her Freshmen year swimming for FGCU and intends to major in Health Science and earn her Olympic trial cuts for the 2020 Olympic Games. She is excited to use her knowledge and years of experience swimming to help grow and develop the swimmers of the North River Swim Team.</p>
-                                <a class="uk-button uk-button-default" href="tel:+19417794569"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 779-4569</a>
+                                <p>Courtney has grown up in Florida swimming for nearly 15 years with the Venice Hurricanes and Lakewood Ranch High School where she earned several individual and team titles as captain, placing top 3 at States in the backstroke events. She has coached summer league swim teams for three years and summer lessons for two. Courtney has just finished up her freshman year, swimming for FGCU and intends to major in Health Science and earn her Olympic trial cuts for the 2020 Olympic Games. She is excited to use her knowledge and years of experience swimming to help grow and develop the swimmers of the North River Swim Team.</p>
+                                <a title="Contact Courtney Chapin" class="uk-button uk-button-default" href="tel:+19417794569"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 779-4569</a>
                             </div>
                         </li>
                     </ul>
