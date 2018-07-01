@@ -97,9 +97,9 @@
                         <li aria-expanded="false">
                             <a href="#">Zach Maibach</a>
                         </li>
-                        <li aria-expanded="false">
-                            <a href="#">Courtney Chapin</a>
-                        </li>
+                        {{--<li aria-expanded="false">--}}
+                            {{--<a href="#">Courtney Chapin</a>--}}
+                        {{--</li>--}}
                     </ul>
 
                     <ul id="js-350" class="uk-switcher" uk-height-match="row: false">
@@ -139,14 +139,14 @@
                                 <a title="Contact Zach Maibach" class="uk-button uk-button-default" href="tel:+17326143104"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (732) 614-3104</a>
                             </div>
                         </li>
-                        <li class="el-item">
-                            <img src="">
-                            <h3 class="el-title uk-margin uk-heading-bullet">Courtney Chapin</h3>
-                            <div class="el-content uk-margin">
-                                <p>Courtney has grown up in Florida swimming for nearly 15 years with the Venice Hurricanes and Lakewood Ranch High School where she earned several individual and team titles as captain, placing top 3 at States in the backstroke events. She has coached summer league swim teams for three years and summer lessons for two. Courtney has just finished up her freshman year, swimming for FGCU and intends to major in Health Science and earn her Olympic trial cuts for the 2020 Olympic Games. She is excited to use her knowledge and years of experience swimming to help grow and develop the swimmers of the North River Swim Team.</p>
-                                <a title="Contact Courtney Chapin" class="uk-button uk-button-default" href="tel:+19417794569"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 779-4569</a>
-                            </div>
-                        </li>
+                        {{--<li class="el-item">--}}
+                            {{--<img src="">--}}
+                            {{--<h3 class="el-title uk-margin uk-heading-bullet">Courtney Chapin</h3>--}}
+                            {{--<div class="el-content uk-margin">--}}
+                                {{--<p>Courtney has grown up in Florida swimming for nearly 15 years with the Venice Hurricanes and Lakewood Ranch High School where she earned several individual and team titles as captain, placing top 3 at States in the backstroke events. She has coached summer league swim teams for three years and summer lessons for two. Courtney has just finished up her freshman year, swimming for FGCU and intends to major in Health Science and earn her Olympic trial cuts for the 2020 Olympic Games. She is excited to use her knowledge and years of experience swimming to help grow and develop the swimmers of the North River Swim Team.</p>--}}
+                                {{--<a title="Contact Courtney Chapin" class="uk-button uk-button-default" href="tel:+19417794569"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 779-4569</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
                     </ul>
                 </div>
             </div>
