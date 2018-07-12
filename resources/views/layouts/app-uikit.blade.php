@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif:100,200,300,400,500,600,700,800,900|Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
     <!-- Google Tag Manager -->
     <script>
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -17,7 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- uikit stuff -->
-    <link rel='stylesheet' id='theme-style-css'  href='https://demo.yootheme.com/themes/wordpress/2017/fjord/wp-content/themes/yootheme/css/theme.css?ver=1510057293' type='text/css' media='all' />
+    <link rel='stylesheet' id='theme-style-css'  href='https://demo.yootheme.com/themes/wordpress/2017/fjord/wp-content/themes/yootheme/css/theme.css?ver=1530797654' type='text/css' media='all' />
     <script>
         window.laravelConfig = JSON.parse('{!! json_encode([
             'STRIPE_PUBLIC' => env('STRIPE_PUBLIC')
