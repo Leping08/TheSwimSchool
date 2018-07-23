@@ -13,5 +13,7 @@ Thanks,<br>
 The Swim School
 
 
-<div style="display:flex; justify-content: center; padding: 1em 0em 0em 0em; font-size: x-small; color: #9BA2AB">If you are no longer interested in receiving emails from The Swim School, you can <a href="theswimschoolfl.com/unsubscribe/{{{$emailAddress}}}">unsubscribe</a></div>
+<div style="display:flex; justify-content: center;">
+    <div style="padding: 1em 0em 0em 0em; font-size: x-small; color: #9BA2AB">If you are no longer interested in receiving emails from The Swim School, you can <a href="theswimschoolfl.com/unsubscribe/{{{$emailAddress}}}">unsubscribe</a></div>
+</div>
 @endcomponent
