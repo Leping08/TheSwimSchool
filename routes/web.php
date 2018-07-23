@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function () {
 
 
 
+Route::get('/test', function(){
+    return new App\Mail\GoldDaisyAward('testing@gmail.com');
+});
 
 
 /*
@@ -216,3 +219,11 @@ Route::post('/private-semi-private', 'LeadController@contact');
 
 /* @see PrivateLessonLeadController::store() */
 Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
+
+
+/*
+ * Email marketing unsubscribe page
+ */
+
+/* @see EmailListController::unsubscribe() */
+Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
