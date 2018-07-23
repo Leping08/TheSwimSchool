@@ -54,10 +54,6 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get('/test', function(){
-    return new App\Mail\GoldDaisyAward('testing@gmail.com');
-});
-
 
 /*
  * Group Lessons
