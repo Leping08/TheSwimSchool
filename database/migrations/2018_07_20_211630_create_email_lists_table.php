@@ -15,7 +15,7 @@ class CreateEmailListsTable extends Migration
     {
         Schema::create('email_lists', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email', 500)->unique();
+            $table->string('email')->unique();
             $table->boolean('subscribe')->default('1');
             $table->timestamps();
         });
