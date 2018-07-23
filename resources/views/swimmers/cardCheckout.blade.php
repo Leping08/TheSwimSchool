@@ -10,27 +10,26 @@ Card Details
             <form class="uk-form-stacked" action="/{{{$lesson->id}}}/card/checkout" method="POST" id="payment-form">
                 {{ csrf_field() }}
                 <input name="swimmerId" type="hidden" value="{{{old('swimmerId') ? old('swimmerId') : $newSwimmer->id}}}" required>
-                <div class="group">
-                    <label class="uk-form-label">
-                        <span>Name</span>
-                        <input name="cardholderName" class="field" placeholder="First Last" value="{{{old('cardholderName') ? old('cardholderName') : $newSwimmer->name}}}" required/>
-                    </label>
 
-                    <label class="uk-form-label">
-                        <span>Email</span>
-                        <input name="cardholderEmail" class="field" placeholder="expamle@gmail.com" value="{{{old('cardholderEmail') ? old('cardholderEmail') : $newSwimmer->email}}}" required/>
-                    </label>
-                    <!--<label>
-                    <span>Phone</span>
-                    <input class="field" placeholder="(123) 456-7890" type="tel" />
-                    </label>-->
+                <div class="uk-margin uk-width-1-1@s">
+                    <label class="uk-form-label uk-heading-bullet" for="cardholderName">Name</label>
+                    <div class="uk-form-controls">
+                        <input type="text" class="uk-input" id="cardholderName" name="cardholderName" placeholder="First Last" value="{{{old('cardholderName') ? old('cardholderName') : $newSwimmer->name}}}" required>
+                    </div>
                 </div>
-                <div class="group">
-                    <label class="uk-form-label">
-                    <span>Card</span>
-                    <div id="card-element" class="field"></div>
-                    </label>
+
+                <div class="uk-margin uk-width-1-1@s">
+                    <label class="uk-form-label uk-heading-bullet" for="cardholderEmail">Email</label>
+                    <div class="uk-form-controls">
+                        <input type="email" class="uk-input" id="cardholderEmail" name="cardholderEmail" placeholder="expamle@gmail.com" value="{{{old('cardholderEmail') ? old('cardholderEmail') : $newSwimmer->email}}}" required>
+                    </div>
                 </div>
+
+                <div class="uk-margin uk-width-1-1@s">
+                    <label class="uk-form-label uk-heading-bullet" for="cardholderEmail">Card</label>
+                    <div id="card-element" class="uk-input"></div>
+                </div>
+
                 <!-- Used to display form errors -->
                 <div id="card-errors" role="alert"></div>
                 <button class="uk-button uk-button-primary" type="submit">Pay ${{$lesson->price}}</button>
@@ -38,84 +37,6 @@ Card Details
         </div>
     </div>
 </div>
-
-<style>
-.group {
-  background: white;
-  box-shadow: 0 7px 14px 0 rgba(49,49,93,0.10),
-              0 3px 6px 0 rgba(0,0,0,0.08);
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-label {
-  position: relative;
-  color: #8898AA;
-  font-weight: 300;
-  height: 40px;
-  line-height: 40px;
-  margin-left: 20px;
-  display: block;
-}
-
-.group label:not(:last-child) {
-  border-bottom: 1px solid #F0F5FA;
-}
-
-label > span {
-  width: 20%;
-  text-align: right;
-  float: left;
-}
-
-.field {
-  background: transparent;
-  font-weight: 300;
-  border: 0;
-  color: #31325F;
-  outline: none;
-  padding-right: 10px;
-  padding-left: 10px;
-  cursor: text;
-  width: 70%;
-  height: 40px;
-  float: right;
-}
-
-.field::-webkit-input-placeholder { color: #CFD7E0; }
-.field::-moz-placeholder { color: #CFD7E0; }
-.field:-ms-input-placeholder { color: #CFD7E0; }
-
-.outcome {
-  float: left;
-  width: 100%;
-  padding-top: 8px;
-  min-height: 24px;
-  text-align: center;
-}
-
-.success, .error {
-  display: none;
-  font-size: 13px;
-}
-
-.success.visible, .error.visible {
-  display: inline;
-}
-
-.error {
-  color: #E4584C;
-}
-
-.success {
-  color: #666EE8;
-}
-
-.success .token {
-  font-weight: 500;
-  font-size: 13px;
-}
-</style>
 
 
 <script src="https://js.stripe.com/v3/"></script>
