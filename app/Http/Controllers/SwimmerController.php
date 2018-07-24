@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\EmailList;
 use App\Swimmer;
 use App\Lesson;
 use Illuminate\Http\Request;
@@ -69,6 +70,11 @@ class SwimmerController extends Controller
         $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
 
         $newSwimmer = Swimmer::create($swimmer);
+
+        if($request->emailUpdates === 'on'){
+            EmailList::firstOrCreate(['email' => $request->email]);
+            Log::info("Adding $request->email to EmailList.");
+        }
 
         Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
         return view('swimmers.cardCheckout', compact('newSwimmer', 'lesson'));

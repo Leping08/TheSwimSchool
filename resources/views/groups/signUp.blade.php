@@ -117,11 +117,16 @@
                             <input type="tel" class="uk-input" id="phone" name="phone" placeholder="Phone" value="{{ old('phone') }}" required>
                         </div>
                     </div>
-                     <div class="uk-margin uk-width-1-1@s uk-width-1-2@m">
+                    <div class="uk-margin uk-width-1-1@s uk-width-1-2@m">
                         <label class="uk-form-label uk-heading-bullet" for="email">Email</label>
                         <div class="uk-form-controls">
                             <input type="email" class="uk-input" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
                         </div>
+                    </div>
+                    <div class="uk-form-controls">
+                        <label><input class="uk-checkbox" type="checkbox" name="emailUpdates" checked>
+                            Send me Swim School updates!
+                        </label>
                     </div>
                     
 
@@ -172,7 +177,7 @@
                     <div class="uk-width-1-1@s">
                         <div class="uk-form-controls">
                             <label><input class="uk-checkbox" type="checkbox" name="Terms and Conditions" required>
-                                    I agree to the <a href="/group-lessons/policies-and-procedures" target="_blank">The Swim School Policies & Procedures</a>
+                                I agree to the <a href="/group-lessons/policies-and-procedures" target="_blank">The Swim School Policies & Procedures</a>
                             </label>
                         </div>
                     </div>
