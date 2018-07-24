@@ -27,7 +27,7 @@ class SetUpEmailList
 
     private function getSwimLessonSwimmerEmails(): array
     {
-        return Swimmer::pluck('email')->unique()->values()->all();
+        return Swimmer::where('stripeChargeId', '!=', NULL)->pluck('email')->unique()->values()->all();
     }
 
     private function getSwimTeamSwimmerEmails(): array
