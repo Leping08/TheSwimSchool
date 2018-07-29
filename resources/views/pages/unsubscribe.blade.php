@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title></title>
-    <meta name="description" content=""/>
+    <title>The Swim School | Parrish Swimming Lessons Email Unsubscribe</title>
+    <meta name="description" content="We're sorry to see you go! For more information on Parrish swimming lessons and The Swim School, please give us a call at 941-773-1424."/>
 @endsection
 
 @section('heading')
@@ -14,7 +14,7 @@ We’re Sorry to See You Go
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-4-4@m uk-first-column">
-                    The email address {{$email}} has been unsubscribed from all marketing emails from The Swim School.
+                    The email address {{$email}} has been unsubscribed from all marketing emails from <a title="Manatee County Swim Lessons" href="/">The Swim School</a>.
                     {{--TODO: If this was a mistake <a href="/re-subscribe">re-subscribe me</a>!--}}
                 </div>
             </div>
