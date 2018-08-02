@@ -14,7 +14,7 @@ class EmailListController extends Controller
         $emailList = EmailList::where('email', '=', $email)->firstOrFail();
         Log::info("Trying to find $email to unsubscribe from email marketing");
         if($emailList->subscribe){
-            Log::info("Found $email, EmailList ID: $emailList->id has been unsubscribed");
+            Log::info("Found $email, EmailListTest ID: $emailList->id has been unsubscribed");
             $emailList->subscribe = 0;
             $emailList->save();
         }

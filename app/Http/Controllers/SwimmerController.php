@@ -73,7 +73,7 @@ class SwimmerController extends Controller
 
         if($request->emailUpdates === 'on'){
             EmailList::firstOrCreate(['email' => $request->email]);
-            Log::info("Adding $request->email to EmailList.");
+            Log::info("Adding $request->email to EmailListTest.");
         }
 
         Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
