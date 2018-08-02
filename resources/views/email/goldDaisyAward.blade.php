@@ -1,9 +1,11 @@
 @component('mail::message')
-# The Swim School Wants Your Vote!
+# Last Chance To Vote For The Swim School!
 
 <div style="display:flex; justify-content: center; padding: 2em 0em;"><img src="{{asset('img/gold-daisy-award-logo.png')}}"></div>
 
-We are very excited and honored to share that The Swim School has been nominated as Best Swim Lessons in Manatee County!  This is the 4th year in a row we've been nominated and this year we want to WIN! Please help us out by taking a moment to cast your vote in support of THE SWIM SCHOOL. Please click on the button below to cast your vote.
+It's your last chance to vote for The Swim School! Voting for the 2018 Gold Daisy Awards is almost over and The Swim School is in 2nd place by a few votes. We need your help!
+
+If you haven't voted, please visit the link below and cast your vote for The Swim School before the August 5th deadline! Thank you for your support!!
 
 @component('mail::button', ['url' => 'https://docs.google.com/forms/d/e/1FAIpQLSdGE6GcNpQTkQtLHvOcdbrrYUafkrqbTGA58z2ODRaXJay_og/viewform'])
     Cast Your Vote
