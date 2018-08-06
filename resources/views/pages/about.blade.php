@@ -23,7 +23,7 @@ About The Swim School
                 <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                 <div class="uk-margin uk-dropcap">
                     <p>
-                        In May 2015 The Swim School started offering private, semi-private and <a title="Ellenton Swimming Lessons" href="/lessons/">group swim lessons</a> in Manatee County for adults and children 12 months of age and older. In addition to providing quality stroke instruction for all ability levels, The Swim School also offers aquatics fitness classes, lifeguard services and CPR/First Aid services upon request. In March 2018, The Swim School expanded their services and founded the North River Rapids Swim Team, a seasonal program for youth ages 5-19.
+                        In May 2015 The Swim School started offering private, semi-private and <a title="Ellenton Swimming Lessons" href="/lessons/">group swim lessons</a> in Manatee County for adults and children 12 months of age and older. In addition to providing quality stroke instruction for all ability levels, In March 2018, The Swim School expanded their services and founded the <a title="North River Rapids Swim Team" href="\swim-team">North River Rapids Swim Team</a>, a seasonal program for youth ages 5-19.
                     </p>
                 </div>
             </div>

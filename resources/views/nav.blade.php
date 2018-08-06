@@ -25,7 +25,7 @@
                                     <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a title="Manatee County Swimming Classes" href="/lessons/">Group Lessons</a></li>
                                     <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a title="Parrish Private Swim Lessons" href="/private-semi-private">Private Lessons</a></li>
                                     <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a title="Palmetto Swim Team" href="/swim-team">Swim Team</a></li>
-                                    <li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a title="Bradenton Swimming" href="/other-services/">Other Services</a></li>
+                                    {{--<li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a title="Bradenton Swimming" href="/other-services/">Other Services</a></li>--}}
                                 </ul>
                             </li>
                             <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="/about/">About</a></li>
@@ -99,7 +99,7 @@
                                             <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a title="Manatee County Swimming Classes" href="/lessons/">Group Lessons</a></li>
                                             <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a title="Parrish Private Swim Lessons" href="/private-semi-private">Private Lessons</a></li>
                                             <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a title="Palmetto Swim Team" href="/swim-team">Swim Team</a></li>
-                                            <li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a title="Bradenton Swimming" href="/other-services/">Other Services</a></li>
+                                            {{--<li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a title="Bradenton Swimming" href="/other-services/">Other Services</a></li>--}}
                                         </ul>
                                     </div>
                                 </div>
