@@ -146,4 +146,12 @@ class Lesson extends Model
         }
         return false;
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function WaitList()
+    {
+        return $this->hasMany(WaitList::class)->orderBy('created_at', 'asc');
+    }
 }
