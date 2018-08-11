@@ -46,6 +46,9 @@ Route::middleware('auth')->group(function () {
     /* @see AthleteController */
     Route::resource('athlete', 'AthleteController');
 
+    /* @see WaitListController::show() */
+    Route::get('/wait-list/{id}', 'WaitListController@show');
+
     Route::post('/lesson-link-email/{id}', 'LessonController@emailSignUpLink');
 
     /* @see AthleteController::youMadeTheTeamEmail() */
@@ -83,6 +86,14 @@ Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 /* @see SwimmerController::store() */
 Route::get('/private/{classType}/{id}', 'SwimmerController@store');
 
+
+
+
+
+
+/*
+ * Wait List
+ */
 /* @see WaitListController::store() */
 Route::post('/wait-list/{id}', 'WaitListController@store');
 

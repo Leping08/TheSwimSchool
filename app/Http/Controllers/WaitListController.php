@@ -31,4 +31,10 @@ class WaitListController extends Controller
         session()->flash('success', 'You have been added to the wait list!');
         return back();
     }
+
+    public function show($id)
+    {
+        $waitingSwimmer = WaitList::with('lesson')->find($id);
+        return view('wait-list.show', compact('waitingSwimmer'));
+    }
 }
