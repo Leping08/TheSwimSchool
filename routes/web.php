@@ -83,6 +83,10 @@ Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 /* @see SwimmerController::store() */
 Route::get('/private/{classType}/{id}', 'SwimmerController@store');
 
+/* @see WaitListController::store() */
+Route::post('/wait-list/{id}', 'WaitListController@store');
+
+
 
 
 
