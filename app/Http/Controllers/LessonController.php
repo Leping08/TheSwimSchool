@@ -19,7 +19,7 @@ class LessonController extends Controller
      */
     public function show($id)
     {
-        $lesson = Lesson::with(['Group', 'Location', 'Season', 'DaysOfTheWeek'])
+        $lesson = Lesson::with(['Group', 'Location', 'Season', 'DaysOfTheWeek', 'WaitList'])
             ->where('id', '=', $id)
             ->firstOrFail();
         $days = Lesson::find($id)->DaysOfTheWeek()->get();

@@ -73,12 +73,30 @@
                         <ul class="uk-list uk-list-striped">
                             @if($lesson->swimmers->count())
                             @foreach($lesson->swimmers as $swimmer)
-                                <li><a href="/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
+                                <li>
+                                    <a href="/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                         {{$swimmer->firstName}} {{$swimmer->lastName}}
-                                </a></li>
+                                    </a>
+                                </li>
                             @endforeach
                             @else
                                 No Swimmers
+                            @endif
+                        </ul>
+
+                        <hr>
+                        <h4>Wait List</h4>
+                        <ul class="uk-list uk-list-striped">
+                            @if($lesson->WaitList->count())
+                                @foreach($lesson->WaitList as $waitingSwimmers)
+                                    <li>
+                                        <a href="/wait-list/{{{$waitingSwimmers->id}}}" class="list-group-item list-group-item-action justify-content-between">
+                                            {{$waitingSwimmers->name}}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @else
+                                No one on the wait list
                             @endif
                         </ul>
                     </div>
