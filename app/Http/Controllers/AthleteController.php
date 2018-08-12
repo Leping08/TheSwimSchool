@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Mail;
 
 class AthleteController extends Controller
 {
+    /**
+     * @param Athlete $athlete
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Athlete $athlete)
     {
         $levels = STLevel::all();
@@ -22,6 +26,11 @@ class AthleteController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(Request $request, $id)
     {
         $tryout = Tryout::find($id);
@@ -58,11 +67,19 @@ class AthleteController extends Controller
         return redirect("/swim-team");
     }
 
+    /**
+     * @param Athlete $athlete
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(Athlete $athlete)
     {
         return view('athlete.edit', compact('athlete'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function youMadeTheTeamEmail(Request $request)
     {
         $request->validate([
@@ -87,6 +104,11 @@ class AthleteController extends Controller
         return back();
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(Request $request, $id)
     {
         $athlete = $request->validate([
@@ -114,6 +136,11 @@ class AthleteController extends Controller
         return redirect('/athlete/'.$oldAthlete->id);
     }
 
+    /**
+     * @param Athlete $athlete
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
+     */
     public function destroy(Athlete $athlete)
     {
         session()->flash('success', "$athlete->firstName $athlete->lastName has been deleted.");

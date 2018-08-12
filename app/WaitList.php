@@ -24,6 +24,9 @@ class WaitList extends Model
         'lesson_id'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function Lesson()
     {
         return $this->belongsTo(Lesson::class);

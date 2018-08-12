@@ -96,6 +96,11 @@ class LessonController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function emailSignUpLink(Request $request, $id)
     {
         $request->validate([

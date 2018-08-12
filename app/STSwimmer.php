@@ -38,6 +38,9 @@ class STSwimmer extends Model
         'promo_code_id'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function level()
     {
         return $this->belongsTo(STLevel::class, 's_t_level_id');
@@ -59,11 +62,17 @@ class STSwimmer extends Model
         return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function promoCode()
     {
         return $this->belongsTo(PromoCode::class);
     }
 
+    /**
+     * @return float|int
+     */
     public function promoAppliedPrice()
     {
         if($this->promoCode){
@@ -75,6 +84,9 @@ class STSwimmer extends Model
         }
     }
 
+    /**
+     * @return $this
+     */
     public function signedUpSwimmers()
     {
         return $this->belongsTo(STLevel::class, 's_t_level_id')

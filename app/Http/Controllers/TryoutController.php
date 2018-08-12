@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Log;
 
 class TryoutController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $tryouts = Tryout::whereDate('event_time', '>=', Carbon::now())
@@ -19,18 +22,30 @@ class TryoutController extends Controller
         return view('tryouts.index', compact('tryouts'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function signUp($id)
     {
         $tryout = Tryout::with('location', 'athletes')->find($id);
         return view('tryouts.signup', compact('tryout'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($id)
     {
         $tryout = Tryout::with('location', 'athletes')->find($id);
         return view('tryouts.show', compact('tryout'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $tryout = $request->validate([
@@ -50,6 +65,10 @@ class TryoutController extends Controller
         return back();
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit($id)
     {
         $locations = Location::all();
@@ -57,6 +76,11 @@ class TryoutController extends Controller
         return view('tryouts.edit', compact('tryout', 'locations'));
     }
 
+    /**
+     * @param Request $request
+     * @param Tryout $tryout
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(Request $request, Tryout $tryout)
     {
         $newTryout = $request->validate([
@@ -76,6 +100,10 @@ class TryoutController extends Controller
         return redirect('/tryouts/'.$tryout->id);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function destroy($id)
     {
         $tryout = Tryout::with('location', 'athletes')->find($id);

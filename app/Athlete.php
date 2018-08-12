@@ -70,6 +70,9 @@ class Athlete extends Model
         return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function swimTeamLevel()
     {
         return $this->belongsTo(STLevel::class, 's_t_level');
