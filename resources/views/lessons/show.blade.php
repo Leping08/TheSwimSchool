@@ -86,6 +86,7 @@
 
                         <hr>
                         <h4>Wait List</h4>
+                        {{--TODO: Add a way to send email to people in wait list about the lesson having an open spot.--}}s
                         <ul class="uk-list uk-list-striped">
                             @if($lesson->WaitList->count())
                                 @foreach($lesson->WaitList as $waitingSwimmers)
