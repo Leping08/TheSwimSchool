@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Log;
 
 class EmailListController extends Controller
 {
+    /**
+     * @param $email
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function unsubscribe($email)
     {
         //TODO: Catch exception where email couldn't be found

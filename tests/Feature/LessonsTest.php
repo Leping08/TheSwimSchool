@@ -110,7 +110,7 @@ class LessonsTest extends TestCase
         $swimmer->update();
 
         $this->get($this->registrationOpen->path())
-            ->assertSee('Class Full');
+            ->assertSee('Join Wait List');
     }
 
     /** @test  **/

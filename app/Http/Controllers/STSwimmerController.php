@@ -39,6 +39,11 @@ class STSwimmerController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(Request $request, $id)
     {
         $swimmer = $request->validate([
@@ -70,6 +75,10 @@ class STSwimmerController extends Controller
         return redirect('/swim-team/checkout/'.$newSwimmer->id);
     }
 
+    /**
+     * @param Request $request
+     * @return null
+     */
     private function validatePromoCode(Request $request)
     {
         if(!empty($request->promo_code)){
@@ -86,6 +95,10 @@ class STSwimmerController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function checkout($id)
     {
         $swimmer = STSwimmer::find($id);
@@ -96,6 +109,10 @@ class STSwimmerController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function pay(Request $request)
     {
         $request->validate([
@@ -145,6 +162,10 @@ class STSwimmerController extends Controller
     }
 
 
+    /**
+     * @param STSwimmer $swimmer
+     * @param $charge
+     */
     private function updateSwimmerWithPayment(STSwimmer $swimmer, $charge)
     {
         $swimmer->stripeChargeId = $charge->id;
@@ -153,6 +174,9 @@ class STSwimmerController extends Controller
     }
 
 
+    /**
+     * @param STSwimmer $swimmer
+     */
     private function sendSignUpEmail(STSwimmer $swimmer)
     {
         try {
@@ -164,6 +188,9 @@ class STSwimmerController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function roster()
     {
         $levels = STLevel::with('swimmers')->get();
