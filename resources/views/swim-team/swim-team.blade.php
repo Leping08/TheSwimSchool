@@ -15,26 +15,23 @@
             <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-2-3@m uk-first-column">
                     <div class="uk-dropcap">
-                        <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league that runs May 1st - August 31st. Tryouts are held every Tuesday at 6:30PM. There is no fee to tryout for the swim team.</p>
-                        {{--<p>Bring your suit, goggles & towel and come join our team! The North River Swim Team is holding tryouts at the River Wilderness Country Club. Registration for pre-season tryouts opens April 1st, 2018.</p>--}}
+                        <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. We are excited to announce our Fall Swim Club will start Wednesday, September 5th!</p>
                     </div>
-                    {{--<div>--}}
-                        {{--<h3 class="uk-heading-line"><span>2018 Pre-Season Tryout Dates</span></h3>--}}
-                        {{--<ul class="uk-list uk-list-bullet">--}}
-                            {{--<li>Wed. 4/18 6:30PM</li>--}}
-                            {{--<li>Thurs. 4/19 6:30PM</li>--}}
-                            {{--<li>Sat. 4/21 10:00AM</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<p><strong>There is no fee to tryout for the swim team.</strong></p>--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs May 1st - August 31st.</p>--}}
-                    {{--</div>--}}
+                    <div>
+                        <h3 class="uk-heading-line"><span>2018 Fall Swim Club Tryout</span></h3>
+                        <ul class="uk-list uk-list-bullet">
+                            <li>August 27th at 5:45PM</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p><strong>There is no fee to tryout for the swim team.</strong></p>
+                    </div>
+                    <div>
+                        <p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
+                    </div>
                     <div>
                         <!-- TODO: Add tryout that lasts all season -->
-                        {{--<a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>--}}
+                        <a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>
                         {{--<a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
                     </div>
                 </div>
@@ -49,37 +46,37 @@
                 <h2 class="uk-heading-line"><span>Groups & Practice Schedules</span></h2>
                 <p>Swim team tryout will determine group placement. Swim meet and special events schedule will be posted in May.</p>
                 <ul class="uk-list uk-list-bullet">
-                    <li><b>Ripple:</b> Tues/Thurs 6PM-6:30PM</li>
-                    <li><b>Splash:</b> Mon/Wed/Fri 5PM-5:45PM</li>
-                    <li><b>Waves:</b> Mon/Wed/Fri 5:45PM-6:45PM, Sat 9:30AM-10:30AM</li>
-                    <li><b>Rapids:</b> Mon/Tues/Wed/Thurs 6:30PM-7:45PM, Sat 8AM-9:30AM</li>
+                    <li><b>Ripple:</b> Mon/Wed 5PM-5:30PM</li>
+                    <li><b>Splash:</b> Mon/Wed 5PM-5:45PM</li>
+                    <li><b>Waves:</b> Mon/Wed 5:45PM-6:45PM</li>
+                    <li><b>Rapids:</b> Mon/Tues/Wed 5:45PM-7:00PM</li>
                 </ul>
             </div>
 
             <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Season Pricing</span></h2>
-                <p>No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap prior to the first swim meet.</p>
+                <p>No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt.</p>
                 <ul class="uk-list uk-list-bullet">
-                    <li><b>Ripple:</b> $200</li>
-                    <li><b>Splash:</b> $220</li>
-                    <li><b>Waves:</b> $280</li>
-                    <li><b>Rapids:</b> $340</li>
+                    <li><b>Ripple:</b> $100</li>
+                    <li><b>Splash:</b> $110</li>
+                    <li><b>Waves:</b> $140</li>
+                    <li><b>Rapids:</b> $170</li>
                 </ul>
             </div>
 
-            <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Season Schedule</span></h2>
-                <div class="uk-text-center uk-child-width-expand@s" uk-grid>
-                    <div>
-                        <h3 class="el-title uk-margin uk-heading-bullet">Ripple & Splash Schedule</h3>
-                        <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf" download="NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf">Download</a>
-                    </div>
-                    <div>
-                        <h3 class="el-title uk-margin uk-heading-bullet">Waves & Rapids Groups Schedule</h3>
-                        <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf" download="NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf">Download</a>
-                    </div>
-                </div>
-            </div>
+            {{--<div class="uk-width-1-1@m uk-margin-top">--}}
+                {{--<h2 class="uk-heading-line"><span>Season Schedule</span></h2>--}}
+                {{--<div class="uk-text-center uk-child-width-expand@s" uk-grid>--}}
+                    {{--<div>--}}
+                        {{--<h3 class="el-title uk-margin uk-heading-bullet">Ripple & Splash Schedule</h3>--}}
+                        {{--<a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf" download="NRST_Ripple_&_Splash_Groups_2018_Swim_Meet_&_Special_Event_Schedule.pdf">Download</a>--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<h3 class="el-title uk-margin uk-heading-bullet">Waves & Rapids Groups Schedule</h3>--}}
+                        {{--<a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf" download="NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf">Download</a>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
             <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Coaches</span></h2>
@@ -97,9 +94,6 @@
                         <li aria-expanded="false">
                             <a href="#">Zach Maibach</a>
                         </li>
-                        {{--<li aria-expanded="false">--}}
-                            {{--<a href="#">Courtney Chapin</a>--}}
-                        {{--</li>--}}
                     </ul>
 
                     <ul id="js-350" class="uk-switcher" uk-height-match="row: false">
@@ -139,14 +133,6 @@
                                 <a title="Contact Zach Maibach" class="uk-button uk-button-default" href="tel:+17326143104"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (732) 614-3104</a>
                             </div>
                         </li>
-                        {{--<li class="el-item">--}}
-                            {{--<img src="">--}}
-                            {{--<h3 class="el-title uk-margin uk-heading-bullet">Courtney Chapin</h3>--}}
-                            {{--<div class="el-content uk-margin">--}}
-                                {{--<p>Courtney has grown up in Florida swimming for nearly 15 years with the Venice Hurricanes and Lakewood Ranch High School where she earned several individual and team titles as captain, placing top 3 at States in the backstroke events. She has coached summer league swim teams for three years and summer lessons for two. Courtney has just finished up her freshman year, swimming for FGCU and intends to major in Health Science and earn her Olympic trial cuts for the 2020 Olympic Games. She is excited to use her knowledge and years of experience swimming to help grow and develop the swimmers of the North River Swim Team.</p>--}}
-                                {{--<a title="Contact Courtney Chapin" class="uk-button uk-button-default" href="tel:+19417794569"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 779-4569</a>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
                     </ul>
                 </div>
             </div>
