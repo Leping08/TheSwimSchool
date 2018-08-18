@@ -24,8 +24,8 @@ class Tryout extends Model
      * @var array
      */
     protected $fillable = [
-        'season_id',
         'location_id',
+        's_t_season_id',
         'class_size',
         'registration_open',
         'event_time'

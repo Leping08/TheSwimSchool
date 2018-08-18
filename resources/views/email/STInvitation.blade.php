@@ -8,7 +8,7 @@ Based on tryouts we would like to place you in {{$athlete->swimTeamLevel->name}}
 
 @component('mail::panel')
 ### Season Length
-May 1st - August 31st
+{{$athlete->season->dates}}
 @endcomponent
 
 @component('mail::panel')

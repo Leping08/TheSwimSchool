@@ -42,7 +42,8 @@ class Athlete extends Model
         'emergencyRelationship',
         'emergencyPhone',
         's_t_level',
-        's_t_sign_up_email'
+        's_t_sign_up_email',
+        's_t_season_id'
     ];
 
 
@@ -60,6 +61,14 @@ class Athlete extends Model
     public function yearsOld()
     {
         return $this->getAttribute('birthDate')->diffInYears(Carbon::now());
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function season()
+    {
+        return $this->belongsTo(STSeason::class, 's_t_season_id');
     }
 
     /**

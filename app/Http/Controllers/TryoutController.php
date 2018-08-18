@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\STSeason;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Tryout;
@@ -55,7 +56,8 @@ class TryoutController extends Controller
             'event_time' => 'required|date'
         ]);
 
-        $tryout['season_id'] =  GetSeason::getSeasonFromDate($tryout['event_time'])->id;
+        $season = STSeason::where('current_season', true)->first(); //TODO move this to one file
+        $tryout['s_t_season_id'] = $season->id;
         $tryout['registration_open'] = Carbon::parse($tryout['registration_open']);
         $tryout['event_time'] = Carbon::parse($tryout['event_time']);
 

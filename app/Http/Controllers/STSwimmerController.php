@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\STSignUp;
 use App\PromoCode;
 use App\STLevel;
+use App\STSeason;
 use App\STSwimmer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,10 +18,10 @@ use Stripe\Error\InvalidRequest;
 
 class STSwimmerController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index($id)
     {
@@ -65,6 +66,9 @@ class STSwimmerController extends Controller
 
         $level = STLevel::find($id);
         $swimmer['s_t_level_id'] = $level->id;
+
+        $season = STSeason::where('current_season', true)->first(); //TODO move this to one file
+        $swimmer['s_t_season_id'] = $season->id;
 
         $swimmer['promo_code_id'] = $this->validatePromoCode($request);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\STInvitation;
 use App\PromoCode;
 use App\STLevel;
+use App\STSeason;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Tryout;
@@ -59,6 +60,9 @@ class AthleteController extends Controller
 
         $athlete['birthDate'] = Carbon::parse($athlete['birthDate']);
         $athlete['tryout_id'] = $tryout->id;
+
+        $season = STSeason::where('current_season', true)->first(); //TODO move this to one file
+        $athlete['s_t_season_id'] = $season->id;
 
         $newAthlete = Athlete::create($athlete);
 

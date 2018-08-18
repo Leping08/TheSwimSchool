@@ -35,6 +35,7 @@ class STSwimmer extends Model
         'emergencyPhone',
         'stripeChargeId',
         's_t_level_id',
+        's_t_season_id',
         'promo_code_id'
     ];
 
@@ -44,6 +45,14 @@ class STSwimmer extends Model
     public function level()
     {
         return $this->belongsTo(STLevel::class, 's_t_level_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function season()
+    {
+        return $this->belongsTo(STSeason::class, 's_t_season_id');
     }
 
     /**
