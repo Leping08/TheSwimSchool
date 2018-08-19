@@ -26,7 +26,8 @@ class STSwimmerController extends Controller
     public function index($id)
     {
         $level = STLevel::find($id);
-        return view('swim-team.signUp', compact('level'));
+        $season = STSeason::getCurrentSeason();
+        return view('swim-team.signUp', compact('level', 'season'));
     }
 
     /**
