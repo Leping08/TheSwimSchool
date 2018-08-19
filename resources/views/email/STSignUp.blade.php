@@ -15,7 +15,7 @@
 
 @component('mail::panel')
 ### Season Length
-May 1st - August 31st
+{{$swimmer->season->dates}}
 @endcomponent
 
 @component('mail::panel')
