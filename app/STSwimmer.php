@@ -94,11 +94,20 @@ class STSwimmer extends Model
     }
 
     /**
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function signedUpSwimmers()
     {
         return $this->belongsTo(STLevel::class, 's_t_level_id')
                     ->where('stripeChargeId', '!=', null);
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeCurrentSeason($query)
+    {
+        return $query->where('s_t_season_id', STSeason::GetCurrentSeason()->id);
     }
 }

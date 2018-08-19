@@ -19,6 +19,8 @@ class STLevel extends Model
      */
     public function swimmers()
     {
-        return $this->hasMany(STSwimmer::class)->where('s_t_swimmers.stripeChargeId', '!=', null);
+        return $this->hasMany(STSwimmer::class)
+                    ->where('s_t_swimmers.stripeChargeId', '!=', null)
+                    ->currentseason();
     }
 }

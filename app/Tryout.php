@@ -37,7 +37,7 @@ class Tryout extends Model
      */
     public function Athletes()
     {
-        return $this->hasMany(Athlete::class);
+        return $this->hasMany(Athlete::class)->currentseason();
     }
 
 
@@ -70,5 +70,14 @@ class Tryout extends Model
         } else {
             return false;
         }
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeCurrentSeason($query)
+    {
+        return $query->where('s_t_season_id', STSeason::GetCurrentSeason()->id);
     }
 }

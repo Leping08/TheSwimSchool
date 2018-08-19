@@ -56,8 +56,7 @@ class TryoutController extends Controller
             'event_time' => 'required|date'
         ]);
 
-        $season = STSeason::where('current_season', true)->first(); //TODO move this to one file
-        $tryout['s_t_season_id'] = $season->id;
+        $tryout['s_t_season_id'] = STSeason::GetCurrentSeason()->id;
         $tryout['registration_open'] = Carbon::parse($tryout['registration_open']);
         $tryout['event_time'] = Carbon::parse($tryout['event_time']);
 

@@ -86,4 +86,13 @@ class Athlete extends Model
     {
         return $this->belongsTo(STLevel::class, 's_t_level');
     }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeCurrentSeason($query)
+    {
+        return $query->where('s_t_season_id', STSeason::GetCurrentSeason()->id);
+    }
 }

@@ -67,8 +67,7 @@ class STSwimmerController extends Controller
         $level = STLevel::find($id);
         $swimmer['s_t_level_id'] = $level->id;
 
-        $season = STSeason::where('current_season', true)->first(); //TODO move this to one file
-        $swimmer['s_t_season_id'] = $season->id;
+        $swimmer['s_t_season_id'] = STSeason::GetCurrentSeason()->id;
 
         $swimmer['promo_code_id'] = $this->validatePromoCode($request);
 
