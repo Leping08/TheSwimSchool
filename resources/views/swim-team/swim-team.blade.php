@@ -15,7 +15,7 @@
             <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-2-3@m uk-first-column">
                     <div class="uk-dropcap">
-                        <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. We are excited to announce our Fall Swim Club will start Wednesday, September 5th!</p>
+                        <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. We are excited to announce our Fall Swim Club will run Wednesday, September 5th - Wednesday, October 31st!</p>
                     </div>
                     <div>
                         <h3 class="uk-heading-line"><span>2018 Fall Swim Club Tryout</span></h3>
@@ -26,9 +26,9 @@
                     <div>
                         <p><strong>There is no fee to tryout for the swim team.</strong></p>
                     </div>
-                    <div>
-                        <p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
-                    </div>
+                    {{--<div>--}}
+                        {{--<p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>--}}
+                    {{--</div>--}}
                     <div>
                         <!-- TODO: Add tryout that lasts all season -->
                         <a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>
@@ -44,7 +44,7 @@
 
             <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Groups & Practice Schedules</span></h2>
-                <p>Swim team tryout will determine group placement. Swim meet and special events schedule will be posted in May.</p>
+                <p>Swim team tryout will determine group placement. Swim meet and special events schedule will be posted soon.</p>
                 <ul class="uk-list uk-list-bullet">
                     <li><b>Ripple:</b> Mon/Wed 5PM-5:30PM</li>
                     <li><b>Splash:</b> Mon/Wed 5PM-5:45PM</li>
