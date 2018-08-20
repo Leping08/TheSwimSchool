@@ -3,6 +3,9 @@
         <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-1-1@m uk-first-column">
                 <div class="uk-width-1-1@m uk-align-right uk-first-column">
+                    <div class="uk-h2">
+                        Select Season
+                    </div>
                     <select v-model="selectedSeasonID" class="uk-select">
                         <option v-for="(season, index) in seasons" :key="season.id" :value="season.id">{{season.name}}</option>
                     </select>
@@ -16,7 +19,7 @@
                         </span>
                     </h2>
                     <div class="uk-overflow-auto">
-                        <table class="uk-table uk-table-striped uk-table-hover">
+                        <table class="uk-table uk-table-hover uk-table-divider">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -29,7 +32,7 @@
                                 </tr>
                             </thead>
                             <tbody v-for="(swimmer, index) in level.swimmers" :key="swimmer.id">
-                                <tr v-if="swimmer.season.id === selectedSeasonID">
+                                <tr v-if="swimmer.season.id === selectedSeasonID" :class="{'stripe-list': index % 2 === 0 }">
                                     <td>{{swimmer.firstName}} {{swimmer.lastName}}</td>
                                     <td>{{swimmer.phone}}</td>
                                     <td>{{swimmer.birthDate | moment("MM/DD/YY")}}</td>
@@ -69,5 +72,7 @@
 </script>
 
 <style scoped>
-
+    .stripe-list{
+        background: #F4F4F6;
+    }
 </style>
