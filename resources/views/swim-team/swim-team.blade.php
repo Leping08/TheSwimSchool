@@ -44,7 +44,7 @@
 
             <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Groups & Practice Schedules</span></h2>
-                <p>Swim team tryout will determine group placement. Swim meet and special events schedule will be posted soon.</p>
+                <p>Swim team tryout will determine group placement.</p>
                 <ul class="uk-list uk-list-bullet">
                     <li><b>Ripple:</b> Mon/Wed 5PM-5:30PM</li>
                     <li><b>Splash:</b> Mon/Wed 5PM-5:45PM</li>
