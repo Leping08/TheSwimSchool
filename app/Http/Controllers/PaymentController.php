@@ -6,10 +6,13 @@ use App\Lesson;
 use App\Swimmer;
 use App\Mail\SignUp;
 use App\Mail\ClassFull;
+use Stripe\Error\Authentication;
+use Stripe\Error\Base;
 use Stripe\Error\Card;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Stripe\Error\InvalidRequest;
 
 class PaymentController extends Controller
 {
@@ -130,18 +133,27 @@ class PaymentController extends Controller
             $body = $e->getJsonBody();
             $err  = $body['error'];
             Log::error($err['message']);
+            Log::error("Error: ".$e->getTraceAsString());
             $request->session()->flash('error', $err['message']);
             return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
         } catch (InvalidRequest $e){
             Log::error('Invalid parameters were supplied to Stripes API');
+            Log::error("Error: ".$e->getTraceAsString());
             $request->session()->flash('error', 'Oops, something went wrong with the payment.');
             return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
         } catch (Authentication $e){
             Log::error('Authentication with Stripes API failed (maybe you changed API keys recently)');
+            Log::error("Error: ".$e->getTraceAsString());
             $request->session()->flash('error', 'Oops, something went wrong with the payment.');
             return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
         }  catch (Base $e) {
             Log::error('Generic error occurred');
+            Log::error("Error: ".$e->getTraceAsString());
+            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
+            return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
+        } catch (\Exception $exception) {
+            Log::error('Exception was thrown!');
+            Log::error("Error: ".$exception->getTraceAsString());
             $request->session()->flash('error', 'Oops, something went wrong with the payment.');
             return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
         }
