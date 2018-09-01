@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 use Carbon\Carbon;
 
 class Swimmer extends Model
@@ -60,5 +61,18 @@ class Swimmer extends Model
     public function monthsOld()
     {
         return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
+    }
+
+    public function getChargeDetails()
+    {
+        $chargeId = $this->getAttribute('stripeChargeId');
+
+        if($chargeId){
+            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            return \Stripe\Charge::retrieve($chargeId);
+        } else {
+            return NULL;
+        }
     }
 }
