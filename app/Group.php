@@ -37,4 +37,9 @@ class Group extends Model
             ->whereDate('class_start_date', '>', Carbon::yesterday())
             ->whereDate('registration_open', '<=', Carbon::now());
     }
+
+    public function swimmers()
+    {
+        return $this->hasManyThrough('Swimmer', 'Lesson');
+    }
 }
