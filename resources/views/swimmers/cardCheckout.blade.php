@@ -42,10 +42,10 @@ Card Details
 <script src="https://js.stripe.com/v3/"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-    var stripe = Stripe(window.laravelConfig.STRIPE_PUBLIC);
-    var elements = stripe.elements();
+    let stripe = Stripe(window.laravelConfig.STRIPE_PUBLIC);
+    let elements = stripe.elements();
 
-    var card = elements.create('card', {
+    let card = elements.create('card', {
         style: {
             base: {
             iconColor: '#666EE8',
@@ -63,12 +63,10 @@ document.addEventListener("DOMContentLoaded", function(){
     card.mount('#card-element');
 
 
-
-
     function stripeTokenHandler(token) {
         // Insert the token ID into the form so it gets submitted to the server
-        var form = document.getElementById('payment-form');
-        var hiddenInput = document.createElement('input');
+        let form = document.getElementById('payment-form');
+        let hiddenInput = document.createElement('input');
         hiddenInput.setAttribute('type', 'hidden');
         hiddenInput.setAttribute('name', 'stripeToken');
         hiddenInput.setAttribute('value', token.id);
@@ -82,18 +80,18 @@ document.addEventListener("DOMContentLoaded", function(){
         stripe.createToken(card).then(function(result) {
             if (result.error) {
             // Inform the user if there was an error
-            var errorElement = document.getElementById('card-errors');
+            let errorElement = document.getElementById('card-errors');
             errorElement.textContent = result.error.message;
             } else {
             // Send the token to your server
             stripeTokenHandler(result.token);
             }
         });
-    };
+    }
 
-    // Create a token when the form is submitted.
-    var form = document.getElementById('payment-form');
-    var formSubmitted = false;
+    //Create a token when the form is submitted.
+    let form = document.getElementById('payment-form');
+    let formSubmitted = false;
     form.addEventListener('submit', function(e) {
         if(!formSubmitted) {
             formSubmitted = true;
@@ -103,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     card.addEventListener('change', function(event) {
-        var displayError = document.getElementById('card-errors');
+        let displayError = document.getElementById('card-errors');
         if (event.error) {
             formSubmitted = false;
             displayError.textContent = event.error.message;

@@ -38,6 +38,7 @@ class PaymentController extends Controller
         try {
             $charge = $this->chargeCard($lesson, $request, $swimmer);
         } catch (\Exception $e){
+            Log::info(print_r(request()->server(), true));
             Log::error('Something went wrong with the payment sending the user back to the checkout view.');
             $newSwimmer = $swimmer;
             return view('swimmers.cardCheckout', compact('lesson', 'newSwimmer'));
