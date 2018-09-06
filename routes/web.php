@@ -238,3 +238,10 @@ Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
 
 /* @see EmailListController::unsubscribe() */
 Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
+
+
+
+
+Route::post('/checkout-debug', function (\Illuminate\Http\Request $request){
+    Log::info("Request: " . print_r($request->all(), true));
+});

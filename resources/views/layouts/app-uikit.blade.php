@@ -17,6 +17,7 @@
         })(window,document,'script','dataLayer','GTM-5LBC84D');
     </script>
     @yield('seo')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- uikit stuff -->

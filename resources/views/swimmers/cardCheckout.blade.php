@@ -40,10 +40,14 @@ Card Details
 
 
 <script src="https://js.stripe.com/v3/"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
     let stripe = Stripe(window.laravelConfig.STRIPE_PUBLIC);
     let elements = stripe.elements();
+    let formSubmitted = false;
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    axiosAPICall('Page loaded', 'So far so good!');
 
     let card = elements.create('card', {
         style: {
@@ -79,19 +83,20 @@ document.addEventListener("DOMContentLoaded", function(){
     function createToken() {
         stripe.createToken(card).then(function(result) {
             if (result.error) {
-            // Inform the user if there was an error
-            let errorElement = document.getElementById('card-errors');
-            errorElement.textContent = result.error.message;
+                axiosAPICall('Error in creating stripe token.', result);
+                // Inform the user if there was an error
+                let errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
             } else {
-            // Send the token to your server
-            stripeTokenHandler(result.token);
+                axiosAPICall('Created Stripe token successfully ', result);
+                // Send the token to your server
+                stripeTokenHandler(result.token);
             }
         });
     }
 
     //Create a token when the form is submitted.
     let form = document.getElementById('payment-form');
-    let formSubmitted = false;
     form.addEventListener('submit', function(e) {
         if(!formSubmitted) {
             formSubmitted = true;
@@ -111,6 +116,20 @@ document.addEventListener("DOMContentLoaded", function(){
             displayError.textContent = '';
         }
     });
+
+    function axiosAPICall(message, params) {
+        axios.post('/checkout-debug', {
+            message: message,
+            params: params,
+            url: window.location.href
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
 });
 </script>
 @endsection
