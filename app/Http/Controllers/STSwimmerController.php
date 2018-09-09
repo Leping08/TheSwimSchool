@@ -76,7 +76,17 @@ class STSwimmerController extends Controller
 
         Log::info("Swim Team Swimmer $newSwimmer->firstName $newSwimmer->lastName, ID: $newSwimmer->id has signed up for Level ID: $newSwimmer->s_t_level_id and is going to pay by card.");
 
-        return redirect('/swim-team/checkout/'.$newSwimmer->id);
+        //Check if the user needs to go to the checkout page at all   Ex: 100% off promo code
+        if($newSwimmer->promoAppliedPrice() <= 0)
+        {
+            $newSwimmer->stripeChargeId = 'For Free Promo Code';
+            $newSwimmer->save();
+            Log::info("Swim Team Swimmer $newSwimmer->firstName $newSwimmer->lastName, ID: $newSwimmer->id has signed up with out paying. They used promo code ID: $newSwimmer->promo_code_id");
+            session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
+            return redirect('/swim-team/');
+        } else {
+            return redirect('/swim-team/checkout/'.$newSwimmer->id);
+        }
     }
 
     /**
