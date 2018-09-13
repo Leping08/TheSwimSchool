@@ -160,32 +160,13 @@ class Swimmer extends Resource
      */
     protected function paymentInfo()
     {
-//        if($this->stripeChargeId){
-//            $this->stripeCharge = $this->getChargeDetails($this->stripeChargeId);
-//        }
         return [
-            Text::make('Charge Id', 'stripeChargeId')->hideFromIndex(),
-//            Text::make('Price', function (){
-//                return '$' . $this->stripeCharge->amount * .01;
-//            })->hideFromIndex(),
-//            Text::make('Status', function (){
-//                return $this->stripeCharge->status;
-//            })->hideFromIndex(),
-//            Text::make('Receipt Email', function (){
-//                return $this->stripeCharge->receipt_email;
-//            })->hideFromIndex(),
-//            Text::make('Risk Level', function (){
-//                return $this->stripeCharge->outcome->risk_level;
-//            })->hideFromIndex(),
-//            Text::make('Brand', function (){
-//                return $this->stripeCharge->source->brand;
-//            })->hideFromIndex(),
-//            Text::make('Last 4', function (){
-//                return $this->stripeCharge->source->last4;
-//            })->hideFromIndex(),
-//            Text::make('Charge Time', function (){
-//                return Carbon::createFromTimestamp($this->stripeCharge->created)->toDayDateTimeString();
-//            })->hideFromIndex()
+            Text::make('Charge Id', function () {
+                return view('partials.link', [
+                    'link' => config('nova.path').'/nova-stripe/charge/'.$this->stripeChargeId,
+                    'text' => $this->stripeChargeId
+                ])->render();
+            })->asHtml()->hideFromIndex()
         ];
     }
 
@@ -197,10 +178,5 @@ class Swimmer extends Resource
     public function title()
     {
         return "$this->firstName $this->lastName";
-    }
-
-    private function getChargeDetails($chargeId)
-    {
-        return (new StripeApiCalls)->getChargeDetails($chargeId);
     }
 }

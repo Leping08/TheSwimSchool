@@ -31,6 +31,7 @@ class ComposerStaticInitc5ed6975e28c414eba5b13b72066332d
         'T' => 
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
+            'Tightenco\\NovaStripe\\' => 21,
         ),
         'S' => 
         array (
@@ -48,6 +49,7 @@ class ComposerStaticInitc5ed6975e28c414eba5b13b72066332d
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Stripe\\' => 7,
             'Spatie\\Once\\' => 12,
         ),
         'R' => 
@@ -118,6 +120,10 @@ class ComposerStaticInitc5ed6975e28c414eba5b13b72066332d
         array (
             0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
         ),
+        'Tightenco\\NovaStripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tightenco/nova-stripe/src',
+        ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
@@ -173,6 +179,10 @@ class ComposerStaticInitc5ed6975e28c414eba5b13b72066332d
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
         'Spatie\\Once\\' => 
         array (

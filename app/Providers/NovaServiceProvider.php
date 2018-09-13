@@ -92,6 +92,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new SwimTeamRoster,
+            new \Tightenco\NovaStripe\NovaStripe,
         ];
     }
 
