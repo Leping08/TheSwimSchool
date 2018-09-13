@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
@@ -61,15 +62,30 @@ class Swimmer extends Resource
             ID::make()->sortable(),
             Text::make('First Name', 'firstName')->sortable(),
             Text::make('Last Name', 'lastName')->sortable(),
-            Text::make('Email', 'email')->sortable(),
-            Text::make('Phone', 'phone')->hideFromIndex(),
+            Text::make('Email', function () {
+                return view('partials.link', [
+                    'link' => 'mailto:'.$this->email,
+                    'text' => $this->email
+                ])->render();
+            })->asHtml()->sortable(),
+            Text::make('Phone', function () {
+                return view('partials.link', [
+                    'link' => 'tel:1'.$this->phone,
+                    'text' => $this->phone
+                ])->render();
+            })->asHtml(),
             Date::make('Date of Birth', 'birthDate')->hideFromIndex(),
-            BelongsTo::make('Lesson'),
+            Text::make('Age', function () {
+                return view('partials.age', [
+                    'birthDate' => $this->birthDate
+                ])->render();
+            })->hideFromIndex(),
             DateTime::make('Created At')->hideFromIndex(),
             DateTime::make('Updated At')->hideFromIndex(),
-            (new Panel('Address', $this->addressFields())),
             (new Panel('Stripe Payment', $this->paymentInfo())),
-            (new Panel('Emergency Contact', $this->emergencyContact()))
+            (new Panel('Address', $this->addressFields())),
+            (new Panel('Emergency Contact', $this->emergencyContact())),
+            (new Panel('Notes', $this->notes())),
         ];
     }
 
@@ -178,5 +194,17 @@ class Swimmer extends Resource
     public function title()
     {
         return "$this->firstName $this->lastName";
+    }
+
+    /**
+     * Get the address fields for the resource.
+     *
+     * @return array
+     */
+    protected function notes()
+    {
+        return [
+            Textarea::make('Notes', 'notes')->hideFromIndex(),
+        ];
     }
 }
