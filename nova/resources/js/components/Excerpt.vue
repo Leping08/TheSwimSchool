@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="expanded" class="markdown" v-html="content" />
+        <div v-if="expanded" class="markdown leading-normal" v-html="content" />
 
         <a
             @click="toggle"
@@ -31,7 +31,7 @@ export default {
 
     computed: {
         showHideLabel() {
-            return !this.expanded ? 'Show Content' : 'Hide Content'
+            return !this.expanded ? this.__('Show Content') : this.__('Hide Content')
         },
     },
 }

@@ -102,6 +102,7 @@ class NovaServiceProvider extends ServiceProvider
     {
         return [
             'namespace' => 'Laravel\Nova\Http\Controllers',
+            'domain' => config('nova.domain', null),
             'as' => 'nova.api.',
             'prefix' => 'nova-api',
             'middleware' => 'nova',
@@ -117,7 +118,7 @@ class NovaServiceProvider extends ServiceProvider
     {
         Nova::tools([
             new Dashboard,
-            new ResourceManager
+            new ResourceManager,
         ]);
     }
 
@@ -167,6 +168,7 @@ class NovaServiceProvider extends ServiceProvider
             Console\PublishCommand::class,
             Console\ResourceCommand::class,
             Console\ResourceToolCommand::class,
+            Console\ThemeCommand::class,
             Console\ToolCommand::class,
             Console\TrendCommand::class,
             Console\UserCommand::class,

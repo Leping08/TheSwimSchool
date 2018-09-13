@@ -6,10 +6,13 @@ use Closure;
 use JsonSerializable;
 use Illuminate\Support\Str;
 use Laravel\Nova\Contracts\Resolvable;
+use Illuminate\Support\Traits\Macroable;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 abstract class Field extends FieldElement implements JsonSerializable, Resolvable
 {
+    use Macroable;
+
     /**
      * The displayable name of the field.
      *
@@ -182,6 +185,10 @@ abstract class Field extends FieldElement implements JsonSerializable, Resolvabl
      */
     protected function resolveAttribute($resource, $attribute)
     {
+        if (Str::contains($attribute, '->')) {
+            return object_get($resource, str_replace('->', '.', $attribute));
+        }
+
         return data_get($resource, $attribute);
     }
 
@@ -316,7 +323,7 @@ abstract class Field extends FieldElement implements JsonSerializable, Resolvabl
     /**
      * Set the validation rules for the field.
      *
-     * @param  \Closure|array  $rules
+     * @param  callable|array|string  $rules
      * @return $this
      */
     public function rules($rules)
@@ -359,7 +366,7 @@ abstract class Field extends FieldElement implements JsonSerializable, Resolvabl
     /**
      * Set the creation validation rules for the field.
      *
-     * @param  callable|array  $rules
+     * @param  callable|array|string  $rules
      * @return $this
      */
     public function creationRules($rules)
@@ -389,7 +396,7 @@ abstract class Field extends FieldElement implements JsonSerializable, Resolvabl
     /**
      * Set the creation validation rules for the field.
      *
-     * @param  callable|array  $rules
+     * @param  callable|array|string  $rules
      * @return $this
      */
     public function updateRules($rules)

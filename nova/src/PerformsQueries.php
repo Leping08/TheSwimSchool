@@ -44,7 +44,7 @@ trait PerformsQueries
             return static::applySoftDeleteConstraint($query, $withTrashed);
         }
 
-        return static::usesScout() && ! is_numeric($search)
+        return static::usesScout()
                 ? static::initializeQueryUsingScout($request, $query, $search, $withTrashed)
                 : static::applySearch(static::applySoftDeleteConstraint($query, $withTrashed), $search);
     }
@@ -58,11 +58,11 @@ trait PerformsQueries
      */
     protected static function applySearch($query, $search)
     {
-        if (is_numeric($search) && in_array($query->getModel()->getKeyType(), ['int', 'integer'])) {
-            $query->whereKey($search);
-        }
-
         return $query->where(function ($query) use ($search) {
+            if (is_numeric($search) && in_array($query->getModel()->getKeyType(), ['int', 'integer'])) {
+                $query->orWhere($query->getModel()->getQualifiedKeyName(), $search);
+            }
+
             $model = $query->getModel();
 
             foreach (static::searchableColumns() as $column) {
