@@ -10,6 +10,7 @@ use App\Nova\Metrics\LessonsPerSeason;
 use App\Nova\Metrics\NewEmailList;
 use App\Nova\Metrics\NewLessons;
 use App\Nova\Metrics\SubscribedEmails;
+use App\Nova\PrivateLessonRequest;
 use App\Nova\Season;
 use App\Nova\Swimmer;
 use App\Nova\User;
@@ -21,6 +22,8 @@ use App\Nova\Metrics\SwimmersPerDay;
 use App\Nova\Metrics\NewSwimmers;
 use App\Nova\Metrics\LessonsPerLevel;
 use Derk\SwimTeamRoster\SwimTeamRoster;
+use Spatie\TailTool\TailTool;
+use Tightenco\NovaStripe\NovaStripe;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -92,7 +95,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new SwimTeamRoster,
-            new \Tightenco\NovaStripe\NovaStripe,
+            new NovaStripe,
+            //new TailTool
         ];
     }
 
@@ -121,6 +125,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Location::class,
             Level::class,
             EmailList::class,
+            PrivateLessonRequest::class,
             User::class,
         ]);
         //Nova::resourcesIn(app_path('Nova'));

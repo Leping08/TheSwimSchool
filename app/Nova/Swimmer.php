@@ -29,14 +29,17 @@ class Swimmer extends Resource
      */
     public static $model = 'App\Swimmer';
 
-    protected $stripeCharge;
-
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    //public static $title = 'id';
+    //public static $title = 'title';
+
+    /**
+     * @var string
+     */
+    public static $name = 'test';
 
     /**
      * The columns that should be searched.
@@ -197,6 +200,13 @@ class Swimmer extends Resource
     }
 
     /**
+     * @return string
+     */
+    public static function label() {
+        return 'Group Swimmers';
+    }
+
+    /**
      * Get the address fields for the resource.
      *
      * @return array
@@ -204,7 +214,7 @@ class Swimmer extends Resource
     protected function notes()
     {
         return [
-            Textarea::make('Notes', 'notes')->hideFromIndex(),
+            Text::make('Notes', 'notes')->hideFromIndex(),
         ];
     }
 }
