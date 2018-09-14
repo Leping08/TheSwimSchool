@@ -50,6 +50,7 @@ class ComposerStaticInitc5ed6975e28c414eba5b13b72066332d
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Stripe\\' => 7,
+            'Spatie\\TailTool\\' => 16,
             'Spatie\\Once\\' => 12,
         ),
         'R' => 
@@ -183,6 +184,10 @@ class ComposerStaticInitc5ed6975e28c414eba5b13b72066332d
         'Stripe\\' => 
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
+        'Spatie\\TailTool\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/nova-tail-tool/src',
         ),
         'Spatie\\Once\\' => 
         array (

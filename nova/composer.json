@@ -17,6 +17,7 @@
         "cakephp/chronos": "~1.0",
         "illuminate/support": "5.6.*|5.7.*",
         "moontoast/math": "^1.1",
+        "spatie/nova-tail-tool": "^1.0",
         "spatie/once": "^1.1",
         "symfony/finder": "~4.0",
         "tightenco/nova-stripe": "^0.2.1"
