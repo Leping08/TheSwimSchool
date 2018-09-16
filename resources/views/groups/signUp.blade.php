@@ -202,7 +202,7 @@
                     </div>
 
                     <div class="uk-margin uk-width-1-1@s">
-                        <button class="uk-button uk-button-primary" onclick="event.preventDefault(); if(form.reportValidity()){openStripeCheckout();}">Payment Method</button>
+                        <button class="uk-button uk-button-primary" onclick="event.preventDefault(); if(form.reportValidity()){openStripeCheckout();}">Checkout</button>
                     </div>
                 </form>
             </div>
