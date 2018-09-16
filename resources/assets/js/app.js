@@ -1,5 +1,6 @@
+//require('./bootstrap');
 
-require('./bootstrap');
+window.Vue = require('vue');
 
 Vue.component('search', require('./components/Search.vue'));
 Vue.component('swim-team-roster', require('./components/SwimTeamRoster.vue'));

@@ -80,7 +80,7 @@ Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 
 //Charge the credit card for the lesson
 /* @see PaymentController::ChargeCardForLesson() */
-Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
+//Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
 
 //The Link to sign up for private lessons
 /* @see SwimmerController::store() */

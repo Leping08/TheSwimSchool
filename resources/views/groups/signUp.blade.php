@@ -40,8 +40,41 @@
                     </div>
                 </div>
                 <hr class="uk-width-1-1">
-                <form class="uk-grid-small" uk-grid action="" method="POST">
+
+                <script src="https://checkout.stripe.com/checkout.js"></script>
+                <script>
+                    let form = null;
+                    document.addEventListener('DOMContentLoaded', function() {
+                        form = document.getElementById('sign-up');
+                        console.log(form);
+                    }, false);
+
+                     function openStripeCheckout() {
+                        StripeCheckout.open({
+                            name: 'The Swim School',
+                            description: '{{$lesson->group->type}}',
+                            amount: {{$lesson->price * 100}},
+                            key: '{{config('services.stripe.key')}}',
+                            image: '/img/TSS_png.png',
+                            locale: 'auto',
+                            token: function (token) {
+                                console.log(token.id);
+                                let hiddenInput = document.createElement('input');
+                                hiddenInput.setAttribute('type', 'hidden');
+                                hiddenInput.setAttribute('name', 'stripeToken');
+                                hiddenInput.setAttribute('value', token.id);
+                                form.appendChild(hiddenInput);
+                                console.log(form);
+                                // Submit the form
+                                form.submit();
+                            }
+                        })
+                    }
+                </script>
+
+                <form class="uk-grid-small" id="sign-up" uk-grid action="" method="POST">
                     {{ csrf_field() }}
+                    <input type="hidden" name="lesson_id" value="{{{$lesson->id}}}" required>
                     <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
                         Swimmer Information
                     </div>
@@ -82,7 +115,7 @@
                             <input type="address" class="uk-input" id="street" name="street" placeholder="Street" value="{{ old('street') }}" required>
                         </div>
                     </div>
-                    
+
                     <div class="uk-margin uk-width-1-1@s uk-width-1-3@m">
                         <label class="uk-form-label uk-heading-bullet" for="city">City</label>
                         <div class="uk-form-controls">
@@ -103,7 +136,7 @@
                             <input type="numbers" class="uk-input" id="zip" name="zip" placeholder="Zip Code" value="{{ old('zip') }}" required>
                         </div>
                     </div>
-                    
+
 
 
 
@@ -128,7 +161,7 @@
                             Send me Swim School updates!
                         </label>
                     </div>
-                    
+
 
 
 
@@ -155,24 +188,10 @@
                         </div>
                     </div>
 
-
-
-
                     <hr class="uk-width-1-1">
                     <div class="uk-h2 uk-margin uk-width-1-1">
                         Price ${{$lesson->price}}
                     </div>
-                    <!--<div class="uk-width-1-1@s">
-                        <label class="uk-form-label uk-heading-bullet" for="payment">Payment Method</label>
-                        <div class="uk-form-controls">
-                            <select class="uk-select" name="payment" id="payment" v-model="selected" value="{{ old('payment') }}" required>
-                                <option value="card">Card (Online)</option>
-                                <option value="check">Cash or Check (In Person)</option>
-                            </select>
-                        </div>
-                    </div>-->
-
-
 
                     <div class="uk-width-1-1@s">
                         <div class="uk-form-controls">
@@ -183,7 +202,7 @@
                     </div>
 
                     <div class="uk-margin uk-width-1-1@s">
-                        <button type="submit" class="uk-button uk-button-primary">Payment Method</button>
+                        <button class="uk-button uk-button-primary" onclick="event.preventDefault(); if(form.reportValidity()){openStripeCheckout();}">Payment Method</button>
                     </div>
                 </form>
             </div>

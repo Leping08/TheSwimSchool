@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 
 use App\EmailList;
+use App\Library\Stripe;
+use App\Mail\ClassFull;
+use App\Mail\SignUp;
 use App\Swimmer;
 use App\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class SwimmerController extends Controller
 {
@@ -36,20 +40,10 @@ class SwimmerController extends Controller
 
     /**
      * @param Request $request
-     * @param $classType
-     * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function store(Request $request, $classType, $id)
+    public function store(Request $request)
     {
-        $lesson = Lesson::find($id);
-
-        //Check to see if the lesson is full
-        if($lesson->isLessonFull()){
-            $request->session()->flash('danger', 'The lesson is full.');
-            return back();
-        }
-
         $swimmer = $request->validate([
             'firstName' => 'required|string|max:191',
             'lastName' => 'required|string|max:191',
@@ -63,8 +57,18 @@ class SwimmerController extends Controller
             'zip' => 'required|max:15',
             'emergencyName' => 'required|max:191',
             'emergencyRelationship' => 'required|max:191',
-            'emergencyPhone' => 'required|max:20'
+            'emergencyPhone' => 'required|max:20',
+            'lesson_id' => 'required',
+            'stripeToken' => 'required'
         ]);
+
+        $lesson = Lesson::find($request->lesson_id);
+
+        //Check to see if the lesson is full
+        if($lesson->isLessonFull()){
+            $request->session()->flash('danger', 'The lesson is full.');
+            return back();
+        }
 
         //TODO: Logic to check the age of the swimmer against what the lesson age is
         $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
@@ -74,10 +78,30 @@ class SwimmerController extends Controller
         if($request->emailUpdates === 'on'){
             EmailList::firstOrCreate(['email' => $request->email]);
             Log::info("Adding $request->email to EmailListTest.");
+        } else {
+            Log::info("$request->email does not want to receive marketing emails.");
         }
 
+        //TODO: Add logic for promo code
+
         Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
-        return view('swimmers.cardCheckout', compact('newSwimmer', 'lesson'));
+        try {
+            $stripeChargeId = (new Stripe)->charge($request->stripeToken, $lesson->price, $newSwimmer->email, $lesson->group->type . " swim lessons for $newSwimmer->firstName $newSwimmer->lastName through The Swim School.");
+            $newSwimmer->stripeChargeId = $stripeChargeId;
+            $newSwimmer->paid = 1;
+            $newSwimmer->save();
+        } catch (\Exception $e) {
+            Log::error('Something went wrong with the payment sending the user back to the checkout view.');
+            return back();
+        }
+
+        $this->sendClassSignUpEmail($lesson, $newSwimmer);
+
+        $this->sendClassFullEmail($lesson);
+
+        Log::info("Swimmer ID: $newSwimmer->id successfully signed up for lesson ID: $lesson->id");
+        session()->flash('success', 'Thanks for signing up! The first lesson is '.$lesson->class_start_date->format('F jS').' at '.$lesson->class_start_time->format('g:i a'));
+        return redirect('lessons/'.$lesson->class_type);
     }
 
     /**
@@ -181,5 +205,38 @@ class SwimmerController extends Controller
         Log::info("Swimmer ID: $swimmer->id was deleted.");
         $swimmer->delete();
         return redirect('/swimmers');
+    }
+
+
+    /**
+     * @param Lesson $lesson
+     */
+    private function sendClassFullEmail(Lesson $lesson) {
+        if($lesson->isLessonFull()){
+            try {
+                foreach(config('mail.leadDestEmails') as $email){
+                    Log::info("Sending lesson full email to $email. Lesson ID: $lesson->id");
+                    Mail::to($email)->send(new ClassFull($lesson));
+                }
+            } catch (\Exception $e) {
+                Log::error("Email error: ");
+                Log::error(print_r($e, true));
+            }
+        }
+    }
+
+    /**
+     * @param Lesson $lesson
+     * @param Swimmer $swimmer
+     */
+    private function sendClassSignUpEmail(Lesson $lesson, Swimmer $swimmer)
+    {
+        try {
+            Mail::to($swimmer->email)->send(new SignUp($lesson));
+            Log::info("Group Lesson sign up email sent to $swimmer->email. Swimmer ID: $swimmer->id Lesson ID: $lesson->id.");
+        } catch (\Exception $e) {
+            Log::error("Email error: ");
+            Log::error(print_r($e, true));
+        }
     }
 }
