@@ -21,7 +21,6 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\Metrics\SwimmersPerDay;
 use App\Nova\Metrics\NewSwimmers;
 use App\Nova\Metrics\LessonsPerLevel;
-use Derk\SwimTeamRoster\SwimTeamRoster;
 use Spatie\TailTool\TailTool;
 use Tightenco\NovaStripe\NovaStripe;
 
@@ -94,7 +93,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            new SwimTeamRoster,
             new NovaStripe,
             //new TailTool
         ];

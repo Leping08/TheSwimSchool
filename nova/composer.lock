@@ -2583,7 +2583,7 @@
                 "orchestra-platform",
                 "orchestral"
             ],
-            "time": "2018-06-25 02:01:34"
+            "time": "2018-06-25T02:01:34+00:00"
         },
         {
             "name": "orchestra/testbench",

@@ -20,8 +20,7 @@
         "laravel/cashier": "^7.0",
         "laravel/horizon": "^1.0",
         "predis/predis": "^1.1",
-        "stripe/stripe-php": "^5.1",
-        "derk/swim-team-roster": "*"
+        "stripe/stripe-php": "^5.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -72,14 +71,6 @@
         {
             "type": "path",
             "url": "./nova"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/StripeCharge"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/SwimTeamRoster"
         }
     ],
     "minimum-stability": "dev",

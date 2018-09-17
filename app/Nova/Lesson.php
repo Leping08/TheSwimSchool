@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\EmailLessonLink;
 use App\Nova\Filters\LessonStatus;
 use App\Nova\Metrics\LessonsPerLevel;
 use App\Nova\Metrics\NewLessons;
@@ -123,7 +124,9 @@ class Lesson extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new EmailLessonLink(),
+        ];
     }
 
     /**

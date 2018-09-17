@@ -99,4 +99,9 @@ class EmailList extends Resource
     {
         return [];
     }
+
+    public static function label()
+    {
+        return 'Email Subscriptions';
+    }
 }
