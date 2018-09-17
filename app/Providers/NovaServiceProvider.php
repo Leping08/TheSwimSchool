@@ -23,6 +23,7 @@ use App\Nova\Metrics\NewSwimmers;
 use App\Nova\Metrics\LessonsPerLevel;
 use Spatie\TailTool\TailTool;
 use Tightenco\NovaStripe\NovaStripe;
+use Gregoriohc\LaravelNovaThemeResponsive\ThemeServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
