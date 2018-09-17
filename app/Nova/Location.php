@@ -2,12 +2,14 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Place;
 
 class Location extends Resource
 {
@@ -46,7 +48,7 @@ class Location extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name', 'name')->sortable(),
-            HasMany::make('Lessons'),
+            $this->addressFields(),
             DateTime::make('Created At')->hideFromIndex(),
             DateTime::make('Updated At')->hideFromIndex()
         ];
@@ -94,5 +96,25 @@ class Location extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+
+    /**
+     * Get the address fields for the resource.
+     *
+     * @return \Illuminate\Http\Resources\MergeValue
+     */
+    protected function addressFields()
+    {
+        return $this->merge([
+            Place::make('Address', 'street')->hideFromIndex(),
+            Text::make('City', 'city')->hideFromIndex(),
+            Text::make('State', 'state')->hideFromIndex(),
+            Text::make('Postal Code', 'zip')->hideFromIndex(),
+            Text::make('Country', function () {
+                return 'US';
+            })->hideFromIndex()
+            //Country::make('Country')->hideFromIndex(),
+        ]);
     }
 }

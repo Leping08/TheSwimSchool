@@ -153,7 +153,11 @@ class Swimmer extends Resource
             Place::make('Address', 'street')->hideFromIndex(),
             Text::make('City', 'city')->hideFromIndex(),
             Text::make('State', 'state')->hideFromIndex(),
-            Text::make('Zip', 'zip')->hideFromIndex(),
+            Text::make('Postal Code', 'zip')->hideFromIndex(),
+            Text::make('Country', function () {
+                return 'US';
+            })->hideFromIndex()
+            //Country::make('Country')->hideFromIndex(),
         ];
     }
 
