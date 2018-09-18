@@ -2,29 +2,27 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Level extends Resource
+class ContactUs extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Group';
+    public static $model = 'App\Contact';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'type';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -33,8 +31,6 @@ class Level extends Resource
      */
     public static $search = [
         'id',
-        'type',
-        'ages'
     ];
 
     /**
@@ -47,12 +43,21 @@ class Level extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name', 'type')->sortable(),
-            Text::make('Ages', 'ages')->sortable(),
-            Text::make('Description', 'description')->hideFromIndex(),
-            HasMany::make('Lessons'),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex()
+            Text::make('Name', 'name'),
+            Text::make('Email', function () {
+                return view('partials.link', [
+                    'link' => 'mailto:'.$this->email,
+                    'text' => $this->email
+                ])->render();
+            })->asHtml()->sortable(),
+            Text::make('Phone', function () {
+                return view('partials.link', [
+                    'link' => 'tel:1'.$this->phone,
+                    'text' => $this->phone
+                ])->render();
+            })->asHtml(),
+            Boolean::make('Followed Up', 'followed_up')->sortable(),
+            Text::make('Message', 'message')->hideFromIndex()
         ];
     }
 
@@ -98,5 +103,10 @@ class Level extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    public static function label()
+    {
+        return 'Contact Us';
     }
 }

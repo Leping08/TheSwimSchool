@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Nova\ContactUs;
 use App\Nova\EmailList;
 use App\Nova\Lesson;
 use App\Nova\Level;
@@ -125,6 +126,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Level::class,
             EmailList::class,
             PrivateLessonRequest::class,
+            ContactUs::class,
             User::class,
         ]);
         //Nova::resourcesIn(app_path('Nova'));

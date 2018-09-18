@@ -107,8 +107,8 @@ class Location extends Resource
     protected function addressFields()
     {
         return $this->merge([
-            Place::make('Address', 'street')->hideFromIndex(),
-            Text::make('City', 'city')->hideFromIndex(),
+            Place::make('Street', 'street'),
+            Text::make('City', 'city'),
             Text::make('State', 'state')->hideFromIndex(),
             Text::make('Postal Code', 'zip')->hideFromIndex(),
             Text::make('Country', function () {
