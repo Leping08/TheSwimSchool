@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
@@ -52,7 +53,7 @@ class PrivateLessonRequest extends Resource
                     'link' => 'mailto:'.$this->email,
                     'text' => $this->email
                 ])->render();
-            })->asHtml()->sortable(),
+            })->asHtml(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
@@ -63,6 +64,7 @@ class PrivateLessonRequest extends Resource
             Text::make('Length', 'length')->hideFromIndex(),
             Text::make('Location', 'location')->hideFromIndex(),
             Text::make('Availability', 'availability')->hideFromIndex(),
+            Boolean::make('Followed Up', 'followed_up')->sortable(),
             DateTime::make('Created At')->hideFromIndex(),
             DateTime::make('Updated At')->hideFromIndex(),
         ];
