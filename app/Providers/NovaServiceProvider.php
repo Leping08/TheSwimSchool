@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Nova\Athlete;
 use App\Nova\ContactUs;
 use App\Nova\EmailList;
 use App\Nova\Lesson;
@@ -13,8 +14,11 @@ use App\Nova\Metrics\NewLessons;
 use App\Nova\Metrics\SubscribedEmails;
 use App\Nova\PrivateLessonRequest;
 use App\Nova\Season;
+use App\Nova\STSwimmer;
 use App\Nova\Swimmer;
+use App\Nova\Tryout;
 use App\Nova\User;
+use App\Nova\STLevel;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
@@ -25,6 +29,7 @@ use App\Nova\Metrics\LessonsPerLevel;
 use Spatie\TailTool\TailTool;
 use Tightenco\NovaStripe\NovaStripe;
 use Gregoriohc\LaravelNovaThemeResponsive\ThemeServiceProvider;
+use Leping\NorthRiverRapids\NorthRiverRapids;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -95,8 +100,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
+            new NorthRiverRapids,
             new NovaStripe,
-            //new TailTool
+            new TailTool
         ];
     }
 
@@ -128,6 +134,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             PrivateLessonRequest::class,
             ContactUs::class,
             User::class,
+            Tryout::class,
+            STLevel::class,
+            Athlete::class,
+            STSwimmer::class,
+            STSwimmer::class
         ]);
         //Nova::resourcesIn(app_path('Nova'));
     }
