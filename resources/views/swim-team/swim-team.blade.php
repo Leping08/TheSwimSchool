@@ -85,15 +85,15 @@
                         <li aria-expanded="true" class="uk-active">
                             <a href="#">Hilary Koppenhaver</a>
                         </li>
-                        <li aria-expanded="false">
-                            <a href="#">Matt Polk</a>
-                        </li>
-                        <li aria-expanded="false">
-                            <a href="#">Isabella Ortiz</a>
-                        </li>
-                        <li aria-expanded="false">
-                            <a href="#">Zach Maibach</a>
-                        </li>
+                        {{--<li aria-expanded="false">--}}
+                            {{--<a href="#">Matt Polk</a>--}}
+                        {{--</li>--}}
+                        {{--<li aria-expanded="false">--}}
+                            {{--<a href="#">Isabella Ortiz</a>--}}
+                        {{--</li>--}}
+                        {{--<li aria-expanded="false">--}}
+                            {{--<a href="#">Zach Maibach</a>--}}
+                        {{--</li>--}}
                     </ul>
 
                     <ul id="js-350" class="uk-switcher" uk-height-match="row: false">
@@ -106,33 +106,33 @@
                                 <a title="Contact Hilary Koppenhaver" class="uk-button uk-button-default" href="tel:+19417731424"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 773-1424</a>
                             </div>
                         </li>
-                        <li class="el-item">
-                            <img src="">
-                            <h3 class="el-title uk-margin uk-heading-bullet">Matt Polk</h3>
-                            <div class="el-content uk-margin">
-                                <p>Matt grew up Florida and has been swimming competitively for many years with various teams, including the Sarasota YMCA Sharks and Lakewood Ranch High School. He has instructed swim lessons for over 10 years and has worked with all levels of ability, from first time swimmers to Olympic Trials qualifiers. Matt has previously coached for year round competitive swim teams and earned a level 2 USA Swimming coaching certification. He was also the Head Swimming and Diving Coach for Lakewood Ranch High School for several seasons, where the team won numerous County, District, and Regional Championships, and produced individual State Champions.</p>
-                                <p>Matt recently graduated Summa Cum Laude from the University of South Florida with a Bachelor of Science in Applied Business. He looks forward to utilizing his extensive swimming background to assist in the coaching and development of swimmers for the North River Swim Team.</p>
-                                <a title="Contact Matt Polk" class="uk-button uk-button-default" href="tel:+19414487971"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 448-7971</a>
-                            </div>
-                        </li>
-                        <li class="el-item">
-                            <img src="">
-                            <h3 class="el-title uk-margin uk-heading-bullet">Isabella Ortiz</h3>
-                            <div class="el-content uk-margin">
-                                <p>Isabella swam competitively for the Lakewood Ranch YMCA Wave Runners for 4 years and the Lakewood Ranch Swim Association for one year. While participating on the swim team, Isabella also volunteered with swim meets and teaching swim lessons. Isabella continued her swimming career through her 4 years of high school making varsity every year with the Lakewood Ranch HS Mustangs.</p>
-                                <p>Isabella graduated in May of 2017 from Lakewood Ranch High School and is actively continuing her education at the State College of Florida pursing a degree in Pediatric Nursing. She can’t wait to put her experiences as a swimmer into practice and share her love for the sport of swimming to help teach proper technique and instill confidence in the swimmers of the North River Swim Team.</p>
-                                <a title="Contact Isabella Ortiz" class="uk-button uk-button-default" href="tel:+19417737934"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 773-7934</a>
-                            </div>
-                        </li>
-                        <li class="el-item">
-                            <img src="">
-                            <h3 class="el-title uk-margin uk-heading-bullet">Zach Maibach</h3>
-                            <div class="el-content uk-margin">
-                                <p>Zach grew up in New Jersey, where he graduated from Jackson Memorial High school in 2017. Zach played four years of Soccer, Lacrosse and was on the swim team. He was a varsity swimmer for 3 years specializing in the butterfly, and competed in Counties and Regionals. Zach is currently a student at SCF majoring in Biotechnology Science. He has been a lifeguard for over 3 years and currently works for the Manatee YMCA. Zach became a certified scuba diver in 2013 with dives all over Florida and the Caribbean.</p>
-                                <p>Zach is happy to have the opportunity to coach for the North River Swim Team and looks forward to assisting young swimmers with their technique as well as an enthusiasm for swimming.</p>
-                                <a title="Contact Zach Maibach" class="uk-button uk-button-default" href="tel:+17326143104"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (732) 614-3104</a>
-                            </div>
-                        </li>
+                        {{--<li class="el-item">--}}
+                            {{--<img src="">--}}
+                            {{--<h3 class="el-title uk-margin uk-heading-bullet">Matt Polk</h3>--}}
+                            {{--<div class="el-content uk-margin">--}}
+                                {{--<p>Matt grew up Florida and has been swimming competitively for many years with various teams, including the Sarasota YMCA Sharks and Lakewood Ranch High School. He has instructed swim lessons for over 10 years and has worked with all levels of ability, from first time swimmers to Olympic Trials qualifiers. Matt has previously coached for year round competitive swim teams and earned a level 2 USA Swimming coaching certification. He was also the Head Swimming and Diving Coach for Lakewood Ranch High School for several seasons, where the team won numerous County, District, and Regional Championships, and produced individual State Champions.</p>--}}
+                                {{--<p>Matt recently graduated Summa Cum Laude from the University of South Florida with a Bachelor of Science in Applied Business. He looks forward to utilizing his extensive swimming background to assist in the coaching and development of swimmers for the North River Swim Team.</p>--}}
+                                {{--<a title="Contact Matt Polk" class="uk-button uk-button-default" href="tel:+19414487971"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 448-7971</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="el-item">--}}
+                            {{--<img src="">--}}
+                            {{--<h3 class="el-title uk-margin uk-heading-bullet">Isabella Ortiz</h3>--}}
+                            {{--<div class="el-content uk-margin">--}}
+                                {{--<p>Isabella swam competitively for the Lakewood Ranch YMCA Wave Runners for 4 years and the Lakewood Ranch Swim Association for one year. While participating on the swim team, Isabella also volunteered with swim meets and teaching swim lessons. Isabella continued her swimming career through her 4 years of high school making varsity every year with the Lakewood Ranch HS Mustangs.</p>--}}
+                                {{--<p>Isabella graduated in May of 2017 from Lakewood Ranch High School and is actively continuing her education at the State College of Florida pursing a degree in Pediatric Nursing. She can’t wait to put her experiences as a swimmer into practice and share her love for the sport of swimming to help teach proper technique and instill confidence in the swimmers of the North River Swim Team.</p>--}}
+                                {{--<a title="Contact Isabella Ortiz" class="uk-button uk-button-default" href="tel:+19417737934"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 773-7934</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="el-item">--}}
+                            {{--<img src="">--}}
+                            {{--<h3 class="el-title uk-margin uk-heading-bullet">Zach Maibach</h3>--}}
+                            {{--<div class="el-content uk-margin">--}}
+                                {{--<p>Zach grew up in New Jersey, where he graduated from Jackson Memorial High school in 2017. Zach played four years of Soccer, Lacrosse and was on the swim team. He was a varsity swimmer for 3 years specializing in the butterfly, and competed in Counties and Regionals. Zach is currently a student at SCF majoring in Biotechnology Science. He has been a lifeguard for over 3 years and currently works for the Manatee YMCA. Zach became a certified scuba diver in 2013 with dives all over Florida and the Caribbean.</p>--}}
+                                {{--<p>Zach is happy to have the opportunity to coach for the North River Swim Team and looks forward to assisting young swimmers with their technique as well as an enthusiasm for swimming.</p>--}}
+                                {{--<a title="Contact Zach Maibach" class="uk-button uk-button-default" href="tel:+17326143104"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (732) 614-3104</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
                     </ul>
                 </div>
             </div>
