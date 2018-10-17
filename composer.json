@@ -22,8 +22,7 @@
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
         "stripe/stripe-php": "^5.1",
-        "Leping/NorthRiverRapids": "*",
-        "Leping/Roster": "*"
+        "Leping/NorthRiverRapids": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -76,10 +75,6 @@
         {
             "type": "path",
             "url": "./nova-components/NorthRiverRapids"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/Roster"
         }
     ],
     "minimum-stability": "dev",

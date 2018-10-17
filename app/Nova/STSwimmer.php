@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -44,6 +45,8 @@ class STSwimmer extends Resource
     {
         return [
             ID::make()->sortable(),
+            BelongsTo::make('Level', 'level', STLevel::class),
+            //BelongsTo::make('Season', 'season', STSeason::class), //TODO: Make this work
             DateTime::make('Created At')->hideFromIndex(),
             DateTime::make('Updated At')->hideFromIndex()
         ];

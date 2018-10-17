@@ -170,13 +170,4 @@ class Athlete extends Resource
             Text::make('Notes', 'notes')->hideFromIndex(),
         ];
     }
-
-    protected function test()
-    {
-        if($this->s_t_level != NULL) {
-            return BelongsTo::make('STLevel', 's_t_level');
-        } else {
-            return Number::make('Level', 's_t_level');
-        }
-    }
 }
