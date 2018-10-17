@@ -45,7 +45,7 @@
                                 <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Our Pool = $140 per Student</li>
-                                    <li>Your Pool = $180 per Student</li>
+                                    <li>Your Pool = $200 per Student</li>
                                 </ul>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Our Pool = $280 per Student</li>
-                                    <li>Your Pool = $360 per Student</li>
+                                    <li>Your Pool = $400 per Student</li>
                                 </ul>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                 <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Our Pool = $80 per Student</li>
-                                    <li>Your Pool = $100 per Student</li>
+                                    <li>Your Pool = $120 per Student</li>
                                 </ul>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                 <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Our Pool = $160 per Student</li>
-                                    <li>Your Pool = $200 per Student</li>
+                                    <li>Your Pool = $240 per Student</li>
                                 </ul>
                             </div>
                         </div>
