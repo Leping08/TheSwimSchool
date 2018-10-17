@@ -44,7 +44,7 @@ Home
                     <div class="uk-card-media-top"><img src="/img/group-lessons.jpg" class="el-image uk-border-rounded" alt="Lakewood Ranch children's swim lessons"></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Group Lessons</h3>
-                        <div class="el-content uk-margin">The Swim School features aquatics programs to meet the specific needs of various age groups from beginner to advanced skill levels. Sessions of small group classes are available for seasonally March-October for Parent & Infant/Toddler, Preschool, Youth/Teen, and Adult & Active Older Adults.
+                        <div class="el-content uk-margin">The Swim School features aquatics programs to meet the specific needs of various age groups from beginner to advanced skill levels. Sessions of small group classes are available seasonally March-October for Parent & Infant/Toddler, Preschool and Youth/Teens.
                         </div>
                     </div>
                 </div>
