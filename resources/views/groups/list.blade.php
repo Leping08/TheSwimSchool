@@ -12,6 +12,12 @@
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
+
+            <div class="uk-alert-primary" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>The Swim School offers group swim lessons seasonally March through October.</p>
+            </div>
+
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-4-4@m uk-first-column">
                     <h2 class="uk-heading-line"><span>Pricing</span></h2>
