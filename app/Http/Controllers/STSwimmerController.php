@@ -208,7 +208,9 @@ class STSwimmerController extends Controller
     public function roster()
     {
         $seasons = STSeason::orderBy('created_at', 'desc')->get();
-        $levels = STLevel::with('swimmers.season')->get();
+        $levels = STLevel::with(['swimmers' => function ($query) {
+            return $query->with('season')->orderBy('lastName','ASC');
+        }])->get();
         return view('swim-team.roster', compact('seasons', 'levels'));
     }
 
