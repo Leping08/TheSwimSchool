@@ -12,6 +12,7 @@ Contact Us
 
 @section('content')
 <div class="uk-section-default uk-section-overlap uk-section" uk-scrollspy="{&quot;target&quot;:&quot;[uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-bottom-medium&quot;,&quot;delay&quot;:false}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <div class="uk-container">
         <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-width-1-1@m uk-first-column">
@@ -43,6 +44,9 @@ Contact Us
                                     <div class="uk-form-controls">
                                         <textarea name="message" rows="5" class="uk-textarea" placeholder="Your Message" required>{{ old('message') }}</textarea>
                                     </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.public') }}"></div>
                                 </div>
                                 <div uk-grid="" class="uk-grid">
                                     <div class="uk-width-1-2@s uk-margin">
