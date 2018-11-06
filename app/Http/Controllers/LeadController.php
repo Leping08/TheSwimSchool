@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use App\ContactType;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Jobs\ContactEmail;
 use Illuminate\Support\Facades\Log;
@@ -20,17 +21,24 @@ class LeadController extends Controller
         return view('leads.show', compact('lead'));
     }
 
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function contact(Request $request)
     {
         $validData = $this->validateRequest($request);
-        $newContact = $this->createContact($this->assignRequestContactId($request, $validData));
-        $this->sendEmails($newContact);
-        $request->session()->flash('success', 'We will be in contact with you shortly.');
-        return back();
+        if($this->recaptcha($request)){
+            $newContact = $this->createContact($this->assignRequestContactId($request, $validData));
+            $this->sendEmails($newContact);
+            $request->session()->flash('success', 'We will be in contact with you shortly.');
+            return back();
+        } else {
+            $request->session()->flash('warning', 'Are you a robot?');
+            return back();
+        }
     }
 
     /**
@@ -43,8 +51,33 @@ class LeadController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'message' => 'required'
+            'message' => 'required',
+            'g-recaptcha-response' => 'required',
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return bool
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * TODO Turn this into a laravel validation rule
+     */
+    public function recaptcha(Request $request): bool
+    {
+
+        $client = new Client([
+            'base_uri' => 'https://www.google.com/recaptcha/api/',
+            'timeout' => 2.0
+        ]);
+
+        $response = $client->request('POST', 'siteverify', [
+            'query' => [
+                'secret' => config('services.recaptcha.secret'),
+                'response' => $request->input('g-recaptcha-response')
+            ]
+        ]);
+
+        return json_decode($response->getBody())->success;
     }
 
     /**
