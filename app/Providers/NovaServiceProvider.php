@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Nova\Athlete;
 use App\Nova\ContactUs;
+use App\Nova\Day;
 use App\Nova\EmailList;
 use App\Nova\Lesson;
 use App\Nova\Level;
@@ -138,7 +139,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             STLevel::class,
             Athlete::class,
             STSwimmer::class,
-            STSwimmer::class
+            STSwimmer::class,
+            Day::class
         ]);
         //Nova::resourcesIn(app_path('Nova'));
     }
