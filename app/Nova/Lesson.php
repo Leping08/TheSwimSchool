@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Http\Controllers\GetSeason;
 use App\Nova\Actions\EmailLessonLink;
 use App\Nova\Filters\LessonStatus;
 use App\Nova\Metrics\LessonsPerLevel;
@@ -57,15 +58,24 @@ class Lesson extends Resource
      */
     public function fields(Request $request)
     {
+        //dd($this);
         return [
             ID::make()->sortable(),
             BelongsTo::make('Level', 'group'),
-            BelongsTo::make('Season'),
-            BelongsTo::make('Location'),
+            BelongsTo::make('Season')->withMeta([
+                //Get the current season
+                'belongsToId' =>   $this->season_id ?? ((new GetSeason)->getCurrentSeason()->id)
+            ]),
+            BelongsTo::make('Location')->withMeta([
+                //Select Harrison Ranch by default
+                'belongsToId' => $this->location_id ?? 1
+            ]),
             Text::make('Price', function (){
                 return '$'.$this->price;
             })->hideFromIndex(),
-            Text::make('Class Size', 'class_size')->hideFromIndex(),
+            Text::make('Class Size', 'class_size')->withMeta([
+                "value" => $this->class_size ?? '4'
+            ])->hideFromIndex(),
             Date::make('Registration Open', 'registration_open')->hideFromIndex(),
             Date::make('Start Date', 'class_start_date')->hideFromIndex(),
             Date::make('End Date', 'class_end_date')->hideFromIndex(),
