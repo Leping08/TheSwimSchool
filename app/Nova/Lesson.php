@@ -8,6 +8,7 @@ use App\Nova\Metrics\LessonsPerLevel;
 use App\Nova\Metrics\NewLessons;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
@@ -70,9 +71,9 @@ class Lesson extends Resource
             Date::make('End Date', 'class_end_date')->hideFromIndex(),
             DateTime::make('Start Time', 'class_start_time')->hideFromIndex(),
             DateTime::make('End Time', 'class_end_time')->hideFromIndex(),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex(),
-            BelongsToMany::make('Days', 'Day')->hideFromIndex(),
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail(),
+            BelongsToMany::make('Days', 'DaysOfTheWeek', 'App\Nova\Day'),
             HasMany::make('Swimmers'),
         ];
     }
