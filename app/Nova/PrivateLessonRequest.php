@@ -65,8 +65,8 @@ class PrivateLessonRequest extends Resource
             Text::make('Location', 'location')->hideFromIndex(),
             Text::make('Availability', 'availability')->hideFromIndex(),
             Boolean::make('Followed Up', 'followed_up')->sortable(),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex(),
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 

@@ -15,6 +15,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Place;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -39,7 +40,7 @@ class Swimmer extends Resource
     /**
      * @var string
      */
-    public static $name = 'test';
+    public static $name = '';
 
     /**
      * The columns that should be searched.
@@ -83,8 +84,8 @@ class Swimmer extends Resource
                     'birthDate' => $this->birthDate
                 ])->render();
             })->hideFromIndex(),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex(),
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail(),
             (new Panel('Stripe Payment', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
@@ -207,7 +208,7 @@ class Swimmer extends Resource
      * @return string
      */
     public static function label() {
-        return 'Group Swimmers';
+        return 'Swimmers';
     }
 
     /**

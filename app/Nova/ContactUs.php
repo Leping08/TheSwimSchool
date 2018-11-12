@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -57,7 +58,9 @@ class ContactUs extends Resource
                 ])->render();
             })->asHtml(),
             Boolean::make('Followed Up', 'followed_up')->sortable(),
-            Text::make('Message', 'message')->hideFromIndex()
+            Text::make('Message', 'message')->hideFromIndex(),
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 

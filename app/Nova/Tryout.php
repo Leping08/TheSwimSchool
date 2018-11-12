@@ -54,8 +54,8 @@ class Tryout extends Resource
             HasMany::make('Athletes'),
             DateTime::make('Registration Open', 'registration_open'),
             DateTime::make('Tryout Start', 'event_time'),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex()
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 

@@ -49,8 +49,8 @@ class STLevel extends Resource
             ID::make()->sortable(),
             Text::make('Name', 'name'),
             Number::make('Price', 'price'),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex()
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 

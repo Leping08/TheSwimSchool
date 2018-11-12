@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -42,7 +44,10 @@ class Day extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('day')->sortable()
+            Text::make('day')->sortable(),
+            BelongsToMany::make('Lessons', 'lessons', 'App\Nova\Lesson'),
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 

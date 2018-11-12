@@ -51,8 +51,8 @@ class Level extends Resource
             Text::make('Ages', 'ages')->sortable(),
             Text::make('Description', 'description')->hideFromIndex(),
             HasMany::make('Lessons'),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex()
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 

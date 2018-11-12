@@ -50,8 +50,8 @@ class Season extends Resource
             Text::make('Year', 'year')->sortable(),
             Text::make('Season', 'season')->sortable(),
             HasMany::make('Lessons'),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex()
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 

@@ -50,8 +50,8 @@ class STSeason extends Resource
             HasMany::make('Tryouts'),
             HasMany::make('Athletes'),
             HasMany::make('Swim Team Swimmers', 'swimmers', STSwimmer::class),
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex()
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 

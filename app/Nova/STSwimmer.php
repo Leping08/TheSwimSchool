@@ -47,8 +47,8 @@ class STSwimmer extends Resource
             ID::make()->sortable(),
             BelongsTo::make('Level', 'level', STLevel::class),
             //BelongsTo::make('Season', 'season', STSeason::class), //TODO: Make this work
-            DateTime::make('Created At')->hideFromIndex(),
-            DateTime::make('Updated At')->hideFromIndex()
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail()
         ];
     }
 
