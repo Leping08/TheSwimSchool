@@ -13,4 +13,10 @@ class Season extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+
+    public function name()
+    {
+        return $this->getAttribute('year') . " " . $this->getAttribute('season');
+    }
 }
