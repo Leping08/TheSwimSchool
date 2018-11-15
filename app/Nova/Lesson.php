@@ -112,7 +112,8 @@ class Lesson extends Resource
     {
         return [
             new Filters\LessonStatus,
-            new Filters\LessonLevel
+            new Filters\LessonLevel,
+            new Filters\Season
         ];
     }
 
