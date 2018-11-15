@@ -33,4 +33,9 @@ class LessonLevel extends Filter
         $ids = Group::pluck('id');
         return $types->combine($ids);
     }
+
+    public function name()
+    {
+        return "Level";
+    }
 }

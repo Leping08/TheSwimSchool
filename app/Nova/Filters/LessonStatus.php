@@ -48,4 +48,9 @@ class LessonStatus extends Filter
 
         ];
     }
+
+    public function name()
+    {
+        return "Status";
+    }
 }
