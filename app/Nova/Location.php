@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Metrics\LessonsPerLocation;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
@@ -50,7 +51,8 @@ class Location extends Resource
             Text::make('Name', 'name')->sortable(),
             $this->addressFields(),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
+            HasMany::make('Lessons')
         ];
     }
 
@@ -62,7 +64,9 @@ class Location extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            (new LessonsPerLocation)->width('full')
+        ];
     }
 
     /**
