@@ -86,10 +86,11 @@ class Swimmer extends Resource
             })->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
+            (new Panel('Lesson', $this->lesson())),
             (new Panel('Stripe Payment', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
-            (new Panel('Notes', $this->notes())),
+            (new Panel('Notes', $this->notes()))
         ];
     }
 
@@ -117,7 +118,9 @@ class Swimmer extends Resource
     public function filters(Request $request)
     {
         return [
-            new Filters\Paid
+            //new Filters\Paid,
+            new Filters\SwimmerLevel,
+            new Filters\SwimmerSeason
         ];
     }
 
@@ -220,6 +223,13 @@ class Swimmer extends Resource
     {
         return [
             Text::make('Notes', 'notes')->hideFromIndex(),
+        ];
+    }
+
+    protected function lesson()
+    {
+        return [
+            BelongsTo::make('Lesson')->onlyOnDetail()
         ];
     }
 }
