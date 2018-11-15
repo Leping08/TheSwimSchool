@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Metrics\LessonsPerLevel;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -64,7 +65,9 @@ class Level extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            (new LessonsPerLevel)->width('full')
+        ];
     }
 
     /**
