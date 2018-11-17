@@ -4,6 +4,7 @@ namespace App\Nova;
 
 
 use App\Nova\Metrics\OpenPrivateRequests;
+use App\Nova\Metrics\PrivateRequestsPerDay;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
@@ -80,7 +81,8 @@ class PrivateLessonRequest extends Resource
     public function cards(Request $request)
     {
         return [
-            (new OpenPrivateRequests)->width('1/3')
+            (new PrivateRequestsPerDay())->width('2/3'),
+            (new OpenPrivateRequests())->width('1/3')
         ];
     }
 
