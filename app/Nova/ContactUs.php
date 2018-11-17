@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use App\Nova\Metrics\ContactUsPerDay;
+use App\Nova\Metrics\OpenContactUs;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
@@ -72,7 +74,10 @@ class ContactUs extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            (new ContactUsPerDay())->width('2/3'),
+            (new OpenContactUs())->width('1/3')
+        ];
     }
 
     /**
