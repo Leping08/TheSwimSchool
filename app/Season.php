@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Season extends Model
 {
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['name'];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function Lessons()
@@ -18,5 +25,15 @@ class Season extends Model
     public function name()
     {
         return $this->getAttribute('year') . " " . $this->getAttribute('season');
+    }
+
+    /**
+     * Get the address.
+     *
+     * @return string
+     */
+    public function getNameAttribute() : string
+    {
+        return $this->year . " " . $this->season;
     }
 }
