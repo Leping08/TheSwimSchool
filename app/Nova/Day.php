@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Metrics\LessonsPerDay;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
@@ -59,7 +60,9 @@ class Day extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            (new LessonsPerDay())->width('full')
+        ];
     }
 
     /**
