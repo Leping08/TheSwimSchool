@@ -3,9 +3,11 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class STSwimmer extends Resource
@@ -45,6 +47,27 @@ class STSwimmer extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('First Name', 'firstName')->sortable(),
+            Text::make('Last Name', 'lastName')->sortable(),
+            Text::make('Email', function () {
+                return view('partials.link', [
+                    'link' => 'mailto:'.$this->email,
+                    'text' => $this->email
+                ])->render();
+            })->asHtml()->sortable()->hideFromIndex(),
+            Text::make('Phone', function () {
+                return view('partials.link', [
+                    'link' => 'tel:1'.$this->phone,
+                    'text' => $this->phone
+                ])->render();
+            })->asHtml()->hideFromIndex(),
+            Date::make('Date of Birth', 'birthDate')->hideFromIndex(),
+            Text::make('Parent', 'parent')->hideFromIndex(),
+            Text::make('Age', function () {
+                return view('partials.age', [
+                    'birthDate' => $this->birthDate
+                ])->render();
+            })->hideFromIndex(),
             BelongsTo::make('Level', 'level', \App\Nova\STLevel::class),
             BelongsTo::make('Season', 'season', \App\Nova\STSeason::class),
             DateTime::make('Created At')->onlyOnDetail(),
@@ -60,6 +83,7 @@ class STSwimmer extends Resource
      */
     public function cards(Request $request)
     {
+        //TODO: Add cards
         return [];
     }
 
