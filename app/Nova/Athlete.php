@@ -57,13 +57,13 @@ class Athlete extends Resource
                     'link' => 'mailto:'.$this->email,
                     'text' => $this->email
                 ])->render();
-            })->asHtml()->sortable(),
+            })->asHtml()->sortable()->hideFromIndex(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
                     'text' => $this->phone
                 ])->render();
-            })->asHtml(),
+            })->asHtml()->hideFromIndex(),
             Date::make('Date of Birth', 'birthDate')->hideFromIndex(),
             Text::make('Parent', 'parent')->hideFromIndex(),
             Text::make('Age', function () {
