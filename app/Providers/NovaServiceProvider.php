@@ -15,6 +15,7 @@ use App\Nova\Metrics\NewLessons;
 use App\Nova\Metrics\SubscribedEmails;
 use App\Nova\PrivateLessonRequest;
 use App\Nova\Season;
+use App\Nova\STSeason;
 use App\Nova\STSwimmer;
 use App\Nova\Swimmer;
 use App\Nova\Tryout;
@@ -140,6 +141,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Athlete::class,
             STSwimmer::class,
             STSwimmer::class,
+            STSeason::class,
             Day::class
         ]);
         //Nova::resourcesIn(app_path('Nova'));

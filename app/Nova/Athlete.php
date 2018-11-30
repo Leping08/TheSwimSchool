@@ -73,6 +73,7 @@ class Athlete extends Resource
             })->hideFromIndex(),
             BelongsTo::make('Tryout'),
             BelongsTo::make('Level', 'swimTeamLevel', STLevel::class),
+            BelongsTo::make('Season', 'season', STSeason::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             (new Panel('Address', $this->addressFields())),

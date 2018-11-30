@@ -35,6 +35,8 @@ class STSeason extends Resource
         'name'
     ];
 
+    public static $displayInNavigation = false;
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -48,7 +50,7 @@ class STSeason extends Resource
             Text::make('Name'),
             Text::make('Dates'),
             HasMany::make('Tryouts'),
-            HasMany::make('Athletes'),
+            HasMany::make('Athletes', 'athletes', Athlete::class),
             HasMany::make('Swim Team Swimmers', 'swimmers', STSwimmer::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
@@ -97,5 +99,15 @@ class STSeason extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    public static function label()
+    {
+        return 'Seasons';
+    }
+
+    public static function uriKey()
+    {
+        return 'swim-team-seasons';
     }
 }

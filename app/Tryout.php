@@ -51,7 +51,7 @@ class Tryout extends Model
 
     public function Season()
     {
-        return $this->belongsTo(STSeason::class);
+        return $this->belongsTo(STSeason::class, 's_t_season_id');
     }
 
 

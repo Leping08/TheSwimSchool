@@ -17,6 +17,16 @@ class STSeason extends Model
                     //->currentseason();
     }
 
+    public function tryouts()
+    {
+        return $this->hasMany(Tryout::class);
+    }
+
+    public function athletes()
+    {
+        return $this->hasMany(Athlete::class);
+    }
+
     public function scopeGetCurrentSeason($query)
     {
         return $query->where('current_season', true)->first();
