@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use App\Nova\Filters\SwimTeamLevel;
+use App\Nova\Filters\SwimTeamSeason;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
@@ -95,7 +97,10 @@ class STSwimmer extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new SwimTeamSeason(),
+            new SwimTeamLevel()
+        ];
     }
 
     /**
