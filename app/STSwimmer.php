@@ -102,12 +102,12 @@ class STSwimmer extends Model
                     ->where('stripeChargeId', '!=', null);
     }
 
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeCurrentSeason($query)
-    {
-        return $query->where('s_t_season_id', STSeason::GetCurrentSeason()->id);
-    }
+//    /**
+//     * @param $query
+//     * @return mixed
+//     */
+//    public function scopeCurrentSeason($query)
+//    {
+//        return $query->where('s_t_season_id', STSeason::GetCurrentSeason()->id);
+//    }
 }

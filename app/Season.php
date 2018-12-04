@@ -28,7 +28,7 @@ class Season extends Model
     }
 
     /**
-     * Get the address.
+     * Get the season name.
      *
      * @return string
      */
