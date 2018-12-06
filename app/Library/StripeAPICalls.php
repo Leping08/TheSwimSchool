@@ -8,7 +8,7 @@ use Stripe\StripeObject;
 use Stripe\Stripe;
 use Stripe\Charge;
 
-class Stripe
+class StripeCharge
 {
     public function getChargeDetails($chargeId) : StripeObject
     {
@@ -19,6 +19,5 @@ class Stripe
         } else {
             return NULL;
         }
-
     }
 }
