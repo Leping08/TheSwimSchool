@@ -11,6 +11,6 @@ class DaysOfTheWeek extends Model
      */
     public function Lessons()
     {
-        return $this->belongsToMany(Lessons::class)->withTimestamps();
+        return $this->belongsToMany(Lesson::class)->withTimestamps();
     }
 }

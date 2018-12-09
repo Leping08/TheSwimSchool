@@ -49,6 +49,11 @@ class Tryout extends Model
         return $this->belongsTo(Location::class);
     }
 
+    public function Season()
+    {
+        return $this->belongsTo(STSeason::class, 's_t_season_id');
+    }
+
 
     /**
      * @return mixed

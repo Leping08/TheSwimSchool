@@ -13,12 +13,22 @@ class STSeason extends Model
     public function swimmers()
     {
         return $this->hasMany(STSwimmer::class)
-                    ->where('s_t_swimmers.stripeChargeId', '!=', null)
-                    ->currentseason();
+                    ->where('s_t_swimmers.stripeChargeId', '!=', null);
+                    //->currentseason();
     }
 
-    public function scopeGetCurrentSeason($query)
+    public function tryouts()
     {
-        return $query->where('current_season', true)->first();
+        return $this->hasMany(Tryout::class);
     }
+
+    public function athletes()
+    {
+        return $this->hasMany(Athlete::class);
+    }
+
+//    public function scopeGetCurrentSeason($query)
+//    {
+//        return $query->where('current_season', true)->first();
+//    }
 }
