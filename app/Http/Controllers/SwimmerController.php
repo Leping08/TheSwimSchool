@@ -213,7 +213,7 @@ class SwimmerController extends Controller
      */
     //TODO: Move this out of the controller
     private function sendClassFullEmail(Lesson $lesson) {
-        if($lesson->isLessonFull()){
+        if($lesson->isFull()){
             try {
                 foreach(config('mail.leadDestEmails') as $email){
                     Log::info("Sending lesson full email to $email. Lesson ID: $lesson->id");

@@ -109,7 +109,7 @@ class LessonController extends Controller
 
         $lesson = Lesson::with('group')->find($id);
 
-        if($lesson->isLessonFull()){
+        if($lesson->isFull()){
             session()->flash('error', "This lesson is full. Add more open spots or make a new lesson.");
             return back();
         }
