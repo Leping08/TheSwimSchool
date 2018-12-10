@@ -4,8 +4,34 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Builder;
 use Carbon\Carbon;
+
+/**
+ * An Eloquent Model: 'Swimmer'
+ *
+ * @property integer $id
+ * @property string $firstName
+ * @property string $lastName
+ * @property string $email
+ * @property string $phone
+ * @property \Illuminate\Support\Carbon $birthDate
+ * @property boolean $paid
+ * @property string $stripeChargeId
+ * @property string $parent
+ * @property string $notes
+ * @property string $street
+ * @property string $city
+ * @property string $state
+ * @property string $zip
+ * @property string $emergencyName
+ * @property string $emergencyRelationship
+ * @property string $emergencyPhone
+ * @property integer $lesson_id
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property-read \App\Lesson $lesson
+ */
 
 class Swimmer extends Model
 {
@@ -52,7 +78,7 @@ class Swimmer extends Model
      */
     public function yearsOld()
     {
-        return $this->getAttribute('birthDate')->diffInYears(Carbon::now());
+        return $this->birthDate->diffInYears(Carbon::now());
     }
 
     /**
@@ -60,19 +86,6 @@ class Swimmer extends Model
      */
     public function monthsOld()
     {
-        return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
-    }
-
-    public function getChargeDetails()
-    {
-        $chargeId = $this->getAttribute('stripeChargeId');
-
-        if($chargeId){
-            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-            return \Stripe\Charge::retrieve($chargeId);
-        } else {
-            return NULL;
-        }
+        return $this->birthDate->diffInMonths(Carbon::now());
     }
 }
