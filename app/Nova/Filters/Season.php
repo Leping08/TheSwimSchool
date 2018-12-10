@@ -31,7 +31,7 @@ class Season extends Filter
         $result = collect([]);
 
         foreach (\App\Season::all() as $season){
-            $result->put($season->name(), $season->id);
+            $result->put($season->name, $season->id);
         }
 
         return $result;
