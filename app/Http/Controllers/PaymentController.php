@@ -81,7 +81,6 @@ class PaymentController extends Controller
 
     /**
      * @param Lesson $lesson
-     * @param Request $request
      * @param Swimmer $swimmer
      * @return \Illuminate\Http\RedirectResponse
      */
