@@ -13,7 +13,14 @@ use App\Library\Interfaces\PaymentMethod;
  */
 class StripeCharge implements PaymentMethod
 {
-    public function buildCharge(string $token, int $price, string $email, string $description = null) : \Stripe\Charge
+    /**
+     * @param string $token
+     * @param int $price
+     * @param string $email
+     * @param string|null $description
+     * @return \Stripe\Charge|null
+     */
+    public function pay(string $token, int $price, string $email, string $description = null) : ? \Stripe\Charge
     {
         $charge = [
             "amount" => $price * 100,
@@ -30,6 +37,10 @@ class StripeCharge implements PaymentMethod
     }
 
 
+    /**
+     * @param $e
+     * @return \Illuminate\Http\RedirectResponse
+     */
     private function logStripeError($e)
     {
         $body = $e->getJsonBody();
@@ -42,6 +53,10 @@ class StripeCharge implements PaymentMethod
         return back();
     }
 
+    /**
+     * @param $charge
+     * @return \Stripe\Charge
+     */
     public function charge($charge) : \Stripe\Charge
     {
         try {
@@ -81,14 +96,13 @@ class StripeCharge implements PaymentMethod
         }
     }
 
-    public function getChargeDetails(string $chargeId) : ? \Stripe\Charge
+    /**
+     * @param string $chargeId
+     * @return \Stripe\Charge|null
+     */
+    public function details(string $chargeId) : ? \Stripe\Charge
     {
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         return \Stripe\Charge::retrieve($chargeId);
-    }
-
-    public function test()
-    {
-        return 'Weee';
     }
 }

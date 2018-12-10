@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\EmailList;
 use App\Library\Stripe;
+use App\Library\StripeCharge;
 use App\Mail\ClassFull;
 use App\Mail\SignUp;
 use App\Swimmer;
@@ -86,8 +87,8 @@ class SwimmerController extends Controller
 
         Log::info("Swimmer ID: $newSwimmer->id signed up for Lesson ID: $lesson->id and is going to pay by card!");
         try {
-            $stripeChargeId = (new Stripe)->charge($request->stripeToken, $lesson->price, $newSwimmer->email, $lesson->group->type . " swim lessons for $newSwimmer->firstName $newSwimmer->lastName through The Swim School.");
-            $newSwimmer->stripeChargeId = $stripeChargeId;
+            $stripeCharge = (new StripeCharge())->pay($request->stripeToken, $lesson->price, $newSwimmer->email, $lesson->group->type . " swim lessons for $newSwimmer->firstName $newSwimmer->lastName through The Swim School.");
+            $newSwimmer->stripeChargeId = $stripeCharge->id;
             $newSwimmer->paid = 1;
             $newSwimmer->save();
         } catch (\Exception $e) {
@@ -211,6 +212,7 @@ class SwimmerController extends Controller
     /**
      * @param Lesson $lesson
      */
+    //TODO: Move this out of the controller
     private function sendClassFullEmail(Lesson $lesson) {
         if($lesson->isLessonFull()){
             try {
@@ -229,6 +231,7 @@ class SwimmerController extends Controller
      * @param Lesson $lesson
      * @param Swimmer $swimmer
      */
+    //TODO: Move this out of the controller
     private function sendClassSignUpEmail(Lesson $lesson, Swimmer $swimmer)
     {
         try {
