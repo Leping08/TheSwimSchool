@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 
 use App\EmailList;
-use App\Library\Stripe;
 use App\Library\StripeCharge;
 use App\Mail\ClassFull;
 use App\Mail\SignUp;

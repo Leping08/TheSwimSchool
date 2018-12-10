@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Stripe\Error\InvalidRequest;
 
+//TODO: Refactor this controller with the new stripe class App\Library\StripeCharge
 class PaymentController extends Controller
 {
     /**
