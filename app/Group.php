@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
+/**
+ * An Eloquent Model: 'Group'
+ *
+ * @property integer $id
+ * @property string $type
+ * @property string $ages
+ * @property string $description
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ */
+
 class Group extends Model
 {
     use SoftDeletes;

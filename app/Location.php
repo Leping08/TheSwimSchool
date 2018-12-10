@@ -5,6 +5,21 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * An Eloquent Model: 'Location'
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $street
+ * @property string $state
+ * @property string $city
+ * @property integer $zip
+ * @property integer $phone_number
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ */
+
 class Location extends Model
 {
     use SoftDeletes;

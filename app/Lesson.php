@@ -6,6 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
 
+/**
+ * An Eloquent Model: 'Lesson'
+ *
+ * @property integer $id
+ * @property integer $season_id
+ * @property integer $group_id
+ * @property integer $location_id
+ * @property integer $price
+ * @property integer $class_size
+ * @property \Illuminate\Support\Carbon $registration_open
+ * @property \Illuminate\Support\Carbon $class_start_time
+ * @property \Illuminate\Support\Carbon $class_end_time
+ * @property \Illuminate\Support\Carbon $class_start_date
+ * @property \Illuminate\Support\Carbon $class_end_date
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property-read \App\Group $group
+ * @property-read \App\Location $location
+ * @property-read \App\Season $season
+ */
+
 class Lesson extends Model
 {
     use SoftDeletes, Actionable;
@@ -90,7 +112,7 @@ class Lesson extends Model
      */
     public function isLessonFull(): bool
     {
-        if($this->getAttribute('class_size') <= $this->Swimmers()->count()){
+        if($this->class_size <= $this->Swimmers()->count()){
             return true;
         } else {
             return false;
@@ -102,7 +124,7 @@ class Lesson extends Model
      */
     public function isPrivate()
     {
-        if(strpos($this->Group->type, 'Private') !== false){
+        if(strpos($this->group->type, 'Private') !== false){
             return true;
         } else {
             return false;
@@ -114,7 +136,7 @@ class Lesson extends Model
      */
     public function path(): string
     {
-        return '/lessons/'.$this->Group->type;
+        return '/lessons/'.$this->group->type;
     }
 
     /**
