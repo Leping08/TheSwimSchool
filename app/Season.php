@@ -4,6 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * An Eloquent Model: 'Season'
+ *
+ * @property integer $id
+ * @property string $year
+ * @property string $season
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ */
+
 class Season extends Model
 {
     /**
@@ -19,12 +29,6 @@ class Season extends Model
     public function Lessons()
     {
         return $this->hasMany(Lesson::class);
-    }
-
-
-    public function name()
-    {
-        return $this->getAttribute('year') . " " . $this->getAttribute('season');
     }
 
     /**
