@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
-use App\Library\Helpers;
 
 /**
  * An athlete is someone who has signed up for a tryout
@@ -93,7 +92,6 @@ class Athlete extends Model
     {
         return $this->belongsTo(STSeason::class, 's_t_season_id');
     }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
