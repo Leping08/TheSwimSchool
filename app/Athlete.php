@@ -5,10 +5,41 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use App\Library\Helpers;
 
 /**
  * An athlete is someone who has signed up for a tryout
+ *
+ * An Eloquent Model: 'Swimmer'
+ *
+ * @property integer $id
+ * @property string $firstName
+ * @property string $lastName
+ * @property string $email
+ * @property string $phone
+ * @property \Illuminate\Support\Carbon $birthDate
+ * @property string $parent
+ * @property string $notes
+ * @property string $street
+ * @property string $city
+ * @property string $state
+ * @property string $zip
+ * @property string $emergencyName
+ * @property string $emergencyRelationship
+ * @property string $emergencyPhone
+ * @property integer $tryout_id
+ * @property integer $s_t_level
+ * @property integer $s_t_season_id
+ * @property bool $s_t_sign_up_email
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property-read \App\Tryout $tryout
+ * @property-read \App\STLevel $level
+ * @property-read \App\STSeason $season
+ *
  */
+
 
 class Athlete extends Model
 {
@@ -56,19 +87,19 @@ class Athlete extends Model
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function yearsOld()
+    public function Season()
     {
-        return $this->getAttribute('birthDate')->diffInYears(Carbon::now());
+        return $this->belongsTo(STSeason::class, 's_t_season_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function season()
+    public function Level()
     {
-        return $this->belongsTo(STSeason::class, 's_t_season_id');
+        return $this->belongsTo(STLevel::class, 's_t_level');
     }
 
     /**
@@ -76,23 +107,14 @@ class Athlete extends Model
      */
     public function monthsOld()
     {
-        return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
+        return $this->birthDate->diffInMonths(Carbon::now());
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function swimTeamLevel()
-    {
-        return $this->belongsTo(STLevel::class, 's_t_level');
-    }
-
-    /**
-     * @param $query
      * @return mixed
      */
-    public function scopeCurrentSeason($query)
+    public function yearsOld()
     {
-        return $query->where('s_t_season_id', STSeason::GetCurrentSeason()->id);
+        return $this->birthDate->diffInYears(Carbon::now());
     }
 }
