@@ -28,8 +28,8 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\Metrics\SwimmersPerDay;
 use App\Nova\Metrics\NewSwimmers;
 use App\Nova\Metrics\LessonsPerLevel;
-use Spatie\TailTool\TailTool;
-use Tightenco\NovaStripe\NovaStripe;
+//use Spatie\TailTool\TailTool;
+//use Tightenco\NovaStripe\NovaStripe;
 use Gregoriohc\LaravelNovaThemeResponsive\ThemeServiceProvider;
 use Leping\NorthRiverRapids\NorthRiverRapids;
 
@@ -103,8 +103,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new NorthRiverRapids,
-            new NovaStripe,
-            new TailTool
+            //new NovaStripe,
+            //new TailTool
         ];
     }
 
