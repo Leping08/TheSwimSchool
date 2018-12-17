@@ -1,7 +1,7 @@
 @component('mail::message')
 
 
-<img style="margin-bottom: 2em;" src="{{asset('img/hh.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/hh-pink.jpg')}}">
 
 
 
@@ -12,4 +12,6 @@ We won the Gold Daisy Award for Best Swim Lessons in Manatee County and started 
 
 Sincerely,<br>
 The Swim School
+
+<div style="padding: 1em 0em 0em 0em; font-size: x-small; color: #9BA2AB">If you are no longer interested in receiving emails from The Swim School, you can <a href="theswimschoolfl.com/unsubscribe/{{{$emailAddress}}}">unsubscribe</a>.</div>
 @endcomponent
