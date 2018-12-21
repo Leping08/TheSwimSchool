@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
-use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * An Eloquent Model: 'Lesson'
@@ -113,11 +112,7 @@ class Lesson extends Model
      */
     public function isFull(): bool
     {
-        if($this->class_size <= $this->Swimmers()->count()){
-            return true;
-        } else {
-            return false;
-        }
+        return $this->class_size <= $this->Swimmers()->count();
     }
 
     /**
@@ -125,11 +120,7 @@ class Lesson extends Model
      */
     public function isPrivate(): bool
     {
-        if(strpos($this->group->type, 'Private') !== false){
-            return true;
-        } else {
-            return false;
-        }
+        return strpos($this->group->type, 'Private') !== false;
     }
 
     /**
@@ -165,10 +156,7 @@ class Lesson extends Model
      */
     public function hasSwimmers(): bool
     {
-        if($this->Swimmers()->count() > 0){
-            return true;
-        }
-        return false;
+        return $this->Swimmers()->count() > 0;
     }
 
     /**

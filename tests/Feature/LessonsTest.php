@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Carbon\Carbon;
 use App\Group;
 
-class LessonsTest extends TestCase
+class Lessons extends TestCase
 {
     use DatabaseMigrations;
 
@@ -118,14 +118,16 @@ class LessonsTest extends TestCase
     {
         $lesson = factory('App\Lesson')->create();
         $group = factory('App\Group')->create();
-        $lesson->group_id = $group->id;
-        $lesson->update();
-        $group->type = 'Private Lesson';
-        $group->update();
+        $lesson->update([
+            'group_id' => $group->id
+        ]);
+        $group->update([
+            'type' => 'Private LessonTest'
+        ]);
 
-        $testSet = Group::where('type', 'NOT LIKE', '%Private%')->get();
+        $testSet = Group::where('type', 'NOT LIKE', '%Private%')->get(); //TODO: Test the function that calls this logic
 
-        $this->assertNotContains('Private Lesson', $testSet);
+        $this->assertNotContains('Private LessonTest', $testSet);
     }
 
     /** @test  **/
@@ -135,7 +137,7 @@ class LessonsTest extends TestCase
         $group = factory('App\Group')->create();
         $lesson->group_id = $group->id;
         $lesson->update();
-        $group->type = 'Private Lesson';
+        $group->type = 'Private LessonTest';
         $group->update();
 
         $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
@@ -157,15 +159,18 @@ class LessonsTest extends TestCase
     {
         $lesson = factory('App\Lesson')->create();
         $group = factory('App\Group')->create();
-        $lesson->group_id = $group->id;
-        $lesson->class_size = 1;
-        $lesson->update();
-        $group->type = 'Private Lesson';
-        $group->update();
+        $lesson->update([
+            'group_id' => $group->id,
+            'class_size' => 1
+        ]);
+        $group->update([
+            'type' => 'Private LessonTest'
+        ]);
 
         $swimmer = factory('App\Swimmer')->create();
-        $swimmer->lesson_id = $lesson->id;
-        $swimmer->update();
+        $swimmer->update([
+            'lesson_id' => $lesson->id
+        ]);
 
         $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
             ->assertSee('Sorry this lesson is full.');
