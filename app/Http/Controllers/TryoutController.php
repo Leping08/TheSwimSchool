@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\Helpers\SeasonHelpers;
 use App\STSeason;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -91,7 +92,7 @@ class TryoutController extends Controller
             'event_time' => 'required|date'
         ]);
 
-        $newTryout['season_id'] =  GetSeason::getSeasonFromDate($newTryout['event_time'])->id;
+        $newTryout['season_id'] =  SeasonHelpers::seasonFromDate($newTryout['event_time'])->id;
         $newTryout['registration_open'] = Carbon::parse($newTryout['registration_open']);
         $newTryout['event_time'] = Carbon::parse($newTryout['event_time']);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\Helpers\SeasonHelpers;
 use App\Swimmer;
 use App\Lesson;
 use App\Season;
@@ -76,7 +77,7 @@ class DashboardController extends Controller
      */
     public function swimmersForCurrentSeason()
     {
-        $season = GetSeason::getCurrentSeason();
+        $season = SeasonHelpers::currentSeason();
         return Swimmer::whereHas('lesson', function ($query) use ($season) {
             $query->where('season_id', '=', $season->id);
         })->get();

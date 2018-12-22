@@ -1,25 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Leping-Gaming
- * Date: 10/29/2017
- * Time: 3:23 PM
- */
 
-namespace App\Http\Controllers;
+namespace App\Library\Helpers;
+
 use Carbon\Carbon;
 use App\Season;
 
-class GetSeason
+class SeasonHelpers
 {
     /**
      * @return mixed
      */
-    public static function getCurrentSeason()
+    public static function currentSeason()
     {
         $now = Carbon::now();
         return Season::where('year', '=', $now->year)
-            ->where('season', '=', GetSeason::getSeasonString($now->month))
+            ->where('season', '=', SeasonHelpers::getSeasonString($now->month))
             ->first();
     }
 
@@ -27,19 +22,19 @@ class GetSeason
      * @param $date
      * @return mixed
      */
-    public static function getSeasonFromDate($date)
+    public static function seasonFromDate($date)
     {
         $carbonDate = Carbon::parse($date);
         return Season::where('year', '=', $carbonDate->year)
-            ->where('season', '=', GetSeason::getSeasonString($carbonDate->month))
+            ->where('season', '=', SeasonHelpers::getSeasonString($carbonDate->month))
             ->first();
     }
 
     /**
-     * @param $currentMonth
+     * @param int $currentMonth
      * @return string
      */
-    public static function getSeasonString($currentMonth)
+    public static function getSeasonString(int $currentMonth)
     {
         //retrieve season
         if ($currentMonth>=3 && $currentMonth<=5){

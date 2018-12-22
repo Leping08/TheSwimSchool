@@ -17,6 +17,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use App\Library\Helpers\SeasonHelpers;
 
 class Lesson extends Resource
 {
@@ -64,7 +65,7 @@ class Lesson extends Resource
             BelongsTo::make('Level', 'group'),
             BelongsTo::make('Season')->withMeta([
                 //Get the current season
-                'belongsToId' =>   $this->season_id ?? ((new GetSeason)->getCurrentSeason()->id)
+                'belongsToId' =>   $this->season_id ?? SeasonHelpers::currentSeason()->id
             ]),
             BelongsTo::make('Location')->withMeta([
                 //Select Harrison Ranch by default

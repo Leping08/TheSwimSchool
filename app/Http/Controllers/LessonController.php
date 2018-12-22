@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Library\Helpers\SeasonHelpers;
 use App\Location;
 use Carbon\Carbon;
 use App\Lesson;
@@ -143,7 +144,7 @@ class LessonController extends Controller
         $lesson['class_end_time'] = Carbon::parse($lesson['class_end_time']);
         $lesson['class_start_date'] = Carbon::parse($lesson['class_start_date']);
         $lesson['class_end_date'] = Carbon::parse($lesson['class_end_date']);
-        $lesson['season_id'] =  GetSeason::getSeasonFromDate($lesson['class_start_date'])->id;
+        $lesson['season_id'] =  SeasonHelpers::seasonFromDate($lesson['class_start_date'])->id;
 
         return $lesson;
     }
