@@ -5,10 +5,51 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * This is a marketing email list
+ *
+ * An Eloquent Model: 'EmailList'
+ *
+ * @property integer $id
+ * @property string $email
+ * @property bool $subscribe
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ *
+ */
+
 class EmailList extends Model
 {
     /**
      * @var array
      */
     protected $fillable = ['email', 'subscribe'];
+
+    /**
+     * @return bool
+     */
+    public function unsubscribe() : bool
+    {
+        return $this->update([
+            'subscribe' => 0
+        ]);
+    }
+
+    /**
+     * @return bool
+     */
+    public function resubscribe() : bool
+    {
+        return $this->update([
+            'subscribe' => 1
+        ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getRouteKeyName() {
+        return 'email';
+    }
 }

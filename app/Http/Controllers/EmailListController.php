@@ -8,20 +8,15 @@ use Illuminate\Support\Facades\Log;
 
 class EmailListController extends Controller
 {
+
     /**
-     * @param $email
+     * @param EmailList $email
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function unsubscribe($email)
+    public function unsubscribe(EmailList $email)
     {
-        //TODO: Catch exception where email couldn't be found
-        $emailList = EmailList::where('email', '=', $email)->firstOrFail();
-        Log::info("Trying to find $email to unsubscribe from email marketing");
-        if($emailList->subscribe){
-            Log::info("Found $email, EmailListTest ID: $emailList->id has been unsubscribed");
-            $emailList->subscribe = 0;
-            $emailList->save();
-        }
-        return view('pages.unsubscribe', compact('email'));
+        $email->unsubscribe();
+        Log::info("EmailListTest ID: {$email->id} with the email {$email->email} has been unsubscribed");
+        return view('pages.unsubscribe')->with('email', $email->email);
     }
 }
