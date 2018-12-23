@@ -50,8 +50,29 @@ class Group extends Model
             ->whereDate('registration_open', '<=', Carbon::now());
     }
 
-    public function swimmers()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function Swimmers()
     {
         return $this->hasManyThrough('Swimmer', 'Lesson');
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopePublic($query)
+    {
+        return $query->where('type', 'NOT LIKE', '%Private%')->get();
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopePrivate($query)
+    {
+        return $query->where('type', 'LIKE', '%Private%')->get();
     }
 }
