@@ -43,7 +43,7 @@ class Group extends Model
     /**
      * @return \Illuminate\Database\Query\Builder|static
      */
-    public function OpenSignUps()
+    public function OpenSignUps()   //TODO Make this a query scope on the lesson model and find the uses in blade files
     {
         return $this->hasMany(Lesson::class)
             ->whereDate('class_start_date', '>', Carbon::yesterday())
@@ -55,7 +55,7 @@ class Group extends Model
      */
     public function Swimmers()
     {
-        return $this->hasManyThrough('Swimmer', 'Lesson');
+        return $this->hasManyThrough('App\Swimmer', 'App\Lesson');
     }
 
     /**
