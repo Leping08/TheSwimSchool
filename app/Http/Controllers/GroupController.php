@@ -156,17 +156,4 @@ class GroupController extends Controller
         Log::info("Found lesson ID: $lesson->id. The Group id for that lesson is: $lesson->group_id");
         return view('groups.signUp', compact('lesson'));
     }
-
-    /**
-     *
-     * Get request to the terms and conditions url
-     *
-     * @param $classType
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function terms($classType, $id)
-    {
-        return view('groups.terms');
-    }
 }
