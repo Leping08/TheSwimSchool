@@ -16,9 +16,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //Don't show any groups with the word private in them
-        $groups = Group::where('type', 'NOT LIKE', '%Private%')->get();
-        return view('groups.list', compact('groups'));
+        //Get public facing groups for the groups index page
+        return view('groups.list')->with('groups', Group::public());
     }
 
     /**
@@ -29,6 +28,7 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO: Nova dashboard should remove this
         $request->validate([
             'type' => 'required|string',
             'ages' => 'required|string',
@@ -60,6 +60,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
+        //TODO: Nova dashboard should remove this
         return view('groups.show', compact('group'));
     }
 
@@ -71,6 +72,7 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
+        //TODO: Nova dashboard should remove this
         return view('groups.edit', compact('group'));
     }
 
@@ -83,6 +85,7 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
+        //TODO: Nova dashboard should remove this
         $request->validate([
             'type' => 'required|string',
             'ages' => 'required|string',
@@ -106,6 +109,7 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
+        //TODO: Nova dashboard should remove this
         $lessons = $group->Lessons()->get();
         if($lessons->isEmpty()){
             Log::info("$group->type was deleted. Group ID: $group->id");
