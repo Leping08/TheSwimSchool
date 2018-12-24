@@ -72,7 +72,7 @@ Route::get('/lessons/{group}', 'GroupController@classDetails');
 
 //Sign up form for that lesson
 /* @see GroupController::signUp() */
-Route::get('/lessons/{classType}/{id}', 'GroupController@signUp');
+Route::get('/lessons/{group}/{lesson}', 'GroupController@signUp');
 
 //Save the results of the sign up form
 /* @see SwimmerController::store() */
