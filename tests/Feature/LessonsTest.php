@@ -151,7 +151,7 @@ class Lessons extends TestCase
             ->assertSee('Address')
             ->assertSee('Contact Information')
             ->assertSee('Emergency Contact Information')
-            ->assertSee('Payment Method');
+            ->assertSee('Checkout');
     }
 
     /** @test  **/
