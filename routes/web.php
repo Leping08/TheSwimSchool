@@ -68,7 +68,7 @@ Route::get('/lessons', 'GroupController@index');
 
 //List details of the lesson
 /* @see GroupController::classDetails() */
-Route::get('/lessons/{groupType}', 'GroupController@classDetails');
+Route::get('/lessons/{group}', 'GroupController@classDetails');
 
 //Sign up form for that lesson
 /* @see GroupController::signUp() */
