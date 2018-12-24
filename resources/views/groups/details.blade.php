@@ -11,10 +11,10 @@ Lessons
 
 @section('content')
     <!-- If active lessons exist display them -->
-    @if(count($group->OpenSignUps))
+    @if(count($group->lessons()->registrationOpen()))
         <div class="uk-section-default uk-section-overlap uk-section">
             <div class="uk-container ">
-                @foreach($group->OpenSignUps as $lesson)
+                @foreach($group->lessons()->registrationOpen() as $lesson)
                 <div class="uk-card uk-card-default uk-margin-top">
                     <div class="uk-card-header">
                         <div class="uk-card-title f-24 uk-heading-bullet">{{$group->type}}</div>
