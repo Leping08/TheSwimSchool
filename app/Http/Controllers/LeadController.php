@@ -3,130 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
-use App\ContactType;
-use GuzzleHttp\Client;
+use App\Library\StoreContact;
 use Illuminate\Http\Request;
-use App\Jobs\ContactEmail;
-use Illuminate\Support\Facades\Log;
 
 class LeadController extends Controller
 {
     /**
-     * @param $id
+     * @param $lead
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(Contact $lead)
     {
-        $lead = Contact::find($id);
         return view('leads.show', compact('lead'));
     }
-
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function contact(Request $request)
+    public function store(Request $request)
     {
-        $validData = $this->validateRequest($request);
-        if($this->recaptcha($request)){
-            $newContact = $this->createContact($this->assignRequestContactId($request, $validData));
-            $this->sendEmails($newContact);
-            $request->session()->flash('success', 'We will be in contact with you shortly.');
-            return back();
-        } else {
-            $request->session()->flash('warning', 'Are you a robot?');
-            return back();
-        }
-    }
-
-    /**
-     * @param $request
-     * @return array
-     */
-    private function validateRequest($request): array
-    {
-        return $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'message' => 'required',
-            'g-recaptcha-response' => 'required',
-        ]);
-    }
-
-    /**
-     * @param Request $request
-     * @return bool
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * TODO Turn this into a laravel validation rule
-     */
-    public function recaptcha(Request $request): bool
-    {
-
-        $client = new Client([
-            'base_uri' => 'https://www.google.com/recaptcha/api/',
-            'timeout' => 2.0
-        ]);
-
-        $response = $client->request('POST', 'siteverify', [
-            'query' => [
-                'secret' => config('services.recaptcha.secret'),
-                'response' => $request->input('g-recaptcha-response')
-            ]
-        ]);
-
-        return json_decode($response->getBody())->success;
-    }
-
-    /**
-     * @param Request $request
-     * @param $validData
-     * @return array
-     */
-    private function assignRequestContactId(Request $request, $validData): array
-    {
-        if($request->path() === 'contact-us'){
-            $validData['contact_type_id'] = 1;
-        }
-
-        if($request->path() === 'lifeguarding'){
-            $validData['contact_type_id'] = 2;
-        }
-
-        if($request->path() === 'cpr-first-aid'){
-            $validData['contact_type_id'] = 3;
-        }
-
-        if($request->path() === 'private-semi-private'){
-            $validData['contact_type_id'] = 4;
-        }
-        return $validData;
-    }
-
-    /**
-     * @param $newContact
-     * @return Contact
-     */
-    private function createContact($newContact): Contact
-    {
-        return Contact::create($newContact);
-    }
-
-    /**
-     * @param $newContact
-     */
-    private function sendEmails($newContact)
-    {
-        $adminEmails = config('mail.leadDestEmails');
-        $subject = ContactType::find($newContact['contact_type_id']);
-        try {
-            foreach($adminEmails as $email){
-                ContactEmail::dispatch($newContact, $subject->name, $email);
-            }
-        } catch (\Exception $e) {
-            Log::error("Contact Email Error: ".$e);
-        }
+        (new StoreContact($request))
+            ? session()->flash('success', 'We will be in contact with you shortly.')
+            : session()->flash('warning', 'Something went wrong.');
+        return back();
     }
 }
