@@ -41,16 +41,6 @@ class Group extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Query\Builder|static
-     */
-    public function OpenSignUps()   //TODO Make this a query scope on the lesson model and find the uses in blade files
-    {
-        return $this->hasMany(Lesson::class)
-            ->whereDate('class_start_date', '>', Carbon::yesterday())
-            ->whereDate('registration_open', '<=', Carbon::now());
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function Swimmers()
@@ -74,5 +64,13 @@ class Group extends Model
     public function scopePrivate($query)
     {
         return $query->where('type', 'LIKE', '%Private%')->get();
+    }
+
+    /**
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'type';
     }
 }
