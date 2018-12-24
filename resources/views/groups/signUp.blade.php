@@ -12,7 +12,7 @@
 @section('content')
 <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
-    @if($lesson->class_size - $lesson->Swimmers->count() <= 0)
+    @if($lesson->class_size - $lesson->swimmers->count() <= 0)
             <div class="uk-card uk-card-default">
                 <div class="uk-card-body">
                     <div>Sorry this lesson is full. Sign up for a different lesson <a title="Bradenton Swimming Lessons"href="/lessons">here</a>.</div>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="uk-child-width-expand@s" uk-grid>
-                    <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->Swimmers->count()}}</div>
+                    <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->swimmers->count()}}</div>
                     <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{{$lesson->location->street}}}+{{{$lesson->location->city}}}+{{{$lesson->location->state}}}+{{{$lesson->location->zip}}}">{{$lesson->location->street}}, <br>{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}</a></div>
                     <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Times:</strong><br>
                         @foreach($lesson->DaysOfTheWeek as $day)

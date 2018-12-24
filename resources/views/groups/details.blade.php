@@ -27,7 +27,7 @@ Lessons
                         </div>
 
                         <div class="uk-child-width-expand@s" uk-grid>
-                            <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->Swimmers->count()}}</div>
+                            <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->swimmers->count()}}</div>
                             <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{{$lesson->location->street}}}+{{{$lesson->location->city}}}+{{{$lesson->location->state}}}+{{{$lesson->location->zip}}}">{{$lesson->location->street}}, <br>{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}</a></div>
                             <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Times:</strong><br>
                                 @foreach($lesson->DaysOfTheWeek as $day)
@@ -41,7 +41,7 @@ Lessons
                         @else
                             <ul class="uk-list uk-list-striped">
                                 <li><strong>Swimmers</strong></li>
-                                @foreach($lesson->Swimmers as $swimmer)
+                                @foreach($lesson->swimmers as $swimmer)
                                     <li><a href="/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                         {{$swimmer->firstName}} {{$swimmer->lastName}}
                                     </a></li>
@@ -49,14 +49,14 @@ Lessons
                             </ul>
                         @endif
 
-                        @if($lesson->class_size - $lesson->Swimmers->count() > 0)
+                        @if($lesson->class_size - $lesson->swimmers->count() > 0)
 
                         @else
                             <p><b>This class is full. Join the wait list to be notified if any spots open up.</b></p>
                         @endif
                     </div>
                     <div class="uk-card-footer">
-                        @if($lesson->class_size - $lesson->Swimmers->count() > 0)
+                        @if($lesson->class_size - $lesson->swimmers->count() > 0)
                             <a href="/lessons/{{{$group->type}}}/{{{$lesson->id}}}" class="uk-button uk-button-primary">Sign Up</a>
                         @else
                             <button class="uk-button uk-button-primary" uk-toggle="target: #wait-list">Join Wait List</button>
