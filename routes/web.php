@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/private-semi-private/lead/{id}', 'PrivateLessonLeadController@show');
 
     /* @see LeadController::show() */
-    Route::get('/lead/{id}', 'LeadController@show');
+    Route::get('/lead/{lead}', 'LeadController@show');
 
     /* @see GroupController */
     Route::resource('groups', 'GroupController');
@@ -216,20 +216,20 @@ Route::get('/private-semi-private', function () {
  * Public Contact Forms
  */
 
-/* @see LeadController::contact() */
-Route::post('/contact-us', 'LeadController@contact');
+/* @see LeadController::store() */
+Route::post('/contact-us', 'LeadController@store');
 
-/* @see LeadController::contact() */
-Route::post('/lifeguarding', 'LeadController@contact');
+/* @see LeadController::store() */
+Route::post('/lifeguarding', 'LeadController@store');
 
-/* @see LeadController::contact() */
-Route::post('/cpr-first-aid', 'LeadController@contact');
+/* @see LeadController::store() */
+Route::post('/cpr-first-aid', 'LeadController@store');
 
 /* @see LeadController::contact() */
 Route::post('/private-semi-private', 'LeadController@contact');
 
 /* @see PrivateLessonLeadController::store() */
-Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
+//Route::post('/private-semi-private', 'PrivateLessonLeadController@store'); TODO: Check into this
 
 
 /*
