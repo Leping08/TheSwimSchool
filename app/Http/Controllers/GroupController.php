@@ -131,23 +131,20 @@ class GroupController extends Controller
     public function classDetails(Group $group)
     {
         //Get all lessons for a group that are open for registration
+        $group->load(['lessons']);
         Log::info("Found group ID: $group->id Group Type: $group->type");
         return view('groups.details', compact('group'));
     }
 
 
     /**
-     *
-     * Sign up form for that lesson
-     *
-     * @param $groupType
-     * @param $id
+     * @param Group $group
+     * @param Lesson $lesson
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function signUp($groupType, $id)
+    public function signUp(Group $group, Lesson $lesson)
     {
-        Log::info("Trying to find Lesson ID: $id");
-        $lesson = Lesson::with(['group', 'location', 'season'])->where('id', $id)->firstOrFail();
+        $lesson->load(['group', 'location', 'season', 'swimmers']);  //Eager load the data
         Log::info("Found lesson ID: $lesson->id. The Group id for that lesson is: $lesson->group_id");
         return view('groups.signUp', compact('lesson'));
     }
