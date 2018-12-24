@@ -6,6 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * The people who have contacted site admins
+ *
+ * An Eloquent Model: 'Contact'
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $email
+ * @property string $phone
+ * @property string $message
+ * @property bool $followed_up
+ * @property bool $contact_type_id
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ *
+ */
+
 class Contact extends Model
 {
     use SoftDeletes;
