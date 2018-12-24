@@ -131,7 +131,7 @@ class GroupController extends Controller
     public function classDetails(Group $group)
     {
         //Get all lessons for a group that are open for registration
-        $group->load(['lessons']);
+        $group->load(['lessons']); //Eager load the data
         Log::info("Found group ID: $group->id Group Type: $group->type");
         return view('groups.details', compact('group'));
     }
