@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
@@ -165,5 +166,16 @@ class Lesson extends Model
     public function WaitList()
     {
         return $this->hasMany(WaitList::class)->orderBy('created_at', 'asc');
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeRegistrationOpen($query)
+    {
+        return $query
+            ->whereDate('class_start_date', '>', Carbon::yesterday())
+            ->whereDate('registration_open', '<=', Carbon::now())->get();
     }
 }
