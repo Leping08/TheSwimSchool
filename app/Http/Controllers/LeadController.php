@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
-use App\Library\StoreContact;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreLead;
 
 class LeadController extends Controller
 {
@@ -17,15 +16,14 @@ class LeadController extends Controller
         return view('leads.show', compact('lead'));
     }
 
+
     /**
-     * @param Request $request
+     * @param StoreLead $lead
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreLead $lead)
     {
-        (new StoreContact($request))
-            ? session()->flash('success', 'We will be in contact with you shortly.')
-            : session()->flash('warning', 'Something went wrong.');
+        $lead->save();
         return back();
     }
 }
