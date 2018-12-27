@@ -33,7 +33,7 @@
 
                             <dt>Class Time:</dt>
                             <dd>
-                                @foreach($days as $day)
+                                @foreach($lesson->DaysOfTheWeek as $day)
                                     {{$day->day}}: {{$lesson->class_start_time->format('g:i a')}} - {{$lesson->class_end_time->format('g:i a')}}<br>
                                 @endforeach
                             </dd>

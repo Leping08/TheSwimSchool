@@ -15,16 +15,14 @@ use Illuminate\Support\Facades\Mail;
 class LessonController extends Controller
 {
     /**
-     * @param $id
+     * @param Lesson $lesson
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(Lesson $lesson)
     {
-        $lesson = Lesson::with(['Group', 'Location', 'Season', 'DaysOfTheWeek', 'WaitList'])
-            ->where('id', '=', $id)
-            ->firstOrFail();
-        $days = Lesson::find($id)->DaysOfTheWeek()->get();
-        return view('lessons.show', compact('lesson', 'days'));
+        //TODO: Nova dashboard should remove this
+        $lesson->load(['Group', 'Location', 'Season', 'DaysOfTheWeek', 'WaitList']);
+        return view('lessons.show', compact('lesson'));
     }
 
     /**
@@ -33,6 +31,7 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO: Nova dashboard should remove this
         $lesson = $this->validateLesson($request);
         $newLesson = Lesson::create($lesson);
         $this->attachDaysOfTheWeeks($request, $newLesson);
@@ -49,6 +48,7 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
+        //TODO: Nova dashboard should remove this
         $locations = Location::all();
         $groups = Group::all();
         $daysOfTheWeekArray = $lesson->DaysOfTheWeekArray();
@@ -64,6 +64,7 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
+        //TODO: Nova dashboard should remove this
         $lesson->update($this->validateLesson($request));
         $lesson->DaysOfTheWeek()->detach();
         $this->attachDaysOfTheWeeks($request, $lesson);
@@ -84,6 +85,7 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
+        //TODO: Nova dashboard should remove this
         if(!$lesson->hasSwimmers()){
             Log::info("Lesson ID: $lesson->id was deleted.");
             session()->flash('success', "The lesson was deleted.");
@@ -104,6 +106,7 @@ class LessonController extends Controller
      */
     public function emailSignUpLink(Request $request, $id)
     {
+        //TODO: Nova dashboard already has an action for this
         $request->validate([
             'email' => 'required|email',
         ]);
@@ -127,6 +130,7 @@ class LessonController extends Controller
      */
     private function validateLesson(Request $request)
     {
+        //TODO: Nova dashboard should remove this
         $lesson = $request->validate([
             'group_id' => 'required|digits_between:1,6',
             'location_id' => 'required|digits_between:1,6',
@@ -155,6 +159,7 @@ class LessonController extends Controller
      */
     private function attachDaysOfTheWeeks(Request $request, Lesson $lesson)
     {
+        //TODO: Nova dashboard should remove this
         if($request['monday']){
             $lesson->DaysOfTheWeek()->attach(1);
         }
