@@ -36,6 +36,7 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO: Nova dashboard should remove this
         $request->validate([
             'name' => 'required|string',
             'street' => 'required|string',
@@ -59,6 +60,7 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
+        //TODO: Nova dashboard should remove this
         return view('locations.show', compact('location'));
     }
 
@@ -70,6 +72,7 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
+        //TODO: Nova dashboard should remove this
         return view('locations.edit', compact('location'));
     }
 
@@ -82,6 +85,7 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
+        //TODO: Nova dashboard should remove this
         $request->validate([
             'name' => 'required|string',
             'street' => 'required|string',
@@ -105,6 +109,7 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
+        //TODO: Nova dashboard should remove this
         $lessons = $location->Lessons()->get();
         if($lessons->isEmpty()){
             $location->delete();
