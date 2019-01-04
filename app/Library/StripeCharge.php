@@ -14,50 +14,62 @@ use App\Library\Interfaces\PaymentMethod;
 class StripeCharge implements PaymentMethod
 {
     /**
+     * @var string
+     */
+    public $token;
+    /**
+     * @var int
+     */
+    public $price;
+    /**
+     * @var string
+     */
+    public $email;
+    /**
+     * @var string
+     */
+    public $description;
+
+
+    /**
+     * StripeCharge constructor.
      * @param string $token
      * @param int $price
      * @param string $email
      * @param string|null $description
-     * @return \Stripe\Charge|null
      */
-    public function pay(string $token, int $price, string $email, string $description = null) : ? \Stripe\Charge
+    public function __construct(string $token, int $price, string $email, string $description = null)
+    {
+        $this->token = $token;
+        $this->price = $price;
+        $this->email = $email;
+        $this->description = $description;
+    }
+
+
+
+    public function charge()
     {
         $charge = [
-            "amount" => $price * 100,
+            "amount" => $this->price * 100,
             "currency" => "usd",
-            "receipt_email" => $email,
-            "description" => $description,
-            "source" => $token //Obtained with Stripe.js
+            "receipt_email" => $this->email,
+            "description" => $this->description,
+            "source" => $this->token //Obtained with Stripe.js
         ];
 
         Log::info('Stripe charge request array:');
         Log::info(print_r($charge, true));
 
-        return $this->charge($charge);
+        return $this->pay($charge);
     }
 
 
     /**
-     * @param $e
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    private function logStripeError($e)
-    {
-        $body = $e->getJsonBody();
-        $err  = $body['error'];
-        Log::error('Status is:' . $e->getHttpStatus());
-        Log::error('Type is:' . $err['type']);
-        Log::error('Code is:' . $err['code']);
-        Log::error(print_r($err, true));
-        session()->flash('error', 'Oops, something went wrong with the payment. ' . $err['message']);
-        return back();
-    }
-
-    /**
-     * @param $charge
+     * @param array $charge
      * @return \Stripe\Charge
      */
-    public function charge($charge) : \Stripe\Charge
+    public function pay(array $charge)
     {
         try {
             \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -94,15 +106,22 @@ class StripeCharge implements PaymentMethod
             Log::error('Error: ' . $e->getMessage());
             return back();
         }
+        return null;
     }
 
     /**
-     * @param string $chargeId
-     * @return \Stripe\Charge|null
+     * @param $e
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function details(string $chargeId) : ? \Stripe\Charge
+    private function logStripeError($e)
     {
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-        return \Stripe\Charge::retrieve($chargeId);
+        $body = $e->getJsonBody();
+        $err  = $body['error'];
+        Log::error('Status is:' . $e->getHttpStatus());
+        Log::error('Type is:' . $err['type']);
+        Log::error('Code is:' . $err['code']);
+        Log::error(print_r($err, true));
+        session()->flash('error', 'Oops, something went wrong with the payment. ' . $err['message']);
+        return back();
     }
 }
