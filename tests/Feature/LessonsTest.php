@@ -5,12 +5,13 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\WithFaker;
 use Carbon\Carbon;
 use App\Group;
 
 class Lessons extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseMigrations, WithFaker;
 
     public function setUp()
     {
@@ -174,5 +175,49 @@ class Lessons extends TestCase
 
         $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
             ->assertSee('Sorry this lesson is full.');
+    }
+
+    /** @test  **/
+    public function a_swimmer_can_sign_up_by_hitting_the_lesson_sign_up_route()
+    {
+        $lesson = factory('App\Lesson')->create();
+
+        $attributes = [
+            'firstName' => $this->faker->firstName,
+            'lastName' => $this->faker->lastName,
+            'birthDate' => Carbon::yesterday()->toDateString(),
+            'email' => $this->faker->email,
+            'phone' => $this->faker->phoneNumber,
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->word,
+            'zip' => $this->faker->numberBetween(10000, 90000),
+            'emergencyName' => $this->faker->name,
+            'emergencyRelationship' => $this->faker->word,
+            'emergencyPhone' => '999-999-9999',
+            'emailUpdates' => 'off',
+            'lesson_id' => $lesson->id,
+            'stripeToken' => 'tok_visa'
+        ];
+
+
+        $this->get("/lessons/{$lesson->group->type}/{$lesson->id}")
+            ->assertStatus(200);
+
+        $this->assertEquals(0,  \App\Swimmer::all()->count());
+
+        $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
+
+        $response->assertStatus(200);
+
+        $this->assertEquals(1,  \App\Swimmer::all()->count());
+
+        $this->assertDatabaseHas('swimmers', [
+            "firstName" => $attributes['firstName'],
+            "lastName" => $attributes['lastName'],
+            "email" => $attributes['email'],
+            "lesson_id" => $attributes['lesson_id']
+        ]);
     }
 }
