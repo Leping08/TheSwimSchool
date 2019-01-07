@@ -32,7 +32,6 @@ class GroupLessonsReminderEmail
         }
     }
 
-    //TODO: Add ability to send reminder email to single swimmer from the UI
     public function sendReminderEmailToSingleSwimmer(Swimmer $swimmer)
     {
         $lesson = Lesson::find($swimmer->getAttribute('lesson_id'));
