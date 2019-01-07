@@ -17,7 +17,7 @@ class GroupController extends Controller
     public function index()
     {
         //Get public facing groups for the groups index page
-        return view('groups.list')->with('groups', Group::public());
+        return view('groups.list')->with('groups', Group::public()->get());
     }
 
     /**

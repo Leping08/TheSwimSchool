@@ -54,7 +54,7 @@ class Group extends Model
      */
     public function scopePublic($query)
     {
-        return $query->where('type', 'NOT LIKE', '%Private%')->get();
+        return $query->where('type', 'NOT LIKE', '%Private%');
     }
 
     /**
@@ -63,7 +63,7 @@ class Group extends Model
      */
     public function scopePrivate($query)
     {
-        return $query->where('type', 'LIKE', '%Private%')->get();
+        return $query->where('type', 'LIKE', '%Private%');
     }
 
     /**

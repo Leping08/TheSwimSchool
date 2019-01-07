@@ -126,7 +126,7 @@ class Lessons extends TestCase
             'type' => 'Private LessonTest'
         ]);
 
-        $testSet = Group::public();
+        $testSet = Group::public()->get();
 
         $this->assertNotContains('Private LessonTest', $testSet);
     }
