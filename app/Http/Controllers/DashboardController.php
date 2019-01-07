@@ -24,7 +24,6 @@ class DashboardController extends Controller
     {
         $swimmers = Swimmer::where('paid', '=', '1')->orderBy('created_at', 'desc')->limit(10)->get();
         $seasons = Season::all();
-        //TODO: Add pagination to swimmer levels
         $groups = Group::all();
         $locations = Location::all();
         $daysOfTheWeek = DaysOfTheWeek::all();
