@@ -13,7 +13,7 @@ class GroupLessonsReminderEmail
 {
     public function sendReminderEmails()
     {
-        $lessons = $this->getLessonsStartingTomorrow();
+        $lessons = Lesson::startingTomorrow()->with('Swimmers', 'Group', 'Location', 'DaysOfTheWeek')->get();
         if(count($lessons)){
             foreach ($lessons as $lesson){
                 foreach($lesson->swimmers as $swimmer){
@@ -44,10 +44,5 @@ class GroupLessonsReminderEmail
                 Log::warning("Email error: $e");
             }
         }
-    }
-
-    private function getLessonsStartingTomorrow()
-    {
-        return Lesson::where('class_start_date', Carbon::tomorrow())->with('Swimmers', 'Group', 'Location', 'DaysOfTheWeek')->get();
     }
 }

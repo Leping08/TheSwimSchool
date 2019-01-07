@@ -178,4 +178,13 @@ class Lesson extends Model
             ->whereDate('class_start_date', '>', Carbon::yesterday())
             ->whereDate('registration_open', '<=', Carbon::now())->get();
     }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeStartingTomorrow($query)
+    {
+        return $query->where('class_start_date', Carbon::tomorrow());
+    }
 }
