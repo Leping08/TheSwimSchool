@@ -126,7 +126,7 @@ class Lessons extends TestCase
             'type' => 'Private LessonTest'
         ]);
 
-        $testSet = Group::where('type', 'NOT LIKE', '%Private%')->get(); //TODO: Test the function that calls this logic
+        $testSet = Group::public();
 
         $this->assertNotContains('Private LessonTest', $testSet);
     }
