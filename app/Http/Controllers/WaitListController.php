@@ -30,7 +30,8 @@ class WaitListController extends Controller
             $waitingSwimmer['lesson_id'] = $lesson->id;
         }catch (\Exception $e){
             Log::error($e);
-            //TODO: Return a message back to the user here
+            session()->flash("warning", "Something has gone wrong.");
+            return back();
         }
 
         $newWaitingSwimmer = WaitList::create($waitingSwimmer);
