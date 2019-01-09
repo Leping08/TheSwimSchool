@@ -225,11 +225,8 @@ Route::post('/lifeguarding', 'LeadController@store');
 /* @see LeadController::store() */
 Route::post('/cpr-first-aid', 'LeadController@store');
 
-/* @see LeadController::contact() */
-Route::post('/private-semi-private', 'LeadController@contact');
-
 /* @see PrivateLessonLeadController::store() */
-//Route::post('/private-semi-private', 'PrivateLessonLeadController@store'); TODO: Check into this
+Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
 
 
 /*

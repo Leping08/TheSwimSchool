@@ -96,6 +96,7 @@
                     </div>
                 </div>
 
+                {{--TODO: Uncomment this when the season starts back up--}}
                 {{--<div class="uk-width-1-1@m uk-first-column">--}}
                     {{--<h2 class="uk-heading-bullet">Request Private Lessons</h2>--}}
                     {{--<div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>--}}
