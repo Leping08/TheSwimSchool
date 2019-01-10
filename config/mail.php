@@ -120,10 +120,10 @@ return [
         ],
     ],
 
-    'leadDestEmails' =>
-        env('APP_ENV') === 'local'
-        ? ['derek@deltavcreative.com']
-        : ['theswimschoolfl@gmail.com','derek@deltavcreative.com'],
+    'leadDestEmails' => [
+        'theswimschoolfl@gmail.com',
+        'derek@deltavcreative.com'
+    ],
 
     /*
     'stream' => [
