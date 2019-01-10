@@ -17,7 +17,7 @@ class PrivateLessonRequestTest extends TestCase
         $attributes = [
             'swimmer_name' => $this->faker->name,
             'email' => $this->faker->email,
-            'swimmer_birth_date' => '1/2/2018',
+            'swimmer_birth_date' => '2018-2-1',
             'phone' => $this->faker->phoneNumber,
             'type' => 'Private Lesson',
             'length' => '4 Lessons Per Month',
@@ -32,8 +32,6 @@ class PrivateLessonRequestTest extends TestCase
         $this->assertEquals(0,  \App\PrivateLessonLead::all()->count());
 
         $response = $this->json('POST', "/private-semi-private", $attributes);
-
-        dd($response);
 
         $response->assertStatus(302);
 
