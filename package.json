@@ -8,14 +8,8 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "build-stripe-charge": "cd nova-components/StripeCharge && npm run dev",
-        "build-stripe-charge-prod": "cd nova-components/StripeCharge && npm run prod",
-        "build-swim-team-roster": "cd nova-components/SwimTeamRoster && npm run dev",
-        "build-swim-team-roster-prod": "cd nova-components/SwimTeamRoster && npm run prod",
         "build-NorthRiverRapids": "cd nova-components/NorthRiverRapids && npm run dev",
-        "build-NorthRiverRapids-prod": "cd nova-components/NorthRiverRapids && npm run prod",
-        "build-Roster": "cd nova-components/Roster && npm run dev",
-        "build-Roster-prod": "cd nova-components/Roster && npm run prod"
+        "build-NorthRiverRapids-prod": "cd nova-components/NorthRiverRapids && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.16.2",

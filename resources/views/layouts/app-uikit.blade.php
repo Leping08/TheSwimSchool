@@ -21,7 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- uikit stuff -->
-    <link rel='stylesheet' id='theme-style-css'  href='https://demo.yootheme.com/themes/wordpress/2017/fjord/wp-content/themes/yootheme/css/theme.css?ver=1530797654' type='text/css' media='all' />
+    {{--<link rel='stylesheet' id='theme-style-css'  href='https://demo.yootheme.com/themes/wordpress/2017/fjord/wp-content/themes/yootheme/css/theme.css?ver=1530797654' type='text/css' media='all' />--}}
     <script>
         window.laravelConfig = JSON.parse('{!! json_encode([
             'STRIPE_PUBLIC' => env('STRIPE_PUBLIC')
