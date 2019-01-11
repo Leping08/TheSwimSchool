@@ -11,7 +11,7 @@ Home
 
 @section('content')
 <div id="page#1" class="uk-section-secondary uk-section-overlap">
-    <div style="background-image: url('/img/pool-water.jpg'); background-color: #1e3040;" class="uk-background-norepeat uk-background-cover uk-background-bottom-center uk-background-fixed uk-section uk-padding-remove-vertical">
+    <div style="background-image: url('/img/pool-water.jpg');" class="uk-background-norepeat uk-background-cover uk-background-bottom-center uk-background-fixed uk-section uk-padding-remove-vertical">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
