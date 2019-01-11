@@ -78,16 +78,6 @@ Route::get('/lessons/{group}/{lesson}', 'GroupController@signUp');
 /* @see SwimmerController::store() */
 Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 
-//Charge the credit card for the lesson
-/* @see PaymentController::ChargeCardForLesson() */
-//Route::post('/{id}/card/checkout', 'PaymentController@ChargeCardForLesson');
-
-//The Link to sign up for private lessons
-/* @see SwimmerController::store() */
-Route::get('/private/{classType}/{id}', 'SwimmerController@store');
-
-
-
 
 
 
@@ -96,10 +86,6 @@ Route::get('/private/{classType}/{id}', 'SwimmerController@store');
  */
 /* @see WaitListController::store() */
 Route::post('/wait-list/{id}', 'WaitListController@store');
-
-
-
-
 
 
 
@@ -119,9 +105,6 @@ Route::get('/swim-team/tryouts/{id}', 'TryoutController@signUp');
 //Save the results of the sign up form
 /* @see AthleteController::store() */
 Route::post('/swim-team/tryouts/{id}', 'AthleteController@store');
-
-
-
 
 
 
@@ -148,7 +131,31 @@ Route::get('/roster', 'STSwimmerController@roster');
 
 
 
+/*
+ * Public Contact Forms
+ */
 
+/* @see LeadController::store() */
+Route::post('/contact-us', 'LeadController@store');
+
+/* @see LeadController::store() */
+Route::post('/lifeguarding', 'LeadController@store');
+
+/* @see LeadController::store() */
+Route::post('/cpr-first-aid', 'LeadController@store');
+
+/* @see PrivateLessonLeadController::store() */
+Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
+
+
+
+
+/*
+ * Email marketing unsubscribe page
+ */
+
+/* @see EmailListController::unsubscribe() */
+Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
 
 
 
@@ -182,7 +189,7 @@ Route::get('/contact-us', function(){
 });
 
 Route::get('/other-services', function (){
-   return view('pages.other-services');
+    return view('pages.other-services');
 });
 
 Route::get('/lifeguarding', function (){
@@ -204,34 +211,3 @@ Route::get('/swim-team/policies-and-procedures', function(){
 Route::get('/private-semi-private', function () {
     return view('private-lesson-leads.index');
 });
-
-
-
-
-
-
-
-
-/*
- * Public Contact Forms
- */
-
-/* @see LeadController::store() */
-Route::post('/contact-us', 'LeadController@store');
-
-/* @see LeadController::store() */
-Route::post('/lifeguarding', 'LeadController@store');
-
-/* @see LeadController::store() */
-Route::post('/cpr-first-aid', 'LeadController@store');
-
-/* @see PrivateLessonLeadController::store() */
-Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
-
-
-/*
- * Email marketing unsubscribe page
- */
-
-/* @see EmailListController::unsubscribe() */
-Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
