@@ -49,7 +49,7 @@ class Lesson extends Resource
      *
      * @var array
      */
-    public static $with = ['location', 'group', 'season', 'swimmers', 'DaysOfTheWeek'];
+    public static $with = [];
 
     /**
      * Get the fields displayed by the resource.
