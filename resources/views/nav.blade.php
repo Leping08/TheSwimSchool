@@ -7,7 +7,7 @@
         </div>
         <div class="uk-navbar-right">
             <a class="uk-navbar-toggle" href="#tm-mobile" uk-toggle>
-                <div uk-navbar-toggle-icon></div>
+                <span uk-icon="icon: menu; ratio: 2"></span>
             </a>
         </div>
     </nav>
