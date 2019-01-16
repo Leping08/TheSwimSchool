@@ -161,6 +161,7 @@ return [
         App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
+        App\Providers\FacebookServiceProvider::class,
 
     ],
 
