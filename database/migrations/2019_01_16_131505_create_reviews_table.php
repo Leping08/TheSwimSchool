@@ -15,9 +15,8 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('reviewer_id');
-            $table->dateTime('created_time');
+            $table->string('name')->nullable();
+            $table->string('created_time')->unique();
             $table->string('message', 8000);
             $table->timestamps();
             $table->softDeletes();

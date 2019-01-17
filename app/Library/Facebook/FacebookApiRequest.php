@@ -4,7 +4,6 @@ namespace App\Library\Facebook;
 
 use App\Review;
 use Carbon\Carbon;
-use Facebook\Facebook;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 
@@ -47,20 +46,21 @@ class FacebookApiRequest
     public function saveReviews($reviews)
     {
         //Get all the reviews id's in the DB
-        $reviewer_ids = Review::pluck('reviewer_id');
+        $reviewer_times = Review::pluck('created_time');
 
         foreach ($reviews as $review){
-            //Make sure its a positive review and its not a duplicate
-            if((! $reviewer_ids->contains($review['reviewer']['id'])) && ($review['recommendation_type'] = 'positive')){
-                Log::info("Saving review from {$review['reviewer']['name']}");
-                Review::create([
-                    'name' => $review['reviewer']['name'],
-                    'reviewer_id' => $review['reviewer']['id'],
-                    'created_time' => Carbon::parse($review['created_time']),
-                    'message' => $review['review_text']
-                ]);
+            //Check if the necessary data exists
+            if((!empty($review['created_time'])) && (!empty($review['recommendation_type'])) && (!empty($review['review_text']))){
+                //Make sure its a positive review and its not a duplicate
+                if((!$reviewer_times->contains($review['created_time'])) && ($review['recommendation_type'] === 'positive')){
+                    Review::create([
+                        'name' => (!empty($review['reviewer']['name'])) ? $review['reviewer']['name'] : null,
+                        'created_time' => $review['created_time'],
+                        'message' => $review['review_text']
+                    ]);
+                }
             }
         }
-        Log::info("Reviews saved");
+        Log::info("Reviews saved for ". Carbon::now()->toDateString());
     }
 }
