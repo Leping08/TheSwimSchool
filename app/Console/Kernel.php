@@ -30,6 +30,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command("send-lesson-reminder-emails")->dailyAt('8:00');
         $schedule->command("send-tryout-reminder-emails")->dailyAt('8:05');
+        //Update reviews table with the SwimSchool Facebook page reviews
         $schedule->call(function() {
             (new FacebookApiRequest())->updateReviews();
         })->dailyAt('05:00');
