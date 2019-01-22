@@ -110,15 +110,15 @@ Home
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
         </div>
 
-        <div class="uk-grid-margin uk-grid-stack" uk-grid>
-            <div class="uk-width-1-1@m uk-first-column">
-                <div class="uk-text-center uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="uk-animation-slide-bottom-medium">
-                    <a title="Swim School Testimonials" class="el-content uk-button uk-button-primary uk-button-large" href="/testimonials/" title="Explore More">
-                        View All
-                    </a>
-                </div>
-            </div>
-        </div>
+        {{--<div class="uk-grid-margin uk-grid-stack" uk-grid>--}}
+            {{--<div class="uk-width-1-1@m uk-first-column">--}}
+                {{--<div class="uk-text-center uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="uk-animation-slide-bottom-medium">--}}
+                    {{--<a title="Swim School Testimonials" class="el-content uk-button uk-button-primary uk-button-large" href="/testimonials/" title="Explore More">--}}
+                        {{--View All--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
 </div>
 @endsection
