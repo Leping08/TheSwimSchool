@@ -27,6 +27,7 @@
             'STRIPE_PUBLIC' => env('STRIPE_PUBLIC')
         ]) !!}');
     </script>
+    <script src="{{asset('js/uikit.js')}}"></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -64,7 +65,6 @@
     <!-- Font Awesome CDN -->
     <script src="https://use.fontawesome.com/2df15bc632.js"></script>
     <!-- UIkit JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
 </body>
 </html>
