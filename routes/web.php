@@ -56,7 +56,11 @@ Route::middleware('auth')->group(function () {
 });
 
 
+/*
+ * Home page
+ */
 
+Route::get('/', 'HomeController@index');
 
 /*
  * Group Lessons
@@ -163,10 +167,6 @@ Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
 /*
  * Static Pages
  */
-
-Route::get('/', function(){
-    return view('pages.home');
-});
 
 Route::get('/services', function(){
     return view('pages.services');
