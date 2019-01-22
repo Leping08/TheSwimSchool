@@ -14,4 +14,9 @@ class Review extends Model
     {
         return str_limit($this->message, 300);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', true);
+    }
 }

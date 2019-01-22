@@ -18,6 +18,7 @@ use App\Nova\Season;
 use App\Nova\STSeason;
 use App\Nova\STSwimmer;
 use App\Nova\Swimmer;
+use App\Nova\Testimonial;
 use App\Nova\Tryout;
 use App\Nova\User;
 use App\Nova\STLevel;
@@ -142,7 +143,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             STSwimmer::class,
             STSwimmer::class,
             STSeason::class,
-            Day::class
+            Day::class,
+            Testimonial::class
         ]);
         //Nova::resourcesIn(app_path('Nova'));
     }
