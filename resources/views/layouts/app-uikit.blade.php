@@ -8,32 +8,26 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=PT+Serif:100,200,300,400,500,600,700,800,900|Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-5LBC84D');
-    </script>
+    @include('gtm.script')
+
+    <!-- SEO -->
     @yield('seo')
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- uikit stuff -->
-    {{--<link rel='stylesheet' id='theme-style-css'  href='https://demo.yootheme.com/themes/wordpress/2017/fjord/wp-content/themes/yootheme/css/theme.css?ver=1530797654' type='text/css' media='all' />--}}
+    <!-- Uikit JS -->
+    <script src="{{asset('js/uikit.js')}}"></script>
     <script>
         window.laravelConfig = JSON.parse('{!! json_encode([
             'STRIPE_PUBLIC' => env('STRIPE_PUBLIC')
         ]) !!}');
     </script>
-    <script src="{{asset('js/uikit.js')}}"></script>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LBC84D" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    @include('nav')
+    @include('gtm.iframe')
 
+    @include('nav')
 
     <div id="app" uk-height-viewport="offset-top: true; offset-bottom: true">
         @if(Request::is('/'))
@@ -64,7 +58,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Font Awesome CDN -->
     <script src="https://use.fontawesome.com/2df15bc632.js"></script>
-    <!-- UIkit JS -->
+    <!-- UIkit Icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
 </body>
 </html>
