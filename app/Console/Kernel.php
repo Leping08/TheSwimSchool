@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\SendTryoutReminderEmails;
+use App\Library\Facebook\FacebookApiRequest;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Console\Commands\SendReminderEmails;
@@ -29,6 +30,10 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command("send-lesson-reminder-emails")->dailyAt('8:00');
         $schedule->command("send-tryout-reminder-emails")->dailyAt('8:05');
+        //Update reviews table with the SwimSchool Facebook page reviews
+        $schedule->call(function() {
+            (new FacebookApiRequest())->updateReviews();
+        })->dailyAt('05:00');
     }
 
     /**

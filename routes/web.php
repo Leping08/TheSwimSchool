@@ -59,6 +59,15 @@ Route::middleware('auth')->group(function () {
 
 
 /*
+ * Home page
+ */
+
+Route::get('/', 'HomeController@index');
+
+
+
+
+/*
  * Group Lessons
  */
 
@@ -164,10 +173,6 @@ Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
  * Static Pages
  */
 
-Route::get('/', function(){
-    return view('pages.home');
-});
-
 Route::get('/services', function(){
     return view('pages.services');
 });
@@ -178,10 +183,6 @@ Route::get('/swim-team', function(){
 
 Route::get('/about', function(){
     return view('pages.about');
-});
-
-Route::get('/testimonials', function(){
-    return view('pages.testimonials');
 });
 
 Route::get('/contact-us', function(){
@@ -211,3 +212,7 @@ Route::get('/swim-team/policies-and-procedures', function(){
 Route::get('/private-semi-private', function () {
     return view('private-lesson-leads.index');
 });
+
+//Route::get('/testimonials', function(){
+//    return view('pages.testimonials');
+//});

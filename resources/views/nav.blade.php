@@ -29,7 +29,7 @@
                                 </ul>
                             </li>
                             <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="/about/">About</a></li>
-                            <li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a title="Swim School Testimonials" href="/testimonials/">Testimonials</a></li>
+                            {{--<li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a title="Swim School Testimonials" href="/testimonials/">Testimonials</a></li>--}}
                             <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Lakewood Ranch Swim Instructors" href="/contact-us/">Contact Us</a></li>
                         </ul>
                     </div>
@@ -106,7 +106,7 @@
                             </div>
                         </li>
                         <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="/about/">About</a></li>
-                        <li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a title="Swim School Testimonials" href="/testimonials/">Testimonials</a></li>
+                        {{--<li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a title="Swim School Testimonials" href="/testimonials/">Testimonials</a></li>--}}
                         <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Lakewood Ranch Swim Instructors" href="/contact-us/">Contact Us</a></li>
                     </ul>
                 </div>

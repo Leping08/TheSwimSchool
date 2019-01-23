@@ -89,47 +89,36 @@ Home
                 <hr class="uk-divider-icon">
             </div>
         </div>
-        <div class="uk-margin uk-grid-match uk-child-width-1-1 uk-child-width-1-3@m" uk-grid>
-            <div>
-                <div class="uk-card uk-card-secondary uk-card-body">
-                    <h3 class="uk-margin uk-h2 uk-heading-line uk-margin-remove-adjacent">
-                        Jenny Spears
-                    </h3>
-                    <div class="uk-margin uk-text-meta">June 20, 2016</div>
-                    <div class="uk-margin">"Ms. Hilary is Amazing!! When my son started swim lessons he had sensory issues and did not want to put his face under water or participate much. After only 2 four week sessions he is swimming on his own without a float at 4 years old and is willing to try everything. She is so patient and creative. I will definitely use her for my daughter as well."</div>
-                </div>
-            </div>
 
-            <div>
-                <div class="uk-card uk-card-secondary uk-card-body">
-                    <h3 class="uk-margin uk-h2 uk-heading-line uk-margin-remove-adjacent">
-                        Kenny Mitchell
-                    </h3>
-                    <div class="uk-margin uk-text-meta">May 11, 2016</div>
-                    <div class="uk-margin">"Hilary is the best instructor around! Although she has the best prices around, It's not about money. She is more than just a teacher, she really cares about the kids she works with; she goes above &amp; beyond for their success."</div>
-                </div>
+        <div uk-slider="center: true; autoplay: true; autoplay-interval: 3000">
+            <div class="uk-position-relative uk-visible-toggle uk-dark" tabindex="-1">
+                <ul class="uk-slider-items uk-child-width-1-3@s" uk-grid uk-height-match="target: > li > .uk-card">
+                    @foreach($reviews as $review)
+                        <li>
+                            <div class="uk-card uk-card-default uk-card-secondary">
+                                <div class="uk-card-body">
+                                    <h3 class="uk-margin uk-h3">{{\Carbon\Carbon::parse($review->created_time)->toDateString()}}</h3>
+                                    <p>{{$review->short_message}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
             </div>
-
-            <div>
-                <div class="uk-card uk-card-secondary uk-card-body">
-                    <h3 class="uk-margin uk-h2 uk-heading-line uk-margin-remove-adjacent">
-                        Jennifer McCarthy-Murray
-                    </h3>
-                    <div class="uk-margin uk-text-meta">March 12, 2016</div>
-                    <div class="uk-margin">"She is amazing and seems to work miracles! Definitely the best at what she does. And her pricing is the best too."</div>
-                </div>
-            </div>
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
         </div>
 
-        <div class="uk-grid-margin uk-grid-stack" uk-grid>
-            <div class="uk-width-1-1@m uk-first-column">
-                <div class="uk-text-center uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="uk-animation-slide-bottom-medium">
-                    <a title="Swim School Testimonials" class="el-content uk-button uk-button-primary uk-button-large" href="/testimonials/" title="Explore More">
-                        View All
-                    </a>
-                </div>
-            </div>
-        </div>
+        {{--<div class="uk-grid-margin uk-grid-stack" uk-grid>--}}
+            {{--<div class="uk-width-1-1@m uk-first-column">--}}
+                {{--<div class="uk-text-center uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="uk-animation-slide-bottom-medium">--}}
+                    {{--<a title="Swim School Testimonials" class="el-content uk-button uk-button-primary uk-button-large" href="/testimonials/" title="Explore More">--}}
+                        {{--View All--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
 </div>
 @endsection

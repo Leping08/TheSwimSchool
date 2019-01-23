@@ -46,6 +46,23 @@ About The Swim School
                 </div>
             </div>
         </div>
+
+        <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
+            <div class="uk-width-expand@m">
+                <div class="uk-margin">
+                    <img src="/img/michelle-meerman.jpg" class="el-image" alt="Manatee County Children's swim lessons">
+                </div>
+            </div>
+            <div class="uk-width-expand@m uk-first-column">
+                <h2 class="uk-text-center uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">Michelle Meerman</h2>
+                <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
+                <div class="uk-margin uk-dropcap">
+                    <p>
+                        Michelle grew up in Sarasota, Florida, where her love for the water began at a young age and she was swimming on her own by the time she was three years old. Michelle swam competitively with the Sarasota YMCA Sharks Swim Team for many years and became a certified lifeguard and swim instructor as soon as she was old enough to be hired for employment. While she loved her time in the sun and sand, Michelle embarked on a new adventure after graduating high school that led her to Warsaw, Poland, in pursuit of her B.A. degree in International Relations which she obtained in 2019. Michelle was recruited as a Swim Lesson Instructor in 2016 and has been an amazing asset to The Swim School ever since. She is a certified YMCA Swim Lesson Instructor and trained in ASHI CPR-PR/AED & First Aid.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

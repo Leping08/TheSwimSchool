@@ -9,9 +9,11 @@
     "type": "project",
     "require": {
         "php": "^7.1.3",
+        "Leping/NorthRiverRapids": "*",
         "barryvdh/laravel-debugbar": "^3.1",
         "consoletvs/charts": "5.*",
         "doctrine/dbal": "^2.6",
+        "facebook/graph-sdk": "^5.7",
         "fideloper/proxy": "^4.0",
         "gregoriohc/laravel-nova-theme-responsive": "^0.2.0",
         "guzzlehttp/guzzle": "~5.3|~6.0",
@@ -21,8 +23,7 @@
         "laravel/nova": "*",
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
-        "stripe/stripe-php": "^5.1",
-        "Leping/NorthRiverRapids": "*"
+        "stripe/stripe-php": "^5.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

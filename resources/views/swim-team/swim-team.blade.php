@@ -13,7 +13,7 @@
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
-                <div class="uk-width-2-3@m uk-first-column">
+                <div class="uk-width-3-4@m uk-first-column">
                     <div class="uk-dropcap">
                         <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. We are excited to announce our Fall Swim Club will run Wednesday, September 5th - Wednesday, October 31st!</p>
                     </div>
@@ -35,9 +35,9 @@
                         {{--<a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
                     </div>
                 </div>
-                <div class="uk-width-1-3@m">
+                <div class="uk-width-1-4@m">
                     <div class="uk-margin">
-                        <img src="/img/private-lessons.jpg" class="el-image" alt="Bradenton Learn to Swim">
+                        <img src="/img/swim-team/dive.jpg" class="el-image" alt="Bradenton Learn to Swim">
                     </div>
                 </div>
             </div>
