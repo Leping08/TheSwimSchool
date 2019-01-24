@@ -72,7 +72,7 @@ class Athlete extends Resource
                 ])->render();
             })->hideFromIndex(),
             BelongsTo::make('Tryout'),
-            BelongsTo::make('Level', 'swimTeamLevel', STLevel::class),
+            BelongsTo::make('Level', 'level', STLevel::class),
             BelongsTo::make('Season', 'season', STSeason::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
