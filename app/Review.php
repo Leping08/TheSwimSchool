@@ -3,10 +3,25 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * An Eloquent Model: 'Location'
+ *
+ * @property integer $id
+ * @property string $name
+ * @property bool $active
+ * @property string $created_time
+ * @property string $message
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ */
 class Review extends Model
 {
-    protected $fillable = ['name', 'created_time', 'message', 'reviewer_id'];
+    use SoftDeletes;
+
+    protected $fillable = ['name', 'active', 'created_time', 'message'];
 
     protected $appends = ['short_message'];
 

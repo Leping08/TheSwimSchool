@@ -55,6 +55,7 @@ class FacebookApiRequest
                 if((!$reviewer_times->contains($review['created_time'])) && ($review['recommendation_type'] === 'positive')){
                     Review::create([
                         'name' => (!empty($review['reviewer']['name'])) ? $review['reviewer']['name'] : null,
+                        'active' => true,
                         'created_time' => $review['created_time'],
                         'message' => $review['review_text']
                     ]);
