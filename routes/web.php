@@ -166,6 +166,9 @@ Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
 /* @see EmailListController::unsubscribe() */
 Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
 
+/* @see EmailListController::store() */
+Route::post('/newsletter', 'EmailListController@store');
+
 
 
 

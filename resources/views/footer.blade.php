@@ -13,58 +13,43 @@
         </div>
     </div>
 </div>
+
 <div class="uk-section-secondary uk-section-overlap uk-section uk-section-small" uk-scrollspy="target > uk-scrollspy-class; cls:uk-animation-slide-bottom-medium; delay:200">
     <div class="uk-container">
         <div class="uk-grid-margin" uk-grid>
             <div class="uk-width-expand@m">
                 <ul class="uk-list" uk-scrollspy-class>
-                    <li class="el-item">
+                    <li class="">
                         <div class="uk-grid-small uk-child-width-expand uk-flex-nowrap uk-flex-middle" uk-grid>
                             <div class="uk-width-auto">
-                                <span  uk-icon="icon: user" class="el-image"></span>        
+                                <span  uk-icon="icon: star" class=""></span>
                             </div>
                             <div>
-                                <div class="el-content">
-                                    Hilary Koppenhaver            
+                                <div class="">
+                                    Certified Aquatics Instructors
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li class="el-item">
+                    <li class="">
                         <div class="uk-grid-small uk-child-width-expand uk-flex-nowrap uk-flex-middle" uk-grid>
                             <div class="uk-width-auto">
-                                <span  uk-icon="icon: star" class="el-image"></span>        
+                                <span  uk-icon="icon: receiver" class=""></span>
                             </div>
                             <div>
-                                <div class="el-content">
-                                    Certified Aquatics Instructor            
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="uk-width-expand@m">
-                <ul class="uk-list" uk-scrollspy-class>
-                    <li class="el-item">
-                        <div class="uk-grid-small uk-child-width-expand uk-flex-nowrap uk-flex-middle" uk-grid>
-                            <div class="uk-width-auto">
-                                <span  uk-icon="icon: receiver" class="el-image"></span>        
-                            </div>
-                            <div>
-                                <div class="el-content">
+                                <div class="">
                                     <a title="The Swim School" href="tel:+19417731424">(941) 773-1424</a>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li class="el-item">
+                    <li class="">
                         <div class="uk-grid-small uk-child-width-expand uk-flex-nowrap uk-flex-middle" uk-grid>
                             <div class="uk-width-auto">
-                                <span  uk-icon="icon: mail" class="el-image"></span>        
+                                <span  uk-icon="icon: mail" class=""></span>
                             </div>
                             <div>
-                                <div class="el-content">
+                                <div class="">
                                     <a title="Manatee County Swimming Lessons" href="mailto:info@theswimschoolfl.com">info@theswimschoolfl.com</a>
                                 </div>
                             </div>
@@ -82,6 +67,21 @@
                             <a title="The Swim School Instagram" uk-icon="icon: instagram" href="https://www.instagram.com/theswimschoolfl/" class="el-link uk-icon-button"></a>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="uk-width-expand@m">
+                <div class="uk-margin-small-bottom">Sign up for our newsletter</div>
+                <div class="uk-width-large uk-text-left@s uk-text-center">
+                    <form class="uk-form uk-panel" method="post" action="/newsletter">
+                        @csrf
+                        <div class="uk-child-width-expand@s uk-grid uk-grid-stack" uk-grid="">
+                            <div class="uk-position-relative uk-first-column">
+                                <button class="el-button uk-form-icon uk-form-icon-flip uk-icon" uk-icon="icon: mail;" title="Subscribe"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="mail"><polyline fill="none" stroke="#000" points="1.4,6.5 10,11 18.6,6.5"></polyline><path d="M 1,4 1,16 19,16 19,4 1,4 Z M 18,15 2,15 2,5 18,5 18,15 Z"></path></svg></button>
+                                <input class="el-input uk-input uk-form-large" type="email" name="email" placeholder="Your E-Mail Address" required>
+                            </div>
+                        </div>
+                        <div class="message uk-margin uk-hidden"></div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -27,6 +27,24 @@ class EmailList extends Model
     protected $fillable = ['email', 'subscribe'];
 
     /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeSubscribed($query)
+    {
+        return $query->where('subscribe', true);
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeUnsubscribed($query)
+    {
+        return $query->where('subscribe', false);
+    }
+
+    /**
      * @return bool
      */
     public function unsubscribe() : bool

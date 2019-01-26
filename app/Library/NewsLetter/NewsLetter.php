@@ -10,21 +10,42 @@ use Illuminate\Validation\ValidationException;
 
 class NewsLetter
 {
+    /**
+     * @param string $email
+     * @return bool|EmailList
+     */
     public static function subscribe(string $email)
     {
         if(NewsLetter::validateEmail($email)){
             try{
-                EmailList::where($email, 'email')->firstOrFail();
-                Log::info("{$email} was already on the email list.");
+                //They are already on the email list
+                $emailList = EmailList::where('email', $email)->firstOrFail();
+                Log::info("{$emailList->email} was already on the email list.");
+                //They want to resubscribe
+                if($emailList->subscribe = false){
+                    $emailList->resubscribe();
+                    Log::info("{$emailList->email} resubscribed to the email list.");
+                }
+                return $emailList;
             } catch (ModelNotFoundException $exception){
-                $new =  EmailList::create([
-                    'email' => $email
+                //New email to add to the email list
+                $emailList =  EmailList::create([
+                    'email' => $email,
+                    'subscribe' => 1
                 ]);
-                Log::info("Added {$new->email} to email list.");
+                Log::info("Added {$emailList->email} to email list.");
+                return $emailList;
             }
+        } else {
+            Log::info('Something went wrong trying to add {$email} to the email list');
+            return false;
         }
     }
 
+    /**
+     * @param string $email
+     * @return bool|null
+     */
     public static function unsubscribe(string $email)
     {
         try{
@@ -38,6 +59,10 @@ class NewsLetter
         }
     }
 
+    /**
+     * @param string $email
+     * @return bool
+     */
     public static function validateEmail(string $email) : bool
     {
         try{
