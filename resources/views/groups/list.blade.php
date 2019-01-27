@@ -15,7 +15,7 @@
 
             <div class="uk-alert-primary" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
-                <p>The Swim School offers group swim lessons seasonally March through October.</p>
+                <p>Group lessons registration opens February 11th.</p>
             </div>
 
             <div class="uk-grid-margin uk-grid" uk-grid="">

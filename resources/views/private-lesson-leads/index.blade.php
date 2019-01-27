@@ -15,7 +15,7 @@
 
             <div class="uk-alert-primary" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
-                <p>We are no longer taking new requests for private swim lessons at this time as our swim season runs March through October. Please revisit us next year to request private swim lessons starting in February.</p>
+                <p>Private lessons registration opens February 11th.</p>
             </div>
 
             <div class="uk-grid-margin uk-grid" uk-grid="">
