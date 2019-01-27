@@ -37,7 +37,7 @@
                 </div>
                 <div class="uk-width-1-4@m">
                     <div class="uk-margin">
-                        <img src="/img/swim-team/dive.jpg" class="el-image" alt="Bradenton Learn to Swim">
+                        <img src="/img/swim-team/dive.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Bradenton Learn to Swim">
                     </div>
                 </div>
             </div>
