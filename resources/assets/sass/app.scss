@@ -8636,13 +8636,13 @@ body {
 }
 
 .tm-mask-default {
-  -webkit-mask-box-image-source: url(../../../public/img/theme/mask-default-image.png);
-  mask-border: url(../../../public/img/theme/mask-default-image.png);
+  -webkit-mask-box-image-source: url(../../../public/img/unused/mask-default-image.png);
+  mask-border: url(../../../public/img/unused/mask-default-image.png);
   -webkit-mask-box-image-slice: 100 fill;
   mask-border-slice: 100;
   -webkit-mask-box-image-repeat: round;
   mask-border-repeat: round;
-  mask-image: url(../../../public/img/theme/mask-default-image.png);
+  mask-image: url(../../../public/img/unused/mask-default-image.png);
   mask-size: 100% 100%
 }
 
@@ -8662,13 +8662,13 @@ body {
 }
 
 .tm-box-decoration-default::before,.tm-box-decoration-primary::before,.tm-box-decoration-secondary::before {
-  -webkit-mask-box-image-source: url(../../../public/img/theme/mask-default-image.png);
-  mask-border: url(../../../public/img/theme/mask-default-image.png);
+  -webkit-mask-box-image-source: url(../../../public/img/unused/mask-default-image.png);
+  mask-border: url(../../../public/img/unused/mask-default-image.png);
   -webkit-mask-box-image-slice: 100 fill;
   mask-border-slice: 100;
   -webkit-mask-box-image-repeat: round;
   mask-border-repeat: round;
-  mask-image: url(../../../public/img/theme/mask-default-image.png);
+  mask-image: url(../../../public/img/unused/mask-default-image.png);
   mask-size: 100% 100%
 }
 

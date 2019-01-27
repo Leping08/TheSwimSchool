@@ -1,7 +1,7 @@
 @component('mail::message')
 # Last Chance To Vote For The Swim School!
 
-<div style="display:flex; justify-content: center; padding: 2em 0em;"><img src="{{asset('img/gold-daisy-award-logo.png')}}"></div>
+<div style="display:flex; justify-content: center; padding: 2em 0em;"><img src="{{asset('img/email/gold-daisy-award-logo.png')}}"></div>
 
 It's your last chance to vote for The Swim School! Voting for the 2018 Gold Daisy Awards is almost over and The Swim School is in 2nd place by a few votes. We need your help!
 

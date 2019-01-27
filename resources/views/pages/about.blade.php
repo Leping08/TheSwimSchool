@@ -15,7 +15,7 @@ About The Swim School
         <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m">
                 <div class="uk-margin">
-                    <img src="/img/kids-floating.jpg" class="el-image" alt="Manatee County Children's swim lessons">
+                    <img src="/img/lessons/kids-floating.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Manatee County Children's swim lessons">
                 </div>
             </div>
             <div class="uk-width-expand@m uk-first-column">
@@ -42,7 +42,7 @@ About The Swim School
             </div>
             <div class="uk-width-expand@m">
                 <div class="uk-margin">
-                    <img src="/img/about.jpg" class="el-image" alt="Lakewood Ranch Swim School">
+                    <img src="/img/instructors/hilary.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Lakewood Ranch Swim School">
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@ About The Swim School
         <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m">
                 <div class="uk-margin">
-                    <img src="/img/michelle-meerman.jpg" class="el-image" alt="Manatee County Children's swim lessons">
+                    <img src="/img/instructors/michelle.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Manatee County Children's swim lessons">
                 </div>
             </div>
             <div class="uk-width-expand@m uk-first-column">

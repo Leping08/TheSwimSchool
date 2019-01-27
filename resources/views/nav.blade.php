@@ -2,7 +2,7 @@
     <nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-left">
             <a title="Parrish Swimming Lessons" class="uk-navbar-item uk-logo" href="/">
-                <img src="/img/main-logo.png" style="max-width: 60%;" class="uk-responsive-height" alt="Lakewood Ranch Swim Lessons">
+                <img src="/img/logos/the-swim-school.png" style="max-width: 60%;" class="uk-responsive-height" alt="Lakewood Ranch Swim Lessons">
             </a>
         </div>
         <div class="uk-navbar-right">
@@ -84,7 +84,7 @@
             <nav class="uk-navbar" uk-navbar>
                 <div class="uk-navbar-left">
                     <a href="/" class="uk-navbar-item uk-logo">
-                        <img src="/img/main-logo.png" class="uk-responsive-height" style="max-width: 60%;" alt="Bradenton Swim Lessons">
+                        <img src="/img/logos/the-swim-school.png" class="uk-responsive-height" style="max-width: 60%;" alt="Bradenton Swim Lessons">
                     </a>
                 </div>
                 <div class="uk-navbar-center">

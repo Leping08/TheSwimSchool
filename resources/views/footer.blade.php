@@ -5,7 +5,7 @@
             <div class="uk-visible@s"></div>
             <div>
                 <div class="uk-margin uk-text-center@m uk-text-center" uk-scrollspy-class>
-                    <a title="Parrish swimming lessons" href="/" class="el-link"><img src="/img/main-logo.png" class="uk-responsive-width" alt="Bradenton Swim School"></a>
+                    <a title="Parrish swimming lessons" href="/" class="el-link"><img src="/img/logos/the-swim-school.png" class="uk-responsive-width" alt="Bradenton Swim School"></a>
                 </div>
             </div>
             <div class="uk-visible@s"></div>

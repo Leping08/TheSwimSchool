@@ -1,7 +1,7 @@
 @component('mail::message')
 
 
-<img style="margin-bottom: 2em;" src="{{asset('img/hh.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/email/hh.jpg')}}">
 
 
 

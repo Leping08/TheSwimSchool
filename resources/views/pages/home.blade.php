@@ -11,7 +11,7 @@ Home
 
 @section('content')
 <div id="page#1" class="uk-section-secondary uk-section-overlap">
-    <div style="background-image: url('/img/pool-water.jpg');" class="uk-background-norepeat uk-background-cover uk-background-bottom-center uk-background-fixed uk-section uk-padding-remove-vertical">
+    <div style="background-image: url('/img/theme/pool-water.jpg');" class="uk-background-norepeat uk-background-cover uk-background-bottom-center uk-background-fixed uk-section uk-padding-remove-vertical">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid-stack" uk-grid>
                 <div class="uk-width-1-1@m uk-first-column">
@@ -41,7 +41,7 @@ Home
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a title="Lakewood Ranch swim lesson" href="/lessons" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
-                    <div class="uk-card-media-top"><img src="/img/group-lessons.jpg" class="el-image uk-border-rounded" alt="Lakewood Ranch children's swim lessons"></div>
+                    <div class="uk-card-media-top"><img src="/img/lessons/group.jpg" class="el-image uk-border-rounded" alt="Lakewood Ranch children's swim lessons"></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Group Lessons</h3>
                         <div class="el-content uk-margin">The Swim School features aquatics programs to meet the specific needs of various age groups from beginner to advanced skill levels. Sessions of small group classes are available seasonally March-October for Parent & Infant/Toddler, Preschool and Youth/Teens.
@@ -52,7 +52,7 @@ Home
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                     <a title="Parrish private swim lessons" href="/private-semi-private" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
-                    <div class="uk-card-media-top"><img src="/img/private-lessons.jpg" class="el-image uk-border-rounded" alt="Ellenton swimming lessons"></div>
+                    <div class="uk-card-media-top"><img src="/img/lessons/private.jpg" class="el-image uk-border-rounded" alt="Ellenton swimming lessons"></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>
                         <div class="el-content uk-margin">The Swim School offers packages of individualized lessons available seasonally March-October to adults and children (12 months+) of all ability levels at our pool or yours! Swim instruction is customized to meet the needs
