@@ -12,6 +12,7 @@ use Carbon\Carbon;
  * @property integer $id
  * @property string $type
  * @property string $ages
+ * @property string $icon
  * @property string $description
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -30,7 +31,14 @@ class Group extends Model
     /**
      * @var array
      */
-    protected $fillable = ['type', 'ages', 'description'];
+    protected $fillable = ['type', 'ages', 'description', 'icon'];
+
+    /**
+     * @var array
+     */
+    protected $appends = ['iconPath'];
+
+    protected $attributes = ['iconPath'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -72,5 +80,10 @@ class Group extends Model
     public function getRouteKeyName()
     {
         return 'type';
+    }
+
+    public function getIconPathAttribute()
+    {
+        return "/img/icons/sea-life/{$this->icon}";
     }
 }

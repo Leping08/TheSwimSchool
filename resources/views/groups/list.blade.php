@@ -52,52 +52,31 @@
                 </div>
 
 
-                <div class="uk-grid-margin uk-grid" uk-grid="">
-                    <div class="uk-width-4-4@m uk-first-column">
-                        @if(count($groups))
-                            <h2 class="uk-heading-line"><span>Levels</span></h2>
-                            @foreach($groups as $group)
-                                <div class="uk-margin-top">
-                                    <div class="uk-card uk-card-default uk-width-1-1@s" uk-scrollspy="cls: uk-animation-slide-bottom; delay: 250">
-                                        <div class="uk-card-header">
-                                            <div class="uk-grid-small" uk-grid>
-                                                <div class="uk-width-expand">
-                                                    <h3 class="uk-card-title f-24 uk-heading-bullet">{{$group->type}}</h3>
-                                                    <div class="uk-card-badge uk-label">{{$group->ages}}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="uk-card-body">
-                                            <p>{{$group->description}}</p>
-                                        </div>
-                                        <div class="uk-card-footer">
-                                            <a title="Manatee County Swimming Classes" href="/lessons/{{{$group->type}}}" class="uk-button uk-button-primary">Find Classes</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @else
-                            <div class="uk-card-body">
-                                No groups available.
+                <div class="uk-width-1-1@m uk-first-column">
+                    <h2 class="uk-heading-line"><span>Levels</span></h2>
+                </div>
+
+
+                <div class="uk-grid-small uk-grid-match uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@lg" uk-grid>
+                    @forelse($groups as $group)
+                        <div class="">
+                            <div class="uk-margin uk-text-center uk-card uk-card-default uk-card-body uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="uk-animation-fade">
+                                <img class="uk-width-1-2" alt="" src="{{$group->iconPath}}">
+                                <h2 class="uk-margin uk-h3">{{$group->type}}</h2>
+                                <p class="uk-text-meta uk-text-primary">{{$group->ages}}</p>
+                                <div class="uk-margin">{{str_limit($group->description, 350)}}</div>
+                                <p><a class="uk-button uk-button-primary" href="/lessons/{{{$group->type}}}">Find Classes</a></p>
                             </div>
-                        @endif
-                    </div>
+                        </div>
+                    @empty
+                        <div class="">
+                            <div class="uk-margin uk-text-center uk-card uk-card-default uk-card-body">
+                                <h2 class="uk-margin uk-h3">No levels available at this time.</h2>
+                            </div>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
-        <style>
-            @media (max-width: 960px) {
-                .uk-card-badge {
-                    position: inherit;
-                    top: 5px;
-                }
-            }
-            @media (min-width: 960px) {
-                .uk-label {
-                    font-size: 12px;
-                    padding: 5px 16px !important;
-                }
-            }
-        </style>
     </div>
 @endsection
