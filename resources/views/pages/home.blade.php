@@ -90,7 +90,7 @@ Home
             </div>
         </div>
 
-        <div uk-slider="center: true; autoplay: true; autoplay-interval: 3000">
+        <div uk-slider="center: true; autoplay: true; autoplay-interval: 6000">
             <div class="uk-position-relative uk-visible-toggle uk-dark" tabindex="-1">
                 <ul class="uk-slider-items uk-child-width-1-3@s" uk-grid uk-height-match="target: > li > .uk-card">
                     @foreach($reviews as $review)
