@@ -12,10 +12,39 @@
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
-
             <div class="uk-alert-primary" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
                 <p>Group lessons registration opens February 11th.</p>
+            </div>
+
+            <div class="uk-width-1-1@m uk-first-column uk-margin-top">
+                <h2 class="uk-heading-line"><span>Levels</span></h2>
+                <div class="uk-grid-small uk-grid-match uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@lg" uk-grid>
+                    @forelse($groups as $group)
+                        <div class="">
+                            <div class="uk-margin uk-text-center uk-card uk-card-default uk-card-body uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="uk-animation-fade">
+                                <img class="uk-width-1-2" alt="" src="{{$group->iconPath}}">
+                                <h2 class="uk-margin uk-h3">{{$group->type}}</h2>
+                                <p class="uk-text-meta uk-text-primary">{{$group->ages}}</p>
+                                <div class="uk-margin">{{str_limit($group->description, 350)}}</div>
+                                <p><a class="uk-button uk-button-primary" href="/lessons/{{{$group->type}}}">Find Classes</a></p>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="">
+                            <div class="uk-margin uk-text-center uk-card uk-card-default uk-card-body">
+                                <h2 class="uk-margin uk-h3">No levels available at this time.</h2>
+                            </div>
+                        </div>
+                    @endforelse
+                </div>
+            </div>
+
+            <div class="uk-width-1-1@m uk-first-column uk-margin-top">
+                <h2 class="uk-heading-line"><span>Location</span></h2>
+                <div class="uk-card uk-card-default">
+                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
+                </div>
             </div>
 
             <div class="uk-grid-margin uk-grid" uk-grid="">
@@ -39,42 +68,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="uk-width-1-1@m uk-first-column">
-                    <h2 class="uk-heading-line"><span>Location</span></h2>
-                    <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
-                        <div class="uk-card uk-card-default uk-card-body">
-                            <iframe height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="uk-width-1-1@m uk-first-column">
-                    <h2 class="uk-heading-line"><span>Levels</span></h2>
-                </div>
-
-
-                <div class="uk-grid-small uk-grid-match uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@lg" uk-grid>
-                    @forelse($groups as $group)
-                        <div class="">
-                            <div class="uk-margin uk-text-center uk-card uk-card-default uk-card-body uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="uk-animation-fade">
-                                <img class="uk-width-1-2" alt="" src="{{$group->iconPath}}">
-                                <h2 class="uk-margin uk-h3">{{$group->type}}</h2>
-                                <p class="uk-text-meta uk-text-primary">{{$group->ages}}</p>
-                                <div class="uk-margin">{{str_limit($group->description, 350)}}</div>
-                                <p><a class="uk-button uk-button-primary" href="/lessons/{{{$group->type}}}">Find Classes</a></p>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="">
-                            <div class="uk-margin uk-text-center uk-card uk-card-default uk-card-body">
-                                <h2 class="uk-margin uk-h3">No levels available at this time.</h2>
-                            </div>
-                        </div>
-                    @endforelse
                 </div>
             </div>
         </div>
