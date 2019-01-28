@@ -38,8 +38,6 @@ class Group extends Model
      */
     protected $appends = ['iconPath'];
 
-    protected $attributes = ['iconPath'];
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
