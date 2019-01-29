@@ -6,7 +6,7 @@
 @endsection
 
 @section('heading')
-{{$lesson->group->type}}
+Sign Up
 @endsection
 
 @section('content')
@@ -19,11 +19,32 @@
                 </div>
             </div>
     @else
+        <div class="uk-child-width-expand uk-grid-collapse uk-grid-match uk-flex-middle uk-grid" uk-grid>
+            <div class="uk-width-1-4@m">
+                <div class="uk-card-media-left">
+                    <div class="uk-flex uk-flex-center uk-text-center">
+                        <div>
+                            <img class="uk-width-3-4" src="{{{$lesson->group->iconPath}}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="uk-card-body">
+                    <h2 class="uk-margin uk-h2 uk-margin-remove-adjacent">{{$lesson->group->type}}</h2>
+                    <div class="uk-margin uk-text-meta uk-text-primary">{{$lesson->group->ages}}</div>
+                    <div class="uk-margin">{{$lesson->group->description}}</div>
+                </div>
+            </div>
+        </div>
         <div class="uk-card uk-card-default">
             <div class="uk-card-body">
-                <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
-                    Lesson Details
+                <div class="uk-flex uk-flex-between">
+                    <div class="uk-h2 uk-margin-remove-top uk-margin-remove-bottom">
+                        Lesson Details
+                    </div>
                 </div>
+                <hr class="uk-width-1-1">
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div><i class="fa fa-users fa-lg" aria-hidden="true"></i> <strong>Class Size:</strong> {{$lesson->class_size}}</div>
                     <div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$lesson->price}}</div>
