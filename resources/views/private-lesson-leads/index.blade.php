@@ -13,10 +13,12 @@
     <div class="uk-section-default uk-section uk-section-small">
         <div class="uk-container">
 
-            <div class="uk-alert-primary" uk-alert>
-                <a class="uk-alert-close" uk-close></a>
-                <p>Private lessons registration opens February 11th.</p>
-            </div>
+            @if(config('season.private.off-season'))
+                <div class="uk-alert-primary" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>Private lesson registration opens {{config('season.private.next_season.registration_open')}}.</p>
+                </div>
+            @endif
 
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-3-4@m uk-first-column">

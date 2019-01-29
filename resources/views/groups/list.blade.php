@@ -12,10 +12,12 @@
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
-            <div class="uk-alert-primary" uk-alert>
-                <a class="uk-alert-close" uk-close></a>
-                <p>Group lessons registration opens February 11th.</p>
-            </div>
+            @if(config('season.groups.off-season'))
+                <div class="uk-alert-primary" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>Group lesson registration opens {{config('season.groups.next_season.registration_open')}}.</p>
+                </div>
+            @endif
 
             <div class="uk-width-1-1@m uk-first-column uk-margin-top">
                 <h2 class="uk-heading-line"><span>Levels</span></h2>

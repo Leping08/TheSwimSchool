@@ -128,11 +128,11 @@ Lessons
                     <div class="uk-container">
                         <div class="uk-card uk-card-default">
                             <div class="uk-card-header">
-                                <h3 class="uk-heading-bullet">Sorry No Classes Available At This Time</h3>
+                                <h3 class="uk-heading-bullet f-24">No Classes Available At This Time</h3>
                             </div>
                             <div class="uk-card-body">
                                 <div class="card-text">
-                                    <p>Registration will open for our next session of swim lessons soon. Please check back at another time.<br>
+                                    <p>Registration will open for our next session of swim lessons {{config('season.groups.next_season.registration_open')}}. Please check back at another time.<br>
                                     In the mean time check out our <a title="North River Swim Team" href="/swim-team">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="/private-semi-private">private lessons</a>.</p>
                                 </div>
                             </div>
