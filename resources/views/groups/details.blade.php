@@ -35,7 +35,11 @@ Lessons
                 @foreach($group->lessons()->registrationOpen() as $lesson)
                     <div class="uk-card uk-card-default uk-margin-top">
                         <div class="uk-card-header">
-                            <div class="uk-card-title f-24 uk-heading-bullet">{{$group->type}}</div>
+                            <div class="uk-card-title f-24 uk-heading-bullet">
+                                @foreach($lesson->DaysOfTheWeek as $day)
+                                    {{$day->day}}@if(!$loop->last) & @endif
+                                @endforeach
+                            </div>
                         </div>
                         <div class="uk-card-body">
                             <div class="uk-child-width-expand@s" uk-grid>
