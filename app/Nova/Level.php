@@ -3,10 +3,12 @@
 namespace App\Nova;
 
 use App\Nova\Metrics\LessonsPerLevel;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -50,6 +52,7 @@ class Level extends Resource
             ID::make()->sortable(),
             Text::make('Name', 'type')->sortable(),
             Text::make('Ages', 'ages')->sortable(),
+            Image::make('Icon', 'icon')->disk('sea-life')->hideWhenUpdating()->hideWhenCreating(),
             Text::make('Description', 'description')->hideFromIndex(),
             HasMany::make('Lessons'),
             DateTime::make('Created At')->onlyOnDetail(),
