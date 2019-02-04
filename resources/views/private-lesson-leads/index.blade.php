@@ -151,7 +151,7 @@
                                     {{--<label class="uk-form-label uk-heading-bullet" for="">Location</label>--}}
                                     {{--<div class="uk-form-controls">--}}
                                         {{--<select class="uk-select" name="location" id="location">--}}
-                                            {{--<option value="Harrison Ranch">Harrison Ranch</option>--}}
+                                            {{--<option value="The Swim School Pool">The Swim School Pool</option>--}}
                                             {{--<option value="My Home or Community Pool">My Home or Community Pool (Provide Address Below)</option>--}}
                                         {{--</select>--}}
                                     {{--</div>--}}
