@@ -5,6 +5,7 @@ namespace App\Nova;
 
 use App\Nova\Metrics\OpenPrivateRequests;
 use App\Nova\Metrics\PrivateRequestsPerDay;
+use Carbon\Carbon;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
@@ -62,6 +63,11 @@ class PrivateLessonRequest extends Resource
                     'text' => $this->phone
                 ])->render();
             })->asHtml(),
+            Text::make('Age', function () {
+                return view('partials.age', [
+                    'birthDate' => $this->swimmer_birth_date
+                ])->render();
+            })->hideFromIndex(),
             Text::make('Type', 'type')->hideFromIndex(),
             Text::make('Length', 'length')->hideFromIndex(),
             Text::make('Location', 'location')->hideFromIndex(),
