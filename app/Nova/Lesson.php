@@ -71,6 +71,12 @@ class Lesson extends Resource
                 //Select Harrison Ranch by default
                 'belongsToId' => $this->location_id ?? 1
             ]),
+            Text::make('Sign Up Link', function () {
+                return view('partials.link', [
+                    'link' => $this->path() . "/" . $this->id,
+                    'text' => "Link to Lesson"
+                ])->render();
+            })->asHtml()->hideFromIndex(),
             Text::make('Price', function (){
                 return '$'.$this->price;
             })->hideFromIndex(),
