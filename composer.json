@@ -12,6 +12,7 @@
         "Leping/NorthRiverRapids": "*",
         "barryvdh/laravel-debugbar": "^3.1",
         "consoletvs/charts": "5.*",
+        "digitalcloud/nova-address-field": "^1.0",
         "doctrine/dbal": "^2.6",
         "facebook/graph-sdk": "^5.7",
         "fideloper/proxy": "^4.0",

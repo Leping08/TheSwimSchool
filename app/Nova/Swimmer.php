@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Carbon\Carbon;
+use DigitalCloud\AddressField\AddressField;
 use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Country;
@@ -159,7 +160,12 @@ class Swimmer extends Resource
             Text::make('Postal Code', 'zip')->hideFromIndex(),
             Text::make('Country', function () {
                 return 'US';
-            })->hideFromIndex()
+            })->hideFromIndex(),
+//            TODO: Get the map to work
+//            AddressField::make('Address', function () {
+//                //return "{$this->street}, {$this->city} {$this->state} {$this->zip}";
+//                return "11810 Summer Meadow Drive, Bradenton FL 34202";
+//            })->withMap()->hideFromIndex(),
             //Country::make('Country')->hideFromIndex(),
         ];
     }
