@@ -95,7 +95,7 @@ class StoreLead extends FormRequest
     {
         foreach(config('mail.leadDestEmails') as $email){
             Mail::to($email)->send(new ContactUs($contact, $contact->type->name));
-            Log::info("$contact->type->name Email sent to: $email.");
+            Log::info($contact->type->name . " Email sent to: $email.");
         }
     }
 }
