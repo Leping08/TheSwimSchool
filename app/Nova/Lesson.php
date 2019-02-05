@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use App\Http\Controllers\GetSeason;
 use App\Nova\Actions\EmailLessonLink;
 use App\Nova\Filters\LessonStatus;
 use App\Nova\Metrics\LessonsPerLevel;
@@ -10,6 +9,7 @@ use App\Nova\Metrics\NewLessons;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
@@ -71,15 +71,14 @@ class Lesson extends Resource
                 //Select Harrison Ranch by default
                 'belongsToId' => $this->location_id ?? 1
             ]),
-            Text::make('Sign Up Link', function () {
-                return view('partials.link', [
-                    'link' => $this->path() . "/" . $this->id,
-                    'text' => "Link to Lesson"
-                ])->render();
-            })->asHtml()->hideFromIndex(),
-            Text::make('Price', function (){
-                return '$'.$this->price;
-            })->hideFromIndex(),
+            //TODO: Get the sign up link working even when creating
+//            Text::make('Sign Up Link', function () {
+//                return view('partials.link', [
+//                    'link' => $this->path() . "/" . $this->id,
+//                    'text' => "Link to Lesson"
+//                ])->render();
+//            })->asHtml()->onlyOnDetail(),
+            Currency::make('Price')->format('$%.2n')->hideFromIndex(),
             Text::make('Class Size', 'class_size')->withMeta([
                 "value" => $this->class_size ?? '4'
             ])->hideFromIndex(),
