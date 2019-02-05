@@ -1,10 +1,10 @@
-<div class="tm-footer uk-section-muted uk-section-overlap uk-section" uk-scrollspy="target > uk-scrollspy-class; cls:uk-animation-slide-bottom-medium; delay:200">
+<div class="tm-footer uk-section-muted uk-section-overlap uk-section">
     <div class="uk-container">
         <div class="uk-child-width-expand uk-text-center" uk-grid>
             <div></div>
             <div class="uk-visible@s"></div>
             <div>
-                <div class="uk-margin uk-text-center@m uk-text-center" uk-scrollspy-class>
+                <div class="uk-margin uk-text-center@m uk-text-center">
                     <a title="Parrish swimming lessons" href="/" class="el-link"><img src="/img/logos/the-swim-school.png" class="uk-responsive-width" alt="Bradenton Swim School"></a>
                 </div>
             </div>
@@ -14,11 +14,11 @@
     </div>
 </div>
 
-<div class="uk-section-secondary uk-section-overlap uk-section uk-section-small" uk-scrollspy="target > uk-scrollspy-class; cls:uk-animation-slide-bottom-medium; delay:200">
+<div class="uk-section-secondary uk-section-overlap uk-section uk-section-small">
     <div class="uk-container">
         <div class="uk-grid-margin" uk-grid>
             <div class="uk-width-expand@m">
-                <ul class="uk-list" uk-scrollspy-class>
+                <ul class="uk-list">
                     <li class="">
                         <div class="uk-grid-small uk-child-width-expand uk-flex-nowrap uk-flex-middle" uk-grid>
                             <div class="uk-width-auto">
@@ -58,7 +58,7 @@
                 </ul>
             </div>
             <div class="uk-width-expand@m">
-                <div class="uk-margin uk-text-center" uk-scrollspy-class>
+                <div class="uk-margin uk-text-center">
                     <div class="uk-child-width-auto uk-grid-small uk-flex-center" uk-grid>
                         <div>
                             <a title="The Swim School Facebook" uk-icon="icon: facebook" href="https://www.facebook.com/theswimschoolfl/" class="el-link uk-icon-button"></a>
@@ -87,8 +87,8 @@
         </div>
         <div class="uk-grid-margin" uk-grid>
             <div class="uk-width-1-1@m">
-                <hr  uk-scrollspy-class>
-                <div class="uk-margin uk-text-center uk-text-meta" uk-scrollspy-class>
+                <hr>
+                <div class="uk-margin uk-text-center uk-text-meta">
                     Copyright &copy; {{date("Y")}}</br>
                     <a href="http://www.deltavcreative.com/" target="_blank">DeltaV Creative</a><br>
                     <a href="#" uk-totop uk-scroll></a>
