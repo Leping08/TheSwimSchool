@@ -30,7 +30,7 @@
                 </div>
                 <div class="uk-width-expand@m">
                     <div class="uk-margin">
-                        <img src="/img/lessons/kids-floating.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">
+                        <img src="/img/lessons/teaching.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">
                     </div>
                 </div>
             </div>
