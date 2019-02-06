@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Library\Helpers\SeasonHelpers;
+use Leping\LessonLink\LessonLink;
 
 class Lesson extends Resource
 {
@@ -76,13 +77,7 @@ class Lesson extends Resource
                 ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                     return [$item['id'] => $item['day']];
                 }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
-            //TODO: Get the sign up link working even when creating
-//            Text::make('Sign Up Link', function () {
-//                return view('partials.link', [
-//                    'link' => $this->path() . "/" . $this->id,
-//                    'text' => "Link to Lesson"
-//                ])->render();
-//            })->asHtml()->onlyOnDetail(),
+            LessonLink::make('Link'),
             Currency::make('Price')->format('$%.2n')->hideFromIndex(),
             Text::make('Class Size', 'class_size')->withMeta([
                 "value" => $this->class_size ?? '4'

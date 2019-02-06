@@ -25,7 +25,8 @@
         "laravel/nova": "*",
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
-        "stripe/stripe-php": "^5.1"
+        "stripe/stripe-php": "^5.1",
+        "leping/lesson-link": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -78,6 +79,10 @@
         {
             "type": "path",
             "url": "./nova-components/NorthRiverRapids"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/LessonLink"
         }
     ],
     "minimum-stability": "dev",
