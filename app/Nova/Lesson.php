@@ -77,7 +77,7 @@ class Lesson extends Resource
                 ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                     return [$item['id'] => $item['day']];
                 }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
-            LessonLink::make('Link'),
+            LessonLink::make('Link')->onlyOnDetail(),
             Currency::make('Price')->format('$%.2n')->hideFromIndex(),
             Text::make('Class Size', 'class_size')->withMeta([
                 "value" => $this->class_size ?? '4'
