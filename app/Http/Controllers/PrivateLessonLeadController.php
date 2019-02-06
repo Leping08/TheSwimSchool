@@ -36,8 +36,15 @@ class PrivateLessonLeadController extends Controller
             'type' => 'required|string',
             'length' => 'required|string',
             'location' => 'required|string',
-            'availability' => 'required|string'
+            'availability' => 'required|string',
+            'hr_resident' => 'required'
         ]);
+
+        if($leadRequest['hr_resident'] === 'on'){
+            $leadRequest['hr_resident'] = true;
+        } else {
+            $leadRequest['hr_resident'] = false;
+        }
 
         $leadRequest['swimmer_birth_date'] = Carbon::parse($leadRequest['swimmer_birth_date']);
 

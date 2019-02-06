@@ -157,6 +157,14 @@
                                     </div>
                                 </div>
                                 <div class="uk-margin">
+                                    <div class="uk-form-controls">
+                                        {{-- TODO Adjust the color of this checkbox --}}
+                                        <label><input class="uk-checkbox" type="checkbox" name="hr_resident">
+                                            Are you a Harrison Ranch resident?
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Provide us with your availability</label>
                                     <div class="uk-form-controls">
                                         <textarea name="availability" rows="5" class="uk-textarea" placeholder="Example: I am available Monday from 8am-1pm and Wednesday from 5-9pm." required>{{ old('availability') }}</textarea>
