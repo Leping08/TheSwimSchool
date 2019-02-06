@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use App\DaysOfTheWeek;
 use App\Nova\Actions\EmailLessonLink;
 use App\Nova\Filters\LessonStatus;
 use App\Nova\Metrics\LessonsPerLevel;
 use App\Nova\Metrics\NewLessons;
+use Fourstacks\NovaCheckboxes\Checkboxes;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -59,7 +61,6 @@ class Lesson extends Resource
      */
     public function fields(Request $request)
     {
-        //dd($this);
         return [
             ID::make()->sortable(),
             BelongsTo::make('Level', 'group'),
@@ -71,6 +72,10 @@ class Lesson extends Resource
                 //Select Harrison Ranch by default
                 'belongsToId' => $this->location_id ?? 1
             ]),
+            Checkboxes::make('Days', 'days')
+                ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
+                    return [$item['id'] => $item['day']];
+                }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
             //TODO: Get the sign up link working even when creating
 //            Text::make('Sign Up Link', function () {
 //                return view('partials.link', [

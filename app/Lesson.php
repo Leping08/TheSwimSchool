@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Observers\LessonObserver;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Actions\Actionable;
 
 /**
@@ -31,7 +33,11 @@ use Laravel\Nova\Actions\Actionable;
 
 class Lesson extends Model
 {
-    use SoftDeletes, Actionable;
+    use SoftDeletes, Actionable, Notifiable;
+
+    protected $casts = [
+        'days' => 'string'
+    ];
 
     /**
      * @var array
@@ -65,7 +71,8 @@ class Lesson extends Model
         'thursday',
         'friday',
         'saturday',
-        'sunday'
+        'sunday',
+        'days'
     ];
 
     /**

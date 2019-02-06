@@ -16,6 +16,7 @@
         "doctrine/dbal": "^2.6",
         "facebook/graph-sdk": "^5.7",
         "fideloper/proxy": "^4.0",
+        "fourstacks/nova-checkboxes": "^0.1.2",
         "gregoriohc/laravel-nova-theme-responsive": "^0.2.0",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "laravel/cashier": "^7.0",
