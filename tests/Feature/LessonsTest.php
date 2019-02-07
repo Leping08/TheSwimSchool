@@ -47,21 +47,21 @@ class Lessons extends TestCase
     public function a_user_can_not_see_a_lesson_in_progress()
     {
         $this->get($this->lessonInProgress->path())
-            ->assertSee('Sorry No Classes Available At This Time');
+            ->assertSee('No Classes Available At This Time');
     }
 
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_does_not_have_open_registration_yet()
     {
         $this->get($this->registrationNotOpenYet->path())
-            ->assertSee('Sorry No Classes Available At This Time');
+            ->assertSee('No Classes Available At This Time');
     }
 
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_has_finished()
     {
         $this->get($this->lessonFinished->path())
-            ->assertSee('Sorry No Classes Available At This Time');
+            ->assertSee('No Classes Available At This Time');
     }
 
     /** @test  **/
@@ -209,7 +209,7 @@ class Lessons extends TestCase
 
         $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
 
-        $response->assertStatus(200);
+        $response->assertRedirect('/thank-you');
 
         $this->assertEquals(1,  \App\Swimmer::all()->count());
 
