@@ -216,6 +216,10 @@ Route::get('/private-semi-private', function () {
     return view('private-lesson-leads.index');
 });
 
+Route::get('/thank-you', function () {
+    return view('pages.thank-you');
+});
+
 //Route::get('/testimonials', function(){
 //    return view('pages.testimonials');
 //});
