@@ -33,6 +33,7 @@ use App\Nova\Metrics\LessonsPerLevel;
 //use Tightenco\NovaStripe\NovaStripe;
 use Gregoriohc\LaravelNovaThemeResponsive\ThemeServiceProvider;
 use Leping\NorthRiverRapids\NorthRiverRapids;
+use Tightenco\NovaStripe\NovaStripe;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -104,7 +105,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new NorthRiverRapids,
-            //new NovaStripe,
+            new NovaStripe(),
             //new TailTool
         ];
     }
