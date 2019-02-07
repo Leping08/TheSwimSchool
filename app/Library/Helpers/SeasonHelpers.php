@@ -12,6 +12,7 @@ class SeasonHelpers
      */
     public static function currentSeason()
     {
+        //TODO Get this to work in the first 2 months of the year when it is winter for last year
         $now = Carbon::now();
         return Season::where('year', '=', $now->year)
             ->where('season', '=', SeasonHelpers::getSeasonString($now->month))
