@@ -39,8 +39,7 @@ class LessonSignUp extends FormRequest
             'emergencyRelationship' => 'required|max:191',
             'emergencyPhone' => 'required|max:20',
             'lesson_id' => 'required|integer',
-            'stripeToken' => 'required',
-            'emailUpdates' => 'required'
+            'stripeToken' => 'required'
         ];
     }
 
