@@ -122,6 +122,5 @@ class Enroll
     {
         Log::info("Swimmer ID: {$swimmer->id} successfully signed up for lesson ID: {$swimmer->lesson->id}");
         session()->flash("success", "Thanks for signing up! The first lesson is {$swimmer->lesson->class_start_date->format('F jS')} at {$swimmer->lesson->class_start_time->format('g:i a')}.");
-        return redirect("lessons/{$swimmer->lesson->group->type}");
     }
 }

@@ -47,6 +47,7 @@ class SwimmerController extends Controller
     public function store(LessonSignUp $request)
     {
         (new Enroll())->handle();
+        return redirect('/thank-you');
     }
 
     /**
