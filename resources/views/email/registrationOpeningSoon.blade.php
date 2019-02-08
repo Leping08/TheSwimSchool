@@ -7,7 +7,7 @@
 Dust off your goggles and stock up on sunscreen, it’s time to get excited about our upcoming 2019 swim season! The Swim School will be starting programs the first week of March and registration opens online through our website this Monday, February 11th. We are looking forward to seeing you at the pool very soon!
 @endcomponent
 
-@component('mail::button', ['url' => 'theswimschoolfl.com'])
+@component('mail::button', ['url' => 'https://theswimschoolfl.com/?utm_source=newsletter&utm_medium=email&utm_campaign=spring_lesson_registration'])
     Sign Up
 @endcomponent
 
