@@ -15,7 +15,7 @@ class MarketingEmails
 {
     public function getSubscribedEmails(): Array
     {
-        return EmailList::where('subscribe', '=', true)->pluck('email')->all();
+        return EmailList::where('subscribe', '=', true)->where('id', '>', 17)->pluck('email')->all();
     }
 
     public function sendSpringLessonRegistrationOpeningSoonEmails()
@@ -23,7 +23,7 @@ class MarketingEmails
         foreach($this->getSubscribedEmails() as $email)
         {
             try{
-                Log::info("Sending Gold Daisy Award Email email to $email");
+                Log::info("Sending lesson registration opening soon email to $email");
                 Mail::to($email)->send(new RegistrationOpeningSoon($email));
             } catch (\Exception $e) {
                 Log::warning("Email error: $e");
