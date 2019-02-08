@@ -15,7 +15,7 @@ class MarketingEmails
 {
     public function getSubscribedEmails(): Array
     {
-        return EmailList::where('subscribe', '=', true)->where('id', '>', 17)->pluck('email')->all();
+        return EmailList::where('subscribe', '=', true)->pluck('email')->all();
     }
 
     public function sendSpringLessonRegistrationOpeningSoonEmails()
