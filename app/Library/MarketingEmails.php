@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 
 class MarketingEmails
 {
-    public static function getSubscribedEmails(): Array
+    public function getSubscribedEmails(): Array
     {
         return EmailList::where('subscribe', '=', true)->pluck('email')->all();
     }
