@@ -20,6 +20,39 @@
             @endif
 
             <div class="uk-width-1-1@m uk-first-column uk-margin-top">
+                <h2 class="uk-heading-line"><span>Location</span></h2>
+                <div class="uk-card uk-card-default">
+                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-width-4-4@m uk-first-column">
+                    <h2 class="uk-heading-line"><span>Pricing</span></h2>
+                    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+                        <div>
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <h5>Weekday Session (8 Classes)</h5>
+                                <ul class="uk-list uk-list-bullet">
+                                    <li>All Levels $85.00</li>
+                                    <li>Swim Club Levels (Flying Fish & Shark) $100</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <h5>Weekend Session (6 Classes)</h5>
+                                <ul class="uk-list uk-list-bullet">
+                                    <li>All Levels $65.00</li>
+                                    <li>Swim Club Levels Offered Weekday Sessions Only</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-width-1-1@m uk-first-column uk-margin-top">
                 <h2 class="uk-heading-line"><span>Levels</span></h2>
                 <div class="uk-grid-small uk-grid-match uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@lg" uk-grid>
                     @forelse($groups as $group)
@@ -39,37 +72,6 @@
                             </div>
                         </div>
                     @endforelse
-                </div>
-            </div>
-
-            <div class="uk-width-1-1@m uk-first-column uk-margin-top">
-                <h2 class="uk-heading-line"><span>Location</span></h2>
-                <div class="uk-card uk-card-default">
-                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="uk-grid-margin uk-grid" uk-grid="">
-                <div class="uk-width-4-4@m uk-first-column">
-                    <h2 class="uk-heading-line"><span>Pricing</span></h2>
-                    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Weekday Session (8 Classes)</h5>
-                                <ul class="uk-list uk-list-bullet">
-                                    <li>All Levels $85.00</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Weekend Session (6 Classes)</h5>
-                                <ul class="uk-list uk-list-bullet">
-                                    <li>All Levels $65.00</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
