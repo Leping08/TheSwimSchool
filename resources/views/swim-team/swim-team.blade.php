@@ -15,25 +15,26 @@
             <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-3-4@m uk-first-column">
                     <div class="uk-dropcap">
-                        <p>Bring your suit, goggles & towel and come join our team! The North River Swim Team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. We are excited to announce our Fall Swim Club will run Wednesday, September 5th - Wednesday, October 31st!</p>
+                        {{--<p>Bring your suit, goggles & towel and come join our team! The North River Swim Team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. We are excited to announce our Fall Swim Club will run Wednesday, September 5th - Wednesday, October 31st!</p>--}}
+                        <p>Registration is now open for our 2019 pre-season Swim Club which will take place at our Harrison Ranch pool location. For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years & up</a>. Stay tuned for details on our 2019 Swim Team Season which will be available March 1st, 2019.</p>
                     </div>
-                    <div>
-                        <h3 class="uk-heading-line"><span>2018 Fall Swim Club Tryout</span></h3>
-                        <ul class="uk-list uk-list-bullet">
-                            <li>August 27th at 5:45PM</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p><strong>There is no fee to tryout for the swim team.</strong></p>
-                    </div>
+                    {{--<div>--}}
+                        {{--<h3 class="uk-heading-line"><span>2018 Fall Swim Club Tryout</span></h3>--}}
+                        {{--<ul class="uk-list uk-list-bullet">--}}
+                            {{--<li>August 27th at 5:45PM</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<p><strong>There is no fee to tryout for the swim team.</strong></p>--}}
+                    {{--</div>--}}
                     {{--<div>--}}
                         {{--<p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>--}}
                     {{--</div>--}}
-                    <div>
-                        <!-- TODO: Add tryout that lasts all season -->
-                        <a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>
+                    {{--<div>--}}
+                        {{--<!-- TODO: Add tryout that lasts all season -->--}}
+                        {{--<a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>--}}
                         {{--<a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
-                    </div>
+                    {{--</div>--}}
                 </div>
                 <div class="uk-width-1-4@m">
                     <div class="uk-margin">
@@ -102,7 +103,7 @@
                             <h3 class="el-title uk-margin uk-heading-bullet">Hilary Koppenhaver</h3>
                             <div class="el-content uk-margin">
                                 <p>Hilary is originally from Pennsylvania and started swimming at the age of five. She continued competitively through college in Ohio where she earned a B.A. in Psychology. After receiving her degree in 2003, she returned to PA and worked part-time as a lifeguard, swim lesson instructor, and swim team coach in addition to having a full-time position in the human services field assisting children with special needs.</p>
-                                <p>With a love for the beach and a craving for a warmer climate, Hilary relocated to Florida in 2006 and worked as an Aquatics Director at a YMCA for over eight years where she developed a year round competitive swim team, administered a progressive swim lesson program and conducted water fitness classes at two aquatics facilities. In May 2015, Hilary took her passion for teaching aquatics programs and established The Swim School, offering private, semi-private and group swim lessons in Manatee County for adults and children 12 months of age and older. She is excited to have the opportunity to develop the North River Rapids Swim Team and is looking forward to the 2018 inaugural season.</p>
+                                <p>With a love for the beach and a craving for a warmer climate, Hilary relocated to Florida in 2006 and worked as an Aquatics Director at a YMCA for over eight years where she developed a year round competitive swim team, administered a progressive swim lesson program and conducted water fitness classes at two aquatics facilities. In May 2015, Hilary took her passion for teaching aquatics programs and established The Swim School, offering private, semi-private and group swim lessons in Manatee County for adults and children 12 months of age and older. She is excited to have the opportunity to develop the North River Rapids Swim Team and is looking forward to the 2019 season.</p>
                                 <a title="Contact Hilary Koppenhaver" class="uk-button uk-button-default" href="tel:+19417731424"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> (941) 773-1424</a>
                             </div>
                         </li>
@@ -139,10 +140,8 @@
 
             <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Location</span></h2>
-                <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
-                    <div class="uk-card uk-card-default uk-card-body">
-                        <iframe height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJf7zB1tYkw4gRegJOom9JbYs&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
-                    </div>
+                <div class="uk-card uk-card-default">
+                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
