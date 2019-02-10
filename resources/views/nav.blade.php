@@ -45,10 +45,10 @@
                             <a href="#"> {{ Auth::user()->name }}</a>
                             <div class="uk-nav uk-nav-default">
                                 <ul class="uk-nav-sub">
-                                    <li><a href="/dashboard"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
-                                    <li><a href="/analytics"><i class="fa fa-area-chart fa-lg" aria-hidden="true"></i> Analytics</a></li>
-                                    <li><a href="/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
-                                    <li><a href="/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
+                                    <li><a href="/admin"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+                                    <li><a href="https://datastudio.google.com/open/17dj-YhyTBpc5Rev_w3puKIfPKBALD6oL" target="_blank"><i class="fa fa-area-chart fa-lg" aria-hidden="true"></i> Analytics</a></li>
+                                    <li><a href="/admin/resources/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
+                                    <li><a href="/admin/resources/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
                                     <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -119,10 +119,10 @@
                             <a href="#"> {{ Auth::user()->name }} <span uk-icon="icon: triangle-down"></span></a>
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <li><a href="/dashboard"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
-                                    <li><a href="/analytics"><i class="fa fa-area-chart fa-lg" aria-hidden="true"></i> Analytics</a></li>
-                                    <li><a href="/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
-                                    <li><a href="/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
+                                    <li><a href="/admin"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+                                    <li><a href="https://datastudio.google.com/open/17dj-YhyTBpc5Rev_w3puKIfPKBALD6oL" target="_blank"><i class="fa fa-area-chart fa-lg" aria-hidden="true"></i> Analytics</a></li>
+                                    <li><a href="/admin/resources/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
+                                    <li><a href="/admin/resources/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
                                     <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
