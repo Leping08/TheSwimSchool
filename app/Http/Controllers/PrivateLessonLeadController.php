@@ -36,8 +36,7 @@ class PrivateLessonLeadController extends Controller
             'type' => 'required|string',
             'length' => 'required|string',
             'location' => 'required|string',
-            'availability' => 'required|string',
-            'hr_resident' => 'required'
+            'availability' => 'required|string'
         ]);
 
         if($leadRequest['hr_resident'] === 'on'){
