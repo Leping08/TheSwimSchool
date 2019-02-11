@@ -43,27 +43,27 @@
                 </div>
             </div>
 
-            <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Groups & Practice Schedules</span></h2>
-                <p>Swim team tryout will determine group placement.</p>
-                <ul class="uk-list uk-list-bullet">
-                    <li><b>Ripple:</b> Mon/Wed 5PM-5:30PM</li>
-                    <li><b>Splash:</b> Mon/Wed 5PM-5:45PM</li>
-                    <li><b>Waves:</b> Mon/Wed 5:45PM-6:45PM</li>
-                    <li><b>Rapids:</b> Mon/Tues/Wed 5:45PM-7:00PM</li>
-                </ul>
-            </div>
+            {{--<div class="uk-width-1-1@m uk-margin-top">--}}
+                {{--<h2 class="uk-heading-line"><span>Groups & Practice Schedules</span></h2>--}}
+                {{--<p>Swim team tryout will determine group placement.</p>--}}
+                {{--<ul class="uk-list uk-list-bullet">--}}
+                    {{--<li><b>Ripple:</b> Mon/Wed 5PM-5:30PM</li>--}}
+                    {{--<li><b>Splash:</b> Mon/Wed 5PM-5:45PM</li>--}}
+                    {{--<li><b>Waves:</b> Mon/Wed 5:45PM-6:45PM</li>--}}
+                    {{--<li><b>Rapids:</b> Mon/Tues/Wed 5:45PM-7:00PM</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
 
-            <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Season Pricing</span></h2>
-                <p>No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt.</p>
-                <ul class="uk-list uk-list-bullet">
-                    <li><b>Ripple:</b> $100</li>
-                    <li><b>Splash:</b> $110</li>
-                    <li><b>Waves:</b> $140</li>
-                    <li><b>Rapids:</b> $170</li>
-                </ul>
-            </div>
+            {{--<div class="uk-width-1-1@m uk-margin-top">--}}
+                {{--<h2 class="uk-heading-line"><span>Season Pricing</span></h2>--}}
+                {{--<p>No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt.</p>--}}
+                {{--<ul class="uk-list uk-list-bullet">--}}
+                    {{--<li><b>Ripple:</b> $100</li>--}}
+                    {{--<li><b>Splash:</b> $110</li>--}}
+                    {{--<li><b>Waves:</b> $140</li>--}}
+                    {{--<li><b>Rapids:</b> $170</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
 
             {{--<div class="uk-width-1-1@m uk-margin-top">--}}
                 {{--<h2 class="uk-heading-line"><span>Season Schedule</span></h2>--}}
