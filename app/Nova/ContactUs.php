@@ -47,12 +47,14 @@ class ContactUs extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name', 'name'),
+            Text::make('Email', 'email')->onlyOnForms(),
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
                     'text' => $this->email
                 ])->render();
             })->asHtml()->sortable(),
+            Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
