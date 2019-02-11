@@ -14,7 +14,7 @@
 * Days: @foreach($lesson->DaysOfTheWeek as $day){{$day->day}}{{$loop->last ? '' : ', '}}@endforeach
 @endcomponent
 
-@component('mail::button', ['url' => config('app.url').'lesson/'.$lesson->id])
+@component('mail::button', ['url' => config('app.url').'admin/resources/lessons/'.$lesson->id])
 View Lesson
 @endcomponent
 

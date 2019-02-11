@@ -9,11 +9,11 @@
 * Type: {{$privateLessonLead->type}}
 * Package: {{$privateLessonLead->length}}
 * Location: {{$privateLessonLead->location}}
-* Harrison Ranch resident:@if($privateLessonLead->hr_resident) Yes @else No @endif
+* Harrison Ranch resident: @if($privateLessonLead->hr_resident)Yes@elseNo@endif
 * Availability: {{$privateLessonLead->availability}}
 @endcomponent
 
-@component('mail::button', ['url' => config('app.url').'private-semi-private/lead/'.$privateLessonLead->id])
+@component('mail::button', ['url' => config('app.url').'admin/resources/private-lesson-requests/'.$privateLessonLead->id])
 View Details
 @endcomponent
 
