@@ -8,6 +8,7 @@ use App\EmailList;
 use App\Mail\GoldDaisyAward;
 use App\Mail\HappyHolidays;
 use App\Mail\RegistrationOpeningSoon;
+use App\Mail\SpringRegistration;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,6 +17,19 @@ class MarketingEmails
     public function getSubscribedEmails(): Array
     {
         return EmailList::where('subscribe', '=', true)->pluck('email')->all();
+    }
+
+    public function sendLessonRegistrationOpenEmails()
+    {
+        foreach($this->getSubscribedEmails() as $email)
+        {
+            try{
+                Log::info("Sending lesson registration open now email to $email");
+                Mail::to($email)->send(new SpringRegistration($email));
+            } catch (\Exception $e) {
+                Log::warning("Email error: $e");
+            }
+        }
     }
 
     public function sendSpringLessonRegistrationOpeningSoonEmails()
