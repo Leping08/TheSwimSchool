@@ -88,13 +88,11 @@
                     </div>
                 </div>
 
-                <div class="uk-width-1-1@m uk-first-column">
+                <div class="uk-width-1-1@m uk-margin-top">
                     <h2 class="uk-heading-bullet">Location</h2>
                     <p class="uk-text-meta">Private Lessons take place at Harrison Ranch or Any Home/Community Pool within Manatee County.</p>
-                    <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
-                        <div class="uk-card uk-card-default uk-card-body">
-                            <iframe height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
-                        </div>
+                    <div class="uk-card uk-card-default">
+                        <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
                     </div>
                 </div>
 
