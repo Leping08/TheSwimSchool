@@ -9,7 +9,7 @@
 * Type: {{$privateLessonLead->type}}
 * Package: {{$privateLessonLead->length}}
 * Location: {{$privateLessonLead->location}}
-* Harrison Ranch resident: @if($privateLessonLead->hr_resident)Yes@elseNo@endif
+* Harrison Ranch resident: @if($privateLessonLead->hr_resident) Yes @else No @endif
 * Availability: {{$privateLessonLead->availability}}
 @endcomponent
 
