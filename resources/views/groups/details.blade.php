@@ -64,7 +64,7 @@ Lessons
                                 <ul class="uk-list uk-list-striped">
                                     <li><strong>Swimmers</strong></li>
                                     @foreach($lesson->swimmers as $swimmer)
-                                        <li><a href="/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
+                                        <li><a href="/admin/resources/swimmers/{{{$swimmer->id}}}" class="list-group-item list-group-item-action justify-content-between">
                                             {{$swimmer->firstName}} {{$swimmer->lastName}}
                                         </a></li>
                                     @endforeach
