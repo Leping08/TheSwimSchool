@@ -43,13 +43,9 @@ class PrivateLessonLeadController extends Controller
         //Check if the hr_resident exists and if it does and its on then make it a true value
         //Else just make it false
         if($request->has('hr_resident')){
-            if($leadRequest['hr_resident'] === 'on'){
+            if($request->get('hr_resident') === 'on'){
                 $leadRequest['hr_resident'] = true;
-            } else {
-                $request->request->add(['hr_resident' => false]);
             }
-        } else {
-            $request->request->add(['hr_resident' => false]);
         }
 
         $leadRequest['swimmer_birth_date'] = Carbon::parse($leadRequest['swimmer_birth_date']);

@@ -14,6 +14,8 @@ class PrivateLessonRequestTest extends TestCase
     /** @test  **/
     public function a_user_can_request_a_private_lesson()
     {
+        $this->withoutExceptionHandling();
+
         $attributes = [
             'swimmer_name' => $this->faker->name,
             'email' => $this->faker->email,
@@ -23,7 +25,7 @@ class PrivateLessonRequestTest extends TestCase
             'length' => '4 Lessons Per Month',
             'location' => 'Harrison Ranch',
             'availability' => $this->faker->paragraph,
-            //'hr_resident' => 'on'
+            'hr_resident' => 'on'
         ];
 
 
@@ -47,7 +49,7 @@ class PrivateLessonRequestTest extends TestCase
             "length" => $attributes['length'],
             "location" => $attributes['location'],
             "availability" => $attributes['availability'],
-            'hr_resident' => 0
+            'hr_resident' => 1
         ]);
     }
 }
