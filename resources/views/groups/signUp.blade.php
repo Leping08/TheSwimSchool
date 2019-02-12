@@ -13,11 +13,12 @@ Sign Up
 <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
     @if($lesson->class_size - $lesson->swimmers->count() <= 0)
-            <div class="uk-card uk-card-default">
-                <div class="uk-card-body">
-                    <div>Sorry this lesson is full. Sign up for a different lesson <a title="Bradenton Swimming Lessons"href="/lessons">here</a>.</div>
-                </div>
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-body">
+                <div>This class is full. We recommend signing up for a different class with openings. If you choose to join the waitlist, we will notify you if any spots become available within 24-48 hours of the session start date.</div>
+                {{--<div>Sorry this lesson is full. Sign up for a different lesson <a title="Bradenton Swimming Lessons"href="/lessons">here</a>.</div>--}}
             </div>
+        </div>
     @else
         <div class="uk-child-width-expand uk-grid-collapse uk-grid-match uk-flex-middle uk-grid" uk-grid>
             <div class="uk-width-1-4@m">
