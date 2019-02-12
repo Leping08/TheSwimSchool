@@ -22,6 +22,7 @@ use App\Nova\Testimonial;
 use App\Nova\Tryout;
 use App\Nova\User;
 use App\Nova\STLevel;
+use App\Nova\WaitList;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
@@ -145,7 +146,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             STSwimmer::class,
             STSeason::class,
             Day::class,
-            Testimonial::class
+            Testimonial::class,
+            WaitList::class
         ]);
         //Nova::resourcesIn(app_path('Nova'));
     }

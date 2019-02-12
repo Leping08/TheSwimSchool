@@ -91,6 +91,7 @@ class Lesson extends Resource
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsToMany::make('Days', 'DaysOfTheWeek', 'App\Nova\Day'),
             HasMany::make('Swimmers'),
+            HasMany::make('Wait List', 'WaitList')
         ];
     }
 
