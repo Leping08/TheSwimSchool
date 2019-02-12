@@ -74,7 +74,7 @@ Lessons
                             @if($lesson->class_size - $lesson->swimmers->count() > 0)
 
                             @else
-                                <p><b>This class is full. Join the wait list to be notified if any spots open up.</b></p>
+                                <p><b>This class is full. We recommend signing up for a different class with openings. If you choose to join the waitlist, we will notify you if any spots become available within 24-48 hours of the session start date.</b></p>
                             @endif
                         </div>
                         <div class="uk-card-footer">
