@@ -17,6 +17,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Library\Helpers\SeasonHelpers;
@@ -82,6 +83,9 @@ class Lesson extends Resource
             Text::make('Class Size', 'class_size')->withMeta([
                 "value" => $this->class_size ?? '4'
             ])->hideFromIndex(),
+            Number::make('Spots Remaining', function (){
+                return $this->class_size - $this->swimmers->count();
+            }),
             Date::make('Registration Open', 'registration_open')->hideFromIndex(),
             Date::make('Start Date', 'class_start_date')->hideFromIndex(),
             Date::make('End Date', 'class_end_date')->hideFromIndex(),
