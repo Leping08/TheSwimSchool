@@ -174,7 +174,7 @@ class Lessons extends TestCase
         ]);
 
         $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
-            ->assertSee('Sorry this lesson is full.');
+            ->assertSee('This class is full.');
     }
 
     /** @test  **/
@@ -219,5 +219,38 @@ class Lessons extends TestCase
             "email" => $attributes['email'],
             "lesson_id" => $attributes['lesson_id']
         ]);
+    }
+
+    /** @test  **/
+    public function a_user_can_not_sign_up_for_a_group_lesson_that_is_full()
+    {
+        $lesson = factory('App\Lesson')->create([
+            'class_size' => 0
+        ]);
+
+        $swimmer = [
+            'firstName' => $this->faker->firstName,
+            'lastName' => $this->faker->lastName,
+            'birthDate' => Carbon::yesterday()->toDateString(),
+            'email' => $this->faker->email,
+            'phone' => $this->faker->phoneNumber,
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->word,
+            'zip' => $this->faker->numberBetween(10000, 90000),
+            'emergencyName' => $this->faker->name,
+            'emergencyRelationship' => $this->faker->word,
+            'emergencyPhone' => '999-999-9999',
+            'emailUpdates' => 'off',
+            'lesson_id' => $lesson->id,
+            'stripeToken' => 'tok_visa'
+        ];
+
+        $this->assertTrue($lesson->isFull());
+
+        $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $swimmer);
+
+        $response->assertStatus(302);
     }
 }

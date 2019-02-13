@@ -11,6 +11,7 @@ use App\Swimmer;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 /**
  *** Validate data                        - separate class Laravel FormRequest
@@ -30,7 +31,9 @@ class Enroll
     public function handle()
     {
         //Validation happens on the controller
-        $this->abortIfFull();
+        if($this->isFull()){
+            return back();
+        }
         $lesson = $this->getLesson();
         $chargeId = $this->processPayment($lesson);
         $swimmer = $this->createSwimmer($chargeId);
@@ -41,14 +44,14 @@ class Enroll
     }
 
 
-    public function abortIfFull()
+    public function isFull()
     {
         if($this->getLesson()->isFull()){
             session()->flash('danger', 'Sorry the lesson is full.');
             Log::warning("Someone tried to sign up for a lesson that is full.");
-            return back();
+            return true;
         }
-        return null;
+        return false;
     }
 
 
