@@ -86,6 +86,7 @@ class Swimmer extends Resource
                     'birthDate' => $this->birthDate
                 ])->render();
             })->hideFromIndex(),
+            Number::make('Lesson Id', 'lesson_id')->onlyOnForms(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             (new Panel('Lesson', $this->lesson())),
