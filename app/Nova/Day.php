@@ -33,6 +33,7 @@ class Day extends Resource
      */
     public static $search = [
         'id',
+        'day'
     ];
 
     /**

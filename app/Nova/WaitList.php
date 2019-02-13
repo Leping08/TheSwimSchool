@@ -22,7 +22,7 @@ class WaitList extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,6 +31,9 @@ class WaitList extends Resource
      */
     public static $search = [
         'id',
+        'name',
+        'email',
+        'phone'
     ];
 
     /**

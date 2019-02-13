@@ -37,7 +37,8 @@ class Level extends Resource
     public static $search = [
         'id',
         'type',
-        'ages'
+        'ages',
+        'description'
     ];
 
     /**

@@ -33,6 +33,7 @@ class Testimonial extends Resource
      */
     public static $search = [
         'id',
+        'message'
     ];
 
     /**

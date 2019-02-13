@@ -51,7 +51,8 @@ class Swimmer extends Resource
         'id',
         'firstName',
         'lastName',
-        'email'
+        'email',
+        'phone'
     ];
 
     /**

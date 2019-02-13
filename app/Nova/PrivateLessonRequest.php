@@ -29,7 +29,7 @@ class PrivateLessonRequest extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'swimmer_name';
 
     /**
      * The columns that should be searched.
@@ -38,6 +38,13 @@ class PrivateLessonRequest extends Resource
      */
     public static $search = [
         'id',
+        'swimmer_name',
+        'email',
+        'phone',
+        'type',
+        'length',
+        'location',
+        'availability'
     ];
 
     /**
