@@ -7,6 +7,7 @@ namespace App\Library;
 use App\EmailList;
 use App\Mail\GoldDaisyAward;
 use App\Mail\HappyHolidays;
+use App\Mail\RegistrationOpen;
 use App\Mail\RegistrationOpeningSoon;
 use App\Mail\SpringRegistration;
 use Illuminate\Support\Facades\Log;
@@ -25,6 +26,19 @@ class MarketingEmails
         {
             try{
                 Log::info("Sending lesson registration open now email to $email");
+                Mail::to($email)->send(new RegistrationOpen($email));
+            } catch (\Exception $e) {
+                Log::warning("Email error: $e");
+            }
+        }
+    }
+
+    public function sendLessonRegistrationOpeningEmails()
+    {
+        foreach($this->getSubscribedEmails() as $email)
+        {
+            try{
+                Log::info("Sending lesson registration opening soon email to $email");
                 Mail::to($email)->send(new SpringRegistration($email));
             } catch (\Exception $e) {
                 Log::warning("Email error: $e");
