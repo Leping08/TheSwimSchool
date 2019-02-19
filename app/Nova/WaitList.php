@@ -5,6 +5,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -61,6 +62,7 @@ class WaitList extends Resource
                     'text' => $this->phone
                 ])->render();
             })->asHtml(),
+            Number::make('Lesson ID', 'lesson_id')->onlyOnForms(),
             BelongsTo::make('Lesson')->onlyOnDetail()
         ];
     }
