@@ -81,47 +81,48 @@ Lessons
                             @if($lesson->class_size - $lesson->swimmers->count() > 0)
                                 <a href="/lessons/{{{$group->type}}}/{{{$lesson->id}}}" class="uk-button uk-button-primary">Sign Up</a>
                             @else
-                                <button class="uk-button uk-button-primary" uk-toggle="target: #wait-list">Join Wait List</button>
+                                <button class="uk-button uk-button-primary" uk-toggle="target: #wait-list-{{{$lesson->id}}}">Join Wait List</button>
                             @endif
                         </div>
                     </div>
-                @endforeach
-                <!-- This is the wait list modal -->
-                <div id="wait-list" uk-modal>
-                    <div class="uk-modal-dialog uk-modal-body uk-card uk-card-default uk-padding-remove">
-                        <div class="uk-card-header">
-                            <div class="uk-card-title f-24">Join the Wait List</div>
-                        </div>
-                        <form action="/wait-list/{{$lesson->id}}" method="POST">
-                            {{ csrf_field() }}
-                            <div class="uk-card-body">
-                                <p>Be the first to know if any spots open up for this class.</p>
-                                <div class="uk-grid-small" uk-grid>
-                                    <div class="uk-width-1-1@s">
-                                        <label class="uk-form-label uk-heading-bullet" for="name">Name</label>
-                                        <div class="uk-form-controls">
-                                            <input type="text" class="uk-input" id="name" name="name" placeholder="Full Name" value="{{ old('name') }}" required>
+
+                    <!-- This is the wait list modal -->
+                    <div id="wait-list-{{{$lesson->id}}}" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body uk-card uk-card-default uk-padding-remove">
+                            <div class="uk-card-header">
+                                <div class="uk-card-title f-24">Join the Wait List</div>
+                            </div>
+                            <form action="/wait-list/{{$lesson->id}}" method="POST">
+                                {{ csrf_field() }}
+                                <div class="uk-card-body">
+                                    <p>Be the first to know if any spots open up for this class.</p>
+                                    <div class="uk-grid-small" uk-grid>
+                                        <div class="uk-width-1-1@s">
+                                            <label class="uk-form-label uk-heading-bullet" for="name">Name</label>
+                                            <div class="uk-form-controls">
+                                                <input type="text" class="uk-input" id="name" name="name" placeholder="Full Name" value="{{ old('name') }}" required>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="uk-width-1-1@s">
-                                        <label class="uk-form-label uk-heading-bullet" for="email">Email</label>
-                                        <div class="uk-form-controls">
-                                            <input type="text" class="uk-input" id="email" name="email" placeholder="email@gmail.com" value="{{ old('email') }}" required>
+                                        <div class="uk-width-1-1@s">
+                                            <label class="uk-form-label uk-heading-bullet" for="email">Email</label>
+                                            <div class="uk-form-controls">
+                                                <input type="text" class="uk-input" id="email" name="email" placeholder="email@gmail.com" value="{{ old('email') }}" required>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="uk-width-1-1@s">
-                                        <label class="uk-form-label uk-heading-bullet" for="phone">Phone</label>
-                                        <input type="tel" id="phone" name="phone" placeholder="999-123-4567" class="uk-input" value="{{ old('phone') }}" required />
+                                        <div class="uk-width-1-1@s">
+                                            <label class="uk-form-label uk-heading-bullet" for="phone">Phone</label>
+                                            <input type="tel" id="phone" name="phone" placeholder="999-123-4567" class="uk-input" value="{{ old('phone') }}" required />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="uk-text-right uk-card-footer">
-                                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                <button class="uk-button uk-button-primary" type="submit">Submit</button>
-                            </div>
-                        </form>
+                                <div class="uk-text-right uk-card-footer">
+                                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                                    <button class="uk-button uk-button-primary" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             <!-- No active lessons exist so display no classes -->
             @else
                 <div class="uk-section-default uk-section-overlap uk-section">
