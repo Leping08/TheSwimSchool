@@ -7,7 +7,6 @@ The first lesson is tomorrow {{$lesson->class_start_time->format('g:ia')}} - {{$
 * Bathing Suit
 * Towel
 * Sunscreen
-* Pool Deck Shoes
 @endcomponent
 
 @component('mail::panel')
