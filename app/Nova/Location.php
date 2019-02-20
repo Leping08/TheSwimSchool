@@ -55,7 +55,7 @@ class Location extends Resource
             ID::make()->sortable(),
             Text::make('Name', 'name')->sortable(),
             $this->addressFields(),
-            Textarea::make('pool_access_instructions')->hideFromIndex(),
+            Textarea::make('Pool Access Instructions')->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             HasMany::make('Lessons')
