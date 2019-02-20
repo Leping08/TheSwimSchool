@@ -9,6 +9,7 @@ $factory->define(App\Location::class, function (Faker $faker) {
         'city' => $faker->city,
         'state' => $faker->word,
         'zip' => $faker->randomNumber(5),
-        'phoneNumber' => $faker->phoneNumber
+        'phoneNumber' => $faker->phoneNumber,
+        'pool_access_instructions' => $faker->paragraph()
     ];
 });

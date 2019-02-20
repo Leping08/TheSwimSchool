@@ -13,8 +13,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $street
  * @property string $state
  * @property string $city
- * @property integer $zip
- * @property integer $phone_number
+ * @property string $zips
+ * @property string $phone_number
+ * @property string $pool_access_instructions
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at

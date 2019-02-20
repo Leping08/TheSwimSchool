@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Place;
 
@@ -54,6 +55,7 @@ class Location extends Resource
             ID::make()->sortable(),
             Text::make('Name', 'name')->sortable(),
             $this->addressFields(),
+            Textarea::make('pool_access_instructions')->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             HasMany::make('Lessons')
