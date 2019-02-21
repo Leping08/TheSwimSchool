@@ -25,7 +25,7 @@
                     <div class="uk-margin uk-dropcap">
                         Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="/swim-team">swim team</a>, or a triathlete
                         looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly.
-                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or our Harrison Ranch location.
+                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at Harrison Ranch and River Wilderness Golf & Country Club.
                     </div>
                 </div>
                 <div class="uk-width-expand@m">
@@ -88,11 +88,22 @@
                     </div>
                 </div>
 
-                <div class="uk-width-1-1@m uk-margin-top">
-                    <h2 class="uk-heading-bullet">Location</h2>
-                    <p class="uk-text-meta">Private Lessons take place at Harrison Ranch or Any Home/Community Pool within Manatee County.</p>
-                    <div class="uk-card uk-card-default">
-                        <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
+                <div class="uk-width-4-4@m uk-first-column">
+                    <h2 class="uk-heading-bullet">Locations</h2>
+                    <p class="uk-text-meta">Private Lessons take place at Harrison Ranch and River Wilderness Golf & Country Club or Any Home/Community Pool within Manatee County.</p>
+                    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+                        <div>
+                            {{--<h5>Harrison Ranch</h5>--}}
+                            <div class="uk-card uk-card-default">
+                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div>
+                            {{--<h5>River Wilderness Golf & Country Club</h5>--}}
+                            <div class="uk-card uk-card-default">
+                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=River+Wilderness+Golf+%26+Country+Club&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -149,7 +160,8 @@
                                     <label class="uk-form-label uk-heading-bullet" for="">Location</label>
                                     <div class="uk-form-controls">
                                         <select class="uk-select" name="location" id="location">
-                                            <option value="The Swim School Pool">The Swim School Pool</option>
+                                            <option value="The Swim School Pool">Harrison Ranch</option>
+                                            <option value="The Swim School Pool">River Wilderness Golf & Country Club</option>
                                             <option value="My Home or Community Pool">My Home or Community Pool (Provide Address Below)</option>
                                         </select>
                                     </div>
@@ -157,6 +169,7 @@
                                 <div class="uk-margin">
                                     <div class="uk-form-controls">
                                         {{-- TODO Adjust the color of this checkbox --}}
+                                        {{-- TODO Make this checkbox only show up when harrison ranch is selected --}}
                                         <label><input class="uk-checkbox" type="checkbox" name="hr_resident">
                                             Are you a Harrison Ranch resident?
                                         </label>
