@@ -160,8 +160,8 @@
                                     <label class="uk-form-label uk-heading-bullet" for="">Location</label>
                                     <div class="uk-form-controls">
                                         <select class="uk-select" name="location" id="location">
-                                            <option value="The Swim School Pool">Harrison Ranch</option>
-                                            <option value="The Swim School Pool">River Wilderness Golf & Country Club</option>
+                                            <option value="Harrison Ranch">Harrison Ranch</option>
+                                            <option value="River Wilderness Golf & Country Club">River Wilderness Golf & Country Club</option>
                                             <option value="My Home or Community Pool">My Home or Community Pool (Provide Address Below)</option>
                                         </select>
                                     </div>
