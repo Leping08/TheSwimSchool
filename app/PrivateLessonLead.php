@@ -27,7 +27,8 @@ class PrivateLessonLead extends Model
         'length',
         'location',
         'hr_resident',
-        'availability'
+        'availability',
+        'address'
     ];
 
     /**

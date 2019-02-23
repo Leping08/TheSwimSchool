@@ -48,6 +48,10 @@ class PrivateLessonLeadController extends Controller
             }
         }
 
+        if($request->has('address')){
+            $leadRequest['address'] = $request->get('address');
+        }
+
         $leadRequest['swimmer_birth_date'] = Carbon::parse($leadRequest['swimmer_birth_date']);
 
         $lead = PrivateLessonLead::create($leadRequest);

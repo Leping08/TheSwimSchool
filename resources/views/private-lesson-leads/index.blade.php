@@ -156,7 +156,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <private-lesson-request-form></private-lesson-request-form>
+                                <private-lesson-request-form oldAddress="{{ old('address') }}" oldAvailability="{{ old('availability') }}"></private-lesson-request-form>
                                 {{--<div class="uk-margin">--}}
                                     {{--<label class="uk-form-label uk-heading-bullet" for="">Location</label>--}}
                                     {{--<div class="uk-form-controls">--}}
