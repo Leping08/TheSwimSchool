@@ -25,7 +25,8 @@ class PrivateLessonRequestTest extends TestCase
             'length' => '4 Lessons Per Month',
             'location' => 'Harrison Ranch',
             'availability' => $this->faker->paragraph,
-            'hr_resident' => 'on'
+            'hr_resident' => 'on',
+            'address' => $this->faker->address
         ];
 
 
@@ -49,7 +50,8 @@ class PrivateLessonRequestTest extends TestCase
             "length" => $attributes['length'],
             "location" => $attributes['location'],
             "availability" => $attributes['availability'],
-            'hr_resident' => 1
+            'hr_resident' => 1,
+            'address' => $attributes['address']
         ]);
     }
 }
