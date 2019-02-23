@@ -44,7 +44,8 @@ class PrivateLessonRequest extends Resource
         'type',
         'length',
         'location',
-        'availability'
+        'availability',
+        'address'
     ];
 
     /**
@@ -81,6 +82,7 @@ class PrivateLessonRequest extends Resource
             Text::make('Length', 'length')->hideFromIndex(),
             Text::make('Location', 'location')->hideFromIndex(),
             Boolean::make('Harrison Ranch resident', 'hr_resident')->hideFromIndex(),
+            Text::make('Address', 'address')->hideFromIndex(),
             Text::make('Availability', 'availability')->hideFromIndex(),
             Boolean::make('Followed Up', 'followed_up')->sortable(),
             DateTime::make('Created At')->onlyOnDetail(),
