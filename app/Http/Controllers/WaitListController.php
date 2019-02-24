@@ -59,13 +59,10 @@ class WaitListController extends Controller
     private function sendWaitListAdminEmail(Lesson $lesson)
     {
         // Send a wait list filling up email to the admin if the wait list
-        // has half of the class size or more waiting swimmers
-        if(($lesson->waitlist->count()) >= ($lesson->class_size/2)) {
-            Log::info("Sending wait list email to admins about lesson ID: $lesson->id");
-            foreach(config('mail.leadDestEmails') as $email){
-                Log::info("Sending Wait List admin email to $email");
-                Mail::to($email)->send(new WaitListAdmin($lesson));
-            }
+        Log::info("Sending wait list email to admins about lesson ID: $lesson->id");
+        foreach(config('mail.leadDestEmails') as $email){
+            Log::info("Sending Wait List admin email to $email");
+            Mail::to($email)->send(new WaitListAdmin($lesson));
         }
     }
 }
