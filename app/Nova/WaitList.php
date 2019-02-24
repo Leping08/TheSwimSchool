@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
@@ -62,6 +63,7 @@ class WaitList extends Resource
                     'text' => $this->phone
                 ])->render();
             })->asHtml(),
+            Boolean::make('Followed Up', 'followed_up'),
             Number::make('Lesson ID', 'lesson_id')->onlyOnForms(),
             BelongsTo::make('Lesson')->onlyOnDetail()
         ];

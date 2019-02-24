@@ -5,6 +5,20 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * An Eloquent Model: 'WaitList'
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $email
+ * @property string $phone
+ * @property boolean $followed_up
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property-read \App\Lesson $lesson
+ */
+
 class WaitList extends Model
 {
     use SoftDeletes;
@@ -21,7 +35,8 @@ class WaitList extends Model
         'name',
         'email',
         'phone',
-        'lesson_id'
+        'lesson_id',
+        'followed_up'
     ];
 
     /**
