@@ -4,13 +4,12 @@
             <label class="uk-form-label uk-heading-bullet" for="location">Location</label>
             <div class="uk-form-controls">
                 <select class="uk-select" name="location" id="location" v-model="selected">
-                    <option value="Harrison Ranch">Harrison Ranch</option>
-                    <option value="River Wilderness Golf & Country Club">River Wilderness Golf & Country Club</option>
+                    <option value="The Swim School Pool">The Swim School Pool</option>
                     <option value="My Home or Community Pool">My Home or Community Pool</option>
                 </select>
             </div>
         </div>
-        <div class="uk-margin" v-if="selected === 'Harrison Ranch'">
+        <div class="uk-margin" v-if="selected === 'The Swim School Pool'">
             <div class="uk-form-controls">
                 <!--TODO Adjust the color of this checkbox-->
                 <label><input class="uk-checkbox" type="checkbox" name="hr_resident">
@@ -43,7 +42,7 @@
         ],
         data() {
             return {
-                selected: "Harrison Ranch"
+                selected: "The Swim School Pool"
             }
         }
     }
