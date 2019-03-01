@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Nova\Metrics\LessonsPerLocation;
-use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -11,7 +10,6 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\Place;
 
 class Location extends Resource
 {
@@ -117,14 +115,13 @@ class Location extends Resource
     protected function addressFields()
     {
         return $this->merge([
-            Place::make('Street', 'street'),
+            Text::make('Street', 'street'),
             Text::make('City', 'city'),
             Text::make('State', 'state')->hideFromIndex(),
             Text::make('Postal Code', 'zip')->hideFromIndex(),
             Text::make('Country', function () {
                 return 'US';
             })->hideFromIndex()
-            //Country::make('Country')->hideFromIndex(),
         ]);
     }
 }

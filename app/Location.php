@@ -13,8 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $street
  * @property string $state
  * @property string $city
- * @property string $zips
- * @property string $phone_number
+ * @property string $zip
  * @property string $pool_access_instructions
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -33,7 +32,7 @@ class Location extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'street', 'city', 'state', 'zip', 'phoneNumber'];
+    protected $fillable = ['name', 'street', 'city', 'state', 'zip'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
