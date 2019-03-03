@@ -16,25 +16,28 @@
                 <div class="uk-width-3-4@m uk-first-column">
                     <div class="uk-dropcap">
                         {{--<p>Bring your suit, goggles & towel and come join our team! The North River Swim Team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. We are excited to announce our Fall Swim Club will run Wednesday, September 5th - Wednesday, October 31st!</p>--}}
-                        <p>Registration is now open for our 2019 pre-season Swim Club which will take place at our Harrison Ranch pool location. For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years & up</a>. Stay tuned for details on our 2019 Swim Team Season which will be available March 1st, 2019.</p>
+                        <p>Registration is now open for our 2019 pre-season Swim Club which will take place at our Harrison Ranch pool location. For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years & up</a>.</p>
                     </div>
-                    {{--<div>--}}
-                        {{--<h3 class="uk-heading-line"><span>2018 Fall Swim Club Tryout</span></h3>--}}
-                        {{--<ul class="uk-list uk-list-bullet">--}}
-                            {{--<li>August 27th at 5:45PM</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<p><strong>There is no fee to tryout for the swim team.</strong></p>--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
+                    <div>
+                        <h3 class="uk-heading-line"><span>2019 Spring Swim Club Tryout</span></h3>
+                        <ul class="uk-list uk-list-bullet">
+                            <li>Tuesday, April 16th at 6:30PM</li>
+                            <li>Wednesday, April 17th at 6:30PM</li>
+                            <li>Saturday, April 20th at 9:00AM</li>
+                        </ul>
+                    </div>
+                    <div>
                         {{--<p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<!-- TODO: Add tryout that lasts all season -->--}}
+                        <p>Season Runs Wednesday, May 1st- Wednesday, July 31st and is held at the River Wilderness Golf & Country Club pool.</p>
+                    </div>
+                    <div>
+                        <p><strong>Registration for swim team tryouts will open on April 1st. There is no fee to tryout for the swim team. Tryouts are held at the River Wilderness Golf & Country Club pool.</strong></p>
+                    </div>
+                    <div>
+                        <!-- TODO: Add tryout that lasts all season -->
                         {{--<a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>--}}
-                        {{--<a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
-                    {{--</div>--}}
+                        <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>
+                    </div>
                 </div>
                 <div class="uk-width-1-4@m">
                     <div class="uk-margin">
@@ -43,27 +46,27 @@
                 </div>
             </div>
 
-            {{--<div class="uk-width-1-1@m uk-margin-top">--}}
-                {{--<h2 class="uk-heading-line"><span>Groups & Practice Schedules</span></h2>--}}
-                {{--<p>Swim team tryout will determine group placement.</p>--}}
-                {{--<ul class="uk-list uk-list-bullet">--}}
-                    {{--<li><b>Ripple:</b> Mon/Wed 5PM-5:30PM</li>--}}
-                    {{--<li><b>Splash:</b> Mon/Wed 5PM-5:45PM</li>--}}
-                    {{--<li><b>Waves:</b> Mon/Wed 5:45PM-6:45PM</li>--}}
-                    {{--<li><b>Rapids:</b> Mon/Tues/Wed 5:45PM-7:00PM</li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Groups & Practice Schedules</span></h2>
+                <p>Swim team tryout will determine group placement.</p>
+                <ul class="uk-list uk-list-bullet">
+                    <li><b>Ripple:</b> Tues/Thurs 6PM-6:30PM</li>
+                    <li><b>Splash:</b> Mon/Wed/Fri 5PM-5:45PM</li>
+                    <li><b>Waves:</b> Mon/Wed/Fri 5:45PM-6:45PM, Sat 9:30AM-10:30AM</li>
+                    <li><b>Rapids:</b> Mon/Tues/Wed/Thurs 6:30PM-7:45PM, Sat 8AM-9:30AM</li>
+                </ul>
+            </div>
 
-            {{--<div class="uk-width-1-1@m uk-margin-top">--}}
-                {{--<h2 class="uk-heading-line"><span>Season Pricing</span></h2>--}}
-                {{--<p>No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt.</p>--}}
-                {{--<ul class="uk-list uk-list-bullet">--}}
-                    {{--<li><b>Ripple:</b> $100</li>--}}
-                    {{--<li><b>Splash:</b> $110</li>--}}
-                    {{--<li><b>Waves:</b> $140</li>--}}
-                    {{--<li><b>Rapids:</b> $170</li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Season Pricing</span></h2>
+                <p>No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt.</p>
+                <ul class="uk-list uk-list-bullet">
+                    <li><b>Ripple:</b> $200</li>
+                    <li><b>Splash:</b> $220</li>
+                    <li><b>Waves:</b> $280</li>
+                    <li><b>Rapids:</b> $340</li>
+                </ul>
+            </div>
 
             {{--<div class="uk-width-1-1@m uk-margin-top">--}}
                 {{--<h2 class="uk-heading-line"><span>Season Schedule</span></h2>--}}
