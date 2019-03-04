@@ -19,7 +19,7 @@
                         <p>Registration is now open for our 2019 pre-season Swim Club which will take place at our Harrison Ranch pool location. For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years & up</a>.</p>
                     </div>
                     <div>
-                        <h3 class="uk-heading-line"><span>2019 Spring Swim Club Tryout</span></h3>
+                        <h3 class="uk-heading-line"><span>2019 Spring Team Tryouts</span></h3>
                         <ul class="uk-list uk-list-bullet">
                             <li>Tuesday, April 16th at 6:30PM</li>
                             <li>Wednesday, April 17th at 6:30PM</li>
