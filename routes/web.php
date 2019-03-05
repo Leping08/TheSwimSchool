@@ -65,7 +65,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/', 'HomeController@index');
 
 
-
+Route::get('/lessons/schedule', function (){
+    return view('groups.schedule');
+});
 
 /*
  * Group Lessons
