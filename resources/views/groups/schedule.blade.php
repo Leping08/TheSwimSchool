@@ -6,7 +6,7 @@
 @endsection
 
 @section('heading')
-    Group Lessons Schedule
+    Group Lesson Sessions & Registration Schedule
 @endsection
 
 @section('content')

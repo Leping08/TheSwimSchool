@@ -133,7 +133,7 @@ Lessons
                             </div>
                             <div class="uk-card-body">
                                 <div class="card-text">
-                                    <p>Check out the <a title="North River Swim Team" href="/lessons/schedule">group lesson schedule</a> to find out when next season registration will be available.</p>
+                                    <p>Check out the <a title="North River Swim Team" href="/lessons/schedule">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>
                                 </div>
                                 {{--<div class="card-text">--}}
                                     {{--<p>Registration will open for our next session of swim lessons {{config('season.groups.next_season.registration_open')}}. Please check back at another time.<br>--}}
