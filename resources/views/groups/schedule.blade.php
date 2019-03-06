@@ -17,8 +17,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
-                            <th class="uk-width-1-2"><strong>Weekday Sessions (M/W or T/TH 2x/wk for 4 weeks)</strong></th>
-                            <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                            <th class="uk-width-1-2"><h5>Weekday Sessions (M/W or T/TH 2x/wk for 4 weeks)</h5></th>
+                            <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,8 +42,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><strong>Saturday Sessions (1x/wk for 6 weeks)</strong></th>
-                        <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                        <th class="uk-width-1-2"><h5>Saturday Sessions (1x/wk for 6 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -63,8 +63,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><strong>Sunday Sessions (1x/wk for 6 weeks)</strong></th>
-                        <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                        <th class="uk-width-1-2"><h5>Sunday Sessions (1x/wk for 6 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -85,8 +85,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><strong>Weekday Sessions (M/T/W/TH 4x/wk for 2 weeks)</strong></th>
-                        <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                        <th class="uk-width-1-2"><h5>Weekday Sessions (M/T/W/TH 4x/wk for 2 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -114,8 +114,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><strong>Saturday Sessions (1x/wk for 6 weeks)</strong></th>
-                        <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                        <th class="uk-width-1-2"><h5>Saturday Sessions (1x/wk for 6 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -135,8 +135,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><strong>Sunday Sessions (1x/wk for 6 weeks)</strong></th>
-                        <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                        <th class="uk-width-1-2"><h5>Sunday Sessions (1x/wk for 6 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -157,8 +157,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><strong>Weekday Sessions (M/W or T/TH 2x/wk for 4 weeks)</strong></th>
-                        <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                        <th class="uk-width-1-2"><h5>Weekday Sessions (M/W or T/TH 2x/wk for 4 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -182,8 +182,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><strong>Saturday Sessions (1x/wk for 6 weeks)</strong></th>
-                        <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                        <th class="uk-width-1-2"><h5>Saturday Sessions (1x/wk for 6 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -199,8 +199,8 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><strong>Sunday Sessions (1x/wk for 6 weeks)</strong></th>
-                        <th class="uk-width-1-2"><strong>Registration Opens</strong></th>
+                        <th class="uk-width-1-2"><h5>Sunday Sessions (1x/wk for 6 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
