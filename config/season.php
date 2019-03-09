@@ -15,10 +15,10 @@ return [
    */
 
     'groups' => [
-        'off-season' => false,
+        'off-season' => true,
 
         'next_season' => [
-            'registration_open' => 'May 20th'
+            'registration_open' => 'March 25th'
         ]
     ],
 
