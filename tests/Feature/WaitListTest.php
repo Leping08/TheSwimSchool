@@ -20,7 +20,7 @@ class WaitListTest extends TestCase
 
         Mail::assertNothingSent();
 
-        $lesson = factory('App\Lesson')->create([
+        $lesson = factory(\App\Lesson::class)->create([
             'class_size' => 0
         ]);
 

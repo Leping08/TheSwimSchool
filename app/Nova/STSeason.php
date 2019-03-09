@@ -16,7 +16,7 @@ class STSeason extends Resource
      *
      * @var string
      */
-    public static $model = 'App\STSeason';
+    public static $model = \App\STSeason::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

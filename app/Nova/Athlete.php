@@ -20,7 +20,7 @@ class Athlete extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Athlete';
+    public static $model = \App\Athlete::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
