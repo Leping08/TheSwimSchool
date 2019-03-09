@@ -28,7 +28,7 @@ class Swimmer extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Swimmer';
+    public static $model = \App\Swimmer::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

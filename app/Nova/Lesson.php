@@ -30,7 +30,7 @@ class Lesson extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Lesson';
+    public static $model = \App\Lesson::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -93,7 +93,7 @@ class Lesson extends Resource
             DateTime::make('End Time', 'class_end_time')->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            BelongsToMany::make('Days', 'DaysOfTheWeek', 'App\Nova\Day'),
+            BelongsToMany::make('Days', 'DaysOfTheWeek', \App\Nova\Day::class),
             HasMany::make('Swimmers'),
             HasMany::make('Wait List', 'WaitList')
         ];

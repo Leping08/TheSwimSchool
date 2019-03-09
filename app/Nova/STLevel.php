@@ -16,7 +16,7 @@ class STLevel extends Resource
      *
      * @var string
      */
-    public static $model = 'App\STLevel';
+    public static $model = \App\STLevel::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

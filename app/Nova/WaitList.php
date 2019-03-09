@@ -17,7 +17,7 @@ class WaitList extends Resource
      *
      * @var string
      */
-    public static $model = 'App\WaitList';
+    public static $model = \App\WaitList::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

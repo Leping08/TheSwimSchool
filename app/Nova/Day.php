@@ -17,7 +17,7 @@ class Day extends Resource
      *
      * @var string
      */
-    public static $model = 'App\DaysOfTheWeek';
+    public static $model = \App\DaysOfTheWeek::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -47,7 +47,7 @@ class Day extends Resource
         return [
             ID::make()->sortable(),
             Text::make('day')->sortable(),
-            BelongsToMany::make('Lessons', 'lessons', 'App\Nova\Lesson'),
+            BelongsToMany::make('Lessons', 'lessons', \App\Nova\Lesson::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];

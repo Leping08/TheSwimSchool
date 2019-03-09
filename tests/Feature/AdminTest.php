@@ -14,7 +14,7 @@ class Admin extends TestCase
     /** @test */
     public function a_admin_can_view_the_dashboard()
     {
-        $user = factory('App\User')->create();
+        $user = factory(\App\User::class)->create();
         $this->actingAs($user)
             ->get('/dashboard')
             ->assertSee('Dashboard');
@@ -30,9 +30,9 @@ class Admin extends TestCase
     /** @test */
     public function a_admin_can_see_swimmers_in_a_lesson()
     {
-        $swimmer = factory('App\Swimmer')->create();
+        $swimmer = factory(\App\Swimmer::class)->create();
         $lesson = Lesson::first();
-        $user = factory('App\User')->create();
+        $user = factory(\App\User::class)->create();
 
         $this->actingAs($user)
             ->get("/lesson/$lesson->id")
@@ -43,7 +43,7 @@ class Admin extends TestCase
     /** @test */
     public function a_non_admin_can_not_see_swimmers_in_a_lesson()
     {
-        $swimmer = factory('App\Swimmer')->create();
+        $swimmer = factory(\App\Swimmer::class)->create();
         $lesson = Lesson::first();
 
         $this->get("/lesson/$lesson->id")
