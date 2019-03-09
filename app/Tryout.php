@@ -70,7 +70,7 @@ class Tryout extends Model
      */
     public function isFull()
     {
-        if($this->athletes()->count() >= $this->getAttribute('class_size')){
+        if ($this->athletes()->count() >= $this->getAttribute('class_size')) {
             return true;
         } else {
             return false;

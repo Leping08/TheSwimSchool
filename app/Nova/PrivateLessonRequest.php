@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-
 use App\Nova\Metrics\OpenPrivateRequests;
 use App\Nova\Metrics\PrivateRequestsPerDay;
 use Carbon\Carbon;

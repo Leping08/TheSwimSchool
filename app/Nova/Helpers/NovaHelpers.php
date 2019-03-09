@@ -10,7 +10,7 @@ trait NovaHelpers
     {
         $result = collect([]);
 
-        foreach ($collection as $item){
+        foreach ($collection as $item) {
             $result->put($item[$first], $item[$second]);
         }
 

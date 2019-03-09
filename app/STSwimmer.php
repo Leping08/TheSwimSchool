@@ -84,7 +84,7 @@ class STSwimmer extends Model
      */
     public function promoAppliedPrice()
     {
-        if($this->promoCode){
+        if ($this->promoCode) {
             $discount_percent = ($this->promoCode->discount_percent * .01);
             $price = $this->level->price;
             return ($price - ($discount_percent * $price));

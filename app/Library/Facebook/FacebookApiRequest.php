@@ -48,11 +48,11 @@ class FacebookApiRequest
         //Get all the reviews id's in the DB
         $reviewer_times = Review::pluck('created_time');
 
-        foreach ($reviews as $review){
+        foreach ($reviews as $review) {
             //Check if the necessary data exists
-            if((!empty($review['created_time'])) && (!empty($review['recommendation_type'])) && (!empty($review['review_text']))){
+            if ((!empty($review['created_time'])) && (!empty($review['recommendation_type'])) && (!empty($review['review_text']))) {
                 //Make sure its a positive review and its not a duplicate
-                if((!$reviewer_times->contains($review['created_time'])) && ($review['recommendation_type'] === 'positive')){
+                if ((!$reviewer_times->contains($review['created_time'])) && ($review['recommendation_type'] === 'positive')) {
                     Review::create([
                         'name' => (!empty($review['reviewer']['name'])) ? $review['reviewer']['name'] : null,
                         'active' => true,

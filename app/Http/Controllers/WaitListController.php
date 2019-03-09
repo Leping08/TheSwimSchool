@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-
 class WaitListController extends Controller
 {
     /**
@@ -25,10 +24,10 @@ class WaitListController extends Controller
             'phone' => 'required|max:20'
         ]);
 
-        try{
+        try {
             $lesson = Lesson::findOrFail($id);
             $waitingSwimmer['lesson_id'] = $lesson->id;
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e);
             session()->flash("warning", "Something has gone wrong.");
             return back();
@@ -60,7 +59,7 @@ class WaitListController extends Controller
     {
         // Send a wait list filling up email to the admin if the wait list
         Log::info("Sending wait list email to admins about lesson ID: $lesson->id");
-        foreach(config('mail.leadDestEmails') as $email){
+        foreach (config('mail.leadDestEmails') as $email) {
             Log::info("Sending Wait List admin email to $email");
             Mail::to($email)->send(new WaitListAdmin($lesson));
         }

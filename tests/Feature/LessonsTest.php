@@ -205,13 +205,13 @@ class Lessons extends TestCase
         $this->get("/lessons/{$lesson->group->type}/{$lesson->id}")
             ->assertStatus(200);
 
-        $this->assertEquals(0,  \App\Swimmer::all()->count());
+        $this->assertEquals(0, \App\Swimmer::all()->count());
 
         $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
 
         $response->assertRedirect('/thank-you');
 
-        $this->assertEquals(1,  \App\Swimmer::all()->count());
+        $this->assertEquals(1, \App\Swimmer::all()->count());
 
         $this->assertDatabaseHas('swimmers', [
             "firstName" => $attributes['firstName'],

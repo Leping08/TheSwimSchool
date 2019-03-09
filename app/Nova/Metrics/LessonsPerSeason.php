@@ -21,7 +21,7 @@ class LessonsPerSeason extends Partition
     {
         $locations = Season::withCount('lessons')->orderBy('lessons_count', 'desc')->get()->toArray();
 
-        return $this->makePartitionResult(collect($locations), 'name','lessons_count');
+        return $this->makePartitionResult(collect($locations), 'name', 'lessons_count');
     }
 
     /**

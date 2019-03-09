@@ -50,7 +50,7 @@ class Testimonial extends Resource
             Boolean::make('Active', 'active'),
             Textarea::make('Message', 'message'),
             Text::make('Message', 'message')
-                ->displayUsing(function($id) {
+                ->displayUsing(function ($id) {
                     $part = strip_tags(substr($id, 0, 50));
                     return $part . " ...";
                 })->onlyOnIndex(),

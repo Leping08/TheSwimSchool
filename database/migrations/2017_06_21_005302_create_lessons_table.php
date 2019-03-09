@@ -40,4 +40,3 @@ class CreateLessonsTable extends Migration
         Schema::dropIfExists('lessons');
     }
 }
-

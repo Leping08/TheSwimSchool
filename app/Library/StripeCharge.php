@@ -3,7 +3,6 @@
 
 namespace App\Library;
 
-
 use Illuminate\Support\Facades\Log;
 use App\Library\Interfaces\PaymentMethod;
 

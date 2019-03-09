@@ -77,8 +77,7 @@ class STSwimmerController extends Controller
         Log::info("Swim Team Swimmer $newSwimmer->firstName $newSwimmer->lastName, ID: $newSwimmer->id has signed up for Level ID: $newSwimmer->s_t_level_id and is going to pay by card.");
 
         //Check if the user needs to go to the checkout page at all   Ex: 100% off promo code
-        if($newSwimmer->promoAppliedPrice() <= 0)
-        {
+        if ($newSwimmer->promoAppliedPrice() <= 0) {
             $newSwimmer->stripeChargeId = 'For Free Promo Code';
             $newSwimmer->save();
             Log::info("Swim Team Swimmer $newSwimmer->firstName $newSwimmer->lastName, ID: $newSwimmer->id has signed up with out paying. They used promo code ID: $newSwimmer->promo_code_id");
@@ -95,12 +94,12 @@ class STSwimmerController extends Controller
      */
     private function validatePromoCode(Request $request)
     {
-        if(!empty($request->promo_code)){
+        if (!empty($request->promo_code)) {
             Log::info("Trying to find Promo for string: $request->promo_code");
             $userCode = trim(strtoupper($request->promo_code));
             $promo = PromoCode::where('code', $userCode)->first();
 
-            if(count($promo)){
+            if (count($promo)) {
                 Log::info("Found Promo Code ID: $promo->id");
                 return $promo->id;
             }
@@ -116,7 +115,7 @@ class STSwimmerController extends Controller
     public function checkout($id)
     {
         $swimmer = STSwimmer::find($id);
-        if(! $swimmer->stripeChargeId){
+        if (! $swimmer->stripeChargeId) {
             return view('swim-team.checkOut', compact('swimmer'));
         } else {
             return redirect('/swim-team');
@@ -137,7 +136,7 @@ class STSwimmerController extends Controller
 
         $swimmer = STSwimmer::with('level')->find($request->swimmerId);
 
-        try{
+        try {
             \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
             $charge = \Stripe\Charge::create(array(
                 "amount" => $swimmer->promoAppliedPrice() * 100,
@@ -146,21 +145,21 @@ class STSwimmerController extends Controller
                 "description" => "North River Swim Team ".$swimmer->level->name." Level for ".$swimmer->firstName." ".$swimmer->lastName." through The Swim School.",
                 "source" => "$request->stripeToken" //Obtained with Stripe.js
             ));
-        } catch(Card $e){
+        } catch (Card $e) {
             $body = $e->getJsonBody();
             $err  = $body['error'];
             Log::error($err['message']);
             $request->session()->flash('error', $err['message']);
             return view('swim-team.checkOut', compact('swimmer'));
-        } catch (InvalidRequest $e){
+        } catch (InvalidRequest $e) {
             Log::error('Invalid parameters were supplied to Stripes API');
             $request->session()->flash('error', 'Oops, something went wrong with the payment.');
             return view('swim-team.checkOut', compact('swimmer'));
-        } catch (Authentication $e){
+        } catch (Authentication $e) {
             Log::error('Authentication with Stripes API failed (maybe you changed API keys recently)');
             $request->session()->flash('error', 'Oops, something went wrong with the payment.');
             return view('swim-team.checkOut', compact('swimmer'));
-        }  catch (Base $e) {
+        } catch (Base $e) {
             Log::error('Generic error occurred');
             $request->session()->flash('error', 'Oops, something went wrong with the payment.');
             return view('swim-team.checkOut', compact('swimmer'));
@@ -196,7 +195,6 @@ class STSwimmerController extends Controller
         try {
             Log::info("Sending swim team sign up email to $swimmer->email for STSwimmer ID: $swimmer->id.");
             Mail::to($swimmer->email)->send(new STSignUp($swimmer));
-
         } catch (\Exception $e) {
             Log::error("Swim Team sign up Email Error: ".$e);
         }
@@ -209,7 +207,7 @@ class STSwimmerController extends Controller
     {
         $seasons = STSeason::orderBy('created_at', 'desc')->get();
         $levels = STLevel::with(['swimmers' => function ($query) {
-            return $query->with('season')->orderBy('lastName','ASC');
+            return $query->with('season')->orderBy('lastName', 'ASC');
         }])->get();
         return view('swim-team.roster', compact('seasons', 'levels'));
     }

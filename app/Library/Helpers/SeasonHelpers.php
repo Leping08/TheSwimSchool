@@ -38,16 +38,13 @@ class SeasonHelpers
     public static function getSeasonString(int $currentMonth)
     {
         //retrieve season
-        if ($currentMonth>=3 && $currentMonth<=5){
+        if ($currentMonth>=3 && $currentMonth<=5) {
             return "Spring";
-        }
-        elseif ($currentMonth>=6 && $currentMonth<=8){
+        } elseif ($currentMonth>=6 && $currentMonth<=8) {
             return "Summer";
-        }
-        elseif ($currentMonth>=9 && $currentMonth<=11){
+        } elseif ($currentMonth>=9 && $currentMonth<=11) {
             return "Fall";
-        }
-        else{
+        } else {
             return "Winter";
         }
     }

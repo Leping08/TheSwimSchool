@@ -46,13 +46,13 @@ class DashboardController extends Controller
             ->responsive(true)
             ->lastByDay(28, true);
 
-        $days = collect(Swimmer::where('paid', '=', '1')->get()->groupBy(function($date) {
+        $days = collect(Swimmer::where('paid', '=', '1')->get()->groupBy(function ($date) {
             return Carbon::parse($date->created_at)->format('l');
         }));
 
         $count = collect();
 
-        foreach($days as $day){
+        foreach ($days as $day) {
             $count->push($day->count());
         }
 
@@ -68,7 +68,6 @@ class DashboardController extends Controller
             'swimmerRegistrations' => $swimmerRegistrations,
             'swimmerRegistrationDays' => $swimmerRegistrationDays
         ]);
-
     }
 
     /**

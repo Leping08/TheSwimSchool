@@ -28,7 +28,7 @@ class EmailListController extends Controller
             'email' => 'required|email'
         ]);
 
-        if(NewsLetter::subscribe($request->email)){
+        if (NewsLetter::subscribe($request->email)) {
             session()->flash('success', 'Thanks for signing up for our news newsletter');
             return back();
         } else {
