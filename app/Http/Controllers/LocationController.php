@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Location;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -55,7 +55,7 @@ class LocationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Location  $location
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
     public function show(Location $location)
@@ -67,7 +67,7 @@ class LocationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Location  $location
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
     public function edit(Location $location)
@@ -80,7 +80,7 @@ class LocationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Location  $location
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Location $location)

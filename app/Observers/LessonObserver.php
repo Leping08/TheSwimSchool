@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Lesson;
+use App\Models\Lesson;
 use Illuminate\Support\Facades\Log;
 
 class LessonObserver
@@ -10,7 +10,7 @@ class LessonObserver
     /**
      * Handle the lesson "created" event.
      *
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Models\Lesson  $lesson
      * @return void
      */
     public function created(Lesson $lesson)
@@ -24,7 +24,7 @@ class LessonObserver
     /**
      * Handle the lesson "updated" event.
      *
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Models\Lesson  $lesson
      * @return void
      */
     public function updated(Lesson $lesson)
@@ -35,7 +35,7 @@ class LessonObserver
     /**
      * Handle the lesson "deleted" event.
      *
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Models\Lesson  $lesson
      * @return void
      */
     public function deleted(Lesson $lesson)
@@ -46,7 +46,7 @@ class LessonObserver
     /**
      * Handle the lesson "restored" event.
      *
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Models\Lesson  $lesson
      * @return void
      */
     public function restored(Lesson $lesson)
@@ -57,7 +57,7 @@ class LessonObserver
     /**
      * Handle the lesson "force deleted" event.
      *
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Models\Lesson  $lesson
      * @return void
      */
     public function forceDeleted(Lesson $lesson)

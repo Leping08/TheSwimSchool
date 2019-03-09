@@ -14,11 +14,11 @@ class ReviewsTest extends TestCase
     /** @test  **/
     public function a_user_should_see_active_reviews_on_the_home_page()
     {
-        $firstReview = factory(\App\Review::class)->create([
+        $firstReview = factory(\App\Models\Review::class)->create([
             'created_time' => '2016-05-12T16:23:21+0000'
         ]);
 
-        $secondReview = factory(\App\Review::class)->create([
+        $secondReview = factory(\App\Models\Review::class)->create([
             'created_time' => '2016-05-13T16:23:21+0000'
         ]);
 
@@ -31,7 +31,7 @@ class ReviewsTest extends TestCase
     /** @test  **/
     public function a_user_should_not_see_disabled_reviews_on_the_home_page()
     {
-        $review = factory(\App\Review::class)->create([
+        $review = factory(\App\Models\Review::class)->create([
             'created_time' => '2016-05-14T14:23:21+0000',
             'active' => true
         ]);

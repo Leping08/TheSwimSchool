@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Observers\LessonObserver;
 use Carbon\Carbon;
@@ -26,9 +26,9 @@ use Laravel\Nova\Actions\Actionable;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
- * @property-read \App\Group $group
- * @property-read \App\Location $location
- * @property-read \App\Season $season
+ * @property-read \App\Models\Group $group
+ * @property-read \App\Models\Location $location
+ * @property-read \App\Models\Season $season
  */
 
 class Lesson extends Model

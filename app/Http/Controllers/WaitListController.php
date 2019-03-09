@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Lesson;
+use App\Models\Lesson;
 use App\Mail\WaitListAdmin;
-use App\WaitList;
+use App\Models\WaitList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;

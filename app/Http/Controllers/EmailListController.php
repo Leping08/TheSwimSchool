@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Library\NewsLetter\NewsLetter;
 use Illuminate\Http\Request;
-use App\EmailList;
+use App\Models\EmailList;
 use Illuminate\Support\Facades\Log;
 
 class EmailListController extends Controller

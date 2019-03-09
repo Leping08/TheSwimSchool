@@ -33,13 +33,13 @@ class PrivateLessonRequestTest extends TestCase
         $this->get("/private-semi-private")
             ->assertStatus(200);
 
-        $this->assertEquals(0, \App\PrivateLessonLead::all()->count());
+        $this->assertEquals(0, \App\Models\PrivateLessonLead::all()->count());
 
         $response = $this->json('POST', "/private-semi-private", $attributes);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1, \App\PrivateLessonLead::all()->count());
+        $this->assertEquals(1, \App\Models\PrivateLessonLead::all()->count());
 
         $this->assertDatabaseHas('private_lesson_leads', [
             "swimmer_name" => $attributes['swimmer_name'],

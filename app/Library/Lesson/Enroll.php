@@ -2,12 +2,12 @@
 
 namespace App\Library\Lesson;
 
-use App\Lesson;
+use App\Models\Lesson;
 use App\Library\NewsLetter\NewsLetter;
 use App\Library\StripeCharge;
 use App\Mail\ClassFull;
 use App\Mail\SignUp;
-use App\Swimmer;
+use App\Models\Swimmer;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;

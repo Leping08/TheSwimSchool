@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Location;
+use App\Models\Location;
 use Carbon\Carbon;
-use App\PrivateLessonLead;
+use App\Models\PrivateLessonLead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Mail\PrivateLessonLeadEmail;

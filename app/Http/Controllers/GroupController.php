@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
-use App\Lesson;
+use App\Models\Group;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -55,7 +55,7 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
     public function show(Group $group)
@@ -67,7 +67,7 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
     public function edit(Group $group)
@@ -80,7 +80,7 @@ class GroupController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Group  $group
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Group $group)

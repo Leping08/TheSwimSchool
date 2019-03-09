@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\EmailList;
+use App\Models\EmailList;
 use App\Http\Requests\LessonSignUp;
 use App\Library\Lesson\Enroll;
 use App\Library\StripeCharge;
 use App\Mail\ClassFull;
 use App\Mail\SignUp;
-use App\Swimmer;
-use App\Lesson;
+use App\Models\Swimmer;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
@@ -52,7 +52,7 @@ class SwimmerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Swimmer  $id
+     * @param  \App\Models\Swimmer  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,7 +64,7 @@ class SwimmerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Swimmer  $swimmer
+     * @param  \App\Models\Swimmer  $swimmer
      * @return \Illuminate\Http\Response
      */
     public function edit(Swimmer $swimmer, $id)
@@ -77,7 +77,7 @@ class SwimmerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Swimmer  $id
+     * @param  \App\Models\Swimmer  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)

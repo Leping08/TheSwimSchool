@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
+use App\Models\Group;
 use App\Library\Helpers\SeasonHelpers;
-use App\Location;
+use App\Models\Location;
 use Carbon\Carbon;
-use App\Lesson;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Mail\LessonLink;
@@ -43,7 +43,7 @@ class LessonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Models\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
     public function edit(Lesson $lesson)
@@ -59,7 +59,7 @@ class LessonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Models\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Lesson $lesson)

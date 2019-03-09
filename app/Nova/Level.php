@@ -20,7 +20,7 @@ class Level extends Resource
      *
      * @var string
      */
-    public static $model = \App\Group::class;
+    public static $model = \App\Models\Group::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

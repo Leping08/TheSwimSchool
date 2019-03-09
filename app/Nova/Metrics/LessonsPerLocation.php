@@ -2,8 +2,8 @@
 
 namespace App\Nova\Metrics;
 
-use App\Lesson;
-use App\Location;
+use App\Models\Lesson;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Metrics\Partition;

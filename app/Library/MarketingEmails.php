@@ -3,7 +3,7 @@
 
 namespace App\Library;
 
-use App\EmailList;
+use App\Models\EmailList;
 use App\Mail\GoldDaisyAward;
 use App\Mail\HappyHolidays;
 use App\Mail\RegistrationOpen;

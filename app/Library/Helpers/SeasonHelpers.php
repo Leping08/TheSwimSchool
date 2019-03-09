@@ -3,7 +3,7 @@
 namespace App\Library\Helpers;
 
 use Carbon\Carbon;
-use App\Season;
+use App\Models\Season;
 
 class SeasonHelpers
 {

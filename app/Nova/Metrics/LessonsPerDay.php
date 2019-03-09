@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\DaysOfTheWeek;
+use App\Models\DaysOfTheWeek;
 use App\Nova\Helpers\NovaHelpers;
 use Illuminate\Http\Request;
 use Laravel\Nova\Metrics\Partition;

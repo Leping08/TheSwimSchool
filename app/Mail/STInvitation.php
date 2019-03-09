@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
-use App\Athlete;
-use App\PromoCode;
+use App\Models\Athlete;
+use App\Models\PromoCode;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

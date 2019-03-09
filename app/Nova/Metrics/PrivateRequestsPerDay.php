@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\PrivateLessonLead;
+use App\Models\PrivateLessonLead;
 use Illuminate\Http\Request;
 use Laravel\Nova\Metrics\Trend;
 
