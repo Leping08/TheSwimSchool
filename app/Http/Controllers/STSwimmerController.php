@@ -138,13 +138,13 @@ class STSwimmerController extends Controller
 
         try {
             \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-            $charge = \Stripe\Charge::create(array(
+            $charge = \Stripe\Charge::create([
                 "amount" => $swimmer->promoAppliedPrice() * 100,
                 "currency" => "usd",
                 "receipt_email" => "$request->cardholderEmail",
                 "description" => "North River Swim Team ".$swimmer->level->name." Level for ".$swimmer->firstName." ".$swimmer->lastName." through The Swim School.",
                 "source" => "$request->stripeToken" //Obtained with Stripe.js
-            ));
+            ]);
         } catch (Card $e) {
             $body = $e->getJsonBody();
             $err  = $body['error'];
