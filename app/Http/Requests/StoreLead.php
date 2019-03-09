@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Contact;
+use App\Models\Contact;
 use App\Mail\ContactUs;
 use App\Rules\Recaptcha;
 use Illuminate\Foundation\Http\FormRequest;

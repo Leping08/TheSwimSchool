@@ -17,6 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/lesson-link/{lesson}', function (\App\Lesson $lesson) {
+Route::get('/lesson-link/{lesson}', function (\App\Models\Lesson $lesson) {
     return $lesson->path();
 });

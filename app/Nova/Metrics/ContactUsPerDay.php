@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\Contact;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Laravel\Nova\Metrics\Trend;
 

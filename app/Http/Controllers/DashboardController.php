@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Library\Helpers\SeasonHelpers;
-use App\Swimmer;
-use App\Lesson;
-use App\Season;
-use App\Location;
-use App\Group;
-use App\Contact;
-use App\DaysOfTheWeek;
+use App\Models\Swimmer;
+use App\Models\Lesson;
+use App\Models\Season;
+use App\Models\Location;
+use App\Models\Group;
+use App\Models\Contact;
+use App\Models\DaysOfTheWeek;
 use Carbon\Carbon;
-use App\PrivateLessonLead;
-use App\Tryout;
+use App\Models\PrivateLessonLead;
+use App\Models\Tryout;
 use Charts;
 
 class DashboardController extends Controller

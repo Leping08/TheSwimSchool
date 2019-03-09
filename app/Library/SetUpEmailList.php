@@ -3,11 +3,11 @@
 namespace App\Library;
 
 use App\Mail\TryoutReminder;
-use App\Swimmer;
-use App\STSwimmer;
-use App\EmailList;
+use App\Models\Swimmer;
+use App\Models\STSwimmer;
+use App\Models\EmailList;
 use Illuminate\Support\Collection;
-use App\Tryout;
+use App\Models\Tryout;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;

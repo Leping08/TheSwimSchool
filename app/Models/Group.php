@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -51,7 +51,7 @@ class Group extends Model
      */
     public function Swimmers()
     {
-        return $this->hasManyThrough(\App\Swimmer::class, \App\Lesson::class);
+        return $this->hasManyThrough(\App\Models\Swimmer::class, \App\Models\Lesson::class);
     }
 
     /**

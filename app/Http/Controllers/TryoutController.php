@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Library\Helpers\SeasonHelpers;
-use App\STSeason;
+use App\Models\STSeason;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Tryout;
-use App\Location;
+use App\Models\Tryout;
+use App\Models\Location;
 use Illuminate\Support\Facades\Log;
 
 class TryoutController extends Controller

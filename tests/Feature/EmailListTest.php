@@ -17,14 +17,14 @@ class EmailList extends TestCase
     public function a_user_should_be_able_to_unsubscribe_by_hitting_the_unsubscribe_page()
     {
         //Set up an email
-        $email = factory(\App\EmailList::class)->create([
+        $email = factory(\App\Models\EmailList::class)->create([
             'subscribe' => true
         ]);
 
         //Make sure the email is subscribed
         $this->assertEquals(1, $email->subscribe);
-        $this->assertEquals(1, \App\EmailList::subscribed()->count());
-        $this->assertEquals(0, \App\EmailList::unsubscribed()->count());
+        $this->assertEquals(1, \App\Models\EmailList::subscribed()->count());
+        $this->assertEquals(0, \App\Models\EmailList::unsubscribed()->count());
 
         //Get the route to unsubscribe
         $this->get("/unsubscribe/$email->email")
@@ -33,28 +33,28 @@ class EmailList extends TestCase
         $email = $email->fresh();
         //Make sure the email is unsubscribed
         $this->assertEquals(0, $email->subscribe);
-        $this->assertEquals(0, \App\EmailList::subscribed()->count());
-        $this->assertEquals(1, \App\EmailList::unsubscribed()->count());
+        $this->assertEquals(0, \App\Models\EmailList::subscribed()->count());
+        $this->assertEquals(1, \App\Models\EmailList::unsubscribed()->count());
     }
 
     /** @test */
     public function a_user_should_be_able_to_subscribe_by_filling_out_the_sing_up_for_the_news_letter_form()
     {
-        $this->assertEquals(0, \App\EmailList::all()->count());
+        $this->assertEquals(0, \App\Models\EmailList::all()->count());
 
         //Valid Email
         $response = $this->json('POST', '/newsletter', [
             'email' => $this->faker->email
         ]);
         $response->assertStatus(302);
-        $this->assertEquals(1, \App\EmailList::all()->count());
-        $this->assertEquals(1, \App\EmailList::subscribed()->count());
+        $this->assertEquals(1, \App\Models\EmailList::all()->count());
+        $this->assertEquals(1, \App\Models\EmailList::subscribed()->count());
 
         //Invalid email
         $response = $this->json('POST', '/newsletter', [
             'email' => $this->faker->sentence
         ]);
         $response->assertStatus(422);
-        $this->assertEquals(1, \App\EmailList::all()->count());
+        $this->assertEquals(1, \App\Models\EmailList::all()->count());
     }
 }

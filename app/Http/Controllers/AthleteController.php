@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Mail\STInvitation;
-use App\PromoCode;
-use App\STLevel;
-use App\STSeason;
+use App\Models\PromoCode;
+use App\Models\STLevel;
+use App\Models\STSeason;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Tryout;
-use App\Athlete;
+use App\Models\Tryout;
+use App\Models\Athlete;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 

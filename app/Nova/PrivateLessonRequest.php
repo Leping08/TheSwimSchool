@@ -21,7 +21,7 @@ class PrivateLessonRequest extends Resource
      *
      * @var string
      */
-    public static $model = \App\PrivateLessonLead::class;
+    public static $model = \App\Models\PrivateLessonLead::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

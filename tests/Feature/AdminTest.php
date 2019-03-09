@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Lesson;
+use App\Models\Lesson;
 
 class Admin extends TestCase
 {
@@ -14,7 +14,7 @@ class Admin extends TestCase
     /** @test */
     public function a_admin_can_view_the_dashboard()
     {
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $this->actingAs($user)
             ->get('/dashboard')
             ->assertSee('Dashboard');
@@ -30,9 +30,9 @@ class Admin extends TestCase
     /** @test */
     public function a_admin_can_see_swimmers_in_a_lesson()
     {
-        $swimmer = factory(\App\Swimmer::class)->create();
+        $swimmer = factory(\App\Models\Swimmer::class)->create();
         $lesson = Lesson::first();
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
 
         $this->actingAs($user)
             ->get("/lesson/$lesson->id")
@@ -43,7 +43,7 @@ class Admin extends TestCase
     /** @test */
     public function a_non_admin_can_not_see_swimmers_in_a_lesson()
     {
-        $swimmer = factory(\App\Swimmer::class)->create();
+        $swimmer = factory(\App\Models\Swimmer::class)->create();
         $lesson = Lesson::first();
 
         $this->get("/lesson/$lesson->id")

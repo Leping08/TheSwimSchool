@@ -1,25 +1,26 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * An Eloquent Model: 'WaitList'
+ * An Eloquent Model: 'Location'
  *
  * @property integer $id
  * @property string $name
- * @property string $email
- * @property string $phone
- * @property boolean $followed_up
+ * @property string $street
+ * @property string $state
+ * @property string $city
+ * @property string $zip
+ * @property string $pool_access_instructions
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
- * @property-read \App\Lesson $lesson
  */
 
-class WaitList extends Model
+class Location extends Model
 {
     use SoftDeletes;
 
@@ -31,19 +32,13 @@ class WaitList extends Model
     /**
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'phone',
-        'lesson_id',
-        'followed_up'
-    ];
+    protected $fillable = ['name', 'street', 'city', 'state', 'zip'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function Lesson()
+    public function Lessons()
     {
-        return $this->belongsTo(Lesson::class);
+        return $this->hasMany(Lesson::class);
     }
 }

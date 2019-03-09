@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Mail\STSignUp;
-use App\PromoCode;
-use App\STLevel;
-use App\STSeason;
-use App\STSwimmer;
+use App\Models\PromoCode;
+use App\Models\STLevel;
+use App\Models\STSeason;
+use App\Models\STSwimmer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -216,7 +216,7 @@ class STSwimmerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\STSwimmer  $sTSwimmer
+     * @param  \App\Models\STSwimmer  $sTSwimmer
      * @return \Illuminate\Http\Response
      */
     public function show(STSwimmer $sTSwimmer)
@@ -227,7 +227,7 @@ class STSwimmerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\STSwimmer  $sTSwimmer
+     * @param  \App\Models\STSwimmer  $sTSwimmer
      * @return \Illuminate\Http\Response
      */
     public function edit(STSwimmer $sTSwimmer)
@@ -239,7 +239,7 @@ class STSwimmerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\STSwimmer  $sTSwimmer
+     * @param  \App\Models\STSwimmer  $sTSwimmer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, STSwimmer $sTSwimmer)
@@ -250,7 +250,7 @@ class STSwimmerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\STSwimmer  $sTSwimmer
+     * @param  \App\Models\STSwimmer  $sTSwimmer
      * @return \Illuminate\Http\Response
      */
     public function destroy(STSwimmer $sTSwimmer)

@@ -18,7 +18,7 @@ class Tryout extends Resource
      *
      * @var string
      */
-    public static $model = \App\Tryout::class;
+    public static $model = \App\Models\Tryout::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
