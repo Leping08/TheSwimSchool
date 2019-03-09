@@ -2,13 +2,13 @@
 
 namespace App;
 
-use Carbon\Carbon;
+use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class STSwimmer extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Ages;
 
     /**
      * @var array
@@ -56,22 +56,6 @@ class STSwimmer extends Model
     }
 
     /**
-     * @return mixed
-     */
-    public function yearsOld()
-    {
-        return $this->getAttribute('birthDate')->diffInYears(Carbon::now());
-    }
-
-    /**
-     * @return mixed
-     */
-    public function monthsOld()
-    {
-        return $this->getAttribute('birthDate')->diffInMonths(Carbon::now());
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function promoCode()
@@ -101,13 +85,4 @@ class STSwimmer extends Model
         return $this->belongsTo(STLevel::class, 's_t_level_id')
                     ->where('stripeChargeId', '!=', null);
     }
-
-//    /**
-//     * @param $query
-//     * @return mixed
-//     */
-//    public function scopeCurrentSeason($query)
-//    {
-//        return $query->where('s_t_season_id', STSeason::GetCurrentSeason()->id);
-//    }
 }

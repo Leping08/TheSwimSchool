@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $name
  * @property string $email
  * @property string $phone
+ * @property \Illuminate\Support\Carbon date_of_birth
  * @property boolean $followed_up
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -21,12 +23,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WaitList extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Ages;
 
     /**
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'date_of_birth'];
 
     /**
      * @var array
@@ -36,7 +38,8 @@ class WaitList extends Model
         'email',
         'phone',
         'lesson_id',
-        'followed_up'
+        'followed_up',
+        'date_of_birth'
     ];
 
     /**

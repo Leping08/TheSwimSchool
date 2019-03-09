@@ -2,9 +2,9 @@
 
 namespace App;
 
+use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 
 /**
  * An Eloquent Model: 'Swimmer'
@@ -35,7 +35,7 @@ use Carbon\Carbon;
 
 class Swimmer extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Ages;
 
     /**
      * @var array
@@ -71,21 +71,5 @@ class Swimmer extends Model
     public function Lesson()
     {
         return $this->belongsTo(Lesson::class);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function yearsOld()
-    {
-        return $this->birthDate->diffInYears(Carbon::now());
-    }
-
-    /**
-     * @return mixed
-     */
-    public function monthsOld()
-    {
-        return $this->birthDate->diffInMonths(Carbon::now());
     }
 }
