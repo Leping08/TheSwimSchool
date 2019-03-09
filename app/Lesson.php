@@ -182,7 +182,7 @@ class Lesson extends Model
     public function scopeRegistrationOpen($query)
     {
         return $query
-            ->whereDate('class_start_date', '>', Carbon::yesterday())
+            ->whereDate('class_start_date', '>', Carbon::now())
             ->whereDate('registration_open', '<=', Carbon::now())->get();
     }
 

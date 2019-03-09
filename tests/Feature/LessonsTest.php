@@ -178,6 +178,16 @@ class Lessons extends TestCase
     }
 
     /** @test  **/
+    public function a_user_can_not_see_a_lesson_that_starts_today()
+    {
+        $lesson = factory('App\Lesson')->create([
+            'class_start_date' => Carbon::now()
+        ]);
+
+        $this->assertFalse(\App\Lesson::registrationOpen()->contains($lesson));
+    }
+
+    /** @test  **/
     public function a_swimmer_can_sign_up_by_hitting_the_lesson_sign_up_route()
     {
         $lesson = factory('App\Lesson')->create();
