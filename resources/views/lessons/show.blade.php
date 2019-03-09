@@ -9,7 +9,7 @@
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div class="uk-card uk-card-default uk-width-1-1@s">
-                @if(count($lesson))
+                @if($lesson)
                     <div class="uk-card-body">
                         <h4>Lesson Info</h4>
                         <dl class="uk-description-list-horizontal">
