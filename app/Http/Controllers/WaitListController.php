@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Lesson;
 use App\Mail\WaitListAdmin;
 use App\WaitList;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -22,7 +23,8 @@ class WaitListController extends Controller
         $waitingSwimmer = $request->validate([
             'name' => 'required|string|max:191',
             'email' => 'required|string|max:191',
-            'phone' => 'required|max:20'
+            'phone' => 'required|max:20',
+            'date_of_birth' => 'required'
         ]);
 
         try{
@@ -33,6 +35,8 @@ class WaitListController extends Controller
             session()->flash("warning", "Something has gone wrong.");
             return back();
         }
+
+        $waitingSwimmer['date_of_birth'] = Carbon::parse($waitingSwimmer['date_of_birth'])->format('Y-m-d');
 
         $newWaitingSwimmer = WaitList::create($waitingSwimmer);
 

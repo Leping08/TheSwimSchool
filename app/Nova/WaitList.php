@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
@@ -48,7 +49,13 @@ class WaitList extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name', 'name'),
+            Text::make('Swimmer Name', 'name'),
+            Date::make('Date of Birth', 'date_of_birth')->hideFromIndex(),
+            Text::make('Age', function () {
+                return view('partials.age', [
+                    'birthDate' => $this->date_of_birth
+                ])->render();
+            })->hideFromIndex(),
             Text::make('Email', 'email')->onlyOnForms(),
             Text::make('Email', function () {
                 return view('partials.link', [

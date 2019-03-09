@@ -98,9 +98,15 @@ Lessons
                                     <p>Be the first to know if any spots open up for this class.</p>
                                     <div class="uk-grid-small" uk-grid>
                                         <div class="uk-width-1-1@s">
-                                            <label class="uk-form-label uk-heading-bullet" for="name">Name</label>
+                                            <label class="uk-form-label uk-heading-bullet" for="name">Swimmer Name</label>
                                             <div class="uk-form-controls">
                                                 <input type="text" class="uk-input" id="name" name="name" placeholder="Full Name" value="{{ old('name') }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-1@s">
+                                            <label class="uk-form-label uk-heading-bullet" for="date_of_birth">Swimmer Birth Date</label>
+                                            <div class="uk-form-controls">
+                                                <input type="date" class="uk-input" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" required>
                                             </div>
                                         </div>
                                         <div class="uk-width-1-1@s">
