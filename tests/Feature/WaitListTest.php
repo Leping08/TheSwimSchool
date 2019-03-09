@@ -35,7 +35,8 @@ class WaitListTest extends TestCase
         $attributes = [
             'name' => $this->faker->name,
             'email' => $this->faker->email,
-            'phone' => $this->faker->phoneNumber
+            'phone' => $this->faker->phoneNumber,
+            'date_of_birth' => $this->faker->date()
         ];
 
         $response = $this->json('POST', "/wait-list/{$lesson->id}", $attributes);
@@ -47,7 +48,8 @@ class WaitListTest extends TestCase
         $this->assertDatabaseHas('wait_lists', [
             "name" => $attributes['name'],
             "email" => $attributes['email'],
-            "phone" => $attributes['phone']
+            "phone" => $attributes['phone'],
+            "date_of_birth" => $attributes['date_of_birth']
         ]);
 
         Mail::assertSent(WaitListAdmin::class);
