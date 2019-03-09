@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\EmailList;
 use App\Http\Requests\LessonSignUp;
 use App\Library\Lesson\Enroll;
@@ -104,7 +103,7 @@ class SwimmerController extends Controller
 
         try {
             $newLesson = Lesson::findOrFail($request->lessonId);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             session()->flash('error', "We couldn't find that lesson.");
             Log::info("Trying to update swimmer ID: $id but could not find Lesson ID: $request->lessonId.");
             return back();
@@ -112,7 +111,7 @@ class SwimmerController extends Controller
 
         try {
             $oldSwimmer = Swimmer::findOrFail($id);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             session()->flash('error', "We couldn't find that swimmer.");
             Log::info("Trying to update Swimmer but could not find Swimmer ID: $id.");
             return back();
@@ -120,7 +119,7 @@ class SwimmerController extends Controller
 
         try {
             $oldLesson = Lesson::findOrFail($oldSwimmer->lesson->id);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             session()->flash('error', "The Swimmer ID: $oldSwimmer->id is not associated with a lesson so we couldn't update the Lesson ID.");
             Log::info("The Swimmer ID: $oldSwimmer->id is not associated with a lesson so we couldn't update the Lesson ID.");
             return back();
@@ -128,7 +127,7 @@ class SwimmerController extends Controller
 
 
         //Move swimmer to the new lesson
-        if($oldSwimmer->lesson_id != $request->lessonId){
+        if ($oldSwimmer->lesson_id != $request->lessonId) {
             $oldSwimmer->lesson_id = $request->lessonId;
             Log::info("Swimmer ID: $oldSwimmer->id was moved from Lesson ID $oldLesson->id to Lesson ID $newLesson->id.");
         }

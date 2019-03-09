@@ -69,9 +69,9 @@ class LessonController extends Controller
         $lesson->DaysOfTheWeek()->detach();
         $this->attachDaysOfTheWeeks($request, $lesson);
         Log::info($lesson->group->type." lesson was updated. Lesson ID: $lesson->id.");
-        if($lesson->hasSwimmers()){
+        if ($lesson->hasSwimmers()) {
             session()->flash('success', $lesson->group->type.' lesson was updated. Make sure to notify all swimmers in the lesson of the changes.');
-        }else{
+        } else {
             session()->flash('success', $lesson->group->type.' lesson was updated.');
         }
         return redirect('/lesson/'.$lesson->id);
@@ -86,13 +86,13 @@ class LessonController extends Controller
     public function destroy(Lesson $lesson)
     {
         //TODO: Nova dashboard should remove this
-        if(!$lesson->hasSwimmers()){
+        if (!$lesson->hasSwimmers()) {
             Log::info("Lesson ID: $lesson->id was deleted.");
             session()->flash('success', "The lesson was deleted.");
             $lesson->DaysOfTheWeek()->detach();
             $lesson->delete();
             return redirect('/dashboard');
-        }else{
+        } else {
             Log::info("$lesson->id can not be deleted. It has swimmers in it.");
             session()->flash('warning', "This lesson can not be deleted. It has swimmers in it.");
             return back();
@@ -113,7 +113,7 @@ class LessonController extends Controller
 
         $lesson = Lesson::with('group')->find($id);
 
-        if($lesson->isFull()){
+        if ($lesson->isFull()) {
             session()->flash('error', "This lesson is full. Add more open spots or make a new lesson.");
             return back();
         }
@@ -160,25 +160,25 @@ class LessonController extends Controller
     private function attachDaysOfTheWeeks(Request $request, Lesson $lesson)
     {
         //TODO: Nova dashboard should remove this
-        if($request['monday']){
+        if ($request['monday']) {
             $lesson->DaysOfTheWeek()->attach(1);
         }
-        if($request['tuesday']){
+        if ($request['tuesday']) {
             $lesson->DaysOfTheWeek()->attach(2);
         }
-        if($request['wednesday']){
+        if ($request['wednesday']) {
             $lesson->DaysOfTheWeek()->attach(3);
         }
-        if($request['thursday']){
+        if ($request['thursday']) {
             $lesson->DaysOfTheWeek()->attach(4);
         }
-        if($request['friday']){
+        if ($request['friday']) {
             $lesson->DaysOfTheWeek()->attach(5);
         }
-        if($request['saturday']){
+        if ($request['saturday']) {
             $lesson->DaysOfTheWeek()->attach(6);
         }
-        if($request['sunday']){
+        if ($request['sunday']) {
             $lesson->DaysOfTheWeek()->attach(7);
         }
     }

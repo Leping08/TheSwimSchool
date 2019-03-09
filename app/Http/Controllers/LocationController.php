@@ -111,12 +111,12 @@ class LocationController extends Controller
     {
         //TODO: Nova dashboard should remove this
         $lessons = $location->Lessons()->get();
-        if($lessons->isEmpty()){
+        if ($lessons->isEmpty()) {
             $location->delete();
             Log::info("$location->name was deleted. Location ID: $location->id");
             session()->flash('success', "$location->name was deleted.");
             return redirect('/dashboard');
-        }else{
+        } else {
             Log::info("$location->name can not be deleted. It has lessons associated with it. Location ID: $location->id");
             session()->flash('warning', "$location->name can not be deleted. It has lessons associated with it.");
             return back();

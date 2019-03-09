@@ -18,7 +18,7 @@ class LessonStatus extends Filter
      */
     public function apply(Request $request, $query, $value)
     {
-        if($value === 'open-signups'){
+        if ($value === 'open-signups') {
             return $query->whereDate('class_start_date', '>', Carbon::yesterday())
                          ->whereDate('registration_open', '<=', Carbon::now());
         }

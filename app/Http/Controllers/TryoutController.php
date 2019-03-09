@@ -109,11 +109,11 @@ class TryoutController extends Controller
     public function destroy($id)
     {
         $tryout = Tryout::with('location', 'athletes')->find($id);
-        if($tryout->athletes->count() > 0){
+        if ($tryout->athletes->count() > 0) {
             Log::info("Tryout ID: $tryout->id can not be deleted. It has athletes associated with it.");
             session()->flash('warning', "Tryout ID: $tryout->id can not be deleted. It has athletes associated with it.");
             return back();
-        }else{
+        } else {
             $tryout->delete();
             Log::info("Tryout ID: $tryout->id was deleted.");
             session()->flash('success', "Tryout ID: $tryout->id was deleted.");

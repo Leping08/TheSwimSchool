@@ -31,7 +31,7 @@ class Enroll
     public function handle()
     {
         //Validation happens on the controller
-        if($this->isFull()){
+        if ($this->isFull()) {
             return back();
         }
         $lesson = $this->getLesson();
@@ -46,7 +46,7 @@ class Enroll
 
     public function isFull()
     {
-        if($this->getLesson()->isFull()){
+        if ($this->getLesson()->isFull()) {
             session()->flash('danger', 'Sorry the lesson is full.');
             Log::warning("Someone tried to sign up for a lesson that is full.");
             return true;
@@ -79,7 +79,7 @@ class Enroll
 
     public function subscribeToNewsLetter()
     {
-        if(request()->emailUpdates == "on"){
+        if (request()->emailUpdates == "on") {
             NewsLetter::subscribe(request()->email);
         }
     }
@@ -107,10 +107,11 @@ class Enroll
     }
 
 
-    public function sendClassFullEmail(Lesson $lesson) {
-        if($lesson->isFull()){
+    public function sendClassFullEmail(Lesson $lesson)
+    {
+        if ($lesson->isFull()) {
             try {
-                foreach(config('mail.leadDestEmails') as $email){
+                foreach (config('mail.leadDestEmails') as $email) {
                     Log::info("Sending lesson full email to {$email}. Lesson ID: {$lesson->id}");
                     Mail::to($email)->send(new ClassFull($lesson));
                 }

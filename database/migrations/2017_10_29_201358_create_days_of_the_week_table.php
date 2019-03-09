@@ -19,7 +19,7 @@ class CreateDaysOfTheWeekTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('days_of_the_week_lesson', function (Blueprint $table){
+        Schema::create('days_of_the_week_lesson', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('lesson_id');
             $table->integer('days_of_the_week_id');

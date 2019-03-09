@@ -42,7 +42,7 @@ class WaitListTest extends TestCase
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  $lesson->waitlist()->count());
+        $this->assertEquals(1, $lesson->waitlist()->count());
 
         $this->assertDatabaseHas('wait_lists', [
             "name" => $attributes['name'],

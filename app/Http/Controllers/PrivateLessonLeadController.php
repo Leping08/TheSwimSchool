@@ -42,13 +42,13 @@ class PrivateLessonLeadController extends Controller
 
         //Check if the hr_resident exists and if it does and its on then make it a true value
         //Else just make it false
-        if($request->has('hr_resident')){
-            if($request->get('hr_resident') === 'on'){
+        if ($request->has('hr_resident')) {
+            if ($request->get('hr_resident') === 'on') {
                 $leadRequest['hr_resident'] = true;
             }
         }
 
-        if($request->has('address')){
+        if ($request->has('address')) {
             $leadRequest['address'] = $request->get('address');
         }
 
@@ -70,7 +70,7 @@ class PrivateLessonLeadController extends Controller
     {
         $adminEmails = config('mail.leadDestEmails');
         try {
-            foreach($adminEmails as $email){
+            foreach ($adminEmails as $email) {
                 Log::info("Sending private lesson request email to $email. Private Lesson Request ID: $privateLessonLead->id");
                 Mail::to($email)->send(new PrivateLessonLeadEmail($privateLessonLead));
             }

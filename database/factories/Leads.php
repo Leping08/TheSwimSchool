@@ -7,7 +7,7 @@ $factory->define(App\Contact::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->email,
         'phone' => $faker->phoneNumber,
-        'contact_type_id' => $faker->numberBetween(1,4),
+        'contact_type_id' => $faker->numberBetween(1, 4),
         'message' => $faker->paragraph(),
     ];
 });

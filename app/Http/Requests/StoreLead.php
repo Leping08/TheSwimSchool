@@ -79,8 +79,8 @@ class StoreLead extends FormRequest
             'private-semi-private' => 4
         ];
 
-        foreach ($leadTypeIds as $key => $value){
-            if(request()->path() === $key){
+        foreach ($leadTypeIds as $key => $value) {
+            if (request()->path() === $key) {
                 $validated['contact_type_id'] = $value;
             }
         }
@@ -93,7 +93,7 @@ class StoreLead extends FormRequest
      */
     private function emailAdmin(Contact $contact)
     {
-        foreach(config('mail.leadDestEmails') as $email){
+        foreach (config('mail.leadDestEmails') as $email) {
             Mail::to($email)->send(new ContactUs($contact, $contact->type->name));
             Log::info($contact->type->name . " Email sent to: $email.");
         }

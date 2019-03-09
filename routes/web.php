@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/', 'HomeController@index');
 
 
-Route::get('/lessons/schedule', function (){
+Route::get('/lessons/schedule', function () {
     return view('groups.schedule');
 });
 
@@ -178,39 +178,39 @@ Route::post('/newsletter', 'EmailListController@store');
  * Static Pages
  */
 
-Route::get('/services', function(){
+Route::get('/services', function () {
     return view('pages.services');
 });
 
-Route::get('/swim-team', function(){
+Route::get('/swim-team', function () {
     return view('swim-team.swim-team');
 });
 
-Route::get('/about', function(){
+Route::get('/about', function () {
     return view('pages.about');
 });
 
-Route::get('/contact-us', function(){
+Route::get('/contact-us', function () {
     return view('pages.contact-us');
 });
 
-Route::get('/other-services', function (){
+Route::get('/other-services', function () {
     return view('pages.other-services');
 });
 
-Route::get('/lifeguarding', function (){
+Route::get('/lifeguarding', function () {
     return view('pages.lifeguarding');
 });
 
-Route::get('/cpr-first-aid', function(){
+Route::get('/cpr-first-aid', function () {
     return view('pages.cpr-first-aid');
 });
 
-Route::get('/group-lessons/policies-and-procedures', function(){
+Route::get('/group-lessons/policies-and-procedures', function () {
     return view('groups.terms');
 });
 
-Route::get('/swim-team/policies-and-procedures', function(){
+Route::get('/swim-team/policies-and-procedures', function () {
     return view('swim-team.terms');
 });
 

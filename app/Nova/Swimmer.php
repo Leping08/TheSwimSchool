@@ -219,7 +219,8 @@ class Swimmer extends Resource
     /**
      * @return string
      */
-    public static function label() {
+    public static function label()
+    {
         return 'Swimmers';
     }
 

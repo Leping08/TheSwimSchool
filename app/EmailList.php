@@ -67,7 +67,8 @@ class EmailList extends Model
     /**
      * @return string
      */
-    public function getRouteKeyName() {
+    public function getRouteKeyName()
+    {
         return 'email';
     }
 }

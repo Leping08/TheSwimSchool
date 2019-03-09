@@ -21,7 +21,7 @@ class LessonsPerLevel extends Partition
     {
         $groups = Group::withCount('lessons')->orderBy('lessons_count', 'desc')->get();
 
-        return $this->makePartitionResult($groups, 'type','lessons_count');
+        return $this->makePartitionResult($groups, 'type', 'lessons_count');
     }
 
     /**

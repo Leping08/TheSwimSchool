@@ -111,12 +111,12 @@ class GroupController extends Controller
     {
         //TODO: Nova dashboard should remove this
         $lessons = $group->Lessons()->get();
-        if($lessons->isEmpty()){
+        if ($lessons->isEmpty()) {
             Log::info("$group->type was deleted. Group ID: $group->id");
             session()->flash('success', "$group->type was deleted.");
             $group->delete();
             return redirect('/dashboard');
-        }else{
+        } else {
             Log::info("$group->type can not be deleted. It has lessons associated with it. Group ID: $group->id");
             session()->flash('warning', "$group->type can not be deleted. It has lessons associated with it.");
             return back();

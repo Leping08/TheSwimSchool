@@ -22,7 +22,7 @@ class LessonsPerLocation extends Partition
     {
         $locations = Location::withCount('lessons')->orderBy('lessons_count', 'desc')->get();
 
-        return $this->makePartitionResult($locations, 'name','lessons_count');
+        return $this->makePartitionResult($locations, 'name', 'lessons_count');
     }
 
     /**

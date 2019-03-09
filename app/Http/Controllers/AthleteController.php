@@ -37,7 +37,7 @@ class AthleteController extends Controller
         $tryout = Tryout::find($id);
 
         //Check to see if the lesson is full
-        if($tryout->isFull()){
+        if ($tryout->isFull()) {
             $request->session()->flash('danger', 'The tryout is full.');
             return back();
         }
@@ -90,7 +90,7 @@ class AthleteController extends Controller
             'athlete_id' => 'required|integer'
         ]);
 
-        if($request['promo_id']){
+        if ($request['promo_id']) {
             $promo = PromoCode::find($request['promo_id']);
         } else {
             $promo = null;
