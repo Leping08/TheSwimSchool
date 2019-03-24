@@ -15,7 +15,7 @@
         <div class="uk-container">
             <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-expand@m uk-first-column">
-                    @if($tryouts->count() > 0)
+                    @if($tryouts->count())
                         @foreach($tryouts as $tryout)
                             <div class="uk-card uk-card-default uk-margin-top">
                                 <div class="uk-card-header">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                 <div class="uk-card-footer">
-                                    @if($tryout->athletes->count() - $tryout->class_size >= 0)
+                                    @if($tryout->isFull())
                                         <button class="uk-button uk-button-primary" disabled>Tryout Full</button>
                                     @else
                                         <a title="Parrish Swim Team" href="/swim-team/tryouts/{{{$tryout->id}}}" class="uk-button uk-button-primary">Sign Up</a>

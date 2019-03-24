@@ -61,7 +61,7 @@ class AthleteController extends Controller
         $athlete['birthDate'] = Carbon::parse($athlete['birthDate']);
         $athlete['tryout_id'] = $tryout->id;
 
-        $athlete['s_t_season_id'] = STSeason::GetCurrentSeason()->id;
+        $athlete['s_t_season_id'] = STSeason::currentseason()->id;
 
         $newAthlete = Athlete::create($athlete);
 
