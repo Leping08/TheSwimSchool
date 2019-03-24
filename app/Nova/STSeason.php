@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -49,6 +50,7 @@ class STSeason extends Resource
             ID::make()->sortable(),
             Text::make('Name'),
             Text::make('Dates'),
+            Boolean::make('Current Season'),
             HasMany::make('Tryouts'),
             HasMany::make('Athletes', 'athletes', Athlete::class),
             HasMany::make('Swim Team Swimmers', 'swimmers', STSwimmer::class),
