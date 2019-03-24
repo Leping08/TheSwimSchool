@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img style="margin-bottom: 2em;" src="{{asset('img/thank-you/float.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/thank-you/kicking.jpg')}}">
 
 @component('mail::panel')
 # Registration is Now Open
-Calling all fish! We are now accepting registrations for our 2019 swim season. We have group classes, private lessons, and pre-season swim team training options available starting in March. If you’d like to get enrolled, check out our website for more details. If you’ve already signed up, we can’t wait to see you back in the pool soon!
+Registration is now open for our April weekday sessions of group swim lessons and swim club. If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
 @endcomponent
 
 @component('mail::button', ['url' => 'https://theswimschoolfl.com/?utm_source=newsletter&utm_medium=email&utm_campaign=spring_lesson_registration'])
