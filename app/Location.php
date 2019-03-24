@@ -41,4 +41,9 @@ class Location extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function Tryouts()
+    {
+        $this->hasMany(Tryout::class);
+    }
 }
