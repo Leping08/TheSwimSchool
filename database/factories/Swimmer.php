@@ -20,7 +20,7 @@ $factory->define(App\Swimmer::class, function (Faker $faker) {
         'email' => $faker->safeEmail,
         'phone' => $faker->phoneNumber,
         'paid' => $faker->boolean,
-        'birthDate' => $faker->dateTimeBetween($startDate = '-30 years', $endDate = 'now'),
+        'birthDate' => $faker->dateTimeBetween($startDate = '-30 years', $endDate = 'yesterday'),
         'lesson_id' => factory('App\Lesson')->create()->id,
         'parent' => $faker->name,
         'notes' => $faker->paragraph,
@@ -31,6 +31,5 @@ $factory->define(App\Swimmer::class, function (Faker $faker) {
         'emergencyName' => $faker->firstNameFemale,
         'emergencyRelationship' => 'Mom',
         'emergencyPhone' => $faker->phoneNumber,
-        //'stripechargeid' => $faker->creditCardNumber
     ];
 });
