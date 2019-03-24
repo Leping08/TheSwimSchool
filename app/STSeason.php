@@ -27,8 +27,8 @@ class STSeason extends Model
         return $this->hasMany(Athlete::class);
     }
 
-//    public function scopeGetCurrentSeason($query)
-//    {
-//        return $query->where('current_season', true)->first();
-//    }
+    public function scopeCurrentSeason($query)
+    {
+        return $query->where('current_season', true)->first();
+    }
 }
