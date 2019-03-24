@@ -7,7 +7,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
 /**
+ * An Eloquent Model: 'Tryout'
  * A tryout is to see if you are skilled enough for the swim team
+ *
+ * @property integer $id
+ * @property integer $class_size
+ * @property integer $location_id
+ * @property-read \App\Location $location
+ * @property integer $s_t_season_id
+ * @property-read \App\STSeason $season
+ * @property-read \App\Athlete $athletes
+ * @property \Illuminate\Support\Carbon $registration_open
+ * @property \Illuminate\Support\Carbon $event_time
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
  */
 
 class Tryout extends Model
@@ -37,7 +51,7 @@ class Tryout extends Model
      */
     public function Athletes()
     {
-        return $this->hasMany(Athlete::class)->currentseason();
+        return $this->hasMany(Athlete::class);
     }
 
 
@@ -49,6 +63,9 @@ class Tryout extends Model
         return $this->belongsTo(Location::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function Season()
     {
         return $this->belongsTo(STSeason::class, 's_t_season_id');
@@ -56,11 +73,12 @@ class Tryout extends Model
 
 
     /**
+     * @param $query
      * @return mixed
      */
-    public function AllTryoutsOpenForSignups()
+    public function scopeRegistrationOpen($query)
     {
-        return $this->whereDate('class_start_date', '>', Carbon::now())
+        return $query->whereDate('event_time', '>', Carbon::now())
                     ->whereDate('registration_open', '<=', Carbon::now());
     }
 
@@ -70,19 +88,6 @@ class Tryout extends Model
      */
     public function isFull()
     {
-        if($this->athletes()->count() >= $this->getAttribute('class_size')){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeCurrentSeason($query)
-    {
-        return $query->where('s_t_season_id', STSeason::GetCurrentSeason()->id);
+        return $this->athletes()->count() >= $this->class_size;
     }
 }
