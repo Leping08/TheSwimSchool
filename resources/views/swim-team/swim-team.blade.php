@@ -55,7 +55,7 @@
                                 <div class="uk-dropcap uk-margin">
                                     <p>Registration is now open for our 2019 pre-season Swim
                                         Club which will take place at our Harrison Ranch pool location.
-                                        To register, check out our <a href="http://127.0.0.1:8000/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="http://127.0.0.1:8000/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.
+                                        To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.
                                         Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
                                     </p>
                                 </div>
