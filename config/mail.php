@@ -120,6 +120,17 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Lead Destination Emails
+    |--------------------------------------------------------------------------
+    |
+    | This is an array of admin emails
+    | Anything emails related to contact us, private lesson requests
+    | and more are going to be sent to the emails in this array
+    |
+    */
+
     'leadDestEmails' => [
         'theswimschoolfl@gmail.com',
         'derek@deltavcreative.com'
