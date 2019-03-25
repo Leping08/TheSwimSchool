@@ -50,7 +50,10 @@ class Tryout extends Resource
             ID::make()->sortable(),
             BelongsTo::make('Location'),
             BelongsTo::make('Season', 'season', STSeason::class),
-            Number::make('Class Size', 'class_size'),
+            Number::make('Spots Remaining', function (){
+                return $this->class_size - $this->athletes->count();
+            }),
+            Number::make('Class Size', 'class_size')->hideFromIndex(),
             HasMany::make('Athletes'),
             DateTime::make('Registration Open', 'registration_open'),
             DateTime::make('Tryout Start', 'event_time'),
