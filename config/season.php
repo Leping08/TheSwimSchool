@@ -18,7 +18,7 @@ return [
         'off-season' => true,
 
         'next_season' => [
-            'registration_open' => 'March 25th'
+            'registration_open' => 'April 15th'
         ]
     ],
 
