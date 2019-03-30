@@ -2,8 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Library\TryoutReminderEmail;
+use App\Mail\TryoutReminder;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -59,8 +62,6 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function an_athlete_should_be_added_to_the_database_if_they_fill_out_the_tryout_sign_up_form()
     {
-        $this->withoutExceptionHandling();
-
         $tryout = factory('App\Tryout')->create();
 
         $attributes = [
@@ -99,5 +100,28 @@ class TryoutTest extends TestCase
             "email" => $attributes['email'],
             "tryout_id" => $tryout->id
         ]);
+    }
+
+    /** @test  **/
+    public function reminder_emails_will_be_sent_out_the_day_before_the_tryout()
+    {
+        $tryout = factory('App\Tryout')->create([
+            'event_time' => Carbon::tomorrow(),
+            'registration_open' => Carbon::yesterday()
+        ]);
+
+        $registrationOpen = \App\Tryout::registrationOpen()->get();
+        $this->assertTrue($registrationOpen->contains($tryout->id));
+
+        $athlete = factory('App\Athlete')->create([
+            'tryout_id' => $tryout->id
+        ]);
+
+        Mail::fake();
+        Mail::assertNothingSent();
+
+        (new TryoutReminderEmail)->sendReminderEmails();
+
+        Mail::assertSent(TryoutReminder::class);
     }
 }
