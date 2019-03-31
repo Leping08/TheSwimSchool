@@ -12,7 +12,7 @@ Don't forget about the North River Swim Team tryouts tomorrow.
 ### Place
 {{$tryout->location->street}}<br>
 {{$tryout->location->city}}, {{$tryout->location->state}} {{$tryout->location->zip}}<br>
-<br>When you arrive at the gate for entry into River Wilderness Country Club on the day of the tryout, please provide the gatehouse guard with your child's first and last name. Once you enter, the clubhouse and pool is approximately 3 miles through the residential neighborhood and will be on the right.
+<br>{{$tryout->location->pool_access_instructions}}
 @endcomponent
 
 @component('mail::panel')
