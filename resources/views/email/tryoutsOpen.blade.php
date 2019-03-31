@@ -11,7 +11,7 @@
 @component('mail::panel')
 <img style="margin-bottom: 2em;" src="{{asset('img/thank-you/breast-stroke.jpg')}}">
 ## Come join our team!
-Registration for the North River Rapids swim team tryouts is now open! There are three dates to choose from and there is no fee to tryout for the team.
+Registration for the North River Rapids swim team tryouts is now open! There are three dates to choose from and there is no fee to try out for the team.
 @endcomponent
 
 @component('mail::button', ['url' => config('app.url').'swim-team/tryouts/'])
