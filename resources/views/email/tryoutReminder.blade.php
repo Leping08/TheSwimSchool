@@ -1,5 +1,12 @@
-@component('mail::message')
-# North River Swim Team Tryouts
+@component('mail::layout')
+
+@slot('header')
+@component('mail::header', ['url' => config('app.url')])
+<img style="max-width: 350px;" src="{{asset('img/logos/north-river-rapids.png')}}">
+@endcomponent
+@endslot
+
+# North River Rapids Tryouts
 
 Don't forget about the North River Swim Team tryouts tomorrow.
 
@@ -24,5 +31,22 @@ Don't forget about the North River Swim Team tryouts tomorrow.
 @endcomponent
 
 Thanks,<br>
-The Swim School
+The North River Rapids
+
+@slot('footer')
+@component('mail::footer')
+<div>
+<div style="padding-top:10px; text-align:center !important;">
+<a href="tel:1-941-773-1424" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}"></a>
+<a href="mailto:theswimschoolfl@gmail.com"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}"></a>
+<a href="https://www.facebook.com/theswimschoolfl/" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}"></a>
+</div>
+
+<p>
+&copy; {{ date('Y') }} The Swim School. All rights reserved.
+</p>
+</div>
+@endcomponent
+@endslot
+
 @endcomponent

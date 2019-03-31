@@ -18,6 +18,11 @@ class TryoutReminder extends Mailable
     public $tryout;
 
     /**
+     * @var string
+     */
+    public $theme = 'the_swim_team';
+
+    /**
      * TryoutReminder constructor.
      * @param Tryout $tryout
      */
@@ -35,6 +40,9 @@ class TryoutReminder extends Mailable
     {
         return $this->subject('Swim Team Tryout')
                     ->markdown('email.tryoutReminder')
-                    ->with(['tryout', $this->tryout]);
+                    ->with([
+                        'tryout', $this->tryout,
+                        'theme', $this->theme
+                    ]);
     }
 }
