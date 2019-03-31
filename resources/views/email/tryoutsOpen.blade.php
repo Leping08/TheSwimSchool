@@ -8,26 +8,14 @@
 
 # North River Rapids Tryouts
 
-Don't forget about the North River Swim Team tryouts tomorrow.
-
 @component('mail::panel')
-### Time
-{{$tryout->event_time->format('l F jS')}} {{$tryout->event_time->format('g:ia')}} - {{$tryout->event_time->addHour()->format('g:ia')}}
+<img style="margin-bottom: 2em;" src="{{asset('img/thank-you/breast-stroke.jpg')}}">
+## Come join our team!
+Registration for the North River Rapids swim team tryouts is now open! There are three dates to choose from and there is no fee to tryout for the team.
 @endcomponent
 
-@component('mail::panel')
-### Place
-{{$tryout->location->street}}<br>
-{{$tryout->location->city}}, {{$tryout->location->state}} {{$tryout->location->zip}}<br>
-<br>{{$tryout->location->pool_access_instructions}}
-@endcomponent
-
-@component('mail::panel')
-### What To Bring
-* Bathing Suit
-* Towel
-* Goggles
-* Pool Deck Shoes
+@component('mail::button', ['url' => config('app.url').'swim-team/tryouts/'])
+Sign Up
 @endcomponent
 
 Thanks,<br>
@@ -39,7 +27,7 @@ North River Rapids
 <div style="padding-top:10px; text-align:center !important;">
 <a href="tel:1-941-773-1424" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}"></a>
 <a href="mailto:theswimschoolfl@gmail.com"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}"></a>
-<a href="https://www.facebook.com/theswimschoolfl/" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}"></a>
+<a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}"></a>
 </div>
 
 <p>

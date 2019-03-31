@@ -7,7 +7,7 @@
 @endsection
 
 @section('heading')
-    Tryouts
+    North River Rapids Tryouts
 @endsection
 
 @section('content')
