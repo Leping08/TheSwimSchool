@@ -35,7 +35,7 @@
                                     {{--</div>--}}
                                 {{--</div>--}}
                                 <div>
-                                    <h2 class="uk-heading-line"><span>2019 Spring Team Tryouts</span></h2>
+                                    <h2 class="uk-heading-line"><span>2019 Swim Team Tryouts</span></h2>
                                     <ul class="uk-list uk-list-bullet">
                                         <li>Tuesday, April 16th at 6:30PM</li>
                                         <li>Wednesday, April 17th at 6:30PM</li>

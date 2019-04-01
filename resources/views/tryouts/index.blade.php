@@ -26,7 +26,7 @@
                                         <div class="uk-child-width-expand@s" uk-grid>
                                             <!--<div><i class="fa fa-users fa-lg" aria-hidden="true"></i> <strong>Tryout Size:</strong> {{$tryout->class_size}}</div>-->
                                             <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$tryout->class_size - $tryout->athletes->count()}}</div>
-                                            <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Time:</strong> {{$tryout->event_time->format('g:i a')}} - {{$tryout->event_time->addHour()->format('g:i a')}}</div>
+                                            <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Time:</strong> {{$tryout->event_time->format('g:i a')}} - {{$tryout->event_time->addHour()->addMinutes(30)->format('g:i a')}}</div>
                                             <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$tryout->location->name}}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{{$tryout->location->street}}}+{{{$tryout->location->city}}}+{{{$tryout->location->state}}}+{{{$tryout->location->zip}}}">{{$tryout->location->street}}, <br>{{$tryout->location->city}}, {{$tryout->location->state}} {{$tryout->location->zip}}</a></div>
                                         </div>
                                     </div>
