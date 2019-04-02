@@ -14,12 +14,14 @@
 Registration for the North River Rapids swim team tryouts is now open! There are three dates to choose from and there is no fee to try out for the team.
 @endcomponent
 
-@component('mail::button', ['url' => config('app.url').'swim-team/tryouts/'])
+@component('mail::button', ['url' => config('app.url').'swim-team/tryouts?utm_source=newsletter&utm_medium=email&utm_campaign=swim_team_tryouts'])
 Sign Up
 @endcomponent
 
 Thanks,<br>
 North River Rapids
+
+<div style="padding: 1em 0em 0em 0em; font-size: x-small; color: #9BA2AB">If you are no longer interested in receiving emails from The Swim School, you can <a href="theswimschoolfl.com/unsubscribe/{{{$emailAddress}}}">unsubscribe</a>.</div>
 
 @slot('footer')
 @component('mail::footer')

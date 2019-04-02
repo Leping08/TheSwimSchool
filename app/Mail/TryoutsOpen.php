@@ -17,13 +17,18 @@ class TryoutsOpen extends Mailable
     public $theme = 'the_swim_team';
 
     /**
+     * @var
+     */
+    public $emailAddress;
+
+    /**
      * Create a new message instance.
-     *
+     * @param $emailAddress
      * @return void
      */
-    public function __construct()
+    public function __construct($emailAddress)
     {
-        //
+        $this->emailAddress = $emailAddress;
     }
 
     /**
@@ -34,6 +39,7 @@ class TryoutsOpen extends Mailable
     public function build()
     {
         return $this->subject('North River Rapids Tryouts')
-                    ->markdown('email.tryoutsOpen');
+                    ->markdown('email.tryoutsOpen')
+                    ->with(['emailAddress', $this->emailAddress]);
     }
 }
