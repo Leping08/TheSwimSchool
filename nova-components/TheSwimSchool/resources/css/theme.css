@@ -1,0 +1,9 @@
+:root {
+  --primary: #D80F62;
+  --primary-dark: #BB1056;
+  --primary-70: rgba(253, 68, 112, 0.7);
+  --primary-50: rgba(253, 68, 112, 0.5);
+  --primary-30: rgba(253, 68, 112, 0.3);
+  --primary-10: rgba(253, 68, 112, 0.1);
+  --logo: #ffff;
+}

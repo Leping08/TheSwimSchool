@@ -27,7 +27,8 @@
         "leping/lesson-link": "*",
         "predis/predis": "^1.1",
         "stripe/stripe-php": "^5.1",
-        "tightenco/nova-stripe": "^0.2.1"
+        "tightenco/nova-stripe": "^0.2.1",
+        "leping/the-swim-school": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -84,6 +85,10 @@
         {
             "type": "path",
             "url": "./nova-components/LessonLink"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/TheSwimSchool"
         }
     ],
     "minimum-stability": "dev",
