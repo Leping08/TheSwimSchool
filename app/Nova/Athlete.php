@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\EmailYouMadeTheTeam;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
@@ -72,7 +73,7 @@ class Athlete extends Resource
                 ])->render();
             })->hideFromIndex(),
             BelongsTo::make('Tryout'),
-            BelongsTo::make('Level', 'level', STLevel::class),
+            BelongsTo::make('Level', 'level', STLevel::class)->nullable(),
             BelongsTo::make('Season', 'season', STSeason::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
