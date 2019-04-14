@@ -3,7 +3,7 @@
 
 @component('mail::panel')
 **{{$athlete->firstName}} {{$athlete->lastName}}**, you made the North River Swim Team!
-Based on tryouts we would like to place you in {{$athlete->swimTeamLevel->name}} level.
+Based on tryouts we would like to place you in {{$athlete->level->name}} level.
 @endcomponent
 
 @component('mail::panel')
@@ -12,8 +12,8 @@ Based on tryouts we would like to place you in {{$athlete->swimTeamLevel->name}}
 @endcomponent
 
 @component('mail::panel')
-### {{$athlete->swimTeamLevel->name}} Level Practice Schedule
-@foreach($athlete->swimTeamLevel->schedule as $day)
+### {{$athlete->level->name}} Level Practice Schedule
+@foreach($athlete->level->schedule as $day)
 {{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
 @endforeach
 @endcomponent
@@ -31,7 +31,7 @@ For {{$promoCode->discount_percent}}% off use code: {{$promoCode->code}}
 @endcomponent
 @endif
 
-@component('mail::button', ['url' => config('app.url').'swim-team/signup/'.$athlete->swimTeamLevel->id])
+@component('mail::button', ['url' => config('app.url').'swim-team/signup/'.$athlete->level->id])
 Sign Up
 @endcomponent
 

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * An athlete is someone who has signed up for a tryout
@@ -42,7 +43,7 @@ use Carbon\Carbon;
 
 class Athlete extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Actionable;
 
     /**
      * @var array

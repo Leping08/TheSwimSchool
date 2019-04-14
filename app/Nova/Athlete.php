@@ -124,7 +124,9 @@ class Athlete extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new EmailYouMadeTheTeam()
+        ];
     }
 
     /**
