@@ -17,10 +17,16 @@ class STInvitation extends Mailable
      * @var Athlete
      */
     public $athlete;
+
     /**
      * @var PromoCode
      */
     public $promoCode;
+
+    /**
+     * @var string
+     */
+    protected $theme = 'the_swim_team';
 
 
     /**

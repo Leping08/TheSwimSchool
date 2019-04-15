@@ -1,9 +1,18 @@
-@component('mail::message')
+@component('mail::layout')
+
+@slot('header')
+@component('mail::header', ['url' => config('app.url')])
+<img style="max-width: 350px;" src="{{asset('img/logos/north-river-rapids.png')}}">
+@endcomponent
+@endslot
+
+<img style="margin-bottom: 2em;" src="{{asset('img/swim-team/dive-cropped.jpg')}}">
+
 # Congratulations!
 
 @component('mail::panel')
-**{{$athlete->firstName}} {{$athlete->lastName}}**, you made the North River Swim Team!
-Based on tryouts we would like to place you in {{$athlete->level->name}} level.
+**{{$athlete->firstName}} {{$athlete->lastName}}**, you made the North River Rapids Swim Team!
+Based on tryouts, we would like to place you in {{$athlete->level->name}} level.
 @endcomponent
 
 @component('mail::panel')
@@ -36,5 +45,22 @@ Sign Up
 @endcomponent
 
 Thanks,<br>
-The Swim School
+North River Rapids
+
+@slot('footer')
+@component('mail::footer')
+<div>
+<div style="padding-top:10px; text-align:center !important;">
+<a href="tel:1-941-773-1424" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}"></a>
+<a href="mailto:theswimschoolfl@gmail.com"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}"></a>
+<a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}"></a>
+</div>
+
+<p>
+&copy; {{ date('Y') }} The Swim School. All rights reserved.
+</p>
+</div>
+@endcomponent
+@endslot
+
 @endcomponent
