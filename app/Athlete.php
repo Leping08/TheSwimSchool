@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Library\Helpers\Hashable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
@@ -13,6 +14,7 @@ use Laravel\Nova\Actions\Actionable;
  * An Eloquent Model: 'Swimmer'
  *
  * @property integer $id
+ * @property string $hash
  * @property string $firstName
  * @property string $lastName
  * @property string $email
@@ -43,7 +45,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class Athlete extends Model
 {
-    use SoftDeletes, Actionable;
+    use SoftDeletes, Actionable, Hashable;
 
     /**
      * @var array
@@ -74,7 +76,8 @@ class Athlete extends Model
         'emergencyPhone',
         's_t_level',
         's_t_sign_up_email',
-        's_t_season_id'
+        's_t_season_id',
+        'hash'
     ];
 
 
