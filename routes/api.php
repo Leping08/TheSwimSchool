@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/lesson-link/{lesson}', function (Lesson $lesson) {
     return $lesson->path();
 });
+
+Route::post('/promo-code', 'PromoCodeController@index');

@@ -9,6 +9,7 @@ import moment from 'moment'
 import search from './components/search'
 import privateLessonRequestForm from './components/PrivateLessonRequestForm'
 import swimTeamRoster from './components/SwimTeamRoster'
+import promo_code from './components/promoCode'
 
 Vue.use(VueMoment, {
     moment,
@@ -19,6 +20,7 @@ const app = new Vue({
     components: {
         search,
         swimTeamRoster,
-        privateLessonRequestForm
+        privateLessonRequestForm,
+        promo_code: promo_code
     }
 });

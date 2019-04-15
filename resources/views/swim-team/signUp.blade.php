@@ -134,19 +134,7 @@
                             </div>
                         </div>
 
-
-
-
-                        <hr class="uk-width-1-1">
-                        <div class="uk-h2 uk-margin uk-width-1-1">
-                            Promo Code
-                        </div>
-                        <div class="uk-margin uk-width-1-1@s">
-                            <label class="uk-form-label uk-heading-bullet" for="promo_code">Code</label>
-                            <div class="uk-form-controls">
-                                <input type="text" class="uk-input" id="promo_code" name="promo_code" placeholder="" value="{{ old('promo_code') }}">
-                            </div>
-                        </div>
+                        <promo_code price="{{$level->price}}"></promo_code>
 
                         <div class="uk-width-1-1@s">
                             <div class="uk-form-controls">
@@ -165,9 +153,3 @@
         </div>
     </div>
 @endsection
-
-
-
-
-
-
