@@ -17,10 +17,7 @@ class AddHashToAthleteTable extends Migration
             $table->string('hash')->after('id');
         });
 
-        foreach (\App\Athlete::withTrashed()->get() as $athlete){
-            $athlete->hash = \App\Library\Helpers\RandomString::generate();
-            $athlete->save();
-        }
+        \App\Library\Helpers\RandomString::setAthleteHash();
 
         Schema::table('athletes', function (Blueprint $table) {
             $table->unique('hash');
