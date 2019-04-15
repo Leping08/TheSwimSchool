@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Athlete;
+use App\Library\Helpers\RandomString;
 use App\Mail\STSignUp;
 use App\PromoCode;
 use App\STLevel;
@@ -28,6 +30,13 @@ class STSwimmerController extends Controller
         $level = STLevel::find($id);
         $season = STSeason::getCurrentSeason();
         return view('swim-team.signUp', compact('level', 'season'));
+    }
+
+    public function test(STLevel $level, $hash) //TODO Update this name
+    {
+        $athlete = Athlete::hash($hash)->first() ?? null;
+        $season = STSeason::currentSeason();
+        return view('swim-team.signUp', compact('level', 'season', 'athlete'));
     }
 
     /**
