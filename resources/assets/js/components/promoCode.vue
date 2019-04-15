@@ -21,14 +21,12 @@
             <div class="uk-width-1-1 uk-margin">
                 <template v-if="success">
                     <div class="uk-alert-success" uk-alert>
-                        <a class="uk-alert-close" uk-close></a>
-                        <p>The promo code {{submittedCode}} will take {{discount_percent}}% off.</p>
+                        <p>The promo code '{{submittedCode}}' will take {{discount_percent}}% off.</p>
                     </div>
                 </template>
                 <template v-if="fail">
                     <div class="uk-alert-danger" uk-alert>
-                        <a class="uk-alert-close" uk-close></a>
-                        <p>The promo code {{submittedCode}} wasn't found.</p>
+                        <p>The promo code '{{submittedCode}}' wasn't found.</p>
                     </div>
                 </template>
             </div>
