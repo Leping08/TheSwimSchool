@@ -53,6 +53,7 @@ class Athlete extends Resource
             ID::make()->sortable(),
             Text::make('First Name', 'firstName')->sortable(),
             Text::make('Last Name', 'lastName')->sortable(),
+            Text::make('Hash', 'hash')->hideFromIndex(),
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
