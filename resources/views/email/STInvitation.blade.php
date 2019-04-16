@@ -40,7 +40,7 @@ For {{$promoCode->discount_percent}}% off use code: {{$promoCode->code}}
 @endcomponent
 @endif
 
-@component('mail::button', ['url' => config('app.url').'swim-team/signup/'.$athlete->level->id.'/swimmer/'.$athlete->hash])
+@component('mail::button', ['url' => config('app.url').'swim-team/level/'.$athlete->level->id.'/swimmer/'.$athlete->hash])
 Sign Up
 @endcomponent
 
