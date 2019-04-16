@@ -7,12 +7,12 @@
         <div class="uk-margin uk-width-1-1@s">
             <label class="uk-form-label uk-heading-bullet" for="promo_code">Code</label>
             <div class="uk-flex uk-flex-wrap uk-flex-wrap-around">
-                <div class="uk-width-3-4">
+                <div class="uk-width-1-2">
                     <div class="uk-form-controls">
                         <input type="text" class="uk-input" id="promo_code" name="promo_code" placeholder="" v-model="code">
                     </div>
                 </div>
-                <div class="uk-width-1-4">
+                <div class="uk-width-1-2">
                     <div class="uk-margin-left">
                         <a @click="checkPromoCode()" class="uk-button uk-button-secondary">Apply</a>
                     </div>
