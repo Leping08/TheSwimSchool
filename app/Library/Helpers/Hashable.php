@@ -21,7 +21,7 @@ trait Hashable
      * @param $hash
      * @return mixed
      */
-    public function scopeHash($query, $hash)
+    public function scopeFindByHash($query, $hash)
     {
         return $query->where('hash', '=', $hash);
     }
