@@ -18,6 +18,11 @@ class STSignUp extends Mailable
     public $swimmer;
 
     /**
+     * @var string
+     */
+    protected $theme = 'the_swim_team';
+
+    /**
      * STSignUp constructor.
      * @param STSwimmer $swimmer
      */
