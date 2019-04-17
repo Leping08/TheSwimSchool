@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Tryout extends Resource
@@ -54,6 +55,13 @@ class Tryout extends Resource
                 return $this->class_size - $this->athletes->count();
             }),
             Number::make('Class Size', 'class_size')->hideFromIndex(),
+            Text::make('Sign Up Link', function () {
+                return view('partials.link', [
+                    'link' => url('/swim-team/tryouts/'.$this->id),
+                    'text' => url('/swim-team/tryouts/'.$this->id)
+                    //'new_tab' => true TODO: Add new tab option to link partial
+                ])->render();
+            })->asHtml()->hideFromIndex(),
             HasMany::make('Athletes'),
             DateTime::make('Registration Open', 'registration_open'),
             DateTime::make('Tryout Start', 'event_time'),
