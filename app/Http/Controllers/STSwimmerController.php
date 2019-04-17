@@ -3,217 +3,93 @@
 namespace App\Http\Controllers;
 
 use App\Athlete;
-use App\Library\Helpers\RandomString;
+use App\Http\Requests\SwimTeamSignUp;
+use App\Library\StripeCharge;
 use App\Mail\STSignUp;
 use App\PromoCode;
 use App\STLevel;
 use App\STSeason;
 use App\STSwimmer;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Stripe\Error\Authentication;
-use Stripe\Error\Base;
-use Stripe\Error\Card;
-use Stripe\Error\InvalidRequest;
 
 class STSwimmerController extends Controller
 {
-
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index($id)
+    public function index(STLevel $level, $hash = null)
     {
-        $level = STLevel::find($id);
-        $season = STSeason::getCurrentSeason();
-        return view('swim-team.signUp', compact('level', 'season'));
-    }
-
-    public function test(STLevel $level, $hash) //TODO Update this name
-    {
-        $athlete = Athlete::hash($hash)->first() ?? null;
+        $athlete = Athlete::findByHash($hash)->first() ?? null;
         $season = STSeason::currentSeason();
         return view('swim-team.signUp', compact('level', 'season', 'athlete'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(SwimTeamSignUp $request)
     {
-        //
-    }
+        $level = STLevel::find(request()->level_id);
+        $promo = $this->validatePromoCode();
 
-
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function store(Request $request, $id)
-    {
-        $swimmer = $request->validate([
-            'firstName' => 'required|string|max:191',
-            'lastName' => 'required|string|max:191',
-            'birthDate' => 'required|date|before:today',
-            'email' => 'required|string|email|max:191',
-            'phone' => 'required|max:20',
-            'parent' => 'nullable|max:191',
-            'street' => 'required|max:191',
-            'city' => 'required|max:191',
-            'state' => 'required|max:191',
-            'zip' => 'required|max:15',
-            'emergencyName' => 'required|max:191',
-            'emergencyRelationship' => 'required|max:191',
-            'emergencyPhone' => 'required|max:20',
-        ]);
-        $swimmer['birthDate'] = Carbon::parse($swimmer['birthDate']);
-
-        $level = STLevel::find($id);
-        $swimmer['s_t_level_id'] = $level->id;
-
-        $swimmer['s_t_season_id'] = STSeason::GetCurrentSeason()->id;
-
-        $swimmer['promo_code_id'] = $this->validatePromoCode($request);
-
-        $newSwimmer = STSwimmer::create($swimmer);
-
-        Log::info("Swim Team Swimmer $newSwimmer->firstName $newSwimmer->lastName, ID: $newSwimmer->id has signed up for Level ID: $newSwimmer->s_t_level_id and is going to pay by card.");
-
-        //Check if the user needs to go to the checkout page at all   Ex: 100% off promo code
-        if($newSwimmer->promoAppliedPrice() <= 0)
-        {
-            $newSwimmer->stripeChargeId = 'For Free Promo Code';
-            $newSwimmer->save();
-            Log::info("Swim Team Swimmer $newSwimmer->firstName $newSwimmer->lastName, ID: $newSwimmer->id has signed up with out paying. They used promo code ID: $newSwimmer->promo_code_id");
-            session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
-            return redirect('/swim-team/');
-        } else {
-            return redirect('/swim-team/checkout/'.$newSwimmer->id);
-        }
-    }
-
-    /**
-     * @param Request $request
-     * @return null
-     */
-    private function validatePromoCode(Request $request)
-    {
-        if(!empty($request->promo_code)){
-            Log::info("Trying to find Promo for string: $request->promo_code");
-            $userCode = trim(strtoupper($request->promo_code));
-            $promo = PromoCode::where('code', $userCode)->first();
-
-            if(count($promo)){
-                Log::info("Found Promo Code ID: $promo->id");
-                return $promo->id;
-            }
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
-     */
-    public function checkout($id)
-    {
-        $swimmer = STSwimmer::find($id);
-        if(! $swimmer->stripeChargeId){
-            return view('swim-team.checkOut', compact('swimmer'));
-        } else {
-            return redirect('/swim-team');
-        }
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
-     */
-    public function pay(Request $request)
-    {
-        $request->validate([
-            'cardholderName' => 'required',
-            'cardholderEmail' => 'required|email',
-            'swimmerId' => 'required'
+        $swimTeamSwimmer = request()->merge([
+            'birthDate' => Carbon::parse(request()->birthDate),
+            's_t_level_id' => $level->id,
+            's_t_season_id' => STSeason::currentSeason()->id,
+            'promo_code_id' => $promo->id ?? null
         ]);
 
-        $swimmer = STSwimmer::with('level')->find($request->swimmerId);
+        $price = $promo ? $promo->apply($level->price) : $level->price;
 
-        try{
-            \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-            $charge = \Stripe\Charge::create(array(
-                "amount" => $swimmer->promoAppliedPrice() * 100,
-                "currency" => "usd",
-                "receipt_email" => "$request->cardholderEmail",
-                "description" => "North River Swim Team ".$swimmer->level->name." Level for ".$swimmer->firstName." ".$swimmer->lastName." through The Swim School.",
-                "source" => "$request->stripeToken" //Obtained with Stripe.js
-            ));
-        } catch(Card $e){
-            $body = $e->getJsonBody();
-            $err  = $body['error'];
-            Log::error($err['message']);
-            $request->session()->flash('error', $err['message']);
-            return view('swim-team.checkOut', compact('swimmer'));
-        } catch (InvalidRequest $e){
-            Log::error('Invalid parameters were supplied to Stripes API');
-            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
-            return view('swim-team.checkOut', compact('swimmer'));
-        } catch (Authentication $e){
-            Log::error('Authentication with Stripes API failed (maybe you changed API keys recently)');
-            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
-            return view('swim-team.checkOut', compact('swimmer'));
-        }  catch (Base $e) {
-            Log::error('Generic error occurred');
-            $request->session()->flash('error', 'Oops, something went wrong with the payment.');
-            return view('swim-team.checkOut', compact('swimmer'));
-        }
+        $chargeID = (new StripeCharge(
+            request()->stripeToken,
+            $price,
+            request()->email,
+            "North River Rapids Swim Team ".$level->name." Level for ".request()->firstName." ".request()->lastName."."
+        ))->charge()->id;
 
-        $this->updateSwimmerWithPayment($swimmer, $charge);
+        $swimTeamSwimmer = request()->merge([
+            'stripeChargeId' => $chargeID
+        ]);
 
-        $this->sendSignUpEmail($swimmer);
+        $swimNewTeamSwimmer = STSwimmer::create($swimTeamSwimmer->toArray());
 
-        $request->session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
-
-        return redirect('/swim-team');
-    }
-
-
-    /**
-     * @param STSwimmer $swimmer
-     * @param $charge
-     */
-    private function updateSwimmerWithPayment(STSwimmer $swimmer, $charge)
-    {
-        $swimmer->stripeChargeId = $charge->id;
-        $swimmer->save();
-        Log::info("Swim Team Swimmer ID: ".$swimmer->id." has payed with card. Stripe Charge ID: ".$charge->id.".");
-    }
-
-
-    /**
-     * @param STSwimmer $swimmer
-     */
-    private function sendSignUpEmail(STSwimmer $swimmer)
-    {
         try {
-            Log::info("Sending swim team sign up email to $swimmer->email for STSwimmer ID: $swimmer->id.");
-            Mail::to($swimmer->email)->send(new STSignUp($swimmer));
-
+            Log::info("Sending swim team sign up email to $swimNewTeamSwimmer->email for STSwimmer ID: $swimNewTeamSwimmer->id.");
+            Mail::to($swimNewTeamSwimmer->email)->send(new STSignUp($swimNewTeamSwimmer));
         } catch (\Exception $e) {
             Log::error("Swim Team sign up Email Error: ".$e);
         }
+
+        Log::info("$swimNewTeamSwimmer->firstName $swimNewTeamSwimmer->lastName, ID: $swimNewTeamSwimmer->id has signed up for Level ID: $swimNewTeamSwimmer->s_t_level_id with the north river swim team.");
+        session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
+        return redirect('/thank-you');
+
+        //TODO: Check if the stripe charge is even needed   Ex: 100% off promo code
+//        if($newSwimmer->promoAppliedPrice() <= 0)
+//        {
+//            $newSwimmer->stripeChargeId = 'For Free Promo Code';
+//            $newSwimmer->save();
+//            Log::info("Swim Team Swimmer $newSwimmer->firstName $newSwimmer->lastName, ID: $newSwimmer->id has signed up with out paying. They used promo code ID: $newSwimmer->promo_code_id");
+//            session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
+//            return redirect('/swim-team/');
+//        } else {
+//            return redirect('/swim-team/checkout/'.$newSwimmer->id);
+//        }
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
+    private function validatePromoCode()
+    {
+        if(!empty(request()->promo_code)){
+            Log::info('Trying to find Promo for string:' . request()->promo_code);
+            $userCode = trim(strtoupper(request()->promo_code));
+            $promo = PromoCode::where('code', $userCode)->first();
+
+            if($promo){
+                Log::info("Found Promo Code ID: $promo->id");
+                return $promo;
+            }
+        }
+        return null;
+    }
+
     public function roster()
     {
         $seasons = STSeason::orderBy('created_at', 'desc')->get();
@@ -221,51 +97,5 @@ class STSwimmerController extends Controller
             return $query->with('season')->orderBy('lastName','ASC');
         }])->get();
         return view('swim-team.roster', compact('seasons', 'levels'));
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\STSwimmer  $sTSwimmer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(STSwimmer $sTSwimmer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\STSwimmer  $sTSwimmer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(STSwimmer $sTSwimmer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\STSwimmer  $sTSwimmer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, STSwimmer $sTSwimmer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\STSwimmer  $sTSwimmer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(STSwimmer $sTSwimmer)
-    {
-        //
     }
 }
