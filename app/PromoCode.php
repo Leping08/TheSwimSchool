@@ -29,4 +29,9 @@ class PromoCode extends Model
     {
         return $this->getAttribute('discount_percent') * .01;
     }
+
+    public function apply(int $price)
+    {
+        return $price - ($price * ($this->discount_percent * 0.01));
+    }
 }
