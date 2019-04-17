@@ -128,13 +128,10 @@ Route::post('/swim-team/tryouts/{id}', 'AthleteController@store');
  */
 
 /* @see STSwimmerController::index() */
-Route::get('/swim-team/signup/{id}', 'STSwimmerController@index');
-
-/* @see STSwimmerController::test() */ //TODO: Fix this name from test
-Route::get('/swim-team/level/{level}/swimmer/{athlete}', 'STSwimmerController@test');
+Route::get('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@index');
 
 /* @see STSwimmerController::store() */
-Route::post('/swim-team/signup/{id}', 'STSwimmerController@store');
+Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@store');
 
 /* @see STSwimmerController::checkout() */
 Route::get('/swim-team/checkout/{id}', 'STSwimmerController@checkout');
