@@ -11,7 +11,10 @@ class STLevel extends Model
      */
     public function schedule()
     {
-        return $this->belongsToMany(DaysOfTheWeek::class, 's_t_schedules')->withPivot('start_time', 'end_time')->withTimestamps();
+        return $this->belongsToMany(DaysOfTheWeek::class, 's_t_schedules')
+                        ->using(STSchedule::class)
+                        ->withPivot('start_time', 'end_time')
+                        ->withTimestamps();
     }
 
     /**

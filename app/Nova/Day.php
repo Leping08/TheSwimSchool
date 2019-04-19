@@ -48,6 +48,12 @@ class Day extends Resource
             ID::make()->sortable(),
             Text::make('day')->sortable(),
             BelongsToMany::make('Lessons', 'lessons', 'App\Nova\Lesson'),
+            BelongsToMany::make('Swim Team Levels', 'levels', 'App\Nova\STLevel')->fields(function () {
+                return [
+                    DateTime::make( 'start_time'),
+                    DateTime::make('end_time'),
+                ];
+            }),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];

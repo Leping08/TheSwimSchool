@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class STLevel extends Resource
      *
      * @var string
      */
-    public static $model = 'App\STLevel';
+    public static $model = \App\STLevel::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -50,7 +51,13 @@ class STLevel extends Resource
             Text::make('Name', 'name'),
             Number::make('Price', 'price'),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
+            BelongsToMany::make('Day', 'schedule', Day::class)->fields(function () {
+                return [
+                    DateTime::make( 'start_time'),
+                    DateTime::make('end_time'),
+                ];
+            })
         ];
     }
 
