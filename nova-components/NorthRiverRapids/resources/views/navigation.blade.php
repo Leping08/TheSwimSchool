@@ -30,4 +30,9 @@
             Seasons
         </a>
     </li>
+    <li class="leading-wide mb-4 text-sm">
+        <a href="/admin/resources/swim-team-coaches" class="text-white ml-8 no-underline {{ request()->is('admin/resources/swim-team-coaches*') ? 'router-link-exact-active router-link-active' : '' }}">
+            Coaches
+        </a>
+    </li>
 </ul>

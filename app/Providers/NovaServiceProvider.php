@@ -128,27 +128,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function resources()
     {
-
-        Nova::resources([
-            Swimmer::class,
-            Lesson::class,
-            Season::class,
-            Location::class,
-            Level::class,
-            EmailList::class,
-            PrivateLessonRequest::class,
-            ContactUs::class,
-            User::class,
-            Tryout::class,
-            STLevel::class,
-            Athlete::class,
-            STSwimmer::class,
-            STSwimmer::class,
-            STSeason::class,
-            Day::class,
-            Testimonial::class,
-            WaitList::class
-        ]);
-        //Nova::resourcesIn(app_path('Nova'));
+        Nova::resourcesIn(app_path('Nova'));
     }
 }
