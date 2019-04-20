@@ -127,6 +127,9 @@ Route::post('/swim-team/tryouts/{id}', 'AthleteController@store');
  * Swim Team Registration
  */
 
+/* @see SwimTeamCoachesController::index() */
+Route::get('/swim-team', 'SwimTeamCoachesController@index');
+
 /* @see STSwimmerController::index() */
 Route::get('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@index');
 
@@ -183,10 +186,6 @@ Route::post('/newsletter', 'EmailListController@store');
 
 Route::get('/services', function(){
     return view('pages.services');
-});
-
-Route::get('/swim-team', function(){
-    return view('swim-team.swim-team');
 });
 
 Route::get('/about', function(){
