@@ -35,7 +35,7 @@ class WaitListTest extends TestCase
         $attributes = [
             'name' => $this->faker->name,
             'email' => $this->faker->email,
-            'phone' => $this->faker->phoneNumber,
+            'phone' => '9998887777',
             'date_of_birth' => $this->faker->date()
         ];
 
