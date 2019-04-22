@@ -21,7 +21,7 @@ class STSwimmerController extends Controller
     {
         $athlete = Athlete::findByHash($hash)->first() ?? null;
         $season = STSeason::currentSeason();
-        $sizes = STShirtSize::orderBy('size')->get();
+        $sizes = STShirtSize::all();
         return view('swim-team.signUp', compact('level', 'season', 'athlete', 'sizes'));
     }
 
