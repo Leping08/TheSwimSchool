@@ -15,7 +15,7 @@
             @if(config('season.groups.off-season'))
                 <div class="uk-alert-primary" uk-alert>
                     <a class="uk-alert-close" uk-close></a>
-                    <p>{{--Next weekend group lesson registration opens {{config('season.groups.next_season.registration_open')}}.--}} Next weekday group lesson registration opens April 22nd. For the full schedule, check out the <a href="/lessons/schedule">2019 group lesson schedule</a>.</p>
+                    <p>{{--Next weekend group lesson registration opens {{config('season.groups.next_season.registration_open')}}.--}} For the full schedule, check out the <a href="/lessons/schedule">2019 group lesson schedule</a>.</p>
                 </div>
             @endif
 
