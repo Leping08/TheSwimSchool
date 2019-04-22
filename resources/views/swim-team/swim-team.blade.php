@@ -34,26 +34,27 @@
                                 {{--</div>--}}
                             {{--</div>--}}
                         {{--</div>--}}
+{{--                        <div>--}}
+{{--                            <h2 class="uk-heading-line"><span>2019 Swim Team Tryouts</span></h2>--}}
+{{--                            <ul class="uk-list uk-list-bullet">--}}
+{{--                                <li>Tuesday, April 16th at 6:30PM</li>--}}
+{{--                                <li>Wednesday, April 17th at 6:30PM</li>--}}
+{{--                                <li>Saturday, April 20th at 9:00AM</li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                         <div>
-                            <h2 class="uk-heading-line"><span>2019 Swim Team Tryouts</span></h2>
-                            <ul class="uk-list uk-list-bullet">
-                                <li>Tuesday, April 16th at 6:30PM</li>
-                                <li>Wednesday, April 17th at 6:30PM</li>
-                                <li>Saturday, April 20th at 9:00AM</li>
-                            </ul>
-                        </div>
-                        <div>
+                            <h2 class="uk-heading-line"><span>2019 Swim Team Season</span></h2>
                             {{--<p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>--}}
                             <p>Season Runs Wednesday, May 1st- Wednesday, July 31st and is held at the River Wilderness Golf & Country Club pool.</p>
                         </div>
-                        <div>
-                            <p><strong>There is no fee to tryout for the swim team. Tryouts are held at the River Wilderness Golf & Country Club pool.</strong></p>
-                        </div>
-                        <div>
-                            <!-- TODO: Add tryout that lasts all season -->
-                            <a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>
-                            {{--<a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
-                        </div>
+{{--                        <div>--}}
+{{--                            <p><strong>There is no fee to tryout for the swim team. Tryouts are held at the River Wilderness Golf & Country Club pool.</strong></p>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <!-- TODO: Add tryout that lasts all season -->--}}
+{{--                            <a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>--}}
+{{--                            <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
