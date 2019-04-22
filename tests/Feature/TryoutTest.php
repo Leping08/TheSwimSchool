@@ -68,7 +68,7 @@ class TryoutTest extends TestCase
             'firstName' => $this->faker->firstName,
             'lastName' => $this->faker->lastName,
             'email' => $this->faker->email,
-            'phone' => $this->faker->phoneNumber,
+            'phone' => '999-888-7777',
             'birthDate' => Carbon::yesterday()->toDateString(),
             'parent' => $this->faker->name,
             'street' => $this->faker->streetAddress,

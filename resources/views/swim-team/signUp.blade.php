@@ -83,6 +83,20 @@
                             </div>
                         </div>
 
+                        <div class="uk-margin uk-width-1-1@m">
+                            <label class="uk-form-label uk-heading-bullet" for="shirt_size_id">Shirt Size</label>
+                            <div class="uk-form-controls">
+                                <select class="uk-select" name="length" id="shirt_size_id">
+                                    <option disabled selected value>-- Select an Option --</option>
+                                    @forelse($sizes as $size)
+                                        <option value="{{$size->id}}">{{$size->size}}</option>
+                                    @empty
+                                        <option value="">No Shirt Sizes Available</option>
+                                    @endforelse
+                                </select>
+                            </div>
+                        </div>
+
 
 
                         <hr class="uk-width-1-1">

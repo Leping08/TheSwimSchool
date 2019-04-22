@@ -36,7 +36,8 @@ class STSwimmer extends Model
         'stripeChargeId',
         's_t_level_id',
         's_t_season_id',
-        'promo_code_id'
+        'promo_code_id',
+        's_t_shirt_size_id'
     ];
 
     /**

@@ -22,6 +22,7 @@ class SwimTeamTest extends TestCase
 
         $level = factory('App\STLevel')->create();
         $season = factory('App\STSeason')->create();
+        $size = factory('App\STShirtSize')->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -38,6 +39,7 @@ class SwimTeamTest extends TestCase
             'emergencyRelationship' => $this->faker->word,
             'emergencyPhone' => '999-999-9999',
             'level_id' => $level->id,
+            'shirt_size_id' => $size->id,
             'stripeToken' => 'tok_visa'
         ];
 
@@ -59,7 +61,8 @@ class SwimTeamTest extends TestCase
             "firstName" => $attributes['firstName'],
             "lastName" => $attributes['lastName'],
             "email" => $attributes['email'],
-            "s_t_level_id" => $attributes['level_id']
+            "s_t_level_id" => $attributes['level_id'],
+            's_t_shirt_size_id' => $attributes['shirt_size_id']
         ]);
     }
 
@@ -77,6 +80,7 @@ class SwimTeamTest extends TestCase
             'code' => 'HALFOFF',
             'discount_percent' => 50
         ]);
+        $size = factory('App\STShirtSize')->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -93,6 +97,7 @@ class SwimTeamTest extends TestCase
             'emergencyRelationship' => $this->faker->word,
             'emergencyPhone' => '999-999-9999',
             'level_id' => $level->id,
+            'shirt_size_id' => $size->id,
             'stripeToken' => 'tok_visa',
             'promo_code' => 'HALFOFF'
         ];
@@ -115,6 +120,7 @@ class SwimTeamTest extends TestCase
             "lastName" => $attributes['lastName'],
             "email" => $attributes['email'],
             "s_t_level_id" => $attributes['level_id'],
+            's_t_shirt_size_id' => $attributes['shirt_size_id'],
             'promo_code_id' => $promoCode->id
         ]);
     }

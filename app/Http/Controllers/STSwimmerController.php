@@ -9,6 +9,7 @@ use App\Mail\STSignUp;
 use App\PromoCode;
 use App\STLevel;
 use App\STSeason;
+use App\STShirtSize;
 use App\STSwimmer;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -20,19 +21,22 @@ class STSwimmerController extends Controller
     {
         $athlete = Athlete::findByHash($hash)->first() ?? null;
         $season = STSeason::currentSeason();
-        return view('swim-team.signUp', compact('level', 'season', 'athlete'));
+        $sizes = STShirtSize::orderBy('size')->get();
+        return view('swim-team.signUp', compact('level', 'season', 'athlete', 'sizes'));
     }
 
     public function store(SwimTeamSignUp $request)
     {
         $level = STLevel::find(request()->level_id);
+        $size = STShirtSize::find(request()->shirt_size_id);
         $promo = $this->validatePromoCode();
 
         $swimTeamSwimmer = request()->merge([
             'birthDate' => Carbon::parse(request()->birthDate),
             's_t_level_id' => $level->id,
             's_t_season_id' => STSeason::currentSeason()->id,
-            'promo_code_id' => $promo->id ?? null
+            'promo_code_id' => $promo->id ?? null,
+            's_t_shirt_size_id' => $size->id
         ]);
 
         $price = $promo ? $promo->apply($level->price) : $level->price;
