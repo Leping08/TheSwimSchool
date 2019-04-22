@@ -58,14 +58,16 @@
                     swimmers who join the team after May 1st of the current year, the program fee must be paid
                     online in full prior to participating in the first swim team practice.</dd>
 
-                <dt>Equipment:</dt>
-                <dd>Goggles and a swim cap are highly recommended for improved vision, comfort and
-                    performance. Please supply your child with a pair of goggles and a swim cap for swim team
-                    practices. Each child will receive one free team swim cap prior to the first swim meet of
-                    each swim team season to use for the purpose of swim meet competitions. If the team swim
-                    cap is lost or damaged, a new team swim cap will need to be purchased. Towels will not be
-                    supplied so please have a towel for your child as well. All other equipment will be supplied
-                    by The Swim School.</dd>
+                <dt>Apparel/Equipment:</dt>
+                <dd>Bathing suits and towels will not be supplied so please provide these items for your
+                    swimmer. We recommend a one piece bathing suit for female swimmers and a swim
+                    jammer or swim trunks for male swimmers. Goggles and a swim cap are highly
+                    recommended for improved vision, comfort and performance. Please supply your child with
+                    a pair of goggles and a swim cap for swim team practices. Each child will receive one free
+                    team swim cap and team t-shirt prior to the first swim meet of each swim team season to
+                    use for the purpose of swim meet competitions. If the team swim cap or team t-shirt is lost
+                    or damaged, a new team swim cap or team t-shirt may be purchased. All other equipment
+                    will be supplied by The Swim School such as kickboards, pull buoys, etc.</dd>
 
                 <dt>Swim Team Group:</dt>
                 <dd>The swim team coaches reserve the right to change a swimmer’s swim team group in
@@ -84,20 +86,20 @@
                     from interrupting swimmers and coaches during practice times.</dd>
 
                 <dt>Inclement Weather:</dt>
-                <dd>In the event of inclement weather (i.e. thunder/lightning, heavy rain, and/or air temperature
-                    of 65 degrees or below), swim practices will be cancelled. River Wilderness Country Club
-                    has a lightning detection system with a siren. The coaches will remove all swimmers from
-                    the pool and relocate under the covered portion of the Fitness Center Facility immediately
-                    upon hearing the siren. The coach will contact you when a practice needs to be cancelled
-                    due to inclement weather. It is best to assume swim practices are on as scheduled if you
-                    are not contacted by the coach.</dd>
+                <dd>In the event of inclement weather (i.e. lightning within 5.0 miles or less from pool location,
+                    heavy rain which limits visibility of the bottom of the pool, and/or air temperature of 65
+                    degrees or below), swim practices will be cancelled. The coach will contact you via text
+                    when a practice needs to be cancelled due to inclement weather. It is best to assume swim
+                    practices are on as scheduled if you are not contacted by the coach. During practices, the
+                    coaches will remove all swimmers from the pool and relocate under the covered portion of
+                    the Fitness Center Facility immediately upon hearing loud approaching thunder and/or
+                    seeing lightning.</dd>
 
-                <dt>No Makeup Practices:</dt>
-                <dd>Swim practices will not be made up under any circumstances, including for inclement
-                    weather. The North River Swim Team program is an 18 week program and fees are based
-                    on 16 weeks to accommodate for swim practice cancellations due to inclement weather as
-                    well as any major nationally celebrated holidays (i.e. Memorial Day, Independence Day,
-                    etc.)</dd>
+                <dt>No Makeup Practices/Observed Holidays::</dt>
+                <dd>Swim practices will not be made up under any circumstances, including for cancelled
+                    practices due to inclement weather. The North River Swim Team program will observe
+                    major nationally celebrated holidays (i.e. Memorial Day, Independence Day) and will cancel
+                    practices on these days.</dd>
 
                 <dt>Parent Conduct:</dt>
                 <dd>The goal of the North River Swim Team is to foster a positive environment for all involved.
@@ -167,9 +169,18 @@
                     **If an extreme incident occurs involving alcoholic beverages, illegal drugs and/or physical injury towards others, the swimmer(s) involved will be dismissed from the team immediately and no refunds will be given.**
                 </p>
 
-                <dt>End Of Season:</dt>
-                <dd>At the conclusion of the swim team season, each swimmer will be recognized at an awards
-                    banquet to honor their achievements.</dd>
+                <dt>Swim Meets/championship Swim Meet:</dt>
+                <dd>Swim meet participation is optional but highly encouraged. We participate in two local swim
+                    leagues that operate slightly differently. Ribbons are awarded by both leagues. Swim meets
+                    take place on Friday evenings and Saturday mornings depending on swim group
+                    placement. Travel includes the Sarasota/Bradenton/Tampa area. Each swim meet is $10
+                    cash per swimmer paid approximately a week in advance of each competition. A
+                    Championship meet is held at the end of the season (late July) and the cost is also $10 per
+                    swimmer to participate.</dd>
+
+                <dt>End Of Season Party/awards:</dt>
+                <dd>At the conclusion of the swim team season, we will have a luau themed pool party (August)
+                    and each swimmer will be recognized with awards to honor their achievements.</dd>
 
             </dl>
 
