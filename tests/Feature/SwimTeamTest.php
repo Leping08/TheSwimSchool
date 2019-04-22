@@ -124,4 +124,64 @@ class SwimTeamTest extends TestCase
             'promo_code_id' => $promoCode->id
         ]);
     }
+
+    /** @test **/
+    public function a_swimmer_should_be_able_to_sigh_up_for_free_with_a_promo_code_and_not_hit_stripe()
+    {
+        Mail::fake();
+        Mail::assertNothingSent();
+
+        $level = factory('App\STLevel')->create([
+            'price' => 100
+        ]);
+        $season = factory('App\STSeason')->create();
+        $promo = factory('App\PromoCode')->create([
+            'code' => 'FORFREE',
+            'discount_percent' => 100
+        ]);
+        $size = factory('App\STShirtSize')->create();
+
+        $attributes = [
+            'firstName' => $this->faker->firstName,
+            'lastName' => $this->faker->lastName,
+            'birthDate' => Carbon::yesterday()->toDateString(),
+            'email' => $this->faker->email,
+            'phone' => '9998887777',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->word,
+            'zip' => $this->faker->numberBetween(10000, 90000),
+            'emergencyName' => $this->faker->name,
+            'emergencyRelationship' => $this->faker->word,
+            'emergencyPhone' => '999-999-9999',
+            'level_id' => $level->id,
+            'shirt_size_id' => $size->id,
+            'stripeToken' => 'tok_visa',
+            'promo_code' => $promo->code
+        ];
+
+        $this->get("/swim-team/level/{$level->id}/swimmer/")
+            ->assertStatus(200);
+
+        $this->assertEquals(0, \App\STSwimmer::all()->count());
+
+        $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
+
+        $response->assertRedirect('/thank-you');
+
+        Mail::assertSent(STSignUp::class);
+
+        $this->assertEquals(1, \App\STSwimmer::all()->count());
+
+        $this->assertDatabaseHas('s_t_swimmers', [
+            "firstName" => $attributes['firstName'],
+            "lastName" => $attributes['lastName'],
+            "email" => $attributes['email'],
+            "s_t_level_id" => $attributes['level_id'],
+            's_t_shirt_size_id' => $attributes['shirt_size_id'],
+            'promo_code_id' => $promo->id,
+            'stripeChargeId' => 'For Free Promo Code'
+        ]);
+    }
 }
