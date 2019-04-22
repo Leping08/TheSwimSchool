@@ -19,14 +19,7 @@ class STSwimmer extends Resource
      *
      * @var string
      */
-    public static $model = 'App\STSwimmer';
-
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'id';
+    public static $model = \App\STSwimmer::class;
 
     /**
      * The columns that should be searched.
@@ -35,6 +28,9 @@ class STSwimmer extends Resource
      */
     public static $search = [
         'id',
+        'firstName',
+        'lastName',
+        'email'
     ];
 
     public static $displayInNavigation = false;
@@ -72,6 +68,7 @@ class STSwimmer extends Resource
             })->hideFromIndex(),
             BelongsTo::make('Level', 'level', \App\Nova\STLevel::class),
             BelongsTo::make('Season', 'season', \App\Nova\STSeason::class),
+            BelongsTo::make('Shirt Size', 'shirtSize', \App\Nova\STShirtSize::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];
@@ -133,5 +130,15 @@ class STSwimmer extends Resource
     public static function uriKey()
     {
         return 'roster';
+    }
+
+    /**
+     * Get the value that should be displayed to represent the resource.
+     *
+     * @return string
+     */
+    public function title()
+    {
+        return "$this->firstName $this->lastName";
     }
 }

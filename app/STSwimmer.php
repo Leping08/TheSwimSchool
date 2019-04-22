@@ -63,6 +63,11 @@ class STSwimmer extends Model
         return $this->belongsTo(PromoCode::class);
     }
 
+    public function shirtSize()
+    {
+        return $this->belongsTo(STShirtSize::class, 's_t_shirt_size_id');
+    }
+
     /**
      * @return float|int
      */

@@ -35,4 +35,9 @@
             Coaches
         </a>
     </li>
+    <li class="leading-wide mb-4 text-sm">
+        <a href="/admin/resources/shirt-sizes" class="text-white ml-8 no-underline {{ request()->is('admin/resources/shirt-sizes*') ? 'router-link-exact-active router-link-active' : '' }}">
+            Shirt Sizes
+        </a>
+    </li>
 </ul>
