@@ -73,7 +73,7 @@
                         <div class="uk-margin uk-width-1-2@m uk-width-1-1@s">
                             <label class="uk-form-label uk-heading-bullet" for="birthDate">Birth Date</label>
                             <div class="uk-form-controls">
-                                <input type="date" class="uk-input" id="birthDate" name="birthDate" value="{{ old('birthDate', $athlete->birthDate ?? now())->format('Y-m-d') }}" required>
+                                <input type="date" class="uk-input" id="birthDate" name="birthDate" value="{{ \Carbon\Carbon::parse(old('birthDate', $athlete->birthDate ?? now()))->format('Y-m-d') }}" required>
                             </div>
                         </div>
                         <div class="uk-margin uk-width-1-2@m uk-width-1-1@s">
@@ -86,7 +86,7 @@
                         <div class="uk-margin uk-width-1-1@m">
                             <label class="uk-form-label uk-heading-bullet" for="shirt_size_id">Shirt Size</label>
                             <div class="uk-form-controls">
-                                <select class="uk-select" name="length" id="shirt_size_id" required>
+                                <select class="uk-select" name="shirt_size_id" id="shirt_size_id" required>
                                     <option disabled selected value>-- Select an Option --</option>
                                     @forelse($sizes as $size)
                                         <option value="{{$size->id}}">{{$size->size}}</option>
