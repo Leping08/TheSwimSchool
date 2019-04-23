@@ -69,6 +69,12 @@ class STSwimmer extends Resource
             BelongsTo::make('Level', 'level', \App\Nova\STLevel::class),
             BelongsTo::make('Season', 'season', \App\Nova\STSeason::class),
             BelongsTo::make('Shirt Size', 'shirtSize', \App\Nova\STShirtSize::class),
+            Text::make('Charge Id', function () {
+                return view('partials.link', [
+                    'link' => config('nova.path').'/nova-stripe/charge/'.$this->stripeChargeId,
+                    'text' => $this->stripeChargeId
+                ])->render();
+            })->asHtml()->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];
