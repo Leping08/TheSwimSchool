@@ -46,7 +46,7 @@ class STSwimmerController extends Controller
 
         //Check if the stripe charge is even needed   Ex: 100% off promo code
         if($price <= 0){
-            Log::info("Swim Team Swimmer $swimTeamSwimmer->firstName $swimTeamSwimmer->lastName, ID: $swimTeamSwimmer->id has signed up with out paying. They used promo code ID: $swimTeamSwimmer->promo_code_id");
+            Log::info("Swim Team Swimmer $swimTeamSwimmer->firstName $swimTeamSwimmer->lastName, Email: $swimTeamSwimmer->email has signed up with out paying. They used promo code ID: $swimTeamSwimmer->promo_code_id");
             $swimTeamSwimmer = request()->merge([
                 'stripeChargeId' => 'For Free Promo Code'
             ]);
