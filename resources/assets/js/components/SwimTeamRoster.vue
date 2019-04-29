@@ -6,7 +6,7 @@
                     <div class="uk-h2">
                         Select Season
                     </div>
-                    <select v-model="currentSeasonId" class="uk-select">
+                    <select v-model="selectedSeasonId" class="uk-select">
                         <option v-for="(season, index) in seasons" :key="season.id" :value="season.id">{{season.name}}</option>
                     </select>
                 </div>
@@ -32,7 +32,7 @@
                                 </tr>
                             </thead>
                             <tbody v-for="(swimmer, index) in level.swimmers" :key="swimmer.id">
-                                <tr v-if="swimmer.season.id === selectedSeasonID" :class="{'stripe-list': index % 2 === 0 }">
+                                <tr v-if="swimmer.season.id === selectedSeasonId" :class="{'stripe-list': index % 2 === 0 }">
                                     <td>{{swimmer.firstName}} {{swimmer.lastName}}</td>
                                     <td>{{swimmer.phone}}</td>
                                     <td>{{swimmer.birthDate | moment("MM/DD/YY")}}</td>
@@ -57,15 +57,20 @@
         props: [
             'seasons',
             'levels',
-            'currentSeasonId'
+            'currentseason'
         ],
         data: function () {
-            return {}
+            return {
+                selectedSeasonId: 0
+            }
         },
         filters: {
             yearsOld: function (value) {
                 return moment().diff(value, 'year');
             }
+        },
+        created() {
+            this.selectedSeasonId = this.currentseason[0].id
         }
     }
 </script>
