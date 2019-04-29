@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Nova\Filters\SwimTeamLevel;
 use App\Nova\Filters\SwimTeamSeason;
+use App\Nova\Lenses\Roster;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
@@ -11,6 +12,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel;
 
 class STSwimmer extends Resource
 {
@@ -47,12 +49,14 @@ class STSwimmer extends Resource
             ID::make()->sortable(),
             Text::make('First Name', 'firstName')->sortable(),
             Text::make('Last Name', 'lastName')->sortable(),
+            Text::make('Email', 'email')->onlyOnForms(),
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
                     'text' => $this->email
                 ])->render();
             })->asHtml()->sortable()->hideFromIndex(),
+            Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
@@ -75,6 +79,7 @@ class STSwimmer extends Resource
                     'text' => $this->stripeChargeId
                 ])->render();
             })->asHtml()->hideFromIndex(),
+            (new Panel('Emergency Contact', $this->emergencyContact())),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];
@@ -114,7 +119,9 @@ class STSwimmer extends Resource
      */
     public function lenses(Request $request)
     {
-        return [];
+        return [
+            new Roster()
+        ];
     }
 
     /**
@@ -126,6 +133,20 @@ class STSwimmer extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    /**
+     * Get the address fields for the resource.
+     *
+     * @return array
+     */
+    protected function emergencyContact()
+    {
+        return [
+            Text::make('Name', 'emergencyName')->hideFromIndex(),
+            Text::make('Relationship', 'emergencyRelationship')->hideFromIndex(),
+            Text::make('Phone', 'emergencyPhone')->hideFromIndex()
+        ];
     }
 
     public static function label()

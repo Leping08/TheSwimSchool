@@ -54,12 +54,14 @@ class Athlete extends Resource
             Text::make('First Name', 'firstName')->sortable(),
             Text::make('Last Name', 'lastName')->sortable(),
             Text::make('Hash', 'hash')->hideFromIndex(),
+            Text::make('Email', 'email')->onlyOnForms(),
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
                     'text' => $this->email
                 ])->render();
-            })->asHtml()->sortable()->hideFromIndex(),
+            })->asHtml()->sortable(),
+            Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
