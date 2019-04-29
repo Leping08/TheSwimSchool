@@ -56,6 +56,9 @@ Route::middleware('auth')->group(function () {
 
     /* @see AthleteController::youMadeTheTeamEmail() */
     Route::post('/swim-team/congrats-email', 'AthleteController@youMadeTheTeamEmail');
+
+    /* @see STSwimmerController::roster() */
+    Route::get('/roster', 'STSwimmerController@roster');
 });
 
 
@@ -141,9 +144,6 @@ Route::get('/swim-team/checkout/{id}', 'STSwimmerController@checkout');
 
 /* @see STSwimmerController::pay() */
 Route::post('/swim-team/checkout', 'STSwimmerController@pay');
-
-/* @see STSwimmerController::roster() */
-Route::get('/roster', 'STSwimmerController@roster');
 
 
 

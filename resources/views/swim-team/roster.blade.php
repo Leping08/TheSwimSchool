@@ -13,7 +13,7 @@
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
-            <swim-team-roster :levels="{{json_encode($levels)}}" :seasons="{{json_encode($seasons)}}"></swim-team-roster>
+            <swim-team-roster :levels="{{json_encode($levels)}}" :seasons="{{json_encode($seasons)}}" :currentSeasonId="{{$currentSeasonId}}"></swim-team-roster>
         </div>
     </div>
 @endsection

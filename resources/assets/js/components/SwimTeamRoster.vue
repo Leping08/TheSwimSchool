@@ -6,7 +6,7 @@
                     <div class="uk-h2">
                         Select Season
                     </div>
-                    <select v-model="selectedSeasonID" class="uk-select">
+                    <select v-model="currentSeasonId" class="uk-select">
                         <option v-for="(season, index) in seasons" :key="season.id" :value="season.id">{{season.name}}</option>
                     </select>
                 </div>
@@ -56,12 +56,11 @@
         name: "swim-team-roster",
         props: [
             'seasons',
-            'levels'
+            'levels',
+            'currentSeasonId'
         ],
         data: function () {
-            return {
-                selectedSeasonID: 2
-            }
+            return {}
         },
         filters: {
             yearsOld: function (value) {
