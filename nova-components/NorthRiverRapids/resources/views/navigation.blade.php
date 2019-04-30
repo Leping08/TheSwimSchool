@@ -6,7 +6,7 @@
 </h3>
 <ul class="list-reset mb-8">
     <li class="leading-wide mb-4 text-sm">
-        <a href="/admin/resources/roster" class="text-white ml-8 no-underline {{ request()->is('admin/resources/roster*') ? 'router-link-exact-active router-link-active' : '' }}">
+        <a href="/roster" class="text-white ml-8 no-underline {{ request()->is('admin/resources/roster*') ? 'router-link-exact-active router-link-active' : '' }}">
             Roster
         </a>
     </li>
