@@ -56,9 +56,6 @@ Route::middleware('auth')->group(function () {
 
     /* @see AthleteController::youMadeTheTeamEmail() */
     Route::post('/swim-team/congrats-email', 'AthleteController@youMadeTheTeamEmail');
-
-    /* @see STSwimmerController::roster() */
-    Route::get('/roster', 'STSwimmerController@roster');
 });
 
 
@@ -122,6 +119,9 @@ Route::get('/swim-team/tryouts/{id}', 'TryoutController@signUp');
 //Save the results of the sign up form
 /* @see AthleteController::store() */
 Route::post('/swim-team/tryouts/{id}', 'AthleteController@store');
+
+/* @see STSwimmerController::roster() */
+Route::get('/roster', 'STSwimmerController@roster');
 
 
 
