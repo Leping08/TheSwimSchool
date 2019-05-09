@@ -11,6 +11,11 @@
         </a>
     </li>
     <li class="leading-wide mb-4 text-sm">
+        <a href="/admin/resources/roster" class="text-white ml-8 no-underline {{ request()->is('admin/resources/roster*') ? 'router-link-exact-active router-link-active' : '' }}">
+            Swimmers
+        </a>
+    </li>
+    <li class="leading-wide mb-4 text-sm">
         <a href="/admin/resources/athletes" class="text-white ml-8 no-underline {{ request()->is('admin/resources/athletes*') ? 'router-link-exact-active router-link-active' : '' }}">
             Athletes
         </a>
