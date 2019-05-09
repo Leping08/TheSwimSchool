@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Filters\ShirtSize;
 use App\Nova\Filters\SwimTeamLevel;
 use App\Nova\Filters\SwimTeamSeason;
 use Laravel\Nova\Fields\BelongsTo;
@@ -106,7 +107,8 @@ class STSwimmer extends Resource
     {
         return [
             new SwimTeamSeason(),
-            new SwimTeamLevel()
+            new SwimTeamLevel(),
+            new ShirtSize()
         ];
     }
 
