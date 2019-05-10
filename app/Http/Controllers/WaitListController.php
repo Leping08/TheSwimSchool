@@ -36,6 +36,17 @@ class WaitListController extends Controller
             return back();
         }
 
+        if($lesson->waitlist->count()){
+            foreach ($lesson->waitlist as $swimmer)
+            {
+                if($swimmer->email === $waitingSwimmer['email']){
+                    session()->flash('warning', 'Email already on the wait list.');
+                    return back();
+                }
+            }
+        }
+
+
         $waitingSwimmer['date_of_birth'] = Carbon::parse($waitingSwimmer['date_of_birth'])->format('Y-m-d');
 
         $newWaitingSwimmer = WaitList::create($waitingSwimmer);
