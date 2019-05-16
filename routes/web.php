@@ -161,6 +161,9 @@ Route::post('/lifeguarding', 'LeadController@store');
 /* @see LeadController::store() */
 Route::post('/cpr-first-aid', 'LeadController@store');
 
+/* @see PrivateLessonLeadController::index() */
+Route::get('/private-semi-private', 'PrivateLessonLeadController@index');
+
 /* @see PrivateLessonLeadController::store() */
 Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
 
@@ -214,10 +217,6 @@ Route::get('/group-lessons/policies-and-procedures', function(){
 
 Route::get('/swim-team/policies-and-procedures', function(){
     return view('swim-team.terms');
-});
-
-Route::get('/private-semi-private', function () {
-    return view('private-lesson-leads.index');
 });
 
 Route::get('/thank-you', function () {
