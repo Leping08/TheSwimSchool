@@ -22,15 +22,15 @@
                             <li class="{{{ (Request::segment(1) === 'lessons' || Request::segment(1) === 'private-semi-private' ||  Request::segment(1) === 'swim-team' ||  Request::segment(1) === 'other-services'  ? 'uk-active' : null) }}} uk-parent">
                                 <a>Services</a>
                                 <ul class="uk-nav-sub">
-                                    <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a title="Manatee County Swimming Classes" href="/lessons/">Group Lessons</a></li>
+                                    <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a title="Manatee County Swimming Classes" href="/lessons">Group Lessons</a></li>
                                     <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a title="Parrish Private Swim Lessons" href="/private-semi-private">Private Lessons</a></li>
                                     <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a title="Palmetto Swim Team" href="/swim-team">Swim Team</a></li>
                                     {{--<li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a title="Bradenton Swimming" href="/other-services/">Other Services</a></li>--}}
                                 </ul>
                             </li>
-                            <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="/about/">About</a></li>
+                            <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="/about">About</a></li>
                             {{--<li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a title="Swim School Testimonials" href="/testimonials/">Testimonials</a></li>--}}
-                            <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Lakewood Ranch Swim Instructors" href="/contact-us/">Contact Us</a></li>
+                            <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Lakewood Ranch Swim Instructors" href="/contact-us">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                                 <div class="uk-navbar-dropdown-grid uk-child-width-1-1" uk-grid>
                                     <div>
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                                            <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a title="Manatee County Swimming Classes" href="/lessons/">Group Lessons</a></li>
+                                            <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a title="Manatee County Swimming Classes" href="/lessons">Group Lessons</a></li>
                                             <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a title="Parrish Private Swim Lessons" href="/private-semi-private">Private Lessons</a></li>
                                             <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a title="Palmetto Swim Team" href="/swim-team">Swim Team</a></li>
                                             {{--<li class="{{{ (Request::segment(1) === 'other-services' ? 'uk-active' : null) }}} "><a title="Bradenton Swimming" href="/other-services/">Other Services</a></li>--}}
@@ -105,9 +105,9 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="/about/">About</a></li>
+                        <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="/about">About</a></li>
                         {{--<li class="{{{ (Request::segment(1) === 'testimonials' ? 'uk-active' : null) }}} "><a title="Swim School Testimonials" href="/testimonials/">Testimonials</a></li>--}}
-                        <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Lakewood Ranch Swim Instructors" href="/contact-us/">Contact Us</a></li>
+                        <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Lakewood Ranch Swim Instructors" href="/contact-us">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="uk-navbar-right">
