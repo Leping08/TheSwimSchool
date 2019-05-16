@@ -12,10 +12,10 @@
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
-            @if(config('season.groups.off-season'))
+            @if($banner && $banner->active)
                 <div class="uk-alert-primary" uk-alert>
                     <a class="uk-alert-close" uk-close></a>
-                    <p>{{--Next weekend group lesson registration opens {{config('season.groups.next_season.registration_open')}}.--}} For the full schedule, check out the <a href="/lessons/schedule">2019 group lesson schedule</a>.</p>
+                    {!! $banner->text !!}
                 </div>
             @endif
 

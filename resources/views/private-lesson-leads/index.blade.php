@@ -12,11 +12,10 @@
 @section('content')
     <div class="uk-section-default uk-section uk-section-small">
         <div class="uk-container">
-
-            @if(config('season.private.off-season'))
+            @if($banner && $banner->active)
                 <div class="uk-alert-primary" uk-alert>
                     <a class="uk-alert-close" uk-close></a>
-                    <p>Private lesson registration opens {{config('season.private.next_season.registration_open')}}.</p>
+                    {!! $banner->text !!}
                 </div>
             @endif
 

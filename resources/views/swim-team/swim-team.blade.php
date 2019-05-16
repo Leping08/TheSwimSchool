@@ -12,6 +12,12 @@
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
+            @if($banner && $banner->active)
+                <div class="uk-alert-primary" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    {!! $banner->text !!}
+                </div>
+            @endif
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
