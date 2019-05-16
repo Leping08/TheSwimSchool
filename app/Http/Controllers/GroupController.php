@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Banner;
 use App\Group;
 use App\Lesson;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class GroupController extends Controller
     public function index()
     {
         //Get public facing groups for the groups index page
-        return view('groups.list')->with('groups', Group::public()->get());
+        $groups = Group::public()->get();
+        $banner = Banner::where('page', '/lessons')->first();
+        return view('groups.list', compact('groups', 'banner'));
     }
 
     /**

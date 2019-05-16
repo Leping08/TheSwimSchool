@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Banner;
 use App\Location;
 use Carbon\Carbon;
 use App\PrivateLessonLead;
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Mail;
 
 class PrivateLessonLeadController extends Controller
 {
+    public function index()
+    {
+        $banner = Banner::where('page', '/private-semi-private')->first();
+        return view('private-lesson-leads.index', compact('banner'));
+    }
     /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
