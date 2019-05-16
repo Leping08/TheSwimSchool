@@ -46,7 +46,13 @@ class Banner extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Page', 'page'),
+            Text::make('Page', 'page')->onlyOnForms(),
+            Text::make('Page', function () {
+                return view('partials.link', [
+                    'link' => $this->page,
+                    'text' => $this->page
+                ])->render();
+            })->asHtml(),
             Boolean::make('Active', 'active'),
             Code::make('Text', 'text')
         ];
