@@ -23,4 +23,5 @@ Route::get('/lesson-link/{lesson}', function (Lesson $lesson) {
     return $lesson->path();
 });
 
+/* @see PromoCodeController::index() */
 Route::post('/promo-code', 'PromoCodeController@index');

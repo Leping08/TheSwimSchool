@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $reviews = Review::active()->limit(10)->get();
