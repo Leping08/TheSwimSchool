@@ -17,7 +17,7 @@ class STSeason extends Resource
      *
      * @var string
      */
-    public static $model = 'App\STSeason';
+    public static $model = \App\STSeason::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -51,7 +51,7 @@ class STSeason extends Resource
             Text::make('Name'),
             Text::make('Dates'),
             Boolean::make('Current Season'),
-            HasMany::make('Tryouts'),
+            HasMany::make('Tryouts', 'tryouts', Tryout::class),
             HasMany::make('Athletes', 'athletes', Athlete::class),
             HasMany::make('Swim Team Swimmers', 'swimmers', STSwimmer::class),
             DateTime::make('Created At')->onlyOnDetail(),

@@ -28,7 +28,7 @@ class Swimmer extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Swimmer';
+    public static $model = \App\Swimmer::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -90,11 +90,11 @@ class Swimmer extends Resource
             Number::make('Lesson Id', 'lesson_id')->onlyOnForms(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            (new Panel('Lesson', $this->lesson())),
+            BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail(),
             (new Panel('Stripe Payment', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
-            (new Panel('Notes', $this->notes()))
+            Text::make('Notes', 'notes')->hideFromIndex()
         ];
     }
 
@@ -232,13 +232,6 @@ class Swimmer extends Resource
     {
         return [
             Text::make('Notes', 'notes')->hideFromIndex(),
-        ];
-    }
-
-    protected function lesson()
-    {
-        return [
-            BelongsTo::make('Lesson')->onlyOnDetail()
         ];
     }
 }

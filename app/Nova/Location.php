@@ -18,7 +18,7 @@ class Location extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Location';
+    public static $model = \App\Location::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -56,7 +56,7 @@ class Location extends Resource
             Textarea::make('Pool Access Instructions')->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            HasMany::make('Lessons')
+            HasMany::make('Lessons', 'lessons', Lesson::class)
         ];
     }
 

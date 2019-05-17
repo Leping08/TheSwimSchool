@@ -18,7 +18,7 @@ class EmailList extends Resource
      *
      * @var string
      */
-    public static $model = 'App\EmailList';
+    public static $model = \App\EmailList::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

@@ -50,7 +50,7 @@ class STShirtSize extends Resource
             Text::make('Size', 'size'),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            HasMany::make('Swimmers', 'swimmers', \App\Nova\STSwimmer::class)
+            HasMany::make('Swimmers', 'swimmers', STSwimmer::class)
         ];
     }
 

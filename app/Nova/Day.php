@@ -17,7 +17,7 @@ class Day extends Resource
      *
      * @var string
      */
-    public static $model = 'App\DaysOfTheWeek';
+    public static $model = \App\DaysOfTheWeek::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -47,8 +47,8 @@ class Day extends Resource
         return [
             ID::make()->sortable(),
             Text::make('day')->sortable(),
-            BelongsToMany::make('Lessons', 'lessons', 'App\Nova\Lesson'),
-            BelongsToMany::make('Swim Team Levels', 'levels', 'App\Nova\STLevel')->fields(function () {
+            BelongsToMany::make('Lessons', 'lessons', Lesson::class),
+            BelongsToMany::make('Swim Team Levels', 'levels', STLevel::class)->fields(function () {
                 return [
                     DateTime::make( 'start_time'),
                     DateTime::make('end_time'),

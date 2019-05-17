@@ -18,7 +18,7 @@ class WaitList extends Resource
      *
      * @var string
      */
-    public static $model = 'App\WaitList';
+    public static $model = \App\WaitList::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -72,7 +72,7 @@ class WaitList extends Resource
             })->asHtml(),
             Boolean::make('Followed Up', 'followed_up'),
             Number::make('Lesson ID', 'lesson_id')->onlyOnForms(),
-            BelongsTo::make('Lesson')->onlyOnDetail()
+            BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail()
         ];
     }
 

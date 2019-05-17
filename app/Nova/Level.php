@@ -20,7 +20,7 @@ class Level extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Group';
+    public static $model = \App\Group::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -55,7 +55,7 @@ class Level extends Resource
             Text::make('Ages', 'ages')->sortable(),
             Image::make('Icon', 'icon')->disk('sea-life')->hideWhenUpdating()->hideWhenCreating(),
             Text::make('Description', 'description')->hideFromIndex(),
-            HasMany::make('Lessons'),
+            HasMany::make('Lessons', 'lessons', Lesson::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];

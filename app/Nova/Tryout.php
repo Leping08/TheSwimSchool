@@ -19,7 +19,7 @@ class Tryout extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Tryout';
+    public static $model = \App\Tryout::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -62,7 +62,7 @@ class Tryout extends Resource
                     //'new_tab' => true TODO: Add new tab option to link partial
                 ])->render();
             })->asHtml()->hideFromIndex(),
-            HasMany::make('Athletes'),
+            HasMany::make('Athletes', 'athletes', Athlete::class),
             DateTime::make('Registration Open', 'registration_open'),
             DateTime::make('Tryout Start', 'event_time'),
             DateTime::make('Created At')->onlyOnDetail(),

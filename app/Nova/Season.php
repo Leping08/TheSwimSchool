@@ -17,7 +17,7 @@ class Season extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Season';
+    public static $model = \App\Season::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -49,7 +49,7 @@ class Season extends Resource
             ID::make()->sortable(),
             Text::make('Year', 'year')->sortable(),
             Text::make('Season', 'season')->sortable(),
-            HasMany::make('Lessons'),
+            HasMany::make('Lessons', 'lessons', Lesson::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];
