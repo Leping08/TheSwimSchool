@@ -20,6 +20,11 @@ class STSwimmerController extends Controller
 {
     use Promo;
 
+    /**
+     * @param STLevel $level
+     * @param null $hash
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(STLevel $level, $hash = null)
     {
         $athlete = Athlete::findByHash($hash)->first() ?? null;
@@ -28,6 +33,10 @@ class STSwimmerController extends Controller
         return view('swim-team.signUp', compact('level', 'season', 'athlete', 'sizes'));
     }
 
+    /**
+     * @param SwimTeamSignUp $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(SwimTeamSignUp $request)
     {
         $level = STLevel::find(request()->level_id);
@@ -78,7 +87,9 @@ class STSwimmerController extends Controller
         return redirect('/thank-you');
     }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function roster()
     {
         $seasons = STSeason::orderBy('created_at', 'desc')->get();

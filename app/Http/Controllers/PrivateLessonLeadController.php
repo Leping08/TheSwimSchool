@@ -13,19 +13,13 @@ use Illuminate\Support\Facades\Mail;
 
 class PrivateLessonLeadController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $banner = Banner::where('page', '/private-semi-private')->first();
         return view('private-lesson-leads.index', compact('banner'));
-    }
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $lead = PrivateLessonLead::findOrFail($id);
-        return view('private-lesson-leads.show', compact('lead'));
     }
 
     /**
