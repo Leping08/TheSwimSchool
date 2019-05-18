@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PromoCodeController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return int
+     */
     public function index(Request $request)
     {
         $validatedData = $request->validate([

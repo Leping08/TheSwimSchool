@@ -59,16 +59,6 @@ class WaitListController extends Controller
     }
 
     /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $waitingSwimmer = WaitList::with('lesson')->find($id);
-        return view('wait-list.show', compact('waitingSwimmer'));
-    }
-
-    /**
      * @param Lesson $lesson
      */
     private function sendWaitListAdminEmail(Lesson $lesson)

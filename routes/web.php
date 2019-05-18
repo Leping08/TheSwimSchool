@@ -16,50 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-//Auth protected routes
-Route::middleware('auth')->group(function () {
-    //Swimmers
-    Route::get('/swimmers', 'SwimmerController@index');
-    Route::get('/swimmers/{id}', 'SwimmerController@show');
-    Route::delete('/swimmers/{id}', 'SwimmerController@destroy');
-    Route::get('/swimmers/{id}/edit', 'SwimmerController@edit');
-    Route::patch('/swimmers/{id}/edit', 'SwimmerController@update');
-
-    /* @see DashboardController::index() */
-    Route::get('/dashboard', 'DashboardController@index');
-    Route::get('/analytics', 'DashboardController@analytics');
-    Route::get('/dashboard/season/current', 'DashboardController@swimmersForCurrentSeason');
-
-    /* @see PrivateLessonLeadController::show() */
-    Route::get('/private-semi-private/lead/{id}', 'PrivateLessonLeadController@show');
-
-    /* @see LeadController::show() */
-    Route::get('/lead/{lead}', 'LeadController@show');
-
-    /* @see GroupController */
-    Route::resource('groups', 'GroupController');
-    /* @see LocationController */
-    Route::resource('locations', 'LocationController');
-    /* @see LessonController */
-    Route::resource('lesson', 'LessonController');
-
-    /* @see TryoutController */
-    Route::resource('tryouts', 'TryoutController');
-
-    /* @see AthleteController */
-    Route::resource('athlete', 'AthleteController');
-
-    /* @see WaitListController::show() */
-    Route::get('/wait-list/{id}', 'WaitListController@show');
-
-    Route::post('/lesson-link-email/{id}', 'LessonController@emailSignUpLink');
-
-    /* @see AthleteController::youMadeTheTeamEmail() */
-    Route::post('/swim-team/congrats-email', 'AthleteController@youMadeTheTeamEmail');
-});
-
-
-
 
 /*
  * Home page
@@ -138,12 +94,6 @@ Route::get('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@i
 
 /* @see STSwimmerController::store() */
 Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@store');
-
-/* @see STSwimmerController::checkout() */
-Route::get('/swim-team/checkout/{id}', 'STSwimmerController@checkout');
-
-/* @see STSwimmerController::pay() */
-Route::post('/swim-team/checkout', 'STSwimmerController@pay');
 
 
 
