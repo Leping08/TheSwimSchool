@@ -108,6 +108,25 @@
 
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>
+                <div class="uk-child-width-expand@s" uk-grid>
+                    <div>
+                        <div class="uk-margin">Download the 2019 swim meet schedule. All swim meets are optional but participation is highly encouraged. All swim practices will be cancelled on days when a swim meet occurs</div>
+                        <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_2019_Swim_Meet_Schedule.pdf" download="NRST_2019_Swim_Meet_Schedule.pdf">Download</a>
+                    </div>
+                    {{--                    <div>--}}
+                    {{--                        <h3 class="el-title uk-margin uk-heading-bullet">Waves & Rapids Groups Schedule</h3>--}}
+                    {{--                        <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf" download="NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf">Download</a>--}}
+                    {{--                    </div>--}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+        <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
                     <h2 class="uk-heading-line">
@@ -134,25 +153,6 @@
                             <img class="uk-border-rounded uk-box-shadow-large" alt="" src="/img/thank-you/breast-stroke.jpg">
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
-        <div class="uk-container">
-            <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>
-                <div class="uk-child-width-expand@s" uk-grid>
-                    <div>
-                        <div class="uk-margin">Download the 2019 swim meet schedule. All swim meets are optional but participation is highly encouraged. All swim practices will be cancelled on days when a swim meet occurs</div>
-                        <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_2019_Swim_Meet_Schedule.pdf" download="NRST_2019_Swim_Meet_Schedule.pdf">Download</a>
-                    </div>
-{{--                    <div>--}}
-{{--                        <h3 class="el-title uk-margin uk-heading-bullet">Waves & Rapids Groups Schedule</h3>--}}
-{{--                        <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf" download="NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf">Download</a>--}}
-{{--                    </div>--}}
                 </div>
             </div>
         </div>
