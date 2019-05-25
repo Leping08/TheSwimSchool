@@ -131,6 +131,16 @@ Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
 Route::post('/newsletter', 'EmailListController@store');
 
 
+/*
+ * Email marketing unsubscribe page
+ */
+
+/* @see FeedbackController::index() */
+Route::get('/feedback', 'FeedbackController@index');
+
+/* @see FeedbackController::store() */
+Route::post('/feedback', 'FeedbackController@store');
+
 
 
 /*
