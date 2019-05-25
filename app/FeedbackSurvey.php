@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * An Eloquent Model: 'FeedbackSurvey'
  *
  * @property integer $id
+ * @property boolean $viewed
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
@@ -26,6 +27,11 @@ class FeedbackSurvey extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * @var array
+     */
+    protected $fillable = ['viewed'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

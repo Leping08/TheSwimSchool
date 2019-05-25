@@ -38,7 +38,9 @@ class FeedbackController extends Controller
             'question_18' => 'nullable'
         ]);
 
-        $survey = FeedbackSurvey::create();
+        $survey = FeedbackSurvey::create([
+            'viewed' => false
+        ]);
 
         foreach ($request->except('_token') as $key => $answer)
         {

@@ -40,4 +40,9 @@ class FeedbackAnswer extends Model
     {
         return $this->belongsTo(FeedbackQuestion::class, 'feedback_question_id');
     }
+
+    public function survey()
+    {
+        return $this->belongsTo(FeedbackSurvey::class, 'feedback_survey_id');
+    }
 }
