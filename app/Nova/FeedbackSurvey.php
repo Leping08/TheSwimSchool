@@ -100,12 +100,8 @@ class FeedbackSurvey extends Resource
         return [];
     }
 
-    /**
-     * @return mixed
-     */
-//    private function quet()
-//    {
-//        foreach ()
-//        return $this->questions
-//    }
+    public static function label()
+    {
+        return 'Feedback';
+    }
 }
