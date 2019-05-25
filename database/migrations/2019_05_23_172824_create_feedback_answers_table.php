@@ -15,7 +15,7 @@ class CreateFeedbackAnswersTable extends Migration
     {
         Schema::create('feedback_answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('answer')->nullable();
+            $table->string('answer', 9000)->nullable();
             $table->unsignedInteger('feedback_question_id');
             $table->unsignedInteger('feedback_survey_id');
             $table->timestamps();
