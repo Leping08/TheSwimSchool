@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\FeedbackAnswer;
 use App\FeedbackQuestion;
+use App\FeedbackSurvey;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -11,5 +13,43 @@ class FeedbackController extends Controller
     {
         $questions = FeedbackQuestion::with('type', 'category')->get();
         return view('feedback.index', compact('questions'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'question_1' => 'required|numeric',
+            'question_2' => 'required|numeric',
+            'question_3' => 'required|numeric',
+            'question_4' => 'required|numeric',
+            'question_5' => 'required|numeric',
+            'question_6' => 'required|numeric',
+            'question_7' => 'required|numeric',
+            'question_8' => 'required|numeric',
+            'question_9' => 'required|numeric',
+            'question_10' => 'required|numeric',
+            'question_11' => 'required|numeric',
+            'question_12' => 'required|numeric',
+            'question_13' => 'required|numeric',
+            'question_14' => 'required|numeric',
+            'question_15' => 'nullable',
+            'question_16' => 'nullable',
+            'question_17' => 'nullable',
+            'question_18' => 'nullable'
+        ]);
+
+        $survey = FeedbackSurvey::create();
+
+        foreach ($request->except('_token') as $key => $answer)
+        {
+            FeedbackAnswer::create([
+                'answer' => $answer,
+                'feedback_question_id' => trim($key, 'question_'),
+                'feedback_survey_id' => $survey->id
+            ]);
+        }
+
+        session()->flash('success', 'Thank you for filling out the survey. We appreciate the feedback and will use it to improve our services.');
+        return redirect('/thank-you');
     }
 }

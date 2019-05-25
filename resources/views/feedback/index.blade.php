@@ -42,7 +42,7 @@
                                             <select id="{{$question->id}}" name="question_{{$question->id}}" class="uk-select" required>
                                                 <option value="" selected disabled hidden>--</option>
                                                 @for ($i = 1; $i <= 5; $i++)
-                                                    <option value="question_{{$question->id}}">{{$i}}</option>
+                                                    <option value="{{$i}}">{{$i}}</option>
                                                 @endfor
                                             </select>
                                         </div>
@@ -64,7 +64,7 @@
                                             <select id="{{$question->id}}" name="question_{{$question->id}}" class="uk-select" required>
                                                 <option value="" selected disabled hidden>--</option>
                                                 @for ($i = 1; $i <= 5; $i++)
-                                                    <option value="question_{{$question->id}}">{{$i}}</option>
+                                                    <option value="{{$i}}">{{$i}}</option>
                                                 @endfor
                                             </select>
                                         </div>

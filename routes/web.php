@@ -138,6 +138,9 @@ Route::post('/newsletter', 'EmailListController@store');
 /* @see FeedbackController::index() */
 Route::get('/feedback', 'FeedbackController@index');
 
+/* @see FeedbackController::store() */
+Route::post('/feedback', 'FeedbackController@store');
+
 
 
 /*
