@@ -6,6 +6,7 @@ use App\FeedbackAnswer;
 use App\FeedbackQuestion;
 use App\FeedbackSurvey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class FeedbackController extends Controller
 {
@@ -38,6 +39,8 @@ class FeedbackController extends Controller
             'question_18' => 'nullable'
         ]);
 
+        Log::info("Creating a feedback survey");
+
         $survey = FeedbackSurvey::create([
             'viewed' => false
         ]);
@@ -50,6 +53,8 @@ class FeedbackController extends Controller
                 'feedback_survey_id' => $survey->id
             ]);
         }
+
+        Log::info("Feedback survey and answers saved");
 
         session()->flash('success', 'Thank you for filling out the survey. We appreciate the feedback and will use it to improve our services.');
         return redirect('/thank-you');

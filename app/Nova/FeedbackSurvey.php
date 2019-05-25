@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
