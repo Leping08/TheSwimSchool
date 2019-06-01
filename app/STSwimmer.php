@@ -64,6 +64,9 @@ class STSwimmer extends Model
         return $this->belongsTo(PromoCode::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function shirtSize()
     {
         return $this->belongsTo(STShirtSize::class, 's_t_shirt_size_id');
