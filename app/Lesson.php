@@ -194,4 +194,13 @@ class Lesson extends Model
     {
         return $query->where('class_start_date', Carbon::tomorrow());
     }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeEndedOneWeekAgo($query)
+    {
+        return $query->whereDate('class_end_date', Carbon::today()->subDay(7));
+    }
 }

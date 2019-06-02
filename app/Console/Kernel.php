@@ -3,10 +3,12 @@
 namespace App\Console;
 
 use App\Console\Commands\SendTryoutReminderEmails;
+use App\Jobs\SendFeedbackEmails;
 use App\Library\Facebook\FacebookApiRequest;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Console\Commands\SendReminderEmails;
+use Illuminate\Support\Facades\Mail;
 
 class Kernel extends ConsoleKernel
 {
@@ -34,6 +36,10 @@ class Kernel extends ConsoleKernel
         $schedule->call(function() {
             (new FacebookApiRequest())->updateReviews();
         })->dailyAt('05:00');
+        //Send feedback email survey
+        $schedule->call(function (){
+            SendFeedbackEmails::dispatch();
+        })->dailyAt('7:00');
     }
 
     /**
