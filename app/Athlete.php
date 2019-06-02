@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Library\Helpers\Hashable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
@@ -45,7 +44,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class Athlete extends Model
 {
-    use SoftDeletes, Actionable, Hashable;
+    use SoftDeletes, Actionable;
 
     /**
      * @var array
@@ -118,5 +117,15 @@ class Athlete extends Model
     public function yearsOld()
     {
         return $this->birthDate->diffInYears(Carbon::now());
+    }
+
+    /**
+     * @param $query
+     * @param $hash
+     * @return mixed
+     */
+    public function scopeFindByHash($query, $hash)
+    {
+        return $query->where('hash', '=', $hash);
     }
 }
