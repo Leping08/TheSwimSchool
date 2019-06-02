@@ -2,33 +2,26 @@
 
 namespace App\Jobs;
 
+use App\Library\GroupLessonsReminderEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactUs;
-use Log;
+use Illuminate\Support\Facades\Log;
 
-class ContactEmail implements ShouldQueue
+class SendGroupLessonsReminderEmails implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    protected $data;
-    protected $subject;
-    protected $email;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data, $subject, $email)
+    public function __construct()
     {
-        $this->data = $data;
-        $this->subject = $subject;
-        $this->email = $email;
+        //
     }
 
     /**
@@ -38,7 +31,8 @@ class ContactEmail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->email)->send(new ContactUs($this->data, $this->subject));
-        Log::info("$this->subject Email sent to: $this->email.");
+        Log::info("Starting to send lesson reminder emails.");
+        (new GroupLessonsReminderEmail)->sendReminderEmails();
+        Log::info("Finished sending lesson reminder emails.");
     }
 }

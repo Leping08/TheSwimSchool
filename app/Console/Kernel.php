@@ -2,13 +2,12 @@
 
 namespace App\Console;
 
-use App\Console\Commands\SendTryoutReminderEmails;
 use App\Jobs\SendFeedbackEmails;
+use App\Jobs\SendGroupLessonsReminderEmails;
+use App\Jobs\SendTryoutReminderEmails;
 use App\Library\Facebook\FacebookApiRequest;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Console\Commands\SendReminderEmails;
-use Illuminate\Support\Facades\Mail;
 
 class Kernel extends ConsoleKernel
 {
@@ -17,10 +16,7 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
-    protected $commands = [
-        SendReminderEmails::class,
-        SendTryoutReminderEmails::class
-    ];
+    protected $commands = [];
 
     /**
      * Define the application's command schedule.
@@ -30,16 +26,25 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command("send-lesson-reminder-emails")->dailyAt('8:00');
-        $schedule->command("send-tryout-reminder-emails")->dailyAt('8:05');
-        //Update reviews table with the SwimSchool Facebook page reviews
-        $schedule->call(function() {
-            (new FacebookApiRequest())->updateReviews();
-        })->dailyAt('05:00');
         //Send feedback email survey
         $schedule->call(function (){
             SendFeedbackEmails::dispatch();
         })->dailyAt('7:00');
+
+        //Update reviews table with the SwimSchool Facebook page reviews
+        $schedule->call(function() {
+            (new FacebookApiRequest())->updateReviews();
+        })->dailyAt('7:10');
+
+        //Send group lesson reminder emails
+        $schedule->call(function (){
+            SendGroupLessonsReminderEmails::dispatch();
+        })->dailyAt('7:20');
+
+        //Send Swim Team Tryout Reminder emails
+        $schedule->call(function (){
+            SendTryoutReminderEmails::dispatch();
+        })->dailyAt('7:30');
     }
 
     /**
