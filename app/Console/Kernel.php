@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         //Send feedback email survey
         $schedule->call(function (){
-            SendFeedbackEmails::dispatch();
+            SendFeedbackEmails::dispatchNow();
         })->dailyAt('7:00');
 
         //Update reviews table with the SwimSchool Facebook page reviews
@@ -38,12 +38,12 @@ class Kernel extends ConsoleKernel
 
         //Send group lesson reminder emails
         $schedule->call(function (){
-            SendGroupLessonsReminderEmails::dispatch();
+            SendGroupLessonsReminderEmails::dispatchNow();
         })->dailyAt('7:20');
 
         //Send Swim Team Tryout Reminder emails
         $schedule->call(function (){
-            SendTryoutReminderEmails::dispatch();
+            SendTryoutReminderEmails::dispatchNow();
         })->dailyAt('7:30');
     }
 
