@@ -49,7 +49,7 @@ class SendFeedbackEmails implements ShouldQueue
                 }
             }
         } else {
-            Log::info("Lessons ended a week ago.");
+            Log::info("No lessons ended a week ago.");
         }
     }
 }
