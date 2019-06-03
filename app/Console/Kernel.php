@@ -34,17 +34,17 @@ class Kernel extends ConsoleKernel
         //Update reviews table with the SwimSchool Facebook page reviews
         $schedule->call(function() {
             (new FacebookApiRequest())->updateReviews();
-        })->dailyAt('7:10');
+        })->dailyAt('7:05');
 
         //Send group lesson reminder emails
         $schedule->call(function (){
             SendGroupLessonsReminderEmails::dispatchNow();
-        })->dailyAt('7:20');
+        })->dailyAt('7:10');
 
         //Send Swim Team Tryout Reminder emails
         $schedule->call(function (){
             SendTryoutReminderEmails::dispatchNow();
-        })->dailyAt('7:30');
+        })->dailyAt('7:15');
     }
 
     /**
