@@ -89,7 +89,7 @@
 
                 <div class="uk-width-4-4@m uk-first-column">
                     <h2 class="uk-heading-bullet">Locations</h2>
-                    <p class="uk-text-meta">Private Lessons take place at Harrison Ranch and River Wilderness Golf & Country Club or any Home/Community Pool within Parish, Ellenton or Palmetto.</p>
+                    <p class="uk-text-meta">Private Lessons take place at Harrison Ranch and River Wilderness Golf & Country Club or any Home/Community Pool within Parrish, Ellenton or Palmetto.</p>
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             {{--<h5>Harrison Ranch</h5>--}}
