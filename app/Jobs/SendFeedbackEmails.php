@@ -35,16 +35,28 @@ class SendFeedbackEmails implements ShouldQueue
     public function handle()
     {
         $lessons = Lesson::with('swimmers')->endedOneWeekAgo()->get();
+
         if(count($lessons)){
+
+            //Collect all the swimmers
+            $swimmers = collect();
             foreach ($lessons as $lesson){
                 foreach($lesson->swimmers as $swimmer){
-                    if($swimmer->email){
-                        try{
-                            Log::info("Sending feedback survey email to $swimmer->email for lesson ID: $lesson->id");
-                            Mail::to($swimmer->email)->send(new FeedbackSurvey());
-                        } catch (\Exception $e) {
-                            Log::warning("Email error: $e");
-                        }
+                    $swimmers->push($swimmer);
+                }
+            }
+
+            //Only get swimmers with unique emails
+            $uniqueSwimmers = $swimmers->unique('email');
+
+            //Email the feedback surveys to the unique emails
+            foreach ($uniqueSwimmers as $swimmer){
+                if($swimmer->email){
+                    try{
+                        Log::info("Sending feedback survey email to $swimmer->email for swimmer ID: $swimmer->id");
+                        Mail::to($swimmer->email)->send(new FeedbackSurvey());
+                    } catch (\Exception $e) {
+                        Log::warning("Email error: $e");
                     }
                 }
             }

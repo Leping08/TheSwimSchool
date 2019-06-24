@@ -3,7 +3,12 @@
 namespace Tests\Feature;
 
 use App\FeedbackSurvey;
+use App\Jobs\SendFeedbackEmails;
+use App\Lesson;
+use App\Swimmer;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -52,5 +57,67 @@ class FeedbackTest extends TestCase
 
         $this->assertEquals(4, $feedback[0]->answers[0]->answer);
         $this->assertEquals(1, $feedback[0]->answers[8]->answer);
+    }
+
+    /** @test */
+    public function a_user_will_be_sent_a_feedback_email_a_week_after_the_lesson()
+    {
+        $lesson = factory(\App\Lesson::class)->create([
+            'class_start_date' => Carbon::now()->subDay(14),
+            'class_end_date' => Carbon::now()->subDay(7)
+        ]);
+
+        factory(\App\Swimmer::class)->create([
+            'lesson_id' => $lesson->id
+        ]);
+
+        $this->assertCount(1, Swimmer::all());
+
+        $this->assertCount(1, Lesson::endedOneWeekAgo()->get());
+
+        Mail::fake();
+        Mail::assertNothingSent();
+
+        SendFeedbackEmails::dispatchNow();
+
+        Mail::assertSent(\App\Mail\FeedbackSurvey::class);
+    }
+
+    /** @test */
+    public function a_user_will_only_receive_one_feedback_survey_if_they_sign_up_multiple_swimmers_with_the_same_email()
+    {
+        $email = 'test@gmail.com';
+
+        $lesson = factory(\App\Lesson::class)->create([
+            'class_start_date' => Carbon::now()->subDay(14),
+            'class_end_date' => Carbon::now()->subDay(7),
+            'class_size' => 3
+        ]);
+
+        factory(\App\Swimmer::class)->create([
+            'lesson_id' => $lesson->id,
+            'email' => $email
+        ]);
+
+        factory(\App\Swimmer::class)->create([
+            'lesson_id' => $lesson->id,
+            'email' => $email
+        ]);
+
+        factory(\App\Swimmer::class)->create([
+            'lesson_id' => $lesson->id,
+            'email' => $email
+        ]);
+
+        $this->assertCount(3, Swimmer::all());
+
+        $this->assertCount(1, Lesson::endedOneWeekAgo()->get());
+
+        Mail::fake();
+        Mail::assertNothingSent();
+
+        SendFeedbackEmails::dispatchNow();
+
+        Mail::assertSent(\App\Mail\FeedbackSurvey::class, 1);
     }
 }
