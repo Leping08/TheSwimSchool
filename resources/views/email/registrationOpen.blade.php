@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/little-one.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/older-group.jpg')}}">
 
 @component('mail::panel')
 # Registration is Now Open
-Registration is now open for our next weekday session of group swim lessons. This session will be held at our River Wilderness Golf & Country Club pool location. If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
+Registration is now open for our final two week summer weekday session of group swim lessons. If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
 @endcomponent
 
 @component('mail::button', ['url' => 'https://theswimschoolfl.com/lessons?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
