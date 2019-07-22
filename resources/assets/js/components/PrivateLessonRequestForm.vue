@@ -9,14 +9,14 @@
                 </select>
             </div>
         </div>
-        <div class="uk-margin" v-if="selected === 'The Swim School Pool'">
-            <div class="uk-form-controls">
-                <!--TODO Adjust the color of this checkbox-->
-                <label><input class="uk-checkbox" type="checkbox" name="hr_resident">
-                    Are you a Harrison Ranch resident?
-                </label>
-            </div>
-        </div>
+<!--        <div class="uk-margin" v-if="selected === 'The Swim School Pool'">-->
+<!--            <div class="uk-form-controls">-->
+<!--                &lt;!&ndash;TODO Adjust the color of this checkbox&ndash;&gt;-->
+<!--                <label><input class="uk-checkbox" type="checkbox" name="hr_resident">-->
+<!--                    Are you a Harrison Ranch resident?-->
+<!--                </label>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="uk-margin" v-if="selected === 'My Home or Community Pool'">
             <label class="uk-form-label uk-heading-bullet" for="">Address</label>
             <div class="uk-form-controls">
