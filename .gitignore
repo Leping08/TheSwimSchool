@@ -12,3 +12,5 @@ yarn-error.log
 .env
 /nova
 .DS_Store
+public/mix-manifest.json
+public/js/app.js

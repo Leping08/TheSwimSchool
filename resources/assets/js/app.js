@@ -6,7 +6,6 @@ import VueMoment from 'vue-moment'
 import moment from 'moment'
 
 //Components
-import search from './components/search'
 import privateLessonRequestForm from './components/PrivateLessonRequestForm'
 import swimTeamRoster from './components/SwimTeamRoster'
 import promo_code from './components/promoCode'
@@ -18,7 +17,6 @@ Vue.use(VueMoment, {
 const app = new Vue({
     el: '#app',
     components: {
-        search,
         swimTeamRoster,
         privateLessonRequestForm,
         promo_code: promo_code
