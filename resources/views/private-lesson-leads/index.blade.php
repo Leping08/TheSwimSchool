@@ -21,10 +21,15 @@
 
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-3-4@m uk-first-column">
+{{--                    <div class="uk-margin uk-dropcap">--}}
+{{--                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="/swim-team">swim team</a>, or a triathlete--}}
+{{--                        looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly.--}}
+{{--                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at Harrison Ranch and River Wilderness Golf & Country Club.--}}
+{{--                    </div>--}}
                     <div class="uk-margin uk-dropcap">
                         Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="/swim-team">swim team</a>, or a triathlete
                         looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly.
-                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at Harrison Ranch and River Wilderness Golf & Country Club.
+                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at the River Wilderness Golf & Country Club.
                     </div>
                 </div>
                 <div class="uk-width-expand@m">
@@ -89,14 +94,15 @@
 
                 <div class="uk-width-4-4@m uk-first-column">
                     <h2 class="uk-heading-bullet">Locations</h2>
-                    <p class="uk-text-meta">Private Lessons take place at Harrison Ranch and River Wilderness Golf & Country Club or any Home/Community Pool within Parrish, Ellenton or Palmetto.</p>
-                    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
-                        <div>
-                            {{--<h5>Harrison Ranch</h5>--}}
-                            <div class="uk-card uk-card-default">
-                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
-                            </div>
-                        </div>
+{{--                    <p class="uk-text-meta">Private Lessons take place at Harrison Ranch and River Wilderness Golf & Country Club or any Home/Community Pool within Parrish, Ellenton or Palmetto.</p>--}}
+                    <p class="uk-text-meta">Private Lessons take place at the River Wilderness Golf & Country Club or any Home/Community Pool within Parrish, Ellenton or Palmetto.</p>
+                    <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
+{{--                        <div>--}}
+{{--                            --}}{{--<h5>Harrison Ranch</h5>--}}
+{{--                            <div class="uk-card uk-card-default">--}}
+{{--                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div>
                             {{--<h5>River Wilderness Golf & Country Club</h5>--}}
                             <div class="uk-card uk-card-default">
