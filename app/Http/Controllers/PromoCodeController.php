@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\PromoCode;
+use App\Models\PromoCode;
 use Illuminate\Http\Request;
 
 class PromoCodeController extends Controller

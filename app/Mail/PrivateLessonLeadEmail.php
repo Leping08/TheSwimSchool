@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\PrivateLessonLead;
+use App\Models\PrivateLessonLead;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

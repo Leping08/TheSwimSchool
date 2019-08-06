@@ -17,7 +17,7 @@ class Testimonial extends Resource
      *
      * @var string
      */
-    public static $model = \App\Review::class;
+    public static $model = \App\Models\Review::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

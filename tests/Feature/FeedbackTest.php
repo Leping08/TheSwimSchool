@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Lesson;
-use App\Swimmer;
+use App\Models\Lesson;
+use App\Models\Swimmer;
 use Carbon\Carbon;
 use Tests\TestCase;
-use App\FeedbackSurvey;
+use App\Models\FeedbackSurvey;
 use App\Jobs\SendFeedbackEmails;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -62,12 +62,12 @@ class FeedbackTest extends TestCase
     /** @test */
     public function a_user_will_be_sent_a_feedback_email_a_week_after_the_lesson()
     {
-        $lesson = factory(\App\Lesson::class)->create([
+        $lesson = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDay(14),
             'class_end_date' => Carbon::now()->subDay(7),
         ]);
 
-        factory(\App\Swimmer::class)->create([
+        factory(\App\Models\Swimmer::class)->create([
             'lesson_id' => $lesson->id,
         ]);
 
@@ -88,23 +88,23 @@ class FeedbackTest extends TestCase
     {
         $email = 'test@gmail.com';
 
-        $lesson = factory(\App\Lesson::class)->create([
+        $lesson = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDay(14),
             'class_end_date' => Carbon::now()->subDay(7),
             'class_size' => 3,
         ]);
 
-        factory(\App\Swimmer::class)->create([
+        factory(\App\Models\Swimmer::class)->create([
             'lesson_id' => $lesson->id,
             'email' => $email,
         ]);
 
-        factory(\App\Swimmer::class)->create([
+        factory(\App\Models\Swimmer::class)->create([
             'lesson_id' => $lesson->id,
             'email' => $email,
         ]);
 
-        factory(\App\Swimmer::class)->create([
+        factory(\App\Models\Swimmer::class)->create([
             'lesson_id' => $lesson->id,
             'email' => $email,
         ]);

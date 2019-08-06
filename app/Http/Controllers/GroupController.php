@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
-use App\Banner;
-use App\Lesson;
+use App\Models\Group;
+use App\Models\Banner;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 

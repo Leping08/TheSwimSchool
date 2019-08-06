@@ -2,8 +2,8 @@
 
 namespace App\Library\Lesson;
 
-use App\Lesson;
-use App\Swimmer;
+use App\Models\Lesson;
+use App\Models\Swimmer;
 use Carbon\Carbon;
 use App\Mail\SignUp;
 use App\Mail\ClassFull;

@@ -2,11 +2,11 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Lesson::class, function (Faker $faker) {
+$factory->define(App\Models\Lesson::class, function (Faker $faker) {
     return [
-        'season_id' => factory(\App\Season::class)->create()->id,
-        'group_id' => factory(\App\Group::class)->create()->id,
-        'location_id' => factory(\App\Location::class)->create()->id,
+        'season_id' => factory(\App\Models\Season::class)->create()->id,
+        'group_id' => factory(\App\Models\Group::class)->create()->id,
+        'location_id' => factory(\App\Models\Location::class)->create()->id,
         'price' => $faker->numberBetween(1, 150),
         'class_start_date' => $faker->dateTimeBetween('now', '+1 month'),
         'class_end_date' => $faker->dateTimeBetween('now', '+10 months'),

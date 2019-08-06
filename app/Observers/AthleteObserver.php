@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Athlete;
+use App\Models\Athlete;
 use App\Library\Helpers\RandomString;
 
 class AthleteObserver
@@ -10,7 +10,7 @@ class AthleteObserver
     /**
      * Handle the athlete "created" event.
      *
-     * @param  \App\Athlete  $athlete
+     * @param  \App\Models\Athlete  $athlete
      * @return void
      */
     public function created(Athlete $athlete)
@@ -22,7 +22,7 @@ class AthleteObserver
     /**
      * Handle the athlete "updated" event.
      *
-     * @param  \App\Athlete  $athlete
+     * @param  \App\Models\Athlete  $athlete
      * @return void
      */
     public function updated(Athlete $athlete)
@@ -33,7 +33,7 @@ class AthleteObserver
     /**
      * Handle the athlete "deleted" event.
      *
-     * @param  \App\Athlete  $athlete
+     * @param  \App\Models\Athlete  $athlete
      * @return void
      */
     public function deleted(Athlete $athlete)
@@ -44,7 +44,7 @@ class AthleteObserver
     /**
      * Handle the athlete "restored" event.
      *
-     * @param  \App\Athlete  $athlete
+     * @param  \App\Models\Athlete  $athlete
      * @return void
      */
     public function restored(Athlete $athlete)
@@ -55,7 +55,7 @@ class AthleteObserver
     /**
      * Handle the athlete "force deleted" event.
      *
-     * @param  \App\Athlete  $athlete
+     * @param  \App\Models\Athlete  $athlete
      * @return void
      */
     public function forceDeleted(Athlete $athlete)

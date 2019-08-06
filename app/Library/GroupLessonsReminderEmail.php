@@ -2,8 +2,8 @@
 
 namespace App\Library;
 
-use App\Lesson;
-use App\Swimmer;
+use App\Models\Lesson;
+use App\Models\Swimmer;
 use Carbon\Carbon;
 use App\Mail\GroupLessonReminder;
 use Illuminate\Support\Facades\Log;

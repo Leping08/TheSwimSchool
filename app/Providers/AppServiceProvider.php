@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Lesson;
+use App\Models\Lesson;
 use App\Observers\LessonObserver;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;

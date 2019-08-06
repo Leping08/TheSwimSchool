@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Lesson;
-use App\Swimmer;
-use App\EmailList;
+use App\Models\Lesson;
+use App\Models\Swimmer;
+use App\Models\EmailList;
 use Carbon\Carbon;
 use App\Mail\SignUp;
 use App\Mail\ClassFull;

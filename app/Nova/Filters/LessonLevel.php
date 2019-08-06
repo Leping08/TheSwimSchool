@@ -2,7 +2,7 @@
 
 namespace App\Nova\Filters;
 
-use App\Group;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 

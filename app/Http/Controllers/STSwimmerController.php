@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Athlete;
-use App\STLevel;
-use App\STSeason;
-use App\PromoCode;
-use App\STSwimmer;
+use App\Models\Athlete;
+use App\Models\STLevel;
+use App\Models\STSeason;
+use App\Models\PromoCode;
+use App\Models\STSwimmer;
 use Carbon\Carbon;
-use App\STShirtSize;
+use App\Models\STShirtSize;
 use App\Mail\STSignUp;
 use App\Library\StripeCharge;
 use App\Library\Helpers\Promo;

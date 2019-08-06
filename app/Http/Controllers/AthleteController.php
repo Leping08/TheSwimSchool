@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Tryout;
-use App\Athlete;
-use App\STLevel;
-use App\STSeason;
-use App\PromoCode;
+use App\Models\Tryout;
+use App\Models\Athlete;
+use App\Models\STLevel;
+use App\Models\STSeason;
+use App\Models\PromoCode;
 use Carbon\Carbon;
 use App\Mail\STInvitation;
 use Illuminate\Http\Request;

@@ -17,7 +17,7 @@ class Day extends Resource
      *
      * @var string
      */
-    public static $model = \App\DaysOfTheWeek::class;
+    public static $model = \App\Models\DaysOfTheWeek::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

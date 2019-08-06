@@ -2,8 +2,8 @@
 
 namespace App\Nova\Metrics;
 
-use App\Lesson;
-use App\Season;
+use App\Models\Lesson;
+use App\Models\Season;
 use Illuminate\Http\Request;
 use App\Nova\Helpers\NovaHelpers;
 use Laravel\Nova\Metrics\Partition;

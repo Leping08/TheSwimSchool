@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\App\Banner::class, function (Faker $faker) {
+$factory->define(\App\Models\Banner::class, function (Faker $faker) {
     return [
         'active' => true,
         'page' => '/swim-team',

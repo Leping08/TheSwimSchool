@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Tryout;
-use App\Location;
-use App\STSeason;
+use App\Models\Tryout;
+use App\Models\Location;
+use App\Models\STSeason;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

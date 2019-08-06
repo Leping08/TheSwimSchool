@@ -14,7 +14,7 @@ class BannerTest extends TestCase
     /** @test  **/
     public function a_user_should_see_a_banner_if_its_active()
     {
-        $banner = factory(\App\Banner::class)->create([
+        $banner = factory(\App\Models\Banner::class)->create([
             'page' => '/swim-team',
             'active' => false,
             'text' => 'This is the banner',

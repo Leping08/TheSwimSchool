@@ -2,14 +2,14 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Athlete::class, function (Faker $faker) {
+$factory->define(App\Models\Athlete::class, function (Faker $faker) {
     return [
         'firstName' => $faker->firstName,
         'lastName' => $faker->lastName,
         'email' => $faker->safeEmail,
         'phone' => $faker->phoneNumber,
         'birthDate' => $faker->dateTimeBetween($startDate = '-30 years', $endDate = 'yesterday'),
-        'tryout_id' => factory(\App\Tryout::class)->create()->id,
+        'tryout_id' => factory(\App\Models\Tryout::class)->create()->id,
         'parent' => $faker->name,
         'notes' => $faker->paragraph,
         'street' => $faker->streetName,
@@ -19,7 +19,7 @@ $factory->define(App\Athlete::class, function (Faker $faker) {
         'emergencyName' => $faker->firstNameFemale,
         'emergencyRelationship' => 'Mom',
         'emergencyPhone' => $faker->phoneNumber,
-        's_t_season_id' => factory(\App\STSeason::class)->create()->id,
+        's_t_season_id' => factory(\App\Models\STSeason::class)->create()->id,
         's_t_sign_up_email' => false,
     ];
 });

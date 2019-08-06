@@ -16,7 +16,7 @@ class FeedbackAnswer extends Resource
      *
      * @var string
      */
-    public static $model = \App\FeedbackAnswer::class;
+    public static $model = \App\Models\FeedbackAnswer::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

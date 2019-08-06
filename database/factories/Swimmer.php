@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Swimmer::class, function (Faker $faker) {
+$factory->define(App\Models\Swimmer::class, function (Faker $faker) {
     return [
         'firstName' => $faker->firstName,
         'lastName' => $faker->lastName,
@@ -21,7 +21,7 @@ $factory->define(App\Swimmer::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'paid' => $faker->boolean,
         'birthDate' => $faker->dateTimeBetween($startDate = '-30 years', $endDate = 'yesterday'),
-        'lesson_id' => factory(\App\Lesson::class)->create()->id,
+        'lesson_id' => factory(\App\Models\Lesson::class)->create()->id,
         'parent' => $faker->name,
         'notes' => $faker->paragraph,
         'street' => $faker->streetName,

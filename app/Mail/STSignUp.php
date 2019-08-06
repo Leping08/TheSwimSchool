@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\STSwimmer;
+use App\Models\STSwimmer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

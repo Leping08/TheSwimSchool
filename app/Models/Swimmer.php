@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Model;

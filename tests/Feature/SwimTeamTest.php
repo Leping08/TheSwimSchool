@@ -20,9 +20,9 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory(\App\STLevel::class)->create();
-        $season = factory(\App\STSeason::class)->create();
-        $size = factory(\App\STShirtSize::class)->create();
+        $level = factory(\App\Models\STLevel::class)->create();
+        $season = factory(\App\Models\STSeason::class)->create();
+        $size = factory(\App\Models\STShirtSize::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -46,7 +46,7 @@ class SwimTeamTest extends TestCase
         $this->get("/swim-team/level/{$level->id}/swimmer/")
             ->assertStatus(200);
 
-        $this->assertEquals(0, \App\STSwimmer::all()->count());
+        $this->assertEquals(0, \App\Models\STSwimmer::all()->count());
 
         $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
 
@@ -54,7 +54,7 @@ class SwimTeamTest extends TestCase
 
         Mail::assertSent(STSignUp::class);
 
-        $this->assertEquals(1, \App\STSwimmer::all()->count());
+        $this->assertEquals(1, \App\Models\STSwimmer::all()->count());
 
         $this->assertDatabaseHas('s_t_swimmers', [
             'firstName' => $attributes['firstName'],
@@ -71,15 +71,15 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory(\App\STLevel::class)->create([
+        $level = factory(\App\Models\STLevel::class)->create([
             'price' => 100,
         ]);
-        $season = factory(\App\STSeason::class)->create();
-        $promoCode = factory(\App\PromoCode::class)->create([
+        $season = factory(\App\Models\STSeason::class)->create();
+        $promoCode = factory(\App\Models\PromoCode::class)->create([
             'code' => 'HALFOFF',
             'discount_percent' => 50,
         ]);
-        $size = factory(\App\STShirtSize::class)->create();
+        $size = factory(\App\Models\STShirtSize::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -104,7 +104,7 @@ class SwimTeamTest extends TestCase
         $this->get("/swim-team/level/{$level->id}/swimmer/")
             ->assertStatus(200);
 
-        $this->assertEquals(0, \App\STSwimmer::all()->count());
+        $this->assertEquals(0, \App\Models\STSwimmer::all()->count());
 
         $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
 
@@ -112,7 +112,7 @@ class SwimTeamTest extends TestCase
 
         Mail::assertSent(STSignUp::class);
 
-        $this->assertEquals(1, \App\STSwimmer::all()->count());
+        $this->assertEquals(1, \App\Models\STSwimmer::all()->count());
 
         $this->assertDatabaseHas('s_t_swimmers', [
             'firstName' => $attributes['firstName'],
@@ -130,15 +130,15 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory(\App\STLevel::class)->create([
+        $level = factory(\App\Models\STLevel::class)->create([
             'price' => 100,
         ]);
-        $season = factory(\App\STSeason::class)->create();
-        $promo = factory(\App\PromoCode::class)->create([
+        $season = factory(\App\Models\STSeason::class)->create();
+        $promo = factory(\App\Models\PromoCode::class)->create([
             'code' => 'FORFREE',
             'discount_percent' => 100,
         ]);
-        $size = factory(\App\STShirtSize::class)->create();
+        $size = factory(\App\Models\STShirtSize::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -163,7 +163,7 @@ class SwimTeamTest extends TestCase
         $this->get("/swim-team/level/{$level->id}/swimmer/")
             ->assertStatus(200);
 
-        $this->assertEquals(0, \App\STSwimmer::all()->count());
+        $this->assertEquals(0, \App\Models\STSwimmer::all()->count());
 
         $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
 
@@ -171,7 +171,7 @@ class SwimTeamTest extends TestCase
 
         Mail::assertSent(STSignUp::class);
 
-        $this->assertEquals(1, \App\STSwimmer::all()->count());
+        $this->assertEquals(1, \App\Models\STSwimmer::all()->count());
 
         $this->assertDatabaseHas('s_t_swimmers', [
             'firstName' => $attributes['firstName'],

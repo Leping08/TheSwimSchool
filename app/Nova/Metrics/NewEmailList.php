@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\EmailList;
+use App\Models\EmailList;
 use Illuminate\Http\Request;
 use Laravel\Nova\Metrics\Value;
 

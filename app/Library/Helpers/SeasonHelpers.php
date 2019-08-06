@@ -2,7 +2,7 @@
 
 namespace App\Library\Helpers;
 
-use App\Season;
+use App\Models\Season;
 use Carbon\Carbon;
 
 class SeasonHelpers
