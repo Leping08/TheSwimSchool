@@ -4,13 +4,14 @@ namespace App\Nova\Metrics;
 
 use App\Group;
 use App\Lesson;
-use App\Nova\Helpers\NovaHelpers;
 use Illuminate\Http\Request;
+use App\Nova\Helpers\NovaHelpers;
 use Laravel\Nova\Metrics\Partition;
 
 class LessonsPerLevel extends Partition
 {
     use NovaHelpers;
+
     /**
      * Calculate the value of the metric.
      *
@@ -21,7 +22,7 @@ class LessonsPerLevel extends Partition
     {
         $groups = Group::withCount('lessons')->orderBy('lessons_count', 'desc')->get();
 
-        return $this->makePartitionResult($groups, 'type','lessons_count');
+        return $this->makePartitionResult($groups, 'type', 'lessons_count');
     }
 
     /**

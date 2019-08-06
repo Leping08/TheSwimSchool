@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * An Eloquent Model: 'Swimmer'
+ * An Eloquent Model: 'Swimmer'.
  *
- * @property integer $id
+ * @property int $id
  * @property string $firstName
  * @property string $lastName
  * @property string $email
  * @property string $phone
  * @property \Illuminate\Support\Carbon $birthDate
- * @property boolean $paid
+ * @property bool $paid
  * @property string $stripeChargeId
  * @property string $parent
  * @property string $notes
@@ -26,13 +26,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $emergencyName
  * @property string $emergencyRelationship
  * @property string $emergencyPhone
- * @property integer $lesson_id
+ * @property int $lesson_id
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read \App\Lesson $lesson
  */
-
 class Swimmer extends Model
 {
     use SoftDeletes, Ages;
@@ -62,7 +61,7 @@ class Swimmer extends Model
         'emergencyName',
         'emergencyRelationship',
         'emergencyPhone',
-        'stripeChargeId'
+        'stripeChargeId',
     ];
 
     /**

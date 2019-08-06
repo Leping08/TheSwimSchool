@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Library\StripeCharge;
 use Tests\TestCase;
+use App\Library\StripeCharge;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -16,7 +16,7 @@ class StripeChargeTest extends TestCase
             'card' => 'tok_visa',
             'price' => 85,
             'email' => 'derek@deltavcreative.com',
-            'description' => "Testing the stripe API"
+            'description' => 'Testing the stripe API',
         ]);
 
         $charge = (new StripeCharge(
@@ -44,7 +44,7 @@ class StripeChargeTest extends TestCase
             'card' => 'tok_chargeDeclined',
             'price' => 85,
             'email' => 'derek@deltavcreative.com',
-            'description' => "Testing the stripe API"
+            'description' => 'Testing the stripe API',
         ]);
 
         $charge = (new StripeCharge(

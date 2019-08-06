@@ -6,12 +6,12 @@ use App\Lesson;
 use App\Mail\FeedbackSurvey;
 use App\Mail\TryoutReminder;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
 class SendFeedbackEmails implements ShouldQueue
 {
@@ -36,12 +36,12 @@ class SendFeedbackEmails implements ShouldQueue
     {
         $lessons = Lesson::with('swimmers')->endedOneWeekAgo()->get();
 
-        if(count($lessons)){
+        if (count($lessons)) {
 
             //Collect all the swimmers
             $swimmers = collect();
-            foreach ($lessons as $lesson){
-                foreach($lesson->swimmers as $swimmer){
+            foreach ($lessons as $lesson) {
+                foreach ($lesson->swimmers as $swimmer) {
                     $swimmers->push($swimmer);
                 }
             }
@@ -50,9 +50,9 @@ class SendFeedbackEmails implements ShouldQueue
             $uniqueSwimmers = $swimmers->unique('email');
 
             //Email the feedback surveys to the unique emails
-            foreach ($uniqueSwimmers as $swimmer){
-                if($swimmer->email){
-                    try{
+            foreach ($uniqueSwimmers as $swimmer) {
+                if ($swimmer->email) {
+                    try {
                         Log::info("Sending feedback survey email to $swimmer->email for swimmer ID: $swimmer->id");
                         Mail::to($swimmer->email)->send(new FeedbackSurvey());
                     } catch (\Exception $e) {
@@ -61,7 +61,7 @@ class SendFeedbackEmails implements ShouldQueue
                 }
             }
         } else {
-            Log::info("No lessons ended a week ago.");
+            Log::info('No lessons ended a week ago.');
         }
     }
 }

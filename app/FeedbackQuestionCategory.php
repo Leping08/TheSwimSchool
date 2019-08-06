@@ -7,19 +7,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * This is a question category on the feedback survey
- * Ex: Instructor or Overall Program
+ * Ex: Instructor or Overall Program.
  *
  * An Eloquent Model: 'FeedbackQuestionCategory'
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read \App\FeedbackQuestion $questions
- *
  */
-
 class FeedbackQuestionCategory extends Model
 {
     use SoftDeletes;

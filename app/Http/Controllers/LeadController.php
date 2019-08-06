@@ -16,7 +16,6 @@ class LeadController extends Controller
         return view('leads.show', compact('lead'));
     }
 
-
     /**
      * @param StoreLead $lead
      * @return \Illuminate\Http\RedirectResponse
@@ -24,6 +23,7 @@ class LeadController extends Controller
     public function store(StoreLead $lead)
     {
         $lead->save();
+
         return back();
     }
 }

@@ -3,14 +3,14 @@
 namespace App\Library\Lesson;
 
 use App\Lesson;
-use App\Library\NewsLetter\NewsLetter;
-use App\Library\StripeCharge;
-use App\Mail\ClassFull;
-use App\Mail\SignUp;
 use App\Swimmer;
 use Carbon\Carbon;
+use App\Mail\SignUp;
+use App\Mail\ClassFull;
+use App\Library\StripeCharge;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Library\NewsLetter\NewsLetter;
 use Illuminate\Support\Facades\Redirect;
 
 /**
@@ -23,15 +23,14 @@ use Illuminate\Support\Facades\Redirect;
  *** Send class sign up email
  *** Send class full email to admin       - separate class
  * Flash success
- * Redirect back to lesson they signed up for
+ * Redirect back to lesson they signed up for.
  */
-
 class Enroll
 {
     public function handle()
     {
         //Validation happens on the controller
-        if($this->isFull()){
+        if ($this->isFull()) {
             return back();
         }
         $lesson = $this->getLesson();
@@ -43,23 +42,22 @@ class Enroll
         $this->flashSuccess($swimmer);
     }
 
-
     public function isFull()
     {
-        if($this->getLesson()->isFull()){
+        if ($this->getLesson()->isFull()) {
             session()->flash('danger', 'Sorry the lesson is full.');
-            Log::warning("Someone tried to sign up for a lesson that is full.");
+            Log::warning('Someone tried to sign up for a lesson that is full.');
+
             return true;
         }
+
         return false;
     }
-
 
     public function getLesson() : Lesson
     {
         return Lesson::findOrFail(request()->lesson_id);
     }
-
 
     public function processPayment(Lesson $lesson)
     {
@@ -67,7 +65,7 @@ class Enroll
             request()->stripeToken,
             $this->applyPromoCode($lesson->price),
             request()->email,
-            $lesson->group->type . " swim lessons for " . request()->firstName . " " . request()->lastName . " through The Swim School."
+            $lesson->group->type.' swim lessons for '.request()->firstName.' '.request()->lastName.' through The Swim School.'
         ))->charge()->id;
     }
 
@@ -79,7 +77,7 @@ class Enroll
 
     public function subscribeToNewsLetter()
     {
-        if(request()->emailUpdates == "on"){
+        if (request()->emailUpdates == 'on') {
             NewsLetter::subscribe(request()->email);
         }
     }
@@ -89,7 +87,7 @@ class Enroll
         //TODO: Logic to check the age of the swimmer against what the lesson age is
         request()->merge([
             'birthDate' => Carbon::parse(request()->birthDate),
-            'stripeChargeId' => $chargeId
+            'stripeChargeId' => $chargeId,
         ]);
 
         return Swimmer::create(request()->all());
@@ -101,21 +99,21 @@ class Enroll
             Mail::to($swimmer->email)->send(new SignUp($swimmer->lesson));
             Log::info("Group Lesson sign up email sent to {$swimmer->email}. Swimmer ID: {$swimmer->id} Lesson ID: {$swimmer->lesson->id}.");
         } catch (\Exception $e) {
-            Log::error("Email error: ");
+            Log::error('Email error: ');
             Log::error(print_r($e->getMessage(), true));
         }
     }
 
-
-    public function sendClassFullEmail(Lesson $lesson) {
-        if($lesson->isFull()){
+    public function sendClassFullEmail(Lesson $lesson)
+    {
+        if ($lesson->isFull()) {
             try {
-                foreach(config('mail.leadDestEmails') as $email){
+                foreach (config('mail.leadDestEmails') as $email) {
                     Log::info("Sending lesson full email to {$email}. Lesson ID: {$lesson->id}");
                     Mail::to($email)->send(new ClassFull($lesson));
                 }
             } catch (\Exception $e) {
-                Log::error("Email error: ");
+                Log::error('Email error: ');
                 Log::error(print_r($e->getMessage(), true));
             }
         }
@@ -124,6 +122,6 @@ class Enroll
     public function flashSuccess(Swimmer $swimmer)
     {
         Log::info("Swimmer ID: {$swimmer->id} successfully signed up for lesson ID: {$swimmer->lesson->id}");
-        session()->flash("success", "Thanks for signing up! The first lesson is {$swimmer->lesson->class_start_date->format('F jS')} at {$swimmer->lesson->class_start_time->format('g:i a')}.");
+        session()->flash('success', "Thanks for signing up! The first lesson is {$swimmer->lesson->class_start_date->format('F jS')} at {$swimmer->lesson->class_start_time->format('g:i a')}.");
     }
 }

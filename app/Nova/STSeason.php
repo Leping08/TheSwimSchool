@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class STSeason extends Resource
@@ -33,7 +33,7 @@ class STSeason extends Resource
      */
     public static $search = [
         'id',
-        'name'
+        'name',
     ];
 
     public static $displayInNavigation = false;
@@ -55,7 +55,7 @@ class STSeason extends Resource
             HasMany::make('Athletes', 'athletes', Athlete::class),
             HasMany::make('Swim Team Swimmers', 'swimmers', STSwimmer::class),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 

@@ -23,16 +23,16 @@ class SwimmersPerLevel extends Partition
 //        })->toArray();
 
         return $this->result([
-            "Parent and Infant-Toddler Level I" => 62,
-            "Parent and Toddler Level II" => 39,
-            "Shrimp Level (Preschool Beginner)" => 99,
-            "Seahorse Level (Preschool Intermediate)" => 78,
-            "Starfish Level (Preschool Advanced)" => 61,
-            "Stingray Level (Youth Beginner)" => 31,
-            "Dolphin Level (Youth Intermediate)" => 66,
-            "Flying Fish Level (Youth Advanced - Swim Club)" => 5,
-            "Private" => 106,
-            "Semi-Private" => 64
+            'Parent and Infant-Toddler Level I' => 62,
+            'Parent and Toddler Level II' => 39,
+            'Shrimp Level (Preschool Beginner)' => 99,
+            'Seahorse Level (Preschool Intermediate)' => 78,
+            'Starfish Level (Preschool Advanced)' => 61,
+            'Stingray Level (Youth Beginner)' => 31,
+            'Dolphin Level (Youth Intermediate)' => 66,
+            'Flying Fish Level (Youth Advanced - Swim Club)' => 5,
+            'Private' => 106,
+            'Semi-Private' => 64,
         ]);
     }
 

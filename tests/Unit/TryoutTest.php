@@ -19,7 +19,7 @@ class TryoutTest extends TestCase
         $tryout = factory(\App\Tryout::class)->create([
             'class_size' => 1,
             'registration_open' => Carbon::now()->subDays(2),
-            'event_time' => Carbon::now()->addDays(2)
+            'event_time' => Carbon::now()->addDays(2),
         ]);
 
         $this->assertEquals(1, $tryout->registrationOpen()->count());
@@ -35,7 +35,7 @@ class TryoutTest extends TestCase
     public function it_can_be_full()
     {
         $tryout = factory(\App\Tryout::class)->create([
-            'class_size' => 1
+            'class_size' => 1,
         ]);
 
         $this->assertFalse($tryout->isFull());

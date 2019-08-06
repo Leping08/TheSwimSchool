@@ -2,13 +2,13 @@
 
 namespace App\Nova\Lenses;
 
-use App\Nova\Filters\SwimTeamLevel;
-use App\Nova\Filters\SwimTeamSeason;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Lenses\Lens;
+use App\Nova\Filters\SwimTeamLevel;
+use App\Nova\Filters\SwimTeamSeason;
 use Laravel\Nova\Http\Requests\LensRequest;
 
 class Roster extends Lens
@@ -37,12 +37,12 @@ class Roster extends Lens
     {
         return [
             ID::make('ID', 'id')->sortable(),
-            Text::make('Name', function (){
+            Text::make('Name', function () {
                 return "$this->firstName $this->lastName";
             }),
             //Text::make('Email', 'email'),
             Text::make('Phone', 'phone'),
-            Date::make('Years Old', function (){
+            Date::make('Years Old', function () {
                 return now()->diffInYears($this->birthDate);
             }),
             Text::make('Emergency Name', 'emergencyName'),
@@ -62,7 +62,7 @@ class Roster extends Lens
     {
         return [
             new SwimTeamSeason(),
-            new SwimTeamLevel()
+            new SwimTeamLevel(),
         ];
     }
 

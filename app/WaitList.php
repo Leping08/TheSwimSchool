@@ -7,20 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * An Eloquent Model: 'WaitList'
+ * An Eloquent Model: 'WaitList'.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $email
  * @property string $phone
  * @property \Illuminate\Support\Carbon date_of_birth
- * @property boolean $followed_up
+ * @property bool $followed_up
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read \App\Lesson $lesson
  */
-
 class WaitList extends Model
 {
     use SoftDeletes, Ages;
@@ -39,7 +38,7 @@ class WaitList extends Model
         'phone',
         'lesson_id',
         'followed_up',
-        'date_of_birth'
+        'date_of_birth',
     ];
 
     /**

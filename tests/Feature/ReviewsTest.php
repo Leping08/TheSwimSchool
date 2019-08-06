@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ReviewsTest extends TestCase
 {
@@ -15,15 +15,15 @@ class ReviewsTest extends TestCase
     public function a_user_should_see_active_reviews_on_the_home_page()
     {
         $firstReview = factory(\App\Review::class)->create([
-            'created_time' => '2016-05-12T16:23:21+0000'
+            'created_time' => '2016-05-12T16:23:21+0000',
         ]);
 
         $secondReview = factory(\App\Review::class)->create([
-            'created_time' => '2016-05-13T16:23:21+0000'
+            'created_time' => '2016-05-13T16:23:21+0000',
         ]);
 
-        $this->get("/")
-            ->assertSee("Testimonials")
+        $this->get('/')
+            ->assertSee('Testimonials')
             ->assertSee($firstReview->message)
             ->assertSee($secondReview->message);
     }
@@ -33,16 +33,16 @@ class ReviewsTest extends TestCase
     {
         $review = factory(\App\Review::class)->create([
             'created_time' => '2016-05-14T14:23:21+0000',
-            'active' => true
+            'active' => true,
         ]);
 
-        $this->get("/")
+        $this->get('/')
             ->assertSee($review->message);
 
         $review->active = false;
         $review->save();
 
-        $this->get("/")
+        $this->get('/')
             ->assertDontSee($review->message);
     }
 }

@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Lesson;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Lesson;
 
-class Admin extends TestCase
+class AdminTest extends TestCase
 {
     use DatabaseMigrations;
 

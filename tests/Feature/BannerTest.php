@@ -2,11 +2,10 @@
 
 namespace Tests\Feature;
 
-
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class BannerTest extends TestCase
 {
@@ -18,17 +17,17 @@ class BannerTest extends TestCase
         $banner = factory(\App\Banner::class)->create([
             'page' => '/swim-team',
             'active' => false,
-            'text' => 'This is the banner'
+            'text' => 'This is the banner',
         ]);
 
-        $this->get("/swim-team")
+        $this->get('/swim-team')
             ->assertDontSee($banner->text)
             ->assertSee('Swim Team');
 
         $banner->active = true;
         $banner->save();
 
-        $this->get("/swim-team")
+        $this->get('/swim-team')
             ->assertSee($banner->text)
             ->assertSee('Swim Team');
     }

@@ -2,17 +2,17 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use Laravel\Nova\Actions\Actionable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * An athlete is someone who has signed up for a tryout
+ * An athlete is someone who has signed up for a tryout.
  *
  * An Eloquent Model: 'Swimmer'
  *
- * @property integer $id
+ * @property int $id
  * @property string $hash
  * @property string $firstName
  * @property string $lastName
@@ -28,9 +28,9 @@ use Laravel\Nova\Actions\Actionable;
  * @property string $emergencyName
  * @property string $emergencyRelationship
  * @property string $emergencyPhone
- * @property integer $tryout_id
- * @property integer $s_t_level
- * @property integer $s_t_season_id
+ * @property int $tryout_id
+ * @property int $s_t_level
+ * @property int $s_t_season_id
  * @property bool $s_t_sign_up_email
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -38,10 +38,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read \App\Tryout $tryout
  * @property-read \App\STLevel $level
  * @property-read \App\STSeason $season
- *
  */
-
-
 class Athlete extends Model
 {
     use SoftDeletes, Actionable;
@@ -51,7 +48,7 @@ class Athlete extends Model
      */
     protected $dates = [
         'deleted_at',
-        'birthDate'
+        'birthDate',
     ];
 
     /**
@@ -76,9 +73,8 @@ class Athlete extends Model
         's_t_level',
         's_t_sign_up_email',
         's_t_season_id',
-        'hash'
+        'hash',
     ];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -95,6 +91,7 @@ class Athlete extends Model
     {
         return $this->belongsTo(STSeason::class, 's_t_season_id');
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

@@ -15,6 +15,7 @@ class SwimTeamCoachesController extends Controller
     {
         $coaches = STCoach::active()->get();
         $banner = Banner::where('page', '/swim-team')->first();
+
         return view('swim-team.swim-team', compact('coaches', 'banner'));
     }
 }

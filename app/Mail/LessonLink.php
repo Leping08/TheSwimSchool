@@ -17,7 +17,6 @@ class LessonLink extends Mailable
      */
     public $lesson;
 
-
     /**
      * LessonLink constructor.
      * @param Lesson $lesson

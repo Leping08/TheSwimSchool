@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class FeedbackSurvey extends Resource
@@ -52,7 +52,7 @@ class FeedbackSurvey extends Resource
             Boolean::make('Viewed', 'viewed'),
             HasMany::make('Answers', 'answers', \App\Nova\FeedbackAnswer::class),
             DateTime::make('Created At'),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 

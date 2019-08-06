@@ -2,13 +2,13 @@
 
 namespace App\Library;
 
-use App\Mail\TryoutReminder;
-use App\Swimmer;
-use App\STSwimmer;
-use App\EmailList;
-use Illuminate\Support\Collection;
 use App\Tryout;
+use App\Swimmer;
+use App\EmailList;
+use App\STSwimmer;
 use Carbon\Carbon;
+use App\Mail\TryoutReminder;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -18,8 +18,8 @@ class SetUpEmailList
     {
         $emails = array_merge($this->getSwimLessonSwimmerEmails(), $this->getSwimTeamSwimmerEmails());
 
-        Log::info("Setting up the email list with emails from the swim lessons and swim team swimmers");
-        foreach ($emails as $email){
+        Log::info('Setting up the email list with emails from the swim lessons and swim team swimmers');
+        foreach ($emails as $email) {
             $emailList = EmailList::firstOrCreate(['email' => $email]);
             Log::info("Email added to the list: $emailList->email");
         }
@@ -27,7 +27,7 @@ class SetUpEmailList
 
     private function getSwimLessonSwimmerEmails(): array
     {
-        return Swimmer::where('stripeChargeId', '!=', NULL)->pluck('email')->unique()->values()->all();
+        return Swimmer::where('stripeChargeId', '!=', null)->pluck('email')->unique()->values()->all();
     }
 
     private function getSwimTeamSwimmerEmails(): array

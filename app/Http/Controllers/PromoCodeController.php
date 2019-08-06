@@ -14,12 +14,12 @@ class PromoCodeController extends Controller
     public function index(Request $request)
     {
         $validatedData = $request->validate([
-            'code' => 'required'
+            'code' => 'required',
         ]);
 
         $promoCode = PromoCode::where('code', '=', $validatedData['code'])->first() ?? null;
 
-        if($promoCode){
+        if ($promoCode) {
             return $promoCode->discount_percent;
         } else {
             return 0;

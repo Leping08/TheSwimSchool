@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ContactTypes::class,
             DaysOfTheWeek::class,
-            Seasons::class
+            Seasons::class,
         ]);
     }
 }

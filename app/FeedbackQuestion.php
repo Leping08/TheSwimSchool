@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * This is a question on a feedback survey
+ * This is a question on a feedback survey.
  *
  * An Eloquent Model: 'FeedbackQuestion'
  *
- * @property integer $id
+ * @property int $id
  * @property string $question
  * @property string $feedback_question_type_id
  * @property \Illuminate\Support\Carbon $created_at
@@ -18,9 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read \App\FeedbackQuestionType $type
  * @property-read \App\FeedbackAnswer $answers
- *
  */
-
 class FeedbackQuestion extends Model
 {
     use SoftDeletes;

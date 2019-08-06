@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\STInvitation;
-use App\PromoCode;
-use App\STLevel;
-use App\STSeason;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Tryout;
 use App\Athlete;
+use App\STLevel;
+use App\STSeason;
+use App\PromoCode;
+use Carbon\Carbon;
+use App\Mail\STInvitation;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -25,8 +25,9 @@ class AthleteController extends Controller
         $tryout = Tryout::find($id);
 
         //Check to see if the lesson is full
-        if($tryout->isFull()){
+        if ($tryout->isFull()) {
             $request->session()->flash('danger', 'The tryout is full.');
+
             return back();
         }
 
@@ -43,7 +44,7 @@ class AthleteController extends Controller
             'zip' => 'required|max:15',
             'emergencyName' => 'required|max:191',
             'emergencyRelationship' => 'required|max:191',
-            'emergencyPhone' => 'required|max:20'
+            'emergencyPhone' => 'required|max:20',
         ]);
 
         $athlete['birthDate'] = Carbon::parse($athlete['birthDate']);
@@ -55,6 +56,7 @@ class AthleteController extends Controller
 
         Log::info("Athlete ID: $newAthlete->id signed up for Tryout ID: $tryout->id!");
         session()->flash('success', "Thanks for signing up! Don't forget to mark your calendar for the tryout.");
-        return redirect("/swim-team");
+
+        return redirect('/swim-team');
     }
 }

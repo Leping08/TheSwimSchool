@@ -7,8 +7,7 @@ use Laravel\Nova\Filters\Filter;
 
 class ShirtSize extends Filter
 {
-
-    public $name = "Shirt Size";
+    public $name = 'Shirt Size';
 
     /**
      * Apply the filter to the given query.
@@ -33,7 +32,7 @@ class ShirtSize extends Filter
     {
         $result = collect([]);
 
-        foreach (\App\STShirtSize::all() as $shirtSize){
+        foreach (\App\STShirtSize::all() as $shirtSize) {
             $result->put($shirtSize->size, $shirtSize->id);
         }
 

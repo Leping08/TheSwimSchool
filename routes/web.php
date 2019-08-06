@@ -11,11 +11,10 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Auth::routes();
-
 
 /*
  * Home page
@@ -23,8 +22,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-
-Route::get('/lessons/schedule', function (){
+Route::get('/lessons/schedule', function () {
     return view('groups.schedule');
 });
 
@@ -48,17 +46,11 @@ Route::get('/lessons/{group}/{lesson}', 'GroupController@signUp');
 /* @see SwimmerController::store() */
 Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 
-
-
-
 /*
  * Wait List
  */
 /* @see WaitListController::store() */
 Route::post('/wait-list/{id}', 'WaitListController@store');
-
-
-
 
 /*
  * Swim Team Tryouts
@@ -79,9 +71,6 @@ Route::post('/swim-team/tryouts/{id}', 'AthleteController@store');
 /* @see STSwimmerController::roster() */
 Route::get('/roster', 'STSwimmerController@roster');
 
-
-
-
 /*
  * Swim Team Registration
  */
@@ -94,9 +83,6 @@ Route::get('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@i
 
 /* @see STSwimmerController::store() */
 Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@store');
-
-
-
 
 /*
  * Public Contact Forms
@@ -117,9 +103,6 @@ Route::get('/private-semi-private', 'PrivateLessonLeadController@index');
 /* @see PrivateLessonLeadController::store() */
 Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
 
-
-
-
 /*
  * Email marketing unsubscribe page
  */
@@ -129,7 +112,6 @@ Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
 
 /* @see EmailListController::store() */
 Route::post('/newsletter', 'EmailListController@store');
-
 
 /*
  * Email marketing unsubscribe page
@@ -141,41 +123,39 @@ Route::get('/feedback', 'FeedbackController@index');
 /* @see FeedbackController::store() */
 Route::post('/feedback', 'FeedbackController@store');
 
-
-
 /*
  * Static Pages
  */
 
-Route::get('/services', function(){
+Route::get('/services', function () {
     return view('pages.services');
 });
 
-Route::get('/about', function(){
+Route::get('/about', function () {
     return view('pages.about');
 });
 
-Route::get('/contact-us', function(){
+Route::get('/contact-us', function () {
     return view('pages.contact-us');
 });
 
-Route::get('/other-services', function (){
+Route::get('/other-services', function () {
     return view('pages.other-services');
 });
 
-Route::get('/lifeguarding', function (){
+Route::get('/lifeguarding', function () {
     return view('pages.lifeguarding');
 });
 
-Route::get('/cpr-first-aid', function(){
+Route::get('/cpr-first-aid', function () {
     return view('pages.cpr-first-aid');
 });
 
-Route::get('/group-lessons/policies-and-procedures', function(){
+Route::get('/group-lessons/policies-and-procedures', function () {
     return view('groups.terms');
 });
 
-Route::get('/swim-team/policies-and-procedures', function(){
+Route::get('/swim-team/policies-and-procedures', function () {
     return view('swim-team.terms');
 });
 

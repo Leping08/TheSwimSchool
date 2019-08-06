@@ -2,16 +2,16 @@
 
 namespace Tests\Feature;
 
-use App\FeedbackSurvey;
-use App\Jobs\SendFeedbackEmails;
 use App\Lesson;
 use App\Swimmer;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+use App\FeedbackSurvey;
+use App\Jobs\SendFeedbackEmails;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class FeedbackTest extends TestCase
 {
@@ -20,7 +20,7 @@ class FeedbackTest extends TestCase
     /** @test */
     public function a_user_can_fill_out_the_feedback_survey()
     {
-        $this->get("/feedback")
+        $this->get('/feedback')
             ->assertStatus(200)
             ->assertSee('Feedback');
 
@@ -64,11 +64,11 @@ class FeedbackTest extends TestCase
     {
         $lesson = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDay(14),
-            'class_end_date' => Carbon::now()->subDay(7)
+            'class_end_date' => Carbon::now()->subDay(7),
         ]);
 
         factory(\App\Swimmer::class)->create([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->assertCount(1, Swimmer::all());
@@ -91,22 +91,22 @@ class FeedbackTest extends TestCase
         $lesson = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDay(14),
             'class_end_date' => Carbon::now()->subDay(7),
-            'class_size' => 3
+            'class_size' => 3,
         ]);
 
         factory(\App\Swimmer::class)->create([
             'lesson_id' => $lesson->id,
-            'email' => $email
+            'email' => $email,
         ]);
 
         factory(\App\Swimmer::class)->create([
             'lesson_id' => $lesson->id,
-            'email' => $email
+            'email' => $email,
         ]);
 
         factory(\App\Swimmer::class)->create([
             'lesson_id' => $lesson->id,
-            'email' => $email
+            'email' => $email,
         ]);
 
         $this->assertCount(3, Swimmer::all());

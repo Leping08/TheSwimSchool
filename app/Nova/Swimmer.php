@@ -3,23 +3,22 @@
 namespace App\Nova;
 
 use Carbon\Carbon;
-use DigitalCloud\AddressField\AddressField;
-use Illuminate\Support\Facades\Log;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Panel;
+use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Place;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\Currency;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\ID;
-
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Place;
-use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsTo;
+use Illuminate\Support\Facades\Log;
+use DigitalCloud\AddressField\AddressField;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Panel;
 
 class Swimmer extends Resource
 {
@@ -52,7 +51,7 @@ class Swimmer extends Resource
         'firstName',
         'lastName',
         'email',
-        'phone'
+        'phone',
     ];
 
     /**
@@ -71,20 +70,20 @@ class Swimmer extends Resource
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
-                    'text' => $this->email
+                    'text' => $this->email,
                 ])->render();
             })->asHtml()->sortable(),
             Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
-                    'text' => $this->phone
+                    'text' => $this->phone,
                 ])->render();
             })->asHtml(),
             Date::make('Date of Birth', 'birthDate')->hideFromIndex(),
             Text::make('Age', function () {
                 return view('partials.age', [
-                    'birthDate' => $this->birthDate
+                    'birthDate' => $this->birthDate,
                 ])->render();
             })->hideFromIndex(),
             Number::make('Lesson Id', 'lesson_id')->onlyOnForms(),
@@ -94,7 +93,7 @@ class Swimmer extends Resource
             (new Panel('Stripe Payment', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
-            Text::make('Notes', 'notes')->hideFromIndex()
+            Text::make('Notes', 'notes')->hideFromIndex(),
         ];
     }
 
@@ -124,7 +123,7 @@ class Swimmer extends Resource
         return [
             //new Filters\Paid,
             new Filters\SwimmerLevel,
-            new Filters\SwimmerSeason
+            new Filters\SwimmerSeason,
         ];
     }
 
@@ -174,7 +173,6 @@ class Swimmer extends Resource
         ];
     }
 
-
     /**
      * Get the address fields for the resource.
      *
@@ -185,7 +183,7 @@ class Swimmer extends Resource
         return [
             Text::make('Name', 'emergencyName')->hideFromIndex(),
             Text::make('Relationship', 'emergencyRelationship')->hideFromIndex(),
-            Text::make('Phone', 'emergencyPhone')->hideFromIndex()
+            Text::make('Phone', 'emergencyPhone')->hideFromIndex(),
         ];
     }
 
@@ -200,9 +198,9 @@ class Swimmer extends Resource
             Text::make('Charge Id', function () {
                 return view('partials.link', [
                     'link' => config('nova.path').'/nova-stripe/charge/'.$this->stripeChargeId,
-                    'text' => $this->stripeChargeId
+                    'text' => $this->stripeChargeId,
                 ])->render();
-            })->asHtml()->hideFromIndex()
+            })->asHtml()->hideFromIndex(),
         ];
     }
 
@@ -219,7 +217,8 @@ class Swimmer extends Resource
     /**
      * @return string
      */
-    public static function label() {
+    public static function label()
+    {
         return 'Swimmers';
     }
 

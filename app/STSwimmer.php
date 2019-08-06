@@ -37,7 +37,7 @@ class STSwimmer extends Model
         's_t_level_id',
         's_t_season_id',
         'promo_code_id',
-        's_t_shirt_size_id'
+        's_t_shirt_size_id',
     ];
 
     /**
@@ -77,10 +77,11 @@ class STSwimmer extends Model
      */
     public function promoAppliedPrice()
     {
-        if($this->promoCode){
+        if ($this->promoCode) {
             $discount_percent = ($this->promoCode->discount_percent * .01);
             $price = $this->level->price;
-            return ($price - ($discount_percent * $price));
+
+            return $price - ($discount_percent * $price);
         } else {
             return $this->level->price;
         }

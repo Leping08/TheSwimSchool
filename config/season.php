@@ -18,16 +18,16 @@ return [
         'off-season' => true,
 
         'next_season' => [
-            'registration_open' => 'April 15th'
-        ]
+            'registration_open' => 'April 15th',
+        ],
     ],
 
     'private' => [
         'off-season' => false,
 
         'next_season' => [
-            'registration_open' => 'May 20th'
-        ]
-    ]
+            'registration_open' => 'May 20th',
+        ],
+    ],
 
 ];

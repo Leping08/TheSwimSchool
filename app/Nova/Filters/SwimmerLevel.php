@@ -25,7 +25,7 @@ class SwimmerLevel extends Filter
     {
         $result = collect([]);
 
-        foreach (\App\Group::all() as $group){
+        foreach (\App\Group::all() as $group) {
             $result->put($group->type, $group->id);
         }
 
@@ -34,6 +34,6 @@ class SwimmerLevel extends Filter
 
     public function name()
     {
-        return "Level";
+        return 'Level';
     }
 }

@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\Group;
+use Carbon\Carbon;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\WithFaker;
-use Carbon\Carbon;
-use App\Group;
 
-class Lessons extends TestCase
+class LessonsTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
@@ -19,7 +19,7 @@ class Lessons extends TestCase
         $lessonInProgress = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $this->get($lessonInProgress->path())
@@ -32,7 +32,7 @@ class Lessons extends TestCase
         $registrationNotOpenYet = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->addDays(3),
             'registration_open' => Carbon::now()->addDays(2),
-            'class_end_date' => Carbon::now()->addDays(5)
+            'class_end_date' => Carbon::now()->addDays(5),
         ]);
 
         $this->get($registrationNotOpenYet->path())
@@ -45,7 +45,7 @@ class Lessons extends TestCase
         $lessonFinished = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(4),
             'registration_open' => Carbon::now()->subDays(6),
-            'class_end_date' => Carbon::now()->subDays(2)
+            'class_end_date' => Carbon::now()->subDays(2),
         ]);
 
         $this->get($lessonFinished->path())
@@ -58,25 +58,25 @@ class Lessons extends TestCase
         $registrationOpen = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $lessonFinished = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(4),
             'registration_open' => Carbon::now()->subDays(6),
-            'class_end_date' => Carbon::now()->subDays(2)
+            'class_end_date' => Carbon::now()->subDays(2),
         ]);
 
         $lessonInProgress = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $registrationNotOpenYet = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->addDays(3),
             'registration_open' => Carbon::now()->addDays(2),
-            'class_end_date' => Carbon::now()->addDays(5)
+            'class_end_date' => Carbon::now()->addDays(5),
         ]);
 
         $this->get('/lessons')
@@ -96,7 +96,7 @@ class Lessons extends TestCase
         $registrationOpen = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $this->get($registrationOpen->path())
@@ -114,7 +114,7 @@ class Lessons extends TestCase
         $registrationOpen = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $this->get($registrationOpen->path())
@@ -128,9 +128,8 @@ class Lessons extends TestCase
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2),
-            'class_size' => 1
+            'class_size' => 1,
         ]);
-
 
         $this->get($registrationOpen->path())
             ->assertSee('Sign Up');
@@ -149,10 +148,10 @@ class Lessons extends TestCase
         $lesson = factory(\App\Lesson::class)->create();
         $group = factory(\App\Group::class)->create();
         $lesson->update([
-            'group_id' => $group->id
+            'group_id' => $group->id,
         ]);
         $group->update([
-            'type' => 'Private LessonTest'
+            'type' => 'Private LessonTest',
         ]);
 
         $testSet = Group::public()->get();
@@ -191,15 +190,15 @@ class Lessons extends TestCase
         $group = factory(\App\Group::class)->create();
         $lesson->update([
             'group_id' => $group->id,
-            'class_size' => 1
+            'class_size' => 1,
         ]);
         $group->update([
-            'type' => 'Private LessonTest'
+            'type' => 'Private LessonTest',
         ]);
 
         $swimmer = factory(\App\Swimmer::class)->create();
         $swimmer->update([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
@@ -210,7 +209,7 @@ class Lessons extends TestCase
     public function a_user_can_not_see_a_lesson_that_starts_today()
     {
         $lesson = factory(\App\Lesson::class)->create([
-            'class_start_date' => Carbon::now()
+            'class_start_date' => Carbon::now(),
         ]);
 
         $this->assertFalse(\App\Lesson::registrationOpen()->contains($lesson));
@@ -237,26 +236,25 @@ class Lessons extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_visa'
+            'stripeToken' => 'tok_visa',
         ];
-
 
         $this->get("/lessons/{$lesson->group->type}/{$lesson->id}")
             ->assertStatus(200);
 
-        $this->assertEquals(0,  \App\Swimmer::all()->count());
+        $this->assertEquals(0, \App\Swimmer::all()->count());
 
         $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
 
         $response->assertRedirect('/thank-you');
 
-        $this->assertEquals(1,  \App\Swimmer::all()->count());
+        $this->assertEquals(1, \App\Swimmer::all()->count());
 
         $this->assertDatabaseHas('swimmers', [
-            "firstName" => $attributes['firstName'],
-            "lastName" => $attributes['lastName'],
-            "email" => $attributes['email'],
-            "lesson_id" => $attributes['lesson_id']
+            'firstName' => $attributes['firstName'],
+            'lastName' => $attributes['lastName'],
+            'email' => $attributes['email'],
+            'lesson_id' => $attributes['lesson_id'],
         ]);
     }
 
@@ -264,7 +262,7 @@ class Lessons extends TestCase
     public function a_user_can_not_sign_up_for_a_group_lesson_that_is_full()
     {
         $lesson = factory(\App\Lesson::class)->create([
-            'class_size' => 0
+            'class_size' => 0,
         ]);
 
         $swimmer = [
@@ -283,7 +281,7 @@ class Lessons extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_visa'
+            'stripeToken' => 'tok_visa',
         ];
 
         $this->assertTrue($lesson->isFull());

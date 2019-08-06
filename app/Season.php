@@ -5,15 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * An Eloquent Model: 'Season'
+ * An Eloquent Model: 'Season'.
  *
- * @property integer $id
+ * @property int $id
  * @property string $year
  * @property string $season
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  */
-
 class Season extends Model
 {
     /**
@@ -38,6 +37,6 @@ class Season extends Model
      */
     public function getNameAttribute() : string
     {
-        return $this->year . " " . $this->season;
+        return $this->year.' '.$this->season;
     }
 }

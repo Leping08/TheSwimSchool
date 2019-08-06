@@ -17,7 +17,6 @@ class PrivateLessonLeadEmail extends Mailable
      */
     public $privateLessonLead;
 
-
     /**
      * PrivateLessonLeadEmail constructor.
      * @param PrivateLessonLead $privateLessonLead
@@ -26,7 +25,6 @@ class PrivateLessonLeadEmail extends Mailable
     {
         $this->privateLessonLead = $privateLessonLead;
     }
-
 
     /**
      * @return $this

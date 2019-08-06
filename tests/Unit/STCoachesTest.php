@@ -15,14 +15,14 @@ class STCoachesTest extends TestCase
     public function it_can_have_active_coaches()
     {
         factory(STCoach::class)->create([
-            'active' => false
+            'active' => false,
         ]);
 
         $this->assertEquals(1, \App\STCoach::all()->count());
         $this->assertEquals(0, \App\STCoach::active()->count());
 
         factory(STCoach::class)->create([
-            'active' => true
+            'active' => true,
         ]);
 
         $this->assertEquals(2, \App\STCoach::all()->count());

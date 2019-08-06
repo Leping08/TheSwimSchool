@@ -2,22 +2,22 @@
 
 namespace App;
 
-use App\Observers\LessonObserver;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
+use App\Observers\LessonObserver;
 use Laravel\Nova\Actions\Actionable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * An Eloquent Model: 'Lesson'
+ * An Eloquent Model: 'Lesson'.
  *
- * @property integer $id
- * @property integer $season_id
- * @property integer $group_id
- * @property integer $location_id
- * @property integer $price
- * @property integer $class_size
+ * @property int $id
+ * @property int $season_id
+ * @property int $group_id
+ * @property int $location_id
+ * @property int $price
+ * @property int $class_size
  * @property \Illuminate\Support\Carbon $registration_open
  * @property \Illuminate\Support\Carbon $class_start_time
  * @property \Illuminate\Support\Carbon $class_end_time
@@ -30,13 +30,12 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read \App\Location $location
  * @property-read \App\Season $season
  */
-
 class Lesson extends Model
 {
     use SoftDeletes, Actionable, Notifiable;
 
     protected $casts = [
-        'days' => 'string'
+        'days' => 'string',
     ];
 
     /**
@@ -48,7 +47,7 @@ class Lesson extends Model
         'class_end_time',
         'class_start_date',
         'class_end_date',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**
@@ -72,7 +71,7 @@ class Lesson extends Model
         'friday',
         'saturday',
         'sunday',
-        'days'
+        'days',
     ];
 
     /**

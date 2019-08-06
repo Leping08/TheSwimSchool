@@ -55,6 +55,6 @@ class PrivateRequestsPerDay extends Trend
 
     public function name()
     {
-        return "Private Requests";
+        return 'Private Requests';
     }
 }

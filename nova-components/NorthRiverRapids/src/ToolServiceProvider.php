@@ -63,7 +63,7 @@ class ToolServiceProvider extends ServiceProvider
     protected function resources()
     {
         Nova::resources([
-            Tryout::class
+            Tryout::class,
         ]);
     }
 }

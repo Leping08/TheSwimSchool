@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class STShirtSize extends Resource
@@ -32,7 +32,7 @@ class STShirtSize extends Resource
      */
     public static $search = [
         'id',
-        'size'
+        'size',
     ];
 
     public static $displayInNavigation = false;
@@ -50,7 +50,7 @@ class STShirtSize extends Resource
             Text::make('Size', 'size'),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            HasMany::make('Swimmers', 'swimmers', STSwimmer::class)
+            HasMany::make('Swimmers', 'swimmers', STSwimmer::class),
         ];
     }
 

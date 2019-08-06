@@ -14,19 +14,19 @@ class LessonTest extends TestCase
     public function it_can_have_enough_swimmers_that_makes_it_full()
     {
         $lesson = factory(\App\Lesson::class)->create([
-            'class_size' => 2
+            'class_size' => 2,
         ]);
 
         $this->assertEquals(false, $lesson->isFull());
 
         factory(\App\Swimmer::class)->create([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->assertEquals(false, $lesson->isFull());
 
         factory(\App\Swimmer::class)->create([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->assertEquals(true, $lesson->isFull());
@@ -40,7 +40,7 @@ class LessonTest extends TestCase
         $this->assertEquals(false, $lesson->hasSwimmers());
 
         factory(\App\Swimmer::class)->create([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->assertEquals(true, $lesson->hasSwimmers());
@@ -50,17 +50,17 @@ class LessonTest extends TestCase
     public function it_can_be_private()
     {
         $group = factory(\App\Group::class)->create([
-            'type' => 'Star Fish'
+            'type' => 'Star Fish',
         ]);
 
         $lesson = factory(\App\Lesson::class)->create([
-            'group_id' => $group->id
+            'group_id' => $group->id,
         ]);
 
         $this->assertEquals(false, $lesson->isPrivate());
 
         $group->update([
-            'type' => 'Private'
+            'type' => 'Private',
         ]);
 
         $lesson = $lesson->fresh();

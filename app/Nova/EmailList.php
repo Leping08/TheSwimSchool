@@ -2,13 +2,13 @@
 
 namespace App\Nova;
 
-use App\Nova\Metrics\NewEmailList;
-use App\Nova\Metrics\SubscribedEmails;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
+use App\Nova\Metrics\NewEmailList;
+use App\Nova\Metrics\SubscribedEmails;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class EmailList extends Resource
@@ -34,7 +34,7 @@ class EmailList extends Resource
      */
     public static $search = [
         'id',
-        'email'
+        'email',
     ];
 
     /**
@@ -50,7 +50,7 @@ class EmailList extends Resource
             Text::make('email')->sortable(),
             Boolean::make('Subscription Status', 'subscribe')->sortable(),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 

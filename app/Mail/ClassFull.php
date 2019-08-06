@@ -2,11 +2,11 @@
 
 namespace App\Mail;
 
+use App\Lesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Lesson;
 
 class ClassFull extends Mailable
 {
@@ -16,7 +16,6 @@ class ClassFull extends Mailable
      * @var Lesson
      */
     public $lesson;
-
 
     /**
      * ClassFull constructor.
