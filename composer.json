@@ -18,7 +18,7 @@
         "gregoriohc/laravel-nova-theme-responsive": "^0.2",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "laravel/framework": "5.8.*",
-        "laravel/nova": "*",
+        "laravel/nova": "~2.0",
         "laravel/tinker": "^1.0",
         "leping/lesson-link": "*",
         "stripe/stripe-php": "^6.4",
@@ -74,10 +74,6 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
-        },
-        {
-            "type": "path",
-            "url": "./nova"
         },
         {
             "type": "path",

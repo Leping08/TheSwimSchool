@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1544c2f43bb60a6b8c4ddbb71da23242",
+    "content-hash": "634e7950c5b7e9f468e2bfdad7be4959",
     "packages": [
         {
             "name": "Leping/NorthRiverRapids",
