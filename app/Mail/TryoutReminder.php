@@ -42,7 +42,7 @@ class TryoutReminder extends Mailable
                     ->markdown('email.tryoutReminder')
                     ->with([
                         'tryout', $this->tryout,
-                        'theme', $this->theme
+                        'theme', $this->theme,
                     ]);
     }
 }

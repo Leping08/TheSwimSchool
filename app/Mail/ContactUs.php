@@ -15,11 +15,11 @@ class ContactUs extends Mailable
      * @var
      */
     public $data;
+
     /**
      * @var
      */
     public $subject;
-
 
     /**
      * ContactUs constructor.

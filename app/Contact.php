@@ -2,16 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * The people who have contacted site admins
+ * The people who have contacted site admins.
  *
  * An Eloquent Model: 'Contact'
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $email
  * @property string $phone
@@ -22,9 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read \App\ContactType $type
- *
  */
-
 class Contact extends Model
 {
     use SoftDeletes;

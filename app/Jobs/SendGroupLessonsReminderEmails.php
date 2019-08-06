@@ -2,13 +2,13 @@
 
 namespace App\Jobs;
 
-use App\Library\GroupLessonsReminderEmail;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
+use App\Library\GroupLessonsReminderEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Log;
 
 class SendGroupLessonsReminderEmails implements ShouldQueue
 {
@@ -31,8 +31,8 @@ class SendGroupLessonsReminderEmails implements ShouldQueue
      */
     public function handle()
     {
-        Log::info("Starting to send lesson reminder emails.");
+        Log::info('Starting to send lesson reminder emails.');
         (new GroupLessonsReminderEmail)->sendReminderEmails();
-        Log::info("Finished sending lesson reminder emails.");
+        Log::info('Finished sending lesson reminder emails.');
     }
 }

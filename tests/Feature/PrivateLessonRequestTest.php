@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class PrivateLessonRequestTest extends TestCase
 {
@@ -26,32 +26,31 @@ class PrivateLessonRequestTest extends TestCase
             'location' => 'Harrison Ranch',
             'availability' => $this->faker->paragraph,
             //'hr_resident' => 'on',
-            'address' => $this->faker->address
+            'address' => $this->faker->address,
         ];
 
-
-        $this->get("/private-semi-private")
+        $this->get('/private-semi-private')
             ->assertStatus(200);
 
-        $this->assertEquals(0,  \App\PrivateLessonLead::all()->count());
+        $this->assertEquals(0, \App\PrivateLessonLead::all()->count());
 
-        $response = $this->json('POST', "/private-semi-private", $attributes);
+        $response = $this->json('POST', '/private-semi-private', $attributes);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  \App\PrivateLessonLead::all()->count());
+        $this->assertEquals(1, \App\PrivateLessonLead::all()->count());
 
         $this->assertDatabaseHas('private_lesson_leads', [
-            "swimmer_name" => $attributes['swimmer_name'],
-            "email" => $attributes['email'],
-            "swimmer_birth_date" => $attributes['swimmer_birth_date'],
-            "phone" => $attributes['phone'],
-            "type" => $attributes['type'],
-            "length" => $attributes['length'],
-            "location" => $attributes['location'],
-            "availability" => $attributes['availability'],
+            'swimmer_name' => $attributes['swimmer_name'],
+            'email' => $attributes['email'],
+            'swimmer_birth_date' => $attributes['swimmer_birth_date'],
+            'phone' => $attributes['phone'],
+            'type' => $attributes['type'],
+            'length' => $attributes['length'],
+            'location' => $attributes['location'],
+            'availability' => $attributes['availability'],
             //'hr_resident' => 1,
-            'address' => $attributes['address']
+            'address' => $attributes['address'],
         ]);
     }
 }

@@ -5,9 +5,9 @@ namespace App\Http\Requests;
 use App\Contact;
 use App\Mail\ContactUs;
 use App\Rules\Recaptcha;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Foundation\Http\FormRequest;
 
 class StoreLead extends FormRequest
 {
@@ -43,13 +43,10 @@ class StoreLead extends FormRequest
     public function messages()
     {
         return [
-            'g-recaptcha-response.required' => "Check the I'm not a robot box"
+            'g-recaptcha-response.required' => "Check the I'm not a robot box",
         ];
     }
 
-    /**
-     *
-     */
     public function save()
     {
         $validated = $this->validated();
@@ -64,7 +61,6 @@ class StoreLead extends FormRequest
         }
     }
 
-
     /**
      * @param array $validated
      * @return array
@@ -76,11 +72,11 @@ class StoreLead extends FormRequest
             'contact-us' => 1,
             'lifeguarding' => 2,
             'cpr-first-aid' => 3,
-            'private-semi-private' => 4
+            'private-semi-private' => 4,
         ];
 
-        foreach ($leadTypeIds as $key => $value){
-            if(request()->path() === $key){
+        foreach ($leadTypeIds as $key => $value) {
+            if (request()->path() === $key) {
                 $validated['contact_type_id'] = $value;
             }
         }
@@ -93,9 +89,9 @@ class StoreLead extends FormRequest
      */
     private function emailAdmin(Contact $contact)
     {
-        foreach(config('mail.leadDestEmails') as $email){
+        foreach (config('mail.leadDestEmails') as $email) {
             Mail::to($email)->send(new ContactUs($contact, $contact->type->name));
-            Log::info($contact->type->name . " Email sent to: $email.");
+            Log::info($contact->type->name." Email sent to: $email.");
         }
     }
 }

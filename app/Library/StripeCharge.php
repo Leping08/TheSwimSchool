@@ -1,15 +1,12 @@
 <?php
 
-
 namespace App\Library;
-
 
 use Illuminate\Support\Facades\Log;
 use App\Library\Interfaces\PaymentMethod;
 
 /**
- * Class Stripe
- * @package App\Library
+ * Class Stripe.
  */
 class StripeCharge implements PaymentMethod
 {
@@ -17,19 +14,21 @@ class StripeCharge implements PaymentMethod
      * @var string
      */
     public $token;
+
     /**
      * @var int
      */
     public $price;
+
     /**
      * @var string
      */
     public $email;
+
     /**
      * @var string
      */
     public $description;
-
 
     /**
      * StripeCharge constructor.
@@ -46,16 +45,14 @@ class StripeCharge implements PaymentMethod
         $this->description = $description;
     }
 
-
-
     public function charge()
     {
         $charge = [
-            "amount" => $this->price * 100,
-            "currency" => "usd",
-            "receipt_email" => $this->email,
-            "description" => $this->description,
-            "source" => $this->token //Obtained with Stripe.js
+            'amount' => $this->price * 100,
+            'currency' => 'usd',
+            'receipt_email' => $this->email,
+            'description' => $this->description,
+            'source' => $this->token, //Obtained with Stripe.js
         ];
 
         Log::info('Stripe charge request array:');
@@ -63,7 +60,6 @@ class StripeCharge implements PaymentMethod
 
         return $this->pay($charge);
     }
-
 
     /**
      * @param array $charge
@@ -75,6 +71,7 @@ class StripeCharge implements PaymentMethod
             \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
             $result = \Stripe\Charge::create($charge);
             Log::info('Stripe charge ID: '.$result->id);
+
             return $result;
         } catch (\Stripe\Error\Card $e) {
             // Since it's a decline, \Stripe\Error\Card will be caught
@@ -103,10 +100,10 @@ class StripeCharge implements PaymentMethod
         } catch (\Exception $e) {
             // Something else happened, completely unrelated to Stripe
             Log::error('Something else happened, completely unrelated to Stripe');
-            Log::error('Error: ' . $e->getMessage());
+            Log::error('Error: '.$e->getMessage());
+
             return back();
         }
-        return null;
     }
 
     /**
@@ -116,12 +113,13 @@ class StripeCharge implements PaymentMethod
     private function logStripeError($e)
     {
         $body = $e->getJsonBody();
-        $err  = $body['error'];
-        Log::error('Status is:' . $e->getHttpStatus());
-        Log::error('Type is:' . $err['type']);
-        Log::error('Code is:' . $err['code']);
+        $err = $body['error'];
+        Log::error('Status is:'.$e->getHttpStatus());
+        Log::error('Type is:'.$err['type']);
+        Log::error('Code is:'.$err['code']);
         Log::error(print_r($err, true));
-        session()->flash('error', 'Oops, something went wrong with the payment. ' . $err['message']);
+        session()->flash('error', 'Oops, something went wrong with the payment. '.$err['message']);
+
         return back();
     }
 }

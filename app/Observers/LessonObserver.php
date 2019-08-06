@@ -15,7 +15,7 @@ class LessonObserver
      */
     public function created(Lesson $lesson)
     {
-        if($lesson->days){
+        if ($lesson->days) {
             Log::info("Setting the days of the week for lesson id {$lesson->id} from the array [{$lesson->days}]");
             $lesson->DaysOfTheWeek()->sync(explode(',', $lesson->days));
         }

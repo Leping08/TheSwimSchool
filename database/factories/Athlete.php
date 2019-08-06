@@ -20,6 +20,6 @@ $factory->define(App\Athlete::class, function (Faker $faker) {
         'emergencyRelationship' => 'Mom',
         'emergencyPhone' => $faker->phoneNumber,
         's_t_season_id' => factory('App\STSeason')->create()->id,
-        's_t_sign_up_email' => false
+        's_t_sign_up_email' => false,
     ];
 });

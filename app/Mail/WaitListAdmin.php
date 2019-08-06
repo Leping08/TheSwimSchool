@@ -9,19 +9,16 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
- * Class WaitListAdmin
- * @package App\Mail
+ * Class WaitListAdmin.
  */
 class WaitListAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
-
     /**
      * @var Lesson
      */
     public $lesson;
-
 
     /**
      * WaitListAdmin constructor.

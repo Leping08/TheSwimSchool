@@ -2,39 +2,39 @@
 
 namespace App\Providers;
 
-use App\Nova\Athlete;
-use App\Nova\ContactUs;
 use App\Nova\Day;
-use App\Nova\EmailList;
-use App\Nova\Lesson;
-use App\Nova\Level;
-use App\Nova\Location;
-use App\Nova\Metrics\LessonsPerSeason;
-use App\Nova\Metrics\NewEmailList;
-use App\Nova\Metrics\NewLessons;
-use App\Nova\Metrics\SubscribedEmails;
-use App\Nova\PrivateLessonRequest;
-use App\Nova\Season;
-use App\Nova\STSeason;
-use App\Nova\STSwimmer;
-use App\Nova\Swimmer;
-use App\Nova\Testimonial;
-use App\Nova\Tryout;
 use App\Nova\User;
+use App\Nova\Level;
+use App\Nova\Lesson;
+use App\Nova\Season;
+use App\Nova\Tryout;
+use App\Nova\Athlete;
 use App\Nova\STLevel;
+use App\Nova\Swimmer;
+use App\Nova\Location;
+use App\Nova\STSeason;
 use App\Nova\WaitList;
 use Laravel\Nova\Nova;
+use App\Nova\ContactUs;
+use App\Nova\EmailList;
+use App\Nova\STSwimmer;
+use App\Nova\Testimonial;
 use Laravel\Nova\Cards\Help;
-use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\NovaApplicationServiceProvider;
-use App\Nova\Metrics\SwimmersPerDay;
+use App\Nova\Metrics\NewLessons;
 use App\Nova\Metrics\NewSwimmers;
+use App\Nova\Metrics\NewEmailList;
+use App\Nova\PrivateLessonRequest;
+use App\Nova\Metrics\SwimmersPerDay;
+use Illuminate\Support\Facades\Gate;
+use Tightenco\NovaStripe\NovaStripe;
 use App\Nova\Metrics\LessonsPerLevel;
+use App\Nova\Metrics\LessonsPerSeason;
+use App\Nova\Metrics\SubscribedEmails;
 //use Spatie\TailTool\TailTool;
 //use Tightenco\NovaStripe\NovaStripe;
-use Gregoriohc\LaravelNovaThemeResponsive\ThemeServiceProvider;
 use Leping\NorthRiverRapids\NorthRiverRapids;
-use Tightenco\NovaStripe\NovaStripe;
+use Laravel\Nova\NovaApplicationServiceProvider;
+use Gregoriohc\LaravelNovaThemeResponsive\ThemeServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -73,7 +73,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Gate::define('viewNova', function ($user) {
             return in_array($user->email, [
                 'derek@deltavcreative.com',
-                'theswimschoolfl@gmail.com'
+                'theswimschoolfl@gmail.com',
             ]);
         });
     }

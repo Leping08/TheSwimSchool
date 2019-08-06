@@ -3,25 +3,25 @@
 namespace App\Nova;
 
 use App\DaysOfTheWeek;
-use App\Nova\Actions\EmailLessonLink;
-use App\Nova\Filters\LessonStatus;
-use App\Nova\Metrics\LessonsPerLevel;
-use App\Nova\Metrics\NewLessons;
-use Fourstacks\NovaCheckboxes\Checkboxes;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Currency;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use App\Library\Helpers\SeasonHelpers;
+use Laravel\Nova\Fields\Number;
+use App\Nova\Metrics\NewLessons;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\DateTime;
 use Leping\LessonLink\LessonLink;
+use App\Nova\Filters\LessonStatus;
+use Laravel\Nova\Fields\BelongsTo;
+use App\Nova\Actions\EmailLessonLink;
+use App\Nova\Metrics\LessonsPerLevel;
+use App\Library\Helpers\SeasonHelpers;
+use Laravel\Nova\Fields\BelongsToMany;
+use Fourstacks\NovaCheckboxes\Checkboxes;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Lesson extends Resource
 {
@@ -45,7 +45,7 @@ class Lesson extends Resource
      * @var array
      */
     public static $search = [
-        'id'
+        'id',
     ];
 
     /**
@@ -68,11 +68,11 @@ class Lesson extends Resource
             BelongsTo::make('Level', 'group'),
             BelongsTo::make('Season')->withMeta([
                 //Get the current season
-                'belongsToId' =>   $this->season_id ?? SeasonHelpers::currentSeason()->id
+                'belongsToId' =>   $this->season_id ?? SeasonHelpers::currentSeason()->id,
             ]),
             BelongsTo::make('Location')->withMeta([
                 //Select Harrison Ranch by default
-                'belongsToId' => $this->location_id ?? 1
+                'belongsToId' => $this->location_id ?? 1,
             ]),
             Checkboxes::make('Days', 'days')
                 ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
@@ -81,9 +81,9 @@ class Lesson extends Resource
             LessonLink::make('Link')->onlyOnDetail(),
             Currency::make('Price')->format('$%.2n')->hideFromIndex(),
             Text::make('Class Size', 'class_size')->withMeta([
-                "value" => $this->class_size ?? '4'
+                'value' => $this->class_size ?? '4',
             ])->hideFromIndex(),
-            Number::make('Spots Remaining', function (){
+            Number::make('Spots Remaining', function () {
                 return $this->class_size - $this->swimmers->count();
             }),
             Date::make('Registration Open', 'registration_open')->hideFromIndex(),
@@ -95,7 +95,7 @@ class Lesson extends Resource
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsToMany::make('Days', 'DaysOfTheWeek', Day::class),
             HasMany::make('Swimmers', 'swimmers', Swimmer::class),
-            HasMany::make('Wait List', 'WaitList', WaitList::class)
+            HasMany::make('Wait List', 'WaitList', WaitList::class),
         ];
     }
 
@@ -109,7 +109,7 @@ class Lesson extends Resource
     {
         return [
             (new LessonsPerLevel)->width('2/3'),
-            (new NewLessons)->width('1/3')
+            (new NewLessons)->width('1/3'),
         ];
     }
 
@@ -124,7 +124,7 @@ class Lesson extends Resource
         return [
             new Filters\LessonStatus,
             new Filters\LessonLevel,
-            new Filters\Season
+            new Filters\Season,
         ];
     }
 
@@ -161,5 +161,4 @@ class Lesson extends Resource
     {
         return $this->group->type;
     }
-
 }

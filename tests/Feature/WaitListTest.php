@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Mail\WaitListAdmin;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+use App\Mail\WaitListAdmin;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class WaitListTest extends TestCase
 {
@@ -21,7 +21,7 @@ class WaitListTest extends TestCase
         Mail::assertNothingSent();
 
         $lesson = factory('App\Lesson')->create([
-            'class_size' => 0
+            'class_size' => 0,
         ]);
 
         $this->assertTrue($lesson->isFull());
@@ -36,20 +36,20 @@ class WaitListTest extends TestCase
             'name' => $this->faker->name,
             'email' => $this->faker->email,
             'phone' => '9998887777',
-            'date_of_birth' => $this->faker->date()
+            'date_of_birth' => $this->faker->date(),
         ];
 
         $response = $this->json('POST', "/wait-list/{$lesson->id}", $attributes);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  $lesson->waitlist()->count());
+        $this->assertEquals(1, $lesson->waitlist()->count());
 
         $this->assertDatabaseHas('wait_lists', [
-            "name" => $attributes['name'],
-            "email" => $attributes['email'],
-            "phone" => $attributes['phone'],
-            "date_of_birth" => $attributes['date_of_birth']
+            'name' => $attributes['name'],
+            'email' => $attributes['email'],
+            'phone' => $attributes['phone'],
+            'date_of_birth' => $attributes['date_of_birth'],
         ]);
 
         Mail::assertSent(WaitListAdmin::class);
@@ -59,7 +59,7 @@ class WaitListTest extends TestCase
     public function a_user_can_not_sign_up_for_the_same_wait_list_twice()
     {
         $lesson = factory('App\Lesson')->create([
-            'class_size' => 0
+            'class_size' => 0,
         ]);
 
         $this->assertTrue($lesson->isFull());
@@ -74,26 +74,26 @@ class WaitListTest extends TestCase
             'name' => $this->faker->name,
             'email' => $this->faker->email,
             'phone' => '9998887777',
-            'date_of_birth' => $this->faker->date()
+            'date_of_birth' => $this->faker->date(),
         ];
 
         $response = $this->json('POST', "/wait-list/{$lesson->id}", $attributes);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  $lesson->waitlist()->count());
+        $this->assertEquals(1, $lesson->waitlist()->count());
 
         $this->assertDatabaseHas('wait_lists', [
-            "name" => $attributes['name'],
-            "email" => $attributes['email'],
-            "phone" => $attributes['phone'],
-            "date_of_birth" => $attributes['date_of_birth']
+            'name' => $attributes['name'],
+            'email' => $attributes['email'],
+            'phone' => $attributes['phone'],
+            'date_of_birth' => $attributes['date_of_birth'],
         ]);
 
         $response = $this->json('POST', "/wait-list/{$lesson->id}", $attributes);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  $lesson->waitlist()->count());
+        $this->assertEquals(1, $lesson->waitlist()->count());
     }
 }

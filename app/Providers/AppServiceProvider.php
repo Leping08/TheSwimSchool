@@ -4,9 +4,8 @@ namespace App\Providers;
 
 use App\Lesson;
 use App\Observers\LessonObserver;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -7,6 +7,6 @@ $factory->define(App\STCoach::class, function (Faker $faker) {
         'name' => $faker->name,
         'phone' => '9998887777',
         'active' => true,
-        'bio' => $faker->paragraph
+        'bio' => $faker->paragraph,
     ];
 });

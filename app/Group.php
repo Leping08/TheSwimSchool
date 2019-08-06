@@ -2,14 +2,14 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 
 /**
- * An Eloquent Model: 'Group'
+ * An Eloquent Model: 'Group'.
  *
- * @property integer $id
+ * @property int $id
  * @property string $type
  * @property string $ages
  * @property string $icon
@@ -18,7 +18,6 @@ use Carbon\Carbon;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  */
-
 class Group extends Model
 {
     use SoftDeletes;

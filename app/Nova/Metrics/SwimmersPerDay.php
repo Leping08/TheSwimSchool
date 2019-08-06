@@ -32,7 +32,7 @@ class SwimmersPerDay extends Trend
             14 => '14 Days',
             60 => '60 Days',
             90 => '90 Days',
-            365 => '365 Days'
+            365 => '365 Days',
         ];
     }
 

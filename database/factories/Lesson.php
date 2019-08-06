@@ -12,6 +12,6 @@ $factory->define(App\Lesson::class, function (Faker $faker) {
         'class_end_date' => $faker->dateTimeBetween('now', '+10 months'),
         'registration_open' => $faker->dateTimeBetween('-1 month', 'yesterday'),
         'class_start_time' => $faker->dateTime(),
-        'class_end_time' => $faker->dateTimeAd('+1 hour')
+        'class_end_time' => $faker->dateTimeAd('+1 hour'),
     ];
 });

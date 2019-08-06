@@ -2,13 +2,13 @@
 
 namespace App\Nova;
 
-use App\Nova\Metrics\LessonsPerLocation;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Textarea;
+use App\Nova\Metrics\LessonsPerLocation;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Location extends Resource
@@ -38,7 +38,7 @@ class Location extends Resource
         'street',
         'city',
         'state',
-        'zip'
+        'zip',
     ];
 
     /**
@@ -56,7 +56,7 @@ class Location extends Resource
             Textarea::make('Pool Access Instructions')->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            HasMany::make('Lessons', 'lessons', Lesson::class)
+            HasMany::make('Lessons', 'lessons', Lesson::class),
         ];
     }
 
@@ -69,7 +69,7 @@ class Location extends Resource
     public function cards(Request $request)
     {
         return [
-            (new LessonsPerLocation)->width('full')
+            (new LessonsPerLocation)->width('full'),
         ];
     }
 
@@ -106,7 +106,6 @@ class Location extends Resource
         return [];
     }
 
-
     /**
      * Get the address fields for the resource.
      *
@@ -121,7 +120,7 @@ class Location extends Resource
             Text::make('Postal Code', 'zip')->hideFromIndex(),
             Text::make('Country', function () {
                 return 'US';
-            })->hideFromIndex()
+            })->hideFromIndex(),
         ]);
     }
 }

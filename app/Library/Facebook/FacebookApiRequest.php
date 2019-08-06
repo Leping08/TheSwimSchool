@@ -11,7 +11,7 @@ class FacebookApiRequest
 {
     public function updateReviews()
     {
-        Log::info("Updating Facebook reviews");
+        Log::info('Updating Facebook reviews');
         $page_id = config('facebook.page_id');
 
         $pageAccessToken = $this->getPageAccessToken($page_id);
@@ -24,8 +24,8 @@ class FacebookApiRequest
     public function getPageAccessToken(string $page_id)
     {
         $FbApi = resolve('Facebook\Facebook');
-        $request = $FbApi->request('GET', '/'. $page_id .'/?fields=access_token', [
-            'access_token' => env("FACEBOOK_DEFAULT_ACCESS_TOKEN")
+        $request = $FbApi->request('GET', '/'.$page_id.'/?fields=access_token', [
+            'access_token' => env('FACEBOOK_DEFAULT_ACCESS_TOKEN'),
         ]);
         $response = $FbApi->getClient()->sendRequest($request);  //Wrap in try catch
         return collect($response->getDecodedBody())
@@ -35,8 +35,8 @@ class FacebookApiRequest
     public function getPageReviews(string $pageAccessToken, string $page_id) : Collection
     {
         $FbApi = resolve('Facebook\Facebook');
-        $request = $FbApi->request('GET', '/'. $page_id .'/ratings?fields=created_time,has_rating,has_review,rating,recommendation_type,review_text,reviewer', [
-            'access_token' => $pageAccessToken
+        $request = $FbApi->request('GET', '/'.$page_id.'/ratings?fields=created_time,has_rating,has_review,rating,recommendation_type,review_text,reviewer', [
+            'access_token' => $pageAccessToken,
         ]);
         $response = $FbApi->getClient()->sendRequest($request); //Wrap in try catch
         return collect($response->getDecodedBody())
@@ -48,20 +48,20 @@ class FacebookApiRequest
         //Get all the reviews id's in the DB
         $reviewer_times = Review::pluck('created_time');
 
-        foreach ($reviews as $review){
+        foreach ($reviews as $review) {
             //Check if the necessary data exists
-            if((!empty($review['created_time'])) && (!empty($review['recommendation_type'])) && (!empty($review['review_text']))){
+            if ((! empty($review['created_time'])) && (! empty($review['recommendation_type'])) && (! empty($review['review_text']))) {
                 //Make sure its a positive review and its not a duplicate
-                if((!$reviewer_times->contains($review['created_time'])) && ($review['recommendation_type'] === 'positive')){
+                if ((! $reviewer_times->contains($review['created_time'])) && ($review['recommendation_type'] === 'positive')) {
                     Review::create([
-                        'name' => (!empty($review['reviewer']['name'])) ? $review['reviewer']['name'] : null,
+                        'name' => (! empty($review['reviewer']['name'])) ? $review['reviewer']['name'] : null,
                         'active' => true,
                         'created_time' => $review['created_time'],
-                        'message' => $review['review_text']
+                        'message' => $review['review_text'],
                     ]);
                 }
             }
         }
-        Log::info("Reviews saved for ". Carbon::now()->toDateString());
+        Log::info('Reviews saved for '.Carbon::now()->toDateString());
     }
 }

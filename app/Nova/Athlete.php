@@ -2,17 +2,17 @@
 
 namespace App\Nova;
 
-use App\Nova\Actions\EmailYouMadeTheTeam;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Panel;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Place;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Place;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\BelongsTo;
+use App\Nova\Actions\EmailYouMadeTheTeam;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Panel;
 
 class Athlete extends Resource
 {
@@ -58,21 +58,21 @@ class Athlete extends Resource
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
-                    'text' => $this->email
+                    'text' => $this->email,
                 ])->render();
             })->asHtml()->sortable(),
             Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
-                    'text' => $this->phone
+                    'text' => $this->phone,
                 ])->render();
             })->asHtml()->hideFromIndex(),
             Date::make('Date of Birth', 'birthDate')->hideFromIndex(),
             Text::make('Parent', 'parent')->hideFromIndex(),
             Text::make('Age', function () {
                 return view('partials.age', [
-                    'birthDate' => $this->birthDate
+                    'birthDate' => $this->birthDate,
                 ])->render();
             })->hideFromIndex(),
             BelongsTo::make('Tryout'),
@@ -128,7 +128,7 @@ class Athlete extends Resource
     public function actions(Request $request)
     {
         return [
-            new EmailYouMadeTheTeam()
+            new EmailYouMadeTheTeam(),
         ];
     }
 
@@ -146,11 +146,10 @@ class Athlete extends Resource
             Text::make('Postal Code', 'zip')->hideFromIndex(),
             Text::make('Country', function () {
                 return 'US';
-            })->hideFromIndex()
+            })->hideFromIndex(),
             //Country::make('Country')->hideFromIndex(),
         ];
     }
-
 
     /**
      * Get the address fields for the resource.
@@ -162,7 +161,7 @@ class Athlete extends Resource
         return [
             Text::make('Name', 'emergencyName')->hideFromIndex(),
             Text::make('Relationship', 'emergencyRelationship')->hideFromIndex(),
-            Text::make('Phone', 'emergencyPhone')->hideFromIndex()
+            Text::make('Phone', 'emergencyPhone')->hideFromIndex(),
         ];
     }
 

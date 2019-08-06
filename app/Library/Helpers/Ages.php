@@ -27,12 +27,12 @@ trait Ages
      */
     private function getDate()
     {
-        if($this->getAttribute('date_of_birth')){
+        if ($this->getAttribute('date_of_birth')) {
             return $this->getAttribute('date_of_birth');
-        } elseif ($this->getAttribute('birthDate')){
+        } elseif ($this->getAttribute('birthDate')) {
             return $this->getAttribute('birthDate');
         } else {
-            return null;
+            return;
         }
     }
 }

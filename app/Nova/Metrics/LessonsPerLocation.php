@@ -5,13 +5,14 @@ namespace App\Nova\Metrics;
 use App\Lesson;
 use App\Location;
 use Illuminate\Http\Request;
+use App\Nova\Helpers\NovaHelpers;
 use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Metrics\Partition;
-use App\Nova\Helpers\NovaHelpers;
 
 class LessonsPerLocation extends Partition
 {
     use NovaHelpers;
+
     /**
      * Calculate the value of the metric.
      *
@@ -22,7 +23,7 @@ class LessonsPerLocation extends Partition
     {
         $locations = Location::withCount('lessons')->orderBy('lessons_count', 'desc')->get();
 
-        return $this->makePartitionResult($locations, 'name','lessons_count');
+        return $this->makePartitionResult($locations, 'name', 'lessons_count');
     }
 
     /**

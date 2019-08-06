@@ -17,18 +17,16 @@ class PromoCodeTest extends TestCase
 
         $promoCode = factory('App\PromoCode')->create([
             'code' => 'HALFOFF',
-            'discount_percent' => 50
+            'discount_percent' => 50,
         ]);
 
         $this->assertEquals($promoCode->apply($price), 50);
-
-
 
         $price2 = 200;
 
         $promoCode = factory('App\PromoCode')->create([
             'code' => 'HALFOFF',
-            'discount_percent' => 75
+            'discount_percent' => 75,
         ]);
 
         $this->assertEquals($promoCode->apply($price2), 50);
@@ -41,7 +39,7 @@ class PromoCodeTest extends TestCase
 
         $promoCode = factory('App\PromoCode')->create([
             'code' => 'NONE',
-            'discount_percent' => 0
+            'discount_percent' => 0,
         ]);
 
         $this->assertEquals($promoCode->apply($price), 100);
@@ -54,7 +52,7 @@ class PromoCodeTest extends TestCase
 
         $promoCode = factory('App\PromoCode')->create([
             'code' => 'NONE',
-            'discount_percent' => 100
+            'discount_percent' => 100,
         ]);
 
         $this->assertEquals($promoCode->apply($price), 0);

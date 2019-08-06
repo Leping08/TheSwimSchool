@@ -28,7 +28,6 @@ class STInvitation extends Mailable
      */
     protected $theme = 'the_swim_team';
 
-
     /**
      * STInvitation constructor.
      * @param Athlete $athlete

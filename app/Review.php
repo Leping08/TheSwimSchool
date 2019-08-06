@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * An Eloquent Model: 'Location'
+ * An Eloquent Model: 'Location'.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property bool $active
  * @property string $created_time

@@ -2,13 +2,13 @@
 
 namespace App\Jobs;
 
-use App\Library\TryoutReminderEmail;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Log;
+use App\Library\TryoutReminderEmail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Log;
 
 class SendTryoutReminderEmails implements ShouldQueue
 {
@@ -31,8 +31,8 @@ class SendTryoutReminderEmails implements ShouldQueue
      */
     public function handle()
     {
-        Log::info("Starting to send tryout reminder emails.");
+        Log::info('Starting to send tryout reminder emails.');
         (new TryoutReminderEmail)->sendReminderEmails();
-        Log::info("Starting to send tryout reminder emails.");
+        Log::info('Starting to send tryout reminder emails.');
     }
 }

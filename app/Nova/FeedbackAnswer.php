@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class FeedbackAnswer extends Resource
@@ -38,7 +38,7 @@ class FeedbackAnswer extends Resource
      * @var array
      */
     public static $with = [
-        'question'
+        'question',
     ];
 
     /**
@@ -61,16 +61,16 @@ class FeedbackAnswer extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Question', function (){
+            Text::make('Question', function () {
                 return $this->question->question ?? null;
             }),
-            Text::make('Answer', function (){
-                return str_limit($this->answer, 50,'....');
+            Text::make('Answer', function () {
+                return str_limit($this->answer, 50, '....');
             })->onlyOnIndex(),
             Text::make('Answer', 'answer')->hideFromIndex(),
             BelongsTo::make('Survey', 'survey', \App\Nova\FeedbackSurvey::class),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 

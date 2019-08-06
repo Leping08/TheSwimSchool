@@ -6,19 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * This is a marketing email list
+ * This is a marketing email list.
  *
  * An Eloquent Model: 'EmailList'
  *
- * @property integer $id
+ * @property int $id
  * @property string $email
  * @property bool $subscribe
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
- *
  */
-
 class EmailList extends Model
 {
     /**
@@ -50,7 +48,7 @@ class EmailList extends Model
     public function unsubscribe() : bool
     {
         return $this->update([
-            'subscribe' => 0
+            'subscribe' => 0,
         ]);
     }
 
@@ -60,14 +58,15 @@ class EmailList extends Model
     public function resubscribe() : bool
     {
         return $this->update([
-            'subscribe' => 1
+            'subscribe' => 1,
         ]);
     }
 
     /**
      * @return string
      */
-    public function getRouteKeyName() {
+    public function getRouteKeyName()
+    {
         return 'email';
     }
 }

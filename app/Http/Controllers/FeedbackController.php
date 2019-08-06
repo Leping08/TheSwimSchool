@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\FeedbackAnswer;
-use App\FeedbackQuestion;
 use App\FeedbackSurvey;
+use App\FeedbackQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -13,6 +13,7 @@ class FeedbackController extends Controller
     public function index()
     {
         $questions = FeedbackQuestion::with('type', 'category')->get();
+
         return view('feedback.index', compact('questions'));
     }
 
@@ -36,27 +37,27 @@ class FeedbackController extends Controller
             'question_15' => 'nullable',
             'question_16' => 'nullable',
             'question_17' => 'nullable',
-            'question_18' => 'nullable'
+            'question_18' => 'nullable',
         ]);
 
-        Log::info("Creating a feedback survey");
+        Log::info('Creating a feedback survey');
 
         $survey = FeedbackSurvey::create([
-            'viewed' => false
+            'viewed' => false,
         ]);
 
-        foreach ($request->except('_token') as $key => $answer)
-        {
+        foreach ($request->except('_token') as $key => $answer) {
             FeedbackAnswer::create([
                 'answer' => $answer,
                 'feedback_question_id' => trim($key, 'question_'),
-                'feedback_survey_id' => $survey->id
+                'feedback_survey_id' => $survey->id,
             ]);
         }
 
-        Log::info("Feedback survey and answers saved");
+        Log::info('Feedback survey and answers saved');
 
         session()->flash('success', 'Thank you for filling out the survey. We appreciate the feedback and will use it to improve our services.');
+
         return redirect('/thank-you');
     }
 }

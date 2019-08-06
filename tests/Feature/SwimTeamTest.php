@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
-use App\Mail\STSignUp;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+use App\Mail\STSignUp;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class SwimTeamTest extends TestCase
 {
@@ -40,14 +40,13 @@ class SwimTeamTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'level_id' => $level->id,
             'shirt_size_id' => $size->id,
-            'stripeToken' => 'tok_visa'
+            'stripeToken' => 'tok_visa',
         ];
-
 
         $this->get("/swim-team/level/{$level->id}/swimmer/")
             ->assertStatus(200);
 
-        $this->assertEquals(0,  \App\STSwimmer::all()->count());
+        $this->assertEquals(0, \App\STSwimmer::all()->count());
 
         $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
 
@@ -55,14 +54,14 @@ class SwimTeamTest extends TestCase
 
         Mail::assertSent(STSignUp::class);
 
-        $this->assertEquals(1,  \App\STSwimmer::all()->count());
+        $this->assertEquals(1, \App\STSwimmer::all()->count());
 
         $this->assertDatabaseHas('s_t_swimmers', [
-            "firstName" => $attributes['firstName'],
-            "lastName" => $attributes['lastName'],
-            "email" => $attributes['email'],
-            "s_t_level_id" => $attributes['level_id'],
-            's_t_shirt_size_id' => $attributes['shirt_size_id']
+            'firstName' => $attributes['firstName'],
+            'lastName' => $attributes['lastName'],
+            'email' => $attributes['email'],
+            's_t_level_id' => $attributes['level_id'],
+            's_t_shirt_size_id' => $attributes['shirt_size_id'],
         ]);
     }
 
@@ -73,12 +72,12 @@ class SwimTeamTest extends TestCase
         Mail::assertNothingSent();
 
         $level = factory('App\STLevel')->create([
-            'price' => 100
+            'price' => 100,
         ]);
         $season = factory('App\STSeason')->create();
         $promoCode = factory('App\PromoCode')->create([
             'code' => 'HALFOFF',
-            'discount_percent' => 50
+            'discount_percent' => 50,
         ]);
         $size = factory('App\STShirtSize')->create();
 
@@ -99,7 +98,7 @@ class SwimTeamTest extends TestCase
             'level_id' => $level->id,
             'shirt_size_id' => $size->id,
             'stripeToken' => 'tok_visa',
-            'promo_code' => 'HALFOFF'
+            'promo_code' => 'HALFOFF',
         ];
 
         $this->get("/swim-team/level/{$level->id}/swimmer/")
@@ -116,12 +115,12 @@ class SwimTeamTest extends TestCase
         $this->assertEquals(1, \App\STSwimmer::all()->count());
 
         $this->assertDatabaseHas('s_t_swimmers', [
-            "firstName" => $attributes['firstName'],
-            "lastName" => $attributes['lastName'],
-            "email" => $attributes['email'],
-            "s_t_level_id" => $attributes['level_id'],
+            'firstName' => $attributes['firstName'],
+            'lastName' => $attributes['lastName'],
+            'email' => $attributes['email'],
+            's_t_level_id' => $attributes['level_id'],
             's_t_shirt_size_id' => $attributes['shirt_size_id'],
-            'promo_code_id' => $promoCode->id
+            'promo_code_id' => $promoCode->id,
         ]);
     }
 
@@ -132,12 +131,12 @@ class SwimTeamTest extends TestCase
         Mail::assertNothingSent();
 
         $level = factory('App\STLevel')->create([
-            'price' => 100
+            'price' => 100,
         ]);
         $season = factory('App\STSeason')->create();
         $promo = factory('App\PromoCode')->create([
             'code' => 'FORFREE',
-            'discount_percent' => 100
+            'discount_percent' => 100,
         ]);
         $size = factory('App\STShirtSize')->create();
 
@@ -158,7 +157,7 @@ class SwimTeamTest extends TestCase
             'level_id' => $level->id,
             'shirt_size_id' => $size->id,
             'stripeToken' => 'tok_visa',
-            'promo_code' => $promo->code
+            'promo_code' => $promo->code,
         ];
 
         $this->get("/swim-team/level/{$level->id}/swimmer/")
@@ -175,13 +174,13 @@ class SwimTeamTest extends TestCase
         $this->assertEquals(1, \App\STSwimmer::all()->count());
 
         $this->assertDatabaseHas('s_t_swimmers', [
-            "firstName" => $attributes['firstName'],
-            "lastName" => $attributes['lastName'],
-            "email" => $attributes['email'],
-            "s_t_level_id" => $attributes['level_id'],
+            'firstName' => $attributes['firstName'],
+            'lastName' => $attributes['lastName'],
+            'email' => $attributes['email'],
+            's_t_level_id' => $attributes['level_id'],
             's_t_shirt_size_id' => $attributes['shirt_size_id'],
             'promo_code_id' => $promo->id,
-            'stripeChargeId' => 'For Free Promo Code'
+            'stripeChargeId' => 'For Free Promo Code',
         ]);
     }
 }

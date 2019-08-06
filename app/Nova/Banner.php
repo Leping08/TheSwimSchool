@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Banner extends Resource
@@ -33,7 +33,7 @@ class Banner extends Resource
     public static $search = [
         'id',
         'page',
-        'text'
+        'text',
     ];
 
     /**
@@ -50,11 +50,11 @@ class Banner extends Resource
             Text::make('Page', function () {
                 return view('partials.link', [
                     'link' => $this->page,
-                    'text' => $this->page
+                    'text' => $this->page,
                 ])->render();
             })->asHtml(),
             Boolean::make('Active', 'active'),
-            Code::make('Text', 'text')
+            Code::make('Text', 'text'),
         ];
     }
 

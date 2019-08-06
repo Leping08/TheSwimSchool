@@ -133,7 +133,7 @@ return [
 
     'leadDestEmails' => [
         'theswimschoolfl@gmail.com',
-        'derek@deltavcreative.com'
+        'derek@deltavcreative.com',
     ],
 
     /*

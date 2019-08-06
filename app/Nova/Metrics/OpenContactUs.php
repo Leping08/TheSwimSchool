@@ -58,6 +58,6 @@ class OpenContactUs extends Value
 
     public function name()
     {
-        return "Not Followed Up";
+        return 'Not Followed Up';
     }
 }
