@@ -14,11 +14,11 @@ class STCoachTest extends TestCase
     /** @test **/
     public function a_coach_will_show_up_on_the_swim_team_page_if_they_are_active()
     {
-        $activeCoach = factory('App\STCoach')->create([
+        $activeCoach = factory(\App\STCoach::class)->create([
             'active' => true
         ]);
 
-        $notActiveCoach = factory('App\STCoach')->create([
+        $notActiveCoach = factory(\App\STCoach::class)->create([
             'active' => false
         ]);
 

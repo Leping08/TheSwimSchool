@@ -18,7 +18,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function a_user_should_be_able_to_see_the_sign_up_button_if_registration_is_open()
     {
-        $tryout = factory('App\Tryout')->create([
+        $tryout = factory(\App\Tryout::class)->create([
             'event_time' => Carbon::now()->addDays(2),
             'registration_open' => Carbon::now()->subDays(2)
         ]);
@@ -35,7 +35,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function a_user_should_not_be_able_to_see_the_sign_up_button_if_registration_is_not_open()
     {
-        $tryout = factory('App\Tryout')->create([
+        $tryout = factory(\App\Tryout::class)->create([
             'event_time' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4)
         ]);
@@ -50,7 +50,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function a_user_should_be_able_to_sign_up_for_tryouts_if_they_have_the_sign_up_link_and_the_registration_is_not_open()
     {
-        $tryout = factory('App\Tryout')->create([
+        $tryout = factory(\App\Tryout::class)->create([
             'event_time' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4)
         ]);
@@ -62,7 +62,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function an_athlete_should_be_added_to_the_database_if_they_fill_out_the_tryout_sign_up_form()
     {
-        $tryout = factory('App\Tryout')->create();
+        $tryout = factory(\App\Tryout::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -105,7 +105,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function reminder_emails_will_be_sent_out_the_day_before_the_tryout()
     {
-        $tryout = factory('App\Tryout')->create([
+        $tryout = factory(\App\Tryout::class)->create([
             'event_time' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday()
         ]);
@@ -113,7 +113,7 @@ class TryoutTest extends TestCase
         $registrationOpen = \App\Tryout::registrationOpen()->get();
         $this->assertTrue($registrationOpen->contains($tryout->id));
 
-        $athlete = factory('App\Athlete')->create([
+        $athlete = factory(\App\Athlete::class)->create([
             'tryout_id' => $tryout->id
         ]);
 

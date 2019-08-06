@@ -51,7 +51,7 @@ class Group extends Model
      */
     public function Swimmers()
     {
-        return $this->hasManyThrough('App\Swimmer', 'App\Lesson');
+        return $this->hasManyThrough(\App\Swimmer::class, 'App\Lesson');
     }
 
     /**

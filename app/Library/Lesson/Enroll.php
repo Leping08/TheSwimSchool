@@ -102,7 +102,7 @@ class Enroll
             Log::info("Group Lesson sign up email sent to {$swimmer->email}. Swimmer ID: {$swimmer->id} Lesson ID: {$swimmer->lesson->id}.");
         } catch (\Exception $e) {
             Log::error("Email error: ");
-            Log::error(print_r($e, true));
+            Log::error(print_r($e->getMessage(), true));
         }
     }
 
@@ -116,7 +116,7 @@ class Enroll
                 }
             } catch (\Exception $e) {
                 Log::error("Email error: ");
-                Log::error(print_r($e, true));
+                Log::error(print_r($e->getMessage(), true));
             }
         }
     }
