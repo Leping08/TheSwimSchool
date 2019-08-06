@@ -9,7 +9,7 @@ $factory->define(App\Athlete::class, function (Faker $faker) {
         'email' => $faker->safeEmail,
         'phone' => $faker->phoneNumber,
         'birthDate' => $faker->dateTimeBetween($startDate = '-30 years', $endDate = 'yesterday'),
-        'tryout_id' => factory('App\Tryout')->create()->id,
+        'tryout_id' => factory(\App\Tryout::class)->create()->id,
         'parent' => $faker->name,
         'notes' => $faker->paragraph,
         'street' => $faker->streetName,
@@ -19,7 +19,7 @@ $factory->define(App\Athlete::class, function (Faker $faker) {
         'emergencyName' => $faker->firstNameFemale,
         'emergencyRelationship' => 'Mom',
         'emergencyPhone' => $faker->phoneNumber,
-        's_t_season_id' => factory('App\STSeason')->create()->id,
+        's_t_season_id' => factory(\App\STSeason::class)->create()->id,
         's_t_sign_up_email' => false,
     ];
 });

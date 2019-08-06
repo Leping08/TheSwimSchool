@@ -20,7 +20,7 @@ class WaitListTest extends TestCase
 
         Mail::assertNothingSent();
 
-        $lesson = factory('App\Lesson')->create([
+        $lesson = factory(\App\Lesson::class)->create([
             'class_size' => 0,
         ]);
 
@@ -58,7 +58,7 @@ class WaitListTest extends TestCase
     /** @test  **/
     public function a_user_can_not_sign_up_for_the_same_wait_list_twice()
     {
-        $lesson = factory('App\Lesson')->create([
+        $lesson = factory(\App\Lesson::class)->create([
             'class_size' => 0,
         ]);
 

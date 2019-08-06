@@ -16,7 +16,7 @@ class TryoutTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        $tryout = factory('App\Tryout')->create([
+        $tryout = factory(\App\Tryout::class)->create([
             'class_size' => 1,
             'registration_open' => Carbon::now()->subDays(2),
             'event_time' => Carbon::now()->addDays(2),
@@ -34,7 +34,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function it_can_be_full()
     {
-        $tryout = factory('App\Tryout')->create([
+        $tryout = factory(\App\Tryout::class)->create([
             'class_size' => 1,
         ]);
 

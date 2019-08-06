@@ -17,7 +17,7 @@ class EmailListTest extends TestCase
     public function a_user_should_be_able_to_unsubscribe_by_hitting_the_unsubscribe_page()
     {
         //Set up an email
-        $email = factory('App\EmailList')->create([
+        $email = factory(\App\EmailList::class)->create([
             'subscribe' => true,
         ]);
 

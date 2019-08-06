@@ -20,9 +20,9 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory('App\STLevel')->create();
-        $season = factory('App\STSeason')->create();
-        $size = factory('App\STShirtSize')->create();
+        $level = factory(\App\STLevel::class)->create();
+        $season = factory(\App\STSeason::class)->create();
+        $size = factory(\App\STShirtSize::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -71,15 +71,15 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory('App\STLevel')->create([
+        $level = factory(\App\STLevel::class)->create([
             'price' => 100,
         ]);
-        $season = factory('App\STSeason')->create();
-        $promoCode = factory('App\PromoCode')->create([
+        $season = factory(\App\STSeason::class)->create();
+        $promoCode = factory(\App\PromoCode::class)->create([
             'code' => 'HALFOFF',
             'discount_percent' => 50,
         ]);
-        $size = factory('App\STShirtSize')->create();
+        $size = factory(\App\STShirtSize::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -130,15 +130,15 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory('App\STLevel')->create([
+        $level = factory(\App\STLevel::class)->create([
             'price' => 100,
         ]);
-        $season = factory('App\STSeason')->create();
-        $promo = factory('App\PromoCode')->create([
+        $season = factory(\App\STSeason::class)->create();
+        $promo = factory(\App\PromoCode::class)->create([
             'code' => 'FORFREE',
             'discount_percent' => 100,
         ]);
-        $size = factory('App\STShirtSize')->create();
+        $size = factory(\App\STShirtSize::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
