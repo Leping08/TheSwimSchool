@@ -2,9 +2,9 @@
 
 namespace App\Nova\Actions;
 
-use App\Athlete;
-use App\STLevel;
-use App\PromoCode;
+use App\Models\Athlete;
+use App\Models\STLevel;
+use App\Models\PromoCode;
 use App\Mail\STInvitation;
 use Illuminate\Bus\Queueable;
 use Laravel\Nova\Fields\Select;

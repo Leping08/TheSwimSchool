@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\Swimmer;
+use App\Models\Swimmer;
 use Illuminate\Http\Request;
 use Laravel\Nova\Metrics\Trend;
 

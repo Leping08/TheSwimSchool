@@ -21,7 +21,7 @@ class STSwimmer extends Resource
      *
      * @var string
      */
-    public static $model = \App\STSwimmer::class;
+    public static $model = \App\Models\STSwimmer::class;
 
     /**
      * The columns that should be searched.

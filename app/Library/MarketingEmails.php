@@ -2,7 +2,7 @@
 
 namespace App\Library;
 
-use App\EmailList;
+use App\Models\EmailList;
 use App\Mail\TryoutsOpen;
 use App\Mail\HappyHolidays;
 use App\Mail\GoldDaisyAward;

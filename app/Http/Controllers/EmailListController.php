@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\EmailList;
+use App\Models\EmailList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Library\NewsLetter\NewsLetter;

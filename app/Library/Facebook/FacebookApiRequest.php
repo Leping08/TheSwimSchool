@@ -2,7 +2,7 @@
 
 namespace App\Library\Facebook;
 
-use App\Review;
+use App\Models\Review;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;

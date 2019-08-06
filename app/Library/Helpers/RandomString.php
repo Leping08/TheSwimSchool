@@ -2,7 +2,7 @@
 
 namespace App\Library\Helpers;
 
-use App\Athlete;
+use App\Models\Athlete;
 
 class RandomString
 {

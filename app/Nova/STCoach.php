@@ -17,7 +17,7 @@ class STCoach extends Resource
      *
      * @var string
      */
-    public static $model = \App\STCoach::class;
+    public static $model = \App\Models\STCoach::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

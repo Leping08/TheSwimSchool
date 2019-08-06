@@ -2,7 +2,7 @@
 
 namespace App\Library\NewsLetter;
 
-use App\EmailList;
+use App\Models\EmailList;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;

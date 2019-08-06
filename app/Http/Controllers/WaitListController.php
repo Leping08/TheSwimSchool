@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Lesson;
-use App\WaitList;
+use App\Models\Lesson;
+use App\Models\WaitList;
 use Carbon\Carbon;
 use App\Mail\WaitListAdmin;
 use Illuminate\Http\Request;

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Banner;
-use App\STCoach;
+use App\Models\Banner;
+use App\Models\STCoach;
 use Illuminate\Http\Request;
 
 class SwimTeamCoachesController extends Controller

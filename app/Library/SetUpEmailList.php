@@ -2,10 +2,10 @@
 
 namespace App\Library;
 
-use App\Tryout;
-use App\Swimmer;
-use App\EmailList;
-use App\STSwimmer;
+use App\Models\Tryout;
+use App\Models\Swimmer;
+use App\Models\EmailList;
+use App\Models\STSwimmer;
 use Carbon\Carbon;
 use App\Mail\TryoutReminder;
 use Illuminate\Support\Collection;

@@ -37,7 +37,7 @@ class SwimTeamLevel extends Filter
     {
         $result = collect([]);
 
-        foreach (\App\STLevel::all() as $level) {
+        foreach (\App\Models\STLevel::all() as $level) {
             $result->put($level->name, $level->id);
         }
 

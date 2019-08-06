@@ -16,7 +16,7 @@ class FeedbackSurvey extends Resource
      *
      * @var string
      */
-    public static $model = \App\FeedbackSurvey::class;
+    public static $model = \App\Models\FeedbackSurvey::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

@@ -2,7 +2,7 @@
 
 namespace App\Library;
 
-use App\Tryout;
+use App\Models\Tryout;
 use Carbon\Carbon;
 use App\Mail\TryoutReminder;
 use Illuminate\Support\Facades\Log;

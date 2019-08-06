@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\DaysOfTheWeek;
+use App\Models\DaysOfTheWeek;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
@@ -30,7 +30,7 @@ class Lesson extends Resource
      *
      * @var string
      */
-    public static $model = \App\Lesson::class;
+    public static $model = \App\Models\Lesson::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

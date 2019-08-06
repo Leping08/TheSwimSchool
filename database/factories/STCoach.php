@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\STCoach::class, function (Faker $faker) {
+$factory->define(App\Models\STCoach::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'phone' => '9998887777',

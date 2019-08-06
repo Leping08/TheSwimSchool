@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Lesson;
+use App\Models\Lesson;
 use App\Mail\FeedbackSurvey;
 use App\Mail\TryoutReminder;
 use Illuminate\Bus\Queueable;

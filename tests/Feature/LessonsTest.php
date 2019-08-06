@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Group;
+use App\Models\Group;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -16,7 +16,7 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_in_progress()
     {
-        $lessonInProgress = factory(\App\Lesson::class)->create([
+        $lessonInProgress = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4),
             'class_end_date' => Carbon::now()->addDays(2),
@@ -29,7 +29,7 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_does_not_have_open_registration_yet()
     {
-        $registrationNotOpenYet = factory(\App\Lesson::class)->create([
+        $registrationNotOpenYet = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now()->addDays(3),
             'registration_open' => Carbon::now()->addDays(2),
             'class_end_date' => Carbon::now()->addDays(5),
@@ -42,7 +42,7 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_has_finished()
     {
-        $lessonFinished = factory(\App\Lesson::class)->create([
+        $lessonFinished = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(4),
             'registration_open' => Carbon::now()->subDays(6),
             'class_end_date' => Carbon::now()->subDays(2),
@@ -55,25 +55,25 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_see_the_groups_for_each_lesson()
     {
-        $registrationOpen = factory(\App\Lesson::class)->create([
+        $registrationOpen = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
-        $lessonFinished = factory(\App\Lesson::class)->create([
+        $lessonFinished = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(4),
             'registration_open' => Carbon::now()->subDays(6),
             'class_end_date' => Carbon::now()->subDays(2),
         ]);
 
-        $lessonInProgress = factory(\App\Lesson::class)->create([
+        $lessonInProgress = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4),
             'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
-        $registrationNotOpenYet = factory(\App\Lesson::class)->create([
+        $registrationNotOpenYet = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now()->addDays(3),
             'registration_open' => Carbon::now()->addDays(2),
             'class_end_date' => Carbon::now()->addDays(5),
@@ -93,7 +93,7 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_see_the_details_of_a_lesson_that_is_open_for_registration()
     {
-        $registrationOpen = factory(\App\Lesson::class)->create([
+        $registrationOpen = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2),
@@ -111,7 +111,7 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_sign_up_for_a_lesson_that_is_not_full()
     {
-        $registrationOpen = factory(\App\Lesson::class)->create([
+        $registrationOpen = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2),
@@ -124,7 +124,7 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_sign_up_for_a_lesson_that_is_full()
     {
-        $registrationOpen = factory(\App\Lesson::class)->create([
+        $registrationOpen = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2),
@@ -134,7 +134,7 @@ class LessonsTest extends TestCase
         $this->get($registrationOpen->path())
             ->assertSee('Sign Up');
 
-        $swimmer = factory(\App\Swimmer::class)->create();
+        $swimmer = factory(\App\Models\Swimmer::class)->create();
         $swimmer->lesson_id = $registrationOpen->id;
         $swimmer->update();
 
@@ -145,8 +145,8 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_see_private_lesson_groups()
     {
-        $lesson = factory(\App\Lesson::class)->create();
-        $group = factory(\App\Group::class)->create();
+        $lesson = factory(\App\Models\Lesson::class)->create();
+        $group = factory(\App\Models\Group::class)->create();
         $lesson->update([
             'group_id' => $group->id,
         ]);
@@ -162,8 +162,8 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_see_the_private_lesson_sign_up_page_with_a_link()
     {
-        $lesson = factory(\App\Lesson::class)->create();
-        $group = factory(\App\Group::class)->create();
+        $lesson = factory(\App\Models\Lesson::class)->create();
+        $group = factory(\App\Models\Group::class)->create();
         $lesson->group_id = $group->id;
         $lesson->update();
         $group->type = 'Private LessonTest';
@@ -186,8 +186,8 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_sign_up_for_a_private_lesson_if_it_is_full()
     {
-        $lesson = factory(\App\Lesson::class)->create();
-        $group = factory(\App\Group::class)->create();
+        $lesson = factory(\App\Models\Lesson::class)->create();
+        $group = factory(\App\Models\Group::class)->create();
         $lesson->update([
             'group_id' => $group->id,
             'class_size' => 1,
@@ -196,7 +196,7 @@ class LessonsTest extends TestCase
             'type' => 'Private LessonTest',
         ]);
 
-        $swimmer = factory(\App\Swimmer::class)->create();
+        $swimmer = factory(\App\Models\Swimmer::class)->create();
         $swimmer->update([
             'lesson_id' => $lesson->id,
         ]);
@@ -208,17 +208,17 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_starts_today()
     {
-        $lesson = factory(\App\Lesson::class)->create([
+        $lesson = factory(\App\Models\Lesson::class)->create([
             'class_start_date' => Carbon::now(),
         ]);
 
-        $this->assertFalse(\App\Lesson::registrationOpen()->contains($lesson));
+        $this->assertFalse(\App\Models\Lesson::registrationOpen()->contains($lesson));
     }
 
     /** @test  **/
     public function a_swimmer_can_sign_up_by_hitting_the_lesson_sign_up_route()
     {
-        $lesson = factory(\App\Lesson::class)->create();
+        $lesson = factory(\App\Models\Lesson::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -242,13 +242,13 @@ class LessonsTest extends TestCase
         $this->get("/lessons/{$lesson->group->type}/{$lesson->id}")
             ->assertStatus(200);
 
-        $this->assertEquals(0, \App\Swimmer::all()->count());
+        $this->assertEquals(0, \App\Models\Swimmer::all()->count());
 
         $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
 
         $response->assertRedirect('/thank-you');
 
-        $this->assertEquals(1, \App\Swimmer::all()->count());
+        $this->assertEquals(1, \App\Models\Swimmer::all()->count());
 
         $this->assertDatabaseHas('swimmers', [
             'firstName' => $attributes['firstName'],
@@ -261,7 +261,7 @@ class LessonsTest extends TestCase
     /** @test  **/
     public function a_user_can_not_sign_up_for_a_group_lesson_that_is_full()
     {
-        $lesson = factory(\App\Lesson::class)->create([
+        $lesson = factory(\App\Models\Lesson::class)->create([
             'class_size' => 0,
         ]);
 

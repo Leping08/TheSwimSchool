@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\STLevel;
+use App\Models\STLevel;
 use Illuminate\Database\Eloquent\Model;
 
 class DaysOfTheWeek extends Model

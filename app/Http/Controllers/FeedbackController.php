@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\FeedbackAnswer;
-use App\FeedbackSurvey;
-use App\FeedbackQuestion;
+use App\Models\FeedbackAnswer;
+use App\Models\FeedbackSurvey;
+use App\Models\FeedbackQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 

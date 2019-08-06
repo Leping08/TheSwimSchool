@@ -32,7 +32,7 @@ class ShirtSize extends Filter
     {
         $result = collect([]);
 
-        foreach (\App\STShirtSize::all() as $shirtSize) {
+        foreach (\App\Models\STShirtSize::all() as $shirtSize) {
             $result->put($shirtSize->size, $shirtSize->id);
         }
 
