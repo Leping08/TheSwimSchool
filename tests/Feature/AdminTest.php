@@ -14,7 +14,7 @@ class Admin extends TestCase
     /** @test */
     public function a_non_admin_can_not_see_swimmers_in_a_lesson()
     {
-        $swimmer = factory('App\Swimmer')->create();
+        $swimmer = factory(\App\Swimmer::class)->create();
         $lesson = Lesson::first();
 
         $this->get("/lesson/$lesson->id")

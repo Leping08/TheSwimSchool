@@ -16,7 +16,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_in_progress()
     {
-        $lessonInProgress = factory('App\Lesson')->create([
+        $lessonInProgress = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4),
             'class_end_date' => Carbon::now()->addDays(2)
@@ -29,7 +29,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_does_not_have_open_registration_yet()
     {
-        $registrationNotOpenYet = factory('App\Lesson')->create([
+        $registrationNotOpenYet = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->addDays(3),
             'registration_open' => Carbon::now()->addDays(2),
             'class_end_date' => Carbon::now()->addDays(5)
@@ -42,7 +42,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_has_finished()
     {
-        $lessonFinished = factory('App\Lesson')->create([
+        $lessonFinished = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(4),
             'registration_open' => Carbon::now()->subDays(6),
             'class_end_date' => Carbon::now()->subDays(2)
@@ -55,25 +55,25 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_see_the_groups_for_each_lesson()
     {
-        $registrationOpen = factory('App\Lesson')->create([
+        $registrationOpen = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2)
         ]);
 
-        $lessonFinished = factory('App\Lesson')->create([
+        $lessonFinished = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(4),
             'registration_open' => Carbon::now()->subDays(6),
             'class_end_date' => Carbon::now()->subDays(2)
         ]);
 
-        $lessonInProgress = factory('App\Lesson')->create([
+        $lessonInProgress = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4),
             'class_end_date' => Carbon::now()->addDays(2)
         ]);
 
-        $registrationNotOpenYet = factory('App\Lesson')->create([
+        $registrationNotOpenYet = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()->addDays(3),
             'registration_open' => Carbon::now()->addDays(2),
             'class_end_date' => Carbon::now()->addDays(5)
@@ -93,7 +93,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_see_the_details_of_a_lesson_that_is_open_for_registration()
     {
-        $registrationOpen = factory('App\Lesson')->create([
+        $registrationOpen = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2)
@@ -111,7 +111,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_sign_up_for_a_lesson_that_is_not_full()
     {
-        $registrationOpen = factory('App\Lesson')->create([
+        $registrationOpen = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2)
@@ -124,7 +124,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_not_sign_up_for_a_lesson_that_is_full()
     {
-        $registrationOpen = factory('App\Lesson')->create([
+        $registrationOpen = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2),
@@ -135,7 +135,7 @@ class Lessons extends TestCase
         $this->get($registrationOpen->path())
             ->assertSee('Sign Up');
 
-        $swimmer = factory('App\Swimmer')->create();
+        $swimmer = factory(\App\Swimmer::class)->create();
         $swimmer->lesson_id = $registrationOpen->id;
         $swimmer->update();
 
@@ -146,8 +146,8 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_not_see_private_lesson_groups()
     {
-        $lesson = factory('App\Lesson')->create();
-        $group = factory('App\Group')->create();
+        $lesson = factory(\App\Lesson::class)->create();
+        $group = factory(\App\Group::class)->create();
         $lesson->update([
             'group_id' => $group->id
         ]);
@@ -163,8 +163,8 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_see_the_private_lesson_sign_up_page_with_a_link()
     {
-        $lesson = factory('App\Lesson')->create();
-        $group = factory('App\Group')->create();
+        $lesson = factory(\App\Lesson::class)->create();
+        $group = factory(\App\Group::class)->create();
         $lesson->group_id = $group->id;
         $lesson->update();
         $group->type = 'Private LessonTest';
@@ -187,8 +187,8 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_not_sign_up_for_a_private_lesson_if_it_is_full()
     {
-        $lesson = factory('App\Lesson')->create();
-        $group = factory('App\Group')->create();
+        $lesson = factory(\App\Lesson::class)->create();
+        $group = factory(\App\Group::class)->create();
         $lesson->update([
             'group_id' => $group->id,
             'class_size' => 1
@@ -197,7 +197,7 @@ class Lessons extends TestCase
             'type' => 'Private LessonTest'
         ]);
 
-        $swimmer = factory('App\Swimmer')->create();
+        $swimmer = factory(\App\Swimmer::class)->create();
         $swimmer->update([
             'lesson_id' => $lesson->id
         ]);
@@ -209,7 +209,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_not_see_a_lesson_that_starts_today()
     {
-        $lesson = factory('App\Lesson')->create([
+        $lesson = factory(\App\Lesson::class)->create([
             'class_start_date' => Carbon::now()
         ]);
 
@@ -219,7 +219,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_swimmer_can_sign_up_by_hitting_the_lesson_sign_up_route()
     {
-        $lesson = factory('App\Lesson')->create();
+        $lesson = factory(\App\Lesson::class)->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -263,7 +263,7 @@ class Lessons extends TestCase
     /** @test  **/
     public function a_user_can_not_sign_up_for_a_group_lesson_that_is_full()
     {
-        $lesson = factory('App\Lesson')->create([
+        $lesson = factory(\App\Lesson::class)->create([
             'class_size' => 0
         ]);
 
