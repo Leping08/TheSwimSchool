@@ -14,3 +14,4 @@ yarn-error.log
 .DS_Store
 public/mix-manifest.json
 public/js/app.js
+auth.json
