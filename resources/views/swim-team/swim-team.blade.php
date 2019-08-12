@@ -21,9 +21,10 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
+                        <h2 class="uk-heading-line"><span>2019 Fall Swim Team</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
-                                Registration is now open for our 2019 Fall Swim Team which will take place at our River Wilderness Golf & Country Club pool.
+                                Registration is now open for our 2019 Fall Swim Team. The Season Runs <strong>Tuesday, September 3rd - Wednesday, October 30th</strong> and is held at the River Wilderness Golf & Country Club pool. Tryouts will also take place at the River Wilderness Golf & Country Club pool.
 {{--                                To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.--}}
                                 Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
                             </p>
@@ -41,19 +42,17 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
                         <div>
-                            <h2 class="uk-heading-line"><span>2019 Fall Swim Team Tryouts</span></h2>
+                            <h2 class="uk-heading-line"><span>Tryouts</span></h2>
+                            <p><strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim club.</strong></p>
                             <ul class="uk-list uk-list-bullet">
                                 <li>Tuesday, August 27th at 5:45PM</li>
                                 <li>Wednesday, August 28th at 5:45PM</li>
                             </ul>
                         </div>
                         <div>
-                            <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>
+{{--                            <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>--}}
 {{--                            <p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>--}}
 {{--                            <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>--}}
-                        </div>
-                        <div>
-                            <p><strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim club.</strong></p>
                         </div>
                         <div>
                             <!-- TODO: Add tryout that lasts all season -->
