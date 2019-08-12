@@ -11,7 +11,7 @@
 # North River Swim Team Awards Luau Luncheon Info
 
 @component('mail::panel')
-Follow the link below to the Awards Luau Luncheon RSVP form. Please complete pre-order no later than 8/18. We hope to see you there!!!
+Please follow the link below to the Awards Luau Luncheon RSVP form. Please complete pre-order no later than 8/18. We hope to see you there!!!
 @endcomponent
 
 @component('mail::button', ['url' => 'https://forms.gle/2UBVomRwaxpFDDAm9'])
