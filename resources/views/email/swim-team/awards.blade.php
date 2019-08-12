@@ -6,9 +6,9 @@
 @endcomponent
 @endslot
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/swim-team/awards.jpg')}}">
-
 # North River Swim Team Awards Luau Luncheon Info
+
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/swim-team/awards.jpg')}}">
 
 @component('mail::panel')
 Please follow the link below to the Awards Luau Luncheon RSVP form. Please complete pre-order no later than 8/18. We hope to see you there!!!
