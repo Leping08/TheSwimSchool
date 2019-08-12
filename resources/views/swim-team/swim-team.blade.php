@@ -43,9 +43,8 @@
                         <div>
                             <h2 class="uk-heading-line"><span>2019 Fall Swim Team Tryouts</span></h2>
                             <ul class="uk-list uk-list-bullet">
-                                <li>Tuesday, April 16th at 6:30PM</li>
-                                <li>Wednesday, April 17th at 6:30PM</li>
-                                <li>Saturday, April 20th at 9:00AM</li>
+                                <li>Tuesday, August 27th at 5:45PM</li>
+                                <li>Wednesday, August 28th at 5:45PM</li>
                             </ul>
                         </div>
                         <div>
