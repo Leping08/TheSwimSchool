@@ -33,6 +33,7 @@ class Awards extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.swim-team.awards');
+        return $this->markdown('email.swim-team.awards')
+                    ->subject('Awards Luau Luncheon');
     }
 }
