@@ -6,7 +6,7 @@
 @endcomponent
 @endslot
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/swim-team/awards.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/swim-team/2018-class.jpg')}}">
 
 # North River Swim Team Awards Luau Luncheon Info
 
