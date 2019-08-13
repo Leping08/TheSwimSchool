@@ -29,8 +29,8 @@ class LuauLuncheonEmail
         foreach($this->getEmailAddresses() as $email)
         {
             try{
-                Log::info("Going to send swim team luau luncheon email to $email");
-                //Mail::to($email)->send(new Awards());
+                Log::info("Sending swim team luau luncheon email to $email");
+                Mail::to($email)->send(new Awards());
             } catch (\Exception $e) {
                 Log::warning("Email error: $e");
             }
