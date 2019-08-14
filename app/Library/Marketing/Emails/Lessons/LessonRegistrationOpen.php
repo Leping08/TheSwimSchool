@@ -14,14 +14,14 @@ use App\Mail\TryoutsOpen;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-class MarketingEmails
+class LessonRegistrationOpen
 {
     public function getSubscribedEmails(): Array
     {
         return EmailList::where('subscribe', '=', true)->pluck('email')->all();
     }
 
-    public function sendLessonRegistrationOpenEmails()
+    public function send()
     {
         foreach($this->getSubscribedEmails() as $email)
         {

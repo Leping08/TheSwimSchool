@@ -38,7 +38,7 @@ class TryoutsOpen extends Mailable
      */
     public function build()
     {
-        return $this->subject('North River Rapids Tryouts')
+        return $this->subject('Fall Swim Club Tryouts')
                     ->markdown('email.tryoutsOpen')
                     ->with(['emailAddress', $this->emailAddress]);
     }
