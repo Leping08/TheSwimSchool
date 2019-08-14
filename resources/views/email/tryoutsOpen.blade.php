@@ -9,12 +9,12 @@
 # North River Rapids Tryouts
 
 @component('mail::panel')
-<img style="margin-bottom: 2em;" src="{{asset('img/thank-you/breast-stroke.jpg')}}">
-## Come join our team!
-Registration for the North River Rapids swim team tryouts is now open! There are three dates to choose from and there is no fee to try out for the team.
+<img style="margin-bottom: 2em;" src="{{asset('img/swim-team/awards.jpg')}}">
+## Calling all swimmers!
+The North River Rapids Fall Swim Club tryouts are open for registration! Check out all the details on our website and sign up online now to secure your spot. All returning and new participants must sign up for a tryout. Spaces are limited!
 @endcomponent
 
-@component('mail::button', ['url' => config('app.url').'swim-team/tryouts?utm_source=newsletter&utm_medium=email&utm_campaign=swim_team_tryouts'])
+@component('mail::button', ['url' => config('app.url').'swim-team?utm_source=newsletter&utm_medium=email&utm_campaign=swim_team_tryouts'])
 Sign Up
 @endcomponent
 
