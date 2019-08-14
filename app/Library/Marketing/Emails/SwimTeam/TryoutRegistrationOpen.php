@@ -25,7 +25,7 @@ class TryoutRegistrationOpen
     public function getEmailAddresses(): Collection
     {
         $emailListEmails = EmailList::where('subscribe', '=', true)->pluck('email')->all();
-        $swimTeamEmails = STSwimmer::where('s_t_season_id', $this->season->id)->pluck('email')->unique();
+        $swimTeamEmails = STSwimmer::where('s_t_season_id', $this->season->id)->pluck('email')->all();
 
         $allEmails = $emailListEmails->merge($swimTeamEmails);
 
