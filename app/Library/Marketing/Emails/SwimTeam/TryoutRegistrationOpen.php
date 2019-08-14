@@ -37,9 +37,9 @@ class TryoutRegistrationOpen
         foreach($this->getEmailAddresses() as $email)
         {
             try{
-                Log::info("Going to send swim team swim team tryout registration open email to $email");
-                //Log::info("Sending swim team swim team tryout registration open email to $email");
-                //Mail::to($email)->send(new TryoutsOpen($email));
+                //Log::info("Going to send swim team swim team tryout registration open email to $email");
+                Log::info("Sending swim team swim team tryout registration open email to $email");
+                Mail::to($email)->send(new TryoutsOpen($email));
             } catch (\Exception $e) {
                 Log::warning("Email error: $e");
             }
