@@ -20,7 +20,9 @@ class RandomString
 
     public static function setAthleteHash()
     {
-        foreach (Athlete::all() as $athlete){
+        $athletes = Athlete::whereNull('hash')->get();
+
+        foreach ($athletes as $athlete){
             $athlete->hash = RandomString::generate();
             $athlete->save();
         }
