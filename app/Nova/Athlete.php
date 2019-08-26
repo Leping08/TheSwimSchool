@@ -28,7 +28,7 @@ class Athlete extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    //public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -37,6 +37,9 @@ class Athlete extends Resource
      */
     public static $search = [
         'id',
+        'firstName',
+        'lastName',
+        'email'
     ];
 
     public static $displayInNavigation = false;
@@ -176,5 +179,15 @@ class Athlete extends Resource
         return [
             Text::make('Notes', 'notes')->hideFromIndex(),
         ];
+    }
+
+    /**
+     * Get the value that should be displayed to represent the resource.
+     *
+     * @return string
+     */
+    public function title()
+    {
+        return "$this->firstName $this->lastName";
     }
 }
