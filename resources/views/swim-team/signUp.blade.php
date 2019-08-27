@@ -33,22 +33,26 @@
                         }, false);
 
                         function openStripeCheckout() {
-                            StripeCheckout.open({
-                                name: 'The Swim School',
-                                description: 'North River Swim Team {{$level->name}} Level',
-                                key: '{{config('services.stripe.key')}}',
-                                image: '/img/logos/TSS_png.png',
-                                locale: 'auto',
-                                token: function (token) {
-                                    let hiddenInput = document.createElement('input');
-                                    hiddenInput.setAttribute('type', 'hidden');
-                                    hiddenInput.setAttribute('name', 'stripeToken');
-                                    hiddenInput.setAttribute('value', token.id);
-                                    form.appendChild(hiddenInput);
-                                    // Submit the form
-                                    form.submit();
-                                }
-                            })
+                            if(!(document.getElementById('price').innerText <= 0)){
+                                StripeCheckout.open({
+                                    name: 'The Swim School',
+                                    description: 'North River Swim Team {{$level->name}} Level',
+                                    key: '{{config('services.stripe.key')}}',
+                                    image: '/img/logos/TSS_png.png',
+                                    locale: 'auto',
+                                    token: function (token) {
+                                        let hiddenInput = document.createElement('input');
+                                        hiddenInput.setAttribute('type', 'hidden');
+                                        hiddenInput.setAttribute('name', 'stripeToken');
+                                        hiddenInput.setAttribute('value', token.id);
+                                        form.appendChild(hiddenInput);
+                                        // Submit the form
+                                        form.submit();
+                                    }
+                                })
+                            } else {
+                                form.submit();
+                            }
                         }
                     </script>
 
