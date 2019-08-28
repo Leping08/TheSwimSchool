@@ -87,7 +87,7 @@
                             </div>
                         </div>
 
-                        <div class="uk-margin uk-width-1-1@m">
+                        {{--<div class="uk-margin uk-width-1-1@m">
                             <label class="uk-form-label uk-heading-bullet" for="shirt_size_id">Shirt Size</label>
                             <div class="uk-form-controls">
                                 <select class="uk-select" name="shirt_size_id" id="shirt_size_id" required>
@@ -99,7 +99,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                        </div>
+                        </div>--}}
 
 
 

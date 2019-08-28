@@ -48,7 +48,7 @@ class STSwimmerController extends Controller
             's_t_level_id' => $level->id,
             's_t_season_id' => STSeason::currentSeason()->id,
             'promo_code_id' => $promo->id ?? null,
-            's_t_shirt_size_id' => $size->id
+            's_t_shirt_size_id' => $size->id ?? null
         ]);
 
         $price = $promo ? $promo->apply($level->price) : $level->price;
