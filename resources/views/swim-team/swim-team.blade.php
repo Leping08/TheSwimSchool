@@ -24,41 +24,41 @@
                         <h2 class="uk-heading-line"><span>2019 Fall Swim Team</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
-                                Registration is now open for our 2019 Fall Swim Team. The Season Runs <strong>Tuesday, September 3rd - Wednesday, October 30th</strong> and is held at the River Wilderness Golf & Country Club pool. Tryouts will also take place at the River Wilderness Golf & Country Club pool.
-{{--                                To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.--}}
+                                {{--Registration is now open for our 2019 Fall Swim Team.--}} The Season Runs <strong>Tuesday, September 3rd - Wednesday, October 30th</strong> and is held at the River Wilderness Golf & Country Club pool. {{--Tryouts will also take place at the River Wilderness Golf & Country Club pool.--}}
+                                {{--To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.--}}
                                 Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
                             </p>
                         </div>
-{{--                        <div class="uk-margin">--}}
-{{--                            <div class="uk-child-width-auto uk-grid-small uk-grid uk-grid-stack" uk-grid="">--}}
-{{--                                <div class="uk-first-column">--}}
-{{--                                    <a class="el-link uk-icon-button uk-icon" href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blankß" uk-icon="icon: facebook;">--}}
-{{--                                        <svg width="20" height="20" viewBox="0 0 20 20"--}}
-{{--                                             xmlns="http://www.w3.org/2000/svg" data-svg="facebook">--}}
-{{--                                            <path d="M11,10h2.6l0.4-3H11V5.3c0-0.9,0.2-1.5,1.5-1.5H14V1.1c-0.3,0-1-0.1-2.1-0.1C9.6,1,8,2.4,8,5v2H5.5v3H8v8h3V10z"></path>--}}
-{{--                                        </svg>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                        <div>
+                        {{--<div class="uk-margin">
+                            <div class="uk-child-width-auto uk-grid-small uk-grid uk-grid-stack" uk-grid="">
+                                <div class="uk-first-column">
+                                    <a class="el-link uk-icon-button uk-icon" href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blankß" uk-icon="icon: facebook;">
+                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                             xmlns="http://www.w3.org/2000/svg" data-svg="facebook">
+                                            <path d="M11,10h2.6l0.4-3H11V5.3c0-0.9,0.2-1.5,1.5-1.5H14V1.1c-0.3,0-1-0.1-2.1-0.1C9.6,1,8,2.4,8,5v2H5.5v3H8v8h3V10z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>--}}
+                        {{--<div>
                             <h2 class="uk-heading-line"><span>Tryouts</span></h2>
                             <p><strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim club.</strong></p>
                             <ul class="uk-list uk-list-bullet">
                                 <li>Tuesday, August 27th at 5:45PM</li>
                                 <li>Wednesday, August 28th at 5:45PM</li>
                             </ul>
-                        </div>
-                        <div>
-{{--                            <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>--}}
-{{--                            <p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>--}}
-{{--                            <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>--}}
-                        </div>
-                        <div>
+                        </div>--}}
+                        {{--<div>
+                            <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>
+                            <p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
+                            <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>
+                        </div>--}}
+                        {{--<div>
                             <!-- TODO: Add tryout that lasts all season -->
                             <a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>
-{{--                            <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
-                        </div>
+                            <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>
+                        </div>--}}
                     </div>
                 </div>
                 <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
@@ -104,25 +104,6 @@
     </div>
 
 
-{{--    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">--}}
-{{--        <div class="uk-container">--}}
-{{--            <div class="uk-width-1-1@m uk-margin-top">--}}
-{{--                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>--}}
-{{--                <div class="uk-child-width-expand@s" uk-grid>--}}
-{{--                    <div>--}}
-{{--                        <div class="uk-margin">Download the 2019 swim meet schedule. All swim meets are optional but participation is highly encouraged. All swim practices will be cancelled on days when a swim meet occurs</div>--}}
-{{--                        <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_2019_Swim_Meet_Schedule.pdf" download="NRST_2019_Swim_Meet_Schedule.pdf">Download</a>--}}
-{{--                    </div>--}}
-{{--                    <div>--}}
-{{--                        <h3 class="el-title uk-margin uk-heading-bullet">Waves & Rapids Groups Schedule</h3>--}}
-{{--                        <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf" download="NRST_Waves_&_Rapids_Groups_2018_Swim_Meet_&_Special_Events_Schedule.pdf">Download</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
@@ -149,6 +130,28 @@
                     <div class="uk-panel">
                         <div class="uk-margin">
                             <img class="uk-border-rounded uk-box-shadow-large" alt="" src="/img/thank-you/breast-stroke.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+        <div class="uk-container">
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>
+                <div class="uk-child-width-expand@s" uk-grid>
+                    <div class="uk-width-expand@m uk-first-column">
+                        <div class="uk-margin">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="/img/swim-team/dive-cropped.jpg">
+                        </div>
+                    </div>
+                    <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
+                        <div>
+                            <div class="uk-margin">Download the 2019 swim meet schedule. All swim meets are optional but participation is highly encouraged. All swim practices will be cancelled on days when a swim meet occurs</div>
+                            <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_2019_Fall_Swim_Meet_Schedule.pdf" download="NRST_2019_Fall_Swim_Meet_Schedule.pdf">Download</a>
                         </div>
                     </div>
                 </div>
@@ -187,6 +190,28 @@
 
                         @endforelse
                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+        <div class="uk-container">
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Record Holders</span></h2>
+                <div class="uk-grid-margin uk-grid" uk-grid="">
+                    <div class="uk-width-expand@m uk-first-column">
+                        <div class="uk-margin">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="/img/thank-you/winner.jpg">
+                        </div>
+                    </div>
+                    <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
+                        <div>
+                            <div class="uk-margin">Check out the current north river rapids team record holders.</div>
+                            <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Team_Record_Holders.pdf" download="NRST_Team_Record_Holders.pdf">Download</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
