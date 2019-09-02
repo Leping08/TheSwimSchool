@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Library;
+namespace App\Library\Marketing\Emails;
 
 
 use App\EmailList;
