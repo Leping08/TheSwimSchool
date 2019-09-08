@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/flying-fish-back-stroke.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/dolphin_free_style.jpg')}}">
 
 @component('mail::panel')
 # Registration is Now Open
-Registration is now open for our next weekday morning and evening sessions of group swim lessons! If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
+Registration is now open for our final weekend session of group swim lessons for the 2019 season! If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
 @endcomponent
 
 @component('mail::button', ['url' => 'https://theswimschoolfl.com/lessons?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
