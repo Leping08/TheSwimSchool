@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Library\Marketing\Emails\Events;
+namespace App\Library\Marketing\Emails\Events\ParrishChristmasTreeLighting;
 
 
 use App\EmailList;

@@ -7,7 +7,7 @@
 @component('mail::panel')
 # Parrish Hometown Christmas Event!
 
-🎅🏽 Have you heard?!? Santa is coming to Parrish this Saturday 12/14 3-7 PM at CenterState Bank! 🎅🏽
+🎅 Have you heard?!? Santa is coming to Parrish this Saturday 12/14 3-7 PM at CenterState Bank! 🎅
 
 ⛄ The Swim School is excited to be a sponsor of this year’s FREE “Hometown” Christmas event and will have a face painting table! ⛄
 
