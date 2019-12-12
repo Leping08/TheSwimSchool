@@ -1,13 +1,19 @@
 @component('mail::message')
 
 
-<img style="margin-bottom: 2em;" src="{{asset('img/email/hh.jpg')}}">
-
+<img style="margin-bottom: 2em;" src="{{asset('img/events/parrish-christmass-tree-lighting.jpg')}}">
 
 
 @component('mail::panel')
-# What A Year!
-We won the Gold Daisy Award for Best Swim Lessons in Manatee County and started the North River Swim Team this year. Thank you for making our 2018 a great one! We wish you and your family a joyous holiday season and a very happy New Year!
+# Parrish Hometown Christmas Event!
+
+🎅🏽 Have you heard?!? Santa is coming to Parrish this Saturday 12/14 3-7 PM at CenterState Bank! 🎅🏽
+
+⛄ The Swim School is excited to be a sponsor of this year’s FREE “Hometown” Christmas event and will have a face painting table! ⛄
+
+🎄 We are also participating in the decorating contest so make sure you check out our fun, festive themed Christmas tree! 🎄
+
+We hope to see you there and wish you all a wonderful holiday season!
 @endcomponent
 
 Sincerely,<br>
