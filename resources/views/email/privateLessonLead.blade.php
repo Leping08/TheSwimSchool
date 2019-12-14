@@ -3,7 +3,7 @@
 
 @component('mail::panel')
 * Name: {{$privateLessonLead->swimmer_name}}
-* Age: {{\Carbon\Carbon::now()->diffInYears($privateLessonLead->swimmer_birth_date)}} {{str_plural('year', \Carbon\Carbon::now()->diffInYears($privateLessonLead->swimmer_birth_date))}} old
+* Age: {{\Carbon\Carbon::now()->diffInYears($privateLessonLead->swimmer_birth_date)}} {{\Illuminate\Support\Str::plural('year', \Carbon\Carbon::now()->diffInYears($privateLessonLead->swimmer_birth_date))}} old
 * Email: {{$privateLessonLead->email}}
 * Phone: {{$privateLessonLead->phone}}
 * Type: {{$privateLessonLead->type}}
