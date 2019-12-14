@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * An Eloquent Model: 'Location'
@@ -27,7 +28,7 @@ class Review extends Model
 
     public function getShortMessageAttribute()
     {
-        return str_limit($this->message, 300);
+        return Str::limit($this->message, 300);
     }
 
     public function scopeActive($query)

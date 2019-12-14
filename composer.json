@@ -8,7 +8,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.1.3",
+        "php": "^7.2.9",
         "Leping/NorthRiverRapids": "*",
         "barryvdh/laravel-debugbar": "^3.2",
         "doctrine/dbal": "^2.9",
@@ -17,13 +17,15 @@
         "fourstacks/nova-checkboxes": "^0.1.5",
         "gregoriohc/laravel-nova-theme-responsive": "^0.2",
         "guzzlehttp/guzzle": "~5.3|~6.0",
-        "laravel/framework": "5.8.*",
+        "laravel/framework": "^6.0",
+        "laravel/helpers": "^1.1",
         "laravel/nova": "~2.0",
         "laravel/tinker": "^1.0",
         "leping/lesson-link": "*",
+        "leping/the-swim-school": "*",
         "stripe/stripe-php": "^6.4",
-        "tightenco/nova-stripe": "^0.2.2",
-        "leping/the-swim-school": "*"
+        "symfony/translation": "4.3.8",
+        "tightenco/nova-stripe": "^0.2.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

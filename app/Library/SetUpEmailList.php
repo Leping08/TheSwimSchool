@@ -16,7 +16,7 @@ class SetUpEmailList
 {
     public function initializeEmailList()
     {
-        $emails = array_merge($this->getSwimLessonSwimmerEmails(), $this->getSwimTeamSwimmerEmails());
+        $emails = \Illuminate\Support\Arr::collapse([$this->getSwimLessonSwimmerEmails(), $this->getSwimTeamSwimmerEmails()]);
 
         Log::info("Setting up the email list with emails from the swim lessons and swim team swimmers");
         foreach ($emails as $email){
