@@ -9,8 +9,6 @@
     "type": "project",
     "require": {
         "php": "^7.2.9",
-        "Leping/NorthRiverRapids": "*",
-        "barryvdh/laravel-debugbar": "^3.2",
         "doctrine/dbal": "^2.9",
         "facebook/graph-sdk": "^5.7",
         "fideloper/proxy": "^4.0",
@@ -21,6 +19,7 @@
         "laravel/helpers": "^1.1",
         "laravel/nova": "~2.0",
         "laravel/tinker": "^1.0",
+        "leping/NorthRiverRapids": "*",
         "leping/lesson-link": "*",
         "leping/the-swim-school": "*",
         "stripe/stripe-php": "^6.4",
