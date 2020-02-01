@@ -19,7 +19,7 @@
         "laravel/helpers": "^1.1",
         "laravel/nova": "~2.0",
         "laravel/tinker": "^1.0",
-        "leping/NorthRiverRapids": "*",
+        "leping/northriverrapids": "*",
         "leping/lesson-link": "*",
         "leping/the-swim-school": "*",
         "stripe/stripe-php": "^6.4",
