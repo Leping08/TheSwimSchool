@@ -99,4 +99,18 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Emails
+    |--------------------------------------------------------------------------
+    |
+    | These are the emails that will allow you use laravel nova and
+    | laravel telescope. These are the admin dashboards for the system.
+    |
+    */
+
+    'adminEmails' => [
+        'derek@deltavcreative.com',
+        'theswimschoolfl@gmail.com'
+    ]
 ];

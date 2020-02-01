@@ -45,6 +45,9 @@ class Kernel extends ConsoleKernel
         $schedule->call(function (){
             SendTryoutReminderEmails::dispatchNow();
         })->dailyAt('7:15');
+
+        //Prune Telescope Table
+        $schedule->command('telescope:prune')->daily();
     }
 
     /**
