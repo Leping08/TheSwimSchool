@@ -21,6 +21,7 @@ Auth::routes();
  * Home page
  */
 
+/* @see HomeController::index() */
 Route::get('/', 'HomeController@index');
 
 
@@ -182,6 +183,9 @@ Route::get('/swim-team/policies-and-procedures', function(){
 Route::get('/thank-you', function () {
     return view('pages.thank-you');
 });
+
+
+Route::get('/cal', 'CalendarController@show');
 
 //Route::get('/testimonials', function(){
 //    return view('pages.testimonials');
