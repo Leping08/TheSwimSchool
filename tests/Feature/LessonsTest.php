@@ -213,7 +213,7 @@ class Lessons extends TestCase
             'class_start_date' => Carbon::now()
         ]);
 
-        $this->assertFalse(\App\Lesson::registrationOpen()->contains($lesson));
+        $this->assertFalse(\App\Lesson::registrationOpen()->get()->contains($lesson));
     }
 
     /** @test  **/

@@ -44,6 +44,8 @@ class ReviewsTest extends TestCase
         $review->active = false;
         $review->save();
 
+        $this->artisan('cache:clear');
+
         $this->get("/")
             ->assertDontSee($review->message);
     }
