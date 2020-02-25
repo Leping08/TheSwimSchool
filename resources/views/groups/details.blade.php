@@ -31,8 +31,8 @@ Lessons
                 </div>
             </div>
             <!-- If active lessons exist display them -->
-            @if(count($group->lessons()->registrationOpen()))
-                @foreach($group->lessons()->registrationOpen() as $lesson)
+            @if(count($group->lessons()->registrationOpen()->get()))
+                @foreach($group->lessons()->registrationOpen()->get() as $lesson)
                     <div class="uk-card uk-card-default uk-margin-top">
                         <div class="uk-card-header">
                             <div class="uk-card-title f-24 uk-heading-bullet">
