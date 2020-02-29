@@ -35,7 +35,7 @@
                                     @if($tryout->isFull())
                                         <button class="uk-button uk-button-primary" disabled>Tryout Full</button>
                                     @else
-                                        <a title="Parrish Swim Team" href="/swim-team/tryouts/{{{$tryout->id}}}" class="uk-button uk-button-primary">Sign Up</a>
+                                        <a title="Parrish Swim Team" href="{{ route('swim-team.tryouts.show', [$tryout]) }}" class="uk-button uk-button-primary">Sign Up</a>
                                     @endif
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="uk-card-body">
                                 <div class="card-text">
-                                    <p>In the mean time check out our <a title="Bradenton Group Swimming Lessons" href="/lessons">group swim lessons</a>.</p>
+                                    <p>In the mean time check out our <a title="Bradenton Group Swimming Lessons" href="{{ route('groups.lessons.index') }}">group swim lessons</a>.</p>
                                 </div>
                             </div>
                         </div>

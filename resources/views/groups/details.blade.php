@@ -79,7 +79,7 @@ Lessons
                         </div>
                         <div class="uk-card-footer">
                             @if($lesson->class_size - $lesson->swimmers->count() > 0)
-                                <a href="/lessons/{{{$group->type}}}/{{{$lesson->id}}}" class="uk-button uk-button-primary">Sign Up</a>
+                                <a href="{{ route('groups.lessons.create', [$lesson, $group]) }}" class="uk-button uk-button-primary">Sign Up</a>
                             @else
                                 <button class="uk-button uk-button-primary" uk-toggle="target: #wait-list-{{{$lesson->id}}}">Join Wait List</button>
                             @endif
@@ -92,7 +92,7 @@ Lessons
                             <div class="uk-card-header">
                                 <div class="uk-card-title f-24">Join the Wait List</div>
                             </div>
-                            <form action="/wait-list/{{$lesson->id}}" method="POST">
+                            <form action="{{ route('groups.lessons.wait-list', [$lesson]) }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="uk-card-body">
                                     <p>Be the first to know if any spots open up for this class.</p>
@@ -139,12 +139,12 @@ Lessons
                             </div>
                             <div class="uk-card-body">
                                 <div class="card-text">
-                                    <p>Check out the <a title="North River Swim Team" href="/lessons/schedule">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>
+                                    <p>Check out the <a title="North River Swim Team" href="{{ route('groups.schedule.index') }}">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>
                                 </div>
-                                {{--<div class="card-text">--}}
-                                    {{--<p>Registration will open for our next session of swim lessons {{config('season.groups.next_season.registration_open')}}. Please check back at another time.<br>--}}
-                                    {{--In the mean time check out our <a title="North River Swim Team" href="/swim-team">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="/private-semi-private">private lessons</a>.</p>--}}
-                                {{--</div>--}}
+{{--                                <div class="card-text">--}}
+{{--                                    <p>Registration will open for our next session of swim lessons {{config('season.groups.next_season.registration_open')}}. Please check back at another time.<br>--}}
+{{--                                    In the mean time check out our <a title="North River Swim Team" href="{{ route('swim-team.index') }}">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="{{ route('privates.index') }}">private lessons</a>.</p>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>

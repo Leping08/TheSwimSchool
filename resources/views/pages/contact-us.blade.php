@@ -19,7 +19,7 @@ Contact Us
                 <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
                     <div class="uk-card uk-card-default uk-card-body">
                         <div class="uk-h2">Send us a message</div>
-                            <form action="" method="post">
+                            <form action="{{ route('contact-us.store') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Name</label>

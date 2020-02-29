@@ -14,6 +14,8 @@ class SwimTeamTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
+    //TODO links in this file are a bit messy
+
     /** @test **/
     public function a_swimmer_can_sign_up_by_hitting_the_swim_team_sign_up_route()
     {

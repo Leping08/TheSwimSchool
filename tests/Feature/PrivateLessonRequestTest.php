@@ -30,12 +30,12 @@ class PrivateLessonRequestTest extends TestCase
         ];
 
 
-        $this->get("/private-semi-private")
+        $this->get(route('privates.index'))
             ->assertStatus(200);
 
         $this->assertEquals(0,  \App\PrivateLessonLead::all()->count());
 
-        $response = $this->json('POST', "/private-semi-private", $attributes);
+        $response = $this->post(route('privates.store'), $attributes);
 
         $response->assertStatus(302);
 

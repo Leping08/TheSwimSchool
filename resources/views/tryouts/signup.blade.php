@@ -15,7 +15,7 @@
             @if(($tryout->class_size - $tryout->athletes->count()) <= 0)
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body">
-                        <div>Sorry this lesson is full. Sign up for a different tryout <a title="Parrish Swim Team" href="/swim-team/tryouts">here</a>.</div>
+                        <div>Sorry this lesson is full. Sign up for a different tryout <a title="Parrish Swim Team" href="{{ route('swim-team.tryouts.index') }}">here</a>.</div>
                     </div>
                 </div>
             @else
@@ -35,7 +35,7 @@
                 </div>
                 <div class="uk-card uk-card-default uk-margin-top">
                     <div class="uk-card-body">
-                        <form class="uk-grid-small" uk-grid action="" method="POST">
+                        <form class="uk-grid-small" uk-grid action="{{ route('swim-team.tryouts.store', [$tryout]) }}" method="POST">
                             {{ csrf_field() }}
                             <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
                                 Swimmer Information
@@ -146,13 +146,13 @@
                             </div>
 
 
-                            {{--<div class="uk-width-1-1@s">--}}
-                                {{--<div class="uk-form-controls">--}}
-                                    {{--<label><input class="uk-checkbox" type="checkbox" name="Terms and Conditions" required>--}}
-                                        {{--I agree to the <a href="/policies-and-procedures" target="_blank">The Swim School Policies & Procedures</a>--}}
-                                    {{--</label>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+{{--                            <div class="uk-width-1-1@s">--}}
+{{--                                <div class="uk-form-controls">--}}
+{{--                                    <label><input class="uk-checkbox" type="checkbox" name="Terms and Conditions" required>--}}
+{{--                                        I agree to the <a href="{{ route('swim-team.terms') }}" target="_blank">The Swim School Policies & Procedures</a>--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="uk-margin uk-width-1-1@s">
                                 <button type="submit" class="uk-button uk-button-primary">Sign Up</button>

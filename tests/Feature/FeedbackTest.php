@@ -20,7 +20,7 @@ class FeedbackTest extends TestCase
     /** @test */
     public function a_user_can_fill_out_the_feedback_survey()
     {
-        $this->get("/feedback")
+        $this->get(route('feedback.index'))
             ->assertStatus(200)
             ->assertSee('Feedback');
 
@@ -47,7 +47,7 @@ class FeedbackTest extends TestCase
 
         $this->assertEquals(0, FeedbackSurvey::all()->count());
 
-        $this->post('/feedback', $data)
+        $this->post(route('feedback.store'), $data)
             ->assertStatus(302)
             ->assertRedirect('/thank-you');
 

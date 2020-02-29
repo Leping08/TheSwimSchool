@@ -5,7 +5,7 @@
             <div class="uk-visible@s"></div>
             <div>
                 <div class="uk-margin uk-text-center@m uk-text-center">
-                    <a title="Parrish swimming lessons" href="/" class="el-link"><img src="/img/logos/the-swim-school.png" class="uk-responsive-width" alt="Bradenton Swim School"></a>
+                    <a title="Parrish swimming lessons" href="{{route('home.index')}}" class="el-link"><img src="/img/logos/the-swim-school.png" class="uk-responsive-width" alt="Bradenton Swim School"></a>
                 </div>
             </div>
             <div class="uk-visible@s"></div>
@@ -72,7 +72,7 @@
             <div class="uk-width-expand@m">
                 <div class="uk-margin-small-bottom">Sign up for our newsletter</div>
                 <div class="uk-width-large uk-text-left@s uk-text-center">
-                    <form class="uk-form uk-panel" method="post" action="/newsletter">
+                    <form class="uk-form uk-panel" method="post" action="{{ route('newsletter.subscribe') }}">
                         @csrf
                         <div class="uk-child-width-expand@s uk-grid uk-grid-stack" uk-grid="">
                             <div class="uk-position-relative uk-first-column">

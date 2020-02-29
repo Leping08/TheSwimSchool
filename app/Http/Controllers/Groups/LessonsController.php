@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Groups;
 
 use App\Banner;
 use App\Group;
+use App\Http\Controllers\Controller;
 use App\Lesson;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\View\View;
 
-class GroupController extends Controller
+class LessonsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public static function index()
     {
         //Get public facing groups for the groups index page
         $groups = Group::public()->get();
@@ -25,22 +26,23 @@ class GroupController extends Controller
 
     /**
      * @param Group $group
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
-    public function classDetails(Group $group)
+    public static function show(Group $group)
     {
         //Get all lessons for a group that are open for registration
         $group->load(['lessons']); //Eager load the data
         Log::info("Found group ID: $group->id Group Type: $group->type");
+        //TODO: Get DB logic out of the view
         return view('groups.details', compact('group'));
     }
 
     /**
      * @param Group $group
      * @param Lesson $lesson
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
-    public function signUp(Group $group, Lesson $lesson)
+    public function create(Group $group, Lesson $lesson)
     {
         $lesson->load(['group', 'location', 'season', 'swimmers']);  //Eager load the data
         Log::info("Found lesson ID: $lesson->id. The Group id for that lesson is: $lesson->group_id");

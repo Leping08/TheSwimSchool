@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Groups;
 
+use App\Http\Controllers\Controller;
 use App\Lesson;
 use App\Mail\WaitListAdmin;
 use App\WaitList;
@@ -9,16 +10,17 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 
 class WaitListController extends Controller
 {
     /**
      * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Lesson $lesson
+     * @return Redirect
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, Lesson $lesson)
     {
         $waitingSwimmer = $request->validate([
             'name' => 'required|string|max:191',
@@ -28,11 +30,10 @@ class WaitListController extends Controller
         ]);
 
         try{
-            $lesson = Lesson::findOrFail($id);
             $waitingSwimmer['lesson_id'] = $lesson->id;
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e);
-            session()->flash("warning", "Something has gone wrong.");
+            session()->flash("warning", "Something has gone wrong. The lesson id in the url does not match the lesson id in the wait list form data.");
             return back();
         }
 

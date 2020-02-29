@@ -22,12 +22,12 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-3-4@m uk-first-column">
 {{--                    <div class="uk-margin uk-dropcap">--}}
-{{--                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="/swim-team">swim team</a>, or a triathlete--}}
+{{--                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete--}}
 {{--                        looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly.--}}
 {{--                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at Harrison Ranch and River Wilderness Golf & Country Club.--}}
 {{--                    </div>--}}
                     <div class="uk-margin uk-dropcap">
-                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="/swim-team">swim team</a>, or a triathlete
+                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
                         looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly.
                         These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at the River Wilderness Golf & Country Club.
                     </div>
@@ -117,7 +117,7 @@
                     <h2 class="uk-heading-bullet">Request Private Lessons</h2>
                     <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
                         <div class="uk-card uk-card-default uk-card-body">
-                            <form action="" method="post">
+                            <form action="{{ route('privates.store') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Swimmer Name</label>

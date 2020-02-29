@@ -22,7 +22,7 @@ class STCoachTest extends TestCase
             'active' => false
         ]);
 
-        $this->get("/swim-team")
+        $this->get(route('swim-team.index'))
             ->assertSee("North River Swim Team")
             ->assertSee($activeCoach->name)
             ->assertDontSee($notActiveCoach->name)

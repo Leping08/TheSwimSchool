@@ -54,9 +54,9 @@
                             <p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
                             <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>
                         </div>--}}
-                        {{--<div>
+{{--                        <div>
                             <!-- TODO: Add tryout that lasts all season -->
-                            <a class="uk-button uk-button-primary" href="/swim-team/tryouts">Sign Up for Tryouts</a>
+                            <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>
                             <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>
                         </div>--}}
                     </div>

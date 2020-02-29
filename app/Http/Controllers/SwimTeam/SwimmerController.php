@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SwimTeam;
 
 use App\Athlete;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\SwimTeamSignUp;
 use App\Library\Helpers\Promo;
 use App\Library\StripeCharge;
 use App\Mail\STSignUp;
-use App\PromoCode;
 use App\STLevel;
 use App\STSeason;
 use App\STShirtSize;
@@ -16,7 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-class STSwimmerController extends Controller
+class SwimmerController extends Controller
 {
     use Promo;
 
@@ -85,18 +85,5 @@ class STSwimmerController extends Controller
         Log::info("$swimNewTeamSwimmer->firstName $swimNewTeamSwimmer->lastName, ID: $swimNewTeamSwimmer->id has signed up for Level ID: $swimNewTeamSwimmer->s_t_level_id with the north river swim team.");
         session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
         return redirect('/thank-you');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function roster()
-    {
-        $seasons = STSeason::orderBy('created_at', 'desc')->get();
-        $levels = STLevel::with(['swimmers' => function ($query) {
-            return $query->with('season', 'shirtSize')->orderBy('lastName','ASC');
-        }])->get();
-        $currentSeason = STSeason::where('current_season', '=', true)->get();
-        return view('swim-team.roster', compact('seasons', 'levels', 'currentSeason'));
     }
 }

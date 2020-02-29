@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SwimTeam;
 
 use App\Banner;
+use App\Http\Controllers\Controller;
 use App\STCoach;
-use Illuminate\Http\Request;
 
-class SwimTeamCoachesController extends Controller
+class CoachesController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

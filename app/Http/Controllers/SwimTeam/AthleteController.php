@@ -1,29 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SwimTeam;
 
-use App\Mail\STInvitation;
-use App\PromoCode;
-use App\STLevel;
+use App\Http\Controllers\Controller;
 use App\STSeason;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Tryout;
 use App\Athlete;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 class AthleteController extends Controller
 {
     /**
      * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Tryout $tryout
+     * @return Redirect
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, Tryout $tryout)
     {
-        $tryout = Tryout::find($id);
-
         //Check to see if the lesson is full
         if($tryout->isFull()){
             $request->session()->flash('danger', 'The tryout is full.');

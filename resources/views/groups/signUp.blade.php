@@ -16,7 +16,7 @@ Sign Up
         <div class="uk-card uk-card-default">
             <div class="uk-card-body">
                 <div>This class is full. We recommend signing up for a different class with openings. If you choose to join the waitlist, we will notify you if any spots become available within 24-48 hours of the session start date.</div>
-                {{--<div>Sorry this lesson is full. Sign up for a different lesson <a title="Bradenton Swimming Lessons"href="/lessons">here</a>.</div>--}}
+{{--                <div>Sorry this lesson is full. Sign up for a different lesson <a title="Bradenton Swimming Lessons"href="{{ route('groups.lessons.index') }}">here</a>.</div>--}}
             </div>
         </div>
     @else
@@ -94,7 +94,7 @@ Sign Up
                     }
                 </script>
 
-                <form class="uk-grid-small" id="sign-up" uk-grid action="" method="POST">
+                <form class="uk-grid-small" id="sign-up" uk-grid action="{{ route('groups.swimmers.store', [$lesson, $group]) }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="lesson_id" value="{{{$lesson->id}}}" required>
                     <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
@@ -218,7 +218,7 @@ Sign Up
                     <div class="uk-width-1-1@s">
                         <div class="uk-form-controls">
                             <label><input class="uk-checkbox" type="checkbox" name="Terms and Conditions" required>
-                                I agree to the <a href="/group-lessons/policies-and-procedures" target="_blank">The Swim School Policies & Procedures</a>
+                                I agree to the <a href="{{ route('groups.terms') }}" target="_blank">The Swim School Policies & Procedures</a>
                             </label>
                         </div>
                     </div>

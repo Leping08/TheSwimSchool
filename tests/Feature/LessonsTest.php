@@ -13,6 +13,8 @@ class Lessons extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
+    //TODO links in this file are a bit messy
+
     /** @test  **/
     public function a_user_can_not_see_a_lesson_in_progress()
     {

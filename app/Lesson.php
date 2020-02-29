@@ -27,10 +27,11 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
- * @property-read \App\Group $group
- * @property-read \App\Location $location
- * @property-read \App\Season $season
+ * @property-read Group $group
+ * @property-read Location $location
+ * @property-read Season $season
  * @property-read Collection $calendarEvents
+ * @property-read WaitList $waitlist
  */
 
 class Lesson extends Model

@@ -26,7 +26,7 @@ Services
                 <div class="uk-margin-medium uk-text-left@m uk-text-center uk-scrollspy-inview uk-animation-slide-left-medium" uk-scrollspy-class="uk-animation-slide-left-medium">
                     The Swim School features aquatics programs to meet the specific needs of various age groups and skill levels: Toddler (12-36 months), Preschool (3-5 years), Youth/Teen (6-14 years), and Teens, Adults and Active Older Adults (14+ years). </div>
                 <div class="uk-margin uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a title="Palmetto swim instruction" class="el-content uk-button uk-button-primary" href="/lessons/">Schedule A Lesson</a>
+                    <a title="Palmetto swim instruction" class="el-content uk-button uk-button-primary" href="{{ route('groups.lessons.index') }}">Schedule A Lesson</a>
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Privates;
 
 use App\Banner;
-use App\Location;
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\PrivateLessonLead;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Mail\PrivateLessonLeadEmail;
 use Illuminate\Support\Facades\Mail;
 
-class PrivateLessonLeadController extends Controller
+class LeadController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

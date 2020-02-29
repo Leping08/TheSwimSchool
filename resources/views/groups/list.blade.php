@@ -63,7 +63,7 @@
                                 <h2 class="uk-margin uk-h3">{{$group->type}}</h2>
                                 <p class="uk-text-meta uk-text-primary">{{$group->ages}}</p>
                                 <div class="uk-margin">{{\Illuminate\Support\Str::limit($group->description, 350)}}</div>
-                                <p><a class="uk-button uk-button-primary" href="/lessons/{{{$group->type}}}">Find Classes</a></p>
+                                <p><a class="uk-button uk-button-primary" href="{{ route('groups.lessons.show', [$group]) }}">Find Classes</a></p>
                             </div>
                         </div>
                     @empty

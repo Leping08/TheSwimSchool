@@ -17,7 +17,7 @@ class Admin extends TestCase
         $swimmer = factory(\App\Swimmer::class)->create();
         $lesson = Lesson::first();
 
-        $this->get("/lesson/$lesson->id")
+        $this->get(route('groups.lessons.show', ['group' => $lesson->group]))
             ->assertDontSee($swimmer->firstName)
             ->assertDontSee($swimmer->lastName);
     }
