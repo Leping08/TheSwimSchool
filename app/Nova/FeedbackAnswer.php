@@ -20,6 +20,13 @@ class FeedbackAnswer extends Resource
     public static $model = \App\FeedbackAnswer::class;
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Groups';
+
+    /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string

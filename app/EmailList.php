@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * This is a marketing email list
@@ -21,6 +22,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EmailList extends Model
 {
+    use Actionable;
+
     /**
      * @var array
      */

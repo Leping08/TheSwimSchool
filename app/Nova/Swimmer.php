@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use Carbon\Carbon;
-use DigitalCloud\AddressField\AddressField;
 use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Country;
@@ -31,16 +30,11 @@ class Swimmer extends Resource
     public static $model = \App\Swimmer::class;
 
     /**
-     * The single value that should be used to represent the resource when being displayed.
+     * The logical group associated with the resource.
      *
      * @var string
      */
-    //public static $title = 'title';
-
-    /**
-     * @var string
-     */
-    public static $name = '';
+    public static $group = 'Groups';
 
     /**
      * The columns that should be searched.

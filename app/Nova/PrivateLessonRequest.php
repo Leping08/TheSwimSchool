@@ -32,6 +32,13 @@ class PrivateLessonRequest extends Resource
     public static $title = 'swimmer_name';
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Privates';
+
+    /**
      * The columns that should be searched.
      *
      * @var array

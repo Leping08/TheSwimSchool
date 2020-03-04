@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * A banner is used on the top of the page
@@ -17,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
+    use Actionable;
+
     protected $fillable = [
         'active',
         'page',
