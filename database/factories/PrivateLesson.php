@@ -3,9 +3,8 @@
 use Faker\Generator as Faker;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Season::class, function (Faker $faker) {
+$factory->define(\App\PrivateLesson::class, function (Faker $faker) {
     return [
-        'year' => '2017',
-        'season' => 'fall'
+        'season_id' => factory(\App\Season::class)
     ];
 });

@@ -171,4 +171,6 @@ Route::get('/thank-you', function () {
 
 
 
-Route::get('/cal', 'CalendarController@show');
+Route::get('/cal', 'Privates\CalendarController@show')->name('private_lesson.index');
+
+Route::post('/cal', 'Privates\CalendarController@store')->name('private_lesson.store');

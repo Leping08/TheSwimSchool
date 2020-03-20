@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(\App\Tryout::class, function (Faker $faker) {
     return [
         's_t_season_id' => factory(\App\STSeason::class)->create()->id,

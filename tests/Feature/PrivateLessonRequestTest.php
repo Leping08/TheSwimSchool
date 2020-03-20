@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\PrivatePoolSession;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PrivateLessonRequestTest extends TestCase
 {
@@ -14,44 +14,54 @@ class PrivateLessonRequestTest extends TestCase
     /** @test  **/
     public function a_user_can_request_a_private_lesson()
     {
+        $this->seed();
+
         $this->withoutExceptionHandling();
 
-        $attributes = [
-            'swimmer_name' => $this->faker->name,
-            'email' => $this->faker->email,
-            'swimmer_birth_date' => '2018-2-1',
+        $sessions = factory(PrivatePoolSession::class, 4)->create([
+            'private_lesson_id' => null
+        ]);
+
+        $session_ids = $sessions->implode('id', ',');
+
+        $data = [
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'birth_date' => '2018-2-1',
+            'email' => $this->faker->safeEmail,
             'phone' => $this->faker->phoneNumber,
-            'type' => 'Private Lesson',
-            'length' => '4 Lessons Per Month',
-            'location' => 'Harrison Ranch',
-            'availability' => $this->faker->paragraph,
-            //'hr_resident' => 'on',
-            'address' => $this->faker->address
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->state,
+            'zip' => 34532,
+            'emergency_name' => $this->faker->name,
+            'emergency_relationship' => 'Mom',
+            'emergency_phone' => $this->faker->phoneNumber,
+            'pool_session_ids' => $session_ids,
+            'stripe_token' => 'tok_visa'
         ];
 
-
-        $this->get(route('privates.index'))
+        $this->get(route('private_lesson.index'))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  \App\PrivateLessonLead::all()->count());
+        $this->assertEquals(0,  \App\PrivateLesson::all()->count());
 
-        $response = $this->post(route('privates.store'), $attributes);
+        $response = $this->post(route('private_lesson.store'), $data);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  \App\PrivateLessonLead::all()->count());
+        $this->assertEquals(1,  \App\PrivateLesson::all()->count());
 
-        $this->assertDatabaseHas('private_lesson_leads', [
-            "swimmer_name" => $attributes['swimmer_name'],
-            "email" => $attributes['email'],
-            "swimmer_birth_date" => $attributes['swimmer_birth_date'],
-            "phone" => $attributes['phone'],
-            "type" => $attributes['type'],
-            "length" => $attributes['length'],
-            "location" => $attributes['location'],
-            "availability" => $attributes['availability'],
-            //'hr_resident' => 1,
-            'address' => $attributes['address']
+        $this->assertDatabaseHas('private_swimmers', [
+            "first_name" => $data['first_name'],
+            "last_name" => $data['last_name'],
+            "email" => $data['email'],
+            "birth_date" => $data['birth_date'],
+            "phone" => $data['phone'],
+            'emergency_name' => $data['emergency_name'],
+            'emergency_relationship' => $data['emergency_relationship'],
+            'emergency_phone' => $data['emergency_phone'],
         ]);
     }
 }
