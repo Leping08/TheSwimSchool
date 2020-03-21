@@ -2,37 +2,35 @@
 
 namespace App\Nova;
 
-use App\Nova\Metrics\NewEmailList;
-use App\Nova\Metrics\SubscribedEmails;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class EmailList extends Resource
+class PrivateLesson extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\EmailList::class;
-
-    /**
-     * The logical group associated with the resource.
-     *
-     * @var string
-     */
-    public static $group = 'Admin';
+    public static $model = \App\PrivateLesson::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'email';
+    public static $title = 'id';
+
+    /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Privates';
 
     /**
      * The columns that should be searched.
@@ -41,7 +39,6 @@ class EmailList extends Resource
      */
     public static $search = [
         'id',
-        'email'
     ];
 
     /**
@@ -54,8 +51,9 @@ class EmailList extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('email')->sortable(),
-            Boolean::make('Subscription Status', 'subscribe')->sortable(),
+            BelongsTo::make('Season', 'season', Season::class),
+            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
+            HasMany::make('Swimmers', 'swimmers', PrivateSwimmer::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];
@@ -69,10 +67,7 @@ class EmailList extends Resource
      */
     public function cards(Request $request)
     {
-        return [
-            (new NewEmailList)->width('1/2'),
-            (new SubscribedEmails)->width('1/2'),
-        ];
+        return [];
     }
 
     /**
@@ -83,9 +78,7 @@ class EmailList extends Resource
      */
     public function filters(Request $request)
     {
-        return [
-            new Filters\SubscriptionStatus,
-        ];
+        return [];
     }
 
     /**
@@ -110,8 +103,9 @@ class EmailList extends Resource
         return [];
     }
 
+
     public static function label()
     {
-        return 'Newsletter Emails';
+        return 'Lessons';
     }
 }

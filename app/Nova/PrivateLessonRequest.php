@@ -146,6 +146,6 @@ class PrivateLessonRequest extends Resource
 
     public static function label()
     {
-        return 'Private Requests';
+        return 'Requests';
     }
 }

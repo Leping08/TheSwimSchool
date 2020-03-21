@@ -2,27 +2,31 @@
 
 namespace App\Nova;
 
-use App\Nova\Filters\ShirtSize;
-use App\Nova\Filters\SwimTeamLevel;
-use App\Nova\Filters\SwimTeamSeason;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
-class STSwimmer extends Resource
+class PrivateSwimmer extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\STSwimmer::class;
+    public static $model = \App\PrivateSwimmer::class;
+
+    /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Privates';
 
     /**
      * The columns that should be searched.
@@ -31,12 +35,10 @@ class STSwimmer extends Resource
      */
     public static $search = [
         'id',
-        'firstName',
-        'lastName',
+        'first_name',
+        'last_name',
         'email'
     ];
-
-    public static $displayInNavigation = false;
 
     /**
      * Get the fields displayed by the resource.
@@ -48,8 +50,8 @@ class STSwimmer extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('First Name', 'firstName')->sortable(),
-            Text::make('Last Name', 'lastName')->sortable(),
+            Text::make('First Name', 'first_name')->sortable(),
+            Text::make('Last Name', 'last_name')->sortable(),
             Text::make('Email', 'email')->onlyOnForms(),
             Text::make('Email', function () {
                 return view('partials.link', [
@@ -64,16 +66,14 @@ class STSwimmer extends Resource
                     'text' => $this->phone
                 ])->render();
             })->asHtml()->hideFromIndex(),
-            Date::make('Date of Birth', 'birthDate')->hideFromIndex(),
+            Date::make('Date of Birth', 'birth_date')->hideFromIndex(),
             Text::make('Parent', 'parent')->hideFromIndex(),
             Text::make('Age', function () {
                 return view('partials.age', [
-                    'birthDate' => $this->birthDate
+                    'birthDate' => $this->birth_date
                 ])->render();
             })->hideFromIndex(),
-            BelongsTo::make('Level', 'level', STLevel::class),
-            BelongsTo::make('Season', 'season', STSeason::class),
-            BelongsTo::make('Shirt Size', 'shirtSize', STShirtSize::class),
+            BelongsTo::make('Lesson', 'lesson', PrivateLesson::class),
             (new Panel('Payment Info', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
@@ -90,7 +90,6 @@ class STSwimmer extends Resource
      */
     public function cards(Request $request)
     {
-        //TODO: Add cards
         return [];
     }
 
@@ -102,11 +101,7 @@ class STSwimmer extends Resource
      */
     public function filters(Request $request)
     {
-        return [
-            new SwimTeamSeason(),
-            new SwimTeamLevel(),
-            new ShirtSize()
-        ];
+        return [];
     }
 
     /**
@@ -131,6 +126,11 @@ class STSwimmer extends Resource
         return [];
     }
 
+    public static function label()
+    {
+        return 'Swimmers';
+    }
+
     /**
      * Get the address fields for the resource.
      *
@@ -139,13 +139,13 @@ class STSwimmer extends Resource
     protected function emergencyContact()
     {
         return [
-            Text::make('Name', 'emergencyName')->hideFromIndex(),
-            Text::make('Relationship', 'emergencyRelationship')->hideFromIndex(),
-            Text::make('Phone', 'emergencyPhone')->onlyOnForms(),
+            Text::make('Name', 'emergency_name')->hideFromIndex(),
+            Text::make('Relationship', 'emergency_relationship')->hideFromIndex(),
+            Text::make('Phone', 'emergency_phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
-                    'link' => 'tel:1'.$this->emergencyPhone,
-                    'text' => $this->emergencyPhone
+                    'link' => 'tel:1'.$this->emergency_phone,
+                    'text' => $this->emergency_phone
                 ])->render();
             })->asHtml()->hideFromIndex(),
         ];
@@ -161,8 +161,8 @@ class STSwimmer extends Resource
         return [
             Text::make('Charge Id', function () {
                 return view('partials.link', [
-                    'link' => config('nova.path').'/nova-stripe/charge/'.$this->stripeChargeId,
-                    'text' => $this->stripeChargeId
+                    'link' => config('nova.path').'/nova-stripe/charge/'.$this->stripe_charge_id,
+                    'text' => $this->stripe_charge_id
                 ])->render();
             })->asHtml()->hideFromIndex()
         ];
@@ -186,16 +186,6 @@ class STSwimmer extends Resource
         ];
     }
 
-    public static function label()
-    {
-        return 'Swimmers';
-    }
-
-    public static function uriKey()
-    {
-        return 'roster';
-    }
-
     /**
      * Get the value that should be displayed to represent the resource.
      *
@@ -203,6 +193,6 @@ class STSwimmer extends Resource
      */
     public function title()
     {
-        return "$this->firstName $this->lastName";
+        return "$this->first_name $this->last_name";
     }
 }
