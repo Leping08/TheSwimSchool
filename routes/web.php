@@ -35,6 +35,10 @@ Route::get('/', 'HomeController@index')->name('home.index');
 /* @see LessonsController::index() */
 Route::get('/lessons', 'Groups\LessonsController@index')->name('groups.lessons.index');
 
+//Get the lesson schedule page
+/* @see ScheduleController::index() */
+Route::get('/lessons/schedule', 'Groups\ScheduleController@index')->name('groups.schedule.index');
+
 //List details of the group lesson
 /* @see LessonsController::show() */
 Route::get('/lessons/{group}', 'Groups\LessonsController@show')->name('groups.lessons.show');
@@ -46,10 +50,6 @@ Route::get('/lessons/{group}/{lesson}', 'Groups\LessonsController@create')->name
 //Save the results of the sign up form
 /* @see SwimmerController::store() */
 Route::post('/lessons/{group}/{lesson}', 'Groups\SwimmerController@store')->name('groups.swimmers.store');
-
-//Get the lesson schedule page
-/* @see ScheduleController::index() */
-Route::get('/lessons/schedule', 'Groups\ScheduleController@index')->name('groups.schedule.index');
 
 
 
