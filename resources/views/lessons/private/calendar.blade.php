@@ -6,42 +6,59 @@
 @endsection
 
 @section('heading')
-    Private Calendar
+    Private Lessons
 @endsection
 
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid">
-                <div class="uk-width-3-4@m uk-first-column">
-                    <div class="uk-margin uk-dropcap">
-                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
-                        looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly.
-                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at the River Wilderness Golf & Country Club.
+
+                <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
+                    <div class="uk-panel uk-width-1-1">
+                        <div class="uk-margin">
+                            <div class="uk-dropcap">
+                                Whether you are a beginner swimmer, a child preparing to join a <a href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
+                                looking to improve your technique, private swim lessons can be customized to your specific needs
+                                to help you achieve your goals quickly. These lessons are conducted one on one with an
+                                instructor and each lesson is 30 minutes. The Swim School teaches private lessons at the River
+                                Wilderness Golf & Country Club.
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="uk-width-expand@m">
-                    <div class="uk-margin">
-                        <img src="/img/lessons/teaching.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">
+                    <div class="uk-margin-top">
+                        <img src="/img/thank-you/smile.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">
                     </div>
                 </div>
             </div>
 
-            <div class="uk-grid-margin uk-grid" uk-grid="">
-                <div class="uk-width-4-4@m uk-first-column">
-                    <h2 class="uk-heading-bullet">Private Lesson </h2>
-                    <p class="uk-text-meta">Private lessons are conducted one-on-one with an instructor.</p>
+            <div class="uk-width-4-4@m uk-first-column uk-margin-large-top">
+                <h2 class="uk-heading-bullet">Location</h2>
+                <p class="uk-text-meta">Private Lessons take place at the River Wilderness Golf & Country Club.</p>
+                <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
+                    <div class="uk-card uk-card-default">
+                        <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=River+Wilderness+Golf+%26+Country+Club&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
 
-
+            <div class="uk-grid-margin uk-grid uk-margin-large-top" uk-grid="">
+                <div class="uk-width-4-4@m uk-first-column">
+                    <h2 class="uk-heading-bullet">Private Lesson</h2>
+                    <p class="">Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Semi-Private lessons can be requested for an additional $15 surcharge if you have siblings close in age and ability level who would like to receive swim instruction together.</p>
+                    <p>Please select as least 4 lessons to checkout.</p>
+                </div>
+            </div>
 
 
             <script src="https://checkout.stripe.com/checkout.js" type="application/javascript"></script>
             <script type="application/javascript">
 
                 let form = null;
-                document.addEventListener('DOMContentLoaded', function() {
+                document.addEventListener('DOMContentLoaded', function () {
                     form = document.getElementById('sign_up');
                     console.log('fdsfds');
                 }, false);
@@ -50,7 +67,7 @@
                     StripeCheckout.open({
                         name: 'The Swim School',
                         description: 'Private Lessons with The Swim School',
-                        amount: (window.cartLength * 50) * 100,
+                        amount: (window.cartLength * 35) * 100,
                         key: '{{config('services.stripe.key')}}',
                         image: '/img/logos/TSS_png.png',
                         locale: 'auto',
@@ -97,12 +114,12 @@
                                 </div>
                             </div>
                             <div class="uk-margin uk-width-1-2@m uk-width-1-1@s">
-                                <label class="uk-form-label uk-heading-bullet" for="parent">Name of Parent/Guardian (if applicable)</label>
+                                <label class="uk-form-label uk-heading-bullet" for="parent">Name of Parent/Guardian (if
+                                    applicable)</label>
                                 <div class="uk-form-controls">
                                     <input type="text" class="uk-input" id="parent" name="parent" placeholder="Parent/Guardian" value="{{ old('parent') }}">
                                 </div>
                             </div>
-
 
 
                             <hr class="uk-width-1-1">
@@ -138,8 +155,6 @@
                             </div>
 
 
-
-
                             <hr class="uk-width-1-1">
                             <div class="uk-h2 uk-margin uk-width-1-1">
                                 Contact Information
@@ -163,26 +178,27 @@
                             </div>
 
 
-
-
                             <hr class="uk-width-1-1">
                             <div class="uk-h2 uk-margin uk-width-1-1">
                                 Emergency Contact Information
                             </div>
                             <div class="uk-margin uk-width-1-1@s uk-width-1-3@m">
-                                <label class="uk-form-label uk-heading-bullet" for="emergency_name">Emergency Contact Name</label>
+                                <label class="uk-form-label uk-heading-bullet" for="emergency_name">Emergency Contact
+                                    Name</label>
                                 <div class="uk-form-controls">
                                     <input type="text" class="uk-input" id="emergency_name" name="emergency_name" placeholder="Name" value="{{ old('emergency_name') }}" required>
                                 </div>
                             </div>
                             <div class="uk-margin uk-width-1-1@s uk-width-1-3@m">
-                                <label class="uk-form-label uk-heading-bullet" for="emergency_relationship">Emergency Contact Relationship</label>
+                                <label class="uk-form-label uk-heading-bullet" for="emergency_relationship">Emergency
+                                    Contact Relationship</label>
                                 <div class="uk-form-controls">
                                     <input type="text" class="uk-input" id="emergency_relationship" name="emergency_relationship" placeholder="Relationship" value="{{ old('emergency_relationship') }}" required>
                                 </div>
                             </div>
                             <div class="uk-margin uk-width-1-1@s uk-width-1-3@m">
-                                <label class="uk-form-label uk-heading-bullet" for="emergency_phone">Emergency Phone Number</label>
+                                <label class="uk-form-label uk-heading-bullet" for="emergency_phone">Emergency Phone
+                                    Number</label>
                                 <div class="uk-form-controls">
                                     <input type="tel" class="uk-input" id="emergency_phone" name="emergency_phone" placeholder="Phone" value="{{ old('emergency_phone') }}" required>
                                 </div>
@@ -192,7 +208,8 @@
                             <div class="uk-width-1-1@s">
                                 <div class="uk-form-controls">
                                     <label><input class="uk-checkbox" type="checkbox" name="terms" required>
-                                        I agree to the <a href="{{ route('groups.terms') }}" target="_blank">The Swim School Policies & Procedures</a>
+                                        I agree to the <a href="{{ route('groups.terms') }}" target="_blank">The Swim
+                                            School Policies & Procedures</a>
                                     </label>
                                 </div>
                             </div>

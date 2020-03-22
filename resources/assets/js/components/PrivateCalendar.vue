@@ -13,14 +13,20 @@
                     }"
             ></FullCalendar>
             <div class="uk-width-1-4@m">
-                <div class="uk-grid">
+                <div class="uk-grid uk-margin-large-top">
                     <div class="uk-h3 uk-width-1-2">Cart</div>
                     <div class="uk-h3 uk-width-1-2 uk-text-right"><i class="fa fa-shopping-cart fa-lg"></i></div>
+                </div>
+                <div v-if="cartFull" class="uk-alert-success" uk-alert>
+                    <p>The cart is full, checkout below</p>
                 </div>
                 <div v-for="event in cart" class="uk-card uk-card-default uk-card-body uk-width-1-1@m uk-margin">
                     <button @click="remove(event.id)" class="uk-offcanvas-close uk-button-small" type="button" uk-close></button>
                     <div>{{event.start.toDateString()}}</div>
                     <div>{{event.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true})}} - {{event.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true})}}</div>
+                </div>
+                <div>
+                    <div class="uk-h3 uk-margin-top">Total: ${{ cart.length * 35 }}</div>
                 </div>
             </div>
             <input class="" name="pool_session_ids" :value="poolSessionIds" hidden>
@@ -54,7 +60,8 @@
                 ],
                 calendarEvents: [],
                 cart: [],
-                price: 0
+                price: 0,
+                alreadyInCart: false
             }
         },
         created() {
@@ -63,8 +70,6 @@
                     'id': event.id,
                     'start': Date.parse(event.start),
                     'end': Date.parse(event.end),
-                    //'title': event.title,
-                    //'description': 'This is the description',
                     'color': '#ed64a6'
                 };
             });
@@ -80,8 +85,6 @@
 
                 //Check if the event being added to the cart is a duplicate
                 if(this.duplicates(event.event.id)) {
-                    console.log('That event is already in your cart');
-                    //TODO Alert that we you already have that in the cart
                     return;
                 }
 
@@ -92,20 +95,23 @@
                     'start': event.event.start
                 });
 
-                //TODO Set the color of the selected item
-                // this.calendarEvents = this.calendarEvents.map(function (item) {
-                //     console.log(event.event.id);
-                //     if(item.id === event.event.id) {
-                //         console.log(item);
-                //         return item.color = '#9f7aea';
-                //     } else {
-                //         return item;
-                //     }
-                // })
+                //Set the color of the selected item
+                this.calendarEvents.forEach(function (item) {
+                    if(item.id == event.event.id) {
+                        item.color = '#7a9fea';
+                    }
+                })
             },
             remove: function (event_id) {
                 this.cart = this.cart.filter(function (item) {
                     return !(item.id === event_id);
+                });
+
+                //Set the color of the selected item back to the original color
+                this.calendarEvents.forEach(function (item) {
+                    if(item.id == event_id) {
+                        item.color = '#ed64a6';
+                    }
                 })
             },
             duplicates: function (event_id) {
@@ -128,7 +134,6 @@
         watch: {
             cart: {
                 handler: function (after, before) {
-                    console.log(Object.keys(after).length);
                     window.cartLength = Object.keys(after).length;
                 },
                 deep: true

@@ -90,7 +90,6 @@ class STSwimmer extends Resource
      */
     public function cards(Request $request)
     {
-        //TODO: Add cards
         return [];
     }
 
