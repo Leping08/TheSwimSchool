@@ -51,7 +51,7 @@ Home
             </div>
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a title="Parrish private swim lessons" href="{{ route('privates.index') }}" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a title="Parrish private swim lessons" href="{{ route('private_lesson.index') }}" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <div class="uk-card-media-top"><img src="/img/lessons/private.jpg" class="el-image uk-border-rounded" alt="Ellenton swimming lessons"></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>

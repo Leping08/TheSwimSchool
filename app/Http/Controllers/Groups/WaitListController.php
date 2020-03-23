@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Groups;
 
 use App\Http\Controllers\Controller;
 use App\Lesson;
-use App\Mail\WaitListAdmin;
+use App\Mail\Groups\WaitListAdmin;
 use App\WaitList;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Library\TryoutReminderEmail;
-use App\Mail\TryoutReminder;
+use App\Mail\SwimTeam\TryoutReminder;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;

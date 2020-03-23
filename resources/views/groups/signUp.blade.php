@@ -94,7 +94,7 @@ Sign Up
                     }
                 </script>
 
-                <form class="uk-grid-small" id="sign-up" uk-grid action="{{ route('groups.swimmers.store', [$lesson, $group]) }}" method="POST">
+                <form class="uk-grid-small" id="sign-up" uk-grid action="{{ route('groups.swimmers.store', [$lesson, $lesson->group]) }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="lesson_id" value="{{{$lesson->id}}}" required>
                     <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">

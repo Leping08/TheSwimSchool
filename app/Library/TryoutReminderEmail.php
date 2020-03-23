@@ -4,7 +4,7 @@
 namespace App\Library;
 
 
-use App\Mail\TryoutReminder;
+use App\Mail\SwimTeam\TryoutReminder;
 use App\Tryout;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;

@@ -2,15 +2,10 @@
 
 namespace App\Library;
 
-use App\Mail\TryoutReminder;
 use App\Swimmer;
 use App\STSwimmer;
 use App\EmailList;
-use Illuminate\Support\Collection;
-use App\Tryout;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
 class SetUpEmailList
 {

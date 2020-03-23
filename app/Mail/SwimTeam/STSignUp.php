@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\SwimTeam;
 
 use App\STSwimmer;
 use Illuminate\Bus\Queueable;

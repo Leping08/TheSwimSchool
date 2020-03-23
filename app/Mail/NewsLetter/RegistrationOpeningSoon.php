@@ -1,20 +1,15 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\NewsLetter;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TryoutsOpen extends Mailable
+class RegistrationOpeningSoon extends Mailable
 {
     use Queueable, SerializesModels;
-
-    /**
-     * @var string
-     */
-    public $theme = 'the_swim_team';
 
     /**
      * @var
@@ -38,8 +33,7 @@ class TryoutsOpen extends Mailable
      */
     public function build()
     {
-        return $this->subject('Fall Swim Club Tryouts')
-                    ->markdown('email.tryoutsOpen')
+        return $this->markdown('email.registrationOpeningSoon')
                     ->with(['emailAddress', $this->emailAddress]);
     }
 }

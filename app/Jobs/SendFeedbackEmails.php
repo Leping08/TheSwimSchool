@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Lesson;
 use App\Mail\FeedbackSurvey;
-use App\Mail\TryoutReminder;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;

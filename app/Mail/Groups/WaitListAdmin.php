@@ -1,27 +1,33 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Groups;
 
+use App\Lesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class GroupLessonReminder extends Mailable
+/**
+ * Class WaitListAdmin
+ * @package App\Mail
+ */
+class WaitListAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
+
     /**
-     * @var
+     * @var Lesson
      */
     public $lesson;
 
 
     /**
-     * GroupLessonReminder constructor.
-     * @param $lesson
+     * WaitListAdmin constructor.
+     * @param Lesson $lesson
      */
-    public function __construct($lesson)
+    public function __construct(Lesson $lesson)
     {
         $this->lesson = $lesson;
     }
@@ -33,8 +39,8 @@ class GroupLessonReminder extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->lesson->group->type)
-            ->markdown('email.groupLessonReminder')
+        return $this->subject('Wait List Filling Up')
+            ->markdown('email.waitListAdmin')
             ->with(['lesson', $this->lesson]);
     }
 }

@@ -110,11 +110,17 @@ Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'SwimTeam\SwimmerCont
 /* @see LeadController::store() */
 Route::post('/contact-us', 'LeadController@store')->name('contact-us.store');
 
+/* @see CalendarController::index() */
+Route::get('/private-semi-private', 'Privates\CalendarController@index')->name('private_lesson.index');
+
+/* @see CalendarController::store() */
+Route::post('/private-semi-private', 'Privates\CalendarController@store')->name('private_lesson.store');
+
 /* @see LeadController::index() */
-Route::get('/private-semi-private', 'Privates\LeadController@index')->name('privates.index');
+Route::get('/private-home-lesson', 'Privates\LeadController@index')->name('privates.index');
 
 /* @see LeadController::store() */
-Route::post('/private-semi-private', 'Privates\LeadController@store')->name('privates.store');
+Route::post('/private-home-lesson', 'Privates\LeadController@store')->name('privates.store');
 
 
 
@@ -168,9 +174,3 @@ Route::get('/swim-team/policies-and-procedures', function(){
 Route::get('/thank-you', function () {
     return view('pages.thank-you');
 })->name('pages.thank-you');
-
-
-
-Route::get('/cal', 'Privates\CalendarController@show')->name('private_lesson.index');
-
-Route::post('/cal', 'Privates\CalendarController@store')->name('private_lesson.store');

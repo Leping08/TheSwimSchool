@@ -12,6 +12,7 @@ class PrivateLessonTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
+    /** @test  **/
     public function a_user_can_sign_up_for_a_private_lesson()
     {
         $this->withoutExceptionHandling();
@@ -30,7 +31,7 @@ class PrivateLessonTest extends TestCase
         ];
 
 
-        $this->get(route('privates.index'))
+        $this->get(route('private_lesson.index'))
             ->assertStatus(200);
 
         $this->assertEquals(0,  \App\PrivateLessonLead::all()->count());

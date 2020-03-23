@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\SwimTeam;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class GoldDaisyAward extends Mailable
+class Awards extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * @var
+     * @var string
      */
-    public $emailAddress;
+    protected $theme = 'the_swim_team';
 
     /**
      * Create a new message instance.
-     * @param $emailAddress
+     *
      * @return void
      */
-    public function __construct($emailAddress)
+    public function __construct()
     {
-        $this->emailAddress = $emailAddress;
+        //
     }
 
     /**
@@ -33,7 +33,7 @@ class GoldDaisyAward extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.goldDaisyAward')
-                    ->with(['emailAddress', $this->emailAddress]);
+        return $this->markdown('email.swim-team.awards')
+                    ->subject('Awards Luau Luncheon');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\SwimTeam;
 
 use App\Athlete;
 use App\PromoCode;

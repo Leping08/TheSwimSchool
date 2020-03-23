@@ -5,12 +5,7 @@ namespace App\Library\Marketing\Emails\Lessons;
 
 
 use App\EmailList;
-use App\Mail\GoldDaisyAward;
-use App\Mail\HappyHolidays;
-use App\Mail\RegistrationOpen;
-use App\Mail\RegistrationOpeningSoon;
-use App\Mail\SpringRegistration;
-use App\Mail\TryoutsOpen;
+use App\Mail\NewsLetter\RegistrationOpen;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 

@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Privates;
 
-use App\Lesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Lesson;
 
-class LessonLink extends Mailable
+class SignUp extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,7 +18,7 @@ class LessonLink extends Mailable
 
 
     /**
-     * LessonLink constructor.
+     * SignUp constructor.
      * @param Lesson $lesson
      */
     public function __construct(Lesson $lesson)
@@ -34,8 +33,8 @@ class LessonLink extends Mailable
      */
     public function build()
     {
-        return $this->subject('Lesson Signup')
-            ->markdown('email.lessonLink')
-            ->with(['lesson', $this->lesson]);
+        return $this->subject($this->lesson->group->type)
+                    ->markdown('email.lessonSignUp')
+                    ->with(['lesson', $this->lesson]);
     }
 }

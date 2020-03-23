@@ -243,7 +243,7 @@ class Lessons extends TestCase
         ];
 
 
-        $this->get("/lessons/{$lesson->group->type}/{$lesson->id}")
+        $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
             ->assertStatus(200);
 
         $this->assertEquals(0,  \App\Swimmer::all()->count());

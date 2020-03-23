@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Log;
 
 class CalendarController extends Controller
 {
-    public function show()
+    public function index()
     {
         $private_pool_sessions = PrivatePoolSession::available()->afterNow()->get();
 
@@ -138,7 +138,7 @@ class CalendarController extends Controller
 
         //TODO: send sign up email
         //TODO: send admin email saying the lesson is full???
-        session()->flash("success", "Thanks for signing up!");
+        session()->flash("success", "Thanks for signing up! Please check your email for a confirmation.");
         return redirect()->route('pages.thank-you');
     }
 }

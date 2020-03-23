@@ -3,7 +3,7 @@
 namespace App\Nova\Actions;
 
 use App\Athlete;
-use App\Mail\STInvitation;
+use App\Mail\SwimTeam\STInvitation;
 use App\PromoCode;
 use App\STLevel;
 use Illuminate\Bus\Queueable;

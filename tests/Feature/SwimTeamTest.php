@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Mail\STSignUp;
+use App\Mail\SwimTeam\STSignUp;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;

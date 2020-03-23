@@ -35,7 +35,7 @@ class EmailListController extends Controller
         ]);
 
         if(NewsLetter::subscribe($request['email'])){
-            session()->flash('success', 'Thanks for signing up for our news newsletter');
+            session()->flash('success', 'Thanks for signing up for our newsletter!');
             return back();
         } else {
             session()->flash('warning', 'Looks like something went wrong. We are looking into it.');

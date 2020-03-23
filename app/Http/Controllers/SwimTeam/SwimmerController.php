@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SwimTeamSignUp;
 use App\Library\Helpers\Promo;
 use App\Library\StripeCharge;
-use App\Mail\STSignUp;
+use App\Mail\SwimTeam\STSignUp;
 use App\STLevel;
 use App\STSeason;
 use App\STShirtSize;

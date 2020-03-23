@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Mail\WaitListAdmin;
+use App\Mail\Groups\WaitListAdmin;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;

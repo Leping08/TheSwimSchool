@@ -3,18 +3,13 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Awards extends Mailable
+class PrivateLessonSignUp extends Mailable
 {
     use Queueable, SerializesModels;
-
-    /**
-     * @var string
-     */
-    protected $theme = 'the_swim_team';
 
     /**
      * Create a new message instance.
@@ -33,7 +28,6 @@ class Awards extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.swim-team.awards')
-                    ->subject('Awards Luau Luncheon');
+        return $this->view('view.name');
     }
 }

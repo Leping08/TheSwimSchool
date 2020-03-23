@@ -45,6 +45,7 @@
                 </div>
             </div>
 
+            @if(!config('season.private.off-season'))
             <div class="uk-grid-margin uk-grid uk-margin-large-top" uk-grid="">
                 <div class="uk-width-4-4@m uk-first-column">
                     <h2 class="uk-heading-bullet">Private Lesson</h2>
@@ -223,6 +224,7 @@
                     </private-calendar>
                 </form>
             </div>
+            @endif
         </div>
     </div>
 @endsection

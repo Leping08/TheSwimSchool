@@ -4,7 +4,7 @@
 namespace App\Library\Marketing\Emails;
 
 
-use App\Mail\Awards;
+use App\Mail\SwimTeam\Awards;
 use App\STSeason;
 use App\STSwimmer;
 use Illuminate\Support\Facades\Log;

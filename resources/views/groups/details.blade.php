@@ -79,7 +79,7 @@ Lessons
                         </div>
                         <div class="uk-card-footer">
                             @if($lesson->class_size - $lesson->swimmers->count() > 0)
-                                <a href="{{ route('groups.lessons.create', [$lesson, $group]) }}" class="uk-button uk-button-primary">Sign Up</a>
+                                <a href="{{ route('groups.lessons.create', [$group, $lesson]) }}" class="uk-button uk-button-primary">Sign Up</a>
                             @else
                                 <button class="uk-button uk-button-primary" uk-toggle="target: #wait-list-{{{$lesson->id}}}">Join Wait List</button>
                             @endif
@@ -143,7 +143,7 @@ Lessons
                                 </div>
 {{--                                <div class="card-text">--}}
 {{--                                    <p>Registration will open for our next session of swim lessons {{config('season.groups.next_season.registration_open')}}. Please check back at another time.<br>--}}
-{{--                                    In the mean time check out our <a title="North River Swim Team" href="{{ route('swim-team.index') }}">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="{{ route('privates.index') }}">private lessons</a>.</p>--}}
+{{--                                    In the mean time check out our <a title="North River Swim Team" href="{{ route('swim-team.index') }}">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="{{ route('private_lesson.index') }}">private lessons</a>.</p>--}}
 {{--                                </div>--}}
                             </div>
                         </div>

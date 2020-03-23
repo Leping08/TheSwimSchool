@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\SwimTeam;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SpringRegistration extends Mailable
+class TryoutsOpen extends Mailable
 {
     use Queueable, SerializesModels;
+
+    /**
+     * @var string
+     */
+    public $theme = 'the_swim_team';
 
     /**
      * @var
@@ -33,8 +38,8 @@ class SpringRegistration extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.registrationOpeningSoon')
-            ->subject('Registration Open')
-            ->with(['emailAddress', $this->emailAddress]);
+        return $this->subject('Fall Swim Club Tryouts')
+                    ->markdown('email.tryoutsOpen')
+                    ->with(['emailAddress', $this->emailAddress]);
     }
 }

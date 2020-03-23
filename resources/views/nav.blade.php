@@ -23,7 +23,7 @@
                                 <a>Services</a>
                                 <ul class="uk-nav-sub">
                                     <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a title="Manatee County Swimming Classes" href="{{ route('groups.lessons.index') }}">Group Lessons</a></li>
-                                    <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a title="Parrish Private Swim Lessons" href="{{ route('privates.index') }}">Private Lessons</a></li>
+                                    <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a title="Parrish Private Swim Lessons" href="{{ route('private_lesson.index') }}">Private Lessons</a></li>
                                     <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a title="Palmetto Swim Team" href="{{ route('swim-team.index') }}">Swim Team</a></li>
                                 </ul>
                             </li>
@@ -95,7 +95,7 @@
                                     <div>
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
                                             <li class="{{{ (Request::segment(1) === 'lessons' ? 'uk-active' : null) }}} "><a title="Manatee County Swimming Classes" href="{{ route('groups.lessons.index') }}">Group Lessons</a></li>
-                                            <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a title="Parrish Private Swim Lessons" href="{{ route('privates.index') }}">Private Lessons</a></li>
+                                            <li class="{{{ (Request::segment(1) === 'private-semi-private' ? 'uk-active' : null) }}} "><a title="Parrish Private Swim Lessons" href="{{ route('private_lesson.index') }}">Private Lessons</a></li>
                                             <li class="{{{ (Request::segment(1) === 'swim-team' ? 'uk-active' : null) }}} "><a title="Palmetto Swim Team" href="{{ route('swim-team.index') }}">Swim Team</a></li>
                                         </ul>
                                     </div>
