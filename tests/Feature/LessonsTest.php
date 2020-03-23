@@ -13,6 +13,8 @@ class Lessons extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
+    //TODO links in this file are a bit messy
+
     /** @test  **/
     public function a_user_can_not_see_a_lesson_in_progress()
     {
@@ -213,7 +215,7 @@ class Lessons extends TestCase
             'class_start_date' => Carbon::now()
         ]);
 
-        $this->assertFalse(\App\Lesson::registrationOpen()->contains($lesson));
+        $this->assertFalse(\App\Lesson::registrationOpen()->get()->contains($lesson));
     }
 
     /** @test  **/
@@ -241,7 +243,7 @@ class Lessons extends TestCase
         ];
 
 
-        $this->get("/lessons/{$lesson->group->type}/{$lesson->id}")
+        $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
             ->assertStatus(200);
 
         $this->assertEquals(0,  \App\Swimmer::all()->count());

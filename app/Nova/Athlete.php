@@ -24,13 +24,6 @@ class Athlete extends Resource
     public static $model = \App\Athlete::class;
 
     /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    //public static $title = 'id';
-
-    /**
      * The columns that should be searched.
      *
      * @var array

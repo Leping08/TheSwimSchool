@@ -56,7 +56,7 @@
                         }
                     </script>
 
-                    <form class="uk-grid-small" id="sign-up" uk-grid action="" method="POST">
+                    <form class="uk-grid-small" id="sign-up" uk-grid action="{{ route('swim-team.swimmer.store') }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="level_id" value="{{{$level->id}}}" required>
                         <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
@@ -186,7 +186,7 @@
                         <div class="uk-width-1-1@s">
                             <div class="uk-form-controls">
                                 <label><input class="uk-checkbox" type="checkbox" name="termsAndConditions" required>
-                                    I agree to the <a href="/swim-team/policies-and-procedures" target="_blank">North River Swim Team Policies & Procedures</a>
+                                    I agree to the <a href="{{ route('swim-team.terms') }}" target="_blank">North River Swim Team Policies & Procedures</a>
                                 </label>
                             </div>
                         </div>

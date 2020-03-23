@@ -5,8 +5,7 @@ namespace App\Library\Marketing\Emails\SwimTeam;
 
 
 use App\EmailList;
-use App\Mail\Awards;
-use App\Mail\TryoutsOpen;
+use App\Mail\SwimTeam\TryoutsOpen;
 use App\STSeason;
 use App\STSwimmer;
 use Illuminate\Support\Collection;

@@ -2,7 +2,7 @@
 
 namespace App\Nova\Actions;
 
-use App\Mail\LessonLink;
+use App\Mail\Groups\LessonLink;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;

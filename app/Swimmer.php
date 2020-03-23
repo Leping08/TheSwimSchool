@@ -5,6 +5,7 @@ namespace App;
 use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * An Eloquent Model: 'Swimmer'
@@ -35,7 +36,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Swimmer extends Model
 {
-    use SoftDeletes, Ages;
+    use SoftDeletes, Ages, Actionable;
 
     /**
      * @var array

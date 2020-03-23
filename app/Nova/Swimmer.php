@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use Carbon\Carbon;
-use DigitalCloud\AddressField\AddressField;
 use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Country;
@@ -31,16 +30,11 @@ class Swimmer extends Resource
     public static $model = \App\Swimmer::class;
 
     /**
-     * The single value that should be used to represent the resource when being displayed.
+     * The logical group associated with the resource.
      *
      * @var string
      */
-    //public static $title = 'title';
-
-    /**
-     * @var string
-     */
-    public static $name = '';
+    public static $group = 'Groups';
 
     /**
      * The columns that should be searched.
@@ -51,8 +45,7 @@ class Swimmer extends Resource
         'id',
         'firstName',
         'lastName',
-        'email',
-        'phone'
+        'email'
     ];
 
     /**
@@ -91,7 +84,7 @@ class Swimmer extends Resource
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail(),
-            (new Panel('Stripe Payment', $this->paymentInfo())),
+            (new Panel('Payment Info', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
             Text::make('Notes', 'notes')->hideFromIndex()
@@ -165,12 +158,6 @@ class Swimmer extends Resource
             Text::make('Country', function () {
                 return 'US';
             })->hideFromIndex(),
-//            TODO: Get the map to work
-//            AddressField::make('Address', function () {
-//                //return "{$this->street}, {$this->city} {$this->state} {$this->zip}";
-//                return "11810 Summer Meadow Drive, Bradenton FL 34202";
-//            })->withMap()->hideFromIndex(),
-            //Country::make('Country')->hideFromIndex(),
         ];
     }
 
@@ -185,7 +172,14 @@ class Swimmer extends Resource
         return [
             Text::make('Name', 'emergencyName')->hideFromIndex(),
             Text::make('Relationship', 'emergencyRelationship')->hideFromIndex(),
-            Text::make('Phone', 'emergencyPhone')->hideFromIndex()
+            Text::make('Phone', 'emergencyPhone')->onlyOnForms(),
+            Text::make('Phone', function () {
+                return view('partials.link', [
+                    'link' => 'tel:1'.$this->emergencyPhone,
+                    'text' => $this->emergencyPhone
+                ])->render();
+            })->asHtml()->hideFromIndex(),
+
         ];
     }
 

@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Nova\Actions\Actionable;
 
 class STShirtSize extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Actionable;
 
     protected $table = 's_t_shirt_sizes';
 

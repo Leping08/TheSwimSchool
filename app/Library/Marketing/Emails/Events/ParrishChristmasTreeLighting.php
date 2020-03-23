@@ -5,7 +5,7 @@ namespace App\Library\Marketing\Emails\Events;
 
 
 use App\EmailList;
-use App\Mail\HappyHolidays;
+use App\Mail\Newsletter\HappyHolidays;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 

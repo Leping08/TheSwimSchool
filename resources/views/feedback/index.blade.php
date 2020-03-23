@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="uk-card-body">
-                    <form class="uk-grid-small" uk-grid action="" method="POST">
+                    <form class="uk-grid-small" uk-grid action="{{ route('feedback.store') }}" method="POST">
                         {{ csrf_field() }}
                         <p class="uk-margin-medium-bottom">Thank you for participating in an aquatics program through The Swim School! To help us serve you better and improve our programs, we need your feedback. Please take a few minutes to complete this evaluation form regarding your recent experience with The Swim School. Thank You!</p>
                         <div uk-grid>

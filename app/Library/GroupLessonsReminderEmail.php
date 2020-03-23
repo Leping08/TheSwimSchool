@@ -7,7 +7,7 @@ use App\Swimmer;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\GroupLessonReminder;
+use App\Mail\Groups\GroupLessonReminder;
 
 class GroupLessonsReminderEmail
 {

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * An Eloquent Model: 'Location'
@@ -20,7 +21,7 @@ use Illuminate\Support\Str;
  */
 class Review extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Actionable;
 
     protected $fillable = ['name', 'active', 'created_time', 'message'];
 

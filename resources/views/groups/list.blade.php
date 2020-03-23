@@ -36,7 +36,7 @@
                                 <h5>Weekday Session (8 Classes)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>All Levels $85.00</li>
-                                    <li>Swim Club Levels (Flying Fish & Shark) $100</li>
+                                    <li>Swim Club Levels (Flying Fish $100 & Shark $125)</li>
                                 </ul>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                 <h2 class="uk-margin uk-h3">{{$group->type}}</h2>
                                 <p class="uk-text-meta uk-text-primary">{{$group->ages}}</p>
                                 <div class="uk-margin">{{\Illuminate\Support\Str::limit($group->description, 350)}}</div>
-                                <p><a class="uk-button uk-button-primary" href="/lessons/{{{$group->type}}}">Find Classes</a></p>
+                                <p><a class="uk-button uk-button-primary" href="{{ route('groups.lessons.show', [$group]) }}">Find Classes</a></p>
                             </div>
                         </div>
                     @empty

@@ -6,13 +6,15 @@ use App\Library\NewsLetter\NewsLetter;
 use Illuminate\Http\Request;
 use App\EmailList;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class EmailListController extends Controller
 {
 
     /**
      * @param EmailList $email
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function unsubscribe(EmailList $email)
     {
@@ -24,16 +26,16 @@ class EmailListController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return Redirect
      */
-    public function store(Request $request)
+    public function subscribe(Request $request)
     {
         $request->validate([
             'email' => 'required|email'
         ]);
 
-        if(NewsLetter::subscribe($request->email)){
-            session()->flash('success', 'Thanks for signing up for our news newsletter');
+        if(NewsLetter::subscribe($request['email'])){
+            session()->flash('success', 'Thanks for signing up for our newsletter!');
             return back();
         } else {
             session()->flash('warning', 'Looks like something went wrong. We are looking into it.');

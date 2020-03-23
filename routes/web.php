@@ -21,32 +21,35 @@ Auth::routes();
  * Home page
  */
 
-Route::get('/', 'HomeController@index');
+/* @see HomeController::index() */
+Route::get('/', 'HomeController@index')->name('home.index');
 
 
-Route::get('/lessons/schedule', function (){
-    return view('groups.schedule');
-});
+
 
 /*
  * Group Lessons
  */
 
 //List lessons
-/* @see GroupController::index() */
-Route::get('/lessons', 'GroupController@index');
+/* @see LessonsController::index() */
+Route::get('/lessons', 'Groups\LessonsController@index')->name('groups.lessons.index');
 
-//List details of the lesson
-/* @see GroupController::classDetails() */
-Route::get('/lessons/{group}', 'GroupController@classDetails');
+//Get the lesson schedule page
+/* @see ScheduleController::index() */
+Route::get('/lessons/schedule', 'Groups\ScheduleController@index')->name('groups.schedule.index');
+
+//List details of the group lesson
+/* @see LessonsController::show() */
+Route::get('/lessons/{group}', 'Groups\LessonsController@show')->name('groups.lessons.show');
 
 //Sign up form for that lesson
-/* @see GroupController::signUp() */
-Route::get('/lessons/{group}/{lesson}', 'GroupController@signUp');
+/* @see LessonsController::create() */
+Route::get('/lessons/{group}/{lesson}', 'Groups\LessonsController@create')->name('groups.lessons.create');
 
 //Save the results of the sign up form
 /* @see SwimmerController::store() */
-Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
+Route::post('/lessons/{group}/{lesson}', 'Groups\SwimmerController@store')->name('groups.swimmers.store');
 
 
 
@@ -54,8 +57,9 @@ Route::post('/lessons/{classType}/{id}', 'SwimmerController@store');
 /*
  * Wait List
  */
+
 /* @see WaitListController::store() */
-Route::post('/wait-list/{id}', 'WaitListController@store');
+Route::post('/wait-list/{lesson}', 'Groups\WaitListController@store')->name('groups.lessons.wait-list');
 
 
 
@@ -66,18 +70,19 @@ Route::post('/wait-list/{id}', 'WaitListController@store');
 
 //The Link to see all tryouts
 /* @see TryoutController::index() */
-Route::get('/swim-team/tryouts', 'TryoutController@index');
+Route::get('/swim-team/tryouts', 'SwimTeam\TryoutController@index')->name('swim-team.tryouts.index');
 
 //The Link to sign up for a tryout
-/* @see TryoutController::signUp() */
-Route::get('/swim-team/tryouts/{id}', 'TryoutController@signUp');
+/* @see TryoutController::show() */
+Route::get('/swim-team/tryouts/{tryout}', 'SwimTeam\TryoutController@show')->name('swim-team.tryouts.show');
 
 //Save the results of the sign up form
 /* @see AthleteController::store() */
-Route::post('/swim-team/tryouts/{id}', 'AthleteController@store');
+Route::post('/swim-team/tryouts/{tryout}', 'SwimTeam\AthleteController@store')->name('swim-team.athlete.store');
 
-/* @see STSwimmerController::roster() */
-Route::get('/roster', 'STSwimmerController@roster');
+//The roster for the current season
+/* @see RosterController::index() */
+Route::get('/roster', 'SwimTeam\RosterController@index')->name('swim-team.roster.index');
 
 
 
@@ -86,14 +91,14 @@ Route::get('/roster', 'STSwimmerController@roster');
  * Swim Team Registration
  */
 
-/* @see SwimTeamCoachesController::index() */
-Route::get('/swim-team', 'SwimTeamCoachesController@index');
+/* @see CoachesController::index() */
+Route::get('/swim-team', 'SwimTeam\CoachesController@index')->name('swim-team.index');
 
-/* @see STSwimmerController::index() */
-Route::get('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@index');
+/* @see SwimmerController::index() */
+Route::get('/swim-team/level/{level}/swimmer/{athlete?}', 'SwimTeam\SwimmerController@index')->name('swim-team.swimmer.show');
 
-/* @see STSwimmerController::store() */
-Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@store');
+/* @see SwimmerController::store() */
+Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'SwimTeam\SwimmerController@store')->name('swim-team.swimmer.store');
 
 
 
@@ -103,19 +108,19 @@ Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'STSwimmerController@
  */
 
 /* @see LeadController::store() */
-Route::post('/contact-us', 'LeadController@store');
+Route::post('/contact-us', 'LeadController@store')->name('contact-us.store');
+
+/* @see CalendarController::index() */
+Route::get('/private-semi-private', 'Privates\CalendarController@index')->name('private_lesson.index');
+
+/* @see CalendarController::store() */
+Route::post('/private-semi-private', 'Privates\CalendarController@store')->name('private_lesson.store');
+
+/* @see LeadController::index() */
+//Route::get('/private-home-lesson', 'Privates\LeadController@index')->name('home_privates.index');
 
 /* @see LeadController::store() */
-Route::post('/lifeguarding', 'LeadController@store');
-
-/* @see LeadController::store() */
-Route::post('/cpr-first-aid', 'LeadController@store');
-
-/* @see PrivateLessonLeadController::index() */
-Route::get('/private-semi-private', 'PrivateLessonLeadController@index');
-
-/* @see PrivateLessonLeadController::store() */
-Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
+//Route::post('/private-home-lesson', 'Privates\LeadController@store')->name('home_privates.store');
 
 
 
@@ -125,10 +130,12 @@ Route::post('/private-semi-private', 'PrivateLessonLeadController@store');
  */
 
 /* @see EmailListController::unsubscribe() */
-Route::get('/unsubscribe/{email}', 'EmailListController@unsubscribe');
+Route::get('/newsletter/unsubscribe/{email}', 'EmailListController@unsubscribe')->name('newsletter.unsubscribe');
 
-/* @see EmailListController::store() */
-Route::post('/newsletter', 'EmailListController@store');
+/* @see EmailListController::subscribe() */
+Route::post('/newsletter/subscribe', 'EmailListController@subscribe')->name('newsletter.subscribe');
+
+
 
 
 /*
@@ -136,10 +143,11 @@ Route::post('/newsletter', 'EmailListController@store');
  */
 
 /* @see FeedbackController::index() */
-Route::get('/feedback', 'FeedbackController@index');
+Route::get('/feedback', 'FeedbackController@index')->name('feedback.index');
 
 /* @see FeedbackController::store() */
-Route::post('/feedback', 'FeedbackController@store');
+Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
+
 
 
 
@@ -147,42 +155,22 @@ Route::post('/feedback', 'FeedbackController@store');
  * Static Pages
  */
 
-Route::get('/services', function(){
-    return view('pages.services');
-});
-
 Route::get('/about', function(){
     return view('pages.about');
-});
+})->name('pages.about');
 
 Route::get('/contact-us', function(){
     return view('pages.contact-us');
-});
-
-Route::get('/other-services', function (){
-    return view('pages.other-services');
-});
-
-Route::get('/lifeguarding', function (){
-    return view('pages.lifeguarding');
-});
-
-Route::get('/cpr-first-aid', function(){
-    return view('pages.cpr-first-aid');
-});
+})->name('pages.contact-us');
 
 Route::get('/group-lessons/policies-and-procedures', function(){
     return view('groups.terms');
-});
+})->name('groups.terms');
 
 Route::get('/swim-team/policies-and-procedures', function(){
     return view('swim-team.terms');
-});
+})->name('swim-team.terms');
 
 Route::get('/thank-you', function () {
     return view('pages.thank-you');
-});
-
-//Route::get('/testimonials', function(){
-//    return view('pages.testimonials');
-//});
+})->name('pages.thank-you');

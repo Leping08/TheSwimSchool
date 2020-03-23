@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Library\TryoutReminderEmail;
-use App\Mail\TryoutReminder;
+use App\Mail\SwimTeam\TryoutReminder;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
@@ -26,7 +26,7 @@ class TryoutTest extends TestCase
         $registrationOpen = \App\Tryout::registrationOpen()->get();
         $this->assertTrue($registrationOpen->contains($tryout->id));
 
-        $this->get('/swim-team/tryouts')
+        $this->get(route('swim-team.tryouts.index'))
             ->assertSee($tryout->class_size)
             ->assertSee($tryout->location->address)
             ->assertDontSee('Sorry No Tryouts Available At This Time');
@@ -43,7 +43,7 @@ class TryoutTest extends TestCase
         $registrationOpen = \App\Tryout::registrationOpen()->get();
         $this->assertFalse($registrationOpen->contains($tryout->id));
 
-        $this->get('/swim-team/tryouts')
+        $this->get(route('swim-team.tryouts.index'))
             ->assertSee('Sorry No Tryouts Available At This Time');
     }
 
@@ -55,7 +55,7 @@ class TryoutTest extends TestCase
             'registration_open' => Carbon::now()->subDays(4)
         ]);
 
-        $this->get("/swim-team/tryouts/{$tryout->id}")
+        $this->get(route('swim-team.tryouts.show', [$tryout]))
             ->assertStatus(200);
     }
 
@@ -83,14 +83,14 @@ class TryoutTest extends TestCase
         ];
 
 
-        $this->get("/swim-team/tryouts/{$tryout->id}/")
+        $this->get(route('swim-team.tryouts.show', [$tryout]))
             ->assertStatus(200);
 
         $this->assertEquals(0,  \App\Athlete::all()->count());
 
-        $response = $this->json('POST', "/swim-team/tryouts/{$tryout->id}", $attributes);
+        $response = $this->post(route('swim-team.athlete.store', [$tryout]), $attributes);
 
-        $response->assertRedirect('/swim-team');
+        $response->assertRedirect(route('swim-team.index'));
 
         $this->assertEquals(1,  \App\Athlete::all()->count());
 

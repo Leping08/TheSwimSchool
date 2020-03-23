@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Mail\WaitListAdmin;
+use App\Mail\Groups\WaitListAdmin;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
@@ -26,7 +26,7 @@ class WaitListTest extends TestCase
 
         $this->assertTrue($lesson->isFull());
 
-        $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
+        $this->get(route('groups.lessons.create', ['group' => $lesson->group->type, 'lesson' => $lesson]))
             ->assertSee('This class is full.')
             ->assertSee('We recommend signing up for a different class with openings.');
 
@@ -39,7 +39,7 @@ class WaitListTest extends TestCase
             'date_of_birth' => $this->faker->date()
         ];
 
-        $response = $this->json('POST', "/wait-list/{$lesson->id}", $attributes);
+        $response = $this->post(route('groups.lessons.wait-list', [$lesson]), $attributes);
 
         $response->assertStatus(302);
 

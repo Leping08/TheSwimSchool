@@ -24,7 +24,7 @@ class ReviewsTest extends TestCase
             'created_time' => '2016-05-13T16:23:21+0000'
         ]);
 
-        $this->get("/")
+        $this->get(route('home.index'))
             ->assertSee("Testimonials")
             ->assertSee($firstReview->message)
             ->assertSee($secondReview->message);
@@ -38,13 +38,15 @@ class ReviewsTest extends TestCase
             'active' => true
         ]);
 
-        $this->get("/")
+        $this->get(route('home.index'))
             ->assertSee($review->message);
 
         $review->active = false;
         $review->save();
 
-        $this->get("/")
+        $this->artisan('cache:clear');
+
+        $this->get(route('home.index'))
             ->assertDontSee($review->message);
     }
 }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * The people who have contacted site admins
@@ -27,7 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Actionable;
 
     /**
      * @var array

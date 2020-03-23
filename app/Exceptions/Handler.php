@@ -55,4 +55,13 @@ class Handler extends ExceptionHandler
                     ? response()->json(['message' => 'Unauthenticated.'], 401)
                     : redirect()->guest(route('login'));
     }
+
+    protected function whoopsHandler()
+    {
+        try {
+            return app(\Whoops\Handler\HandlerInterface::class);
+        } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
+            return parent::whoopsHandler();
+        }
+    }
 }

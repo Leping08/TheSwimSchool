@@ -40,7 +40,7 @@ Home
         <div class="uk-grid-margin" uk-grid>
             <div class="uk-width-expand@m uk-grid-item-match uk-first-column">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a title="Lakewood Ranch swim lesson" href="/lessons" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a title="Lakewood Ranch swim lesson" href="{{ route('groups.lessons.index') }}" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <div class="uk-card-media-top"><img src="/img/lessons/group.jpg" class="el-image uk-border-rounded" alt="Lakewood Ranch children's swim lessons"></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Group Lessons</h3>
@@ -51,7 +51,7 @@ Home
             </div>
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a title="Parrish private swim lessons" href="/private-semi-private" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a title="Parrish private swim lessons" href="{{ route('private_lesson.index') }}" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <div class="uk-card-media-top"><img src="/img/lessons/private.jpg" class="el-image uk-border-rounded" alt="Ellenton swimming lessons"></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>
@@ -63,7 +63,7 @@ Home
             </div>
             <div class="uk-width-expand@m uk-grid-item-match">
                 <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
-                    <a title="Parrish swim team" href="/swim-team" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
+                    <a title="Parrish swim team" href="{{ route('swim-team.index') }}" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                     <div class="uk-card-media-top"><img src="/img/swim-team/dive-cropped.jpg" class="el-image uk-border-rounded" alt="Lakewood Ranch swim club"></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Team</h3>
@@ -109,16 +109,6 @@ Home
             </div>
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
         </div>
-
-        {{--<div class="uk-grid-margin uk-grid-stack" uk-grid>--}}
-            {{--<div class="uk-width-1-1@m uk-first-column">--}}
-                {{--<div class="uk-text-center uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="uk-animation-slide-bottom-medium">--}}
-                    {{--<a title="Swim School Testimonials" class="el-content uk-button uk-button-primary uk-button-large" href="/testimonials/" title="Explore More">--}}
-                        {{--View All--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     </div>
 </div>
 @endsection

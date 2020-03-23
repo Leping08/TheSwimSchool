@@ -21,6 +21,13 @@ class EmailList extends Resource
     public static $model = \App\EmailList::class;
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Admin';
+
+    /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
@@ -105,6 +112,6 @@ class EmailList extends Resource
 
     public static function label()
     {
-        return 'Email Subscriptions';
+        return 'Newsletter Emails';
     }
 }

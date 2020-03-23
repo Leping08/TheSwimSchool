@@ -57,7 +57,7 @@ class StoreLead extends FormRequest
         try {
             $contact = Contact::create($this->assignRequestContactId($validated));
             $this->emailAdmin($contact);
-            session()->flash('success', 'We will be in contact with you shortly.');
+            session()->flash('success', 'Thank you for reaching out. We will be in contact with you shortly.');
         } catch (\Exception $e) {
             report($e);
             session()->flash('warning', 'Looks like something went wrong.');

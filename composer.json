@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.9",
         "doctrine/dbal": "^2.9",
+        "facade/ignition": "^1.16",
         "facebook/graph-sdk": "^5.7",
         "fideloper/proxy": "^4.0",
         "fourstacks/nova-checkboxes": "^0.1.5",

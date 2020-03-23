@@ -27,9 +27,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         //Send feedback email survey
-        $schedule->call(function (){
-            SendFeedbackEmails::dispatchNow();
-        })->dailyAt('7:00');
+//        $schedule->call(function (){
+//            SendFeedbackEmails::dispatchNow();
+//        })->dailyAt('7:00');
 
         //Update reviews table with the SwimSchool Facebook page reviews
         $schedule->call(function() {

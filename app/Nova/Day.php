@@ -26,6 +26,8 @@ class Day extends Resource
      */
     public static $title = 'day';
 
+    public static $displayInNavigation = false;
+
     /**
      * The columns that should be searched.
      *

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * An Eloquent Model: 'Tryout'
@@ -27,7 +28,7 @@ use Carbon\Carbon;
 class Tryout extends Model
 {
 
-    use SoftDeletes;
+    use SoftDeletes, Actionable;
 
     /**
      * @var array

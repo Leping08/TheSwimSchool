@@ -17,22 +17,23 @@ class EmailList extends TestCase
     public function a_user_should_be_able_to_unsubscribe_by_hitting_the_unsubscribe_page()
     {
         //Set up an email
-        $email = factory(\App\EmailList::class)->create([
+        $emailList = factory(\App\EmailList::class)->create([
             'subscribe' => true
         ]);
 
         //Make sure the email is subscribed
-        $this->assertEquals(1,  $email->subscribe);
+        $this->assertEquals(1,  $emailList->subscribe);
         $this->assertEquals(1,  \App\EmailList::subscribed()->count());
         $this->assertEquals(0,  \App\EmailList::unsubscribed()->count());
 
         //Get the route to unsubscribe
-        $this->get("/unsubscribe/$email->email")
-            ->assertSee("The email address ". $email->email. " has been unsubscribed from all marketing emails");
+        $this->get("/newsletter/unsubscribe/$emailList->email")
+            ->assertSee("The email address ". $emailList->email. " has been unsubscribed from all marketing emails");
+
         //Get a fresh instance of the email
-        $email = $email->fresh();
+        $emailList = $emailList->fresh();
         //Make sure the email is unsubscribed
-        $this->assertEquals(0, $email->subscribe);
+        $this->assertEquals(0, $emailList->subscribe);
         $this->assertEquals(0, \App\EmailList::subscribed()->count());
         $this->assertEquals(1,  \App\EmailList::unsubscribed()->count());
 
@@ -44,7 +45,7 @@ class EmailList extends TestCase
         $this->assertEquals(0,  \App\EmailList::all()->count());
 
         //Valid Email
-        $response = $this->json('POST', '/newsletter', [
+        $response = $this->json('POST', route('newsletter.subscribe'), [
             'email' => $this->faker->email
         ]);
         $response->assertStatus(302);
@@ -52,7 +53,7 @@ class EmailList extends TestCase
         $this->assertEquals(1,  \App\EmailList::subscribed()->count());
 
         //Invalid email
-        $response = $this->json('POST', '/newsletter', [
+        $response = $this->json('POST', route('newsletter.subscribe'), [
             'email' => $this->faker->sentence
         ]);
         $response->assertStatus(422);

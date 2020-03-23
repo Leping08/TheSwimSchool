@@ -14,8 +14,7 @@ We’re Sorry to See You Go
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-4-4@m uk-first-column">
-                    The email address {{$email}} has been unsubscribed from all marketing emails from <a title="Manatee County Swim Lessons" href="/">The Swim School</a>.
-                    {{--TODO: If this was a mistake <a href="/re-subscribe">re-subscribe me</a>!--}}
+                    The email address {{$email}} has been unsubscribed from all marketing emails from <a title="Manatee County Swim Lessons" href="{{ route('home.index') }}">The Swim School</a>.
                 </div>
             </div>
         </div>

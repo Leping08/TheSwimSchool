@@ -21,14 +21,14 @@ class BannerTest extends TestCase
             'text' => 'This is the banner'
         ]);
 
-        $this->get("/swim-team")
+        $this->get(route('swim-team.index'))
             ->assertDontSee($banner->text)
             ->assertSee('Swim Team');
 
         $banner->active = true;
         $banner->save();
 
-        $this->get("/swim-team")
+        $this->get(route('swim-team.index'))
             ->assertSee($banner->text)
             ->assertSee('Swim Team');
     }

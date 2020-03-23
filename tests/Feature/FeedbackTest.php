@@ -20,7 +20,7 @@ class FeedbackTest extends TestCase
     /** @test */
     public function a_user_can_fill_out_the_feedback_survey()
     {
-        $this->get("/feedback")
+        $this->get(route('feedback.index'))
             ->assertStatus(200)
             ->assertSee('Feedback');
 
@@ -47,7 +47,7 @@ class FeedbackTest extends TestCase
 
         $this->assertEquals(0, FeedbackSurvey::all()->count());
 
-        $this->post('/feedback', $data)
+        $this->post(route('feedback.store'), $data)
             ->assertStatus(302)
             ->assertRedirect('/thank-you');
 
@@ -63,8 +63,8 @@ class FeedbackTest extends TestCase
     public function a_user_will_be_sent_a_feedback_email_a_week_after_the_lesson()
     {
         $lesson = factory(\App\Lesson::class)->create([
-            'class_start_date' => Carbon::now()->subDay(14),
-            'class_end_date' => Carbon::now()->subDay(7)
+            'class_start_date' => Carbon::now()->subDays(14),
+            'class_end_date' => Carbon::now()->subDays(7)
         ]);
 
         factory(\App\Swimmer::class)->create([
@@ -89,8 +89,8 @@ class FeedbackTest extends TestCase
         $email = 'test@gmail.com';
 
         $lesson = factory(\App\Lesson::class)->create([
-            'class_start_date' => Carbon::now()->subDay(14),
-            'class_end_date' => Carbon::now()->subDay(7),
+            'class_start_date' => Carbon::now()->subDays(14),
+            'class_end_date' => Carbon::now()->subDays(7),
             'class_size' => 3
         ]);
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Actions\Actionable;
+use Illuminate\Support\Collection;
 
 /**
  * An Eloquent Model: 'Lesson'
@@ -26,9 +27,11 @@ use Laravel\Nova\Actions\Actionable;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
- * @property-read \App\Group $group
- * @property-read \App\Location $location
- * @property-read \App\Season $season
+ * @property-read Group $group
+ * @property-read Location $location
+ * @property-read Season $season
+ * @property-read Collection $calendarEvents
+ * @property-read WaitList $waitlist
  */
 
 class Lesson extends Model
@@ -183,7 +186,7 @@ class Lesson extends Model
     {
         return $query
             ->whereDate('class_start_date', '>', Carbon::now())
-            ->whereDate('registration_open', '<=', Carbon::now())->get();
+            ->whereDate('registration_open', '<=', Carbon::now());
     }
 
     /**
@@ -201,6 +204,41 @@ class Lesson extends Model
      */
     public function scopeEndedOneWeekAgo($query)
     {
-        return $query->whereDate('class_end_date', Carbon::today()->subDay(7));
+        return $query->whereDate('class_end_date', Carbon::today()->subDays(7));
+    }
+
+    /**
+     * This is a collection of carbon dates for each pool session
+     * @return Collection
+     */
+    public function getCalendarEventsAttribute()
+    {
+        $dates = collect();
+        foreach ($this->DaysOfTheWeekArray() as $day) {
+
+            $carbonConstants = collect([
+                'Monday' => Carbon::MONDAY,
+                'Tuesday' => Carbon::TUESDAY,
+                'Wednesday' => Carbon::WEDNESDAY,
+                'Thursday' => Carbon::THURSDAY,
+                'Friday' => Carbon::FRIDAY,
+                'Saturday' => Carbon::SATURDAY,
+                'Sunday' => Carbon::SUNDAY,
+            ]);
+
+            foreach ($carbonConstants as $key => $carbonConstant) {
+                if($key === $day) {
+                    $carbonDayConstant = $carbonConstant;
+                }
+            }
+
+            $startDate = Carbon::parse($this->class_start_date)->next($carbonDayConstant); // Get the first friday.
+            $endDate = Carbon::parse($this->class_end_date);
+
+            for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
+                $dates->push($date->toISOString());
+            }
+        }
+        return $dates;
     }
 }

@@ -13,7 +13,7 @@
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div>
-                <h2 class="uk-heading-line"><span>Spring 2019 Sessions</span></h2>
+                <h2 class="uk-heading-line"><span>Spring 2020 Sessions</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
@@ -23,16 +23,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>March 4th-March 28th</td>
-                            <td>February 11th</td>
+                            <td>March 30th - April 23rd</td>
+                            <td>March 23rd</td>
                         </tr>
                         <tr>
-                            <td>April 1st-April 25th</td>
-                            <td>March 25th</td>
-                        </tr>
-                        <tr>
-                            <td>April 29th-May 23rd</td>
-                            <td>April 22nd</td>
+                            <td>April 27th - May 21st</td>
+                            <td>April 20th</td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,12 +44,8 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>March 2nd-April 6th</td>
-                        <td>February 11th</td>
-                    </tr>
-                    <tr>
-                        <td>April 27th-June 1st</td>
-                        <td>April 15th</td>
+                        <td>April 18th - May 23rd</td>
+                        <td>March 30th</td>
                     </tr>
                     </tbody>
                 </table>
@@ -69,19 +61,15 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>March 3rd-April 7th</td>
-                        <td>February 11th</td>
-                    </tr>
-                    <tr>
-                        <td>April 28th-June 2nd</td>
-                        <td>April 15th</td>
+                        <td>April 19th - May 24th</td>
+                        <td>March 30th</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
 
             <div>
-                <h2 class="uk-heading-line"><span>Summer 2019 Sessions</span></h2>
+                <h2 class="uk-heading-line"><span>Summer 2020 Sessions</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
@@ -91,20 +79,24 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>June 3rd-June 13th</td>
-                        <td>May 20th</td>
+                        <td>June 1st - June 11th</td>
+                        <td>May 18th</td>
                     </tr>
                     <tr>
-                        <td>June 17th-June 27th</td>
-                        <td>June 10th</td>
+                        <td>June 15th - June 25th</td>
+                        <td>June 8th</td>
                     </tr>
                     <tr>
-                        <td>July 8th-July 18th</td>
-                        <td>July 1st</td>
+                        <td>June 29th - July 9th</td>
+                        <td>June 22nd</td>
                     </tr>
                     <tr>
-                        <td>July 22nd-August 1st</td>
-                        <td>July 15th</td>
+                        <td>July 13th - July 23rd</td>
+                        <td>July 6th</td>
+                    </tr>
+                    <tr>
+                        <td>July 27th - August 6th</td>
+                        <td>July 20th</td>
                     </tr>
                     </tbody>
                 </table>
@@ -120,12 +112,12 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>June 15th-July 20th</td>
-                        <td>June 3rd</td>
+                        <td>June 6th - July 11th</td>
+                        <td>May 25th</td>
                     </tr>
                     <tr>
-                        <td>August 3rd-September 7th</td>
-                        <td>July 22nd</td>
+                        <td>July 25th - August 29th</td>
+                        <td>July 13th</td>
                     </tr>
                     </tbody>
                 </table>
@@ -141,19 +133,19 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>June 16th-July 21st</td>
-                        <td>June 3rd</td>
+                        <td>June 7th - July 12th</td>
+                        <td>May 25th</td>
                     </tr>
                     <tr>
-                        <td>August 4th-September 8th</td>
-                        <td>July 22nd</td>
+                        <td>July 26th - August 30th</td>
+                        <td>July 13th</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
 
             <div>
-                <h2 class="uk-heading-line"><span>Fall 2019 Sessions</span></h2>
+                <h2 class="uk-heading-line"><span>Fall 2020 Sessions</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
@@ -163,16 +155,16 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>August 12th-September 5th</td>
-                        <td>August 5th</td>
+                        <td>August 10th - September 3rd</td>
+                        <td>August 3rd</td>
                     </tr>
                     <tr>
-                        <td>September 9th-October 3rd</td>
-                        <td>September 2nd</td>
+                        <td>September 7th - October 1st</td>
+                        <td>August 31st</td>
                     </tr>
                     <tr>
-                        <td>October 7th-October 31st</td>
-                        <td>September 30th</td>
+                        <td>October 5th - October 29th</td>
+                        <td>September 28th</td>
                     </tr>
                     </tbody>
                 </table>
@@ -188,8 +180,8 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>September 21st-October 26th</td>
-                        <td>September 9th</td>
+                        <td>September 12th - October 17th</td>
+                        <td>August 31st</td>
                     </tr>
                     </tbody>
                 </table>
@@ -205,8 +197,8 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>September 22nd-October 27th</td>
-                        <td>September 9th</td>
+                        <td>September 13th - October 18th</td>
+                        <td>August 31st</td>
                     </tr>
                     </tbody>
                 </table>

@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Athlete::class, function (Faker $faker) {
     return [
         'firstName' => $faker->firstName,

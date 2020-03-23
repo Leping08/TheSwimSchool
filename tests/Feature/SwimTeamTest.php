@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Mail\STSignUp;
+use App\Mail\SwimTeam\STSignUp;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
@@ -13,6 +13,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class SwimTeamTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
+
+    //TODO links in this file are a bit messy
 
     /** @test **/
     public function a_swimmer_can_sign_up_by_hitting_the_swim_team_sign_up_route()
