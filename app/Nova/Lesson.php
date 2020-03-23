@@ -71,9 +71,9 @@ class Lesson extends Resource
                 'belongsToId' =>   $this->season_id ?? SeasonHelpers::currentSeason()->id
             ]),
             BelongsTo::make('Location')->withMeta([
-                //Select Harrison Ranch by default
-                'belongsToId' => $this->location_id ?? 1
-            ]),
+                //Select River Wilderness by default
+                'belongsToId' => $this->location_id ?? 5
+            ])->searchable(),
             Checkboxes::make('Days', 'days')
                 ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                     return [$item['id'] => $item['day']];
