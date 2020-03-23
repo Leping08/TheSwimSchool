@@ -91,4 +91,20 @@ class PrivatePoolSession extends Model
     {
         return $query->whereDate('start', '>', Carbon::now());
     }
+
+    /**
+     * This  is needed for safari to parse the date time of for the private calendar
+     */
+    public function getStartAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
+
+    /**
+     * This  is needed for safari to parse the date time of for the private calendar
+     */
+    public function getEndAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
 }

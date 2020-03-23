@@ -12,9 +12,16 @@
 @section('content')
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
+            @if($banner && $banner->active)
+                <div class="uk-alert-primary" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    {!! $banner->text !!}
+                </div>
+            @endif
+
             <div class="uk-grid-margin uk-grid">
 
-                <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
+                <div class="uk-grid-item-match uk-flex-middle uk-width-4-5@m">
                     <div class="uk-panel uk-width-1-1">
                         <div class="uk-margin">
                             <div class="uk-dropcap">
@@ -37,15 +44,15 @@
 
             <div class="uk-width-4-4@m uk-first-column uk-margin-large-top">
                 <h2 class="uk-heading-bullet">Location</h2>
-                <p>Private Lessons take place at the River Wilderness Golf & Country Club. Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. <a href="{{ route('pages.contact-us') }}">Contact us</a> for more information and details on requesting private lessons at your home or community pool.</p>
-                <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
+                <p>Private Lessons take place at the River Wilderness Golf & Country Club.</p>
+                <div class="uk-child-width-1-1@m">
                     <div class="uk-card uk-card-default">
                         <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=River+Wilderness+Golf+%26+Country+Club&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
 
-            @if(!config('season.private.off-season'))
+            @if(!config('season.groups.off-season'))
             <div class="uk-grid-margin uk-grid uk-margin-large-top" uk-grid="">
                 <div class="uk-width-4-4@m uk-first-column">
                     <h2 class="uk-heading-bullet">Private Lesson</h2>
@@ -57,7 +64,6 @@
 
             <script src="https://checkout.stripe.com/checkout.js" type="application/javascript"></script>
             <script type="application/javascript">
-
                 let form = null;
                 document.addEventListener('DOMContentLoaded', function () {
                     form = document.getElementById('sign_up');
@@ -225,6 +231,9 @@
                 </form>
             </div>
             @endif
+            <div class="uk-width-4-4@m uk-first-column uk-margin-large-top">
+                Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. <a href="{{ route('pages.contact-us') }}">Contact us</a> for more information and details on requesting private lessons at your home or community pool.
+            </div>
         </div>
     </div>
 @endsection

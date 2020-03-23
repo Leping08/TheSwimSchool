@@ -55,7 +55,7 @@ Home
                     <div class="uk-card-media-top"><img src="/img/lessons/private.jpg" class="el-image uk-border-rounded" alt="Ellenton swimming lessons"></div>
                     <div class="uk-card-body">
                         <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>
-                        <div class="el-content uk-margin">The Swim School offers packages of individualized lessons available seasonally March-October to adults and children (12 months+) of all ability levels at our pool or yours! Swim instruction is customized to meet the needs
+                        <div class="el-content uk-margin">The Swim School offers individualized lessons available seasonally March-October to adults and children (12 months+) of all ability levels at our pool or yours! Swim instruction is customized to meet the needs
                             and goals of each participant. These lessons are also great if group swim lessons do not accommodate your schedule.
                         </div>
                     </div>

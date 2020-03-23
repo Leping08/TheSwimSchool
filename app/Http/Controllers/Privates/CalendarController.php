@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Privates;
 
+use App\Banner;
 use App\Http\Controllers\Controller;
 use App\Lesson;
 use App\Library\Helpers\SeasonHelpers;
@@ -21,8 +22,9 @@ class CalendarController extends Controller
     public function index()
     {
         $private_pool_sessions = PrivatePoolSession::available()->afterNow()->get();
+        $banner = Banner::where('page', '/private-semi-private')->first();
 
-        return view('lessons.private.calendar', ['events' => $private_pool_sessions]);
+        return view('lessons.private.calendar', ['events' => $private_pool_sessions, 'banner' => $banner]);
 
 //        $lessons = Lesson::registrationOpen()->with('group')->get();
 //
