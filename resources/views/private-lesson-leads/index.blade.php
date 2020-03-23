@@ -117,7 +117,7 @@
                     <h2 class="uk-heading-bullet">Request Private Lessons</h2>
                     <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
                         <div class="uk-card uk-card-default uk-card-body">
-                            <form action="{{ route('privates.store') }}" method="post">
+                            <form action="{{ route('home_privates.store') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Swimmer Name</label>

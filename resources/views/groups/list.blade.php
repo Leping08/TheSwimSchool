@@ -36,7 +36,7 @@
                                 <h5>Weekday Session (8 Classes)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>All Levels $85.00</li>
-                                    <li>Swim Club Levels (Flying Fish & Shark) $100</li>
+                                    <li>Swim Club Levels (Flying Fish $100 & Shark $125)</li>
                                 </ul>
                             </div>
                         </div>

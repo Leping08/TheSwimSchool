@@ -37,7 +37,7 @@
 
             <div class="uk-width-4-4@m uk-first-column uk-margin-large-top">
                 <h2 class="uk-heading-bullet">Location</h2>
-                <p class="uk-text-meta">Private Lessons take place at the River Wilderness Golf & Country Club.</p>
+                <p>Private Lessons take place at the River Wilderness Golf & Country Club. Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. <a href="{{ route('pages.contact-us') }}">Contact us</a> for more information and details on requesting private lessons at your home or community pool.</p>
                 <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
                     <div class="uk-card uk-card-default">
                         <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=River+Wilderness+Golf+%26+Country+Club&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
