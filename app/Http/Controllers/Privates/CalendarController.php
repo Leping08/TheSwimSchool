@@ -8,6 +8,7 @@ use App\Lesson;
 use App\Library\Helpers\SeasonHelpers;
 use App\Library\NewsLetter\NewsLetter;
 use App\Library\StripeCharge;
+use App\Mail\Privates\PrivateLessonSignUp;
 use App\PrivateLesson;
 use App\PrivatePoolSession;
 use App\PrivateSwimmer;
@@ -16,6 +17,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class CalendarController extends Controller
 {
@@ -138,8 +140,15 @@ class CalendarController extends Controller
             NewsLetter::subscribe(request()->email);
         }
 
-        //TODO: send sign up email
+        try {
+            Mail::to($private_swimmer->email)->send(new PrivateLessonSignUp($private_lesson));
+            Log::info("Sending private lesson sign up email to $private_swimmer->email");
+        } catch (\Exception $e) {
+            Log::error("Error trying to send private lesson sign up email to $private_swimmer->email. Error:" . $e->getMessage());
+        }
+
         //TODO: send admin email saying the lesson is full???
+        //TODO Add logging in here
         session()->flash("success", "Thanks for signing up! Please check your email for a confirmation.");
         return redirect()->route('pages.thank-you');
     }

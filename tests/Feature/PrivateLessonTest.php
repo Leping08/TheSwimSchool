@@ -4,8 +4,10 @@
 namespace Tests\Feature;
 
 
+use App\Mail\Privates\PrivateLessonSignUp;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class PrivateLessonTest extends TestCase

@@ -11,6 +11,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Actions\Actionable;
 
+
+/**
+ * An Eloquent Model: 'PrivateLesson'
+ *
+ * @property integer $id
+ * @property string $season_id
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property-read Season $season
+ * @property-read PrivatePoolSession $pool_sessions
+ * @property-read PrivateSwimmer $swimmers
+ */
+
 class PrivateLesson extends Model
 {
     use SoftDeletes, Actionable, Notifiable;

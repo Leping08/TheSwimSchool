@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Mail\Privates\PrivateLessonSignUp;
 use App\PrivatePoolSession;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 
@@ -14,6 +16,11 @@ class PrivateLessonRequestTest extends TestCase
     /** @test  **/
     public function a_user_can_request_a_private_lesson()
     {
+        Mail::fake();
+
+        // Assert that no mailables were sent...
+        Mail::assertNothingSent();
+
         $this->seed();
 
         $this->withoutExceptionHandling();
@@ -63,5 +70,7 @@ class PrivateLessonRequestTest extends TestCase
             'emergency_relationship' => $data['emergency_relationship'],
             'emergency_phone' => $data['emergency_phone'],
         ]);
+
+        Mail::assertSent(PrivateLessonSignUp::class);
     }
 }

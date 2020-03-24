@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Privates;
 
+use App\PrivateLesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,14 +12,17 @@ class PrivateLessonSignUp extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $privateLesson;
+
     /**
      * Create a new message instance.
      *
      * @return void
+     * @param PrivateLesson $privateLesson
      */
-    public function __construct()
+    public function __construct(PrivateLesson $privateLesson)
     {
-        //
+        $this->privateLesson = $privateLesson;
     }
 
     /**
@@ -28,6 +32,12 @@ class PrivateLessonSignUp extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Private Lesson with The Swim School')
+            ->markdown('email.lessons.privates.sign_up')
+            ->with([
+                'lesson' => $this->privateLesson,
+                'first_pool_session' => $this->privateLesson->pool_sessions->first(),
+                'location' => $this->privateLesson->pool_sessions->first()->location
+            ]);
     }
 }
