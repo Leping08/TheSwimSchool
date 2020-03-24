@@ -1,12 +1,12 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The North River Swim Team | Parrish Swimming | The Swim School Florida</title>
-    <meta name="description" content="The Swim School near Parrish Florida invites you to come join our team! The North RIver Swim Team is holding tryouts at the River Wildnerness Country Club. Sign up for tryouts today."/>
+    <title>The Parrish Bull Sharks | Parrish Swimming | The Swim School Florida</title>
+    <meta name="description" content="The Swim School near Parrish Florida invites you to come join our team! The Parrish Bull Sharks is holding tryouts at the River Wildnerness Country Club. Sign up for tryouts today."/>
 @endsection
 
 @section('heading')
-    North River Swim Team
+    Parrish Bull Sharks
 @endsection
 
 @section('content')
@@ -21,13 +21,12 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>2019 Fall Swim Team</span></h2>
+                        <h2 class="uk-heading-line"><span>2020 Spring Swim Team</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
-                                {{--Registration is now open for our 2019 Fall Swim Team.--}} The Season Runs <strong>Tuesday, September 3rd - Wednesday, October 30th</strong> and is held at the River Wilderness Golf & Country Club pool. {{--Tryouts will also take place at the River Wilderness Golf & Country Club pool.--}}
+                                <p>Bring your suit, goggles & towel and come join our team! The Parrish Bull Sharks swim team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.</p>
+{{--                                Registration is now open for our 2019 Fall Swim Team. The Season Runs <strong>Tuesday, September 3rd - Wednesday, October 30th</strong> and is held at the River Wilderness Golf & Country Club pool. Tryouts will also take place at the River Wilderness Golf & Country Club pool.--}}
                                 {{--To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.--}}
-                                Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
-                            </p>
                         </div>
                         {{--<div class="uk-margin">
                             <div class="uk-child-width-auto uk-grid-small uk-grid uk-grid-stack" uk-grid="">
@@ -51,10 +50,10 @@
                         </div>--}}
                         {{--<div>
                             <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>
-                            <p>The North River Swim Team practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
+                            <p>The Parrish Bull Sharks practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
                             <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>
                         </div>--}}
-{{--                        <div>
+                        {{-- <div>
                             <!-- TODO: Add tryout that lasts all season -->
                             <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>
                             <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>
@@ -64,7 +63,8 @@
                 <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
                     <div class="uk-panel">
                         <div class="uk-margin">
-                            <img class="" alt="" src="/img/logos/north-river-rapids.png">
+                            {{--<img class="" alt="" src="/img/logos/north-river-rapids.png">--}}
+                            <img class="" alt="" src="/img/swim-team/dive-cropped.jpg">
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
     </div>
 
 
-    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+    {{--<div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
@@ -101,10 +101,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 
 
-    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+    {{--<div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
@@ -135,10 +135,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 
 
-    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+    {{--<div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>
@@ -157,7 +157,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 
 
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
@@ -208,7 +208,7 @@
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
-                            <div class="uk-margin">Check out the current north river rapids team record holders.</div>
+                            <div class="uk-margin">Check out the current Parrish Bull Sharks team record holders.</div>
                             <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Team_Record_Holders.pdf" download="NRST_Team_Record_Holders.pdf">Download</a>
                         </div>
                     </div>
