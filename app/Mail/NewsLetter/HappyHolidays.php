@@ -33,7 +33,7 @@ class HappyHolidays extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.happyHolidays')
-                ->with(['emailAddress', $this->emailAddress]);
+        return $this->markdown('email.newsletter.happyHolidays')
+                ->with(['emailAddress' => $this->emailAddress]);
     }
 }

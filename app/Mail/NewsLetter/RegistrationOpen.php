@@ -33,8 +33,8 @@ class RegistrationOpen extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.registrationOpen')
-                    ->subject('Group Lesson Registration Now Open')
-                    ->with(['emailAddress', $this->emailAddress]);
+        return $this->markdown('email.newsletter.registrationOpen')
+                    ->subject('2020 Swim Season')
+                    ->with(['emailAddress' => $this->emailAddress]);
     }
 }

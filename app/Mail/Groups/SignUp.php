@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail\Privates;
+namespace App\Mail\Groups;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -34,7 +34,7 @@ class SignUp extends Mailable
     public function build()
     {
         return $this->subject($this->lesson->group->type)
-                    ->markdown('email.lessonSignUp')
-                    ->with(['lesson', $this->lesson]);
+                    ->markdown('email.groups.lessonSignUp')
+                    ->with(['lesson' => $this->lesson]);
     }
 }

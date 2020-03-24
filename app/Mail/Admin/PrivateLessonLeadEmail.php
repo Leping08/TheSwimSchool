@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Admin;
 
 use App\PrivateLessonLead;
 use Illuminate\Bus\Queueable;
@@ -34,7 +34,7 @@ class PrivateLessonLeadEmail extends Mailable
     public function build()
     {
         return $this->subject('Private Lesson Request')
-            ->markdown('email.privateLessonLead')
-            ->with(['lead', $this->privateLessonLead]);
+            ->markdown('email.admin.privateLessonLead')
+            ->with(['lead' => $this->privateLessonLead]);
     }
 }

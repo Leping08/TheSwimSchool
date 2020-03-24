@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Mail\Groups\WaitListAdmin;
+use App\Mail\Admin\WaitList;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
@@ -52,7 +52,7 @@ class WaitListTest extends TestCase
             "date_of_birth" => $attributes['date_of_birth']
         ]);
 
-        Mail::assertSent(WaitListAdmin::class);
+        Mail::assertSent(WaitList::class);
     }
 
     /** @test  **/

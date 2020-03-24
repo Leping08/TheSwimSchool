@@ -217,7 +217,7 @@ img {
     -webkit-text-size-adjust: none;
 }
 
-.button-blue {
+.button-blue, .button-primary {
     background-color: #ff4870;
     border-top: 10px solid #ff4870;
     border-right: 18px solid #ff4870;

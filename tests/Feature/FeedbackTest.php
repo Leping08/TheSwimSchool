@@ -80,7 +80,7 @@ class FeedbackTest extends TestCase
 
         SendFeedbackEmails::dispatchNow();
 
-        Mail::assertSent(\App\Mail\FeedbackSurvey::class);
+        Mail::assertSent(\App\Mail\Admin\FeedbackSurvey::class);
     }
 
     /** @test */
@@ -118,6 +118,6 @@ class FeedbackTest extends TestCase
 
         SendFeedbackEmails::dispatchNow();
 
-        Mail::assertSent(\App\Mail\FeedbackSurvey::class, 1);
+        Mail::assertSent(\App\Mail\Admin\FeedbackSurvey::class, 1);
     }
 }

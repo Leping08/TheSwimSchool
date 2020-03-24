@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use App\PrivateLessonLead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Mail\PrivateLessonLeadEmail;
+use App\Mail\Admin\PrivateLessonLeadEmail;
 use Illuminate\Support\Facades\Mail;
 
 class LeadController extends Controller

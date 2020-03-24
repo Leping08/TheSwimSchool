@@ -9,7 +9,7 @@
 @endcomponent
 
 @component('mail::button', ['url' => config('app.url').'admin/resources/contact-uses/'.$data->id])
-    View Details
+View Details
 @endcomponent
 
 @endcomponent

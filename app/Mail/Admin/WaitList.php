@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail\Groups;
+namespace App\Mail\Admin;
 
 use App\Lesson;
 use Illuminate\Bus\Queueable;
@@ -9,10 +9,10 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
- * Class WaitListAdmin
+ * Class WaitList
  * @package App\Mail
  */
-class WaitListAdmin extends Mailable
+class WaitList extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -24,7 +24,7 @@ class WaitListAdmin extends Mailable
 
 
     /**
-     * WaitListAdmin constructor.
+     * WaitList constructor.
      * @param Lesson $lesson
      */
     public function __construct(Lesson $lesson)
@@ -40,7 +40,7 @@ class WaitListAdmin extends Mailable
     public function build()
     {
         return $this->subject('Wait List Filling Up')
-            ->markdown('email.waitListAdmin')
-            ->with(['lesson', $this->lesson]);
+            ->markdown('email.admin.waitListAdmin')
+            ->with(['lesson' => $this->lesson]);
     }
 }

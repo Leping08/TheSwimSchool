@@ -10,6 +10,7 @@
 
 @component('mail::panel')
 <img style="margin-bottom: 2em;" src="{{asset('img/swim-team/awards.jpg')}}">
+
 ## Calling all swimmers!
 The North River Rapids Fall Swim Club tryouts are open for registration! Check out all the details on our website and sign up online now to secure your spot. All returning and new participants must sign up for a tryout. Spaces are limited!
 @endcomponent
@@ -21,7 +22,7 @@ Sign Up
 Thanks,<br>
 North River Rapids
 
-<div style="padding: 1em 0em 0em 0em; font-size: x-small; color: #9BA2AB">If you are no longer interested in receiving emails from The Swim School, you can <a href="theswimschoolfl.com/unsubscribe/{{{$emailAddress}}}">unsubscribe</a>.</div>
+<div style="padding: 1em 0em 0em 0em; font-size: x-small; color: #9BA2AB">If you are no longer interested in receiving emails from The Swim School, you can <a href="{{config('app.url')}}unsubscribe/{{{$emailAddress}}}">unsubscribe</a>.</div>
 
 @slot('footer')
 @component('mail::footer')

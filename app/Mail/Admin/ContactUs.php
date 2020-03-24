@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Admin;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -40,8 +40,10 @@ class ContactUs extends Mailable
     public function build()
     {
         return $this->subject($this->subject)
-                    ->markdown('email.contactUs')
-                    ->with(['data', $this->data])
-                    ->with(['subject', $this->subject]);
+                    ->markdown('email.admin.contactUs')
+                    ->with([
+                        'data' => $this->data,
+                        'subject' => $this->subject
+                    ]);
     }
 }

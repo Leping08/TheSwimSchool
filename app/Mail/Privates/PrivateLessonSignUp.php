@@ -33,7 +33,7 @@ class PrivateLessonSignUp extends Mailable
     public function build()
     {
         return $this->subject('Private Lesson with The Swim School')
-            ->markdown('email.lessons.privates.sign_up')
+            ->markdown('email.privates.sign_up')
             ->with([
                 'lesson' => $this->privateLesson,
                 'first_pool_session' => $this->privateLesson->pool_sessions->first(),

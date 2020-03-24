@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail\Groups;
+namespace App\Mail\Admin;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -35,6 +35,6 @@ class ClassFull extends Mailable
     public function build()
     {
         return $this->subject($this->lesson->group->type.' lesson is full.')
-                    ->markdown('email.classFull');
+                    ->markdown('email.admin.classFull');
     }
 }

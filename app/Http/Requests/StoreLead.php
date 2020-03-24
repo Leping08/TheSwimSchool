@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Contact;
-use App\Mail\ContactUs;
+use App\Mail\Admin\ContactUs;
 use App\Rules\Recaptcha;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;

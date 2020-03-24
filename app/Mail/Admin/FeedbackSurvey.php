@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Admin;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+//This is currently not being used in prod
 class FeedbackSurvey extends Mailable
 {
     use Queueable, SerializesModels;

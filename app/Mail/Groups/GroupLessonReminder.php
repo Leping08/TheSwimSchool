@@ -34,7 +34,7 @@ class GroupLessonReminder extends Mailable
     public function build()
     {
         return $this->subject($this->lesson->group->type)
-            ->markdown('email.groupLessonReminder')
-            ->with(['lesson', $this->lesson]);
+            ->markdown('email.groups.lessonReminder')
+            ->with(['lesson' => $this->lesson]);
     }
 }

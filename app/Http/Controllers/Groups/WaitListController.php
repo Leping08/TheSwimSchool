@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Groups;
 
 use App\Http\Controllers\Controller;
 use App\Lesson;
-use App\Mail\Groups\WaitListAdmin;
-use App\WaitList;
+use App\Mail\Admin\WaitList;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -50,7 +49,7 @@ class WaitListController extends Controller
 
         $waitingSwimmer['date_of_birth'] = Carbon::parse($waitingSwimmer['date_of_birth'])->format('Y-m-d');
 
-        $newWaitingSwimmer = WaitList::create($waitingSwimmer);
+        $newWaitingSwimmer = \App\WaitList::create($waitingSwimmer);
 
         $this->sendWaitListAdminEmail($lesson);
 
@@ -68,7 +67,7 @@ class WaitListController extends Controller
         Log::info("Sending wait list email to admins about lesson ID: $lesson->id");
         foreach(config('mail.leadDestEmails') as $email){
             Log::info("Sending Wait List admin email to $email");
-            Mail::to($email)->send(new WaitListAdmin($lesson));
+            Mail::to($email)->send(new WaitList($lesson));
         }
     }
 }
