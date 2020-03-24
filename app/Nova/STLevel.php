@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class STLevel extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name', 'name'),
-            Number::make('Price', 'price'),
+            Currency::make('Price')->currency('USD'),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsToMany::make('Day', 'schedule', Day::class)->fields(function () {

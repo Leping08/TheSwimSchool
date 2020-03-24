@@ -79,7 +79,7 @@ class Lesson extends Resource
                     return [$item['id'] => $item['day']];
                 }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
             LessonLink::make('Link')->onlyOnDetail(),
-            Currency::make('Price')->format('$%.2n')->hideFromIndex(),
+            Currency::make('Price')->currency('USD')->hideFromIndex(),
             Text::make('Class Size', 'class_size')->withMeta([
                 "value" => $this->class_size ?? '4'
             ])->hideFromIndex(),
