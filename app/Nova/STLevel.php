@@ -50,7 +50,7 @@ class STLevel extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name', 'name'),
-            Currency::make('Price')->currency('USD'),
+            Number::make('Price'),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsToMany::make('Day', 'schedule', Day::class)->fields(function () {
