@@ -15,7 +15,7 @@ return [
    */
 
     'private' => [
-        'season' => true,
+        'season' => false,
 
         'next_season' => [
             'registration_open' => 'May 23th'
