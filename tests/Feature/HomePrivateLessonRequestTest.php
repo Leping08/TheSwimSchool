@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
-class PrivateLessonTest extends TestCase
+class HomePrivateLessonRequestTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
@@ -21,14 +21,12 @@ class PrivateLessonTest extends TestCase
 
         $attributes = [
             'swimmer_name' => $this->faker->name,
-            'email' => $this->faker->email,
+            'email' => $this->faker->safeEmail,
             'swimmer_birth_date' => '2018-2-1',
             'phone' => $this->faker->phoneNumber,
             'type' => 'Private Lesson',
             'length' => '4 Lessons Per Month',
-            'location' => 'Harrison Ranch',
             'availability' => $this->faker->paragraph,
-            //'hr_resident' => 'on',
             'address' => $this->faker->address
         ];
 
@@ -38,6 +36,17 @@ class PrivateLessonTest extends TestCase
 
         $this->assertEquals(0,  \App\PrivateLessonLead::all()->count());
 
-        $response = $this->post(route('privates.store'), $attributes);
+        $this->post(route('home_privates.store'), $attributes)
+            ->assertStatus(302);
+
+        $this->assertDatabaseHas('private_lesson_leads', [
+            "swimmer_name" => $attributes['swimmer_name'],
+            "email" => $attributes['email'],
+            "phone" => $attributes['phone'],
+            "type" => $attributes['type'],
+            "length" => $attributes['length'],
+            "availability" => $attributes['availability'],
+            "address" => $attributes['address']
+        ]);
     }
 }

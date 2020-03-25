@@ -117,10 +117,10 @@ Route::get('/private-semi-private', 'Privates\CalendarController@index')->name('
 Route::post('/private-semi-private', 'Privates\CalendarController@store')->name('private_lesson.store');
 
 /* @see LeadController::index() */
-//Route::get('/private-home-lesson', 'Privates\LeadController@index')->name('home_privates.index');
+Route::get('/home-private-lesson', 'Privates\LeadController@index')->name('home_privates.index');
 
 /* @see LeadController::store() */
-//Route::post('/private-home-lesson', 'Privates\LeadController@store')->name('home_privates.store');
+Route::post('/home-private-lesson', 'Privates\LeadController@store')->name('home_privates.store');
 
 
 

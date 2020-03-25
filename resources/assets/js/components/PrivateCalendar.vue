@@ -17,9 +17,6 @@
                     <div class="uk-h3 uk-width-1-2">Cart</div>
                     <div class="uk-h3 uk-width-1-2 uk-text-right"><i class="fa fa-shopping-cart fa-lg"></i></div>
                 </div>
-                <div v-if="cartFull" class="uk-alert-success" uk-alert>
-                    <p>The cart is full, checkout below</p>
-                </div>
                 <div v-for="event in cart" class="uk-card uk-card-default uk-card-body uk-width-1-1@m uk-margin">
                     <button @click="remove(event.id)" class="uk-offcanvas-close uk-button-small" type="button" uk-close></button>
                     <div>{{event.start.toDateString()}}</div>
@@ -31,7 +28,7 @@
             </div>
             <input class="" name="pool_session_ids" :value="poolSessionIds" hidden>
         </div>
-        <div v-show="cartFull" class="uk-grid uk-width-1-1">
+        <div v-show="cart.length" class="uk-grid uk-width-1-1">
             <slot></slot>
         </div>
     </div>
@@ -76,13 +73,6 @@
         },
         methods: {
             eventClicked: function (event) {
-                //Check if the cart is full
-                if(this.cartFull) {
-                    console.log('Your cart is full');
-                    //TODO Alert already have 4 in cart
-                    return;
-                }
-
                 //Check if the event being added to the cart is a duplicate
                 if(this.duplicates(event.event.id)) {
                     return;
@@ -122,9 +112,6 @@
             }
         },
         computed: {
-            cartFull: function () {
-                return this.cart.length >= 4;
-            },
             poolSessionIds: function () {
                 return this.cart.map(function (item) {
                     return item.id;

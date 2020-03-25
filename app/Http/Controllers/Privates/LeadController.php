@@ -35,7 +35,6 @@ class LeadController extends Controller
             'phone' => 'required|string',
             'type' => 'required|string',
             'length' => 'required|string',
-            'location' => 'required|string',
             'availability' => 'required|string'
         ]);
 

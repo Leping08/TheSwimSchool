@@ -6,7 +6,7 @@ import VueMoment from 'vue-moment'
 import moment from 'moment'
 
 //Components
-import privateLessonRequestForm from './components/PrivateLessonRequestForm'
+//import privateLessonRequestForm from './components/PrivateLessonRequestForm'
 import swimTeamRoster from './components/SwimTeamRoster'
 import promo_code from './components/promoCode'
 import privateCalendar from './components/PrivateCalendar'
@@ -19,7 +19,7 @@ const app = new Vue({
     el: '#app',
     components: {
         swimTeamRoster,
-        privateLessonRequestForm,
+        //privateLessonRequestForm,
         privateCalendar,
         promo_code: promo_code
     }

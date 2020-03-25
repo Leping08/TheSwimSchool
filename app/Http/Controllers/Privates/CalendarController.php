@@ -68,11 +68,19 @@ class CalendarController extends Controller
             'stripe_token' => 'required'
         ]);
 
-        $pool_session_ids = explode(',', request()->pool_session_ids);
+        //Check if the length of the pool session string is just one.
+        //This would be when someone only picks one lesson.
+        if(strlen(request()->pool_session_ids) == 1) {
+            $pool_session_ids = collect(request()->pool_session_ids);
+        } else {
+            $pool_session_ids = explode(',', request()->pool_session_ids);
+        }
+
 
         //Check the length of the array of pool session id's
-        if (!(count($pool_session_ids) > 2)) {
-            session()->flash('warning', 'Something went wrong with the lessons selected.');
+        if (!(count($pool_session_ids) >= 1)) {
+            Log::warning("Someone went wrong with lesson selection. Pool session ids array: $pool_session_ids");
+            session()->flash('warning', 'Something went wrong with the lesson selection.');
             return redirect()->back();
         }
 

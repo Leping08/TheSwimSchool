@@ -6,7 +6,7 @@
 @endsection
 
 @section('heading')
-    Private Lessons
+    Home Private Lessons
 @endsection
 
 @section('content')
@@ -19,102 +19,68 @@
                 </div>
             @endif
 
-            <div class="uk-grid-margin uk-grid" uk-grid="">
-                <div class="uk-width-3-4@m uk-first-column">
-{{--                    <div class="uk-margin uk-dropcap">--}}
-{{--                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete--}}
-{{--                        looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly.--}}
-{{--                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at Harrison Ranch and River Wilderness Golf & Country Club.--}}
-{{--                    </div>--}}
-                    <div class="uk-margin uk-dropcap">
-                        Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
-                        looking to improve your technique, private and semi-private swim lessons can be customized to your specific needs to help you achieve your goals quickly.
-                        These lessons can be purchased monthly in packages of four (4) or eight (8) lessons at your pool or one of our pool locations. The Swim School teaches private and semi private lessons at the River Wilderness Golf & Country Club.
-                    </div>
-                </div>
-                <div class="uk-width-expand@m">
-                    <div class="uk-margin">
-                        <img src="/img/lessons/teaching.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="uk-grid-margin uk-grid" uk-grid="">
+            <div class="uk-grid-margin uk-margin-large-top">
                 <div class="uk-width-4-4@m uk-first-column">
-                    <h2 class="uk-heading-bullet">Private Lesson Package Options</h2>
-                    <p class="uk-text-meta">Private lessons are conducted one-on-one with an instructor.</p>
-                    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
-                                <ul class="uk-list uk-list-bullet">
-                                    <li>Our Pool = $140 per Student</li>
-                                    <li>Your Pool = $200 per Student</li>
-                                </ul>
+                    <h2 class="uk-heading-bullet">Request Private Lessons at Home</h2>
+                </div>
+
+                <p>Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available.</p>
+
+                <div class="uk-grid-margin uk-grid" uk-grid="">
+                    <div class="uk-width-4-4@m uk-first-column">
+                        <h3 class="uk-heading-bullet">Private Lesson Package Options</h3>
+                        <p class="uk-text-meta">Private lessons are conducted one-on-one with an instructor.</p>
+                        <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+                            <div>
+                                <div class="uk-card uk-card-default uk-card-body">
+                                    <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
+                                    <ul class="uk-list uk-list-bullet">
+                                        <li>Our Pool = $140 per Student</li>
+                                        <li>Your Pool = $200 per Student</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-default uk-card-body">
+                                    <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
+                                    <ul class="uk-list uk-list-bullet">
+                                        <li>Our Pool = $280 per Student</li>
+                                        <li>Your Pool = $400 per Student</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
-                                <ul class="uk-list uk-list-bullet">
-                                    <li>Our Pool = $280 per Student</li>
-                                    <li>Your Pool = $400 per Student</li>
-                                </ul>
+                    </div>
+
+                    <div class="uk-width-4-4@m uk-first-column">
+                        <h3 class="uk-heading-bullet">Semi-Private Lesson Package Options</h3>
+                        <p class="uk-text-meta">Semi-Private lessons can be requested if you have siblings or friends close in age and ability level who would like to receive swim instruction together.</p>
+                        <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+                            <div>
+                                <div class="uk-card uk-card-default uk-card-body">
+                                    <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
+                                    <ul class="uk-list uk-list-bullet">
+                                        <li>Our Pool = $80 per Student</li>
+                                        <li>Your Pool = $120 per Student</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-default uk-card-body">
+                                    <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
+                                    <ul class="uk-list uk-list-bullet">
+                                        <li>Our Pool = $160 per Student</li>
+                                        <li>Your Pool = $240 per Student</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="uk-width-4-4@m uk-first-column">
-                    <h2 class="uk-heading-bullet">Semi-Private Lesson Package Options</h2>
-                    <p class="uk-text-meta">Semi-Private lessons can be requested if you have siblings or friends close in age and ability level who would like to receive swim instruction together.</p>
-                    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
-                                <ul class="uk-list uk-list-bullet">
-                                    <li>Our Pool = $80 per Student</li>
-                                    <li>Your Pool = $120 per Student</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
-                                <ul class="uk-list uk-list-bullet">
-                                    <li>Our Pool = $160 per Student</li>
-                                    <li>Your Pool = $240 per Student</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @if(config('season.private.season'))
+                    <p>Please provide as much info as possible so we can provide you details regarding private lessons at your home or community pool.</p>
 
-                <div class="uk-width-4-4@m uk-first-column">
-                    <h2 class="uk-heading-bullet">Locations</h2>
-{{--                    <p class="uk-text-meta">Private Lessons take place at Harrison Ranch and River Wilderness Golf & Country Club or any Home/Community Pool within Parrish, Ellenton or Palmetto.</p>--}}
-                    <p class="uk-text-meta">Private Lessons take place at the River Wilderness Golf & Country Club or any Home/Community Pool within Parrish, Ellenton or Palmetto.</p>
-                    <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
-{{--                        <div>--}}
-{{--                            --}}{{--<h5>Harrison Ranch</h5>--}}
-{{--                            <div class="uk-card uk-card-default">--}}
-{{--                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                        <div>
-                            {{--<h5>River Wilderness Golf & Country Club</h5>--}}
-                            <div class="uk-card uk-card-default">
-                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=River+Wilderness+Golf+%26+Country+Club&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                @if(!config('season.private.off-season'))
-                <div class="uk-width-1-1@m uk-first-column">
-                    <h2 class="uk-heading-bullet">Request Private Lessons</h2>
                     <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
                         <div class="uk-card uk-card-default uk-card-body">
                             <form action="{{ route('home_privates.store') }}" method="post">
@@ -161,7 +127,18 @@
                                         </select>
                                     </div>
                                 </div>
-                                <private-lesson-request-form oldAddress="{{ old('address') }}" oldAvailability="{{ old('availability') }}"></private-lesson-request-form>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Address</label>
+                                    <div class="uk-form-controls">
+                                        <input type="text" name="address" value="{{ old('address') }}" class="uk-input" placeholder="12345 Street Lakewood Ranch, FL 34202" required>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label uk-heading-bullet" for="">Provide us with your availability</label>
+                                    <div class="uk-form-controls">
+                                        <textarea name="availability" rows="5" class="uk-textarea" placeholder="Example: I am available Monday from 8am-1pm and Wednesday from 5-9pm." required>{{ old('availability') }}</textarea>
+                                    </div>
+                                </div>
                                 <div uk-grid="" class="uk-grid">
                                     <div class="uk-width-1-2@s uk-margin">
                                         <input type="submit" value="Send" class="uk-button-primary uk-button uk-button-large">
@@ -170,7 +147,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
                 @endif
             </div>
         </div>
