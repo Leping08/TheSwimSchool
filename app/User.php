@@ -27,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function pool_sessions()
+    {
+        return $this->hasMany(PrivatePoolSession::class, 'user_id');
+    }
 }

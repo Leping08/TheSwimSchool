@@ -50,6 +50,14 @@ class PrivatePoolSession extends Model
     }
 
     /**
+     * @return BelongsTo
+     */
+    public function instructor()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
      * If the user has swimmers then its considered full
      *
      * @return bool
