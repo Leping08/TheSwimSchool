@@ -21,12 +21,14 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>2020 Spring Swim Team</span></h2>
+                        <h2 class="uk-heading-line"><span>2020 Parrish Bull Sharks Summer Swim Team</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
-                                <p>Bring your suit, goggles & towel and come join our team! The Parrish Bull Sharks swim team practices at the River Wilderness Country Club and competes in a seasonal, developmental swim league. Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.</p>
-{{--                                Registration is now open for our 2019 Fall Swim Team. The Season Runs <strong>Tuesday, September 3rd - Wednesday, October 30th</strong> and is held at the River Wilderness Golf & Country Club pool. Tryouts will also take place at the River Wilderness Golf & Country Club pool.--}}
-                                {{--To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.--}}
+                                Bring your suit, goggles & towel and come join our team! The Parrish Bull Sharks swim team competes in a seasonal, developmental swim league.
+                                The summer season runs Monday, <strong>June 1st- Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
+                                Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
+{{--                                To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.--}}
+                            </p>
                         </div>
                         {{--<div class="uk-margin">
                             <div class="uk-child-width-auto uk-grid-small uk-grid uk-grid-stack" uk-grid="">
@@ -40,14 +42,25 @@
                                 </div>
                             </div>
                         </div>--}}
-                        {{--<div>
+                        <div>
                             <h2 class="uk-heading-line"><span>Tryouts</span></h2>
-                            <p><strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim club.</strong></p>
+                            <p>
+                                Registration for swim team tryouts opens on May 1st. There is no fee to tryout for the swim team. Tryouts are held at the River Wilderness Golf & Country Club pool.
+{{--                                <strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim club.</strong>--}}
+                            </p>
                             <ul class="uk-list uk-list-bullet">
-                                <li>Tuesday, August 27th at 5:45PM</li>
-                                <li>Wednesday, August 28th at 5:45PM</li>
+                                <li>Tuesday, May 19th at 6:30PM</li>
+                                <li>Wednesday, May 20th at 6:30PM</li>
+                                <li>Saturday, May 23rd at 9:00AM</li>
                             </ul>
-                        </div>--}}
+                            <p>
+                                *Minimum Requirement: Each child must be able to swim at least one full individual length without stopping (25 meters) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
+                            </p>
+                            <p>
+                                Need some practice first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and
+                                <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available now to get your child ready for their tryout.
+                            </p>
+                        </div>
                         {{--<div>
                             <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>
                             <p>The Parrish Bull Sharks practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
@@ -73,7 +86,7 @@
     </div>
 
 
-    {{--<div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
@@ -92,19 +105,19 @@
                     <div class="uk-panel">
                         <div class="uk-margin">Swim team tryout will determine group placement.</div>
                         <ul class="uk-list uk-list-bullet">
-                            <li><b>Ripple:</b> Mon/Wed 5PM-5:30PM</li>
-                            <li><b>Splash:</b> Mon/Wed 5PM-5:45PM</li>
-                            <li><b>Waves:</b> Mon/Wed 5:45PM-6:45PM</li>
-                            <li><b>Rapids:</b> Mon/Tues/Wed 5:45PM-7:00PM</li>
+                            <li><b>White Team 1:</b> Mon/Wed/Fri 5PM-5:45PM</li>
+                            <li><b>White Team 2:</b> Tues/Thurs/Fri 5PM-5:45PM</li>
+                            <li><b>Gray Team:</b> Mon/Wed/Fri 5:45PM-6:45PM</li>
+                            <li><b>Blue Team:</b> Mon/Wed 6:45PM-7:45PM, Tues/Thurs 5:45PM-7:15PM</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>--}}
+    </div>
 
 
-    {{--<div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
@@ -116,13 +129,13 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                     <div class="uk-panel">
-                        <div class="uk-margin">No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child who is new to the program will receive one free team swim cap and team t-shirt.</div>
+                        <div class="uk-margin">No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt. Price also includes swim meet entry fees for the entire season with the exception of the Suncoast Swim League championship meet which has a separate fee collected prior to the meet.</div>
                         <ul class="uk-list uk-list-bullet">
-                            <li><b>Ripple:</b> $130</li>
-                            <li><b>Splash:</b> $140</li>
-                            <li><b>Waves:</b> $160</li>
-                            <li><b>Rapids:</b> $200</li>
+                            <li><b>White Team:</b> $250</li>
+                            <li><b>Gray Team:</b> $290</li>
+                            <li><b>Blue Team:</b> $330</li>
                         </ul>
+                        <div class="uk-margin">*Parent Non-Volunteer Fee per swimmer per season (optional): $50</div>
                     </div>
                 </div>
 
@@ -135,7 +148,7 @@
                 </div>
             </div>
         </div>
-    </div>--}}
+    </div>
 
 
     {{--<div class="uk-section-default uk-section-overlap uk-section uk-section-small">
