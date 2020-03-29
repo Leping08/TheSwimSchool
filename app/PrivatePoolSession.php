@@ -115,4 +115,13 @@ class PrivatePoolSession extends Model
     {
         return Carbon::parse($value);
     }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeStartingTomorrow($query)
+    {
+        return $query->where('start', Carbon::tomorrow());
+    }
 }

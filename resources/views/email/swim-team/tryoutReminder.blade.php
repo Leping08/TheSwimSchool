@@ -17,8 +17,8 @@ Don't forget about the North River Swim Team tryouts tomorrow.
 
 @component('mail::panel')
 ### Place
-{{$tryout->location->street}}<br>
-{{$tryout->location->city}}, {{$tryout->location->state}} {{$tryout->location->zip}}<br>
+{{$tryout->location->street}}\
+{{$tryout->location->city}}, {{$tryout->location->state}} {{$tryout->location->zip}}\
 <br>{{$tryout->location->pool_access_instructions}}
 @endcomponent
 

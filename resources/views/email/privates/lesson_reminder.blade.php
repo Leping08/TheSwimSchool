@@ -1,24 +1,21 @@
 @component('mail::message')
-# {{$lesson->group->type}}
+# Private Swim Lesson Reminder
 
 <img style="margin-bottom: 2em;" src="{{asset('img/lessons/kids-floating.jpg')}}">
 
-Thanks for signing up for swim lessons through The Swim School.
-
+We are looking forward to seeing you at {{ $location->name }} for your private swim lesson tomorrow {{$pool_session->start->format('l F jS')}} from {{$pool_session->start->format('g:ia')}} - {{$pool_session->end->format('g:ia')}}.
 
 @component('mail::panel')
 ### Time
-Lessons run from {{$lesson->class_start_date->format('l F jS')}} - {{$lesson->class_end_date->format('l F jS')}}.
-Lessons are on @foreach($lesson->DaysOfTheWeek as $day){{$day->day}}{{$loop->last ? '' : ', '}}@endforeach from {{$lesson->class_start_time->format('g:ia')}} - {{$lesson->class_end_time->format('g:ia')}}.
+Tomorrow {{$pool_session->start->format('l F jS')}}\
+{{$pool_session->start->format('g:ia')}} - {{$pool_session->end->format('g:ia')}}
 @endcomponent
-
 
 @component('mail::panel')
 ### Place
-{{$lesson->location->street}},\
-{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}
+{{$location->street}}\
+{{$location->city}}, {{$location->state}} {{$location->zip}}
 @endcomponent
-
 
 @component('mail::panel')
 ### What To Bring
@@ -27,11 +24,10 @@ Lessons are on @foreach($lesson->DaysOfTheWeek as $day){{$day->day}}{{$loop->las
 * Sun Screen
 @endcomponent
 
-
-@if($lesson->location->pool_access_instructions)
+@if($location->pool_access_instructions)
 @component('mail::panel')
 ### Pool Access Instructions
-{{$lesson->location->pool_access_instructions}}
+{{$location->pool_access_instructions}}
 @endcomponent
 @endif
 

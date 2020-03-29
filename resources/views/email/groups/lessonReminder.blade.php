@@ -15,7 +15,7 @@ The first lesson is tomorrow {{$lesson->class_start_time->format('g:ia')}} - {{$
 
 @component('mail::panel')
 ### Location
-{{$lesson->location->street}}<br>
+{{$lesson->location->street}}\
 {{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}<br>
 @endcomponent
 
@@ -23,7 +23,7 @@ The first lesson is tomorrow {{$lesson->class_start_time->format('g:ia')}} - {{$
 @component('mail::panel')
 ### Class Times
 @foreach($lesson->DaysOfTheWeek as $day)
-{{$day->day}}: {{$lesson->class_start_time->format('g:i a')}} - {{$lesson->class_end_time->format('g:i a')}}<br>
+{{$day->day}}: {{$lesson->class_start_time->format('g:i a')}} - {{$lesson->class_end_time->format('g:i a')}}\
 @endforeach
 {{$lesson->class_start_date->format('F jS')}} - {{$lesson->class_end_date->format('F jS')}}
 @endcomponent

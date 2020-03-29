@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Jobs\SendFeedbackEmails;
 use App\Jobs\SendGroupLessonsReminderEmails;
+use App\Jobs\SendPrivatePoolSessionReminderEmails;
 use App\Jobs\SendTryoutReminderEmails;
 use App\Library\Facebook\FacebookApiRequest;
 use Illuminate\Console\Scheduling\Schedule;
@@ -32,19 +33,24 @@ class Kernel extends ConsoleKernel
 //        })->dailyAt('7:00');
 
         //Update reviews table with the SwimSchool Facebook page reviews
-        $schedule->call(function() {
+        $schedule->call(function () {
             (new FacebookApiRequest())->updateReviews();
         })->dailyAt('7:05');
 
         //Send group lesson reminder emails
-        $schedule->call(function (){
+        $schedule->call(function () {
             SendGroupLessonsReminderEmails::dispatchNow();
         })->dailyAt('7:10');
 
         //Send Swim Team Tryout Reminder emails
-        $schedule->call(function (){
+        $schedule->call(function () {
             SendTryoutReminderEmails::dispatchNow();
         })->dailyAt('7:15');
+
+        //Send private pool session reminder emails
+        $schedule->call(function () {
+            SendPrivatePoolSessionReminderEmails::dispatchNow();
+        })->dailyAt('7:20');
 
         //Prune Telescope Table
         $schedule->command('telescope:prune')->daily();

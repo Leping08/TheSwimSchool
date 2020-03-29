@@ -111,6 +111,7 @@ return [
 
     'adminEmails' => [
         'derek@deltavcreative.com',
-        'theswimschoolfl@gmail.com'
+        'theswimschoolfl@gmail.com',
+        'mmeerman7@gmail.com'
     ]
 ];

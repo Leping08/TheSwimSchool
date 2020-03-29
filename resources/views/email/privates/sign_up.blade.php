@@ -12,7 +12,7 @@ The first lesson is {{$first_pool_session->start->format('g:ia')}} - {{$first_po
 
 @component('mail::panel')
 ### Place
-{{$location->street}},
+{{$location->street}},\
 {{$location->city}}, {{$location->state}} {{$location->zip}}
 @endcomponent
 

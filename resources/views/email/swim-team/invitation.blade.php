@@ -29,7 +29,7 @@ Based on tryouts, we would like to place you in {{$athlete->level->name}} level.
 
 @component('mail::panel')
 ### Practice Location
-2250 Wilderness Blvd W, <br>
+2250 Wilderness Blvd W,\
 Parrish, FL 34219
 @endcomponent
 
