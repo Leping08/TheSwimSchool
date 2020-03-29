@@ -2,8 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Jobs\SendPrivatePoolSessionReminderEmails;
 use App\Mail\Privates\PrivateLessonSignUp;
+use App\Mail\Privates\PrivatePoolSessionReminder;
+use App\PrivateLesson;
 use App\PrivatePoolSession;
+use App\PrivateSwimmer;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
@@ -133,5 +138,38 @@ class PrivateLessonRequestTest extends TestCase
         ]);
 
         Mail::assertSent(PrivateLessonSignUp::class);
+    }
+
+    /** @test  **/
+    public function the_system_will_send_out_a_reminder_email_to_swimmers_with_lessons_tomorrow()
+    {
+        Mail::fake();
+
+        // Assert that no mailables were sent...
+        Mail::assertNothingSent();
+
+        $this->seed();
+
+        $this->withoutExceptionHandling();
+
+        $lesson = factory(PrivateLesson::class)->create();
+
+        $private_swimmer = factory(PrivateSwimmer::class)->create([
+             'private_lesson_id' => $lesson->id
+        ]);
+
+        $pool_session = factory(PrivatePoolSession::class)->create([
+            'private_lesson_id' => $lesson->id,
+            'start' => Carbon::tomorrow()
+        ]);
+
+        $pool_session2 = factory(PrivatePoolSession::class)->create([
+            'private_lesson_id' => $lesson->id,
+            'start' => Carbon::now()->addWeek()
+        ]);
+
+        SendPrivatePoolSessionReminderEmails::dispatch();
+
+        Mail::assertSent(PrivatePoolSessionReminder::class, 1);
     }
 }
