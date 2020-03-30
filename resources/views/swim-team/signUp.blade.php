@@ -56,7 +56,7 @@
                         }
                     </script>
 
-                    <form class="uk-grid-small" id="sign-up" uk-grid action="{{ route('swim-team.swimmer.store') }}" method="POST">
+                    <form class="uk-grid-small" id="sign-up" uk-grid action="{{ route('swim-team.swimmer.store', ['level' => $level]) }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="level_id" value="{{{$level->id}}}" required>
                         <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">

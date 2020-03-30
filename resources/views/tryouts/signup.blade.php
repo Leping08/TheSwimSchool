@@ -35,7 +35,7 @@
                 </div>
                 <div class="uk-card uk-card-default uk-margin-top">
                     <div class="uk-card-body">
-                        <form class="uk-grid-small" uk-grid action="{{ route('swim-team.tryouts.store', [$tryout]) }}" method="POST">
+                        <form class="uk-grid-small" uk-grid action="{{ route('swim-team.athlete.store', ['tryout' => $tryout]) }}" method="POST">
                             {{ csrf_field() }}
                             <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
                                 Swimmer Information
