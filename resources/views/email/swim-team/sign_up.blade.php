@@ -8,10 +8,10 @@
 
 <img style="margin-bottom: 2em;" src="{{asset('img/swim-team/dive-cropped.jpg')}}">
 
-# Welcome to the North River Rapids Swim Team!
+# Welcome to the {{ config('swim-team.full-name') }}!
 
 @component('mail::panel')
-**{{$swimmer->firstName}} {{$swimmer->lastName}}**, thanks for signing up for the North River Rapids Swim Team {{$swimmer->level->name}} Level.
+**{{$swimmer->firstName}} {{$swimmer->lastName}}**, thanks for signing up for the {{ config('swim-team.full-name') }} {{$swimmer->level->name}} Level.
 @endcomponent
 
 @component('mail::panel')
@@ -40,7 +40,7 @@ Parrish, FL 34219
 @endcomponent
 
 Thanks,<br>
-North River Rapids
+{{ config('swim-team.name') }}
 
 @slot('footer')
 @component('mail::footer')

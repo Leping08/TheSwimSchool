@@ -1,7 +1,7 @@
 <h3 class="flex items-center font-normal text-white mb-6 text-base no-underline">
     <img class="sidebar-icon" src="/img/icons/swimmer.svg">
     <span class="sidebar-label">
-        North River Rapids
+        {{ config('swim-team.name') }}
     </span>
 </h3>
 <ul class="list-reset mb-8">

@@ -21,8 +21,8 @@ class SwimmerController extends Controller
     use Promo;
 
     /**
-     * @param STLevel $level
-     * @param null $hash
+     * @param  STLevel  $level
+     * @param  null  $hash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(STLevel $level, $hash = null)
@@ -34,7 +34,7 @@ class SwimmerController extends Controller
     }
 
     /**
-     * @param SwimTeamSignUp $request
+     * @param  SwimTeamSignUp  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(SwimTeamSignUp $request)
@@ -54,7 +54,7 @@ class SwimmerController extends Controller
         $price = $promo ? $promo->apply($level->price) : $level->price;
 
         //Check if the stripe charge is even needed   Ex: 100% off promo code
-        if($price <= 0){
+        if ($price <= 0) {
             Log::info("Swim Team Swimmer $swimTeamSwimmer->firstName $swimTeamSwimmer->lastName, Email: $swimTeamSwimmer->email has signed up with out paying. They used promo code ID: $swimTeamSwimmer->promo_code_id");
             $swimTeamSwimmer = request()->merge([
                 'stripeChargeId' => 'For Free Promo Code'
@@ -64,7 +64,7 @@ class SwimmerController extends Controller
                 request()->stripeToken,
                 $price,
                 request()->email,
-                "North River Rapids Swim Team ".$level->name." Level for ".request()->firstName." ".request()->lastName."."
+                config('swim-team.full-name')." ".$level->name." Level for ".request()->firstName." ".request()->lastName."."
             ))->charge()->id;
 
             $swimTeamSwimmer = request()->merge([
@@ -82,8 +82,8 @@ class SwimmerController extends Controller
             Log::error("Swim Team sign up Email Error: ".$e);
         }
 
-        Log::info("$swimNewTeamSwimmer->firstName $swimNewTeamSwimmer->lastName, ID: $swimNewTeamSwimmer->id has signed up for Level ID: $swimNewTeamSwimmer->s_t_level_id with the north river swim team.");
-        session()->flash('success', 'Thanks for signing up for The North River Swim Team!');
+        Log::info("$swimNewTeamSwimmer->firstName $swimNewTeamSwimmer->lastName, ID: $swimNewTeamSwimmer->id has signed up for Level ID: $swimNewTeamSwimmer->s_t_level_id with the ".config('swim-team.full-name').'.');
+        session()->flash('success', 'Thanks for signing up for the '.config('swim-team.full-name').'!');
         return redirect('/thank-you');
     }
 }

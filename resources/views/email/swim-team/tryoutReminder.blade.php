@@ -6,9 +6,9 @@
 @endcomponent
 @endslot
 
-# North River Rapids Tryouts
+# {{ config('swim-team.name') }} Tryouts
 
-Don't forget about the North River Swim Team tryouts tomorrow.
+Don't forget about the {{ config('swim-team.full-name') }} tryouts tomorrow.
 
 @component('mail::panel')
 ### Time
@@ -31,7 +31,7 @@ Don't forget about the North River Swim Team tryouts tomorrow.
 @endcomponent
 
 Thanks,<br>
-North River Rapids
+{{ config('swim-team.name') }}
 
 @slot('footer')
 @component('mail::footer')

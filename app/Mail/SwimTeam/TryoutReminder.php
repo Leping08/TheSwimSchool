@@ -38,7 +38,7 @@ class TryoutReminder extends Mailable
      */
     public function build()
     {
-        return $this->subject('Swim Team Tryout')
+        return $this->subject(config('swim-team.full-name') . ' Tryout')
                     ->markdown('email.swim-team.tryoutReminder')
                     ->with([
                         'tryout' => $this->tryout,

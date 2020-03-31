@@ -1,12 +1,12 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The Parrish Bull Sharks | Parrish Swimming | The Swim School Florida</title>
-    <meta name="description" content="The Swim School near Parrish Florida invites you to come join our team! The Parrish Bull Sharks is holding tryouts at the River Wildnerness Country Club. Sign up for tryouts today."/>
+    <title>The {{ config('swim-team.name') }} | Parrish Swimming | The Swim School Florida</title>
+    <meta name="description" content="The Swim School near Parrish Florida invites you to come join our team! The {{ config('swim-team.name') }} is holding tryouts at the River Wildnerness Country Club. Sign up for tryouts today."/>
 @endsection
 
 @section('heading')
-    Parrish Bull Sharks
+    {{ config('swim-team.name') }}
 @endsection
 
 @section('content')
@@ -21,10 +21,10 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>2020 Parrish Bull Sharks Summer Swim Team</span></h2>
+                        <h2 class="uk-heading-line"><span>2020 {{ config('swim-team.name') }} Summer Swim Team</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
-                                Bring your suit, goggles & towel and come join our team! The Parrish Bull Sharks swim team competes in a seasonal, developmental swim league.
+                                Bring your suit, goggles & towel and come join our team! The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.
                                 The summer season runs Monday, <strong>June 1st- Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
                                 Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
 {{--                                To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.--}}
@@ -63,7 +63,7 @@
                         </div>
                         {{--<div>
                             <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>
-                            <p>The Parrish Bull Sharks practices at the <a title="Parrish swim team" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
+                            <p>The {{ config('swim-team.name') }} practices at the <a title="{{ config('swim-team.full-name') }}" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
                             <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>
                         </div>--}}
                         {{-- <div>
@@ -221,7 +221,7 @@
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
-                            <div class="uk-margin">Check out the current Parrish Bull Sharks team record holders.</div>
+                            <div class="uk-margin">Check out the current {{ config('swim-team.name') }} team record holders.</div>
                             <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Team_Record_Holders.pdf" download="NRST_Team_Record_Holders.pdf">Download</a>
                         </div>
                     </div>

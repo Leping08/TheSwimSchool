@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Parrish Swim Team Tryout | The Swim School | Bradenton Lakewood Ranch</title>
-    <meta name="description" content="Thank you for your interest in our Parrish Swim Team Tryout! The Swim School near Bradenton & Lakewood Ranch will be in contact with you soon."/>
+    <title>{{ config('swim-team.full-name') }} Tryout | The Swim School | Bradenton Lakewood Ranch</title>
+    <meta name="description" content="Thank you for your interest in our {{ config('swim-team.full-name') }} Tryout! The Swim School near Bradenton & Lakewood Ranch will be in contact with you soon."/>
 @endsection
 
 @section('heading')
@@ -15,7 +15,7 @@
             @if(($tryout->class_size - $tryout->athletes->count()) <= 0)
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body">
-                        <div>Sorry this lesson is full. Sign up for a different tryout <a title="Parrish Swim Team" href="{{ route('swim-team.tryouts.index') }}">here</a>.</div>
+                        <div>Sorry this lesson is full. Sign up for a different tryout <a title="{{ config('swim-team.full-name') }}" href="{{ route('swim-team.tryouts.index') }}">here</a>.</div>
                     </div>
                 </div>
             @else

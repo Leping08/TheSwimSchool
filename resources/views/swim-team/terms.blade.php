@@ -1,12 +1,12 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The North River Swim Team | Policies and Procedures | Lakewood Ranch</title>
-    <meta name="description" content="In order to be on The North River Swim Team, The Swim School requests that you read and follow the Lakewood Ranch Policies and Procedures listed here. Contact us with any questions."/>
+    <title>The {{ config('swim-team.full-name') }} | Policies and Procedures | Lakewood Ranch</title>
+    <meta name="description" content="In order to be on The {{ config('swim-team.full-name') }}, The Swim School requests that you read and follow the Lakewood Ranch Policies and Procedures listed here. Contact us with any questions."/>
 @endsection
 
 @section('heading')
-    The North River Swim Team Policies & Procedures
+    The {{ config('swim-team.full-name') }} Policies & Procedures
 @endsection
 
 @section('content')
@@ -16,11 +16,11 @@
             <dl class="uk-description-list uk-description-list-divider">
 
                 <dt>Liability:</dt>
-                <dd>The enrolled participant and/or the parent/guardian of the participant recognize and understand that swimming is a Physical activity. In such there are risks inherent in the instruction and sport of swimming including but not limited to paralyzing injuries and the possibility of death. The participant hereby agrees to participate in the North River Swim Team, a program of The Swim School, and hereby agrees to indemnify and hold harmless The Swim School, its coaches, teachers, instructors, officers, directors, agents and employees against any liability resulting from any injury that may occur to the participant while participating in the North River Swim Team. The participant also agrees to indemnify The Swim School for any damages incurred arising from any claim, demand, action or cause of action by the participant. The participant and/or parent/guardian authorizes any representative, coaches, teachers, instructors, officers, directors, agents or employees of The Swim School to have the participant treated in any medical emergency during their participation in the swim program. Further, the participant and/or parent/guardian agree to pay all costs associated with medical care and transportation for the participant.</dd>
+                <dd>The enrolled participant and/or the parent/guardian of the participant recognize and understand that swimming is a Physical activity. In such there are risks inherent in the instruction and sport of swimming including but not limited to paralyzing injuries and the possibility of death. The participant hereby agrees to participate in the {{ config('swim-team.full-name') }}, a program of The Swim School, and hereby agrees to indemnify and hold harmless The Swim School, its coaches, teachers, instructors, officers, directors, agents and employees against any liability resulting from any injury that may occur to the participant while participating in the {{ config('swim-team.full-name') }}. The participant also agrees to indemnify The Swim School for any damages incurred arising from any claim, demand, action or cause of action by the participant. The participant and/or parent/guardian authorizes any representative, coaches, teachers, instructors, officers, directors, agents or employees of The Swim School to have the participant treated in any medical emergency during their participation in the swim program. Further, the participant and/or parent/guardian agree to pay all costs associated with medical care and transportation for the participant.</dd>
 
 
                 <dt>Medical Acknowledgement:</dt>
-                <dd>I certify that, to the best of my knowledge and belief, the participant is in good physical condition and has no condition that would impair participation in the North River Swim Team program. Please notify Hilary Koppenhaver of any medical and/or health issues regarding your child that the swim team coaches should be aware of prior to the start of the swim team season. (i.e. allergies, epipen for allergic reaction, asthma, etc.)</dd>
+                <dd>I certify that, to the best of my knowledge and belief, the participant is in good physical condition and has no condition that would impair participation in the {{ config('swim-team.full-name') }} program. Please notify Hilary Koppenhaver of any medical and/or health issues regarding your child that the swim team coaches should be aware of prior to the start of the swim team season. (i.e. allergies, epipen for allergic reaction, asthma, etc.)</dd>
 
                 <dt>Photo and Video Policy:</dt>
                 <dd>I am aware that individual and group publicity photos and videos are taken from time to time and in consideration for my child's participation, I hereby grant permission for my or my child's likeness to be used in company publicity and/or advertising.</dd>
@@ -47,10 +47,10 @@
                 <dd>In the event of inclement weather (i.e. lightning within 5.0 miles or less from pool location, heavy rain which limits visibility of the bottom of the pool, and/or air temperature of 65 degrees or below), swim practices will be cancelled. The coach will contact you via text when a practice needs to be cancelled due to inclement weather. It is best to assume swim practices are on as scheduled if you are not contacted by the coach. During practices, the coaches will remove all swimmers from the pool and relocate under the covered portion of the Fitness Center Facility immediately upon hearing loud approaching thunder and/or seeing lightning.</dd>
 
                 <dt>No Makeup Practices/Observed Holidays::</dt>
-                <dd>Swim practices will not be made up under any circumstances, including for cancelled practices due to inclement weather. The North River Swim Team program will observe major nationally celebrated holidays (i.e. Labor Day) and will cancel practices on these days.</dd>
+                <dd>Swim practices will not be made up under any circumstances, including for cancelled practices due to inclement weather. The {{ config('swim-team.full-name') }} program will observe major nationally celebrated holidays (i.e. Labor Day) and will cancel practices on these days.</dd>
 
                 <dt>Parent Conduct:</dt>
-                <dd>The goal of the North River Swim Team is to foster a positive environment for all involved. We will need the support and involvement of our parents to run an effective program. Just as we will expect the swimmers to practice teamwork, good sportsmanship, and self-control, this will be the same expected conduct for all parents as well. We encourage open communication but ask that parents refrain from interrupting swimmers and coaches during practice times. Coaches will make themselves available for pertinent discussion outside of practice times. As a parent, I understand the North River Swim Team maintains the right to dismiss anyone from involvement with the team with or without cause if it brings discredit or discord to the program.</dd>
+                <dd>The goal of the {{ config('swim-team.full-name') }} is to foster a positive environment for all involved. We will need the support and involvement of our parents to run an effective program. Just as we will expect the swimmers to practice teamwork, good sportsmanship, and self-control, this will be the same expected conduct for all parents as well. We encourage open communication but ask that parents refrain from interrupting swimmers and coaches during practice times. Coaches will make themselves available for pertinent discussion outside of practice times. As a parent, I understand the {{ config('swim-team.full-name') }} maintains the right to dismiss anyone from involvement with the team with or without cause if it brings discredit or discord to the program.</dd>
 
                 <dt>Disciplinary Procedure:</dt>
                 <dd>If a swimmer is disruptive (defined as any behavior which requires the full attention of a staff member, thereby interfering with the functioning of the group) during swim practices or swim meets, the coaches will use the following disciplinary procedure to handle situations:</dd>

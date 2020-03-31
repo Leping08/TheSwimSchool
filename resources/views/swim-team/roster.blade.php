@@ -7,7 +7,7 @@
 @endsection
 
 @section('heading')
-    North River Swim Team Roster
+    {{ config('swim-team.full-name') }} Roster
 @endsection
 
 @section('content')

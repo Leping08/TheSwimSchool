@@ -6,7 +6,7 @@
 @endcomponent
 @endslot
 
-# North River Swim Team Awards Luau Luncheon Info
+# {{ config('swim-team.full-name') }} Awards Luau Luncheon Info
 
 @component('mail::panel')
 Please follow the link below to the Awards Luau Luncheon RSVP form. Please complete pre-order no later than 8/18. We hope to see you there!!!
@@ -17,7 +17,7 @@ Please follow the link below to the Awards Luau Luncheon RSVP form. Please compl
 @endcomponent
 
 Thanks,<br>
-North River Rapids
+{{ config('swim-team.name') }}
 
 @slot('footer')
 @component('mail::footer')

@@ -38,7 +38,7 @@ class STSignUp extends Mailable
      */
     public function build()
     {
-        return $this->subject('North River Swim Team')
+        return $this->subject(config('swim-team.full-name'))
             ->with(['swimmer' => $this->swimmer])
             ->markdown('email.swim-team.sign_up');
     }

@@ -139,11 +139,11 @@ Lessons
                             </div>
                             <div class="uk-card-body">
                                 <div class="card-text">
-                                    <p>Check out the <a title="North River Swim Team" href="{{ route('groups.schedule.index') }}">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>
+                                    <p>Check out the <a title="{{ config('swim-team.full-name') }}" href="{{ route('groups.schedule.index') }}">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>
                                 </div>
 {{--                                <div class="card-text">--}}
 {{--                                    <p>Registration will open for our next session of swim lessons {{config('season.groups.next_season.registration_open')}}. Please check back at another time.<br>--}}
-{{--                                    In the mean time check out our <a title="North River Swim Team" href="{{ route('swim-team.index') }}">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="{{ route('private_lesson.index') }}">private lessons</a>.</p>--}}
+{{--                                    In the mean time check out our <a title="{{ config('swim-team.full-name') }}" href="{{ route('swim-team.index') }}">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="{{ route('private_lesson.index') }}">private lessons</a>.</p>--}}
 {{--                                </div>--}}
                             </div>
                         </div>

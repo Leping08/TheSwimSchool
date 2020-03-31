@@ -2,12 +2,12 @@
 
 @section('seo')
 
-    <title>The North River Swim Team Tryouts Form | The Swim School Parrish FL</title>
-    <meta name="description" content="Are you interested in joining The North River Swim Team? Sign up for tryouts by visiting The Swim School's website or calling 941-773-1424."/>
+    <title>The {{ config('swim-team.full-name') }} Tryouts Form | The Swim School Parrish FL</title>
+    <meta name="description" content="Are you interested in joining The {{ config('swim-team.full-name') }}? Sign up for tryouts by visiting The Swim School's website or calling 941-773-1424."/>
 @endsection
 
 @section('heading')
-    North River Rapids Tryouts
+    {{ config('swim-team.name') }} Tryouts
 @endsection
 
 @section('content')
@@ -35,7 +35,7 @@
                                     @if($tryout->isFull())
                                         <button class="uk-button uk-button-primary" disabled>Tryout Full</button>
                                     @else
-                                        <a title="Parrish Swim Team" href="{{ route('swim-team.tryouts.show', [$tryout]) }}" class="uk-button uk-button-primary">Sign Up</a>
+                                        <a title="{{ config('swim-team.full-name') }}" href="{{ route('swim-team.tryouts.show', [$tryout]) }}" class="uk-button uk-button-primary">Sign Up</a>
                                     @endif
                                 </div>
                             </div>

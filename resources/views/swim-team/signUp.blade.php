@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('heading')
-    North River Swim Team
+    {{ config('swim-team.full-name') }}
 @endsection
 
 @section('content')
@@ -36,7 +36,7 @@
                             if(!(document.getElementById('price').innerText <= 0)){
                                 StripeCheckout.open({
                                     name: 'The Swim School',
-                                    description: 'North River Swim Team {{$level->name}} Level',
+                                    description: '{{ config('swim-team.full-name') }} {{$level->name}} Level',
                                     key: '{{config('services.stripe.key')}}',
                                     image: '/img/logos/TSS_png.png',
                                     locale: 'auto',
@@ -186,7 +186,7 @@
                         <div class="uk-width-1-1@s">
                             <div class="uk-form-controls">
                                 <label><input class="uk-checkbox" type="checkbox" name="termsAndConditions" required>
-                                    I agree to the <a href="{{ route('swim-team.terms') }}" target="_blank">North River Swim Team Policies & Procedures</a>
+                                    I agree to the <a href="{{ route('swim-team.terms') }}" target="_blank">{{ config('swim-team.full-name') }} Policies & Procedures</a>
                                 </label>
                             </div>
                         </div>

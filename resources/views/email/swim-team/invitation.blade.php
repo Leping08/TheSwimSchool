@@ -11,7 +11,7 @@
 # Congratulations!
 
 @component('mail::panel')
-**{{$athlete->firstName}} {{$athlete->lastName}}**, you made the North River Rapids Swim Team!
+**{{$athlete->firstName}} {{$athlete->lastName}}**, you made the {{ config('swim-team.full-name') }}!
 Based on tryouts, we would like to place you in {{$athlete->level->name}} level.
 @endcomponent
 
@@ -45,7 +45,7 @@ Sign Up
 @endcomponent
 
 Thanks,<br>
-North River Rapids
+{{ config('swim-team.name') }}
 
 @slot('footer')
 @component('mail::footer')
