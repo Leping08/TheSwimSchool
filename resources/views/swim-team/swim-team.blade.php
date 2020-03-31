@@ -222,7 +222,7 @@
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">Check out the current {{ config('swim-team.name') }} team record holders.</div>
-                            <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_Team_Record_Holders.pdf" download="NRST_Team_Record_Holders.pdf">Download</a>
+                            <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/Swim_Team_Record_Holders.pdf" download="Swim_Team_Record_Holders.pdf">Download</a>
                         </div>
                     </div>
                 </div>
