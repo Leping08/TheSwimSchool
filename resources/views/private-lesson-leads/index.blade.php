@@ -21,10 +21,10 @@
 
             <div class="uk-grid-margin uk-margin-large-top">
                 <div class="uk-width-4-4@m uk-first-column">
-                    <h2 class="uk-heading-bullet">Request Private Lessons at Home</h2>
+                    <h2 class="uk-heading-bullet">Pricing</h2>
                 </div>
 
-                <p>Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available.</p>
+                <p>The service area for home and community lessons includes Parrish, Ellenton, and Palmetto.</p>
 
                 <div class="uk-grid-margin uk-grid" uk-grid="">
                     <div class="uk-width-4-4@m uk-first-column">
@@ -35,7 +35,7 @@
                                 <div class="uk-card uk-card-default uk-card-body">
                                     <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
                                     <ul class="uk-list uk-list-bullet">
-                                        <li>Our Pool = $140 per Student</li>
+{{--                                        <li>Our Pool = $140 per Student</li>--}}
                                         <li>Your Pool = $200 per Student</li>
                                     </ul>
                                 </div>
@@ -44,7 +44,7 @@
                                 <div class="uk-card uk-card-default uk-card-body">
                                     <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
                                     <ul class="uk-list uk-list-bullet">
-                                        <li>Our Pool = $280 per Student</li>
+{{--                                        <li>Our Pool = $280 per Student</li>--}}
                                         <li>Your Pool = $400 per Student</li>
                                     </ul>
                                 </div>
@@ -60,7 +60,7 @@
                                 <div class="uk-card uk-card-default uk-card-body">
                                     <h5>Four 30 Minute Lessons Per Month (1x/week)</h5>
                                     <ul class="uk-list uk-list-bullet">
-                                        <li>Our Pool = $80 per Student</li>
+{{--                                        <li>Our Pool = $80 per Student</li>--}}
                                         <li>Your Pool = $120 per Student</li>
                                     </ul>
                                 </div>
@@ -69,7 +69,7 @@
                                 <div class="uk-card uk-card-default uk-card-body">
                                     <h5>Eight 30 Minute Lessons Per Month (2x/week)</h5>
                                     <ul class="uk-list uk-list-bullet">
-                                        <li>Our Pool = $160 per Student</li>
+{{--                                        <li>Our Pool = $160 per Student</li>--}}
                                         <li>Your Pool = $240 per Student</li>
                                     </ul>
                                 </div>
@@ -79,8 +79,10 @@
                 </div>
 
                 @if(config('season.private.season'))
-                    <p>Please provide as much info as possible so we can provide you details regarding private lessons at your home or community pool.</p>
-
+                    <div class="uk-width-4-4@m uk-first-column">
+                        <h2 class="uk-heading-bullet">Request Form</h2>
+                    </div>
+{{--                    <p>Please provide as much info as possible so we can provide you details regarding private lessons at your home or community pool.</p>--}}
                     <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
                         <div class="uk-card uk-card-default uk-card-body">
                             <form action="{{ route('home_privates.store') }}" method="post">

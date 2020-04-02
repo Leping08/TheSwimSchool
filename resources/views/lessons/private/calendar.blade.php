@@ -28,8 +28,7 @@
                                 Whether you are a beginner swimmer, a child preparing to join a <a href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
                                 looking to improve your technique, private swim lessons can be customized to your specific needs
                                 to help you achieve your goals quickly. These lessons are conducted one on one with an
-                                instructor and each lesson is 30 minutes. The Swim School teaches private lessons at the River
-                                Wilderness Golf & Country Club.
+                                instructor and each lesson is 30 minutes.
                             </div>
                         </div>
                     </div>
@@ -55,9 +54,8 @@
             @if(config('season.private.season'))
                 <div class="uk-grid-margin uk-grid uk-margin-large-top" uk-grid="">
                     <div class="uk-width-4-4@m uk-first-column">
-                        <h2 class="uk-heading-bullet">Private Lesson at River Wilderness</h2>
-                        <p class="">Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Semi-Private lessons can be requested for an additional $15 surcharge if you have siblings close in age and ability level who would like to receive swim instruction together.</p>
-                        <p>Please select as least 1 lessons to checkout. We suggest 4 lessons for optimal development.</p>
+                        <h2 class="uk-heading-bullet">Registration</h2>
+                        <p class="">Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one lesson to checkout. We suggest a minimum of at least 4-12 consecutive lessons for optimal development based on ability level and goals.</p>
                     </div>
                 </div>
 
@@ -231,7 +229,7 @@
                     </form>
                 </div>
                 <div class="uk-width-1-1@m uk-first-column uk-margin-large-top">
-                    Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. <a href="{{ route('home_privates.index') }}">Contact us</a> for more information and details on requesting private lessons at your home or community pool.
+                    Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. For more information and details on requesting private lessons at your home or community pool, check out our <a href="{{ route('home_privates.index') }}">Home Private Lessons page</a>.
                 </div>
             @endif
         </div>
