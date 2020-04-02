@@ -79,7 +79,7 @@
                 </div>
 
                 @if(config('season.private.season'))
-                    <div class="uk-width-4-4@m uk-first-column">
+                    <div class="uk-width-4-4@m uk-first-column uk-margin-top">
                         <h2 class="uk-heading-bullet">Request Form</h2>
                     </div>
 {{--                    <p>Please provide as much info as possible so we can provide you details regarding private lessons at your home or community pool.</p>--}}
