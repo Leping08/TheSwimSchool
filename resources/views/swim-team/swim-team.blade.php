@@ -21,11 +21,11 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>2020 {{ config('swim-team.name') }} Summer Swim Team</span></h2>
+                        <h2 class="uk-heading-line"><span>2020 {{ config('swim-team.name') }} Spring Swim Club</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
                                 Bring your suit, goggles & towel and come join our team! The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.
-                                The summer season runs Monday, <strong>June 1st- Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
+                                The summer season runs <strong>Monday, June 1st- Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
                                 Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
 {{--                                To register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club for 6-8 year olds</a> and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club for ages 9 years up</a>.--}}
                             </p>
