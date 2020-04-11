@@ -17,13 +17,13 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><h5>Weekday Sessions (M/W or T/TH 2x/wk for 4 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Weekday Sessions (M/W, T/TH 2x/wk for 4 weeks)</h5></th>
                         <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>April 13th-May 7th</td>
+                        <td>May 4th-May 28th</td>
                         <td>March 30th</td>
                     </tr>
                     </tbody>
@@ -145,7 +145,7 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-2"><h5>Weekday Sessions (M/W or T/TH 2x/wk for 4 weeks)</h5></th>
+                        <th class="uk-width-1-2"><h5>Weekday Sessions (M/W, T/TH 2x/wk for 4 weeks)</h5></th>
                         <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                     </tr>
                     </thead>
