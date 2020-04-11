@@ -64,6 +64,12 @@ class PrivateLessonRequest extends Resource
     public function fields(Request $request)
     {
         return [
+            Text::make('', function (){
+                return view('partials.buttons', [
+                    'next_id' => $this->model()->id + 1,
+                    'previous_id' => $this->model()->id - 1
+                ])->render();
+            })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
             Text::make('Swimmer Name', 'swimmer_name'),
             Text::make('Email', 'email')->onlyOnForms(),

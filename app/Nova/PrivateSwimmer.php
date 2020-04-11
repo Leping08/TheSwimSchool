@@ -49,6 +49,12 @@ class PrivateSwimmer extends Resource
     public function fields(Request $request)
     {
         return [
+            Text::make('', function (){
+                return view('partials.buttons', [
+                    'next_id' => $this->model()->id + 1,
+                    'previous_id' => $this->model()->id - 1
+                ])->render();
+            })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
             Text::make('First Name', 'first_name')->sortable(),
             Text::make('Last Name', 'last_name')->sortable(),

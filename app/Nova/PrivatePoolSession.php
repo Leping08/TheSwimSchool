@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class PrivatePoolSession extends Resource
@@ -51,6 +52,12 @@ class PrivatePoolSession extends Resource
     public function fields(Request $request)
     {
         return [
+            Text::make('', function (){
+                return view('partials.buttons', [
+                    'next_id' => $this->model()->id + 1,
+                    'previous_id' => $this->model()->id - 1
+                ])->render();
+            })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
             DateTime::make('Start', 'start'),
             DateTime::make('End', 'end'),
