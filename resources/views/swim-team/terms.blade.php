@@ -46,7 +46,7 @@
                 <dt>Inclement Weather:</dt>
                 <dd>In the event of inclement weather (i.e. lightning within 5.0 miles or less from pool location, heavy rain which limits visibility of the bottom of the pool, and/or air temperature of 65 degrees or below), swim practices will be cancelled. The coach will contact you via text when a practice needs to be cancelled due to inclement weather. It is best to assume swim practices are on as scheduled if you are not contacted by the coach. During practices, the coaches will remove all swimmers from the pool and relocate under the covered portion of the Fitness Center Facility immediately upon hearing loud approaching thunder and/or seeing lightning.</dd>
 
-                <dt>No Makeup Practices/Observed Holidays::</dt>
+                <dt>No Makeup Practices/Observed Holidays:</dt>
                 <dd>Swim practices will not be made up under any circumstances, including for cancelled practices due to inclement weather. The {{ config('swim-team.full-name') }} program will observe major nationally celebrated holidays (i.e. Labor Day) and will cancel practices on these days.</dd>
 
                 <dt>Parent Conduct:</dt>
