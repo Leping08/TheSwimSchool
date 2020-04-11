@@ -51,7 +51,7 @@
                             <ul class="uk-list uk-list-bullet">
                                 <li>Tuesday, May 19th at 6:30PM</li>
                                 <li>Wednesday, May 20th at 6:30PM</li>
-                                <li>Saturday, May 23rd at 9:00AM</li>
+                                <li>Saturday, May 23rd at 1:00PM</li>
                             </ul>
                             <p>
                                 *Minimum Requirement: Each child must be able to swim at least one full individual length without stopping (25 meters) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
