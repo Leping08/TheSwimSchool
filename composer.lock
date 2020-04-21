@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80839832df631b5c1dac567c0e053e19",
+    "content-hash": "a0e86c33820919420683d44ba82db4af",
     "packages": [
         {
             "name": "Leping/NorthRiverRapids",
@@ -2301,6 +2301,55 @@
                 "php"
             ],
             "time": "2019-11-08T13:50:10+00:00"
+        },
+        {
+            "name": "opanegro/nova-custom-controller",
+            "version": "1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opanegro/nova-custom-controller.git",
+                "reference": "f16bbcb8a58100bbcfca776f521a4af99f99e4f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opanegro/nova-custom-controller/zipball/f16bbcb8a58100bbcfca776f521a4af99f99e4f5",
+                "reference": "f16bbcb8a58100bbcfca776f521a4af99f99e4f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Opanegro\\NovaCustomController\\NovaCustomControllerProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Opanegro\\NovaCustomController\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmad Rio",
+                    "email": "ahmadrio28asia@gmail.com"
+                }
+            ],
+            "description": "Make custom controller in Laravel Nova",
+            "keywords": [
+                "controller",
+                "custom",
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-12-29T06:15:38+00:00"
         },
         {
             "name": "opis/closure",

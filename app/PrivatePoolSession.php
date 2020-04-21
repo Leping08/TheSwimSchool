@@ -23,7 +23,7 @@ class PrivatePoolSession extends Model
     /**
      * @var array
      */
-    protected $fillable = ['start', 'end', 'private_lesson_id', 'location_id'];
+    protected $fillable = ['start', 'end', 'private_lesson_id', 'location_id', 'user_id'];
 
     /**
      * @return BelongsTo
