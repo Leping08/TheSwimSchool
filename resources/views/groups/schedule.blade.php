@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>April 18th-May 23rd</td>
+                        <td>May 2nd-June 6th</td>
                         <td>March 30th</td>
                     </tr>
                     </tbody>
@@ -57,7 +57,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>April 19th - May 24th</td>
+                        <td>May 3rd-June 7th</td>
                         <td>March 30th</td>
                     </tr>
                     </tbody>
@@ -108,12 +108,12 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>June 6th - July 11th</td>
-                        <td>May 25th</td>
+                        <td>June 13th-July 18th</td>
+                        <td>June 1st</td>
                     </tr>
                     <tr>
-                        <td>July 25th - August 29th</td>
-                        <td>July 13th</td>
+                        <td>August 1st-September 5t</td>
+                        <td>July 20th</td>
                     </tr>
                     </tbody>
                 </table>
@@ -129,12 +129,12 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>June 7th - July 12th</td>
-                        <td>May 25th</td>
+                        <td>June 14th-July 19th</td>
+                        <td>June 1st</td>
                     </tr>
                     <tr>
-                        <td>July 26th - August 30th</td>
-                        <td>July 13th</td>
+                        <td>August 2nd-September 6th</td>
+                        <td>July 20th</td>
                     </tr>
                     </tbody>
                 </table>
@@ -176,8 +176,8 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>September 12th - October 17th</td>
-                        <td>August 31st</td>
+                        <td>September 19th-October 24th</td>
+                        <td>September 7th</td>
                     </tr>
                     </tbody>
                 </table>
@@ -193,8 +193,8 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>September 13th - October 18th</td>
-                        <td>August 31st</td>
+                        <td>September 20th-October 25th</td>
+                        <td>September 7th</td>
                     </tr>
                     </tbody>
                 </table>
