@@ -152,6 +152,16 @@ Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
 
 
 /*
+ * Instructor specific calendar
+ */
+
+/* @see CalendarController::show() */
+Route::get('/calendar/{user}', 'Admin\CalendarController@show')->name('calendar')->middleware('auth');
+
+
+
+
+/*
  * Static Pages
  */
 
