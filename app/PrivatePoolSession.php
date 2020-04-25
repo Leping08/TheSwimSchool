@@ -11,6 +11,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Actions\Actionable;
 
+/**
+ * An Eloquent Model: 'PrivatePoolSession'
+ * TODO: Make this go away in the future and just have it be a bunch of pool sessions
+ *
+ * @property integer $id
+ * @property string $private_lesson_id
+ * @property string $location_id
+ * @property string $instructor_id
+ * @property \Illuminate\Support\Carbon $start
+ * @property \Illuminate\Support\Carbon $end
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $deleted_at
+ * @property-read PrivateLesson $lesson
+ * @property-read PrivateSwimmer $swimmers
+ * @property-read Location $location
+ * @property-read User $instructor
+ */
+
 class PrivatePoolSession extends Model
 {
     use SoftDeletes, Actionable, Notifiable;
@@ -23,7 +42,7 @@ class PrivatePoolSession extends Model
     /**
      * @var array
      */
-    protected $fillable = ['start', 'end', 'private_lesson_id', 'location_id', 'user_id'];
+    protected $fillable = ['start', 'end', 'private_lesson_id', 'location_id', 'instructor_id'];
 
     /**
      * @return BelongsTo
@@ -54,7 +73,7 @@ class PrivatePoolSession extends Model
      */
     public function instructor()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'instructor_id');
     }
 
     /**

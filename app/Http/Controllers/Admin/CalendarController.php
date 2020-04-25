@@ -31,12 +31,20 @@ class CalendarController extends Controller
      */
     public function calendarEvents(User $user)
     {
+//        \App\Lesson::withTrashed()->get()->map(function($lesson) {
+//            $lesson->instructor_id = 2;
+//            $lesson->save();
+//        });
+//        echo('done');
+
+
         $events = collect();
 
         //Get all the lessons from 3 months ago and up
         $lessons = Lesson::whereDate('class_start_date', '>=', Carbon::now()->subMonths(3))
+                            ->where('instructor_id', $user->id)
                             ->with('group')
-                            ->get(); //TODO select lessons only for that instructor
+                            ->get();
 
         //Loop over the group lessons and generate pool sessions for them
         foreach ($lessons as $lesson) {
@@ -54,7 +62,7 @@ class CalendarController extends Controller
         }
 
         //Get all private pool sessions from 3 months ago and up
-        $poolSessions = PrivatePoolSession::where('user_id', $user->id)
+        $poolSessions = PrivatePoolSession::where('instructor_id', $user->id)
                             ->whereDate('start', '>=', Carbon::now()->subMonths(3))
                             ->get();
 

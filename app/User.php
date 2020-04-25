@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Nova\Actions\Actionable;
@@ -18,14 +19,14 @@ use Laravel\Nova\Actions\Actionable;
  * @property string $remember_token
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
- * @property \Illuminate\Support\Carbon $deleted_at //TODO add deleted at to admins
+ * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read PrivatePoolSession $pool_sessions
  *
  */
 
 class User extends Authenticatable
 {
-    use Notifiable, Actionable;
+    use Notifiable, Actionable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -45,8 +46,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function pool_sessions()
     {
-        return $this->hasMany(PrivatePoolSession::class, 'user_id');
+        return $this->hasMany(PrivatePoolSession::class, 'instructor_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'instructor_id');
     }
 }
