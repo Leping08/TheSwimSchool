@@ -31,7 +31,7 @@ class CalendarController extends Controller
      */
     public function calendarEvents(User $user)
     {
-//        \App\Lesson::withTrashed()->get()->map(function($lesson) {
+//        \App\Lesson::withTrashed()->get()->map(function($lesson) { TODO: Run this in prod on deploy
 //            $lesson->instructor_id = 2;
 //            $lesson->save();
 //        });
@@ -43,7 +43,7 @@ class CalendarController extends Controller
         //Get all the lessons from 3 months ago and up
         $lessons = Lesson::whereDate('class_start_date', '>=', Carbon::now()->subMonths(3))
                             ->where('instructor_id', $user->id)
-                            ->with('group')
+                            ->with(['group', 'swimmers', 'location'])
                             ->get();
 
         //Loop over the group lessons and generate pool sessions for them
@@ -56,7 +56,9 @@ class CalendarController extends Controller
                     'start' => Carbon::parse($eventDate->toDateString().$lesson->class_start_time->toTimeString()),
                     'end' => Carbon::parse($eventDate->toDateString().$lesson->class_end_time->toTimeString()),
                     'color' => $lesson->isFull() ? self::COLORS['group_full'] : self::COLORS['group_not_full'],
-                    'details_link' => '/admin/resources/lessons/'.$lesson->id
+                    'details_link' => '/admin/resources/lessons/'.$lesson->id,
+                    'swimmers' => $lesson->swimmers,
+                    'location' => $lesson->location
                 ];
             }));
         }
@@ -64,6 +66,7 @@ class CalendarController extends Controller
         //Get all private pool sessions from 3 months ago and up
         $poolSessions = PrivatePoolSession::where('instructor_id', $user->id)
                             ->whereDate('start', '>=', Carbon::now()->subMonths(3))
+                            ->with(['swimmers', 'location'])
                             ->get();
 
         //Map the Private Lessons into calendar events
@@ -74,7 +77,9 @@ class CalendarController extends Controller
                 'start' => $session->start,
                 'end' => $session->start,
                 'color' => self::COLORS['private'],
-                'details_link' => '/admin/resources/private-pool-sessions/'.$session->id
+                'details_link' => '/admin/resources/private-pool-sessions/'.$session->id,
+                'swimmers' => $session->swimmers,
+                'location' => $session->location
             ];
         }));
 
