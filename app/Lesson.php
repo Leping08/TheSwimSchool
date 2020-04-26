@@ -32,6 +32,7 @@ use Illuminate\Support\Collection;
  * @property-read Season $season
  * @property-read Collection $calendarEvents
  * @property-read WaitList $waitlist
+ * @property-read User $instructor
  */
 
 class Lesson extends Model
@@ -108,6 +109,14 @@ class Lesson extends Model
     public function Location()
     {
         return $this->belongsTo(Location::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Instructor()
+    {
+        return $this->belongsTo(User::class, 'instructor_id');
     }
 
     /**

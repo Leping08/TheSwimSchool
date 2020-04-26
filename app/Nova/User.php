@@ -69,7 +69,8 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
 
-            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class)
+            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
+            HasMany::make('Lessons', 'lessons', Lesson::class)
         ];
     }
 

@@ -95,7 +95,7 @@ class PrivatePoolSession extends Resource
                 'start' => $start,
                 'end' => $end,
                 'location_id' => $request['location'],
-                'user_id' => $request['instructor']
+                'instructor_id' => $request['instructor']
             ]);
         }
 

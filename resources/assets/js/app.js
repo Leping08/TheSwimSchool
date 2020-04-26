@@ -10,6 +10,7 @@ import moment from 'moment'
 import swimTeamRoster from './components/SwimTeamRoster'
 import promo_code from './components/promoCode'
 import privateCalendar from './components/PrivateCalendar'
+import instructorCalendar from './components/InstructorCalendar'
 
 Vue.use(VueMoment, {
     moment,
@@ -21,6 +22,7 @@ const app = new Vue({
         swimTeamRoster,
         //privateLessonRequestForm,
         privateCalendar,
+        instructorCalendar,
         promo_code: promo_code
     }
 });
