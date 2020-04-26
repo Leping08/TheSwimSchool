@@ -31,13 +31,6 @@ class CalendarController extends Controller
      */
     public function calendarEvents(User $user)
     {
-//        \App\Lesson::withTrashed()->get()->map(function($lesson) { TODO: Run this in prod on deploy
-//            $lesson->instructor_id = 2;
-//            $lesson->save();
-//        });
-//        echo('done');
-
-
         $events = collect();
 
         //Get all the lessons from 3 months ago and up
@@ -58,7 +51,7 @@ class CalendarController extends Controller
                     'color' => $lesson->isFull() ? self::COLORS['group_full'] : self::COLORS['group_not_full'],
                     'details_link' => '/admin/resources/lessons/'.$lesson->id,
                     'swimmers' => $lesson->swimmers,
-                    'location' => $lesson->location
+                    'location' => $lesson->location->name
                 ];
             }));
         }
@@ -75,11 +68,11 @@ class CalendarController extends Controller
                 'id' => $session->id,
                 'title' => 'Private',
                 'start' => $session->start,
-                'end' => $session->start,
+                'end' => $session->end,
                 'color' => self::COLORS['private'],
                 'details_link' => '/admin/resources/private-pool-sessions/'.$session->id,
                 'swimmers' => $session->swimmers,
-                'location' => $session->location
+                'location' => $session->location->name
             ];
         }));
 
