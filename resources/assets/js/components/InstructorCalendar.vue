@@ -19,7 +19,7 @@
                 <div class="uk-padding-small">
                     <div class="uk-h5">Lesson:</div>
                     <div class="uk-padding-small">
-                        <div><i class="fa fa-map-marker uk-margin-small-right" aria-hidden="true"></i>{{ selectedEvent.location.name }}</div>
+                        <div><i class="fa fa-map-marker uk-margin-small-right" aria-hidden="true"></i>{{ selectedEvent.location }}</div>
                         <div><i class="fa fa-play-circle uk-margin-small-right" aria-hidden="true"></i>{{ selectedEvent.start | timeFormat }}</div>
                         <div><i class="fa fa-stop-circle uk-margin-small-right" aria-hidden="true"></i>{{ selectedEvent.end | timeFormat }}</div>
                     </div>
