@@ -101,7 +101,7 @@
                 if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
                     age--;
                 }
-                return age + 'Years Old';  //TODO Allow for months old
+                return age + ' Years Old';  //TODO Allow for months old
             },
             timeFormat(dateTime) {
                 let d = new Date(dateTime);
