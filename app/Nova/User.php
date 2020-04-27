@@ -69,6 +69,14 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
 
+            Text::make('Calendar', function () {
+                return view('partials.link', [
+                    'link' => url('/calendar/'.$this->id),
+                    'text' => 'View'
+                    //'new_tab' => true TODO: Add new tab option to link partial
+                ])->render();
+            })->asHtml()->hideFromIndex(),
+
             HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
             HasMany::make('Lessons', 'lessons', Lesson::class)
         ];
