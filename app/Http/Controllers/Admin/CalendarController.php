@@ -14,8 +14,8 @@ class CalendarController extends Controller
 {
     const COLORS = [
         'private' => '#4299e1',
-        'group_full' => '#ed64a6',
-        'group_not_full' => '#9f7aea'
+        'group' => '#ed64a6',
+        'empty' => '#a0aec0'
     ];
 
     public function show(User $user)
@@ -48,7 +48,7 @@ class CalendarController extends Controller
                     'title' => $lesson->group->type,
                     'start' => Carbon::parse($eventDate->toDateString().$lesson->class_start_time->toTimeString()),
                     'end' => Carbon::parse($eventDate->toDateString().$lesson->class_end_time->toTimeString()),
-                    'color' => $lesson->isFull() ? self::COLORS['group_full'] : self::COLORS['group_not_full'],
+                    'color' => $lesson->swimmers->count() ? self::COLORS['group'] : self::COLORS['empty'],
                     'details_link' => '/admin/resources/lessons/'.$lesson->id,
                     'swimmers' => $lesson->swimmers,
                     'location' => $lesson->location->name
@@ -69,7 +69,7 @@ class CalendarController extends Controller
                 'title' => 'Private',
                 'start' => $session->start,
                 'end' => $session->end,
-                'color' => self::COLORS['private'],
+                'color' => $session->swimmers->count() ? self::COLORS['private'] : self::COLORS['empty'],
                 'details_link' => '/admin/resources/private-pool-sessions/'.$session->id,
                 'swimmers' => $session->swimmers,
                 'location' => $session->location->name

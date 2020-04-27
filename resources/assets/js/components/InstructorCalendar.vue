@@ -28,9 +28,9 @@
                     <div class="uk-h5">Swimmers:</div>
                     <div v-for="swimmer in selectedEvent.swimmers">
                         <div class="uk-padding-small">
-                            <div><i class="fa fa-user uk-margin-small-right" aria-hidden="true"></i> {{ swimmer.firstName }} {{ swimmer.lastName }}</div>
+                            <div><i class="fa fa-user uk-margin-small-right" aria-hidden="true"></i> {{ swimmer.firstName || swimmer.first_name }} {{ swimmer.lastName || swimmer.last_name }}</div>
                             <div><i class="fa fa-phone uk-margin-small-right" aria-hidden="true"></i> <a :href="'sms:' + swimmer.phone">{{ swimmer.phone }}</a></div>
-                            <div><i class="fa fa-calendar uk-margin-small-right" aria-hidden="true"></i> {{ swimmer.birthDate | age }}</div>
+                            <div><i class="fa fa-calendar uk-margin-small-right" aria-hidden="true"></i> {{ (swimmer.birthDate || swimmer.birth_date) | age }}</div>
                         </div>
                     </div>
                 </div>
