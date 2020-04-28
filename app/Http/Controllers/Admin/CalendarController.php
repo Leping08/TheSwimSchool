@@ -34,7 +34,7 @@ class CalendarController extends Controller
         $events = collect();
 
         //Get all the lessons from 3 months ago and up
-        $lessons = Lesson::whereDate('class_start_date', '>=', Carbon::now()->subMonths(3))
+        $lessons = Lesson::whereDate('class_end_date', '>=', Carbon::now()->subMonths(3))
                             ->where('instructor_id', $user->id)
                             ->with(['group', 'swimmers', 'location'])
                             ->get();
