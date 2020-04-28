@@ -104,7 +104,8 @@
                 return age + ' Years Old';  //TODO Allow for months old
             },
             timeFormat(dateTime) {
-                let d = new Date(dateTime);
+                //This is for Safari. https://stackoverflow.com/questions/4310953/invalid-date-in-safari
+                let d = new Date(dateTime.replace(/ /g,"T"));
                 let hours = d.getHours();
                 let minutes = d.getMinutes();
                 let ampm = hours >= 12 ? 'pm' : 'am';
