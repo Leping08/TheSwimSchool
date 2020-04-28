@@ -95,7 +95,7 @@
         filters: {
             age(date) {
                 let today = new Date();
-                let birthDate = new Date(date);
+                let birthDate = new Date(date.replace(/ /g,"T"));
                 let age = today.getFullYear() - birthDate.getFullYear();
                 let m = today.getMonth() - birthDate.getMonth();
                 if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
@@ -105,7 +105,7 @@
             },
             timeFormat(dateTime) {
                 //This is for Safari. https://stackoverflow.com/questions/4310953/invalid-date-in-safari
-                let d = new Date(dateTime.replace(/ /g,"T"));
+                let d = new Date(dateTime);
                 let hours = d.getHours();
                 let minutes = d.getMinutes();
                 let ampm = hours >= 12 ? 'pm' : 'am';
