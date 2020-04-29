@@ -3,13 +3,11 @@
 namespace App\Nova;
 
 use App\DaysOfTheWeek;
-use App\Library\Helpers\HelperModel;
 use Carbon\Carbon;
 use Fourstacks\NovaCheckboxes\Checkboxes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -76,7 +74,8 @@ class PrivatePoolSession extends Resource
                 7 => Carbon::SUNDAY
             ]);
 
-            $startDate = Carbon::parse($request['start_date_time'])->next($carbonDayMappings->get($day));
+            //Parse the date and go back one day to account for the start date being accessible
+            $startDate = Carbon::parse($request['start_date_time'])->subDay()->next($carbonDayMappings->get($day));
             $endDate = Carbon::parse($request['end_date_time']);
 
             for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
