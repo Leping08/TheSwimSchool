@@ -231,6 +231,9 @@
                 <div class="uk-width-1-1@m uk-first-column uk-margin-large-top">
                     Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. For more information and details on requesting private lessons at your home or community pool, check out our <a href="{{ route('home_privates.index') }}">Home Private Lessons page</a>.
                 </div>
+                <div class="uk-width-1-1@m uk-first-column uk-margin-top">
+                    For children under 3 years of age, we require a parent or trusted adult also get in the water to assist with the lessons. While our goal is certainly to teach your child to swim, we are not ISR certified instructors and do not specialize in the infant survival technique. We recommend participants under 12 months of age enroll in our group class <a href="{{ route('groups.lessons.index') }}">Parent & Infant program</a> prior to private lessons.
+                </div>
             @endif
         </div>
     </div>
