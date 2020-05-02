@@ -53,9 +53,14 @@
 
             @if(config('season.private.season'))
                 <div class="uk-grid-margin uk-grid uk-margin-large-top" uk-grid="">
-                    <div class="uk-width-4-4@m uk-first-column">
+                    <div class="uk-width-4-4@m uk-first-column uk-margin">
                         <h2 class="uk-heading-bullet">Registration</h2>
-                        <p class="">Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one lesson to checkout. We suggest a minimum of at least 4-12 consecutive lessons for optimal development based on ability level and goals.</p>
+                        <p class="">
+                            Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one lesson to checkout. We suggest a minimum of at least 4-12 consecutive lessons for optimal development based on ability level and goals.
+                        </p>
+                        <p class="">
+                            For children under 3 years of age, we require a parent or trusted adult also get in the water to assist with the lessons. While our goal is certainly to teach your child to swim, we are not ISR certified instructors and do not specialize in the infant survival technique. We recommend participants under 12 months of age enroll in our group class <a href="{{ route('groups.lessons.index') }}">Parent & Infant program</a> prior to private lessons.
+                        </p>
                     </div>
                 </div>
 
@@ -230,9 +235,6 @@
                 </div>
                 <div class="uk-width-1-1@m uk-first-column uk-margin-large-top">
                     Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. For more information and details on requesting private lessons at your home or community pool, check out our <a href="{{ route('home_privates.index') }}">Home Private Lessons page</a>.
-                </div>
-                <div class="uk-width-1-1@m uk-first-column uk-margin-top">
-                    For children under 3 years of age, we require a parent or trusted adult also get in the water to assist with the lessons. While our goal is certainly to teach your child to swim, we are not ISR certified instructors and do not specialize in the infant survival technique. We recommend participants under 12 months of age enroll in our group class <a href="{{ route('groups.lessons.index') }}">Parent & Infant program</a> prior to private lessons.
                 </div>
             @endif
         </div>
