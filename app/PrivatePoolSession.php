@@ -143,4 +143,27 @@ class PrivatePoolSession extends Model
     {
         return $query->where('start', Carbon::tomorrow());
     }
+
+    /**
+     * @param $query
+     * @return mixed
+     *
+     * If today is after the 25th of the month then show the lessons
+     * for the rest of this month and the whole next month.
+     *
+     * If today is before the 25th of this month then just
+     * show this months lessons.
+     *
+     */
+    public function scopeStartConditionallyNextMonth($query)
+    {
+        $now = Carbon::now();
+        $dayNumber = $now->format('j');
+
+        if ($dayNumber <= 25) {
+            return $query->whereBetween('start', [$now->toDateTimeString(), $now->endOfMonth()->toDateTimeString()]);
+        } else {
+            return $query->whereBetween('start', [$now->toDateTimeString(), $now->addMonth()->endOfMonth()->toDateTimeString()]);
+        }
+    }
 }
