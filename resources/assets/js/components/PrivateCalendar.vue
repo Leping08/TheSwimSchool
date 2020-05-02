@@ -5,6 +5,7 @@
                     class="uk-width-3-4@m"
                     :plugins="calendarPlugins"
                     :events="calendarEvents"
+                    :event-time-format="{ hour12: true, hour: 'numeric', minute: '2-digit' }"
                     @eventClick="eventClicked"
                     :header="{
                         left: 'prev,next today',
@@ -20,7 +21,7 @@
                 <div v-for="event in cart" class="uk-card uk-card-default uk-card-body uk-width-1-1@m uk-margin">
                     <button @click="remove(event.id)" class="uk-offcanvas-close uk-button-small" type="button" uk-close></button>
                     <div>{{event.start.toDateString()}}</div>
-                    <div>{{event.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true})}} - {{event.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true})}}</div>
+                    <div>{{event.start.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}} - {{event.end.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}}</div>
                 </div>
                 <div>
                     <div class="uk-h3 uk-margin-top">Total: ${{ cart.length * 35 }}</div>
@@ -64,10 +65,10 @@
         created() {
             this.calendarEvents = JSON.parse(this.events).map(function(event) {
                 return {
-                    'id': event.id,
-                    'start': Date.parse(event.start),
-                    'end': Date.parse(event.end),
-                    'color': '#ed64a6'
+                    id: event.id,
+                    start: Date.parse(event.start),
+                    end: Date.parse(event.end),
+                    color: '#ed64a6'
                 };
             });
         },
@@ -78,11 +79,13 @@
                     return;
                 }
 
+                console.log(event.event);
+
                 //Add the event to the cart
                 this.cart.push({
                     'id': event.event.id,
-                    'end': event.event.end,
-                    'start': event.event.start
+                    'start': event.event.start,
+                    'end': event.event.end
                 });
 
                 //Set the color of the selected item

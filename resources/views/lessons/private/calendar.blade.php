@@ -70,7 +70,6 @@
                     let form = null;
                     document.addEventListener('DOMContentLoaded', function () {
                         form = document.getElementById('sign_up');
-                        console.log('fdsfds');
                     }, false);
 
                     function openStripeCheckout() {
