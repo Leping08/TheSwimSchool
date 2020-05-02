@@ -64,6 +64,16 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
+            Text::make('Color', 'hex_color')
+                ->onlyOnForms()
+                ->required(),
+
+            Text::make('Color', function () {
+                return view('partials.color', [
+                    'color' => $this->hex_color,
+                ])->render();
+            })->asHtml(),
+
             Password::make('Password')
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')

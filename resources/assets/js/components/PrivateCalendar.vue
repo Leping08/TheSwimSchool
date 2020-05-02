@@ -19,7 +19,7 @@
                     <div class="uk-h3 uk-width-1-2 uk-text-right"><i class="fa fa-shopping-cart fa-lg"></i></div>
                 </div>
                 <div v-for="event in cart" class="uk-card uk-card-default uk-card-body uk-width-1-1@m uk-margin">
-                    <button @click="remove(event.id)" class="uk-offcanvas-close uk-button-small" type="button" uk-close></button>
+                    <button @click="remove(event)" class="uk-offcanvas-close uk-button-small" type="button" uk-close></button>
                     <div>{{event.start.toDateString()}}</div>
                     <div>{{event.start.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}} - {{event.end.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}}</div>
                 </div>
@@ -68,7 +68,7 @@
                     id: event.id,
                     start: Date.parse(event.start),
                     end: Date.parse(event.end),
-                    color: '#ed64a6'
+                    color: event.instructor.hex_color
                 };
             });
         },
@@ -78,8 +78,6 @@
                 if(this.duplicates(event.event.id)) {
                     return;
                 }
-
-                console.log(event.event);
 
                 //Add the event to the cart
                 this.cart.push({
@@ -95,17 +93,22 @@
                     }
                 })
             },
-            remove: function (event_id) {
+            remove: function (event) {
+                //Remove the event from the cart
                 this.cart = this.cart.filter(function (item) {
-                    return !(item.id === event_id);
+                    return !(item.id == event.id);
                 });
 
-                //Set the color of the selected item back to the original color
-                this.calendarEvents.forEach(function (item) {
-                    if(item.id == event_id) {
-                        item.color = '#ed64a6';
+                //Set the color back to the instructor color
+                this.calendarEvents.forEach((item) => {
+                    if(item.id == event.id) {
+                        JSON.parse(this.events).map((original_event) => {
+                            if (item.id == original_event.id) {
+                                item.color = original_event.instructor.hex_color;
+                            }
+                        });
                     }
-                })
+                });
             },
             duplicates: function (event_id) {
                 let length =  this.cart.filter(function (item) {

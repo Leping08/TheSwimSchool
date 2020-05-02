@@ -15,6 +15,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property integer $id
  * @property string $name
  * @property string $email
+ * @property string $hex_color
  * @property string $password
  * @property string $remember_token
  * @property \Illuminate\Support\Carbon $created_at
@@ -34,7 +35,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'hex_color'
     ];
 
     /**
