@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/backstroke_kickboard.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/private.jpg')}}">
 
 @component('mail::panel')
-# 2020 Swim Season
-The 2020 swim season is here and while The Swim School is hoping to be back in the pool with programs starting March 30th, we are aware of the growing concerns and rapidly changing restrictions regarding COVID-19. Even though all of our programs (group classes, private lessons and pre-season swim team training) allow us to operate with groups of less than 10 participants and our outdoor pool is located in a privately owned facility with minimal community exposure, your family’s health and safety is our main priority. At this time, our goal is to provide you with our current 2020 swim season schedule and allow you to start registering your children in our programs through our website online. You can check out our website for more details and get signed up now. We are also able to provide mobile private lesson services to your home pool within our service area. We will keep you informed if any schedule changes need to occur and we do plan to put additional on site safety protocols in place to protect the children and families we serve for as long as the risk of COVID-19 transmission exists. We look forward to swimming with you very soon!
+# Swim Season Starts this Monday 5/18!!
+Hello from The Swim School! We are beyond excited to get back to the pool starting this Monday, May 18th now that it has been deemed safe by our state officials! Swim Team tryouts are on hold for now but registration is open online through our website for group classes, private lessons and swim club (pre-season swim team training). Thankfully the majority of our programs already operate with less than 10 participants and the pool is located outdoors in a privately owned facility with minimal community exposure. However, we are putting some additional safety protocols in place and will be emailing specific details regarding our enhanced on site safety measures prior to our opening this Monday. We can’t wait to swim with you soon!
 @endcomponent
 
 @component('mail::button', ['url' => config('app.url').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
