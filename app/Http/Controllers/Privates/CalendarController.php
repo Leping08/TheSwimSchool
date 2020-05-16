@@ -68,7 +68,11 @@ class CalendarController extends Controller
         //Make sure the pool sessions are still available
         foreach ($pool_session_ids as $pool_session_id) {
             try {
-                PrivatePoolSession::findOrFail($pool_session_id);
+                //TODO: Write test for this logic
+                $lesson = PrivatePoolSession::available()->where('id', '=', $pool_session_id)->get();
+                if (! $lesson) { //Check if lesson has already been taken
+                    throw new ModelNotFoundException(PrivatePoolSession::class);
+                }
             } catch (ModelNotFoundException $exception) {
                 session()->flash('warning', 'Sorry, one of the classes was already taken.');
                 return redirect()->back();
@@ -81,7 +85,7 @@ class CalendarController extends Controller
         //Charge the card
         $stripe_charge_id = (new StripeCharge(
             request()->stripe_token,
-            50, //TODO what is the price for a private lesson?
+            (35 * count($pool_session_ids)),  //$35.00 is the cost of one private lesson
             request()->email,
             "Private swim lessons for ".request()->first_name." ".request()->last_name." through The Swim School."
         ))->charge()->id;
