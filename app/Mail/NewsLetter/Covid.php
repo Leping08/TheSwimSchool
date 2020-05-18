@@ -3,11 +3,11 @@
 namespace App\Mail\NewsLetter;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-class HappyHolidays extends Mailable
+class Covid extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,6 +34,8 @@ class HappyHolidays extends Mailable
     public function build()
     {
         return $this->markdown('email.newsletter.covid')
-                ->with(['emailAddress' => $this->emailAddress]);
+            ->subject('Additional Safety Protocols- COVID19 Response')
+            ->with(['emailAddress' => $this->emailAddress])
+            ->attach('public/pdf/Safety_Precautions_COVID19_Response.pdf');
     }
 }
