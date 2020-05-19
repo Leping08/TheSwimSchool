@@ -53,7 +53,7 @@ class Kernel extends ConsoleKernel
         })->dailyAt('7:20');
 
         //Prune Telescope Table
-        $schedule->command('telescope:prune')->daily();
+        $schedule->command('telescope:prune')->weekly();
     }
 
     /**

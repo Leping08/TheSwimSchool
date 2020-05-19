@@ -39,9 +39,8 @@ class WaitListTest extends TestCase
             'date_of_birth' => $this->faker->date()
         ];
 
-        $response = $this->post(route('groups.lessons.wait-list', [$lesson]), $attributes);
-
-        $response->assertStatus(302);
+        $this->post(route('groups.lessons.wait-list', [$lesson]), $attributes)
+            ->assertStatus(302);
 
         $this->assertEquals(1,  $lesson->waitlist()->count());
 
@@ -77,9 +76,8 @@ class WaitListTest extends TestCase
             'date_of_birth' => $this->faker->date()
         ];
 
-        $response = $this->json('POST', "/wait-list/{$lesson->id}", $attributes);
-
-        $response->assertStatus(302);
+        $this->post(route('groups.lessons.wait-list', ['lesson' => $lesson]), $attributes)
+            ->assertStatus(302);
 
         $this->assertEquals(1,  $lesson->waitlist()->count());
 
@@ -90,9 +88,9 @@ class WaitListTest extends TestCase
             "date_of_birth" => $attributes['date_of_birth']
         ]);
 
-        $response = $this->json('POST', "/wait-list/{$lesson->id}", $attributes);
-
-        $response->assertStatus(302);
+        $this->post(route('groups.lessons.wait-list', ['lesson' => $lesson]), $attributes)
+            ->assertStatus(302)
+            ->dumpSession();
 
         $this->assertEquals(1,  $lesson->waitlist()->count());
     }
