@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 
-class PrivateLessonRequestTest extends TestCase
+class PrivateLessonCalendarRequestTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
@@ -41,7 +41,7 @@ class PrivateLessonRequestTest extends TestCase
             'last_name' => $this->faker->lastName,
             'birth_date' => '2018-2-1',
             'email' => $this->faker->safeEmail,
-            'phone' => $this->faker->phoneNumber,
+            'phone' => '999-999-9999',
             'parent' => $this->faker->name,
             'street' => $this->faker->streetAddress,
             'city' => $this->faker->city,
@@ -49,7 +49,7 @@ class PrivateLessonRequestTest extends TestCase
             'zip' => 34532,
             'emergency_name' => $this->faker->name,
             'emergency_relationship' => 'Mom',
-            'emergency_phone' => $this->faker->phoneNumber,
+            'emergency_phone' => '999-999-9999',
             'pool_session_ids' => $session_ids,
             'stripe_token' => 'tok_visa'
         ];
@@ -102,7 +102,7 @@ class PrivateLessonRequestTest extends TestCase
             'last_name' => $this->faker->lastName,
             'birth_date' => '2018-2-1',
             'email' => $this->faker->safeEmail,
-            'phone' => $this->faker->phoneNumber,
+            'phone' => '999-999-9999',
             'parent' => $this->faker->name,
             'street' => $this->faker->streetAddress,
             'city' => $this->faker->city,
@@ -110,7 +110,7 @@ class PrivateLessonRequestTest extends TestCase
             'zip' => 34532,
             'emergency_name' => $this->faker->name,
             'emergency_relationship' => 'Mom',
-            'emergency_phone' => $this->faker->phoneNumber,
+            'emergency_phone' => '999-999-9999',
             'pool_session_ids' => $session_ids,
             'stripe_token' => 'tok_visa'
         ];
@@ -171,5 +171,71 @@ class PrivateLessonRequestTest extends TestCase
         SendPrivatePoolSessionReminderEmails::dispatch();
 
         Mail::assertSent(PrivatePoolSessionReminder::class, 1);
+    }
+
+    /** @test  **/
+    public function a_user_can_only_sign_up_for_a_private_lesson_that_is_available()
+    {
+        $this->seed();
+
+        $next_week = factory(PrivatePoolSession::class)->create([
+            'start' => Carbon::now()->addWeek(),
+            'end' => Carbon::now()->addWeek()->addHour(),
+            'private_lesson_id' => null
+        ]);
+
+        $last_week = factory(PrivatePoolSession::class)->create([
+            'start' => Carbon::now()->subWeek(),
+            'end' => Carbon::now()->subWeek()->subHour(),
+            'private_lesson_id' => null
+        ]);
+
+        $this->get(route('private_lesson.index'))
+            ->assertStatus(200)
+            ->assertSee($next_week->start->toJSON())
+            ->assertDontSee($last_week->start->toJSON());
+    }
+
+    /** @test  **/
+    public function a_user_will_see_an_error_message_if_the_card_is_declined()
+    {
+        $this->seed();
+
+        //$this->withoutExceptionHandling();
+
+        $session = factory(PrivatePoolSession::class)->create([
+            'private_lesson_id' => null
+        ]);
+
+        $session_ids = (string) $session->id;
+
+        $data = [
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'birth_date' => '2018-2-1',
+            'email' => $this->faker->safeEmail,
+            'phone' => '999-999-9999',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->state,
+            'zip' => 34532,
+            'emergency_name' => $this->faker->name,
+            'emergency_relationship' => 'Mom',
+            'emergency_phone' => '999-999-9999',
+            'pool_session_ids' => $session_ids,
+            'stripe_token' => 'tok_chargeDeclined'
+        ];
+
+        $this->get(route('private_lesson.index'))
+            ->assertStatus(200);
+
+        $this->assertEquals(0, \App\PrivateLesson::all()->count());
+
+        $this->post(route('private_lesson.store'), $data)
+            ->assertStatus(302)
+            ->assertSessionHas('error', 'Oops, something went wrong with the payment. Your card was declined.');
+
+        $this->assertEquals(0, \App\PrivateLesson::all()->count());
     }
 }

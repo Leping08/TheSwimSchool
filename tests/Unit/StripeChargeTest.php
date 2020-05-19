@@ -47,13 +47,13 @@ class StripeChargeTest extends TestCase
             'description' => "Testing the stripe API"
         ]);
 
-        $charge = (new StripeCharge(
+        $this->expectException(\Stripe\Error\Card::class);
+
+        (new StripeCharge(
             $testCharge->get('card'),
             $testCharge->get('price'),
             $testCharge->get('email'),
             $testCharge->get('description')
         ))->charge();
-
-        $this->assertEquals(null, $charge);
     }
 }

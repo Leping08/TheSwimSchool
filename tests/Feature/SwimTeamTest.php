@@ -238,4 +238,43 @@ class SwimTeamTest extends TestCase
             's_t_shirt_size_id' => NULL
         ]);
     }
+
+    /** @test **/
+    public function a_swimmer_will_get_an_error_message_if_the_card_fails()
+    {
+        $level = factory(\App\STLevel::class)->create();
+        $season = factory(\App\STSeason::class)->create();
+        $size = factory(\App\STShirtSize::class)->create();
+
+        $attributes = [
+            'firstName' => $this->faker->firstName,
+            'lastName' => $this->faker->lastName,
+            'birthDate' => Carbon::yesterday()->toDateString(),
+            'email' => $this->faker->email,
+            'phone' => '9998887777',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->word,
+            'zip' => $this->faker->numberBetween(10000, 90000),
+            'emergencyName' => $this->faker->name,
+            'emergencyRelationship' => $this->faker->word,
+            'emergencyPhone' => '999-999-9999',
+            'level_id' => $level->id,
+            'shirt_size_id' => $size->id,
+            'stripeToken' => 'tok_chargeDeclined'
+        ];
+
+
+        $this->get("/swim-team/level/{$level->id}/swimmer/")
+            ->assertStatus(200);
+
+        $this->assertEquals(0,  \App\STSwimmer::all()->count());
+
+        $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes)
+                ->assertStatus(302)
+                ->assertSessionHas('error', 'Oops, something went wrong with the payment. Your card was declined.');
+
+        $this->assertEquals(0,  \App\STSwimmer::all()->count());
+    }
 }

@@ -66,8 +66,9 @@ class StripeCharge implements PaymentMethod
 
 
     /**
-     * @param array $charge
-     * @return \Stripe\Charge
+     * @param  array  $charge
+     * @return Mixed
+     * @throws \Exception
      */
     public function pay(array $charge)
     {
@@ -104,14 +105,13 @@ class StripeCharge implements PaymentMethod
             // Something else happened, completely unrelated to Stripe
             Log::error('Something else happened, completely unrelated to Stripe');
             Log::error('Error: ' . $e->getMessage());
-            return back();
+            throw $e;
         }
-        return null;
     }
 
     /**
      * @param $e
-     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     private function logStripeError($e)
     {
@@ -122,6 +122,6 @@ class StripeCharge implements PaymentMethod
         Log::error('Code is:' . $err['code']);
         Log::error(print_r($err, true));
         session()->flash('error', 'Oops, something went wrong with the payment. ' . $err['message']);
-        return back();
+        throw $e;
     }
 }

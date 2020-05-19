@@ -60,12 +60,16 @@ class SwimmerController extends Controller
                 'stripeChargeId' => 'For Free Promo Code'
             ]);
         } else {
-            $stripeChargeId = (new StripeCharge(
-                request()->stripeToken,
-                $price,
-                request()->email,
-                config('swim-team.full-name')." ".$level->name." Level for ".request()->firstName." ".request()->lastName."."
-            ))->charge()->id;
+            try {
+                $stripeChargeId = (new StripeCharge(
+                    request()->stripeToken,
+                    $price,
+                    request()->email,
+                    config('swim-team.full-name')." ".$level->name." Level for ".request()->firstName." ".request()->lastName."."
+                ))->charge()->id;
+            } catch (\Exception $exception) {
+                return back();
+            }
 
             $swimTeamSwimmer = request()->merge([
                 'stripeChargeId' => $stripeChargeId

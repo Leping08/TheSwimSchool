@@ -294,4 +294,43 @@ class Lessons extends TestCase
 
         $response->assertStatus(302);
     }
+
+    /** @test  **/
+    public function a_swimmer_will_see_an_error_when_trying_to_sign_up_with_a_credit_card_that_is_declined()
+    {
+        $lesson = factory(\App\Lesson::class)->create();
+
+        $attributes = [
+            'firstName' => $this->faker->firstName,
+            'lastName' => $this->faker->lastName,
+            'birthDate' => Carbon::yesterday()->toDateString(),
+            'email' => $this->faker->email,
+            'phone' => '9998887777',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->word,
+            'zip' => $this->faker->numberBetween(10000, 90000),
+            'emergencyName' => $this->faker->name,
+            'emergencyRelationship' => $this->faker->word,
+            'emergencyPhone' => '999-999-9999',
+            'emailUpdates' => 'off',
+            'lesson_id' => $lesson->id,
+            'stripeToken' => 'tok_chargeDeclined' //This is a declined card
+        ];
+
+
+        $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
+            ->assertStatus(200);
+
+        $this->assertEquals(0,  \App\Swimmer::all()->count());
+
+        $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
+
+        $response->assertRedirect(route('groups.lessons.create', [$lesson->group, $lesson]));
+
+        $response->assertSessionHas('error', 'Oops, something went wrong with the payment. Your card was declined.');
+
+        $this->assertEquals(0,  \App\Swimmer::all()->count());
+    }
 }

@@ -83,12 +83,17 @@ class CalendarController extends Controller
         }
 
         //Charge the card
-        $stripe_charge_id = (new StripeCharge(
-            request()->stripe_token,
-            (35 * count($pool_session_ids)),  //$35.00 is the cost of one private lesson
-            request()->email,
-            "Private swim lessons for ".request()->first_name." ".request()->last_name." through The Swim School."
-        ))->charge()->id;
+        try {
+            $stripe_charge = (new StripeCharge(
+                request()->stripe_token,
+                (35 * count($pool_session_ids)),  //$35.00 is the cost of one private lesson
+                request()->email,
+                "Private swim lessons for ".request()->first_name." ".request()->last_name." through The Swim School."
+            ))->charge();
+            $stripe_charge_id = $stripe_charge->id;
+        } catch (\Exception $exception) {
+            return back();
+        }
 
         //Create the lesson
         $private_lesson = PrivateLesson::create([
