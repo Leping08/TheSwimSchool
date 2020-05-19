@@ -30,7 +30,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->withoutExceptionHandling();
 
-        $sessions = factory(PrivatePoolSession::class, 2)->create([
+        $sessions = factory(PrivatePoolSession::class, 4)->create([
             'private_lesson_id' => null
         ]);
 
@@ -64,6 +64,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $response->assertStatus(302);
 
         $this->assertEquals(1,  \App\PrivateLesson::all()->count());
+        $this->assertEquals(4,  \App\PrivateLesson::first()->pool_sessions()->count());
 
         $this->assertDatabaseHas('private_swimmers', [
             "first_name" => $data['first_name'],

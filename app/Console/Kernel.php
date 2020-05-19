@@ -33,9 +33,9 @@ class Kernel extends ConsoleKernel
 //        })->dailyAt('7:00');
 
         //Update reviews table with the SwimSchool Facebook page reviews
-        $schedule->call(function () {
-            (new FacebookApiRequest())->updateReviews();
-        })->dailyAt('7:05');
+//        $schedule->call(function () {
+//            (new FacebookApiRequest())->updateReviews();
+//        })->dailyAt('7:05');
 
         //Send group lesson reminder emails
         $schedule->call(function () {
