@@ -30,7 +30,7 @@ About The Swim School
         </div>
 
 
-        <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
+        <div id="Hilary" class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m uk-first-column">
                 <h2 class="uk-text-center uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">Hilary Koppenhaver</h2>
                 <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
@@ -47,7 +47,7 @@ About The Swim School
             </div>
         </div>
 
-        <div class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
+        <div id="Michelle" class="uk-flex-middle uk-grid-margin uk-grid" uk-grid="">
             <div class="uk-width-expand@m">
                 <div class="uk-margin">
                     <img src="/img/instructors/michelle.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Manatee County Children's swim lessons">
