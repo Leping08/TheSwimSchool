@@ -3,6 +3,7 @@
         <div class="uk-grid uk-width-1-1">
             <FullCalendar
                     class="uk-width-3-4@m uk-margin-bottom"
+                    :height="500"
                     :plugins="calendarPlugins"
                     :events="calendarEvents"
                     :event-time-format="{ hour12: true, hour: 'numeric', minute: '2-digit' }"

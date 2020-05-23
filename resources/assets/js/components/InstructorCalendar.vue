@@ -2,6 +2,7 @@
     <div>
         <FullCalendar
             class="uk-width-4-4@m"
+            :height="500"
             :plugins="calendarPlugins"
             :events="calendarEvents"
             @eventClick="eventClicked"
