@@ -136,7 +136,6 @@ class PrivatePoolSession extends Resource
                 //The logged in user by default
                 'belongsToId' => $this->user_id ?? auth()->id()
             ])->searchable(),
-            HasMany::make('Swimmers', 'swimmers', PrivateSwimmer::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];

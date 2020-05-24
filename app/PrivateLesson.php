@@ -7,6 +7,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Actions\Actionable;
@@ -22,7 +23,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read Season $season
  * @property-read PrivatePoolSession $pool_sessions
- * @property-read PrivateSwimmer $swimmers
+ * @property-read PrivateSwimmer $swimmer
  */
 
 class PrivateLesson extends Model
@@ -56,10 +57,10 @@ class PrivateLesson extends Model
     }
 
     /**
-     * @return HasMany
+     * @return HasOne
      */
-    public function swimmers()
+    public function swimmer()
     {
-        return $this->hasMany(PrivateSwimmer::class, 'private_lesson_id');
+        return $this->hasOne(PrivateSwimmer::class);
     }
 }

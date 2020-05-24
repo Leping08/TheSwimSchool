@@ -4,6 +4,7 @@ namespace App;
 
 use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
 
@@ -40,8 +41,19 @@ class PrivateSwimmer extends Model
         'private_lesson_id'
     ];
 
+    /**
+     * @return BelongsTo
+     */
     public function lesson()
     {
         return $this->belongsTo(PrivateLesson::class, 'private_lesson_id');
+    }
+
+    /**
+     * @return PrivatePoolSession|null
+     */
+    public function pool_sessions()
+    {
+        return $this->lesson->pool_sessions ?? null;
     }
 }

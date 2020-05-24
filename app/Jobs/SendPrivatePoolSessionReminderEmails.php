@@ -34,14 +34,15 @@ class SendPrivatePoolSessionReminderEmails implements ShouldQueue
     public function handle()
     {
         Log::info("Starting to send private lesson pool session reminder emails.");
-        $pool_sessions = PrivatePoolSession::startingTomorrow()->with('swimmers')->get();
+        $pool_sessions = PrivatePoolSession::startingTomorrow()->get();
         if (count($pool_sessions)) {
             foreach ($pool_sessions as $pool_session) {
-                foreach ($pool_session->swimmers as $swimmer) {
-                    if ($swimmer->email) {
+                if ($pool_session->swimmer()) {
+                    $email = $pool_session->swimmer()->email;
+                    if ($email) {
                         try {
-                            Log::info("Sending group lesson reminder email to $swimmer->email for pool_session ID: $pool_session->id");
-                            Mail::to($swimmer->email)->send(new PrivatePoolSessionReminder($pool_session));
+                            Log::info("Sending group lesson reminder email to $email for pool_session ID: $pool_session->id");
+                            Mail::to($email)->send(new PrivatePoolSessionReminder($pool_session));
                         } catch (\Exception $e) {
                             Log::warning("Email error: $e");
                         }

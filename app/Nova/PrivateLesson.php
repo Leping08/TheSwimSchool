@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -60,7 +61,7 @@ class PrivateLesson extends Resource
             ID::make()->sortable(),
             BelongsTo::make('Season', 'season', Season::class),
             HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
-            HasMany::make('Swimmers', 'swimmers', PrivateSwimmer::class),
+            HasOne::make('Swimmer', 'swimmer', PrivateSwimmer::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];

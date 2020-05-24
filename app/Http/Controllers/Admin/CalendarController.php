@@ -59,7 +59,7 @@ class CalendarController extends Controller
         //Get all private pool sessions from 3 months ago and up
         $poolSessions = PrivatePoolSession::where('instructor_id', $user->id)
                             ->whereDate('start', '>=', Carbon::now()->subMonths(3))
-                            ->with(['swimmers', 'location'])
+                            ->with(['location'])
                             ->get();
 
         //Map the Private Lessons into calendar events
@@ -69,9 +69,9 @@ class CalendarController extends Controller
                 'title' => 'Private',
                 'start' => $session->start,
                 'end' => $session->end,
-                'color' => $session->swimmers->count() ? self::COLORS['private'] : self::COLORS['empty'],
+                'color' => $session->swimmer() ? self::COLORS['private'] : self::COLORS['empty'],
                 'details_link' => '/admin/resources/private-pool-sessions/'.$session->id,
-                'swimmers' => $session->swimmers,
+                'swimmers' => [$session->swimmer()],
                 'location' => $session->location->name
             ];
         }));
