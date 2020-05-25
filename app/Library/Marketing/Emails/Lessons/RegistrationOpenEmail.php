@@ -9,16 +9,13 @@ use App\Mail\NewsLetter\RegistrationOpen;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-class LessonRegistrationOpen
+class RegistrationOpenEmail
 {
-    public function getSubscribedEmails(): Array
+    public static function send()
     {
-        return EmailList::where('subscribe', '=', true)->pluck('email')->all();
-    }
+        $emails = EmailList::where('subscribe', '=', true)->pluck('email')->all();
 
-    public function send()
-    {
-        foreach($this->getSubscribedEmails() as $email)
+        foreach($emails as $email)
         {
             try{
                 Log::info("Sending lesson registration open now email to $email");
