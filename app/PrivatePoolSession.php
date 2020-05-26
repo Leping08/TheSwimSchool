@@ -159,7 +159,7 @@ class PrivatePoolSession extends Model
         $now = Carbon::now();
         $dayNumber = $now->format('j');
 
-        if ($dayNumber > 25) { //TODO write test for this
+        if ($dayNumber < 25) { //TODO write test for this
             return $query->whereBetween('start', [$now->toDateTimeString(), $now->endOfMonth()->toDateTimeString()]);
         } else {
             return $query->whereBetween('start', [$now->toDateTimeString(), $now->addMonth()->endOfMonth()->toDateTimeString()]);
