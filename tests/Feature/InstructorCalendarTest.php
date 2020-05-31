@@ -103,4 +103,25 @@ class InstructorCalendarTest extends TestCase
             ->assertSee($lesson_1->group->type)
             ->assertDontSee($lesson_2->group->type);
     }
+
+    /** @test  **/
+    public function the_calendar_will_show_the_correct_number_of_events_for_a_lesson()
+    {
+        $this->seed();
+
+        $instructor = factory(User::class)->create();
+
+        $lesson_1 = factory(Lesson::class)->create([
+            'instructor_id' => $instructor->id,
+            'class_start_date' => Carbon::parse('2020-06-01'),
+            'class_end_date' => Carbon::parse('2020-06-11'),
+            'class_start_time' => Carbon::parse('2020-06-01 9:30:00 AM'),
+            'class_end_time' => Carbon::parse('2020-06-01 10:00:00 AM'),
+            'days' => '1,2,3,4'
+        ]);
+
+        $lesson_1->DaysOfTheWeek()->sync(explode(',', $lesson_1->days));
+
+        $this->assertCount(8, $lesson_1->calendarEvents);
+    }
 }

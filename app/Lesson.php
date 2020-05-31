@@ -241,7 +241,7 @@ class Lesson extends Model
                 }
             }
 
-            $startDate = Carbon::parse($this->class_start_date)->next($carbonDayConstant); // Get the first friday.
+            $startDate = Carbon::parse($this->class_start_date->subDay())->next($carbonDayConstant); // Get the first friday.
             $endDate = Carbon::parse($this->class_end_date);
 
             for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
