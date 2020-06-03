@@ -36,8 +36,8 @@ class PrivateLessonSignUp extends Mailable
             ->markdown('email.privates.sign_up')
             ->with([
                 'lesson' => $this->privateLesson,
-                'first_pool_session' => $this->privateLesson->pool_sessions->first(),
-                'location' => $this->privateLesson->pool_sessions->first()->location
+                'first_pool_session' => $this->privateLesson->pool_sessions->sortBy('start')->frist(),
+                'location' => $this->privateLesson->pool_sessions->sortBy('start')->frist()->location
             ]);
     }
 }

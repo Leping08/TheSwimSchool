@@ -89,8 +89,7 @@ class WaitListTest extends TestCase
         ]);
 
         $this->post(route('groups.lessons.wait-list', ['lesson' => $lesson]), $attributes)
-            ->assertStatus(302)
-            ->dumpSession();
+            ->assertStatus(302);
 
         $this->assertEquals(1,  $lesson->waitlist()->count());
     }
