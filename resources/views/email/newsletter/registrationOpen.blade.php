@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/sun.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/bennett.jpg')}}">
 
 @component('mail::panel')
 # June Lesson Registration
-Registration is now open for our next weekday session of group swim lessons and swim club as well as private lessons for the month of June. If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
+Registration is now open for our next weekday session of group swim lessons and swim club. If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor. We also have a few spots left for private lessons in the month of June.
 @endcomponent
 
 @component('mail::button', ['url' => config('app.url').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
