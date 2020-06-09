@@ -17,10 +17,23 @@ The first lesson is {{$first_pool_session->start->format('g:ia')}} - {{$first_po
 @endcomponent
 
 @component('mail::panel')
+### Instructor
+{{ $instructor->name }}\
+<a href="tel:{{$instructor->phone}}">{{ $instructor->phone }}</a>
+@endcomponent
+
+@component('mail::panel')
 ### What To Bring
 * Bathing Suit
 * Towel
 * Sun Screen
+@endcomponent
+
+@component('mail::panel')
+### Lessons
+@foreach($pool_sessions as $pool_session)
+* {{$pool_session->start->format('g:ia')}} - {{$pool_session->end->format('g:ia')}} on {{$pool_session->start->format('l F jS')}}
+@endforeach
 @endcomponent
 
 @if($location->pool_access_instructions)

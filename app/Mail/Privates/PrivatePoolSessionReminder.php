@@ -34,7 +34,8 @@ class PrivatePoolSessionReminder extends Mailable
             ->markdown('email.privates.lesson_reminder')
             ->with([
                 'pool_session' => $this->pool_session,
-                'location' => $this->pool_session->location
+                'location' => $this->pool_session->location,
+                'instructor' => $this->pool_session->instructor
             ]);
     }
 }

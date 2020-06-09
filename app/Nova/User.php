@@ -64,6 +64,8 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
+            Text::make('Phone', 'phone'),
+
             Text::make('Color', 'hex_color')
                 ->onlyOnForms()
                 ->required(),

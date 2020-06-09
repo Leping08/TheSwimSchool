@@ -18,6 +18,13 @@ Tomorrow {{$pool_session->start->format('l F jS')}}\
 @endcomponent
 
 @component('mail::panel')
+### Instructor
+
+{{ $instructor->name }}\
+<a href="tel:{{$instructor->phone}}">{{ $instructor->phone }}</a>
+@endcomponent
+
+@component('mail::panel')
 ### What To Bring
 * Bathing Suit
 * Towel

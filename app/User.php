@@ -16,6 +16,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property string $name
  * @property string $email
  * @property string $hex_color
+ * @property string $phone
  * @property string $password
  * @property string $remember_token
  * @property \Illuminate\Support\Carbon $created_at
