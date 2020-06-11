@@ -232,9 +232,9 @@
                         </private-calendar>
                     </form>
                 </div>
-                <div class="uk-width-1-1@m uk-first-column uk-margin-large-top">
-                    Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. For more information and details on requesting private lessons at your home or community pool, check out our <a href="{{ route('home_privates.index') }}">Home Private Lessons page</a>.
-                </div>
+{{--                <div class="uk-width-1-1@m uk-first-column uk-margin-large-top">--}}
+{{--                    Home and community pool private lessons within the Parrish, Ellenton, and Palmetto areas are also available. For more information and details on requesting private lessons at your home or community pool, check out our <a href="{{ route('home_privates.index') }}">Home Private Lessons page</a>.--}}
+{{--                </div>--}}
             @endif
         </div>
     </div>
