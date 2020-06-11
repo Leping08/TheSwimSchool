@@ -65,10 +65,8 @@
                         <div class="uk-card-body">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>
                             <div class="el-content uk-margin">The Swim School offers individualized lessons available
-                                seasonally March-October to adults and children (12 months+) of all ability levels at
-                                our pool or yours! Swim instruction is customized to meet the needs
-                                and goals of each participant. These lessons are also great if group swim lessons do not
-                                accommodate your schedule.
+                                seasonally March-October to adults and children (12 months +) of all ability levels.
+                                Swim instruction is customized to the needs and goals of each participant.
                             </div>
                         </div>
                     </div>
@@ -81,7 +79,8 @@
                         </div>
                         <div class="uk-card-body">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Team</h3>
-                            <div class="el-content uk-margin">Love to swim? Join the {{ config('swim-team.full-name') }}, a seasonal
+                            <div class="el-content uk-margin">Love to swim? Join the {{ config('swim-team.full-name') }}
+                                , a seasonal
                                 program run by The Swim School. Quality level coaches provide a fun atmosphere for
                                 children ages 5-18 to improve their technique of the four competitive strokes, build
                                 endurance and learn about sportsmanship through local competition.
