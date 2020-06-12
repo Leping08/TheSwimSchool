@@ -100,11 +100,13 @@ class CalendarController extends Controller
             'season_id' => SeasonHelpers::currentSeason()->id
         ]);
 
+        $birthDate = Carbon::parse(request()->birth_date);
+
         //Create the swimmer
         $private_swimmer = PrivateSwimmer::create([
             'first_name' => request()->first_name,
             'last_name' => request()->last_name,
-            'birth_date' => request()->birth_date,
+            'birth_date' => $birthDate,
             'email' => request()->email,
             'phone' => request()->phone,
             'parent' => request()->parent,

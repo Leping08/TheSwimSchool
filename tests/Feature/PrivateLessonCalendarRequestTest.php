@@ -239,4 +239,46 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->assertEquals(0, \App\PrivateLesson::all()->count());
     }
+
+    /** @test  **/
+    public function a_user_can_sign_up_with_this_birth_date_format()
+    {
+        $this->seed();
+
+        $session = factory(PrivatePoolSession::class)->create([
+            'private_lesson_id' => null
+        ]);
+
+        $session_ids = (string) $session->id;
+
+        $data = [
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'birth_date' => '09/08/2016',
+            'email' => $this->faker->safeEmail,
+            'phone' => '999-999-9999',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->state,
+            'zip' => 34532,
+            'emergency_name' => $this->faker->name,
+            'emergency_relationship' => 'Mom',
+            'emergency_phone' => '999-999-9999',
+            'pool_session_ids' => $session_ids,
+            'stripe_token' => 'tok_visa'
+        ];
+
+        $this->get(route('private_lesson.index'))
+            ->assertStatus(200);
+
+        $this->assertEquals(0, \App\PrivateLesson::all()->count());
+
+        $response = $this->post(route('private_lesson.store'), $data);
+
+        $response->assertStatus(302);
+
+        $this->assertEquals(1,  \App\PrivateLesson::all()->count());
+        $this->assertEquals(1,  \App\PrivateLesson::first()->pool_sessions()->count());
+    }
 }
