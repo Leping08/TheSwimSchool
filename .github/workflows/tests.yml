@@ -12,7 +12,8 @@ jobs:
 
       - name: Create database for tests
         run: |
-          mysql -uroot -h127.0.0.1 -proot<<EOFMYSQL
+          sudo /etc/init.d/mysql start
+          mysql -uroot -h127.0.0.1 -proot
           show databases;
           CREATE DATABASE TDD;
           show databases;
