@@ -1,0 +1,33 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create database for tests
+        run: |
+          mysql -uroot -p'root'<<EOFMYSQL
+          show databases;
+          CREATE DATABASE TDD;
+          show databases;
+          EOFMYSQL
+
+      - name: Install composer dependencies
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
+        run: composer install --prefer-dist
+
+      - name: Prepare the environment
+        run: cp .env.example .env
+
+      - name: Generate laravel app key
+        run: php artisan key:generate
+
+      - name: Run PHPUnit
+        run: php7.3 vendor/bin/phpunit
