@@ -7,17 +7,18 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: TDD
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - uses: actions/checkout@v2
-
-      - name: Create database for tests
-        run: |
-          sudo /etc/init.d/mysql start
-          mysql -uroot -h127.0.0.1 -proot
-          show databases;
-          CREATE DATABASE TDD;
-          show databases;
-          EOFMYSQL
 
       - name: Install composer dependencies
         env:
@@ -30,5 +31,7 @@ jobs:
       - name: Generate laravel app key
         run: php artisan key:generate
 
-      - name: Run PHPUnit
-        run: php7.3 vendor/bin/phpunit
+      - name: Run tests
+        run: vendor/bin/phpunit
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
