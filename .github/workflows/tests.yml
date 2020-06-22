@@ -33,14 +33,19 @@ jobs:
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
-
       - name: Boot Laravel application
         run: |
           cp .env.github .env
           php artisan key:generate
           php artisan --version
 
+      - name: Boot Laravel application
+        run: |
+          npm -v
+          npm install
+          npm run prod
+
       - name: Run tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --testdox
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
