@@ -21,9 +21,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install composer dependencies
+        run: composer install -n --prefer-dist
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
-        run: composer install --prefer-dist
 
       - name: Prepare the environment
         run: cp .env.example .env
