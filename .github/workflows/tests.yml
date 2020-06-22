@@ -11,28 +11,34 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: TDD
+          MYSQL_DATABASE: database_ci
+          MYSQL_USER: user
+          MYSQL_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: secretroot
         ports:
-          - 3306
+          - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Init Database
-        run: mysql -uroot -h127.0.0.1 -proot -e 'CREATE DATABASE IF NOT EXISTS TDD;'
+      - name: Verify MySQL connection
+        run: |
+          mysql --version
+          sudo apt-get install -y mysql-client
+          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
 
       - name: Install composer dependencies
         run: composer install -n --prefer-dist
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
-      - name: Prepare the environment
-        run: cp .env.example .env
 
-      - name: Generate laravel app key
-        run: php artisan key:generate
+      - name: Boot Laravel application
+        run: |
+          cp .env.github .env
+          php artisan key:generate
+          php artisan --version
 
       - name: Run tests
         run: vendor/bin/phpunit
