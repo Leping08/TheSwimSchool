@@ -39,7 +39,7 @@ jobs:
           php artisan key:generate
           php artisan --version
 
-      - name: Boot Laravel application
+      - name: Npm Install
         run: |
           npm -v
           npm install
