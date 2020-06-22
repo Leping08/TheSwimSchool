@@ -41,6 +41,6 @@ jobs:
           php artisan --version
 
       - name: Run tests
-        run: |
-          ./vendor/bin/phpunit --version
-          ./vendor/bin/phpunit
+        run: vendor/bin/phpunit
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
