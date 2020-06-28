@@ -19,7 +19,7 @@ class UpdateEmail
         {
             try {
                 Log::info("Sending Covid update email to : $email");
-                //Mail::to($email)->send(new Update($email));
+                Mail::to($email)->send(new Update($email));
             } catch (\Exception $e) {
                 Log::warning("Email error: $e");
             }
