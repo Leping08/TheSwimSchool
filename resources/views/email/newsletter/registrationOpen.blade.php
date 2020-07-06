@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/kids-floating.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/smile.jpg')}}">
 
 @component('mail::panel')
 # Weekday Lesson Registration Now Open
