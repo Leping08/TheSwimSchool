@@ -67,18 +67,11 @@ class CalendarController extends Controller
 
         //Make sure the pool sessions are still available
         foreach ($pool_session_ids as $pool_session_id) {
-            try {
-                //TODO: Write test for this logic
-                $lesson = PrivatePoolSession::available()->where('id', '=', $pool_session_id)->get();
-                if (! $lesson) { //Check if lesson has already been taken
-                    throw new ModelNotFoundException(PrivatePoolSession::class);
-                }
-            } catch (ModelNotFoundException $exception) {
+            $lesson = PrivatePoolSession::available()->where('id', '=', $pool_session_id)->get();
+            if ($lesson->isEmpty()) { //Check if lesson has already been taken
+                Log::error("Pool Session Id $pool_session_id has already been taken. Redirecting back.");
                 session()->flash('warning', 'Sorry, one of the classes was already taken.');
-                return redirect()->back();
-            } catch (\Exception $exception) {
-                session()->flash('warning', 'Sorry, something went wrong with one of the classes.');
-                return redirect()->back(500);
+                return redirect(route('private_lesson.index'));
             }
         }
 

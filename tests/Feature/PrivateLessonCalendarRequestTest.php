@@ -9,6 +9,7 @@ use App\PrivateLesson;
 use App\PrivatePoolSession;
 use App\PrivateSwimmer;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
@@ -280,5 +281,73 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->assertEquals(1,  \App\PrivateLesson::all()->count());
         $this->assertEquals(1,  \App\PrivateLesson::first()->pool_sessions()->count());
+    }
+
+    /** @test  **/
+    public function a_user_can_not_sign_up_for_a_lesson_that_has_been_taken_by_someone_else()
+    {
+        $this->seed();
+
+        factory(PrivatePoolSession::class, 4)->create([
+            'private_lesson_id' => null
+        ]);
+
+        //This is the same id that was already signed up for
+        $session_ids_1 = "1";
+
+        $data_1 = [
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'birth_date' => '09/08/2016',
+            'email' => $this->faker->safeEmail,
+            'phone' => '999-999-9999',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->state,
+            'zip' => 34532,
+            'emergency_name' => $this->faker->name,
+            'emergency_relationship' => 'Mom',
+            'emergency_phone' => '999-999-9999',
+            'pool_session_ids' => $session_ids_1,
+            'stripe_token' => 'tok_visa'
+        ];
+
+        $response = $this->post(route('private_lesson.store'), $data_1);
+
+        $response->assertStatus(302);
+        $response->assertRedirect(route('pages.thank-you'));
+
+        $this->assertCount(1, PrivateSwimmer::all());
+
+
+        //This is the same id that was already signed up for
+        $session_ids_2 = "1";
+
+        $data_2 = [
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'birth_date' => '09/08/2016',
+            'email' => $this->faker->safeEmail,
+            'phone' => '999-999-9999',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->state,
+            'zip' => 34532,
+            'emergency_name' => $this->faker->name,
+            'emergency_relationship' => 'Mom',
+            'emergency_phone' => '999-999-9999',
+            'pool_session_ids' => $session_ids_2,
+            'stripe_token' => 'tok_visa'
+        ];
+
+        $response = $this->post(route('private_lesson.store'), $data_2);
+
+        $response->assertStatus(302);
+        $response->assertRedirect(route('private_lesson.index'));
+
+        //Assert the user was not created
+        $this->assertCount(1, PrivateSwimmer::all());
     }
 }
