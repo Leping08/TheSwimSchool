@@ -104,16 +104,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>August 10th-September 3rd</td>
+                            <td>August 10th-September 2rd</td>
                             <td>August 3rd</td>
                         </tr>
                         <tr>
-                            <td>September 7th-October 1st</td>
-                            <td>August 31st</td>
+                            <td>September 14th-October 7th</td>
+                            <td>September 7th</td>
                         </tr>
                         <tr>
-                            <td>October 5th-October 29th</td>
-                            <td>September 28th</td>
+                            <td>October 12th-November 4th</td>
+                            <td>October 5th</td>
                         </tr>
                     </tbody>
                 </table>

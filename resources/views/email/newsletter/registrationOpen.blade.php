@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/bennett.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/kids-floating.jpg')}}">
 
 @component('mail::panel')
-# Final Summer Weekday Session Registration Now Open
-Registration is now open for our final two week summer weekday session of group swim lessons and swim club. If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
+# Fall Weekday Session Registration Now Open
+Registration is now open for our fall weekday session of group swim lessons and swim club. If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
 @endcomponent
 
 @component('mail::button', ['url' => route('groups.lessons.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
