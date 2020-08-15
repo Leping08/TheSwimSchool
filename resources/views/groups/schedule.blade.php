@@ -129,7 +129,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>August 29th-October 3rd</td>
+                            <td>August 22nd-September 26th</td>
                             <td>August 17th</td>
                         </tr>
                     </tbody>
@@ -146,7 +146,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>August 30th-October 4th</td>
+                            <td>August 23rd-September 27th</td>
                             <td>August 17th</td>
                         </tr>
                     </tbody>

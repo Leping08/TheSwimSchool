@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/kids-floating.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/sun.jpg')}}">
 
 @component('mail::panel')
-# Fall Weekday Session Registration Now Open
-Registration is now open for our fall weekday session of group swim lessons and swim club. If you are currently enrolled and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
+# Final Weekend Session Registration Now Open
+Registration is now open for our final weekend session of group swim lessons for the 2020 season. The start dates for this session have been changed to Saturday 8/22 and Sunday 8/23.
 @endcomponent
 
 @component('mail::button', ['url' => route('groups.lessons.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
