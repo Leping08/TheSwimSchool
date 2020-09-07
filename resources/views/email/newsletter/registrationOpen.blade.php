@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/sun.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/bennett.jpg')}}">
 
 @component('mail::panel')
-# Final Weekend Session Registration Now Open
-Registration is now open for our final weekend session of group swim lessons for the 2020 season. The start dates for this session have been changed to Saturday 8/22 and Sunday 8/23.
+# Final Weekday Group Lesson Session Registration Now Open
+Registration is now open for our final weekday session of group swim lessons for the 2020 season.
 @endcomponent
 
 @component('mail::button', ['url' => route('groups.lessons.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
