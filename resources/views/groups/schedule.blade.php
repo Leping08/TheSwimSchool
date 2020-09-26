@@ -112,7 +112,7 @@
                             <td>September 7th</td>
                         </tr>
                         <tr>
-                            <td>October 12th-October 28th</td>s
+                            <td>October 12th-October 28th</td>
                             <td>October 5th</td>
                         </tr>
                     </tbody>
