@@ -98,7 +98,7 @@
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
-                            <th class="uk-width-1-2"><h5>Weekday Sessions (M/W 2x/wk for 4 weeks)</h5></th>
+                            <th class="uk-width-1-2"><h5>Weekday Sessions (M/W/F 3x/wk for 3 weeks)</h5></th>
                             <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                         </tr>
                     </thead>
@@ -112,7 +112,7 @@
                             <td>September 7th</td>
                         </tr>
                         <tr>
-                            <td>October 12th-November 4th</td>
+                            <td>October 12th-October 28th</td>s
                             <td>October 5th</td>
                         </tr>
                     </tbody>
