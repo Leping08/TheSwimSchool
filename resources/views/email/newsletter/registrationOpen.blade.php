@@ -1,10 +1,10 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/bennett.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/breast-stroke.jpg')}}">
 
 @component('mail::panel')
 # Final Weekday Group Lesson Session Registration Now Open
-Registration is now open for our final weekday session of group swim lessons for the 2020 season.
+Registration is now open for our final weekday session of Dolphin, Flying Fish and Shark swim club for the 2020 season. This will be a Mon/Wed/Fri session starting on Monday 10/12 and ending on Wednesday 10/28.
 @endcomponent
 
 @component('mail::button', ['url' => route('groups.lessons.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
