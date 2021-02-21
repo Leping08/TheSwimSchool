@@ -3,18 +3,21 @@
 namespace Tests\Feature;
 
 use App\Mail\SwimTeam\STSignUp;
+use App\PromoCode;
+use App\STLevel;
+use App\STSeason;
+use App\STShirtSize;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SwimTeamTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
-    //TODO links in this file are a bit messy
+    //TODO use named routes instead of links
 
     /** @test **/
     public function a_swimmer_can_sign_up_by_hitting_the_swim_team_sign_up_route()
@@ -22,9 +25,9 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory(\App\STLevel::class)->create();
-        $season = factory(\App\STSeason::class)->create();
-        $size = factory(\App\STShirtSize::class)->create();
+        $level = STLevel::factory()->create();
+        $season = STSeason::factory()->create();
+        $size = STShirtSize::factory()->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -74,15 +77,15 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory(\App\STLevel::class)->create([
+        $level = STLevel::factory()->create([
             'price' => 100
         ]);
-        $season = factory(\App\STSeason::class)->create();
-        $promoCode = factory(\App\PromoCode::class)->create([
+        $season = STSeason::factory()->create();
+        $promoCode = PromoCode::factory()->create([
             'code' => 'HALFOFF',
             'discount_percent' => 50
         ]);
-        $size = factory(\App\STShirtSize::class)->create();
+        $size = STShirtSize::factory()->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -133,15 +136,15 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory(\App\STLevel::class)->create([
+        $level = STLevel::factory()->create([
             'price' => 100
         ]);
-        $season = factory(\App\STSeason::class)->create();
-        $promo = factory(\App\PromoCode::class)->create([
+        $season = STSeason::factory()->create();
+        $promo = PromoCode::factory()->create([
             'code' => 'FORFREE',
             'discount_percent' => 100
         ]);
-        $size = factory(\App\STShirtSize::class)->create();
+        $size = STShirtSize::factory()->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -193,9 +196,9 @@ class SwimTeamTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        $level = factory(\App\STLevel::class)->create();
-        $season = factory(\App\STSeason::class)->create();
-        //$size = factory(\App\STShirtSize::class)->create();
+        $level = STLevel::factory()->create();
+        $season = STSeason::factory()->create();
+        $size = STShirtSize::factory()->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -242,9 +245,9 @@ class SwimTeamTest extends TestCase
     /** @test **/
     public function a_swimmer_will_get_an_error_message_if_the_card_fails()
     {
-        $level = factory(\App\STLevel::class)->create();
-        $season = factory(\App\STSeason::class)->create();
-        $size = factory(\App\STShirtSize::class)->create();
+        $level = STLevel::factory()->create();
+        $season = STSeason::factory()->create();
+        $size = STShirtSize::factory()->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,

@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
+use App\Tryout;
 use Carbon\Carbon;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TryoutTest extends TestCase
@@ -16,7 +16,7 @@ class TryoutTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        $tryout = factory(\App\Tryout::class)->create([
+        $tryout = Tryout::factory()->create([
             'class_size' => 1,
             'registration_open' => Carbon::now()->subDays(2),
             'event_time' => Carbon::now()->addDays(2)
@@ -34,7 +34,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function it_can_be_full()
     {
-        $tryout = factory(\App\Tryout::class)->create([
+        $tryout = Tryout::factory()->create([
             'class_size' => 1
         ]);
 

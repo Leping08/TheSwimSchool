@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
@@ -23,7 +24,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class Location extends Model
 {
-    use SoftDeletes, Actionable;
+    use SoftDeletes, Actionable, HasFactory;
 
     /**
      * @var array

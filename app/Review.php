@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
@@ -21,7 +22,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Review extends Model
 {
-    use SoftDeletes, Actionable;
+    use SoftDeletes, Actionable, HasFactory;
 
     protected $fillable = ['name', 'active', 'created_time', 'message'];
 

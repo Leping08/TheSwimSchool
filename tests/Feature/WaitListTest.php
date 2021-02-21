@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Lesson;
 use App\Mail\Admin\WaitList;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
@@ -20,7 +21,7 @@ class WaitListTest extends TestCase
 
         Mail::assertNothingSent();
 
-        $lesson = factory(\App\Lesson::class)->create([
+        $lesson = Lesson::factory()->create([
             'class_size' => 0
         ]);
 
@@ -57,7 +58,7 @@ class WaitListTest extends TestCase
     /** @test  **/
     public function a_user_can_not_sign_up_for_the_same_wait_list_twice()
     {
-        $lesson = factory(\App\Lesson::class)->create([
+        $lesson = Lesson::factory()->create([
             'class_size' => 0
         ]);
 

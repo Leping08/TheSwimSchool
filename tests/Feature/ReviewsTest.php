@@ -2,10 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Review;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ReviewsTest extends TestCase
 {
@@ -14,12 +13,12 @@ class ReviewsTest extends TestCase
     /** @test  **/
     public function a_user_should_see_active_reviews_on_the_home_page()
     {
-        $firstReview = factory(\App\Review::class)->create([
+        $firstReview = Review::factory()->create([
             'active' => true,
             'created_time' => '2016-05-12T16:23:21+0000'
         ]);
 
-        $secondReview = factory(\App\Review::class)->create([
+        $secondReview = Review::factory()->create([
             'active' => true,
             'created_time' => '2016-05-13T16:23:21+0000'
         ]);
@@ -33,7 +32,7 @@ class ReviewsTest extends TestCase
     /** @test  **/
     public function a_user_should_not_see_disabled_reviews_on_the_home_page()
     {
-        $review = factory(\App\Review::class)->create([
+        $review = Review::factory()->create([
             'created_time' => '2016-05-14T14:23:21+0000',
             'active' => true
         ]);

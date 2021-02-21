@@ -18,7 +18,7 @@ class InstructorCalendarTest extends TestCase
     /** @test  **/
     public function only_an_admin_can_visit_the_instructor_calendar_page()
     {
-        $instructor = factory(User::class)->create();
+        $instructor = User::factory()->create();
 
         $this->get(route('calendar', ['user' => $instructor]))
             ->assertStatus(302);
@@ -34,10 +34,10 @@ class InstructorCalendarTest extends TestCase
     {
         $this->seed();
 
-        $instructor_1 = factory(User::class)->create();
-        $instructor_2 = factory(User::class)->create();
+        $instructor_1 = User::factory()->create();
+        $instructor_2 = User::factory()->create();
 
-        $lesson_1 = factory(Lesson::class)->create([
+        $lesson_1 = Lesson::factory()->create([
             'instructor_id' => $instructor_1->id,
             'class_start_date' => Carbon::now()->subWeek(),
             'class_end_date' => Carbon::now()->addWeek(),
@@ -47,7 +47,7 @@ class InstructorCalendarTest extends TestCase
         ]);
         $lesson_1->DaysOfTheWeek()->sync(explode(',', $lesson_1->days));
 
-        $lesson_2 = factory(Lesson::class)->create([
+        $lesson_2 = Lesson::factory()->create([
             'instructor_id' => $instructor_2->id,
             'class_start_date' => Carbon::now()->subWeek(),
             'class_end_date' => Carbon::now()->addWeek(),
@@ -75,9 +75,9 @@ class InstructorCalendarTest extends TestCase
     {
         $this->seed();
 
-        $instructor = factory(User::class)->create();
+        $instructor = User::factory()->create();
 
-        $lesson_1 = factory(Lesson::class)->create([
+        $lesson_1 = Lesson::factory()->create([
             'instructor_id' => $instructor->id,
             'class_start_date' => Carbon::now()->subWeek(),
             'class_end_date' => Carbon::now()->addWeek(),
@@ -87,7 +87,7 @@ class InstructorCalendarTest extends TestCase
         ]);
         $lesson_1->DaysOfTheWeek()->sync(explode(',', $lesson_1->days));
 
-        $lesson_2 = factory(Lesson::class)->create([
+        $lesson_2 = Lesson::factory()->create([
             'instructor_id' => $instructor->id,
             'class_start_date' => Carbon::now()->subMonths(4),
             'class_end_date' => Carbon::now()->subDays(100), //Around 3 months
@@ -109,9 +109,9 @@ class InstructorCalendarTest extends TestCase
     {
         $this->seed();
 
-        $instructor = factory(User::class)->create();
+        $instructor = User::factory()->create();
 
-        $lesson_1 = factory(Lesson::class)->create([
+        $lesson_1 = Lesson::factory()->create([
             'instructor_id' => $instructor->id,
             'class_start_date' => Carbon::parse('2020-06-01'),
             'class_end_date' => Carbon::parse('2020-06-11'),

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
@@ -22,7 +23,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class EmailList extends Model
 {
-    use Actionable;
+    use Actionable, HasFactory;
 
     /**
      * @var array

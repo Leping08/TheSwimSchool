@@ -4,10 +4,9 @@
 namespace Tests\Feature;
 
 
-use App\Mail\Privates\PrivateLessonSignUp;
+use App\PrivateLessonLead;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class HomePrivateLessonRequestTest extends TestCase
@@ -34,7 +33,7 @@ class HomePrivateLessonRequestTest extends TestCase
         $this->get(route('private_lesson.index'))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  \App\PrivateLessonLead::all()->count());
+        $this->assertEquals(0,  PrivateLessonLead::all()->count());
 
         $this->post(route('home_privates.store'), $attributes)
             ->assertStatus(302);

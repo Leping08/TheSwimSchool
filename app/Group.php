@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
@@ -22,7 +23,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class Group extends Model
 {
-    use SoftDeletes, Actionable;
+    use SoftDeletes, Actionable, HasFactory;
 
     /**
      * @var array

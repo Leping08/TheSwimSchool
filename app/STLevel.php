@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class STLevel extends Model
 {
+    use HasFactory;
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

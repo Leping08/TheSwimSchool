@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\PromoCode;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PromoCodeTest extends TestCase
@@ -15,7 +15,7 @@ class PromoCodeTest extends TestCase
     {
         $price = 100;
 
-        $promoCode = factory(\App\PromoCode::class)->create([
+        $promoCode = PromoCode::factory()->create([
             'code' => 'HALFOFF',
             'discount_percent' => 50
         ]);
@@ -26,7 +26,7 @@ class PromoCodeTest extends TestCase
 
         $price2 = 200;
 
-        $promoCode = factory(\App\PromoCode::class)->create([
+        $promoCode = PromoCode::factory()->create([
             'code' => 'HALFOFF',
             'discount_percent' => 75
         ]);
@@ -39,7 +39,7 @@ class PromoCodeTest extends TestCase
     {
         $price = 100;
 
-        $promoCode = factory(\App\PromoCode::class)->create([
+        $promoCode = PromoCode::factory()->create([
             'code' => 'NONE',
             'discount_percent' => 0
         ]);
@@ -52,7 +52,7 @@ class PromoCodeTest extends TestCase
     {
         $price = 127;
 
-        $promoCode = factory(\App\PromoCode::class)->create([
+        $promoCode = PromoCode::factory()->create([
             'code' => 'NONE',
             'discount_percent' => 100
         ]);
