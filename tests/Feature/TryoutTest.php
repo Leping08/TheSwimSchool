@@ -2,14 +2,15 @@
 
 namespace Tests\Feature;
 
+use App\Athlete;
 use App\Library\TryoutReminderEmail;
 use App\Mail\SwimTeam\TryoutReminder;
+use App\Tryout;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TryoutTest extends TestCase
 {
@@ -18,12 +19,12 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function a_user_should_be_able_to_see_the_sign_up_button_if_registration_is_open()
     {
-        $tryout = factory(\App\Tryout::class)->create([
+        $tryout = Tryout::factory()->create([
             'event_time' => Carbon::now()->addDays(2),
             'registration_open' => Carbon::now()->subDays(2)
         ]);
 
-        $registrationOpen = \App\Tryout::registrationOpen()->get();
+        $registrationOpen = Tryout::registrationOpen()->get();
         $this->assertTrue($registrationOpen->contains($tryout->id));
 
         $this->get(route('swim-team.tryouts.index'))
@@ -35,12 +36,12 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function a_user_should_not_be_able_to_see_the_sign_up_button_if_registration_is_not_open()
     {
-        $tryout = factory(\App\Tryout::class)->create([
+        $tryout = Tryout::factory()->create([
             'event_time' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4)
         ]);
 
-        $registrationOpen = \App\Tryout::registrationOpen()->get();
+        $registrationOpen = Tryout::registrationOpen()->get();
         $this->assertFalse($registrationOpen->contains($tryout->id));
 
         $this->get(route('swim-team.tryouts.index'))
@@ -50,7 +51,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function a_user_should_be_able_to_sign_up_for_tryouts_if_they_have_the_sign_up_link_and_the_registration_is_not_open()
     {
-        $tryout = factory(\App\Tryout::class)->create([
+        $tryout = Tryout::factory()->create([
             'event_time' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4)
         ]);
@@ -62,7 +63,7 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function an_athlete_should_be_added_to_the_database_if_they_fill_out_the_tryout_sign_up_form()
     {
-        $tryout = factory(\App\Tryout::class)->create();
+        $tryout = Tryout::factory()->create();
 
         $attributes = [
             'firstName' => $this->faker->firstName,
@@ -86,13 +87,13 @@ class TryoutTest extends TestCase
         $this->get(route('swim-team.tryouts.show', [$tryout]))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  \App\Athlete::all()->count());
+        $this->assertEquals(0,  Athlete::all()->count());
 
         $response = $this->post(route('swim-team.athlete.store', [$tryout]), $attributes);
 
         $response->assertRedirect(route('swim-team.index'));
 
-        $this->assertEquals(1,  \App\Athlete::all()->count());
+        $this->assertEquals(1,  Athlete::all()->count());
 
         $this->assertDatabaseHas('athletes', [
             "firstName" => $attributes['firstName'],
@@ -105,15 +106,15 @@ class TryoutTest extends TestCase
     /** @test  **/
     public function reminder_emails_will_be_sent_out_the_day_before_the_tryout()
     {
-        $tryout = factory(\App\Tryout::class)->create([
+        $tryout = Tryout::factory()->create([
             'event_time' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday()
         ]);
 
-        $registrationOpen = \App\Tryout::registrationOpen()->get();
+        $registrationOpen = Tryout::registrationOpen()->get();
         $this->assertTrue($registrationOpen->contains($tryout->id));
 
-        $athlete = factory(\App\Athlete::class)->create([
+        $athlete = Athlete::factory()->create([
             'tryout_id' => $tryout->id
         ]);
 

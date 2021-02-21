@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Actions\Actionable;
 
@@ -18,7 +19,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class Banner extends Model
 {
-    use Actionable;
+    use Actionable, HasFactory;
 
     protected $fillable = [
         'active',

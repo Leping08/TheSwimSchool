@@ -4,6 +4,7 @@ namespace App;
 
 use App\Observers\LessonObserver;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -37,7 +38,7 @@ use Illuminate\Support\Collection;
 
 class Lesson extends Model
 {
-    use SoftDeletes, Actionable, Notifiable;
+    use SoftDeletes, Actionable, Notifiable, HasFactory;
 
     protected $casts = [
         'days' => 'string'

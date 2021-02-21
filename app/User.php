@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,7 +29,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class User extends Authenticatable
 {
-    use Notifiable, Actionable, SoftDeletes;
+    use Notifiable, Actionable, SoftDeletes, HasFactory;
 
     /**
      * The attributes that are mass assignable.

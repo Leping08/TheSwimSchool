@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class Seasons extends Seeder
@@ -25,8 +28,8 @@ class Seasons extends Seeder
                 \Illuminate\Support\Facades\DB::table('seasons')->insert([
                     'year' => $year,
                     'season' => $season,
-                    'created_at' => new DateTime,
-                    'updated_at' => new DateTime
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
                 ]);
             }
         }

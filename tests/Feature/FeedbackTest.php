@@ -11,7 +11,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class FeedbackTest extends TestCase
 {
@@ -62,12 +61,12 @@ class FeedbackTest extends TestCase
     /** @test */
     public function a_user_will_be_sent_a_feedback_email_a_week_after_the_lesson()
     {
-        $lesson = factory(\App\Lesson::class)->create([
+        $lesson = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->subDays(14),
             'class_end_date' => Carbon::now()->subDays(7)
         ]);
 
-        factory(\App\Swimmer::class)->create([
+        Swimmer::factory()->create([
             'lesson_id' => $lesson->id
         ]);
 
@@ -88,23 +87,23 @@ class FeedbackTest extends TestCase
     {
         $email = 'test@gmail.com';
 
-        $lesson = factory(\App\Lesson::class)->create([
+        $lesson = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->subDays(14),
             'class_end_date' => Carbon::now()->subDays(7),
             'class_size' => 3
         ]);
 
-        factory(\App\Swimmer::class)->create([
+        Swimmer::factory()->create([
             'lesson_id' => $lesson->id,
             'email' => $email
         ]);
 
-        factory(\App\Swimmer::class)->create([
+        Swimmer::factory()->create([
             'lesson_id' => $lesson->id,
             'email' => $email
         ]);
 
-        factory(\App\Swimmer::class)->create([
+        Swimmer::factory()->create([
             'lesson_id' => $lesson->id,
             'email' => $email
         ]);

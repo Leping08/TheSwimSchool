@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Swimmer;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Lesson;
 
@@ -14,7 +14,7 @@ class Admin extends TestCase
     /** @test */
     public function a_non_admin_can_not_see_swimmers_in_a_lesson()
     {
-        $swimmer = factory(\App\Swimmer::class)->create();
+        $swimmer = Swimmer::factory()->create();
         $lesson = Lesson::first();
 
         $this->get(route('groups.lessons.show', ['group' => $lesson->group]))

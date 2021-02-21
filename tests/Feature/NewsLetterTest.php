@@ -4,6 +4,7 @@
 namespace Tests\Feature;
 
 
+use App\EmailList;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -19,12 +20,12 @@ class NewsLetterTest extends TestCase
             'email' => $this->faker->safeEmail
         ];
 
-        $this->assertCount(0, \App\EmailList::all());
+        $this->assertCount(0, EmailList::all());
 
         $this->post(route('newsletter.subscribe'), $data)
             ->assertStatus(302);
 
-        $this->assertCount(1, \App\EmailList::all());
+        $this->assertCount(1, EmailList::all());
     }
 
     /** @test  **/
@@ -34,16 +35,16 @@ class NewsLetterTest extends TestCase
             'email' => $this->faker->safeEmail
         ];
 
-        $this->assertCount(0, \App\EmailList::all());
+        $this->assertCount(0, EmailList::all());
 
         $this->post(route('newsletter.subscribe'), $data)
             ->assertStatus(302);
 
-        $this->assertCount(1, \App\EmailList::all());
+        $this->assertCount(1, EmailList::all());
 
         $this->post(route('newsletter.subscribe'), $data)
             ->assertStatus(302);
 
-        $this->assertCount(1, \App\EmailList::all());
+        $this->assertCount(1, EmailList::all());
     }
 }

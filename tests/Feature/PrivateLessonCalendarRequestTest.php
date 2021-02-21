@@ -9,7 +9,6 @@ use App\PrivateLesson;
 use App\PrivatePoolSession;
 use App\PrivateSwimmer;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
@@ -31,7 +30,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->withoutExceptionHandling();
 
-        $sessions = factory(PrivatePoolSession::class, 4)->create([
+        $sessions = PrivatePoolSession::factory()->count(4)->create([
             'private_lesson_id' => null
         ]);
 
@@ -58,14 +57,14 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->get(route('private_lesson.index'))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  \App\PrivateLesson::all()->count());
+        $this->assertEquals(0,  PrivateLesson::all()->count());
 
         $response = $this->post(route('private_lesson.store'), $data);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  \App\PrivateLesson::all()->count());
-        $this->assertEquals(4,  \App\PrivateLesson::first()->pool_sessions()->count());
+        $this->assertEquals(1,  PrivateLesson::all()->count());
+        $this->assertEquals(4,  PrivateLesson::first()->pool_sessions()->count());
 
         $this->assertDatabaseHas('private_swimmers', [
             "first_name" => $data['first_name'],
@@ -93,7 +92,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->withoutExceptionHandling();
 
-        $session = factory(PrivatePoolSession::class)->create([
+        $session = PrivatePoolSession::factory()->create([
             'private_lesson_id' => null
         ]);
 
@@ -120,13 +119,13 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->get(route('private_lesson.index'))
             ->assertStatus(200);
 
-        $this->assertEquals(0, \App\PrivateLesson::all()->count());
+        $this->assertEquals(0, PrivateLesson::all()->count());
 
         $response = $this->post(route('private_lesson.store'), $data);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1, \App\PrivateLesson::all()->count());
+        $this->assertEquals(1, PrivateLesson::all()->count());
 
         $this->assertDatabaseHas('private_swimmers', [
             "first_name" => $data['first_name'],
@@ -154,18 +153,18 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->withoutExceptionHandling();
 
-        $lesson = factory(PrivateLesson::class)->create();
+        $lesson = PrivateLesson::factory()->create();
 
-        $private_swimmer = factory(PrivateSwimmer::class)->create([
+        $private_swimmer = PrivateSwimmer::factory()->create([
              'private_lesson_id' => $lesson->id
         ]);
 
-        $pool_session = factory(PrivatePoolSession::class)->create([
+        $pool_session = PrivatePoolSession::factory()->create([
             'private_lesson_id' => $lesson->id,
             'start' => Carbon::tomorrow()
         ]);
 
-        $pool_session2 = factory(PrivatePoolSession::class)->create([
+        $pool_session2 = PrivatePoolSession::factory()->create([
             'private_lesson_id' => $lesson->id,
             'start' => Carbon::now()->addWeek()
         ]);
@@ -180,13 +179,13 @@ class PrivateLessonCalendarRequestTest extends TestCase
     {
         $this->seed();
 
-        $next_week = factory(PrivatePoolSession::class)->create([
+        $next_week = PrivatePoolSession::factory()->create([
             'start' => Carbon::now()->addWeek(),
             'end' => Carbon::now()->addWeek()->addHour(),
             'private_lesson_id' => null
         ]);
 
-        $last_week = factory(PrivatePoolSession::class)->create([
+        $last_week = PrivatePoolSession::factory()->create([
             'start' => Carbon::now()->subWeek(),
             'end' => Carbon::now()->subWeek()->subHour(),
             'private_lesson_id' => null
@@ -205,7 +204,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         //$this->withoutExceptionHandling();
 
-        $session = factory(PrivatePoolSession::class)->create([
+        $session = PrivatePoolSession::factory()->create([
             'private_lesson_id' => null
         ]);
 
@@ -232,13 +231,13 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->get(route('private_lesson.index'))
             ->assertStatus(200);
 
-        $this->assertEquals(0, \App\PrivateLesson::all()->count());
+        $this->assertEquals(0, PrivateLesson::all()->count());
 
         $this->post(route('private_lesson.store'), $data)
             ->assertStatus(302)
             ->assertSessionHas('error', 'Oops, something went wrong with the payment. Your card was declined.');
 
-        $this->assertEquals(0, \App\PrivateLesson::all()->count());
+        $this->assertEquals(0, PrivateLesson::all()->count());
     }
 
     /** @test  **/
@@ -246,7 +245,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
     {
         $this->seed();
 
-        $session = factory(PrivatePoolSession::class)->create([
+        $session = PrivatePoolSession::factory()->create([
             'private_lesson_id' => null
         ]);
 
@@ -273,14 +272,14 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->get(route('private_lesson.index'))
             ->assertStatus(200);
 
-        $this->assertEquals(0, \App\PrivateLesson::all()->count());
+        $this->assertEquals(0, PrivateLesson::all()->count());
 
         $response = $this->post(route('private_lesson.store'), $data);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  \App\PrivateLesson::all()->count());
-        $this->assertEquals(1,  \App\PrivateLesson::first()->pool_sessions()->count());
+        $this->assertEquals(1,  PrivateLesson::all()->count());
+        $this->assertEquals(1,  PrivateLesson::first()->pool_sessions()->count());
     }
 
     /** @test  **/
@@ -288,7 +287,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
     {
         $this->seed();
 
-        factory(PrivatePoolSession::class, 4)->create([
+        PrivatePoolSession::factory()->count(4)->create([
             'private_lesson_id' => null
         ]);
 

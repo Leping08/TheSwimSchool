@@ -4,6 +4,7 @@ namespace App;
 
 
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -28,7 +29,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class PrivateLesson extends Model
 {
-    use SoftDeletes, Actionable, Notifiable;
+    use SoftDeletes, Actionable, Notifiable, HasFactory;
 
     /**
      * @var array
