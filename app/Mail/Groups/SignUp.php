@@ -34,7 +34,8 @@ class SignUp extends Mailable
     public function build()
     {
         return $this->subject($this->lesson->group->type)
-                    ->markdown('email.groups.lessonSignUp')
-                    ->with(['lesson' => $this->lesson]);
+            ->from(config('mail.from.address'))
+            ->markdown('email.groups.lessonSignUp')
+            ->with(['lesson' => $this->lesson]);
     }
 }

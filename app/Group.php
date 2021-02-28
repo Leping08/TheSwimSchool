@@ -84,6 +84,6 @@ class Group extends Model
 
     public function getIconPathAttribute()
     {
-        return "/storage/sea-life/{$this->icon}";
+        return "/img/sea-life/{$this->icon}";
     }
 }

@@ -34,6 +34,7 @@ class RegistrationOpeningSoon extends Mailable
     public function build()
     {
         return $this->markdown('email.newsletter.registrationOpeningSoon')
-                    ->with(['emailAddress' => $this->emailAddress]);
+            ->from(config('mail.from.address'))
+            ->with(['emailAddress' => $this->emailAddress]);
     }
 }

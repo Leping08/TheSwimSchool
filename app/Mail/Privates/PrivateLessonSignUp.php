@@ -35,6 +35,7 @@ class PrivateLessonSignUp extends Mailable
         $firstPoolSession = collect($this->privateLesson->pool_sessions->sortBy('start'))->first();
 
         return $this->subject('Private Lesson with The Swim School')
+            ->from(config('mail.from.address'))
             ->markdown('email.privates.sign_up')
             ->with([
                 'lesson' => $this->privateLesson,

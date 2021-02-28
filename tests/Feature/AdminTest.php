@@ -7,7 +7,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Lesson;
 
-class Admin extends TestCase
+class AdminTest extends TestCase
 {
     use DatabaseMigrations;
 

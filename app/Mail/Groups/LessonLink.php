@@ -35,6 +35,7 @@ class LessonLink extends Mailable
     public function build()
     {
         return $this->subject('Lesson Signup')
+            ->from(config('mail.from.address'))
             ->markdown('email.groups.lessonLink')
             ->with(['lesson' => $this->lesson]);
     }

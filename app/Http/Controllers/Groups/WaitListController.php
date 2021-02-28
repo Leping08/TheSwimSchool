@@ -65,7 +65,7 @@ class WaitListController extends Controller
     {
         // Send a wait list filling up email to the admin if the wait list
         Log::info("Sending wait list email to admins about lesson ID: $lesson->id");
-        foreach(config('mail.leadDestEmails') as $email){
+        foreach(config('mail.lead_dest_emails') as $email){
             Log::info("Sending Wait List admin email to $email");
             Mail::to($email)->send(new WaitList($lesson));
         }

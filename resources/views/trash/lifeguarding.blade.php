@@ -33,7 +33,7 @@ Lifeguarding
             </div>
             <div class="uk-width-expand@m">
                 <div class="uk-margin">
-                    <img src="/img/lifeguard.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Bradenton lifeguard">
+                    <img src="{{ asset('/img/lifeguard.jpg') }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="Bradenton lifeguard">
                 </div>
             </div>
         </div>

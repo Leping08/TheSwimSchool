@@ -40,6 +40,7 @@ class WaitList extends Mailable
     public function build()
     {
         return $this->subject('Wait List Filling Up')
+            ->from(config('mail.from.address'))
             ->markdown('email.admin.waitListAdmin')
             ->with(['lesson' => $this->lesson]);
     }

@@ -34,6 +34,7 @@ class Covid extends Mailable
     public function build()
     {
         return $this->markdown('email.newsletter.covid')
+            ->from(config('mail.from.address'))
             ->subject('Additional Safety Protocols- COVID19 Response')
             ->with(['emailAddress' => $this->emailAddress])
             ->attach('public/pdf/Safety_Precautions_COVID19_Response.pdf');

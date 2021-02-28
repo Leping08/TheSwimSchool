@@ -53,6 +53,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'asset_url' => env('ASSET_URL', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -161,9 +163,12 @@ return [
         App\Providers\NovaServiceProvider::class,
         App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\VaporUiServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
         App\Providers\FacebookServiceProvider::class,
 
+        //Nova theme
+        \Leping\SwimSchoolTheme\ThemeServiceProvider::class
     ],
 
     /*

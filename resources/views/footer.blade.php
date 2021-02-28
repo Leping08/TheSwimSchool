@@ -5,7 +5,7 @@
             <div class="uk-visible@s"></div>
             <div>
                 <div class="uk-margin uk-text-center@m uk-text-center">
-                    <a title="Parrish swimming lessons" href="{{route('home.index')}}" class="el-link"><img src="/img/logos/the-swim-school.png" class="uk-responsive-width" alt="Bradenton Swim School"></a>
+                    <a title="Parrish swimming lessons" href="{{route('home.index')}}" class="el-link"><img src="{{ asset('/img/logos/the-swim-school.png') }}" class="uk-responsive-width" alt="Bradenton Swim School"></a>
                 </div>
             </div>
             <div class="uk-visible@s"></div>
@@ -89,8 +89,8 @@
             <div class="uk-width-1-1@m">
                 <hr>
                 <div class="uk-margin uk-text-center uk-text-meta">
-                    Copyright &copy; {{date("Y")}}</br>
-                    <a href="http://www.deltavcreative.com/" target="_blank">DeltaV Creative</a><br>
+                    Copyright &copy; {{date("Y")}}<br>
+                    <a href="https://deltavcreative.com/" target="_blank">DeltaV Creative</a><br>
                     <a href="#" uk-totop uk-scroll></a>
                 </div>
             </div>

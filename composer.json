@@ -8,34 +8,47 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.3.0",
+        "php": "^7.3|^8.0",
         "doctrine/dbal": "^2.9",
-        "facade/ignition": "^2.3.6",
         "facebook/graph-sdk": "^5.7",
-        "fideloper/proxy": "^4.0",
+        "fideloper/proxy": "^4.4",
         "fourstacks/nova-checkboxes": "^0.1.5",
         "gregoriohc/laravel-nova-theme-responsive": "^0.2",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.0",
+        "laravel/framework": "^8.12",
         "laravel/helpers": "^1.1",
         "laravel/nova": "^3.0",
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.0",
-        "leping/lesson-link": "*",
-        "leping/northriverrapids": "*",
-        "leping/the-swim-school": "*",
+        "laravel/vapor-core": "^2.10",
+        "laravel/vapor-ui": "^1.0",
         "opanegro/nova-custom-controller": "^1.5",
         "stripe/stripe-php": "^6.4",
         "symfony/translation": "^5.0",
-        "tightenco/nova-stripe": "^0.2.2"
+        "tightenco/nova-stripe": "^0.2.2",
+        "leping/parrish-bull-sharks": "*",
+        "leping/lesson-link": "*",
+        "leping/swim-school-theme": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
-        "fzaninotto/faker": "^1.4",
-        "mockery/mockery": "^1.0",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.3.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
     },
     "autoload": {
         "psr-4": {
@@ -49,6 +62,26 @@
             "Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ParrishBullSharks"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/LessonLink"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SwimSchoolTheme"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -58,38 +91,16 @@
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
+            "@php artisan package:discover --ansi"
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "@php artisan vapor-ui:publish --ansi",
+            "@php artisan telescope:publish --ansi",
+            "@php artisan nova:publish --ansi"
         ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/NorthRiverRapids"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/LessonLink"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/TheSwimSchool"
-        }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\VaporImage;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Level extends Resource
@@ -60,7 +61,8 @@ class Level extends Resource
             ID::make()->sortable(),
             Text::make('Name', 'type')->sortable(),
             Text::make('Ages', 'ages')->sortable(),
-            Image::make('Icon', 'icon')->disk('sea-life')->hideWhenUpdating()->hideWhenCreating(),
+            //TODO Make the image work on vapor
+            //Image::make('Icon', 'icon')->disk('sea-life')->hideWhenUpdating()->hideWhenCreating(),
             Text::make('Description', 'description')->hideFromIndex(),
             HasMany::make('Lessons', 'lessons', Lesson::class),
             DateTime::make('Created At')->onlyOnDetail(),

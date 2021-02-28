@@ -110,7 +110,7 @@ class Enroll
     public function sendClassFullEmail(Lesson $lesson) {
         if($lesson->isFull()){
             try {
-                foreach(config('mail.leadDestEmails') as $email){
+                foreach(config('mail.lead_dest_emails') as $email){
                     Log::info("Sending lesson full email to {$email}. Lesson ID: {$lesson->id}");
                     Mail::to($email)->send(new ClassFull($lesson));
                 }

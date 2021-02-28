@@ -17,7 +17,7 @@ Services
         <div class="uk-grid-large uk-flex-middle uk-margin-large uk-grid" uk-grid="">
             <div class="uk-width-expand@m uk-first-column">
                 <div class="uk-margin uk-scrollspy-inview uk-animation-slide-left-medium" uk-scrollspy-class="uk-animation-slide-left-medium">
-                    <img src="/img/swim-lessons.jpg" class="el-image uk-box-shadow-xlarge" alt="">
+                    <img src="{{ asset('/img/swim-lessons.jpg') }}" class="el-image uk-box-shadow-xlarge" alt="">
                 </div>
             </div>
             <div class="uk-width-expand@m">
@@ -33,7 +33,7 @@ Services
         <div class="uk-grid-large uk-flex-middle uk-margin-large uk-grid" uk-grid="">
             <div class="uk-width-expand@m">
                 <div class="uk-margin uk-scrollspy-inview uk-animation-slide-right-medium" uk-scrollspy-class="uk-animation-slide-right-medium">
-                    <img src="/img/lifeguard.jpg" class="el-image uk-box-shadow-xlarge" alt="">
+                    <img src="{{ asset('/img/lifeguard.jpg') }}" class="el-image uk-box-shadow-xlarge" alt="">
                 </div>
             </div>
             <div class="uk-width-expand@m uk-flex-first@m uk-first-column">
@@ -48,7 +48,7 @@ Services
         <div class="uk-grid-large uk-flex-middle uk-margin-large uk-grid" uk-grid="">
             <div class="uk-width-expand@m uk-first-column">
                 <div class="uk-margin" uk-scrollspy-class="uk-animation-slide-right-medium" style="visibility: hidden;">
-                    <img src="/img/cpr-first-aid.jpg" class="el-image uk-box-shadow-xlarge" alt="">
+                    <img src="{{ asset('/img/cpr-first-aid.jpg') }}" class="el-image uk-box-shadow-xlarge" alt="">
                 </div>
             </div>
             <div class="uk-width-expand@m">

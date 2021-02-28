@@ -17,7 +17,7 @@ Lessons
                     <div class="uk-card-media-left">
                         <div class="uk-flex uk-flex-center uk-text-center">
                             <div>
-                                <img class="uk-width-3-4" src="{{{$group->iconPath}}}">
+                                <img class="uk-width-3-4" src="{{asset($group->iconPath)}}">
                             </div>
                         </div>
                     </div>

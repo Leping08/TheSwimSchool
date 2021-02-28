@@ -77,7 +77,7 @@
                     <div class="uk-panel">
                         <div class="uk-margin">
                             {{--<img class="" alt="" src="/img/logos/north-river-rapids.png">--}}
-                            <img class="" alt="" src="/img/swim-team/dive-cropped.jpg">
+                            <img class="" alt="" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-expand@m uk-first-column">
                     <div class="uk-margin">
-                        <img class="uk-border-rounded uk-box-shadow-large" alt="" src="/img/swim-team/2018-class.jpg">
+                        <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/swim-team/2018-class.jpg') }}">
                     </div>
                 </div>
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
@@ -142,7 +142,7 @@
                 <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
                     <div class="uk-panel">
                         <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="/img/thank-you/breast-stroke.jpg">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div class="uk-width-expand@m uk-first-column">
                         <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="/img/swim-team/dive-cropped.jpg">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">
                         </div>
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
@@ -196,7 +196,7 @@
                                 <h3 class="el-title uk-margin uk-heading-bullet">{{$coach->name}}</h3>
                                 <div class="el-content uk-margin">
                                     <p>{{$coach->bio}}</p>
-                                    <a title="Contact {{{$coach->name}}}" class="uk-button uk-button-default" href="tel:+1{{{$coach->phone}}}"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> {{$coach->phone}}</a>
+                                    <a title="Contact {{$coach->name}}" class="uk-button uk-button-default" href="tel:+1{{$coach->phone}}"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> {{$coach->phone}}</a>
                                 </div>
                             </li>
                         @empty
@@ -216,13 +216,13 @@
                 <div class="uk-grid-margin uk-grid" uk-grid="">
                     <div class="uk-width-expand@m uk-first-column">
                         <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="/img/thank-you/winner.jpg">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/thank-you/winner.jpg') }}">
                         </div>
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">Check out the current {{ config('swim-team.name') }} team record holders.</div>
-                            <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/Swim_Team_Record_Holders.pdf" download="Swim_Team_Record_Holders.pdf">Download</a>
+                            <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/Swim_Team_Record_Holders.pdf') }}" download="Swim_Team_Record_Holders.pdf">Download</a>
                         </div>
                     </div>
                 </div>

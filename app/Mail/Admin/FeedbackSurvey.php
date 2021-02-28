@@ -30,6 +30,7 @@ class FeedbackSurvey extends Mailable
     public function build()
     {
         return $this->subject('Feedback')
-                    ->markdown('email.feedbackSurvey');
+            ->from(config('mail.from.address'))
+            ->markdown('email.feedbackSurvey');
     }
 }

@@ -1,4 +1,4 @@
 *
 !.gitignore
-!sea-life/
-!sea-life/*
+!../img/sea-life/
+!../img/sea-life/*

@@ -31,6 +31,7 @@ class PrivatePoolSessionReminder extends Mailable
     public function build()
     {
         return $this->subject('Private Swim Lesson Reminder')
+            ->from(config('mail.from.address'))
             ->markdown('email.privates.lesson_reminder')
             ->with([
                 'pool_session' => $this->pool_session,

@@ -35,6 +35,7 @@ class Update extends Mailable
     public function build()
     {
         return $this->subject('2020 Summer Swim Team Update')
+            ->from(config('mail.from.address'))
             ->markdown('email.newsletter.update')
             ->with(['emailAddress' => $this->emailAddress]);
     }

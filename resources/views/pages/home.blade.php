@@ -11,7 +11,7 @@
 
 @section('content')
     <div id="page#1" class="uk-section-secondary uk-section-overlap">
-        <div style="background-image: url('/img/theme/pool-water.jpg');" class="uk-background-norepeat uk-background-cover uk-background-bottom-center uk-background-fixed uk-section uk-padding-remove-vertical">
+        <div style="background-image: url({{asset('/img/theme/pool-water.jpg')}});" class="uk-background-norepeat uk-background-cover uk-background-bottom-center uk-background-fixed uk-section uk-padding-remove-vertical">
             <div class="uk-container">
                 <div class="uk-grid-margin uk-grid-stack" uk-grid>
                     <div class="uk-width-1-1@m uk-first-column">
@@ -44,7 +44,7 @@
                     <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                         <a title="Lakewood Ranch swim lesson" href="{{ route('groups.lessons.index') }}" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                         <div class="uk-card-media-top">
-                            <img src="/img/lessons/group.jpg" class="el-image uk-border-rounded" alt="Lakewood Ranch children's swim lessons">
+                            <img src="{{ asset('/img/lessons/group.jpg') }}" class="el-image uk-border-rounded" alt="Lakewood Ranch children's swim lessons">
                         </div>
                         <div class="uk-card-body">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Group Lessons</h3>
@@ -60,7 +60,7 @@
                     <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                         <a title="Parrish private swim lessons" href="{{ route('private_lesson.index') }}" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                         <div class="uk-card-media-top">
-                            <img src="/img/lessons/private.jpg" class="el-image uk-border-rounded" alt="Ellenton swimming lessons">
+                            <img src="{{ asset('/img/lessons/private.jpg') }}" class="el-image uk-border-rounded" alt="Ellenton swimming lessons">
                         </div>
                         <div class="uk-card-body">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>
@@ -75,7 +75,7 @@
                     <div class="uk-margin uk-text-left@s uk-text-center uk-card uk-card-default uk-card-hover uk-scrollspy-inview uk-animation-slide-top-medium" uk-scrollspy-class="">
                         <a title="{{ config('swim-team.full-name') }}" href="{{ route('swim-team.index') }}" class="el-link uk-position-cover uk-position-z-index uk-margin-remove-adjacent"></a>
                         <div class="uk-card-media-top">
-                            <img src="/img/swim-team/dive-cropped.jpg" class="el-image uk-border-rounded" alt="{{ config('swim-team.full-name') }}">
+                            <img src="{{ asset('/img/swim-team/dive-cropped.jpg') }}" class="el-image uk-border-rounded" alt="{{ config('swim-team.full-name') }}">
                         </div>
                         <div class="uk-card-body">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Team</h3>
