@@ -59,7 +59,8 @@ class StoreLead extends FormRequest
             $this->emailAdmin($contact);
             session()->flash('success', 'Thank you for reaching out. We will be in contact with you shortly.');
         } catch (\Exception $e) {
-            report($e);
+            Log::info($e->getMessage());
+            Log::info($e->getTraceAsString());
             session()->flash('warning', 'Looks like something went wrong.');
         }
     }
@@ -93,7 +94,8 @@ class StoreLead extends FormRequest
      */
     private function emailAdmin(Contact $contact)
     {
-        foreach(config('mail.leadDestEmails') as $email){
+        foreach(config('mail.lead_dest_emails') as $email){
+            Log::info("Sending contact us email to: $email.");
             Mail::to($email)->send(new ContactUs($contact, $contact->type->name));
             Log::info($contact->type->name . " Email sent to: $email.");
         }

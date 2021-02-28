@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Carbon\Carbon;
 use App\Group;
 
-class Lessons extends TestCase
+class LessonsTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 

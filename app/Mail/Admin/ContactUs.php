@@ -40,10 +40,11 @@ class ContactUs extends Mailable
     public function build()
     {
         return $this->subject($this->subject)
-                    ->markdown('email.admin.contactUs')
-                    ->with([
-                        'data' => $this->data,
-                        'subject' => $this->subject
-                    ]);
+            ->from(config('mail.from.address'))
+            ->markdown('email.admin.contactUs')
+            ->with([
+                'data' => $this->data,
+                'subject' => $this->subject
+            ]);
     }
 }

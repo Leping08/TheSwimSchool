@@ -67,7 +67,7 @@ class LeadController extends Controller
      */
     private function sendLeadEmailsToAdmins(PrivateLessonLead $privateLessonLead)
     {
-        $adminEmails = config('mail.leadDestEmails');
+        $adminEmails = config('mail.lead_dest_emails');
         try {
             foreach($adminEmails as $email){
                 Log::info("Sending private lesson request email to $email. Private Lesson Request ID: $privateLessonLead->id");

@@ -34,6 +34,7 @@ class HappyHolidays extends Mailable
     public function build()
     {
         return $this->markdown('email.newsletter.covid')
-                ->with(['emailAddress' => $this->emailAddress]);
+            ->from(config('mail.from.address'))
+            ->with(['emailAddress' => $this->emailAddress]);
     }
 }

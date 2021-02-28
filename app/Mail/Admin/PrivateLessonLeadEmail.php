@@ -34,6 +34,7 @@ class PrivateLessonLeadEmail extends Mailable
     public function build()
     {
         return $this->subject('Private Lesson Request')
+            ->from(config('mail.from.address'))
             ->markdown('email.admin.privateLessonLead')
             ->with(['lead' => $this->privateLessonLead]);
     }

@@ -25,7 +25,7 @@ Sign Up
                 <div class="uk-card-media-left">
                     <div class="uk-flex uk-flex-center uk-text-center">
                         <div>
-                            <img class="uk-width-3-4" src="{{{$lesson->group->iconPath}}}">
+                            <img class="uk-width-3-4" src="{{asset($lesson->group->iconPath)}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ Sign Up
                             description: '{{$lesson->group->type}}',
                             amount: {{$lesson->price * 100}},
                             key: '{{config('services.stripe.key')}}',
-                            image: '/img/logos/TSS_png.png',
+                            image: '{{ asset('/img/logos/TSS_png.png') }}',
                             locale: 'auto',
                             token: function (token) {
                                 console.log(token.id);

@@ -36,7 +36,7 @@
 
                 <div class="uk-width-expand@m">
                     <div class="uk-margin-top">
-                        <img src="/img/thank-you/smile.jpg" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">
+                        <img src="{{ asset('/img/thank-you/smile.jpg') }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                             description: 'Private Lessons with The Swim School',
                             amount: (window.cartLength * 35) * 100,
                             key: '{{config('services.stripe.key')}}',
-                            image: '/img/logos/TSS_png.png',
+                            image: '{{ asset('/img/logos/TSS_png.png') }}',
                             locale: 'auto',
                             token: function (token) {
                                 console.log(token.id);

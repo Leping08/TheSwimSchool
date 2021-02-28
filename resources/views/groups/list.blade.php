@@ -59,7 +59,7 @@
                     @forelse($groups as $group)
                         <div class="">
                             <div class="uk-margin uk-text-center uk-card uk-card-default uk-card-body uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="uk-animation-fade">
-                                <img class="uk-width-1-2" alt="" src="{{$group->iconPath}}">
+                                <img class="uk-width-1-2" alt="" src="{{ asset($group->iconPath) }}">
                                 <h2 class="uk-margin uk-h3">{{$group->type}}</h2>
                                 <p class="uk-text-meta uk-text-primary">{{$group->ages}}</p>
                                 <div class="uk-margin">{{\Illuminate\Support\Str::limit($group->description, 350)}}</div>

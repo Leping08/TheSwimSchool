@@ -37,8 +37,8 @@
                                 StripeCheckout.open({
                                     name: 'The Swim School',
                                     description: '{{ config('swim-team.full-name') }} {{$level->name}} Level',
-                                    key: '{{config('services.stripe.key')}}',
-                                    image: '/img/logos/TSS_png.png',
+                                    key: '{{ config('services.stripe.key') }}',
+                                    image: '{{ asset('/img/logos/TSS_png.png') }}',
                                     locale: 'auto',
                                     token: function (token) {
                                         let hiddenInput = document.createElement('input');

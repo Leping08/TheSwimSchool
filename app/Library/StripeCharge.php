@@ -73,8 +73,11 @@ class StripeCharge implements PaymentMethod
     public function pay(array $charge)
     {
         try {
+            Log::info('Setting API key');
             \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+            Log::info('Stripe API key has been set');
             $result = \Stripe\Charge::create($charge);
+            Log::info('Stripe charge complete');
             Log::info('Stripe charge ID: '.$result->id);
             return $result;
         } catch (\Stripe\Error\Card $e) {
@@ -105,6 +108,7 @@ class StripeCharge implements PaymentMethod
             // Something else happened, completely unrelated to Stripe
             Log::error('Something else happened, completely unrelated to Stripe');
             Log::error('Error: ' . $e->getMessage());
+            Log::error('Get trace as string: ' . $e->getTraceAsString());
             throw $e;
         }
     }

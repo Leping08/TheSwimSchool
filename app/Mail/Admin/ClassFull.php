@@ -35,6 +35,7 @@ class ClassFull extends Mailable
     public function build()
     {
         return $this->subject($this->lesson->group->type.' lesson is full.')
-                    ->markdown('email.admin.classFull');
+            ->from(config('mail.from.address'))
+            ->markdown('email.admin.classFull');
     }
 }
