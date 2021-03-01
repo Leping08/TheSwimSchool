@@ -24,6 +24,10 @@ return [
 
     'groups' => [
         'season' => true,
+
+        'next_season' => [
+            'registration_open' => 'May 23th'
+        ]
     ]
 
 ];

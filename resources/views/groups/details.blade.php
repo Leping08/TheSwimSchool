@@ -135,16 +135,13 @@ Lessons
                     <div class="uk-container">
                         <div class="uk-card uk-card-default">
                             <div class="uk-card-header">
-{{--                                <h3 class="uk-heading-bullet f-24">No Classes Available At This Time</h3>--}}
-                                <h3 class="uk-heading-bullet f-24">We are now closed for the 2020 season</h3>
+                                <h3 class="uk-heading-bullet f-24">No Classes Available At This Time</h3>
+{{--                                <h3 class="uk-heading-bullet f-24">We are now closed for the 2020 season</h3>--}}
                             </div>
                             <div class="uk-card-body">
                                 <div class="card-text">
-                                    We look forward to seeing you next year! Registration will reopen in Spring 2021.
+                                    <p>Check out the <a title="{{ config('swim-team.full-name') }}" href="{{ route('groups.schedule.index') }}">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>
                                 </div>
-{{--                                <div class="card-text">--}}
-{{--                                    <p>Check out the <a title="{{ config('swim-team.full-name') }}" href="{{ route('groups.schedule.index') }}">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>--}}
-{{--                                </div>--}}
 {{--                                <div class="card-text">--}}
 {{--                                    <p>Registration will open for our next session of swim lessons {{config('season.groups.next_season.registration_open')}}. Please check back at another time.<br>--}}
 {{--                                    In the mean time check out our <a title="{{ config('swim-team.full-name') }}" href="{{ route('swim-team.index') }}">swim team</a> or ask about <a title="Parrish Private Swim Lessons" href="{{ route('private_lesson.index') }}">private lessons</a>.</p>--}}

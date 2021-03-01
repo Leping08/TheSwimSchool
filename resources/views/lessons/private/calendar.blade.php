@@ -28,7 +28,7 @@
                                 Whether you are a beginner swimmer, a child preparing to join a <a href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
                                 looking to improve your technique, private swim lessons can be customized to your specific needs
                                 to help you achieve your goals quickly. These lessons are conducted one on one with an
-                                instructor and each lesson is 30 minutes.
+                                instructor and each lesson is 20 minutes.
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="uk-width-4-4@m uk-first-column uk-margin">
                         <h2 class="uk-heading-bullet">Registration</h2>
                         <p class="">
-                            Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one lesson to checkout. We suggest a minimum of at least 4-12 consecutive lessons for optimal development based on ability level and goals.
+                            Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one lesson to checkout. Each lesson is 20 minutes.
                         </p>
                         <p class="">
                             For children under 3 years of age, we require a parent or trusted adult also get in the water to assist with the lessons. While our goal is certainly to teach your child to swim, we are not ISR certified instructors and do not specialize in the infant survival technique. We recommend participants under 12 months of age enroll in our group class <a href="{{ route('groups.lessons.index') }}">Parent & Infant program</a> prior to private lessons.
