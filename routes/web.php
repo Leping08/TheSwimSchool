@@ -14,6 +14,12 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
+//\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpeningSoon('derek@deltavcreative.com'));
+//\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\RegistrationOpeningSoon('theswimschoolfl@gmail.com'));
+//(new \App\Library\Marketing\Emails\Lessons\RegistrationOpeningSoonEmail())->send();
+
+
 Auth::routes();
 
 

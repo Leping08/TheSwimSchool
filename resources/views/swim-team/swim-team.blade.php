@@ -6,7 +6,7 @@
 @endsection
 
 @section('heading')
-    {{ config('swim-team.name') }}
+    {{ config('swim-team.name') }} Swim Team
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>2021 {{ config('swim-team.name') }} Swim Team</span></h2>
+                        <h2 class="uk-heading-line"><span>2021 {{ config('swim-team.name') }} Swim Club</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
                                 Registration is now open for our 2021 pre-season Swim Club. For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a> for 6-8 year olds

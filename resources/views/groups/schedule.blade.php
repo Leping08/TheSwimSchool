@@ -24,7 +24,7 @@
                     <tbody>
                         <tr>
                             <td>March 29th-April 22nd</td>
-                            <td>March 15t</td>
+                            <td>March 15th</td>
                         </tr>
                         <tr>
                             <td>May 3rd-May 27th</td>
