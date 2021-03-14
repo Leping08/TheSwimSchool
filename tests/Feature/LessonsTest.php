@@ -26,7 +26,7 @@ class LessonsTest extends TestCase
         ]);
 
         $this->get($lessonInProgress->path())
-            ->assertSee('We look forward to seeing you next year!');
+            ->assertSee('No Classes Available At This Time');
     }
 
     /** @test  **/
@@ -39,7 +39,7 @@ class LessonsTest extends TestCase
         ]);
 
         $this->get($registrationNotOpenYet->path())
-            ->assertSee('We look forward to seeing you next year!');
+            ->assertSee('No Classes Available At This Time');
     }
 
     /** @test  **/
@@ -52,7 +52,7 @@ class LessonsTest extends TestCase
         ]);
 
         $this->get($lessonFinished->path())
-            ->assertSee('We look forward to seeing you next year!');
+            ->assertSee('No Classes Available At This Time');
     }
 
     /** @test  **/

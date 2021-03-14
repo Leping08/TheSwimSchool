@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>TODO</title>
-    <meta name="description" content=""/>
+    <title>Calendar</title>
+    <meta name="description" content="Instructor calendar"/>
 @endsection
 
 @section('heading')

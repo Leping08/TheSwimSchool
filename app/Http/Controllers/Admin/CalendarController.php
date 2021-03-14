@@ -36,7 +36,7 @@ class CalendarController extends Controller
         //Get all the lessons from 3 months ago and up
         $lessons = Lesson::whereDate('class_end_date', '>=', Carbon::now()->subMonths(3))
                             ->where('instructor_id', $user->id)
-                            ->with(['group', 'swimmers', 'location'])
+                            ->with(['group', 'swimmers', 'location', 'waitList'])
                             ->get();
 
         //Loop over the group lessons and generate pool sessions for them
@@ -51,7 +51,8 @@ class CalendarController extends Controller
                     'color' => $lesson->swimmers->count() ? self::COLORS['group'] : self::COLORS['empty'],
                     'details_link' => '/admin/resources/lessons/'.$lesson->id,
                     'swimmers' => $lesson->swimmers,
-                    'location' => $lesson->location->name
+                    'location' => $lesson->location->name,
+                    'waitList' => $lesson->waitList
                 ];
             }));
         }
@@ -71,8 +72,9 @@ class CalendarController extends Controller
                 'end' => $session->end,
                 'color' => $session->swimmer() ? self::COLORS['private'] : self::COLORS['empty'],
                 'details_link' => '/admin/resources/private-pool-sessions/'.$session->id,
-                'swimmers' => [$session->swimmer()],
-                'location' => $session->location->name
+                'swimmers' => [$session->swimmer],
+                'location' => $session->location->name,
+                'waitList' => []
             ];
         }));
 

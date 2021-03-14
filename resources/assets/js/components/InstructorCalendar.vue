@@ -36,6 +36,16 @@
                     </div>
                 </div>
                 <div class="uk-padding-small">
+                    <div class="uk-h5">Wait List:</div>
+                    <div v-for="person in selectedEvent.waitList">
+                        <div class="uk-padding-small">
+                            <div><i class="fa fa-user uk-margin-small-right" aria-hidden="true"></i> {{ person.name }}</div>
+                            <div><i class="fa fa-phone uk-margin-small-right" aria-hidden="true"></i> <a :href="'sms:' + person.phone">{{ person.phone }}</a></div>
+                            <div><i class="fa fa-calendar uk-margin-small-right" aria-hidden="true"></i> {{ person.date_of_birth | age }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-padding-small">
                     <a :href="selectedEvent.url" target="_blank" class="uk-button uk-button-primary">Edit</a>
                     <button class="uk-modal-close uk-button uk-button-default" type="button">Close</button>
                 </div>
@@ -82,7 +92,8 @@
                     color: event.color,
                     url: event.details_link,
                     swimmers: event.swimmers,
-                    location: event.location
+                    location: event.location,
+                    waitList: event.waitList
                 };
             });
         },

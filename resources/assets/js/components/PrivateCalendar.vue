@@ -103,7 +103,7 @@
 
                 //Set the color of the selected item
                 this.calendarEvents.forEach(function (item) {
-                    if(item.id == event.event.id) {
+                    if(item.id === event.event.id) {
                         item.color = '#7a9fea';
                     }
                 })
@@ -111,14 +111,14 @@
             remove: function (event) {
                 //Remove the event from the cart
                 this.cart = this.cart.filter(function (item) {
-                    return !(item.id == event.id);
+                    return !(item.id === event.id);
                 });
 
                 //Set the color back to the instructor color
                 this.calendarEvents.forEach((item) => {
-                    if(item.id == event.id) {
+                    if(item.id === event.id) {
                         JSON.parse(this.events).map((original_event) => {
-                            if (item.id == original_event.id) {
+                            if (item.id === original_event.id) {
                                 item.color = original_event.instructor.hex_color;
                             }
                         });
