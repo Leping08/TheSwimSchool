@@ -12,7 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 //\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\RegistrationOpeningSoon('theswimschoolfl@gmail.com'));
 
 //Send to everyone
-//(new \App\Library\Marketing\Emails\Lessons\RegistrationOpeningSoon())->send();
+//\App\Library\Marketing\Emails\Lessons\RegistrationOpeningSoonEmail::send();
 
 class RegistrationOpeningSoon extends Mailable
 {

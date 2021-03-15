@@ -17,7 +17,7 @@ class RegistrationOpenEmail
 
         foreach($emails as $email)
         {
-            try{
+            try {
                 Log::info("Sending lesson registration open now email to $email");
                 Mail::to($email)->send(new RegistrationOpen($email));
             } catch (\Exception $e) {
