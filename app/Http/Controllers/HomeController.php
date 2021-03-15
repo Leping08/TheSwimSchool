@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $reviews = Cache::remember('reviews', Carbon::now()->addDay(), function () {
-            return Review::active()->limit(10)->get();
+            return Review::active()->orderBy('created_time', 'desc')->limit(10)->get();
         });
         return view('pages.home', compact('reviews'));
     }
