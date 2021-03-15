@@ -72,7 +72,7 @@ class CalendarController extends Controller
                 'end' => $session->end,
                 'color' => $session->swimmer() ? self::COLORS['private'] : self::COLORS['empty'],
                 'details_link' => '/admin/resources/private-pool-sessions/'.$session->id,
-                'swimmers' => [$session->swimmer],
+                'swimmers' => [$session->swimmer()],
                 'location' => $session->location->name,
                 'waitList' => []
             ];
