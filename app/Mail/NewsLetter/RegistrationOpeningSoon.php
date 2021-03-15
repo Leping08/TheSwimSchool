@@ -7,6 +7,13 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+//Test to people
+//\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpeningSoon('derek@deltavcreative.com'));
+//\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\RegistrationOpeningSoon('theswimschoolfl@gmail.com'));
+
+//Send to everyone
+//(new \App\Library\Marketing\Emails\Lessons\RegistrationOpeningSoon())->send();
+
 class RegistrationOpeningSoon extends Mailable
 {
     use Queueable, SerializesModels;
@@ -35,6 +42,7 @@ class RegistrationOpeningSoon extends Mailable
     {
         return $this->markdown('email.newsletter.registrationOpeningSoon')
             ->from(config('mail.from.address'))
+            ->subject('2021 Swim Season Is Almost Here!')
             ->with(['emailAddress' => $this->emailAddress]);
     }
 }

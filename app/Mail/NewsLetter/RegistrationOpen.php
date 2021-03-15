@@ -7,9 +7,12 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-//\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpeningSoon('derek@deltavcreative.com'));
-//\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\RegistrationOpeningSoon('theswimschoolfl@gmail.com'));
-//(new \App\Library\Marketing\Emails\Lessons\RegistrationOpeningSoonEmail())->send();
+//Test to people
+//\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('derek@deltavcreative.com'));
+//\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('theswimschoolfl@gmail.com'));
+
+//Send to everyone
+//(new \App\Library\Marketing\Emails\Lessons\RegistrationOpen())->send();
 
 class RegistrationOpen extends Mailable
 {
@@ -39,7 +42,7 @@ class RegistrationOpen extends Mailable
     {
         return $this->markdown('email.newsletter.registrationOpen')
             ->from(config('mail.from.address'))
-            ->subject('Final Weekday Session of Swim Club Registration Open Now')
+            ->subject('Registration is Now Open!')
             ->with(['emailAddress' => $this->emailAddress]);
     }
 }

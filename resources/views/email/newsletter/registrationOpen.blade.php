@@ -1,14 +1,14 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/breast-stroke.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/smile.jpg')}}">
 
 @component('mail::panel')
-# Final Weekday Session of Swim Club Registration Open Now
-Registration is now open for our final weekday session of Dolphin, Flying Fish and Shark swim club for the 2020 season. This will be a Mon/Wed/Fri session starting on Monday 10/12 and ending on Wednesday 10/28.
+# Registration is Now Open!
+Our first spring sessions of the 2021 swim season are now open for registration including our small group classes, March private lessons and spring swim club. April private lessons will open on 3/25. If you have any questions regarding which level to sign your child up for, please don’t hesitate to contact us. See you at the pool soon!
 @endcomponent
 
 @component('mail::button', ['url' => route('groups.lessons.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
-    Sign Up
+Sign Up
 @endcomponent
 
 Sincerely,<br>
