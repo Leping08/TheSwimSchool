@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/smile.jpg')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/hat.jpg')}}">
 
 @component('mail::panel')
 # Registration is Now Open!
