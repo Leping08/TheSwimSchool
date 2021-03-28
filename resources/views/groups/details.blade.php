@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Lakewood Ranch Group Lessons | Bradenton Swimming Classes | Parrish</title>
-    <meta name="description" content="Interested in Lakewood Ranch group lessons? Sign up for our Bradenton swimming classes today by choosing your child's age and swimming lesson."/>
+    <title>Parrish Group Lessons | Bradenton Swimming Classes | Sun City Center</title>
+    <meta name="description" content="Interested in Parrish group lessons? Sign up for our Bradenton swimming classes today by choosing your child's age and swimming lesson."/>
 @endsection
 
 @section('heading')
@@ -17,7 +17,7 @@ Lessons
                     <div class="uk-card-media-left">
                         <div class="uk-flex uk-flex-center uk-text-center">
                             <div>
-                                <img class="uk-width-3-4" src="{{asset($group->iconPath)}}">
+                                <img alt="Swim Lessons" class="uk-width-3-4" src="{{asset($group->iconPath)}}">
                             </div>
                         </div>
                     </div>

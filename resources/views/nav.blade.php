@@ -2,7 +2,7 @@
     <nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-left">
             <a title="Parrish Swimming Lessons" class="uk-navbar-item uk-logo" href="{{ route('home.index') }}">
-                <img src="{{ asset('/img/logos/the-swim-school.png') }}" style="max-width: 60%;" class="uk-responsive-height" alt="Lakewood Ranch Swim Lessons">
+                <img src="{{ asset('/img/logos/the-swim-school.png') }}" style="max-width: 60%;" class="uk-responsive-height" alt="Parrish Swim Lessons">
             </a>
         </div>
         <div class="uk-navbar-right">
@@ -18,7 +18,7 @@
                 <div>
                     <div class="uk-panel">
                         <ul class="uk-nav uk-nav-default">
-                            <li class="{{{ (Request::is('/') ? 'uk-active' : null ) }}}"><a href="{{ route('home.index') }}">Home</a></li>
+                            <li class="{{{ (Request::is('/') ? 'uk-active' : null ) }}}"><a title="Swim Instruction Parrish" href="{{ route('home.index') }}">Home</a></li>
                             <li class="{{{ (Request::segment(1) === 'lessons' || Request::segment(1) === 'private-semi-private' ||  Request::segment(1) === 'swim-team' ||  Request::segment(1) === 'other-services'  ? 'uk-active' : null) }}} uk-parent">
                                 <a>Services</a>
                                 <ul class="uk-nav-sub">
@@ -28,7 +28,7 @@
                                 </ul>
                             </li>
                             <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="{{ route('pages.about') }}">About</a></li>
-                            <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Lakewood Ranch Swim Instructors" href="{{ route('pages.contact-us') }}">Contact Us</a></li>
+                            <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Bradenton Swim Instructors" href="{{ route('pages.contact-us') }}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
                 @endif
                 <div>
                     <div class="uk-panel widget-text uk-margin-top" id="widget-text-8">
-                        <div class="textwidget"><a href="tel:941-773-1424"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Call</button></a>
-                            <a href="mailto:theswimschoolfl@gmail.com"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Email</button></a>
+                        <div class="textwidget"><a title="Kids Swimming Ellenton" href="tel:941-773-1424"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Call</button></a>
+                            <a title="Parrish Swimming Lessons" href="mailto:theswimschoolfl@gmail.com"><button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Email</button></a>
                         </div>
                     </div>
                 </div>
@@ -81,13 +81,13 @@
         <div class="uk-container uk-container-expand">
             <nav class="uk-navbar" uk-navbar>
                 <div class="uk-navbar-left">
-                    <a class="uk-navbar-item uk-logo" href="{{ route('home.index') }}">
+                    <a title="Swim Lessons near Ellenton" class="uk-navbar-item uk-logo" href="{{ route('home.index') }}">
                         <img src="{{ asset('/img/logos/the-swim-school.png') }}" class="uk-responsive-height" style="max-width: 60%;" alt="Bradenton Swim Lessons">
                     </a>
                 </div>
                 <div class="uk-navbar-center">
                     <ul class="uk-navbar-nav">
-                        <li class="{{{ (Request::is('/') ? 'uk-active' : null ) }}}"><a href="{{ route('home.index') }}">Home</a></li>
+                        <li class="{{{ (Request::is('/') ? 'uk-active' : null ) }}}"><a title="Parrish Swimming for Kids" href="{{ route('home.index') }}">Home</a></li>
                         <li class="{{{ (Request::segment(1) === 'lessons' || Request::segment(1) === 'private-semi-private' ||  Request::segment(1) === 'swim-team' ||  Request::segment(1) === 'other-services'  ? 'uk-active' : null) }}} uk-parent">
                             <a>Services</a>
                             <div class="uk-navbar-dropdown">
@@ -103,7 +103,7 @@
                             </div>
                         </li>
                         <li class="{{{ (Request::segment(1) === 'about' ? 'uk-active' : null) }}} "><a title="Parrish Learn to Swim" href="{{ route('pages.about') }}">About</a></li>
-                        <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Lakewood Ranch Swim Instructors" href="{{ route('pages.contact-us') }}">Contact Us</a></li>
+                        <li class="{{{ (Request::segment(1) === 'contact-us' ? 'uk-active' : null) }}} "><a title="Bradenton Swim Instructors" href="{{ route('pages.contact-us') }}">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="uk-navbar-right">

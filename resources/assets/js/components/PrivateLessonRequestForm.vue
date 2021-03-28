@@ -20,7 +20,7 @@
         <div class="uk-margin" v-if="selected === 'My Home or Community Pool'">
             <label class="uk-form-label uk-heading-bullet" for="">Address</label>
             <div class="uk-form-controls">
-                <input type="text" name="address" value="" class="uk-input" placeholder="12345 Street Lakewood Ranch, FL 34202" required>
+                <input type="text" name="address" value="" class="uk-input" placeholder="12345 Street Parrish, FL 34202" required>
             </div>
         </div>
         <div class="uk-margin">

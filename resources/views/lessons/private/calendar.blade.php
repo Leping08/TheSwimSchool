@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Parrish Swim Lessons | Lakewood Ranch Swimming Classes | The Swim School</title>
-    <meta name="description" content="The Swim School near Lakewood Ranch & Parrish is proud to offer private and semi-private swim lessons, as well as group swimming classes! Visit our website for more information."/>
+    <title>Parrish Swim Lessons | Palmetto Swimming Classes | The Swim School</title>
+    <meta name="description" content="The Swim School near Parrish & Palmetto is proud to offer private and semi-private swim lessons, as well as group swimming classes! Visit our website for more information."/>
 @endsection
 
 @section('heading')
@@ -25,7 +25,7 @@
                     <div class="uk-panel uk-width-1-1">
                         <div class="uk-margin">
                             <div class="uk-dropcap">
-                                Whether you are a beginner swimmer, a child preparing to join a <a href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
+                                Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
                                 looking to improve your technique, private swim lessons can be customized to your specific needs
                                 to help you achieve your goals quickly. These lessons are conducted one on one with an
                                 instructor and each lesson is 20 minutes.
@@ -59,7 +59,7 @@
                             Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one lesson to checkout. Each lesson is 20 minutes.
                         </p>
                         <p class="">
-                            For children under 3 years of age, we require a parent or trusted adult also get in the water to assist with the lessons. While our goal is certainly to teach your child to swim, we are not ISR certified instructors and do not specialize in the infant survival technique. We recommend participants under 12 months of age enroll in our group class <a href="{{ route('groups.lessons.index') }}">Parent & Infant program</a> prior to private lessons.
+                            For children under 3 years of age, we require a parent or trusted adult also get in the water to assist with the lessons. While our goal is certainly to teach your child to swim, we are not ISR certified instructors and do not specialize in the infant survival technique. We recommend participants under 12 months of age enroll in our group class <a title="Group Swim Lessons near Bradenton" href="{{ route('groups.lessons.index') }}">Parent & Infant program</a> prior to private lessons.
                         </p>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                                 <div class="uk-width-1-1@s">
                                     <div class="uk-form-controls">
                                         <label><input class="uk-checkbox" type="checkbox" name="terms" required>
-                                            I agree to the <a href="{{ route('groups.terms') }}" target="_blank">The Swim
+                                            I agree to the <a title="Parrish Swim Lessons" href="{{ route('groups.terms') }}" target="_blank">The Swim
                                                 School Policies & Procedures</a>
                                         </label>
                                     </div>

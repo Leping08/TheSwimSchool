@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Group Swim Lessons | Parrish Swimming Classes | The Swim School Florida</title>
-    <meta name="description" content="Group swim lessons are available for swimmers of all levels! From infants to advanced youth, The Swim School near Parrish Florida is available for everyone. Sign up online today!"/>
+    <title>Group Swimming Lessons Schedule | Parrish Swim Classes | Bradenton</title>
+    <meta name="description" content="Group swimming lessons are available for swimmers of all levels! Find our group lesson sessions and registration schedule for Parrish swim classes, near Bradenton and Ellenton. "/>
 @endsection
 
 @section('heading')

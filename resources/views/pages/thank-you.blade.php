@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title></title> <!-- TODO: Add SEO to this page -->
-    <meta name="description" content=""/>
+    <title>Thank You for Signing Up | Swim Lessons Parrish | Palmetto Sun City Center</title>
+    <meta name="description" content="Thank you for signing up for your swim lessons! The Swim School is proud to offer private and group swimming lessons near Parrish, Palmetto, and Sun City Center. See you in the pool!"/>
 @endsection
 
 @section('heading')
@@ -14,25 +14,22 @@
         <div class="uk-container">
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true">
                 <div>
-                    <img alt="" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/float.jpg') }}">
+                    <img alt="Private Swim Lessons Ellenton" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/float.jpg') }}">
                 </div>
                 <div>
-                    <img alt="" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">
+                    <img alt="Parrish Swimming" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">
                 </div>
                 <div>
-                    <img alt="" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/kicking.jpg') }}">
+                    <img alt="Child Swim Lesson near Ellenton" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/kicking.jpg') }}">
                 </div>
                 <div>
-                    <img alt="" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/smile.jpg') }}">
+                    <img alt="Swimming for Kids Parrish" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/smile.jpg') }}">
                 </div>
                 <div>
-                    <img alt="" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/the-team.jpg') }}">
+                    <img alt="Parrish Swim Team" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/the-team.jpg') }}">
                 </div>
                 <div>
-                    <img alt="" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/winner.jpg') }}">
-                </div>
-                <div>
-                    <img alt="" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/thank-you/breast-stroke.jpg') }}">
+                    <img alt="Kids Swimming Palmetto" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/winner.jpg') }}">
                 </div>
             </div>
         </div>

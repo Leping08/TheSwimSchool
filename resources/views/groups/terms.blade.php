@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-<title>The Swim School | Policies and Procedures | Parrish Lakewood Ranch</title>
-<meta name="description" content="The Swim School, serving Parrish and Lakewood Ranch, requires all students, parents, and guardians abide by our Policies and Procedures which can be found on this page. Contact us today with any questions."/>
+<title>The Swim School | Policies and Procedures | Parrish Sun City Center</title>
+<meta name="description" content="The Swim School, serving Parrish and Sun City Center, requires all students, parents, and guardians abide by our Policies and Procedures which can be found on this page. Contact us today with any questions."/>
 @endsection
 
 @section('heading')
@@ -52,7 +52,7 @@ The Swim School Policies & Procedures
 
 
             <dt>Inclement Weather Cancellations:</dt>
-            <dd>In the event of severe inclement weather (i.e. lightning within 5.0 miles or less from pool location, heavy rain which limits visibility of the bottom of the pool, and/or air temperature of 65 degrees or below), swim lesson classes will be cancelled. The instructor will contact you via text no more than 30 minutes prior to a lesson when a cancellation is required due to severe inclement weather and will notify you as to when a makeup class will be scheduled. It is best to assume swim lesson classes are on as scheduled if you are not contacted by the instructor. For home pool private lessons, please contact the instructor 30 minutes prior to the scheduled lesson to make a decision whether to attempt the lesson or reschedule.</dd>
+            <dd>In the event of severe inclement weather (i.e. lightning within 5.0 miles or less from pool location, heavy rain which limits visibility of the bottom of the pool, and/or air temperature of 65 degrees or below), swim lesson classes will be cancelled. The instructor will contact you via text no more than 30 minutes prior to a lesson when a cancellation is required due to severe inclement weather and will notify you as to when a makeup class will be scheduled. It is best to assume swim lesson classes are on as scheduled if you are not contacted by the instructor.</dd>
 
 
             <dt>Makeup Classes:</dt>

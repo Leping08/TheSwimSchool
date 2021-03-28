@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Bradenton Private Swim Lessons | Parrish Swim Instructors | Ellenton</title>
-    <meta name="description" content="Our Ellenton and Parrish swim instructors at The Swim School are available to help you achieve your swimming goals! Request your Bradenton private swim lessons here."/>
+    <title>Private Swim Lessons Ellenton | Parrish Swim Instructors | Bradenton</title>
+    <meta name="description" content="Our Ellenton and Parrish swim instructors at The Swim School are available to help you achieve your swimming goals! Private swim lessons are a great way to get started. Call us today."/>
 @endsection
 
 @section('heading')
@@ -128,7 +128,7 @@
                                 <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Address</label>
                                     <div class="uk-form-controls">
-                                        <input type="text" name="address" value="{{ old('address') }}" class="uk-input" placeholder="12345 Street Lakewood Ranch, FL 34202" required>
+                                        <input type="text" name="address" value="{{ old('address') }}" class="uk-input" placeholder="12345 Street Parrish, FL 34219" required>
                                     </div>
                                 </div>
                                 <div class="uk-margin">

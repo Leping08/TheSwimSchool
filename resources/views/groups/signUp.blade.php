@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-<title>Parrish Swimming Lessons | Lakewood Ranch Group Lessons | Bradenton</title>
-<meta name="description" content="Interested in Parrish swimming lessons? Sign up for group lessons in Lakewood Ranch and Bradenton today be selecting your child's age and level!"/>
+<title>Parrish Swimming Lessons | Ellenton Group Swim Lessons | Bradenton</title>
+<meta name="description" content="Interested in Parrish swimming lessons? Sign up for group lessons in Parrish, Ellenton, and Bradenton today be selecting your child's age and level!"/>
 @endsection
 
 @section('heading')
@@ -25,7 +25,7 @@ Sign Up
                 <div class="uk-card-media-left">
                     <div class="uk-flex uk-flex-center uk-text-center">
                         <div>
-                            <img class="uk-width-3-4" src="{{asset($lesson->group->iconPath)}}" alt="">
+                            <img class="uk-width-3-4" src="{{asset($lesson->group->iconPath)}}" alt="Swim Lessons Ellenton">
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@ Sign Up
                     <div class="uk-width-1-1@s">
                         <div class="uk-form-controls">
                             <label><input class="uk-checkbox" type="checkbox" name="Terms and Conditions" required>
-                                I agree to the <a href="{{ route('groups.terms') }}" target="_blank">The Swim School Policies & Procedures</a>
+                                I agree to the <a title="Swimming Lessons Parrish" href="{{ route('groups.terms') }}" target="_blank">The Swim School Policies & Procedures</a>
                             </label>
                         </div>
                     </div>

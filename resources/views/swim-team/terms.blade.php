@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The {{ config('swim-team.full-name') }} | Policies and Procedures | Lakewood Ranch</title>
-    <meta name="description" content="In order to be on The {{ config('swim-team.full-name') }}, The Swim School requests that you read and follow the Lakewood Ranch Policies and Procedures listed here. Contact us with any questions."/>
+    <title>The {{ config('swim-team.full-name') }} | Policies and Procedures | Parrish</title>
+    <meta name="description" content="In order to be on The {{ config('swim-team.full-name') }}, The Swim School requests that you read and follow the Policies and Procedures listed here. Contact us with any questions."/>
 @endsection
 
 @section('heading')

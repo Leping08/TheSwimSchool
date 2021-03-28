@@ -1,9 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <!-- TODO: SEO swim team roster page -->
-    <title></title>
-    <meta name="description" content=""/>
+    <title>Parrish Bull Sharks | Swim Team Roster | Group Swimming near Bradenton</title>
+    <meta name="description" content="Check out the Parrish Bull Sharks Swim Team roster here. The Swim School is so proud of our athletes. For more information on group swimming near Bradenton, reach out to us today."/>
 @endsection
 
 @section('heading')

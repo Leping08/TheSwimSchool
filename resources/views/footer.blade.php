@@ -38,7 +38,7 @@
                             </div>
                             <div>
                                 <div class="">
-                                    <a title="The Swim School" href="tel:+19417731424">(941) 773-1424</a>
+                                    <a title="Swim Lessons Parrish" href="tel:+19417731424">(941) 773-1424</a>
                                 </div>
                             </div>
                         </div>

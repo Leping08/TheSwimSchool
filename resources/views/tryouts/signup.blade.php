@@ -1,8 +1,8 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>{{ config('swim-team.full-name') }} Tryout | The Swim School | Bradenton Lakewood Ranch</title>
-    <meta name="description" content="Thank you for your interest in our {{ config('swim-team.full-name') }} Tryout! The Swim School near Bradenton & Lakewood Ranch will be in contact with you soon."/>
+    <title>{{ config('swim-team.full-name') }} Tryout | The Swim School | Bradenton Parrish</title>
+    <meta name="description" content="Thank you for your interest in our {{ config('swim-team.full-name') }} Tryout! The Swim School, serving Bradenton & Parrish, will be in contact with you soon!"/>
 @endsection
 
 @section('heading')

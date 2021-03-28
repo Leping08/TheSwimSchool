@@ -2,8 +2,10 @@
 
 @section('seo')
     {{--TODO: SEO this page--}}
-    <title></title>
-    <meta name="description" content=""/>
+    <title>Swim School Feedback Survey | Parrish Swimming Lessons | Bradenton</title>
+    <meta name="description" content="Thank you for participating in an aquatics program through The Swim School! To help us serve you better and improve our programs, we need your feedback. Please take a few minutes to complete this evaluation form regarding your recent experience with The Swim School. Thank You!
+
+"/>
 @endsection
 
 @section('heading')

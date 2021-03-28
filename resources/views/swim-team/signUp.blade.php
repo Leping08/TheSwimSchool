@@ -1,5 +1,10 @@
 @extends('layouts.app-uikit')
 
+@section('seo')
+    <title>Parrish Swim Team Sign Up | Group Swimming near Sun City Center | Bradenton</title>
+    <meta name="description" content="Thank you for signing up for our Parrish swim team! We are so excited to have you join us for group swimming near Sun City Center and Bradenton. See you at the pool!"/>
+@endsection
+
 @section('heading')
     {{ config('swim-team.full-name') }}
 @endsection
@@ -186,7 +191,7 @@
                         <div class="uk-width-1-1@s">
                             <div class="uk-form-controls">
                                 <label><input class="uk-checkbox" type="checkbox" name="termsAndConditions" required>
-                                    I agree to the <a href="{{ route('swim-team.terms') }}" target="_blank">{{ config('swim-team.full-name') }} Policies & Procedures</a>
+                                    I agree to the <a title="Swim Lessons near Sun City Center" href="{{ route('swim-team.terms') }}" target="_blank">{{ config('swim-team.full-name') }} Policies & Procedures</a>
                                 </label>
                             </div>
                         </div>

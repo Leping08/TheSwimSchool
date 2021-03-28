@@ -1,7 +1,7 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>The Swim School | Parrish Swimming Lessons Email Unsubscribe</title>
+    <title>The Swim School | Parrish Swimming Lessons | Email Unsubscribe</title>
     <meta name="description" content="We're sorry to see you go! For more information on Parrish swimming lessons and The Swim School, please give us a call at 941-773-1424."/>
 @endsection
 

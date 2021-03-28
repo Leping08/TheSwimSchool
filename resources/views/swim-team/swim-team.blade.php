@@ -2,7 +2,7 @@
 
 @section('seo')
     <title>The {{ config('swim-team.name') }} | Parrish Swimming | The Swim School Florida</title>
-    <meta name="description" content="The Swim School near Parrish Florida invites you to come join our team! The {{ config('swim-team.name') }} is holding tryouts at the River Wildnerness Country Club. Sign up for tryouts today."/>
+    <meta name="description" content="The Swim School near Parrish Florida invites you to come join our team! The {{ config('swim-team.name') }} is holding tryouts at the River Wilderness Country Club. Sign up for tryouts today."/>
 @endsection
 
 @section('heading')
@@ -24,10 +24,10 @@
                         <h2 class="uk-heading-line"><span>2021 {{ config('swim-team.name') }} Swim Club</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
-                                Our 2021 spring pre-season training has begun! For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a>
-                                for 6-8 year olds ($100 per session) and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club</a> for ages 9 years & up ($125 per session).
+                                Our 2021 spring pre-season training has begun! For more information and to register, check out our <a title="Swimming Team Parrish" href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a>
+                                for 6-8 year olds ($100 per session) and our <a title="Parrish Swim Club" href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club</a> for ages 9 years & up ($125 per session).
                                 Sessions are held weekday evenings. Information regarding our 2021 Summer Swim Team tryouts and season will be available by April 15th.
-                                Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
+                                Stay up to date with everything we are doing on our <a title="Parrish Swim Team Facebook" href="https://www.facebook.com/Parrish-Bull-Sharks-Swim-Team-209249439805502/" target="_blank">Facebook page</atitle>.
                             </p>
 {{--                            <p>--}}
 {{--                                Bring your suit, goggles & towel and come join our team! The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.--}}
@@ -82,9 +82,9 @@
                 <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
                     <div class="uk-panel">
                         <div class="uk-margin">
-                            {{--<img class="" alt="" src="/img/logos/north-river-rapids.png">--}}
-{{--                            <img class="" alt="" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">--}}
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">
+                            {{--<img class="" alt="Parrish Swim Lessons" src="/img/logos/north-river-rapids.png">--}}
+{{--                            <img class="" alt="Parrish Swim Lessons" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">--}}
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Parrish Swim Lessons" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
 {{--            <div class="uk-grid-margin uk-grid" uk-grid="">--}}
 {{--                <div class="uk-width-expand@m uk-first-column">--}}
 {{--                    <div class="uk-margin">--}}
-{{--                        <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/swim-team/2018-class.jpg') }}">--}}
+{{--                        <img class="uk-border-rounded uk-box-shadow-large" alt="Parrish Swim Team" src="{{ asset('/img/swim-team/2018-class.jpg') }}">--}}
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">--}}
@@ -149,7 +149,7 @@
 {{--                <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">--}}
 {{--                    <div class="uk-panel">--}}
 {{--                        <div class="uk-margin">--}}
-{{--                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">--}}
+{{--                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Instruction Parrish" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
 {{--                </div>--}}
@@ -165,13 +165,13 @@
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div class="uk-width-expand@m uk-first-column">
                         <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Team near Ellenton" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">
                         </div>
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">Download the 2019 swim meet schedule. All swim meets are optional but participation is highly encouraged. All swim practices will be cancelled on days when a swim meet occurs</div>
-                            <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_2019_Fall_Swim_Meet_Schedule.pdf" download="NRST_2019_Fall_Swim_Meet_Schedule.pdf">Download</a>
+                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_2019_Fall_Swim_Meet_Schedule.pdf" download="NRST_2019_Fall_Swim_Meet_Schedule.pdf">Download</a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                                 <h3 class="el-title uk-margin uk-heading-bullet">{{$coach->name}}</h3>
                                 <div class="el-content uk-margin">
                                     <p>{{$coach->bio}}</p>
-                                    <a title="Contact {{$coach->name}}" class="uk-button uk-button-default" href="tel:+1{{$coach->phone}}"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> {{$coach->phone}}</a>
+                                    <a title="Contact {{$coach->name}}" class="uk-button uk-button-default" title="Swim Instruction Parrish" href="tel:+1{{$coach->phone}}"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> {{$coach->phone}}</a>
                                 </div>
                             </li>
                         @empty
@@ -235,13 +235,13 @@
                 <div class="uk-grid-margin uk-grid" uk-grid="">
                     <div class="uk-width-expand@m uk-first-column">
                         <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="" src="{{ asset('/img/thank-you/winner.jpg') }}">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Kids Swimming near Bradenton" src="{{ asset('/img/thank-you/winner.jpg') }}">
                         </div>
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">Check out the current {{ config('swim-team.name') }} team record holders.</div>
-                            <a title="Lakewood Ranch Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/Swim_Team_Record_Holders.pdf') }}" download="Swim_Team_Record_Holders.pdf">Download</a>
+                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/Swim_Team_Record_Holders.pdf') }}" download="Swim_Team_Record_Holders.pdf">Download</a>
                         </div>
                     </div>
                 </div>
