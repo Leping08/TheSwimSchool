@@ -41,7 +41,12 @@ class Lesson extends Model
     use SoftDeletes, Actionable, Notifiable, HasFactory;
 
     protected $casts = [
-        'days' => 'string'
+        'days' => 'string',
+        'season_id' => 'integer',
+        'group_id' => 'integer',
+        'location_id' => 'integer',
+        'instructor_id' => 'integer',
+        'class_size' => 'integer',
     ];
 
     /**
