@@ -42,7 +42,7 @@ class Covid extends Mailable
     {
         return $this->markdown('email.newsletter.covid')
             ->from(config('mail.from.address'))
-            ->subject('2021 Safety Precautions in Response to COVID-19')
+            ->subject('COVID-19 Safety Precautions')
             ->with(['emailAddress' => $this->emailAddress]);
     }
 }

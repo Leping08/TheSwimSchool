@@ -3,7 +3,7 @@
 <img alt="" style="margin-bottom: 2em;" src="{{asset('img/lessons/sun.jpg')}}">
 
 @component('mail::panel')
-# 2021 Safety Precautions in Response to COVID-19
+# COVID-19 Safety Precautions
 Please read our health & safety precautions for attending swim programs while at the River Wilderness Country Club. Please contact us with any questions.
 - Face coverings are not required while outside on the pool deck but they are required for those 6 yrs & up if you go inside the facility to use the locker rooms.
 - Please limit the number of adult family members accompanying each swim participant as much as possible.
