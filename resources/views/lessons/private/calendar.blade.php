@@ -19,34 +19,14 @@
                 </div>
             @endif
 
-            <div class="uk-grid-margin uk-grid">
-
-                <div class="uk-grid-item-match uk-flex-middle uk-width-4-5@m">
-                    <div class="uk-panel uk-width-1-1">
-                        <div class="uk-margin">
-                            <div class="uk-dropcap">
-                                Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
-                                looking to improve your technique, private swim lessons can be customized to your specific needs
-                                to help you achieve your goals quickly. These lessons are conducted one on one with an
-                                instructor and each lesson is 20 minutes.
-                            </div>
+            <div class="uk-grid">
+                <div class="uk-width-4-4@m uk-first-column uk-margin-large-top">
+                    <h2 class="uk-heading-bullet">Location</h2>
+                    <p>Private Lessons take place at Realhab in Parrish Florida.</p>
+                    <div class="uk-child-width-1-1@m">
+                        <div class="uk-card uk-card-default">
+                            <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
                         </div>
-                    </div>
-                </div>
-
-                <div class="uk-width-expand@m">
-                    <div class="uk-margin-top">
-                        <img src="{{ asset('/img/thank-you/smile.jpg') }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">
-                    </div>
-                </div>
-            </div>
-
-            <div class="uk-width-4-4@m uk-first-column uk-margin-large-top">
-                <h2 class="uk-heading-bullet">Location</h2>
-                <p>Private Lessons take place at the River Wilderness Golf & Country Club.</p>
-                <div class="uk-child-width-1-1@m">
-                    <div class="uk-card uk-card-default">
-                        <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=River+Wilderness+Golf+%26+Country+Club&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -54,10 +34,32 @@
             @if(config('season.private.season'))
                 <div class="uk-grid-margin uk-grid uk-margin-large-top" uk-grid="">
                     <div class="uk-width-4-4@m uk-first-column uk-margin">
-                        <h2 class="uk-heading-bullet">Registration</h2>
-                        <p class="">
-                            Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one lesson to checkout. Each lesson is 20 minutes.
-                        </p>
+                        <h2 class="uk-heading-bullet">Registration</h2>s
+                            <div class="uk-grid-item-match uk-flex-middle">
+                                <div class="uk-panel uk-width-1-1">
+                                    <div class="uk-margin">
+                                        <div class="uk-dropcap">
+                                            Whether you are a beginner swimmer, a child preparing to join a <a title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a triathlete
+                                            looking to improve your technique, private swim lessons can be customized to your specific needs
+                                            to help you achieve your goals quickly. These lessons are conducted one on one with an
+                                            instructor and each lesson is 20 minutes. Registration opens on the 25th of each month for the next month’s
+                                            available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one
+                                            lesson to checkout. Each lesson is 20 minutes.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+{{--                            <div class="uk-width-expand@m">--}}
+{{--                                <div class="uk-margin-top">--}}
+{{--                                    <img src="{{ asset('/img/thank-you/smile.jpg') }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="Palmetto Swim Instruction">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+
+{{--                        <p class="">--}}
+{{--                            Registration opens on the 25th of each month for the next month’s available lessons and is first come first serve. Pricing is $35.00 per private lesson. Select at least one lesson to checkout. Each lesson is 20 minutes.--}}
+{{--                        </p>--}}
                         <p class="">
                             For children under 3 years of age, we require a parent or trusted adult also get in the water to assist with the lessons. While our goal is certainly to teach your child to swim, we are not ISR certified instructors and do not specialize in the infant survival technique. We recommend participants under 12 months of age enroll in our group class <a title="Group Swim Lessons near Bradenton" href="{{ route('groups.lessons.index') }}">Parent & Infant program</a> prior to private lessons.
                         </p>

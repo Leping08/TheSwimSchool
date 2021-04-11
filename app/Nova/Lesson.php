@@ -82,7 +82,7 @@ class Lesson extends Resource
             ]),
             BelongsTo::make('Location')->withMeta([
                 //Select River Wilderness by default
-                'belongsToId' => $this->location_id ?? 5
+                'belongsToId' => $this->location_id ?? 63 //REALHAB location id
             ])->searchable(),
             Checkboxes::make('Days', 'days')
                 ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {

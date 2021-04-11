@@ -22,8 +22,7 @@
             <div class="uk-width-1-1@m uk-first-column uk-margin-top">
                 <h2 class="uk-heading-line"><span>Location</span></h2>
                 <div class="uk-card uk-card-default">
-{{--                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5755%20Harrison%20Ranch%20Blvd.%2C%20%20Parrish%2C%20FL%2034219&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>--}}
-                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=River+Wilderness+Golf+%26+Country+Club&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
                 </div>
             </div>
 
@@ -33,19 +32,19 @@
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Weekday Session (8 Classes)</h5>
+                                <h5>8 weekday classes for 30 minutes each</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>All Levels $90.00</li>
-                                    <li>Swim Club Levels (Flying Fish $100 & Shark $125)</li>
+                                    <li>$120 Per Session</li>
+                                    <li>No Registration Fees</li>
                                 </ul>
                             </div>
                         </div>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Weekend Session (6 Classes)</h5>
+                                <h5>6 weekend classes for 30 minutes each</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>All Levels $70.00</li>
-                                    <li>Swim Club Levels Offered Weekday Sessions Only</li>
+                                    <li>$90 Per Session</li>
+                                    <li>No Registration Fees</li>
                                 </ul>
                             </div>
                         </div>

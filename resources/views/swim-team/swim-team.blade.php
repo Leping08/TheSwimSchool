@@ -19,6 +19,20 @@
                 </div>
             @endif
             <div class="uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-width-1-1@m uk-section-default uk-section-overlap uk-section uk-section-small">
+                    <div class="uk-container">
+                        <div class="uk-width-1-1@m">
+                            <h2 class="uk-heading-line"><span>Location</span></h2>
+                            <div class="uk-card uk-card-default">
+                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=2250%20Wilderness%20Blvd.%20West%20Parrish%20FL%2C%2034219&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
                         <h2 class="uk-heading-line"><span>2021 {{ config('swim-team.name') }} Swim Club</span></h2>
@@ -27,7 +41,7 @@
                                 Our 2021 spring pre-season training has begun! For more information and to register, check out our <a title="Swimming Team Parrish" href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a>
                                 for 6-8 year olds ($100 per session) and our <a title="Parrish Swim Club" href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club</a> for ages 9 years & up ($125 per session).
                                 Sessions are held weekday evenings. Information regarding our 2021 Summer Swim Team tryouts and season will be available by April 15th.
-                                Stay up to date with everything we are doing on our <a title="Parrish Swim Team Facebook" href="https://www.facebook.com/Parrish-Bull-Sharks-Swim-Team-209249439805502/" target="_blank">Facebook page</atitle>.
+                                Stay up to date with everything we are doing on our <a title="Parrish Swim Team Facebook" href="https://www.facebook.com/Parrish-Bull-Sharks-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
                             </p>
 {{--                            <p>--}}
 {{--                                Bring your suit, goggles & towel and come join our team! The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.--}}
@@ -210,18 +224,6 @@
 
                         @endforelse
                     </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
-        <div class="uk-container">
-            <div class="uk-width-1-1@m">
-                <h2 class="uk-heading-line"><span>Location</span></h2>
-                <div class="uk-card uk-card-default">
-                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=2250%20Wilderness%20Blvd.%20West%20Parrish%20FL%2C%2034219&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
