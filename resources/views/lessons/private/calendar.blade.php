@@ -20,7 +20,7 @@
             @endif
 
             <div class="uk-grid">
-                <div class="uk-width-4-4@m uk-first-column uk-margin-large-top">
+                <div class="uk-width-4-4@m uk-first-column">
                     <h2 class="uk-heading-bullet">Location</h2>
                     <p>Private Lessons take place at Realhab in Parrish Florida.</p>
                     <div class="uk-child-width-1-1@m">
@@ -34,7 +34,7 @@
             @if(config('season.private.season'))
                 <div class="uk-grid-margin uk-grid uk-margin-large-top" uk-grid="">
                     <div class="uk-width-4-4@m uk-first-column uk-margin">
-                        <h2 class="uk-heading-bullet">Registration</h2>s
+                        <h2 class="uk-heading-bullet">Registration</h2>
                             <div class="uk-grid-item-match uk-flex-middle">
                                 <div class="uk-panel uk-width-1-1">
                                     <div class="uk-margin">

@@ -1,14 +1,22 @@
 @component('mail::message')
-# 2020 Summer Swim Team Update
+# The Swim School is Moving!
 
 @component('mail::panel')
-<img style="margin-bottom: 2em;" src="{{asset('img/swim-team/awards.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/lessons/realhab.png')}}">
 
-In response to the increase in coronavirus cases being seen throughout Manatee County, we have made the difficult decision to forgo the 2020 summer swim team season. In lieu of the swim team, we will continue offering our two week swim club sessions through August 6th with no more than 10 participants per group. There are a few spots left in our next Flying Fish and Shark swim club sessions starting this Monday, June 29th. You can register using the links below.
+<p>
+We are very excited to announce we are moving our private lesson and group class swim programs to a brand new state of the art, indoor pool facility located conveniently along US 301 North in Parrish. Our new home is Realhab Physical Therapy, Aquatics and Wellness Center at 12159 US Highway 301 N., Parrish FL 34219!
+</p>
+<p>
+Our transition has already begun with private swim lessons now taking place at this new location, and will continue with our next session of group classes starting there May 3rd for weekday sessions and May 29th for weekend sessions. The River Wilderness Golf & Country Club will remain our home for the Flying Fish & Shark swim club as well as the Parrish Bull Sharks swim team programs.
+</p>
+<p>
+You will now see updates to our website including banner messages with the dates we are moving each program, changes to our address location, and a price adjustment to accommodate moving to our new home. We are looking forward to now offering the majority of our swim programs year round without worry about inclement weather, cold water temperatures, sunscreen and pesky insects! We will also be training and hiring some additional staff with this new ability to expand our services. We promise to always strive for excellence in the services we provide while maintaining the most affordable prices possible. Please contact us directly with any questions. We look forward to diving in with you at this new pool very soon!
+</p>
 @endcomponent
 
-@component('mail::button', ['url' => config('app.url') .'lessons?utm_source=newsletter&utm_medium=email&utm_campaign=swim_team_tryouts'])
-Sign Up
+@component('mail::button', ['url' => config('app.url') .'?utm_source=newsletter&utm_medium=email&utm_campaign=new_location'])
+Learn More
 @endcomponent
 
 Thanks,<br>

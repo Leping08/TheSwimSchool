@@ -8,6 +8,14 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+//Test to people
+//\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\Update('derek@deltavcreative.com'));
+//\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\Update('theswimschoolfl@gmail.com'));
+
+//Send to everyone
+//App\Library\Marketing\Emails\Events\UpdateEmail::send();
+
+
 class Update extends Mailable
 {
     use Queueable, SerializesModels;
@@ -34,7 +42,7 @@ class Update extends Mailable
      */
     public function build()
     {
-        return $this->subject('2020 Summer Swim Team Update')
+        return $this->subject('The Swim School is Moving!')
             ->from(config('mail.from.address'))
             ->markdown('email.newsletter.update')
             ->with(['emailAddress' => $this->emailAddress]);

@@ -32,7 +32,7 @@
                     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>8 weekday classes for 30 minutes each</h5>
+                                <h5>Weekday Session 8-30 Min Classes ($15.00 Per Class)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>$120 Per Session</li>
                                     <li>No Registration Fees</li>
@@ -41,7 +41,7 @@
                         </div>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>6 weekend classes for 30 minutes each</h5>
+                                <h5>Weekend Session 6-30 Min Classes ($15.00 Per Class)</h5>
                                 <ul class="uk-list uk-list-bullet">
                                     <li>$90 Per Session</li>
                                     <li>No Registration Fees</li>
