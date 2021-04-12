@@ -64,7 +64,7 @@ class Lesson extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('', function (){
+            Text::make('', function () {
                 return view('partials.buttons', [
                     'next_id' => $this->model()->id + 1,
                     'previous_id' => $this->model()->id - 1
@@ -93,7 +93,7 @@ class Lesson extends Resource
             Text::make('Class Size', 'class_size')->withMeta([
                 "value" => $this->class_size ?? '4'
             ])->hideFromIndex(),
-            Number::make('Spots Remaining', function (){
+            Number::make('Spots Remaining', function () {
                 return $this->class_size - $this->swimmers->count();
             }),
             Date::make('Registration Open', 'registration_open')->hideFromIndex(),

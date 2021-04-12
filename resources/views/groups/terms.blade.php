@@ -16,15 +16,15 @@ The Swim School Policies & Procedures
         <dl class="uk-description-list uk-description-list-divider">
 
             <dt>Liability:</dt>
-            <dd>The enrolled participant and/or the parent/guardian of the participant recognize and understand that swimming is a Physical activity. In such there are risks inherent in the instruction and sport of swimming including but not limited to paralyzing injuries and the possibility of death. The participant hereby agrees to participate in The Swim School program and hereby agrees to indemnify and hold harmless The Swim School (and River Wilderness Golf & Country Club), its coaches, teachers, instructors, officers, directors, agents and employees against any liability resulting from any injury that may occur to the participant while participating in The Swim School aquatics programs. The participant also agrees to indemnify The Swim School (and River Wilderness Golf & Country Club) for any damages incurred arising from any claim, demand, action or cause of action by the participant. The participant and/or parent/guardian authorizes any representative, coaches, teachers, instructors, officers, directors, agents or employees of The Swim School (and/or River Wilderness Golf & Country Club) to have the participant treated in any medical emergency during their participation in the swim program. Further, the participant and/or parent/guardian agree to pay all costs associated with medical care and transportation for the participant. Please notify staff of any medical/health issues they should be aware of prior to the start of lessons.</dd>
+            <dd>The enrolled participant and/or the parent/guardian of the participant recognize and understand that swimming is a Physical activity. In such there are risks inherent in the instruction and sport of swimming including but not limited to paralyzing injuries and the possibility of death. The participant hereby agrees to participate in The Swim School program and hereby agrees to indemnify and hold harmless The Swim School (and Realhab Physical Therapy, Aquatics and Wellness Center), its coaches, teachers, instructors, officers, directors, agents and employees against any liability resulting from any injury that may occur to the participant while participating in The Swim School aquatics programs. The participant also agrees to indemnify The Swim School (and Realhab Physical Therapy, Aquatics and Wellness Center) for any damages incurred arising from any claim, demand, action or cause of action by the participant. The participant and/or parent/guardian authorizes any representative, coaches, teachers, instructors, officers, directors, agents or employees of The Swim School (and/or Realhab Physical Therapy, Aquatics and Wellness Center) to have the participant treated in any medical emergency during their participation in the swim program. Further, the participant and/or parent/guardian agree to pay all costs associated with medical care and transportation for the participant. Please notify staff of any medical/health issues they should be aware of prior to the start of lessons.</dd>
 
 
             <dt>Photo and Video Policy:</dt>
             <dd>I am aware that individual and group publicity photos and videos are taken from time to time and in consideration for my or my child(ren)'s participation, I hereby grant my permission for my or my child(ren)'s likeness to be used in company publicity and/or advertising.</dd>
 
 
-            <dt>Facility Use:</dt>
-            <dd>River Wilderness Golf & Country Club facility use outside of swim instruction is for club members only.</dd>
+            <dt>Realhab Use:</dt>
+            <dd>Realhab Physical Therapy, Aquatics and Wellness Center facility use outside of swim instruction is for their members and clients only.</dd>
 
 
             <dt>Safety:</dt>
@@ -43,7 +43,7 @@ The Swim School Policies & Procedures
             <dd>Students may not be moved to a different class or time once classes are full. Additional classes may be scheduled due to demand. Class times are subject to change from session to session.</dd>
 
 
-            <dt>Group Lesson Swim Levels::</dt>
+            <dt>Group Lesson Swim Levels:</dt>
             <dd>The instructor reserves the right to change a student’s swim level and class in accordance with their swimming abilities as necessary throughout the duration of a swim lesson session if deemed necessary.</dd>
 
 
@@ -51,12 +51,12 @@ The Swim School Policies & Procedures
             <dd>In order to foster the best learning environment for each student enrolled in The Swim School programs, the least amount of distraction is required. For students to remain focused and fully attentive to their instructor during swim lesson classes, parents and other family members are permitted on the pool deck but must view students from the designated observation area (except for the Parent & Infant-Toddler class where in water participation by an adult is required). We know this may be difficult, but students respond better to the instructor when they are without direct parent or family member involvement. If a student does not participate right away, it’s OK. They will watch and learn. If there is a problem, the instructor will come to you.</dd>
 
 
-            <dt>Inclement Weather Cancellations:</dt>
-            <dd>In the event of severe inclement weather (i.e. lightning within 5.0 miles or less from pool location, heavy rain which limits visibility of the bottom of the pool, and/or air temperature of 65 degrees or below), swim lesson classes will be cancelled. The instructor will contact you via text no more than 30 minutes prior to a lesson when a cancellation is required due to severe inclement weather and will notify you as to when a makeup class will be scheduled. It is best to assume swim lesson classes are on as scheduled if you are not contacted by the instructor.</dd>
+            <dt>Severe Tropical Weather:</dt>
+            <dd>In the event of severe tropical storms or hurricanes, The Swim School may cancel swim classes if the Realhab Physical Therapy, Aquatics and Wellness Center needs to close its facility. The Swim School will either make up or partially refund cancelled classes due to severe tropical weather.</dd>
 
 
-            <dt>Makeup Classes:</dt>
-            <dd>Makeup classes will only be scheduled for swim lesson classes cancelled by the instructor. Makeup classes for group lesson weekday sessions will take place on Fridays at their regularly scheduled class times. Makeup classes for group lesson weekend sessions will take place on the weekend following the session at their regularly scheduled class times. Makeup classes for private lessons will be scheduled at an agreed upon time between the instructor and lesson participant. Because of the progressive nature of The Swim School programs, limited class sizes and limited instructor availability, no special make up classes will be offered for lessons missed by participants due to holidays, vacation, illness, etc. However, it may be possible to accommodate a makeup class for a student if the same class is available on a different day/time that is not full.</dd>
+            <dt>Make Up Classes:</dt>
+            <dd>Make up classes will only be scheduled if swim lesson classes are cancelled by the instructor. Because of the progressive nature of The Swim School programs, limited class sizes and limited instructor availability, no special make up classes will be offered for lessons missed by participants due to holidays, vacation, illness, etc. However, it may be possible to accommodate a make up class for a student if the same class is available on a different day/time that is not full.</dd>
 
 
             <dt>Parent & Infant-toddler Class:</dt>
@@ -78,7 +78,7 @@ The Swim School Policies & Procedures
             </ol>
 
             <dt>End Of Session:</dt>
-            <dd>At the conclusion of a group swim lesson session, each participant will receive a progress report and a certificate of participation. The instructor will indicate on the progress report which class level the student should register for in the next session. Each student will also receive a graduation ribbon when they have completed the skill requirements to advance to the next higher class level. At the conclusion of a private swim lesson session, each student will receive a certificate and ribbon of participation.</dd>
+            <dd>At the conclusion of a group swim lesson session, each participant will receive a progress report and a certificate of participation. The instructor will indicate on the progress report which class level the student should register for in the next session.</dd>
 
         </dl>
     </div>
