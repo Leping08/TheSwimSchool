@@ -13,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 //\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\Update('theswimschoolfl@gmail.com'));
 
 //Send to everyone
-//App\Library\Marketing\Emails\Events\UpdateEmail::send();
+//\App\Library\Marketing\Emails\Events\UpdateEmail::send();
 
 
 class Update extends Mailable
