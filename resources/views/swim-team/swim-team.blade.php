@@ -46,7 +46,7 @@
 {{--                            </p>--}}
                             <p>
                                 The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.
-                                The summer season runs <strong>Tusday, June 1st - Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
+                                The summer season runs <strong>Tuesday, June 1st - Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
                                 Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
                             </p>
                             <p>
@@ -144,11 +144,11 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                     <div class="uk-panel">
-                        <div class="uk-margin">No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt. Price also includes swim meet entry fees for the entire season with the exception of the Suncoast Swim League championship meet which has a separate fee collected prior to the meet.</div>
+                        <div class="uk-margin">No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt. Price also includes swim meet entry fees and ribbons for the entire season (with the exception of the Suncoast Swim League championship meet fee) as well as end of season awards.</div>
                         <ul class="uk-list uk-list-bullet">
                             <li><b>White Team:</b> $250</li>
-                            <li><b>Gray Team:</b> $290</li>
-                            <li><b>Blue Team:</b> $330</li>
+                            <li><b>Gray Team:</b> $310</li>
+                            <li><b>Blue Team:</b> $450</li>
                         </ul>
                         <div class="uk-margin">*Parent Non-Volunteer Fee per swimmer per season (optional): $50</div>
                     </div>

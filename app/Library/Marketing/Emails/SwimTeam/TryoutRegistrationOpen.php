@@ -14,29 +14,16 @@ use Illuminate\Support\Facades\Mail;
 
 class TryoutRegistrationOpen
 {
-    private $season;
-
-    public function __construct(STSeason $season)
-    {
-        $this->season = $season;
-    }
-
-    public function getEmailAddresses(): Collection
+    public static function send(STSeason $season)
     {
         $emailListEmails = collect(EmailList::where('subscribe', '=', true)->pluck('email')->all());
-        $swimTeamEmails = collect(STSwimmer::where('s_t_season_id', $this->season->id)->pluck('email')->all());
+        $swimTeamEmails = collect(STSwimmer::where('s_t_season_id', $season->id)->pluck('email')->all());
 
         $allEmails = $emailListEmails->merge($swimTeamEmails);
 
-        return $allEmails->unique();
-    }
-
-    public function send()
-    {
-        foreach($this->getEmailAddresses() as $email)
+        foreach($allEmails->unique() as $email)
         {
-            try{
-                //Log::info("Going to send swim team swim team tryout registration open email to $email");
+            try {
                 Log::info("Sending swim team swim team tryout registration open email to $email");
                 Mail::to($email)->send(new TryoutsOpen($email));
             } catch (\Exception $e) {
