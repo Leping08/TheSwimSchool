@@ -218,11 +218,11 @@ img {
 }
 
 .button-blue, .button-primary {
-    background-color: #0177bf;
-    border-top: 10px solid #0177bf;
-    border-right: 18px solid #0177bf;
-    border-bottom: 10px solid #0177bf;
-    border-left: 18px solid #0177bf;
+    background-color: #0c1f3e;
+    border-top: 10px solid #0c1f3e;
+    border-right: 18px solid #0c1f3e;
+    border-bottom: 10px solid #0c1f3e;
+    border-left: 18px solid #0c1f3e;
 }
 
 .button-green, .button-success {

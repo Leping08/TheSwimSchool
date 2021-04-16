@@ -110,7 +110,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>May 29th-July 10th (No Class July 3rd)</td>
+                            <td>June 5th-June 17th (No Class July 3rd)</td>
                             <td>May 17th</td>
                         </tr>
                         <tr>
@@ -131,7 +131,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>May 30th-July 11th (No class July 4th)</td>
+                            <td>June 6th-June 18th (No Class July 4th)</td>
                             <td>May 17th</td>
                         </tr>
                         <tr>

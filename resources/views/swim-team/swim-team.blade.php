@@ -34,9 +34,9 @@
 
 
             <div class="uk-grid-margin uk-grid" uk-grid="">
-                <div class="uk-grid-item-match uk-flex-middle uk-width-1-1@m uk-first-column">
+                <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>2021 {{ config('swim-team.name') }} Swim Club</span></h2>
+                        <h2 class="uk-heading-line"><span>2021 {{ config('swim-team.name') }} Swim Team</span></h2>
                         <div class="uk-dropcap uk-margin">
 {{--                            <p>--}}
 {{--                                Our 2021 spring pre-season training has begun! For more information and to register, check out our <a title="Swimming Team Parrish" href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a>--}}
@@ -45,22 +45,36 @@
 {{--                                Stay up to date with everything we are doing on our <a title="Parrish Swim Team Facebook" href="https://www.facebook.com/Parrish-Bull-Sharks-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.--}}
 {{--                            </p>--}}
                             <p>
-                                Bring your suit, goggles & towel and come join our team! The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.
-                                The summer season runs <strong>Monday, June 1st - Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
+                                The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.
+                                The summer season runs <strong>Tusday, June 1st - Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
                                 Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
                             </p>
                             <p>
-                                Need some practice first? Join in on our spring pre-season Swim Club. Swim Club. For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a> for 6-8 year olds ($100 per session) and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club</a> for ages 9 years & up ($125 per session). Sessions are held weekday evenings.
+                                Need some practice first? Join in on our spring pre-season Swim Team. For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a>
+                                for 6-8 year olds ($100 per session) and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club</a> for ages 9 years & up ($125 per session). Sessions are held weekday evenings.
                             </p>
                             <p>
                                 Need to learn the strokes first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available now to get your child ready for their tryout.
                             </p>
                         </div>
+                    </div>
+                </div>
+                <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
+                    <div class="uk-panel">
+                        <div class="uk-margin">
+                            <img class="" alt="Parrish Swim Lessons" src="{{ asset('/img/logos/parrish-bull-sharks.png') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-grid-margin uk-grid">
+                <div class="uk-grid-item-match uk-flex-middle uk-width-1-1@m uk-first-column">
+                    <div>
                         <div>
                             <h2 class="uk-heading-line"><span>Tryouts</span></h2>
                             <p>
                                 Registration for swim team tryouts is now open. There is no fee to tryout for the swim team. Tryouts are held at the River Wilderness Golf & Country Club pool. Select one tryout from the three available options.
-{{--                                <strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim club.</strong>--}}
+{{--                                <strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim team.</strong>--}}
                             </p>
                             <ul class="uk-list uk-list-bullet">
                                 <li>Saturday, May 1st at 1:30PM</li>
@@ -77,18 +91,11 @@
 {{--                            <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>--}}
 {{--                        </div>--}}
                         <div>
-{{--                            <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>--}}
-                            <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>
+                            <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>
+{{--                            <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
                         </div>
                     </div>
                 </div>
-{{--                <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">--}}
-{{--                    <div class="uk-panel">--}}
-{{--                        <div class="uk-margin">--}}
-{{--                            <img class="uk-border-rounded uk-box-shadow-large" alt="Parrish Swim Lessons" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>
