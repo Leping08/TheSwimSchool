@@ -130,7 +130,7 @@ class PrivatePoolSession extends Resource
             BelongsTo::make('Lesson', 'lesson', PrivateLesson::class)->nullable(),
             BelongsTo::make('Location', 'location', Location::class)->withMeta([
                 //Select River Wilderness by default
-                'belongsToId' => $this->location_id ?? 5
+                'belongsToId' => $this->location_id ?? 63 //REALHAB location id
             ])->searchable(),
             BelongsTo::make('Instructor', 'instructor', User::class)->withMeta([
                 //The logged in user by default
