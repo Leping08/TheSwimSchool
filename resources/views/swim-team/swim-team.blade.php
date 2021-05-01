@@ -151,6 +151,10 @@
                             <li><b>Blue Team:</b> $450</li>
                         </ul>
                         <div class="uk-margin">*Parent Non-Volunteer Fee per swimmer per season (optional): $50</div>
+                        <div class="uk-margin">
+                            You can find all official {{ config('swim-team.name') }} apparel for the swim season at our team apparel store below.
+                        </div>
+                        <a class="uk-button uk-button-primary" target="_blank" href="https://www.destinationathlete.com/teams/store.aspx?team=2159&dept=2173">Team Apparel Store</a>
                     </div>
                 </div>
 
@@ -166,26 +170,26 @@
     </div>
 
 
-{{--    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">--}}
-{{--        <div class="uk-container">--}}
-{{--            <div class="uk-width-1-1@m uk-margin-top">--}}
-{{--                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>--}}
-{{--                <div class="uk-child-width-expand@s" uk-grid>--}}
-{{--                    <div class="uk-width-expand@m uk-first-column">--}}
-{{--                        <div class="uk-margin">--}}
-{{--                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Team near Ellenton" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">--}}
-{{--                        <div>--}}
-{{--                            <div class="uk-margin">Download the 2019 swim meet schedule. All swim meets are optional but participation is highly encouraged. All swim practices will be cancelled on days when a swim meet occurs</div>--}}
-{{--                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/NRST_2019_Fall_Swim_Meet_Schedule.pdf" download="NRST_2019_Fall_Swim_Meet_Schedule.pdf">Download</a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+        <div class="uk-container">
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>
+                <div class="uk-child-width-expand@s" uk-grid>
+                    <div class="uk-width-expand@m uk-first-column">
+                        <div class="uk-margin">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Team near Ellenton" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">
+                        </div>
+                    </div>
+                    <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
+                        <div>
+                            <div class="uk-margin">Download the 2021 swim meet schedule. All swim meets are optional but participation is highly encouraged. All swim practices will be cancelled on days when a swim meet occurs</div>
+                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/PBS_2021_Swim_Meet_Schedule.pdf" download="PBS 2021 Swim Meet Schedule.pdf">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
