@@ -183,7 +183,7 @@
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">Download the 2021 swim meet schedule. All swim meets are optional but participation is highly encouraged. All swim practices will be cancelled on days when a swim meet occurs</div>
-                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="pdf/PBS_2021_Swim_Meet_Schedule.pdf" download="PBS 2021 Swim Meet Schedule.pdf">Download</a>
+                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_2021_Swim_Meet_Schedule.pdf') }}" download="PBS 2021 Swim Meet Schedule.pdf">Download</a>
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">Check out the current {{ config('swim-team.name') }} team record holders.</div>
-                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/Swim_Team_Record_Holders.pdf') }}" download="Swim_Team_Record_Holders.pdf">Download</a>
+                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/Swim_Team_Record_Holders.pdf') }}" download="Swim Team Record Holders.pdf">Download</a>
                         </div>
                     </div>
                 </div>
