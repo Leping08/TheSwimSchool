@@ -19,7 +19,7 @@ class PromoCodeController extends Controller
 
         $promoCode = PromoCode::where('code', '=', $validatedData['code'])->first() ?? null;
 
-        if($promoCode){
+        if ($promoCode) {
             return $promoCode->discount_percent;
         } else {
             return 0;

@@ -1,46 +1,39 @@
 @component('mail::layout')
 
 @slot('header')
-@component('mail::header', ['url' => config('app.url')])
+@component('mail::header', ['url' => route('swim-team.index')])
 <img style="max-width: 350px;" src="{{asset('img/logos/parrish-bull-sharks.png')}}">
 @endcomponent
 @endslot
 
+@component('mail::panel')
 <img style="margin-bottom: 2em;" src="{{asset('img/swim-team/dive-cropped.jpg')}}">
 
 # Congratulations!
 
-@component('mail::panel')
 **{{$athlete->firstName}} {{$athlete->lastName}}**, you made the {{ config('swim-team.full-name') }}!
 Based on tryouts, we would like to place you in {{$athlete->level->name}} level.
-@endcomponent
 
-@component('mail::panel')
-### Season Length
+## Season
 {{$athlete->season->dates}}
-@endcomponent
 
-@component('mail::panel')
-### {{$athlete->level->name}} Level Practice Schedule
+## {{$athlete->level->name}} Level Practice Schedule
 @foreach($athlete->level->schedule as $day)
 {{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
+{{$athlete->season->dates}}
 @endforeach
-@endcomponent
 
-@component('mail::panel')
-### Practice Location
+## Practice Location
 2250 Wilderness Blvd W,\
 Parrish, FL 34219
-@endcomponent
 
 @if($promoCode)
-@component('mail::panel')
-### Promo Code
+## Promo Code
 For {{$promoCode->discount_percent}}% off use code: {{$promoCode->code}}
-@endcomponent
 @endif
+@endcomponent
 
-@component('mail::button', ['url' => config('app.url').'swim-team/level/'.$athlete->level->id.'/swimmer/'.$athlete->hash])
+@component('mail::button', ['url' => route('swim-team.index').'/level/'.$athlete->level->id.'/swimmer/'.$athlete->hash])
 Sign Up
 @endcomponent
 

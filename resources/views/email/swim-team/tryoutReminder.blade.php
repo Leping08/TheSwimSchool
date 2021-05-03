@@ -1,7 +1,7 @@
 @component('mail::layout')
 
 @slot('header')
-@component('mail::header', ['url' => config('app.url')])
+@component('mail::header', ['url' => route('swim-team.index')])
 <img style="max-width: 350px;" src="{{asset('img/logos/parrish-bull-sharks.png')}}">
 @endcomponent
 @endslot

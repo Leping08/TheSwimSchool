@@ -14,7 +14,7 @@ class Awards extends Mailable
     /**
      * @var string
      */
-    protected $theme = 'the_swim_team';
+    public $theme = 'the_swim_team';
 
     /**
      * Create a new message instance.

@@ -1,7 +1,7 @@
 @component('mail::layout')
 
 @slot('header')
-@component('mail::header', ['url' => config('app.url')])
+@component('mail::header', ['url' => route('swim-team.index')])
 <img alt="" style="max-width: 350px;" src="{{asset('img/logos/parrish-bull-sharks.png')}}">
 @endcomponent
 @endslot
@@ -13,7 +13,7 @@ Please follow the link below to the Awards Luau Luncheon RSVP form. Please compl
 @endcomponent
 
 @component('mail::button', ['url' => 'https://forms.gle/rgU35E2TPenKh7GUA'])
-    RSVP Here
+RSVP Here
 @endcomponent
 
 Thanks,<br>
