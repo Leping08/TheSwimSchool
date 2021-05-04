@@ -1,7 +1,7 @@
 @component('mail::message')
 # Private Swim Lesson Reminder
 
-<img style="margin-bottom: 2em;" src="{{asset('img/lessons/kids-floating.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/lessons/kids-floating.jpg')}}" alt="">
 
 We are looking forward to seeing you at {{ $location->name }} for your private swim lesson tomorrow {{$pool_session->start->format('l F jS')}} from {{$pool_session->start->format('g:ia')}} - {{$pool_session->end->format('g:ia')}}.
 

@@ -1,7 +1,7 @@
 @component('mail::message')
 
 
-<img style="margin-bottom: 2em;" src="{{asset('img/events/parrish-christmass-tree-lighting.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/events/parrish-christmass-tree-lighting.jpg')}}" alt="">
 
 
 @component('mail::panel')

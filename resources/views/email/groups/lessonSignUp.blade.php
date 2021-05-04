@@ -1,7 +1,7 @@
 @component('mail::message')
 # {{$lesson->group->type}}
 
-<img style="margin-bottom: 2em;" src="{{asset('img/lessons/kids-floating.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/lessons/kids-floating.jpg')}}" alt="">
 
 Thanks for signing up for swim lessons through The Swim School.
 

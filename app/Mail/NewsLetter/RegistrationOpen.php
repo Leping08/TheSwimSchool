@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 //Test to people
 //\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('derek@deltavcreative.com'));
+//\Illuminate\Support\Facades\Mail::to('test-wsg9nvwxu@srv1.mail-tester.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('test-wsg9nvwxu@srv1.mail-tester.com'));
 //\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('theswimschoolfl@gmail.com'));
 
 //Send to everyone

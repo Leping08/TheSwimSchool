@@ -2,12 +2,12 @@
 
 @slot('header')
 @component('mail::header', ['url' => route('swim-team.index')])
-<img style="max-width: 350px;" src="{{asset('img/logos/parrish-bull-sharks.png')}}">
+<img style="max-width: 350px;" src="{{asset('img/logos/parrish-bull-sharks.png')}}" alt="">
 @endcomponent
 @endslot
 
 @component('mail::panel')
-<img style="margin-bottom: 2em;" src="{{asset('img/swim-team/dive-cropped.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/swim-team/dive-cropped.jpg')}}" alt="">
 
 # Congratulations!
 
@@ -43,9 +43,9 @@ Thanks,<br>
 @component('mail::footer')
 <div>
 <div style="padding-top:10px; text-align:center !important;">
-<a href="tel:1-941-773-1424" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}"></a>
-<a href="mailto:theswimschoolfl@gmail.com"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}"></a>
-<a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}"></a>
+<a href="tel:1-941-773-1424" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}" alt=""></a>
+<a href="mailto:theswimschoolfl@gmail.com"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}" alt=""></a>
+<a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}" alt=""></a>
 </div>
 
 <p>

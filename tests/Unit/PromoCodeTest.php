@@ -32,6 +32,17 @@ class PromoCodeTest extends TestCase
         ]);
 
         $this->assertEquals($promoCode->apply($price2), 50);
+
+
+
+        $price3 = 250;
+
+        $promoCode = PromoCode::factory()->create([
+            'code' => 'HALFOFF',
+            'discount_percent' => 93
+        ]);
+
+        $this->assertEquals($promoCode->apply($price3), 17.50);
     }
 
     /** @test  **/

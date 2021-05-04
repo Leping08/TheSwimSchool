@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<img style="margin-bottom: 2em;" src="{{asset('img/thank-you/smile.jpg')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/thank-you/smile.jpg')}}" alt="">
 
 This is a reminder for your upcoming {{$lesson->group->type}} swim lessons.
 The first lesson is tomorrow {{$lesson->class_start_time->format('g:ia')}} - {{$lesson->class_end_time->format('g:ia')}}.

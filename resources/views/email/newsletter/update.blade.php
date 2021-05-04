@@ -2,7 +2,7 @@
 # The Swim School is Moving!
 
 @component('mail::panel')
-<img style="margin-bottom: 2em;" src="{{asset('img/lessons/realhab.png')}}">
+<img style="margin-bottom: 2em;" src="{{asset('img/lessons/realhab.png')}}" alt="">
 
 <p>
 We are very excited to announce we are moving our private lesson and group class swim programs to a brand new state of the art, indoor pool facility located conveniently along US 301 North in Parrish. Our new home will be at Realhab Physical Therapy, Aquatics and Wellness Center, 12159 US Highway 301 N., Parrish FL 34219!
