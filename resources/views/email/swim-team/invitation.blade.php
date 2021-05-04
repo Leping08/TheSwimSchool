@@ -20,7 +20,6 @@ Based on tryouts, we would like to place you in {{$athlete->level->name}} level.
 ## {{$athlete->level->name}} Level Practice Schedule
 @foreach($athlete->level->schedule as $day)
 {{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
-{{$athlete->season->dates}}
 @endforeach
 
 ## Practice Location
