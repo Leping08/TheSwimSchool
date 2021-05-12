@@ -10,8 +10,6 @@ use Illuminate\Queue\SerializesModels;
 //Test to people
 //\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\Covid('derek@deltavcreative.com'));
 //\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\Covid('theswimschoolfl@gmail.com'));
-//\Illuminate\Support\Facades\Mail::to('briansmith8477@gmail.com')->send(new \App\Mail\NewsLetter\Covid('briansmith8477@gmail.com'));
-//\Illuminate\Support\Facades\Mail::to('test-9o1qak5be@srv1.mail-tester.com')->send(new \App\Mail\NewsLetter\Covid('test-9o1qak5be@srv1.mail-tester.com'));
 
 //Send to everyone
 //(new \App\Library\Marketing\Emails\Events\Covid())->send();
