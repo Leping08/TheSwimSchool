@@ -45,6 +45,10 @@ class Update extends Mailable
         return $this->subject('The Swim School is Moving!')
             ->from(config('mail.from.address'))
             ->markdown('email.newsletter.update')
-            ->with(['emailAddress' => $this->emailAddress]);
+            ->with(['emailAddress' => $this->emailAddress])
+            ->withSwiftMessage(function ($message) {
+                $message->getHeaders()
+                    ->addTextHeader('List-Unsubscribe', '<' . route('newsletter.unsubscribe', ['email' => $this->emailAddress]) . '>');
+            });
     }
 }

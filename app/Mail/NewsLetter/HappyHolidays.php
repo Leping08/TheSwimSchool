@@ -35,6 +35,10 @@ class HappyHolidays extends Mailable
     {
         return $this->markdown('email.newsletter.covid')
             ->from(config('mail.from.address'))
-            ->with(['emailAddress' => $this->emailAddress]);
+            ->with(['emailAddress' => $this->emailAddress])
+            ->withSwiftMessage(function ($message) {
+                $message->getHeaders()
+                    ->addTextHeader('List-Unsubscribe', '<' . route('newsletter.unsubscribe', ['email' => $this->emailAddress]) . '>');
+            });
     }
 }

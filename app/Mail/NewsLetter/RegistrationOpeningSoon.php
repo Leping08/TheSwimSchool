@@ -43,6 +43,10 @@ class RegistrationOpeningSoon extends Mailable
         return $this->markdown('email.newsletter.registrationOpeningSoon')
             ->from(config('mail.from.address'))
             ->subject('2021 Swim Season Is Almost Here!')
-            ->with(['emailAddress' => $this->emailAddress]);
+            ->with(['emailAddress' => $this->emailAddress])
+            ->withSwiftMessage(function ($message) {
+                $message->getHeaders()
+                    ->addTextHeader('List-Unsubscribe', '<' . route('newsletter.unsubscribe', ['email' => $this->emailAddress]) . '>');
+            });
     }
 }

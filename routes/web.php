@@ -132,6 +132,9 @@ Route::post('/home-private-lesson', 'Privates\LeadController@store')->name('home
 /* @see EmailListController::unsubscribe() */
 Route::get('/newsletter/unsubscribe/{email}', 'EmailListController@unsubscribe')->name('newsletter.unsubscribe');
 
+/* @see EmailListController::unsubscribe() */
+Route::post('/newsletter/unsubscribe/{email}', 'EmailListController@unsubscribe');
+
 /* @see EmailListController::subscribe() */
 Route::post('/newsletter/subscribe', 'EmailListController@subscribe')->name('newsletter.subscribe');
 
