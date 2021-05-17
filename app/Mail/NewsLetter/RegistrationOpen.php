@@ -10,8 +10,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 //Test to people
 //\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('derek@deltavcreative.com'));
 //\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('theswimschoolfl@gmail.com'));
-//\Illuminate\Support\Facades\Mail::to('test-5sj81o6hj@srv1.mail-tester.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('test-5sj81o6hj@srv1.mail-tester.com'));
-//\Illuminate\Support\Facades\Mail::to('ajay@ariellevin.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('ajay@ariellevin.com'));
 
 //Send to everyone
 //\App\Library\Marketing\Emails\Lessons\RegistrationOpenEmail::send();
