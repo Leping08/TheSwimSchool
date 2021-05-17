@@ -23,7 +23,7 @@
                     <div class="uk-container">
                         <div class="uk-width-1-1@m">
                             <h2 class="uk-heading-line"><span>Location</span></h2>
-                            <p>Swim club and swim team take place at River Wilderness Golf & Country Club in Parrish, Florida.</p>
+                            <p>Swim club and swim team take place seasonally in an outdoor pool at River Wilderness Golf & Country Club in Parrish, Florida.</p>
                             <div class="uk-card uk-card-default">
                                 <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=2250%20Wilderness%20Blvd.%20West%20Parrish%20FL%2C%2034219&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                             </div>

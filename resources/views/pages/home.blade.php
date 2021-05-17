@@ -49,8 +49,9 @@
                         <div class="uk-card-body">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Group Lessons</h3>
                             <div class="el-content uk-margin">The Swim School features aquatics programs to meet the
-                                specific needs of various age groups from beginner to advanced skill levels. Sessions of
-                                small group classes are available for Parent & Infant/Toddler, Preschool and Youth/Teens.
+                                specific needs of various age groups from beginner to advanced skill levels. Sessions
+                                of small group classes are available year-round in an indoor, heated pool for Parent
+                                & Infant/Toddler, Preschool and School-Age children.
                             </div>
                         </div>
                     </div>
@@ -63,9 +64,9 @@
                         </div>
                         <div class="uk-card-body">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Private Lessons</h3>
-                            <div class="el-content uk-margin">The Swim School offers individualized lessons available
-                                to adults and children (12 months +) of all ability levels. Swim instruction is customized
-                                to the needs and goals of each participant.
+                            <div class="el-content uk-margin">The Swim School offers individualized lessons available to children (12 months +),
+                                teens and adults of all ability levels. Swim instruction is customized to the needs and goals of each participant.
+                                Private lessons are available year-round in an indoor, heated pool.
                             </div>
                         </div>
                     </div>
