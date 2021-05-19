@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\ResendPrivateSignUpEmail;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
@@ -129,7 +130,9 @@ class PrivateSwimmer extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new ResendPrivateSignUpEmail()
+        ];
     }
 
     public static function label()

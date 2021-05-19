@@ -39,17 +39,17 @@ class Kernel extends ConsoleKernel
 
         //Send group lesson reminder emails
         $schedule->call(function () {
-            SendGroupLessonsReminderEmails::dispatchNow();
+            SendGroupLessonsReminderEmails::dispatchSync();
         })->dailyAt('7:10');
 
         //Send Swim Team Tryout Reminder emails
         $schedule->call(function () {
-            SendTryoutReminderEmails::dispatchNow();
+            SendTryoutReminderEmails::dispatchSync();
         })->dailyAt('7:15');
 
         //Send private pool session reminder emails
         $schedule->call(function () {
-            SendPrivatePoolSessionReminderEmails::dispatchNow();
+            SendPrivatePoolSessionReminderEmails::dispatchSync();
         })->dailyAt('7:20');
 
         //Prune Telescope Table

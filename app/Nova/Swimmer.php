@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\ResendGroupSignUpEmail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Fields\BelongsTo;
@@ -146,7 +147,9 @@ class Swimmer extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new ResendGroupSignUpEmail()
+        ];
     }
 
     /**
