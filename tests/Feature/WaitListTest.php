@@ -94,4 +94,58 @@ class WaitListTest extends TestCase
 
         $this->assertEquals(1,  $lesson->waitlist()->count());
     }
+
+    /** @test  **/
+    public function a_user_can_sign_up_with_the_same_email_and_a_different_swimmer_name()
+    {
+        $lesson = Lesson::factory()->create([
+            'class_size' => 0
+        ]);
+
+        $this->assertTrue($lesson->isFull());
+
+        $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
+            ->assertSee('This class is full.')
+            ->assertSee('We recommend signing up for a different class with openings.');
+
+        $this->assertEquals(0, $lesson->waitlist()->count());
+
+        $swimmer = [
+            'name' => $this->faker->name,
+            'email' => $this->faker->email,
+            'phone' => '9998887777',
+            'date_of_birth' => $this->faker->date()
+        ];
+
+        $this->post(route('groups.lessons.wait-list', ['lesson' => $lesson]), $swimmer)
+            ->assertStatus(302);
+
+        $this->assertEquals(1,  $lesson->waitlist()->count());
+
+        $this->assertDatabaseHas('wait_lists', [
+            "name" => $swimmer['name'],
+            "email" => $swimmer['email'],
+            "phone" => $swimmer['phone'],
+            "date_of_birth" => $swimmer['date_of_birth']
+        ]);
+
+        $swimmer2 = [
+            "name" => $this->faker->name, //Different name from the first swimmer
+            "email" => $swimmer['email'],
+            "phone" => $swimmer['phone'],
+            "date_of_birth" => $swimmer['date_of_birth']
+        ];
+
+        $this->post(route('groups.lessons.wait-list', ['lesson' => $lesson]), $swimmer2)
+            ->assertStatus(302);
+
+        $this->assertEquals(2,  $lesson->waitlist()->count());
+
+        $this->assertDatabaseHas('wait_lists', [
+            "name" => $swimmer2['name'],
+            "email" => $swimmer2['email'],
+            "phone" => $swimmer2['phone'],
+            "date_of_birth" => $swimmer2['date_of_birth']
+        ]);
+    }
 }

@@ -36,10 +36,10 @@ class WaitListController extends Controller
             return back();
         }
 
-        if($lesson->waitlist->count()){
-            foreach ($lesson->waitlist as $swimmer)
-            {
-                if($swimmer->email === $waitingSwimmer['email']){
+        if ($lesson->waitlist->count()) {
+            foreach ($lesson->waitlist as $swimmer) {
+                //Check to see if the same swimmer is signing up again
+                if ($swimmer->email === $waitingSwimmer['email'] && $swimmer->name === $waitingSwimmer['name']) {
                     session()->flash('warning', 'Email already on the wait list.');
                     return back();
                 }
@@ -65,7 +65,7 @@ class WaitListController extends Controller
     {
         // Send a wait list filling up email to the admin if the wait list
         Log::info("Sending wait list email to admins about lesson ID: $lesson->id");
-        foreach(config('mail.lead_dest_emails') as $email){
+        foreach (config('mail.lead_dest_emails') as $email) {
             Log::info("Sending Wait List admin email to $email");
             Mail::to($email)->send(new WaitList($lesson));
         }
