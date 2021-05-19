@@ -2,7 +2,7 @@
 # Lesson Wait List Filling Up
 
 @component('mail::panel')
-The wait list for the {{$lesson->group->type}} @foreach($lesson->DaysOfTheWeek as $day){{$day->day}}{{$loop->last ? '' : ', '}}@endforeach
+The wait list for the {{$lesson->group->type}} @foreach($lesson->DaysOfTheWeek as $day) {{$day->day}} {{$loop->last ? '' : ', '}} @endforeach
 {{$lesson->class_start_time->format('h:i a')}} - {{$lesson->class_end_time->format('h:i a')}} has {{$lesson->waitlist->count()}} people on the wait list.
 @endcomponent
 
