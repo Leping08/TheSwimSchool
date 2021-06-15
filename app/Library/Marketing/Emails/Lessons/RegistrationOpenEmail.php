@@ -20,6 +20,7 @@ class RegistrationOpenEmail
             try {
                 Log::info("Sending lesson registration open now email to $email");
                 Mail::to($email)->send(new RegistrationOpen($email));
+                sleep(5);
             } catch (\Exception $e) {
                 Log::warning("Email error: $e");
             }
