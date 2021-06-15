@@ -114,6 +114,6 @@ return [
         'theswimschoolfl@gmail.com',
         'mmeerman7@gmail.com',
         'smunyer1015@gmail.com',
-        '3964ccoll@gmail.com'
+        '3964coll@gmail.com'
     ]
 ];
