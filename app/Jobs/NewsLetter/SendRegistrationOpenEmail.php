@@ -24,7 +24,16 @@ class SendRegistrationOpenEmail implements ShouldQueue
     public $tries = 1;
 
     /**
-     * @var
+     * The maximum number of unhandled exceptions to allow before failing.
+     *
+     * @var int
+     */
+    public $maxExceptions = 1;
+
+    /**
+     * The email address where the email will be sent
+     *
+     * @var string
      */
     public $email;
 
