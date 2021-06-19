@@ -7,6 +7,8 @@ namespace App\Library\Marketing\Emails\Lessons;
 use App\EmailList;
 use App\Jobs\NewsLetter\SendRegistrationOpenEmail;
 
+//\App\Library\Marketing\Emails\Lessons\RegistrationOpenEmail::send();
+
 class RegistrationOpenEmail
 {
     public static function send()
