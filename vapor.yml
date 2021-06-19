@@ -6,9 +6,6 @@ environments:
         memory: 1024
         runtime: php-7.3
         domain: theswimschoolfl.com
-        queues:
-            - default
-        queue-timeout: 600
         queue-concurrency: 10
         build:
             - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
