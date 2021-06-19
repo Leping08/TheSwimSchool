@@ -25,8 +25,6 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home.index');
 
 
-
-
 /*
  * Group Lessons
  */

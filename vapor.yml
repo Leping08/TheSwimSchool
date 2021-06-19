@@ -4,10 +4,11 @@ environments:
     production:
         database: production
         memory: 1024
-        cli-memory: 512
         runtime: php-7.3
         domain: theswimschoolfl.com
-        cli-timeout: 600
+        queues:
+            - default
+        queue-timeout: 600
         build:
             - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
             - 'php artisan event:cache'
@@ -17,10 +18,11 @@ environments:
     staging:
         database: production
         memory: 1024
-        cli-memory: 512
         runtime: php-7.3
         domain: staging.theswimschoolfl.com
-        cli-timeout: 600
+        queues:
+            - default
+        queue-timeout: 600
         build:
             - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
             - 'php artisan event:cache'
