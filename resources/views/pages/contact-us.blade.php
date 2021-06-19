@@ -45,7 +45,7 @@ Contact Us
                                     </div>
                                 </div>
                                 <div class="uk-margin">
-                                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.public') }}"></div>
+                                    <div class="g-recaptcha" data-sitekey="{{ config('google.recaptcha.public') }}"></div>
                                 </div>
                                 <div uk-grid="" class="uk-grid">
                                     <div class="uk-width-1-2@s uk-margin">

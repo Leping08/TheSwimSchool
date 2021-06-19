@@ -33,7 +33,7 @@ class Recaptcha implements Rule
 
         $response = $client->request('POST', 'siteverify', [
             'query' => [
-                'secret' => config('services.recaptcha.secret'),
+                'secret' => config('google.recaptcha.secret'),
                 'response' => $value
             ]
         ]);

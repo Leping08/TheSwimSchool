@@ -9,6 +9,7 @@ environments:
         queues:
             - default
         queue-timeout: 600
+        queue-concurrency: 10
         build:
             - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
             - 'php artisan event:cache'
@@ -20,9 +21,7 @@ environments:
         memory: 1024
         runtime: php-7.3
         domain: staging.theswimschoolfl.com
-        queues:
-            - default
-        queue-timeout: 600
+        queue-concurrency: 10
         build:
             - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
             - 'php artisan event:cache'

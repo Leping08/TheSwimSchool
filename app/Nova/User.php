@@ -2,12 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Text;
 
 class User extends Resource
 {
@@ -24,13 +23,6 @@ class User extends Resource
      * @var string
      */
     public static $title = 'name';
-
-    /**
-     * The logical group associated with the resource.
-     *
-     * @var string
-     */
-    public static $group = 'Admin';
 
     /**
      * The columns that should be searched.
@@ -52,7 +44,7 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make(),
+            Gravatar::make()->maxWidth(50),
 
             Text::make('Name')
                 ->sortable()
@@ -64,33 +56,10 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Text::make('Phone', 'phone'),
-
-            Text::make('Color', 'hex_color')
-                ->onlyOnForms()
-                ->required(),
-
-            Text::make('Color', function () {
-                return view('partials.color', [
-                    'color' => $this->hex_color,
-                ])->render();
-            })->asHtml(),
-
             Password::make('Password')
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
-
-            Text::make('Calendar', function () {
-                return view('partials.link', [
-                    'link' => url('/calendar/'.$this->id),
-                    'text' => 'View'
-                    //'new_tab' => true TODO: Add new tab option to link partial
-                ])->render();
-            })->asHtml()->hideFromIndex(),
-
-            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
-            HasMany::make('Lessons', 'lessons', Lesson::class)
         ];
     }
 
@@ -136,10 +105,5 @@ class User extends Resource
     public function actions(Request $request)
     {
         return [];
-    }
-
-    public static function label()
-    {
-        return 'Instructors';
     }
 }
