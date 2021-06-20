@@ -55,8 +55,9 @@ class SendRegistrationOpenEmail implements ShouldQueue
     public function handle()
     {
         try {
-            Log::info("Sending lesson registration open now email to $this->email");
-            //Mail::to($this->email)->send(new RegistrationOpen($this->email));
+            Log::info("Sending registration open now email to $this->email");
+            Mail::to($this->email)->send(new RegistrationOpen($this->email));
+            Log::info("Registration open now email successfully sent to $this->email");
         } catch (\Exception $e) {
             Log::warning("Email error: $e");
             throw $e;

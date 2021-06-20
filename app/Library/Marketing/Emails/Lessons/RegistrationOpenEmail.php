@@ -14,6 +14,7 @@ class RegistrationOpenEmail
     public static function send()
     {
         EmailList::where('subscribe', '=', true)
+            ->where('id', '>=', 200)
             ->pluck('email')
             ->map(function ($email) {
                 SendRegistrationOpenEmail::dispatch($email);
