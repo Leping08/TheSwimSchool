@@ -19,7 +19,7 @@ class EmailListController extends Controller
     public function unsubscribe(EmailList $email)
     {
         $email->unsubscribe();
-        Log::info("EmailListTest ID: {$email->id} with the email {$email->email} has been unsubscribed");
+        Log::info("EmailList ID: {$email->id} with the email {$email->email} has been unsubscribed");
         return view('pages.unsubscribe')->with('email', $email->email);
     }
 
