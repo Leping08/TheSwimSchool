@@ -113,7 +113,7 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-expand@m uk-first-column">
                     <div class="uk-margin">
-                        <img class="uk-border-rounded uk-box-shadow-large" alt="Parrish Swim Team" src="{{ asset('/img/swim-team/2018-class.jpg') }}">
+                        <img class="uk-border-rounded uk-box-shadow-large" alt="Parrish Swim Team" src="{{ asset('/img/swim-team/2021-class.jpg') }}">
                     </div>
                 </div>
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
@@ -161,7 +161,7 @@
                 <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
                     <div class="uk-panel">
                         <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Instruction Parrish" src="{{ asset('/img/thank-you/breast-stroke.jpg') }}">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Instruction Parrish" src="{{ asset('/img/swim-team/breaststroke.jpg') }}">
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div class="uk-width-expand@m uk-first-column">
                         <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Team near Ellenton" src="{{ asset('/img/swim-team/dive-cropped.jpg') }}">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Team near Ellenton" src="{{ asset('/img/swim-team/new-log-cap.jpg') }}">
                         </div>
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
@@ -235,7 +235,7 @@
                 <div class="uk-grid-margin uk-grid" uk-grid="">
                     <div class="uk-width-expand@m uk-first-column">
                         <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="Kids Swimming near Bradenton" src="{{ asset('/img/thank-you/winner.jpg') }}">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Kids Swimming near Bradenton" src="{{ asset('/img/swim-team/backstroke.jpg') }}">
                         </div>
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">

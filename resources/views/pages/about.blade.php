@@ -70,7 +70,7 @@ About The Swim School
                         Colleen’s greatest accomplishment and challenge as a swim instructor was to teach her youngest son with special needs to swim! Colleen has fond memories of teaching each of her children to swim and enjoying time around the water with her family. She has been honored to care for the needs of her son diagnosed with Down syndrome, Autism and Apraxia, as well as managing the care for three of her children diagnosed with Type 1 Diabetes. She is experienced with all ages of children and is comfortable creating unique teaching tactics for children with special needs.
                     </p>
                     <p>
-                        Colleen currently lives in Bradenton with her youngest son, Nate and Piper the dog. She enjoys her growing family,  four grandchildren and painting the ocean!
+                        Colleen currently lives in Bradenton with her youngest son, Nate and Piper the dog. She enjoys her growing family, four grandchildren and painting the ocean!
                     </p>
 {{--                    <div class="uk-margin-bottom">--}}
 {{--                        <a title="Parrish Swim School" class="uk-button uk-button-secondary" href="tel:+19417731424"><span uk-icon="icon: receiver" class=""></span> (941) 773-1424</a>--}}

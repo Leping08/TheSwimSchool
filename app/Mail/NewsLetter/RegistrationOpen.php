@@ -42,7 +42,7 @@ class RegistrationOpen extends Mailable
     {
         return $this->markdown('email.newsletter.registrationOpen')
             ->from(config('mail.from.address'))
-            ->subject('Weekday Group & Private Lesson Registration Open!')
+            ->subject('Weekday Group & July Private Lesson Registration Open!')
             ->with(['emailAddress' => $this->emailAddress])
             ->withSwiftMessage(function ($message) {
                 $message->getHeaders()
