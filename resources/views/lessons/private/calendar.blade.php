@@ -25,7 +25,7 @@
                     <p>Private Lessons take place year-round in an indoor, heated pool at Realhab Physical Therapy, Aquatics & Wellness Center in Parrish, Florida.</p>
                     <div class="uk-child-width-1-1@m">
                         <div class="uk-card uk-card-default">
-                            <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key=AIzaSyAdLooRUbxGjnlY2k8HDa_zkXYQB4U7s9w&zoom=12" allowfullscreen></iframe>
+                            <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
