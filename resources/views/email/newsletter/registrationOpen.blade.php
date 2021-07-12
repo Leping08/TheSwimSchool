@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/bennett.jpgs')}}">
+<img alt="" style="margin-bottom: 2em;" src="{{asset('img/thank-you/bennett.jpg')}}">
 
 @component('mail::panel')
 # Weekday & Weekend Group Lesson Registration Is Now Open!
