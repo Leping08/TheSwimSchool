@@ -8,7 +8,7 @@
 * Message: {{$data['message']}}
 @endcomponent
 
-@component('mail::button', ['url' => config('app.url').'admin/resources/contact-uses/'.$data->id])
+@component('mail::button', ['url' => config('app.url').'/admin/resources/contact-uses/'.$data->id])
 View Details
 @endcomponent
 
