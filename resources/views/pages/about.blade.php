@@ -50,34 +50,34 @@ About The Swim School
             </div>
         </div>
 
-        <div id="Colleen" class="uk-flex-middle uk-grid-margin uk-grid">
+{{--        <div id="Colleen" class="uk-flex-middle uk-grid-margin uk-grid">--}}
 {{--            <div class="uk-width-expand@m">--}}
 {{--                <div class="uk-margin">--}}
 {{--                    <img src="{{ asset('/img/instructors/michelle.jpg') }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="Manatee County Children's swim lessons">--}}
 {{--                </div>--}}
 {{--            </div>--}}
-            <div class="uk-width-expand@m uk-first-column">
-                <h2 class="uk-text-center uk-scrollspy-inview uk-animation-slide-top-medium uk-margin-top">Colleen Allison</h2>
-                <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium">
-                <div class="uk-margin uk-dropcap">
-                    <p>
-                        Colleen Allison is originally from Washington, DC. At age 15, she was certified in Lifesaving/Lifeguarding by the YMCA and began teaching swim lessons at the Hagerstown Y. At 18, Colleen was certified as a Water Safety Instructor by the Red Cross and subsequently taught swim lessons in Neosho, MO, and St Louis, MO. While obtaining her degree at Southwest Missouri State, Colleen taught English 101 and Basic Swimming to university students. In 1987 she obtained a BA in English and Minor in Art.
-                    </p>
-                    <p>
-                        After starting a family, Colleen taught Parent Tot, Adult and Age Group swim classes at the YMCA in Glasgow, Ky. After moving to St Louis, MO Colleen taught art classes for preschoolers through high school students in a local homeschooling co-op. For the past 15 years, Colleen has lived in Manatee County and served on the boards of Beyond the Spectrum and Manasota BUDS. She taught a Parent Tot class for Manasota BUDS and created the annual BTS Sensory Wonderland Event for children with autism and sensory needs.
-                    </p>
-                    <p>
-                        Colleen’s greatest accomplishment and challenge as a swim instructor was to teach her youngest son with special needs to swim! Colleen has fond memories of teaching each of her children to swim and enjoying time around the water with her family. She has been honored to care for the needs of her son diagnosed with Down syndrome, Autism and Apraxia, as well as managing the care for three of her children diagnosed with Type 1 Diabetes. She is experienced with all ages of children and is comfortable creating unique teaching tactics for children with special needs.
-                    </p>
-                    <p>
-                        Colleen currently lives in Bradenton with her youngest son, Nate and Piper the dog. She enjoys her growing family, four grandchildren and painting the ocean!
-                    </p>
+{{--            <div class="uk-width-expand@m uk-first-column">--}}
+{{--                <h2 class="uk-text-center uk-scrollspy-inview uk-animation-slide-top-medium uk-margin-top">Colleen Allison</h2>--}}
+{{--                <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium">--}}
+{{--                <div class="uk-margin uk-dropcap">--}}
+{{--                    <p>--}}
+{{--                        Colleen Allison is originally from Washington, DC. At age 15, she was certified in Lifesaving/Lifeguarding by the YMCA and began teaching swim lessons at the Hagerstown Y. At 18, Colleen was certified as a Water Safety Instructor by the Red Cross and subsequently taught swim lessons in Neosho, MO, and St Louis, MO. While obtaining her degree at Southwest Missouri State, Colleen taught English 101 and Basic Swimming to university students. In 1987 she obtained a BA in English and Minor in Art.--}}
+{{--                    </p>--}}
+{{--                    <p>--}}
+{{--                        After starting a family, Colleen taught Parent Tot, Adult and Age Group swim classes at the YMCA in Glasgow, Ky. After moving to St Louis, MO Colleen taught art classes for preschoolers through high school students in a local homeschooling co-op. For the past 15 years, Colleen has lived in Manatee County and served on the boards of Beyond the Spectrum and Manasota BUDS. She taught a Parent Tot class for Manasota BUDS and created the annual BTS Sensory Wonderland Event for children with autism and sensory needs.--}}
+{{--                    </p>--}}
+{{--                    <p>--}}
+{{--                        Colleen’s greatest accomplishment and challenge as a swim instructor was to teach her youngest son with special needs to swim! Colleen has fond memories of teaching each of her children to swim and enjoying time around the water with her family. She has been honored to care for the needs of her son diagnosed with Down syndrome, Autism and Apraxia, as well as managing the care for three of her children diagnosed with Type 1 Diabetes. She is experienced with all ages of children and is comfortable creating unique teaching tactics for children with special needs.--}}
+{{--                    </p>--}}
+{{--                    <p>--}}
+{{--                        Colleen currently lives in Bradenton with her youngest son, Nate and Piper the dog. She enjoys her growing family, four grandchildren and painting the ocean!--}}
+{{--                    </p>--}}
 {{--                    <div class="uk-margin-bottom">--}}
 {{--                        <a title="Parrish Swim School" class="uk-button uk-button-secondary" href="tel:+19417731424"><span uk-icon="icon: receiver" class=""></span> (941) 773-1424</a>--}}
 {{--                    </div>--}}
-                </div>
-            </div>
-        </div>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 {{--        <div id="Michelle" class="uk-flex-middle uk-grid-margin uk-grid">--}}
 {{--            <div class="uk-width-expand@m">--}}
