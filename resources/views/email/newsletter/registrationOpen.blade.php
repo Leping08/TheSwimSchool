@@ -1,13 +1,13 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{ asset('img/thank-you/bennett.jpg') }}">
+<img alt="" style="margin-bottom: 2em;" src="{{ asset('img/thank-you/kicking.jpg') }}">
 
 @component('mail::panel')
-# September Swim Programs Open for Registration!
-Registration is now open for our September private swim lessons, swim club, and weekday & weekend group lesson sessions. If you are currently enrolled in our group classes and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
+# Weekday Group Swim Lessons & Swim Club Open for Registration!
+Registration is now open for our next weekday sessions of group lessons and swim club. If you are currently enrolled in our group classes and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
 @endcomponent
 
-@component('mail::button', ['url' => route('home.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
+@component('mail::button', ['url' => route('groups.lessons.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
 Sign Up
 @endcomponent
 
