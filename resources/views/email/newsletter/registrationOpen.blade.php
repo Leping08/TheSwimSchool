@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{ asset('img/thank-you/kicking.jpg') }}">
+<img alt="" style="margin-bottom: 2em;" src="{{ asset('img/thank-you/breast-stroke.jpg') }}">
 
 @component('mail::panel')
 # Weekday Group Swim Lessons & Swim Club Open for Registration!
