@@ -241,11 +241,11 @@
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div class="">
                             <div>
-                                <div class="uk-margin">Check out the current boys and girls {{ config('swim-team.name') }} team record holders.</div>
+                                <div class="uk-margin">Check out the current {{ config('swim-team.name') }} swim team record holders.</div>
                             </div>
                             <div>
-                                <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-left uk-margin-right" href="{{ asset('pdf/Girls_Record_Holders.pdf') }}" download="Swim Team Girls Record Holders.pdf">Girls Records</a>
                                 <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-left uk-margin-right" href="{{ asset('pdf/Boys_Record_Holders.pdf') }}" download="Swim Team Boys Record Holders.pdf">Boys Records</a>
+                                <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-left uk-margin-right" href="{{ asset('pdf/Girls_Record_Holders.pdf') }}" download="Swim Team Girls Record Holders.pdf">Girls Records</a>
                             </div>
                         </div>
                     </div>
