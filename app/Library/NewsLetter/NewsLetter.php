@@ -6,6 +6,7 @@ use App\EmailList;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class NewsLetter
@@ -48,8 +49,8 @@ class NewsLetter
      */
     public static function unsubscribe(string $email)
     {
-        try{
-            $emailList = EmailList::where($email, 'email')->firstOrFail();
+        try {
+            $emailList = EmailList::where('email', trim($email))->firstOrFail();
             $emailList->update(['subscribe' => 0]);
             Log::info("{$emailList} has unsubscribed.");
             return true;

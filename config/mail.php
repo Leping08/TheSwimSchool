@@ -51,6 +51,7 @@ return [
 
         'mailgun' => [
             'transport' => 'mailgun',
+            'api_token' => env('MAILGUN_API_TOKEN')
         ],
 
         'postmark' => [
