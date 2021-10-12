@@ -6,7 +6,6 @@ use App\Jobs\SendFeedbackEmails;
 use App\Jobs\SendGroupLessonsReminderEmails;
 use App\Jobs\SendPrivatePoolSessionReminderEmails;
 use App\Jobs\SendTryoutReminderEmails;
-use App\Library\Facebook\FacebookApiRequest;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -31,11 +30,6 @@ class Kernel extends ConsoleKernel
 //        $schedule->call(function (){
 //            SendFeedbackEmails::dispatchNow();
 //        })->dailyAt('7:00');
-
-        //Update reviews table with the SwimSchool Facebook page reviews
-//        $schedule->call(function () {
-//            (new FacebookApiRequest())->updateReviews();
-//        })->dailyAt('7:05');
 
         //Send group lesson reminder emails
         $schedule->call(function () {

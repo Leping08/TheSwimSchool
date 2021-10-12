@@ -178,7 +178,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\VaporUiServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
-        App\Providers\FacebookServiceProvider::class,
 
         //Nova theme
         \Leping\SwimSchoolTheme\ThemeServiceProvider::class

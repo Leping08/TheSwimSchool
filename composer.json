@@ -10,7 +10,6 @@
     "require": {
         "php": "^7.3|^8.0",
         "doctrine/dbal": "^2.9",
-        "facebook/graph-sdk": "^5.7",
         "fideloper/proxy": "^4.4",
         "fourstacks/nova-checkboxes": "^0.1.5",
         "gregoriohc/laravel-nova-theme-responsive": "^0.2",
