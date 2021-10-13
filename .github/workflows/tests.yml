@@ -49,7 +49,6 @@ jobs:
       - name: Generate key
         run: |
           php artisan key:generate
-          php artisan passport:keys
           php artisan --version
 
       - name: Directory Permissions
