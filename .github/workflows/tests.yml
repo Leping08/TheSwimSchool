@@ -67,6 +67,8 @@ jobs:
           DB_USERNAME: user
           DB_PASSWORD: secret
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+          STRIPE_PUBLIC: ${{ secrets.STRIPE_TEST_PUBLIC }}
+          STRIPE_SECRET: ${{ secrets.STRIPE_TEST_SECRET }}
         run: |
           php artisan migrate
           vendor/bin/phpunit -v
