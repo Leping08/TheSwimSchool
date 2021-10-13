@@ -90,7 +90,7 @@
                 <hr>
                 <div class="uk-margin uk-text-center uk-text-meta">
                     Copyright &copy; {{date("Y")}}<br>
-                    <a href="https://deltavcreative.com/" target="_blank">DeltaV Creative</a><br>
+                    <a href="https://deltavcreative.com/" target="_blank">DeltaV Creative!</a><br>
                     <a href="#" uk-totop uk-scroll></a>
                 </div>
             </div>

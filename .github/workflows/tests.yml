@@ -73,25 +73,25 @@ jobs:
           php artisan migrate
           vendor/bin/phpunit -v
 
-#  vapor:
-#    needs: [ci_tests]
-#    name: Deploy to vapor
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#
-#      - name: Setup PHP
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: 7.4
-#          tools: composer:v2
-#          coverage: none
-#
-#      - name: Require Vapor CLI
-#        run: composer global require laravel/vapor-cli
-#
-#      - name: Deploy Environment
-#        run: vapor deploy production
-#        env:
-#          VAPOR_API_TOKEN: ${{ secrets.VAPOR_API_TOKEN }}
+  vapor:
+    needs: [ci_tests]
+    name: Deploy to vapor
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.3
+          tools: composer:v2
+          coverage: none
+
+      - name: Require Vapor CLI
+        run: composer global require laravel/vapor-cli
+
+      - name: Deploy Environment
+        run: vapor deploy production
+        env:
+          VAPOR_API_TOKEN: ${{ secrets.VAPOR_API_TOKEN }}
