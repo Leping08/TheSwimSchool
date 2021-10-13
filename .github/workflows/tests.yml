@@ -1,17 +1,22 @@
-name: CI
+name: Deploy to production
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  ci_tests:
+    name: Run phpunit tests
     runs-on: ubuntu-latest
 
     services:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_DATABASE: TDD
+          MYSQL_DATABASE: test
           MYSQL_USER: user
           MYSQL_PASSWORD: secret
           MYSQL_ROOT_PASSWORD: secretroot
@@ -21,31 +26,65 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.3
+          tools: composer:v2
+          coverage: none
 
       - name: Verify MySQL connection
         run: |
           mysql --version
-          sudo apt-get install -y mysql-client
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
 
-      - name: Install composer dependencies
-        run: composer install -n --prefer-dist
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
-      - name: Boot Laravel application
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
+
+      - name: Generate key
         run: |
-          cp .env.github .env
           php artisan key:generate
+          php artisan passport:keys
           php artisan --version
 
-      - name: Npm Install
-        run: |
-          npm -v
-          npm install
-          npm run prod
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
 
-      - name: Run tests
-        run: vendor/bin/phpunit --testdox
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
         env:
-          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          MYSQL_DATABASE: test
+          DB_DATABASE: test
+          DB_USERNAME: user
+          DB_PASSWORD: secret
+          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+        run: |
+          php artisan migrate
+          vendor/bin/phpunit -v
+
+#  vapor:
+#    needs: [ci_tests]
+#    name: Deploy to vapor
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: 7.4
+#          tools: composer:v2
+#          coverage: none
+#
+#      - name: Require Vapor CLI
+#        run: composer global require laravel/vapor-cli
+#
+#      - name: Deploy Environment
+#        run: vapor deploy production
+#        env:
+#          VAPOR_API_TOKEN: ${{ secrets.VAPOR_API_TOKEN }}
