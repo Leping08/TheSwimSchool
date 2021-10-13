@@ -51,6 +51,12 @@ jobs:
           php artisan key:generate
           php artisan --version
 
+      - name: Npm install and run prod
+        run: |
+          npm -v
+          npm install
+          npm run prod
+
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
 
@@ -61,9 +67,12 @@ jobs:
           DB_USERNAME: user
           DB_PASSWORD: secret
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
-        run: |
-          php artisan migrate
-          vendor/bin/phpunit -v
+
+      - name: Run migrations
+        run: php artisan migrate
+
+      - name: Run php unit tests
+        run: vendor/bin/phpunit -v
 
 #  vapor:
 #    needs: [ci_tests]
