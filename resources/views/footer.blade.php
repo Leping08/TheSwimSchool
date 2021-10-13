@@ -89,8 +89,12 @@
             <div class="uk-width-1-1@m">
                 <hr>
                 <div class="uk-margin uk-text-center uk-text-meta">
-                    Copyright &copy; {{date("Y")}}<br>
-                    <a href="https://deltavcreative.com/" target="_blank">DeltaV Creative!</a><br>
+                    <div>
+                        Copyright &copy; {{date("Y")}} <br/> <a href="{{ route('home.index') }}" target="_blank">The Swim School</a>
+                    </div>
+                    <div class="uk-margin-top">
+                        Powered By <a href="https://deltavcreative.com/" target="_blank">DeltaV Creative</a><br>
+                    </div>
                     <a href="#" uk-totop uk-scroll></a>
                 </div>
             </div>
