@@ -90,8 +90,8 @@ jobs:
 
       - name: Require Vapor CLI
         run: |
-        composer config "http-basic.nova.laravel.com" "${{ secrets.NOVA_USERNAME }}" "${{ secrets.NOVA_PASSWORD }}"
-        composer global require laravel/vapor-cli
+          composer config "http-basic.nova.laravel.com" "${{ secrets.NOVA_USERNAME }}" "${{ secrets.NOVA_PASSWORD }}"
+          composer global require laravel/vapor-cli
 
       - name: Deploy Environment
         run: vapor deploy production
