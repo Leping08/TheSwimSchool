@@ -128,10 +128,8 @@ return [
     'adminEmails' => [
         'derek@deltavcreative.com',
         'theswimschoolfl@gmail.com',
-        'mmeerman7@gmail.com',
         'smunyer1015@gmail.com',
-        '3964coll@gmail.com',
-        'savannadancy@gmail.com',
-        'jaciedyer@icloud.com'
+        'jaciedyer@icloud.com',
+        'aislynn.light@gmail.com'
     ]
 ];
