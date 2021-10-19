@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 
-Auth::routes();
+/* @see \Laravel\Ui\AuthRouteMethods::auth() */
+Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
 
 /*
  * Home page
