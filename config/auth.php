@@ -129,7 +129,6 @@ return [
         'derek@deltavcreative.com',
         'theswimschoolfl@gmail.com',
         'smunyer1015@gmail.com',
-        'jaciedyer@icloud.com',
-        'aislynn.light@gmail.com'
+        'jaciedyer@icloud.com'
     ]
 ];
