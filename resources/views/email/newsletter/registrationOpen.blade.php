@@ -1,10 +1,15 @@
 @component('mail::message')
 
-<img alt="" style="margin-bottom: 2em;" src="{{ asset('img/thank-you/smile.jpg') }}">
+<img alt="" style="margin-bottom: 2em;" src="{{ asset('img/lessons/kids-floating.jpg') }}">
 
 @component('mail::panel')
-# Weekend Group Swim Lessons Open for Registration!
-Registration is now open for our next weekend session of group lessons. For this session, there will be NO CLASSES Thanksgiving weekend (Sat 11/27 & Sun 11/28). If you are currently enrolled in our group classes and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
+# November Private Lessons, Final Group Session of 2021, and New Instructor!
+Registration is now open for our available private swim lessons for the month of November and our final weekday session of group classes & swim club for the year. If you are currently enrolled in our group classes and have any questions regarding which level to sign your child up for in the next session, please consult with your instructor.
+@endcomponent
+
+
+@component('mail::panel')
+We are also extremely excited to officially announce a new addition to our team! Miss Jacie Dyer will now be teaching group classes and private lessons as well as assisting with the swim club from time to time. You can learn more about Miss Jacie <a target="_blank" href="{{route('pages.about').'#Jacie'}}">here</a>.
 @endcomponent
 
 @component('mail::button', ['url' => route('groups.lessons.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=summer_lesson_registration'])
