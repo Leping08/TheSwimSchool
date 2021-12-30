@@ -136,11 +136,17 @@
                     @endif
                     <div class="uk-navbar-item">
                         <ul class="uk-grid-small uk-flex-inline uk-flex-middle uk-flex-nowrap" uk-grid>
-                            <li>
+                            {{-- <li>
                                 <a title="The Swim School Facebook" href="https://www.facebook.com/theswimschoolfl/" class="uk-icon-button" target="_blank" uk-icon="facebook"></a>
                             </li>
                             <li>
                                 <a title="The Swim School Instagram" href="https://www.instagram.com/theswimschoolfl/" class="uk-icon-button" target="_blank" uk-icon="instagram"></a>
+                            </li> --}}
+                            <li>
+                                <a title="The Swim School Email" href="tel:941-773-1424" class="uk-icon-button uk-button-secondary" target="_blank" uk-icon="mail"></a>
+                            </li>
+                            <li>
+                                <a title="The Swim School Phone Number" href="mailto:theswimschoolfl@gmail.com" class="uk-icon-button uk-button-secondary" target="_blank" uk-icon="receiver"></a>
                             </li>
                         </ul>
                     </div>

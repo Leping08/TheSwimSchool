@@ -71,7 +71,7 @@ class Lesson extends Resource
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
-            BelongsTo::make('Instructor', 'instructor', User::class)->withMeta([
+            BelongsTo::make('Instructor', 'instructor', Instructor::class)->withMeta([
                 //Select
                 'belongsToId' => $this->instructor_id ?? auth()->id()
             ])->hideFromIndex(),

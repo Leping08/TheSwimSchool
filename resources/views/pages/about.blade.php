@@ -30,7 +30,7 @@ About The Swim School
         </div>
 
 
-        <div id="Hilary" class="uk-grid-margin uk-grid">
+        <div id="Hilary Koppenhaver" class="uk-grid-margin uk-grid">
             <div class="uk-width-expand@m">
                 <div class="uk-margin">
                     <img src="{{ asset('/img/instructors/hilary.jpg') }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="Ellenton Swim School">
@@ -67,9 +67,9 @@ About The Swim School
                     <p>
                         In 2020, Jacie was hired as a summer camp counselor and lifeguard for the River Wilderness Golf & Country Club Sports Camp. She developed a swim program specifically for the camp participants based on their ages and abilities, and has served as the lead swim instructor/coach for the camp for the past two summers. Jacie has a passion for teaching swimming and is excited for the opportunity to work as a swim instructor for The Swim School and swim coach for the Parrish Bull Sharks swim team.
                     </p>
-                    <div class="uk-margin-bottom">
+                    {{-- <div class="uk-margin-bottom">
                         <a title="Parrish Swim School" class="uk-button uk-button-secondary" href="tel:+12078314179"><span uk-icon="icon: receiver" class=""></span> (207) 831-4179</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
