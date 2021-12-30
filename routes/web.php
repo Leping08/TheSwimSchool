@@ -162,14 +162,18 @@ Route::get('/calendar/{user}', 'Admin\CalendarController@show')->name('calendar'
 
 
 
+/*
+ * About Page
+ */
+
+/* @see AboutController::index() */
+Route::get('/about', 'AboutController@index')->name('pages.about');
+
+
 
 /*
  * Static Pages
  */
-
-Route::get('/about', function(){
-    return view('pages.about');
-})->name('pages.about');
 
 Route::get('/contact-us', function(){
     return view('pages.contact-us');

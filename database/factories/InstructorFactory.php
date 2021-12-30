@@ -27,6 +27,7 @@ class InstructorFactory extends Factory
             'hex_color' => $this->faker->hexColor,
             'image_url' => $this->faker->imageUrl,
             'phone' => $this->faker->phoneNumber,
+            'active' => true,
         ];
     }
 }

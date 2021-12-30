@@ -33,6 +33,7 @@ class Instructor extends Model
         'hex_color',
         'image_url',
         'phone',
+        'active',
     ];
 
      /**

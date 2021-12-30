@@ -16,7 +16,7 @@ class CreateInstructorsTable extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('bio')->nullable();
+            $table->mediumText('bio')->nullable();
             $table->string('hex_color')->nullable();
             $table->string('image_url')->nullable();
             $table->string('phone')->nullable();

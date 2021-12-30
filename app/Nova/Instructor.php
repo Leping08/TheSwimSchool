@@ -3,10 +3,12 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Instructor extends Resource
@@ -53,18 +55,16 @@ class Instructor extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('Name', 'name'),
-            Text::make('Bio', 'bio')->nullable()->hideFromIndex(),
-            Text::make('Color', 'hex_color')
-                ->onlyOnForms()
-                ->nullable()
-                ->hideFromIndex(),
+            Boolean::make('Active', 'active'),
+            Text::make('Color', 'hex_color')->onlyOnForms()->nullable()->hideFromIndex(),
             Text::make('Color', function () {
                 return view('partials.color', [
                     'color' => $this->hex_color,
-                ])->render();
-            })->asHtml(),
+                    ])->render();
+                })->asHtml(),
             Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
             Text::make('Phone', 'phone')->nullable()->hideFromIndex(),
+            Textarea::make('Bio', 'bio')->rows(3)->nullable()->hideFromIndex(),
             DateTime::make('Created At'),
             DateTime::make('Updated At'),
             DateTime::make('Deleted At'),
