@@ -9,7 +9,7 @@ on:
 
 jobs:
   ci_tests:
-    name: Run phpunit tests
+    name: Run tests
     runs-on: ubuntu-latest
 
     services:
@@ -29,7 +29,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.3
+          php-version: 7.4
           tools: composer:v2
           coverage: none
 
@@ -71,11 +71,14 @@ jobs:
           STRIPE_SECRET: ${{ secrets.STRIPE_TEST_SECRET }}
         run: |
           php artisan migrate
+          
+      - name: Run tests
+        run: |
           vendor/bin/phpunit -v
 
   vapor:
     needs: [ci_tests]
-    name: Deploy to vapor
+    name: Deploy to production
     runs-on: ubuntu-latest
 
     steps:
@@ -84,7 +87,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.3
+          php-version: 7.4
           tools: composer:v2
           coverage: none
 
@@ -92,6 +95,11 @@ jobs:
         run: |
           composer config "http-basic.nova.laravel.com" "${{ secrets.NOVA_USERNAME }}" "${{ secrets.NOVA_PASSWORD }}"
           composer global require laravel/vapor-cli
+
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
       - name: Deploy Environment
         run: vapor deploy production

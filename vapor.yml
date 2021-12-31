@@ -4,7 +4,7 @@ environments:
     production:
         database: production
         memory: 1024
-        runtime: php-7.3
+        runtime: php-7.4
         domain: theswimschoolfl.com
         queue-concurrency: 10
         build:
@@ -16,7 +16,7 @@ environments:
     staging:
         database: production
         memory: 1024
-        runtime: php-7.3
+        runtime: php-7.4
         domain: staging.theswimschoolfl.com
         queue-concurrency: 10
         build:
