@@ -18,5 +18,6 @@ auth.json
 .phpunit.result.cache.vapor/
 .env.production
 .env.staging
+.env.testing
 .phpunit.result.cache.env.help
 .phpunit.result.cache

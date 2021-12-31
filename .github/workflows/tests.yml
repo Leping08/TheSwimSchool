@@ -16,10 +16,10 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_DATABASE: testing
+          MYSQL_DATABASE: test
           MYSQL_USER: user
           MYSQL_PASSWORD: secret
-          MYSQL_ROOT_PASSWORD: 
+          MYSQL_ROOT_PASSWORD: secretroot
         ports:
           - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -62,10 +62,10 @@ jobs:
 
       - name: Run migrations
         env:
-          MYSQL_DATABASE: testing
-          DB_DATABASE: testing
-          DB_USERNAME: root
-          DB_PASSWORD: 
+          MYSQL_DATABASE: test
+          DB_DATABASE: test
+          DB_USERNAME: user
+          DB_PASSWORD: secret
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
           STRIPE_PUBLIC: ${{ secrets.STRIPE_TEST_PUBLIC }}
           STRIPE_SECRET: ${{ secrets.STRIPE_TEST_SECRET }}
