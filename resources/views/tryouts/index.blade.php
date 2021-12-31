@@ -2,7 +2,7 @@
 
 @section('seo')
     <title>The {{ config('swim-team.full-name') }} Tryouts Form | The Swim School Parrish FL</title>
-    <meta name="description" content="Are you interested in joining The {{ config('swim-team.full-name') }}? Sign up for tryouts by visiting The Swim School's website or calling 941-773-1424."/>
+    <meta name="description" content="Are you interested in joining The {{ config('swim-team.full-name') }}? Sign up for tryouts by visiting The Swim School's website or calling {{ config('contact.phone.number') }}."/>
 @endsection
 
 @section('heading')

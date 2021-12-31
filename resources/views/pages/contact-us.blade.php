@@ -2,7 +2,7 @@
 
 @section('seo')
     <title>Bradenton Swim Club | Parrish Swimming Classes | The Swim School Florida</title>
-    <meta name="description" content="For more information on the Parrish Swimming Classes we offer and our Bradenton Swim Club, we invite you to contact The Swim School today by visiting our website or calling us at 941-773-1424."/>
+    <meta name="description" content="For more information on the Parrish Swimming Classes we offer and our Bradenton Swim Club, we invite you to contact The Swim School today by visiting our website or calling us at {{ config('contact.phone.number') }}."/>
 @endsection
 
 @section('heading')

@@ -121,7 +121,7 @@ return [
 
     'lead_dest_emails' => [
         'derek@deltavcreative.com',
-        'theswimschoolfl@gmail.com'
+        'info@theswimschoolfl.com',
     ],
 
 ];

@@ -38,7 +38,7 @@
                             </div>
                             <div>
                                 <div class="">
-                                    <a title="Swim Lessons Parrish" href="tel:+19417731424">(941) 773-1424</a>
+                                    <a title="Swim Lessons Parrish" href="{{ config('contact.phone.link') }}">{{ config('contact.phone.number') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             </div>
                             <div>
                                 <div class="">
-                                    <a title="Manatee County Swimming Lessons" href="mailto:info@theswimschoolfl.com">info@theswimschoolfl.com</a>
+                                    <a title="Manatee County Swimming Lessons" href="{{ config('contact.email.link') }}">{{ config('contact.email.address') }}</a>
                                 </div>
                             </div>
                         </div>
