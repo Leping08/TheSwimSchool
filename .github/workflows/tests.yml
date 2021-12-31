@@ -73,6 +73,14 @@ jobs:
           php artisan migrate
           
       - name: Run tests
+        env:
+          MYSQL_DATABASE: test
+          DB_DATABASE: test
+          DB_USERNAME: user
+          DB_PASSWORD: secret
+          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+          STRIPE_PUBLIC: ${{ secrets.STRIPE_TEST_PUBLIC }}
+          STRIPE_SECRET: ${{ secrets.STRIPE_TEST_SECRET }}
         run: |
           vendor/bin/phpunit -v
 
