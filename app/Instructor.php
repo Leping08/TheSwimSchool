@@ -48,7 +48,7 @@ class Instructor extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function privatePoolSessions()
+    public function pool_sessions()
     {
         return $this->hasMany(PrivatePoolSession::class);
     }

@@ -64,33 +64,23 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Text::make('Phone', 'phone'),
+            // Text::make('Phone', 'phone'),
 
-            Text::make('Color', 'hex_color')
-                ->onlyOnForms()
-                ->required(),
+            // Text::make('Color', 'hex_color')
+            //     ->onlyOnForms()
+            //     ->required(),
 
-            Text::make('Color', function () {
-                return view('partials.color', [
-                    'color' => $this->hex_color,
-                ])->render();
-            })->asHtml(),
+            // Text::make('Color', function () {
+            //     return view('partials.color', [
+            //         'color' => $this->hex_color,
+            //     ])->render();
+            // })->asHtml(),
 
             Password::make('Password')
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
-
-            Text::make('Calendar', function () {
-                return view('partials.link', [
-                    'link' => url('/calendar/'.$this->id),
-                    'text' => 'View'
-                    //'new_tab' => true TODO: Add new tab option to link partial
-                ])->render();
-            })->asHtml()->hideFromIndex(),
-
-            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
-            HasMany::make('Lessons', 'lessons', Lesson::class)
+        
         ];
     }
 

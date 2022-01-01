@@ -65,10 +65,19 @@ class Instructor extends Resource
             Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
             Text::make('Phone', 'phone')->nullable()->hideFromIndex(),
             Textarea::make('Bio', 'bio')->rows(3)->nullable()->hideFromIndex(),
+            Text::make('Calendar', function () {
+                return view('partials.link', [
+                    'link' => url('/calendar/'.$this->id),
+                    'text' => 'View'
+                    //'new_tab' => true TODO: Add new tab option to link partial
+                ])->render();
+            })->asHtml()->hideFromIndex(),
+
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             DateTime::make('Deleted At')->onlyOnDetail(),
             HasMany::make('Lessons', 'lessons', Lesson::class),
+            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
         ];
     }
 
