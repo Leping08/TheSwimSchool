@@ -21,7 +21,7 @@
 
             <div class="uk-width-1-1@m uk-first-column uk-margin-top">
                 <h2 class="uk-heading-line"><span>Location</span></h2>
-                <p class="">Group Lessons take place year-round in an indoor, heated pool at Realhab Physical Therapy, Aquatics & Wellness Center in Parrish, Florida.</p>
+                <p>Group Lessons take place year-round in an indoor, heated pool at Realhab Physical Therapy, Aquatics & Wellness Center located at 12159 US-301 N, Parrish, FL 34219.</p>
                 <div class="uk-card uk-card-default">
                     <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                 </div>

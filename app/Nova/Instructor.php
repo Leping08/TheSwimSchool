@@ -2,21 +2,23 @@
 
 namespace App\Nova;
 
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Instructor extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\User::class;
+    public static $model = \App\Instructor::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -30,7 +32,7 @@ class User extends Resource
      *
      * @var string
      */
-    public static $group = 'Admin';
+    public static $group = 'Groups';
 
     /**
      * The columns that should be searched.
@@ -38,7 +40,8 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
+        'name'
     ];
 
     /**
@@ -50,47 +53,22 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
-
-            Gravatar::make(),
-
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Text::make('Phone', 'phone'),
-
-            Text::make('Color', 'hex_color')
-                ->onlyOnForms()
-                ->required(),
-
+            ID::make(__('ID'), 'id')->sortable(),
+            Text::make('Name', 'name'),
+            Boolean::make('Active', 'active'),
+            Text::make('Color', 'hex_color')->onlyOnForms()->nullable()->hideFromIndex(),
             Text::make('Color', function () {
                 return view('partials.color', [
                     'color' => $this->hex_color,
-                ])->render();
-            })->asHtml(),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
-
-            Text::make('Calendar', function () {
-                return view('partials.link', [
-                    'link' => url('/calendar/'.$this->id),
-                    'text' => 'View'
-                    //'new_tab' => true TODO: Add new tab option to link partial
-                ])->render();
-            })->asHtml()->hideFromIndex(),
-
-            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
-            HasMany::make('Lessons', 'lessons', Lesson::class)
+                    ])->render();
+                })->asHtml(),
+            Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
+            Text::make('Phone', 'phone')->nullable()->hideFromIndex(),
+            Textarea::make('Bio', 'bio')->rows(3)->nullable()->hideFromIndex(),
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail(),
+            DateTime::make('Deleted At')->onlyOnDetail(),
+            HasMany::make('Lessons', 'lessons', Lesson::class),
         ];
     }
 
@@ -136,10 +114,5 @@ class User extends Resource
     public function actions(Request $request)
     {
         return [];
-    }
-
-    public static function label()
-    {
-        return 'Users';
     }
 }

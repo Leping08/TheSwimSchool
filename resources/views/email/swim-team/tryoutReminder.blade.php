@@ -37,8 +37,8 @@ Thanks,<br>
 @component('mail::footer')
 <div>
 <div style="padding-top:10px; text-align:center !important;">
-<a href="tel:1-941-773-1424" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}" alt=""></a>
-<a href="mailto:theswimschoolfl@gmail.com"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}" alt=""></a>
+<a href="{{ config('contact.phone.link') }}" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}" alt=""></a>
+<a href="{{ config('contact.email.link') }}"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}" alt=""></a>
 <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}" alt=""></a>
 </div>
 

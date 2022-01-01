@@ -122,7 +122,7 @@ class Lesson extends Model
      */
     public function Instructor()
     {
-        return $this->belongsTo(User::class, 'instructor_id');
+        return $this->belongsTo(Instructor::class, 'instructor_id');
     }
 
     /**

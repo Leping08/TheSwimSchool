@@ -27,7 +27,7 @@
                 </div>
                 <div class="uk-padding-small">
                     <div class="uk-h5">Swimmers:</div>
-                    <div v-for="swimmer in selectedEvent.swimmers">
+                    <div v-for="swimmer in selectedEvent.swimmers" :key="swimmer">
                         <div class="uk-padding-small" v-if="swimmer">
                             <div><i class="fa fa-user uk-margin-small-right" aria-hidden="true"></i> {{ swimmer.firstName || swimmer.first_name }} {{ swimmer.lastName || swimmer.last_name }}</div>
                             <div><i class="fa fa-phone uk-margin-small-right" aria-hidden="true"></i> <a :href="'sms:' + swimmer.phone">{{ swimmer.phone }}</a></div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="uk-padding-small">
                     <div class="uk-h5">Wait List:</div>
-                    <div v-for="person in selectedEvent.waitList">
+                    <div v-for="person in selectedEvent.waitList" :key="person">
                         <div class="uk-padding-small" v-if="person">
                             <div><i class="fa fa-user uk-margin-small-right" aria-hidden="true"></i> {{ person.name }}</div>
                             <div><i class="fa fa-phone uk-margin-small-right" aria-hidden="true"></i> <a :href="'sms:' + person.phone">{{ person.phone }}</a></div>

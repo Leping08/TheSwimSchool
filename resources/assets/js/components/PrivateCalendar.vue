@@ -32,7 +32,7 @@
                         <div class="uk-h3 uk-width-1-2">Cart</div>
                         <div class="uk-h3 uk-width-1-2 uk-text-right"><i class="fa fa-shopping-cart fa-lg"></i></div>
                     </div>
-                    <div v-for="event in cart" class="uk-card uk-card-default uk-card-body uk-width-1-1@m uk-margin">
+                    <div v-for="event in cart" :key="event" class="uk-card uk-card-default uk-card-body uk-width-1-1@m uk-margin">
                         <button @click="remove(event)" class="uk-offcanvas-close uk-button-small" type="button" uk-close></button>
                         <div>{{event.start.toDateString()}}</div>
                         <div>{{event.start.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}} - {{event.end.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}}</div>

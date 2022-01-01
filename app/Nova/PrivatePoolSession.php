@@ -132,10 +132,7 @@ class PrivatePoolSession extends Resource
                 //Select River Wilderness by default
                 'belongsToId' => $this->location_id ?? 63 //REALHAB location id
             ])->searchable(),
-            BelongsTo::make('Instructor', 'instructor', User::class)->withMeta([
-                //The logged in user by default
-                'belongsToId' => $this->user_id ?? auth()->id()
-            ])->searchable(),
+            BelongsTo::make('Instructor', 'instructor', Instructor::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail()
         ];

@@ -158,18 +158,22 @@ Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
  */
 
 /* @see CalendarController::show() */
-Route::get('/calendar/{user}', 'Admin\CalendarController@show')->name('calendar')->middleware('auth');
+Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('calendar')->middleware('auth');
 
+
+
+/*
+ * About Page
+ */
+
+/* @see AboutController::index() */
+Route::get('/about', 'AboutController@index')->name('pages.about');
 
 
 
 /*
  * Static Pages
  */
-
-Route::get('/about', function(){
-    return view('pages.about');
-})->name('pages.about');
 
 Route::get('/contact-us', function(){
     return view('pages.contact-us');

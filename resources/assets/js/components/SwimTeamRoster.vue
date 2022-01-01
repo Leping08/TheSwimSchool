@@ -7,12 +7,12 @@
                         Select Season
                     </div>
                     <select v-model="selectedSeasonId" class="uk-select">
-                        <option v-for="(season, index) in seasons" :key="season.id" :value="season.id">{{season.name}}</option>
+                        <option v-for="season in seasons" :key="season.id" :value="season.id">{{season.name}}</option>
                     </select>
                 </div>
             </div>
             <div class="uk-width-1-1@m uk-first-column">
-                <div v-for="(level, index) in levels" :key="level.id" class="uk-margin-bottom">
+                <div v-for="level in levels" :key="level.id" class="uk-margin-bottom">
                     <h2 class="uk-heading-line">
                         <span>
                             {{level.name}} <!--TODO: Add total here-->
