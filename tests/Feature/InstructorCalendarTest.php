@@ -3,7 +3,7 @@
 
 namespace Tests\Feature;
 
-
+use App\Instructor;
 use App\Lesson;
 use App\User;
 use Carbon\Carbon;
@@ -18,14 +18,15 @@ class InstructorCalendarTest extends TestCase
     /** @test  **/
     public function only_an_admin_can_visit_the_instructor_calendar_page()
     {
-        $instructor = User::factory()->create();
+        $user = User::factory()->create();
+        $instructor = Instructor::factory()->create();
 
-        $this->get(route('calendar', ['user' => $instructor]))
+        $this->get(route('calendar', ['instructor' => $instructor]))
             ->assertStatus(302);
 
-        $this->actingAs($instructor);
+        $this->actingAs($user);
 
-        $this->get(route('calendar', ['user' => $instructor]))
+        $this->get(route('calendar', ['instructor' => $instructor]))
             ->assertStatus(200);
     }
 
@@ -34,8 +35,11 @@ class InstructorCalendarTest extends TestCase
     {
         $this->seed();
 
-        $instructor_1 = User::factory()->create();
-        $instructor_2 = User::factory()->create();
+        $user_1 = User::factory()->create();
+        $instructor_1 = Instructor::factory()->create();
+
+        $user_2 = User::factory()->create();
+        $instructor_2 = Instructor::factory()->create();
 
         $lesson_1 = Lesson::factory()->create([
             'instructor_id' => $instructor_1->id,
@@ -57,14 +61,14 @@ class InstructorCalendarTest extends TestCase
         ]);
         $lesson_2->DaysOfTheWeek()->sync(explode(',', $lesson_2->days));
 
-        $this->actingAs($instructor_1);
-        $this->get(route('calendar', ['user' => $instructor_1]))
+        $this->actingAs($user_1);
+        $this->get(route('calendar', ['instructor' => $instructor_1]))
             ->assertStatus(200)
             ->assertSee($lesson_1->group->type)
             ->assertDontSee($lesson_2->group->type);
 
-        $this->actingAs($instructor_2);
-        $this->get(route('calendar', ['user' => $instructor_2]))
+        $this->actingAs($user_2);
+        $this->get(route('calendar', ['instructor' => $instructor_2]))
             ->assertStatus(200)
             ->assertSee($lesson_2->group->type)
             ->assertDontSee($lesson_1->group->type);
@@ -75,7 +79,8 @@ class InstructorCalendarTest extends TestCase
     {
         $this->seed();
 
-        $instructor = User::factory()->create();
+        $user = User::factory()->create();
+        $instructor = Instructor::factory()->create();
 
         $lesson_1 = Lesson::factory()->create([
             'instructor_id' => $instructor->id,
@@ -97,8 +102,8 @@ class InstructorCalendarTest extends TestCase
         ]);
         $lesson_2->DaysOfTheWeek()->sync(explode(',', $lesson_2->days));
 
-        $this->actingAs($instructor);
-        $this->get(route('calendar', ['user' => $instructor]))
+        $this->actingAs($user);
+        $this->get(route('calendar', ['instructor' => $instructor]))
             ->assertStatus(200)
             ->assertSee($lesson_1->group->type)
             ->assertDontSee($lesson_2->group->type);

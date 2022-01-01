@@ -158,7 +158,7 @@ Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
  */
 
 /* @see CalendarController::show() */
-Route::get('/calendar/{user}', 'Admin\CalendarController@show')->name('calendar')->middleware('auth');
+Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('calendar')->middleware('auth');
 
 
 
