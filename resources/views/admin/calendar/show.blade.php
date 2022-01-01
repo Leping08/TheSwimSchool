@@ -6,7 +6,7 @@
 @endsection
 
 @section('heading')
-    {{$user->name}} Calendar
+    {{$instructor->name}} Calendar
 @endsection
 
 @section('content')

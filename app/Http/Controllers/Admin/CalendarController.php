@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Instructor;
 use App\Lesson;
 use App\PrivatePoolSession;
 use App\User;
@@ -18,24 +19,24 @@ class CalendarController extends Controller
         'empty' => '#a0aec0'
     ];
 
-    public function show(User $user)
+    public function show(Instructor $instructor)
     {
-        $events = $this->calendarEvents($user);
+        $events = $this->calendarEvents($instructor);
 
-        return view('admin.calendar.show', compact('events', 'user'));
+        return view('admin.calendar.show', compact('events', 'instructor'));
     }
 
     /**
-     * @param  User  $user
+     * @param  Instructor  $instructor
      * @return array
      */
-    public function calendarEvents(User $user)
+    public function calendarEvents(Instructor $instructor)
     {
         $events = collect();
 
         //Get all the lessons from 3 months ago and up
         $lessons = Lesson::whereDate('class_end_date', '>=', Carbon::now()->subMonths(3))
-                            ->where('instructor_id', $user->id)
+                            ->where('instructor_id', $instructor->id)
                             ->with(['group', 'swimmers', 'location', 'waitList'])
                             ->get();
 
@@ -58,7 +59,7 @@ class CalendarController extends Controller
         }
 
         //Get all private pool sessions from 3 months ago and up
-        $poolSessions = PrivatePoolSession::where('instructor_id', $user->id)
+        $poolSessions = PrivatePoolSession::where('instructor_id', $instructor->id)
                             ->whereDate('start', '>=', Carbon::now()->subMonths(3))
                             ->with(['location'])
                             ->get();
