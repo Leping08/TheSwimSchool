@@ -29,27 +29,6 @@ About The Swim School
             </div>
         </div>
 
-
-        <div id="Hilary Koppenhaver" class="uk-flex-middle uk-grid-large uk-grid">
-            <div class="uk-width-expand@m">
-                <div class="uk-margin">
-                    <img src="{{ asset('/img/instructors/hilary.jpg') }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="Ellenton Swim School">
-                </div>
-            </div>
-            <div class="uk-width-expand@m uk-flex-first@m uk-first-column">
-                <h2 class="uk-text-center uk-scrollspy-inview uk-animation-slide-top-medium uk-margin-top">Hilary Koppenhaver</h2>
-                <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium">
-                <div class="uk-margin uk-dropcap">
-                    <p>
-                        Originally from Pennsylvania, Hilary started swimming at the age of five and continued competitively through college in Ohio where she earned a B.A. in Psychology. After receiving her degree in 2003, she returned to PA and worked part-time as a lifeguard, <a title="Bradenton Swim Instruction" href="{{ route('private_lesson.index') }}">swim lesson instructor</a>, and swim team coach in addition to having a full-time position in the human services field assisting children with special needs. With a love for the beach and a craving for a warmer climate, Hilary relocated to Florida in 2006 and worked as an Aquatics Director at a YMCA for over eight years where she developed a year round competitive swim team program, administered a progressive swim lesson program and conducted water fitness classes at two aquatics facilities. In May 2015, Hilary took her passion for teaching aquatics programs and established The Swim School. After seeing a great need in the community, she formed the Parrish Bull Sharks swim team in May 2018. Hilary strives to provide valuable, educational aquatics experiences for children of all ages and ability levels. She enjoys watching children progress and achieve new skills in the pool, and hopes to instill in her students a lifelong love for swimming. She is a certified Swim Lesson Instructor, Lifeguard, and CPR-PR/AED & First Aid Instructor.
-                    </p>
-                    <div class="uk-margin-bottom">
-                        <a title="Parrish Swim School" class="uk-button uk-button-secondary" href="{{ config('contact.phone.link') }}"><span uk-icon="icon: receiver" class=""></span> {{ config('contact.phone.number') }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         @foreach ($instructors as $instructor)
             <div id="{{ $instructor->name }}" class="uk-flex-middle uk-grid-large uk-grid">
                 @if ($instructor->image_url)
@@ -59,7 +38,7 @@ About The Swim School
                         </div>
                     </div>
                 @endif
-                <div class="uk-width-expand@m {{ $loop->even ? 'uk-flex-first@m' : '' }} uk-first-column">
+                <div class="uk-width-expand@m {{ $loop->even ? '' : 'uk-flex-first@m' }} uk-first-column">
                      <h2 class="uk-text-center uk-scrollspy-inview uk-animation-slide-top-medium uk-margin-top">{{ $instructor->name }}</h2>
                      <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium">
                      <div class="uk-margin uk-dropcap">
