@@ -65,9 +65,9 @@ class Instructor extends Resource
             Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
             Text::make('Phone', 'phone')->nullable()->hideFromIndex(),
             Textarea::make('Bio', 'bio')->rows(3)->nullable()->hideFromIndex(),
-            DateTime::make('Created At'),
-            DateTime::make('Updated At'),
-            DateTime::make('Deleted At'),
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail(),
+            DateTime::make('Deleted At')->onlyOnDetail(),
             HasMany::make('Lessons', 'lessons', Lesson::class),
         ];
     }

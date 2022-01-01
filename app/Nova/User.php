@@ -140,6 +140,6 @@ class User extends Resource
 
     public static function label()
     {
-        return 'Instructors';
+        return 'Users';
     }
 }
