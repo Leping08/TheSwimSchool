@@ -74,7 +74,7 @@ class Lesson extends Resource
             BelongsTo::make('Instructor', 'instructor', Instructor::class)->withMeta([
                 //Select
                 'belongsToId' => $this->instructor_id ?? auth()->id()
-            ])->hideFromIndex(),
+            ]),
             BelongsTo::make('Level', 'group'),
             BelongsTo::make('Season')->withMeta([
                 //Get the current season
