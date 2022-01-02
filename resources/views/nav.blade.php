@@ -144,10 +144,10 @@
                                 <a title="The Swim School Instagram" href="https://www.instagram.com/theswimschoolfl/" class="uk-icon-button" target="_blank" uk-icon="instagram"></a>
                             </li> --}}
                             <li>
-                                <a title="The Swim School Email" href="{{ config('contact.phone.link') }}" class="uk-icon-button uk-button-secondary" target="_blank" uk-icon="receiver"></a>
+                                <a title="The Swim School Phone Number" href="{{ config('contact.phone.link') }}" class="uk-icon-button uk-button-secondary" target="_blank" uk-icon="receiver"></a>
                             </li>
                             <li>
-                                <a title="The Swim School Phone Number" href="{{ config('contact.email.link') }}" class="uk-icon-button uk-button-secondary" target="_blank" uk-icon="mail"></a>
+                                <a title="The Swim School Email" href="{{ config('contact.email.link') }}" class="uk-icon-button uk-button-secondary" target="_blank" uk-icon="mail"></a>
                             </li>
                         </ul>
                     </div>
