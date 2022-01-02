@@ -56,7 +56,7 @@
             <div class="uk-section-default uk-section-overlap uk-section">
                 <div class="uk-container">
                     <div>
-                        <h2 class="uk-heading-line"><span>Spring Schedule</span></h2>
+                        <h2 class="uk-heading-line"><span>Session & Registration Schedule</span></h2>
 
                         <div class="uk-card uk-card-default uk-card-body">
                             <table class="uk-table uk-table-striped">
