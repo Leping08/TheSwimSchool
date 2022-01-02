@@ -14,6 +14,11 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+/* Email testing route */
+// Route::get('/email', function () {
+//     return new \App\Mail\NewsLetter\RegistrationOpen('test@gmail.com');
+// });
+
 
 /* @see \Laravel\Ui\AuthRouteMethods::auth() */
 Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
