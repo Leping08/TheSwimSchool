@@ -13,7 +13,7 @@
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div>
-                <h2 class="uk-heading-line"><span>2022 Winter & Spring Session</span></h2>
+                <h2 class="uk-heading-line"><span>2022 Winter & Spring Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
@@ -92,9 +92,9 @@
                 </table>
             </div>
 
-            {{-- <p>*Class times vary per level and session so the specific class times are not available until registration opens for each session.</p>
+            <p>*Class times vary per level and session so the specific class times are not available until registration opens for each session.</p>
 
-            <div class="uk-margin-large-top">
+            {{-- <div class="uk-margin-large-top">
                 <h2 class="uk-heading-line"><span>Summer 2021 Sessions</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
