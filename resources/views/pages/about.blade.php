@@ -34,7 +34,7 @@ About The Swim School
                 @if ($instructor->image_url)
                     <div class="uk-width-expand@m">
                         <div class="uk-margin">
-                            <img src="{{ $instructor->image_url }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="{{ $instructor->name }}">
+                            <img src="{{ asset($instructor->image_url) }}" class="el-image uk-border-rounded uk-box-shadow-large" alt="{{ $instructor->name }}">
                         </div>
                     </div>
                 @endif
