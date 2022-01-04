@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\VaporImage;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Instructor extends Resource
@@ -62,7 +63,8 @@ class Instructor extends Resource
                     'color' => $this->hex_color,
                     ])->render();
                 })->asHtml(),
-            Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
+            // Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
+            VaporImage::make('Image', 'image_url')->prunable(),
             Text::make('Phone', 'phone')->nullable()->hideFromIndex(),
             Textarea::make('Bio', 'bio')->rows(3)->nullable()->hideFromIndex(),
             Text::make('Calendar', function () {
