@@ -2,6 +2,7 @@ id: 18464
 name: theswimschool
 environments:
     production:
+        storage: theswimschool-bucket
         database: production
         memory: 1024
         runtime: php-7.4
@@ -14,6 +15,7 @@ environments:
         deploy:
             - 'php artisan migrate --force'
     staging:
+        storage: theswimschool-bucket
         database: production
         memory: 1024
         runtime: php-7.4
