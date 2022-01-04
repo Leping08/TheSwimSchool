@@ -63,8 +63,8 @@ class Instructor extends Resource
                     'color' => $this->hex_color,
                     ])->render();
                 })->asHtml(),
-            // Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
-            VaporImage::make('Image', 'image_url')->prunable(),
+            Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
+            // VaporImage::make('Image', 'image_url')->prunable(),
             Text::make('Phone', 'phone')->nullable()->hideFromIndex(),
             Textarea::make('Bio', 'bio')->rows(3)->nullable()->hideFromIndex(),
             Text::make('Calendar', function () {
