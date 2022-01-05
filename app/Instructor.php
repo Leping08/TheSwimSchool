@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Actions\Actionable;
 
@@ -42,14 +43,14 @@ class Instructor extends Model
         parent::boot();
 
         self::created(function ($model) {
-            if ($model->image_url) {
+            if ($model->image_url && App::environment() != 'testing') {
                 $disk = Storage::disk('s3');
                 $disk->setVisibility($model->image_url, 'public');
             }
         });
 
         self::updated(function ($model) {
-            if ($model->image_url) {
+            if ($model->image_url && App::environment() != 'testing') {
                 $disk = Storage::disk('s3');
                 $disk->setVisibility($model->image_url, 'public');
             }
