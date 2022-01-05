@@ -61,8 +61,8 @@ class Instructor extends Resource
             Text::make('Color', function () {
                 return view('partials.color', [
                     'color' => $this->hex_color,
-                    ])->render();
-                })->asHtml(),
+                ])->render();
+            })->asHtml(),
             // Text::make('Image URL', 'image_url')->nullable()->hideFromIndex(),
             VaporImage::make('Image', 'image_url')->prunable(),
             Text::make('Phone', 'phone')->nullable()->hideFromIndex(),

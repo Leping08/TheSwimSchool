@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Actions\Actionable;
 
 /**
@@ -35,6 +36,25 @@ class Instructor extends Model
         'phone',
         'active',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::created(function ($model) {
+            if ($model->image_url) {
+                $disk = Storage::disk('s3');
+                $disk->setVisibility($model->image_url, 'public');
+            }
+        });
+
+        self::updated(function ($model) {
+            if ($model->image_url) {
+                $disk = Storage::disk('s3');
+                $disk->setVisibility($model->image_url, 'public');
+            }
+        });
+    }
 
      /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
