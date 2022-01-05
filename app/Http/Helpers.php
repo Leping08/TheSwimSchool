@@ -18,22 +18,3 @@ if (! function_exists('aws_asset')) {
     return "https://theswimschool-bucket.s3.amazonaws.com/{$path}";
   };
 };
-
-
-/**
- * Function to make the S3 url public.
- * This is mainly used for Laravel Vapor
- * file uploads.
- *
- * @param string $file
- * @return string
- */
-
-if (! function_exists('makeS3UrlPublic')) {
-  function makeS3UrlPublic($file): string
-  {
-      $disk = Storage::disk('s3');
-      $disk->setVisibility($file, 'public');
-      return $disk->url($file);
-  }
-};
