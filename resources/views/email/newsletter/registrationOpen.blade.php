@@ -9,7 +9,7 @@ Registration is now open for all of our swim programs starting in January includ
 @endcomponent
 
 @component('mail::button', ['url' => route('home.index').'?utm_source=newsletter&utm_medium=email&utm_campaign=new_phone_number'])
-Learn More
+Sign Up
 @endcomponent
 
 Sincerely,<br>
