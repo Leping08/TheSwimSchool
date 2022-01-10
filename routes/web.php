@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -175,20 +176,41 @@ Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('cal
 Route::get('/about', 'AboutController@index')->name('pages.about');
 
 
+/*
+ * Custom Email
+ */
+
+/* @see AboutController::index() */
+Route::get('/emails/newsletter/edit', function() {
+    return view('email.newsletter.edit');
+})->name('email.edit')->middleware('auth');
+
+Route::post('/emails/newsletter/preview', function(Request $request) {
+    return new \App\Mail\NewsLetter\Custom('testing@gmail.com', $request->email_subject, $request->body, $request->image_url, $request->button_url, $request->button_text);
+})->name('email.edit');
+
+// Route::post('/emails/newsletter/send-one', function(Request $request) {
+//     return new \App\Mail\NewsLetter\Custom('testing@gmail.com', $request->email_subject, $request->body, $request->image_url, $request->button_url, $request->button_text);
+// })->name('email.edit');
+
+// Route::post('/emails/newsletter/all', function(Request $request) {
+//     return new \App\Mail\NewsLetter\Custom('testing@gmail.com', $request->email_subject, $request->body, $request->image_url, $request->button_url, $request->button_text);
+// })->name('email.edit');
+
 
 /*
  * Static Pages
  */
 
-Route::get('/contact-us', function(){
+ Route::get('/contact-us', function() {
     return view('pages.contact-us');
 })->name('pages.contact-us');
 
-Route::get('/group-lessons/policies-and-procedures', function(){
+Route::get('/group-lessons/policies-and-procedures', function() {
     return view('groups.terms');
 })->name('groups.terms');
 
-Route::get('/swim-team/policies-and-procedures', function(){
+Route::get('/swim-team/policies-and-procedures', function() {
     return view('swim-team.terms');
 })->name('swim-team.terms');
 
