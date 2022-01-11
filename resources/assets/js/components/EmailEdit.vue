@@ -7,7 +7,7 @@
           <div class="uk-width-1-1@s uk-margin">
             <label class="uk-form-label uk-heading-bullet" for="email_subject">Subject</label>
             <div class="uk-form-controls">
-              <input type="text" class="uk-input" name="email_subject" v-model="email_subject" @input="update">
+              <input type="text" class="uk-input" name="email_subject" v-model="subject" @input="update">
             </div>
           </div>
           <div class="uk-width-1-1@s uk-margin">
@@ -31,7 +31,12 @@
           <div class="uk-width-1-1@s uk-margin">
             <label class="uk-form-label uk-heading-bullet" for="button_text">Text</label>
             <div class="uk-form-controls">
-              <textarea class="uk-textarea" rows="10" v-model="body" @input="update"></textarea>
+              <textarea class="uk-textarea" rows="10" v-model="body_text" @input="update"></textarea>
+            </div>
+          </div>
+          <div class="uk-width-1-1@s uk-margin">
+            <div class="uk-form-controls">
+              <button class="uk-button uk-button-primary" @click="save">Save</button>
             </div>
           </div>
         </div>
@@ -49,16 +54,23 @@
     data() {
       return {
         image_url: "https://d36u81tzit3s7e.cloudfront.net/ffe8be63-1407-4f2a-8e24-4742e23db075/img/lessons/private.jpg",
-        body: `# New Year, New Business Phone Number!\n\nI hope you all had a wonderful holiday season! My staff and I look forward to seeing you back in the pool very soon! Before we dive into 2022, I wanted to let you know we are starting off the new year with a new phone number! The Swim School now has an official business phone line and the new number is **Phone Number**.\n\nYou can reach us by either calling this number, sending a message through the “Contact Us” section of the website, or sending an email to **Email**. The previous phone number is no longer in service, so please update our contact details. In regards to our winter swim programs, private lessons for the month of January are already open for registration through the website. The first weekday session of group lessons and swim club opens for registration tomorrow Monday, January 3rd and the first weekend session of group lessons opens for registration Monday, January 10th.`,
+        body_text: `# New Year, New Business Phone Number!\n\nI hope you all had a wonderful holiday season! My staff and I look forward to seeing you back in the pool very soon! Before we dive into 2022, I wanted to let you know we are starting off the new year with a new phone number! The Swim School now has an official business phone line and the new number is **Phone Number**.\n\nYou can reach us by either calling this number, sending a message through the “Contact Us” section of the website, or sending an email to **Email**. The previous phone number is no longer in service, so please update our contact details. In regards to our winter swim programs, private lessons for the month of January are already open for registration through the website. The first weekday session of group lessons and swim club opens for registration tomorrow Monday, January 3rd and the first weekend session of group lessons opens for registration Monday, January 10th.`,
         button_url: "https://theswimschoolfl.com/lessons",
         button_text: "Button Text",
-        email_subject: "Email Subject",
+        subject: "Email Subject",
         timeout: null,
         markdown: "",
       }
     },
     created() {
-      this.update();
+      this.get();
+      // todo: send real preview email
+      // todo: gray out save if no changes have been made
+      // todo: add button for sending email to everyone
+      // todo: add confirm modal for sending email to everyone
+      // todo: add loading state to save button
+      // todo: add failed save message
+      // todo: make sure it works well on a phone screen
     },
     methods: {
       debounce() {
@@ -72,15 +84,35 @@
       compiledMarkdown() {
         // Make an api call to get the markdown
         axios.post('/emails/newsletter/preview', {
-          body: this.body,
+          body_text: this.body_text,
           image_url: this.image_url,
           button_url: this.button_url,
           button_text: this.button_text,
-          email_subject: this.email_subject,
+          subject: this.subject,
         }).then(response => {
           this.markdown = response.data;
         });
-
+      },
+      save() {
+        axios.post('/emails/newsletter/store', {
+          body_text: this.body_text,
+          image_url: this.image_url,
+          button_url: this.button_url,
+          button_text: this.button_text,
+          subject: this.subject,
+        }).then(response => {
+          console.log(response);
+        });
+      },
+      get() {
+        axios.get('/emails/newsletter/show').then(response => {
+          this.body_text = response.data.configuration.body_text;
+          this.image_url = response.data.configuration.image_url;
+          this.button_url = response.data.configuration.button_url;
+          this.button_text = response.data.configuration.button_text;
+          this.subject = response.data.configuration.subject;
+          this.compiledMarkdown();
+        });
       },
       update() {
         this.debounce()

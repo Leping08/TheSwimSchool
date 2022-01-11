@@ -180,14 +180,21 @@ Route::get('/about', 'AboutController@index')->name('pages.about');
  * Custom Email
  */
 
-/* @see AboutController::index() */
-Route::get('/emails/newsletter/edit', function() {
-    return view('email.newsletter.edit');
-})->name('email.edit')->middleware('auth');
+Route::middleware(['auth'])->group(function () {
 
-Route::post('/emails/newsletter/preview', function(Request $request) {
-    return new \App\Mail\NewsLetter\Custom('testing@gmail.com', $request->email_subject, $request->body, $request->image_url, $request->button_url, $request->button_text);
-})->name('email.edit');
+    /* @see NewsletterEmailController::index() */
+    Route::get('/emails/newsletter', 'NewsletterEmailController@index')->name('newsletter.index');
+
+    /* @see NewsletterEmailController::show() */
+    Route::get('/emails/newsletter/show', 'NewsletterEmailController@show')->name('newsletter.show');
+    
+    /* @see NewsletterEmailController::store() */
+    Route::post('/emails/newsletter/store', 'NewsletterEmailController@store')->name('newsletter.store');
+    
+    /* @see NewsletterEmailController::preview() */
+    Route::post('/emails/newsletter/preview', 'NewsletterEmailController@preview')->name('newsletter.preview');
+});
+
 
 // Route::post('/emails/newsletter/send-one', function(Request $request) {
 //     return new \App\Mail\NewsLetter\Custom('testing@gmail.com', $request->email_subject, $request->body, $request->image_url, $request->button_url, $request->button_text);
