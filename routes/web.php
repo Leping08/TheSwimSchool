@@ -32,6 +32,8 @@ Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
 Route::get('/', 'HomeController@index')->name('home.index');
 
 
+
+
 /*
  * Group Lessons
  */
@@ -168,12 +170,15 @@ Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('cal
 
 
 
+
 /*
  * About Page
  */
 
 /* @see AboutController::index() */
 Route::get('/about', 'AboutController@index')->name('pages.about');
+
+
 
 
 /*
@@ -195,14 +200,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/emails/newsletter/preview', 'NewsletterEmailController@preview')->name('newsletter.preview');
 });
 
-
-// Route::post('/emails/newsletter/send-one', function(Request $request) {
-//     return new \App\Mail\NewsLetter\Custom('testing@gmail.com', $request->email_subject, $request->body, $request->image_url, $request->button_url, $request->button_text);
-// })->name('email.edit');
-
-// Route::post('/emails/newsletter/all', function(Request $request) {
-//     return new \App\Mail\NewsLetter\Custom('testing@gmail.com', $request->email_subject, $request->body, $request->image_url, $request->button_url, $request->button_text);
-// })->name('email.edit');
 
 
 /*

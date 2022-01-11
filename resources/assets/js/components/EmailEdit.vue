@@ -3,7 +3,16 @@
     <div class="uk-container">
       <div class="" uk-grid>
         <div class="uk-width-1-2@s uk-card uk-card-default uk-card-body">
-          <h3 class="uk-card-title">Edit News Letter Email</h3>
+          <div uk-grid>
+            <div class="uk-width-1-2@s">
+              <div style="font-size: 1.5rem;">Edit News Letter Email</div>
+            </div>
+            <div class="uk-width-1-2@s uk-text-right">
+              <div v-if="loading" uk-spinner="ratio: 0.75"></div>
+              <span v-if="saved && !loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
+              <span v-if="error && !loading" class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span>
+            </div>
+          </div>
           <div class="uk-width-1-1@s uk-margin">
             <label class="uk-form-label uk-heading-bullet" for="email_subject">Subject</label>
             <div class="uk-form-controls">
@@ -34,10 +43,22 @@
               <textarea class="uk-textarea" rows="10" v-model="body_text" @input="update"></textarea>
             </div>
           </div>
+
+
+
+          <div class="uk-padding-small">
+            <hr class="uk-divider-icon uk-margin-top">
+          </div>
+
           <div class="uk-width-1-1@s uk-margin">
+            <label class="uk-form-label uk-heading-bullet" for="preview_email_address">Preview Email Address</label>
             <div class="uk-form-controls">
-              <button class="uk-button uk-button-primary" @click="save">Save</button>
+              <input type="text" class="uk-input" name="preview_email_address" v-model="preview_email_address" @input="update">
             </div>
+          </div>
+
+          <div class="uk-width-1-1@s uk-margin">
+            <button class="uk-button uk-button-primary" @click="sendPreview">Send Preview</button>
           </div>
         </div>
         <div class="uk-width-1-2@s">
@@ -58,18 +79,20 @@
         button_url: "https://theswimschoolfl.com/lessons",
         button_text: "Button Text",
         subject: "Email Subject",
+        preview_email_address: "theswimschoolfl@gmail.com",
         timeout: null,
         markdown: "",
+        saved: false,
+        loading: false,
+        error: false
       }
     },
     created() {
       this.get();
-      // todo: send real preview email
-      // todo: gray out save if no changes have been made
+      // todo: handle error on save better
+      // todo: wire up button to send real preview email
       // todo: add button for sending email to everyone
       // todo: add confirm modal for sending email to everyone
-      // todo: add loading state to save button
-      // todo: add failed save message
       // todo: make sure it works well on a phone screen
     },
     methods: {
@@ -83,6 +106,9 @@
       },
       compiledMarkdown() {
         // Make an api call to get the markdown
+        this.saveState = false;
+        this.loading = true;
+        this.error = false;
         axios.post('/emails/newsletter/preview', {
           body_text: this.body_text,
           image_url: this.image_url,
@@ -91,6 +117,7 @@
           subject: this.subject,
         }).then(response => {
           this.markdown = response.data;
+          this.save();
         });
       },
       save() {
@@ -99,9 +126,17 @@
           image_url: this.image_url,
           button_url: this.button_url,
           button_text: this.button_text,
+          preview_email_address: this.preview_email_address,
           subject: this.subject,
-        }).then(response => {
-          console.log(response);
+        }).then(() => {
+          this.saved = true;
+          this.error = false;
+        }).catch(error => {
+          this.error = true;
+          this.saved = false;
+          console.log(error);
+        }).finally(() => {
+          this.loading = false;
         });
       },
       get() {
@@ -111,7 +146,15 @@
           this.button_url = response.data.configuration.button_url;
           this.button_text = response.data.configuration.button_text;
           this.subject = response.data.configuration.subject;
+          this.preview_email_address = response.data.configuration.preview_email_address;
           this.compiledMarkdown();
+        });
+      },
+      sendPreview() {
+        axios.post('/emails/newsletter/preview', {
+          preview_email_address: this.preview_email_address,
+        }).then(response => {
+          console.log(response);
         });
       },
       update() {

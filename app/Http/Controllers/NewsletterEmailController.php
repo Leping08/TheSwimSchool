@@ -26,7 +26,8 @@ class NewsletterEmailController extends Controller
             'image_url' => ['string', 'required', 'url'],
             'button_url' => ['string', 'required'],
             'button_text' => ['string', 'required'],
-            'body_text' => ['string', 'required']
+            'body_text' => ['string', 'required'],
+            'preview_email_address' => ['string', 'required']
         ]);
 
         $newsletter->configuration = [
@@ -35,6 +36,7 @@ class NewsletterEmailController extends Controller
             'button_url' => $request->get('button_url'),
             'button_text' => $request->get('button_text'),
             'body_text' => $request->get('body_text'),
+            'preview_email_address' => $request->get('preview_email_address')
         ];
 
         $newsletter->save();
