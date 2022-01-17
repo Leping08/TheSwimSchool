@@ -8,9 +8,11 @@
               <div style="font-size: 1.5rem;">Edit News Letter Email</div>
             </div>
             <div class="uk-width-1-2@s uk-text-right">
-              <div v-if="loading" uk-spinner="ratio: 0.75"></div>
-              <span v-if="saved && !loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
-              <span v-if="error && !loading" class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span>
+              <div v-if="email_saved_loading" uk-spinner="ratio: 0.75"></div>
+              <span v-if="email_saved && !email_saved_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
+              <template v-if="email_saved_error && !email_saved_loading">
+                <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred saving the email!</span>
+              </template>
             </div>
           </div>
           <div class="uk-width-1-1@s uk-margin">
@@ -58,8 +60,51 @@
           </div>
 
           <div class="uk-width-1-1@s uk-margin">
-            <button class="uk-button uk-button-primary" @click="sendPreview">Send Preview</button>
+            <div class="" uk-grid>
+              <div>
+                <button class="uk-button uk-button-primary" :disabled="!preview_email_address" @click="sendPreview">Send Preview</button>
+              </div>
+              <div>
+                <div v-if="preview_email_loading" uk-spinner="ratio: 0.75"></div>
+                <span v-if="preview_email_sent && !preview_email_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
+                <template v-if="preview_email_error && !preview_email_loading">
+                  <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred sending the preview!</span>
+                </template>
+              </div>
+            </div>
           </div>
+
+          <div class="uk-padding-small">
+            <hr class="uk-divider-icon uk-margin-top">
+          </div>
+
+          <div class="uk-width-1-1@s uk-margin">
+            <div class="" uk-grid>
+              <div>
+                <!-- This is a button toggling the modal -->
+                <button class="uk-button uk-button-primary" :disabled="!preview_email_address" uk-toggle="target: #send-all-emails" type="button">Send To Everyone</button>
+              </div>
+              <div>
+                <div v-if="email_blast_loading" uk-spinner="ratio: 0.75"></div>
+                <span v-if="email_blast_sent && !email_blast_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
+                <template v-if="email_blast_error && !email_blast_loading">
+                  <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred sending the emails out!</span>
+                </template>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- This is the modal -->
+          <div id="send-all-emails" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+              <h2 class="uk-modal-title">Send Email Blast</h2>
+              <p>Are you sure you want to send the email blast to everyone?</p>
+              <button class="uk-button uk-button-primary" type="button" @click="sendEmailBlast">Yes Send Email Blast</button>
+              <button class="uk-button uk-modal-close" type="button">Cancel</button>
+            </div>
+          </div>
+
         </div>
         <div class="uk-width-1-2@s">
           <div v-html="markdown"></div>
@@ -82,18 +127,21 @@
         preview_email_address: "theswimschoolfl@gmail.com",
         timeout: null,
         markdown: "",
-        saved: false,
-        loading: false,
-        error: false
+        email_saved: false,
+        email_saved_loading: false,
+        email_saved_error: '',
+        email_blast_sent: false,
+        email_blast_loading: false,
+        email_blast_error: null,
+        preview_email_sent: false,
+        preview_email_loading: false,
+        preview_email_error: null,
       }
     },
     created() {
-      this.get();
-      // todo: handle error on save better
-      // todo: wire up button to send real preview email
-      // todo: add button for sending email to everyone
-      // todo: add confirm modal for sending email to everyone
+      this.init();
       // todo: make sure it works well on a phone screen
+      // todo: add link to markdown documentation
     },
     methods: {
       debounce() {
@@ -106,14 +154,12 @@
       },
       compiledMarkdown() {
         // Make an api call to get the markdown
-        this.saveState = false;
-        this.loading = true;
-        this.error = false;
-        axios.post('/emails/newsletter/preview', {
+        axios.post('/emails/newsletter/view-preview', {
           body_text: this.body_text,
           image_url: this.image_url,
           button_url: this.button_url,
           button_text: this.button_text,
+          preview_email_address: this.preview_email_address,
           subject: this.subject,
         }).then(response => {
           this.markdown = response.data;
@@ -121,6 +167,9 @@
         });
       },
       save() {
+        this.email_saved = false;
+        this.email_saved_loading = true;
+        this.email_saved_error = null;
         axios.post('/emails/newsletter/store', {
           body_text: this.body_text,
           image_url: this.image_url,
@@ -129,17 +178,15 @@
           preview_email_address: this.preview_email_address,
           subject: this.subject,
         }).then(() => {
-          this.saved = true;
-          this.error = false;
-        }).catch(error => {
-          this.error = true;
-          this.saved = false;
+          this.email_saved = true;
+        }).catch((error) => {
           console.log(error);
+          this.email_saved_error = error;
         }).finally(() => {
-          this.loading = false;
+          this.email_saved_loading = false;
         });
       },
-      get() {
+      init() {
         axios.get('/emails/newsletter/show').then(response => {
           this.body_text = response.data.configuration.body_text;
           this.image_url = response.data.configuration.image_url;
@@ -151,11 +198,34 @@
         });
       },
       sendPreview() {
-        axios.post('/emails/newsletter/preview', {
-          preview_email_address: this.preview_email_address,
-        }).then(response => {
-          console.log(response);
-        });
+        this.preview_email_sent = false;
+        this.preview_email_loading = true;
+        this.preview_email_error = null;
+        axios.post('/emails/newsletter/send-preview', {
+            preview_email_address: this.preview_email_address,
+          })
+         .then(() => {
+            this.preview_email_sent = true;
+          }).catch((error) => {
+            console.log(error);
+            this.preview_email_error = error;
+          }).finally(() => {
+            this.preview_email_loading = false;
+          });
+      },
+      sendEmailBlast() {
+        this.email_blast_sent = false;
+        this.email_blast_loading = true;
+        this.email_blast_error = null;
+        axios.post('/emails/newsletter/send-emails')
+          .then(() => {
+            this.email_blast_sent = true;
+          }).catch((error) => {
+            console.log(error);
+            this.email_blast_error = error;
+          }).finally(() => {
+            this.email_blast_loading = false;
+          });
       },
       update() {
         this.debounce()

@@ -186,7 +186,7 @@ Route::get('/about', 'AboutController@index')->name('pages.about');
  */
 
 Route::middleware(['auth'])->group(function () {
-
+    
     /* @see NewsletterEmailController::index() */
     Route::get('/emails/newsletter', 'NewsletterEmailController@index')->name('newsletter.index');
 
@@ -197,7 +197,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/emails/newsletter/store', 'NewsletterEmailController@store')->name('newsletter.store');
     
     /* @see NewsletterEmailController::preview() */
-    Route::post('/emails/newsletter/preview', 'NewsletterEmailController@preview')->name('newsletter.preview');
+    Route::post('/emails/newsletter/view-preview', 'NewsletterEmailController@preview')->name('newsletter.preview.view');
+    
+    /* @see NewsletterEmailController::sendPreview() */
+    Route::post('/emails/newsletter/send-preview', 'NewsletterEmailController@sendPreview')->name('newsletter.preview.send');
+
+    /* @see NewsletterEmailController::sendEmails() */
+    Route::post('/emails/newsletter/send-emails', 'NewsletterEmailController@sendEmails')->name('newsletter.send');
 });
 
 
