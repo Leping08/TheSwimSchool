@@ -1,113 +1,118 @@
 <template>
   <div class="uk-section-default uk-section-overlap uk-section">
     <div class="uk-container">
-      <div class="" uk-grid>
-        <div class="uk-width-1-2@s uk-card uk-card-default uk-card-body">
-          <div uk-grid>
-            <div class="uk-width-1-2@s">
-              <div style="font-size: 1.5rem;">Edit News Letter Email</div>
-            </div>
-            <div class="uk-width-1-2@s uk-text-right">
-              <div v-if="email_saved_loading" uk-spinner="ratio: 0.75"></div>
-              <span v-if="email_saved && !email_saved_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
-              <template v-if="email_saved_error && !email_saved_loading">
-                <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred saving the email!</span>
-              </template>
-            </div>
-          </div>
-          <div class="uk-width-1-1@s uk-margin">
-            <label class="uk-form-label uk-heading-bullet" for="email_subject">Subject</label>
-            <div class="uk-form-controls">
-              <input type="text" class="uk-input" name="email_subject" v-model="subject" @input="update">
-            </div>
-          </div>
-          <div class="uk-width-1-1@s uk-margin">
-            <label class="uk-form-label uk-heading-bullet" for="image_url">Image Url</label>
-            <div class="uk-form-controls">
-              <input type="text" class="uk-input" name="image_url" v-model="image_url" @input="update">
-            </div>
-          </div>
-          <div class="uk-width-1-1@s uk-margin">
-            <label class="uk-form-label uk-heading-bullet" for="button_url">Button Url</label>
-            <div class="uk-form-controls">
-              <input type="text" class="uk-input" name="button_url" v-model="button_url" @input="update">
-            </div>
-          </div>
-          <div class="uk-width-1-1@s uk-margin">
-            <label class="uk-form-label uk-heading-bullet" for="button_text">Button Text</label>
-            <div class="uk-form-controls">
-              <input type="text" class="uk-input" name="button_text" v-model="button_text" @input="update">
-            </div>
-          </div>
-          <div class="uk-width-1-1@s uk-margin">
-            <label class="uk-form-label uk-heading-bullet" for="button_text">Text</label>
-            <div class="uk-form-controls">
-              <textarea class="uk-textarea" rows="10" v-model="body_text" @input="update"></textarea>
-            </div>
-          </div>
-
-
-
-          <div class="uk-padding-small">
-            <hr class="uk-divider-icon uk-margin-top">
-          </div>
-
-          <div class="uk-width-1-1@s uk-margin">
-            <label class="uk-form-label uk-heading-bullet" for="preview_email_address">Preview Email Address</label>
-            <div class="uk-form-controls">
-              <input type="text" class="uk-input" name="preview_email_address" v-model="preview_email_address" @input="update">
-            </div>
-          </div>
-
-          <div class="uk-width-1-1@s uk-margin">
-            <div class="" uk-grid>
-              <div>
-                <button class="uk-button uk-button-primary" :disabled="!preview_email_address" @click="sendPreview">Send Preview</button>
+      <div class="uk-grid uk-grid-stack uk-child-width-expand@s" uk-grid>
+        <div class="uk-first-column">
+          <div class="uk-grid-margin uk-first-column uk-card uk-card-default uk-card-body">
+            <div uk-grid>
+              <div class="uk-width-1-2@s">
+                <div style="font-size: 1.5rem;">Edit News Letter Email</div>
               </div>
-              <div>
-                <div v-if="preview_email_loading" uk-spinner="ratio: 0.75"></div>
-                <span v-if="preview_email_sent && !preview_email_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
-                <template v-if="preview_email_error && !preview_email_loading">
-                  <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred sending the preview!</span>
+              <div class="uk-width-1-2@s uk-text-right">
+                <div v-if="email_saved_loading" uk-spinner="ratio: 0.75"></div>
+                <span v-if="email_saved && !email_saved_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
+                <template v-if="email_saved_error && !email_saved_loading">
+                  <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred saving the email!</span>
                 </template>
               </div>
             </div>
-          </div>
-
-          <div class="uk-padding-small">
-            <hr class="uk-divider-icon uk-margin-top">
-          </div>
-
-          <div class="uk-width-1-1@s uk-margin">
-            <div class="" uk-grid>
-              <div>
-                <!-- This is a button toggling the modal -->
-                <button class="uk-button uk-button-primary" :disabled="!preview_email_address" uk-toggle="target: #send-all-emails" type="button">Send To Everyone</button>
-              </div>
-              <div>
-                <div v-if="email_blast_loading" uk-spinner="ratio: 0.75"></div>
-                <span v-if="email_blast_sent && !email_blast_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
-                <template v-if="email_blast_error && !email_blast_loading">
-                  <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred sending the emails out!</span>
-                </template>
+            <div class="uk-width-1-1@s uk-margin">
+              <label class="uk-form-label uk-heading-bullet" for="email_subject">Subject</label>
+              <div class="uk-form-controls">
+                <input type="text" class="uk-input" name="email_subject" v-model="subject" @input="update">
               </div>
             </div>
-          </div>
-
-
-          <!-- This is the modal -->
-          <div id="send-all-emails" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body">
-              <h2 class="uk-modal-title">Send Email Blast</h2>
-              <p>Are you sure you want to send the email blast to everyone?</p>
-              <button class="uk-button uk-button-primary" type="button" @click="sendEmailBlast">Yes Send Email Blast</button>
-              <button class="uk-button uk-modal-close" type="button">Cancel</button>
+            <div class="uk-width-1-1@s uk-margin">
+              <label class="uk-form-label uk-heading-bullet" for="image_url">Image Url</label>
+              <div class="uk-form-controls">
+                <input type="text" class="uk-input" name="image_url" v-model="image_url" @input="update">
+              </div>
             </div>
-          </div>
+            <div class="uk-width-1-1@s uk-margin">
+              <label class="uk-form-label uk-heading-bullet" for="button_url">Button Url</label>
+              <div class="uk-form-controls">
+                <input type="text" class="uk-input" name="button_url" v-model="button_url" @input="update">
+              </div>
+            </div>
+            <div class="uk-width-1-1@s uk-margin">
+              <label class="uk-form-label uk-heading-bullet" for="button_text">Button Text</label>
+              <div class="uk-form-controls">
+                <input type="text" class="uk-input" name="button_text" v-model="button_text" @input="update">
+              </div>
+            </div>
+            <div class="uk-width-1-1@s uk-margin">
+              <label class="uk-form-label uk-heading-bullet" for="button_text">Text</label>
+              <p class="uk-text uk-margin-small">The text of the email uses <a target="_blank" href="https://www.markdownguide.org/cheat-sheet/">markdown formatting <i class="fa fa-external-link" aria-hidden="true"></i></a> .</p>
+              <div class="uk-form-controls">
+                <textarea class="uk-textarea" rows="10" v-model="body_text" @input="update"></textarea>
+              </div>
+            </div>
 
+
+
+            <div class="uk-padding-small">
+              <hr class="uk-divider-icon uk-margin-top">
+            </div>
+
+            <div class="uk-width-1-1@s uk-margin">
+              <label class="uk-form-label uk-heading-bullet" for="preview_email_address">Preview Email Address</label>
+              <div class="uk-form-controls">
+                <input type="text" class="uk-input" name="preview_email_address" v-model="preview_email_address" @input="update">
+              </div>
+            </div>
+
+            <div class="uk-width-1-1@s uk-margin">
+              <div class="" uk-grid>
+                <div>
+                  <button class="uk-button uk-button-primary" :disabled="!preview_email_address" @click="sendPreview">Send Preview</button>
+                </div>
+                <div>
+                  <div v-if="preview_email_loading" uk-spinner="ratio: 0.75"></div>
+                  <span v-if="preview_email_sent && !preview_email_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
+                  <template v-if="preview_email_error && !preview_email_loading">
+                    <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred sending the preview!</span>
+                  </template>
+                </div>
+              </div>
+            </div>
+
+            <div class="uk-padding-small">
+              <hr class="uk-divider-icon uk-margin-top">
+            </div>
+
+            <div class="uk-width-1-1@s uk-margin">
+              <div class="" uk-grid>
+                <div>
+                  <!-- This is a button toggling the modal -->
+                  <button class="uk-button uk-button-primary" :disabled="!preview_email_address" uk-toggle="target: #send-all-emails" type="button">Send To Everyone</button>
+                </div>
+                <div>
+                  <div v-if="email_blast_loading" uk-spinner="ratio: 0.75"></div>
+                  <span v-if="email_blast_sent && !email_blast_loading" class="uk-text-success" uk-icon="icon: check; ratio: 1.5"></span>
+                  <template v-if="email_blast_error && !email_blast_loading">
+                    <span class="uk-text-danger" uk-icon="icon: warning; ratio: 1.5"></span> <span class="uk-text-danger">An error occurred sending the emails out!</span>
+                  </template>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- This is the modal -->
+            <div id="send-all-emails" uk-modal>
+              <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">Send Email Blast</h2>
+                <p>Are you sure you want to send the email blast to everyone?</p>
+                <button class="uk-button uk-button-primary uk-margin" type="button" @click="sendEmailBlast">Yes Send Email Blast</button>
+                <button class="uk-button uk-modal-close" type="button">Cancel</button>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="uk-width-1-2@s">
-          <div v-html="markdown"></div>
+        <div class="uk-grid-margin">
+          <div class="uk-width-1-2@s">
+            <div v-html="markdown"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,8 +145,7 @@
     },
     created() {
       this.init();
-      // todo: make sure it works well on a phone screen
-      // todo: add link to markdown documentation
+      // todo: allow for uploading an image
     },
     methods: {
       debounce() {
