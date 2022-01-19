@@ -41,6 +41,13 @@
               </div>
             </div>
             <div class="uk-width-1-1@s uk-margin">
+              <label class="uk-form-label uk-heading-bullet" for="button_text">Text</label>
+              <p class="uk-text uk-margin-small">The text of the email uses <a target="_blank" href="https://www.markdownguide.org/cheat-sheet/">markdown formatting <i class="fa fa-external-link" aria-hidden="true"></i></a> .</p>
+              <div class="uk-form-controls">
+                <textarea class="uk-textarea" rows="10" v-model="body_text" @input="update"></textarea>
+              </div>
+            </div>
+            <div class="uk-width-1-1@s uk-margin">
               <label class="uk-form-label uk-heading-bullet" for="button_url">Button Url</label>
               <div class="uk-form-controls">
                 <input type="text" class="uk-input" name="button_url" v-model="button_url" @input="update">
@@ -52,15 +59,6 @@
                 <input type="text" class="uk-input" name="button_text" v-model="button_text" @input="update">
               </div>
             </div>
-            <div class="uk-width-1-1@s uk-margin">
-              <label class="uk-form-label uk-heading-bullet" for="button_text">Text</label>
-              <p class="uk-text uk-margin-small">The text of the email uses <a target="_blank" href="https://www.markdownguide.org/cheat-sheet/">markdown formatting <i class="fa fa-external-link" aria-hidden="true"></i></a> .</p>
-              <div class="uk-form-controls">
-                <textarea class="uk-textarea" rows="10" v-model="body_text" @input="update"></textarea>
-              </div>
-            </div>
-
-
 
             <div class="uk-padding-small">
               <hr class="uk-divider-icon uk-margin-top">
