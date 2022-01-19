@@ -22,10 +22,22 @@
                 <input type="text" class="uk-input" name="email_subject" v-model="subject" @input="update">
               </div>
             </div>
-            <div class="uk-width-1-1@s uk-margin">
+            <!-- <div class="uk-width-1-1@s uk-margin">
               <label class="uk-form-label uk-heading-bullet" for="image_url">Image Url</label>
               <div class="uk-form-controls">
                 <input type="text" class="uk-input" name="image_url" v-model="image_url" @input="update">
+              </div>
+            </div> -->
+            <div class="uk-width-1-1@s uk-margin">
+              <label class="uk-form-label uk-heading-bullet" for="image_url">Image</label>
+              <div class="uk-form-controls">
+                <div class="js-upload" uk-form-custom>
+                  <input type="file" id="file" @change="uploadImage" ref="file">
+                  <button class="uk-button uk-button-secondary" type="button" tabindex="-1">Upload</button>
+                </div>
+              </div>
+              <div v-if="uploadProgress">
+                <progress class="uk-progress" :value="uploadProgress" max="100"></progress>
               </div>
             </div>
             <div class="uk-width-1-1@s uk-margin">
@@ -120,6 +132,7 @@
 </template>
 
 <script>
+  window.Vapor = require('laravel-vapor');
   import axios from 'axios';
   export default {
     data() {
@@ -130,6 +143,7 @@
         button_text: "Button Text",
         subject: "Email Subject",
         preview_email_address: "theswimschoolfl@gmail.com",
+        uploadProgress: null,
         timeout: null,
         markdown: "",
         email_saved: false,
@@ -145,9 +159,29 @@
     },
     created() {
       this.init();
-      // todo: allow for uploading an image
+      // todo: add the subject and outline like an email
     },
     methods: {
+      async uploadImage() {
+        this.uploadProgress = null;
+        const response = await Vapor.store(this.$refs.file.files[0], {
+          visibility: 'public-read',
+          progress: progress => {
+            this.uploadProgress = Math.round(progress * 100);
+          }
+        })
+
+        await axios.post('/emails/newsletter/upload-image', {
+          uuid: response.uuid,
+          key: response.key,
+          bucket: response.bucket,
+          name: this.$refs.file.files[0].name,
+          content_type: this.$refs.file.files[0].type,
+        })
+
+        await this.init();
+        this.uploadProgress = null;
+      },
       debounce() {
         if (this.timeout) 
           clearTimeout(this.timeout); 

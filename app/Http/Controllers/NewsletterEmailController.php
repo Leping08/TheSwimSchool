@@ -8,6 +8,7 @@ use App\Library\Mailgun\Mailgun;
 use App\PageParameters;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class NewsletterEmailController extends Controller
 {
@@ -104,5 +105,24 @@ class NewsletterEmailController extends Controller
         return collect([
             'message' => "{$emailList->count()} emails sent successfully!"
         ]);
+    }
+
+    public function uploadImage(Request $request)
+    {
+        // save image to news letter folder
+        $imageHash = str_replace('tmp/', '', $request->input('key'));
+        Storage::disk('s3')->copy(
+            $request->input('key'),
+            'news-letter/' . $imageHash
+        );
+
+        $imageUrl = Storage::disk('s3')->url('news-letter/' . $imageHash);
+
+        $newsLetter = PageParameters::getNewsLetterEmail();
+        $tempNewsLetterConfig = collect($newsLetter->configuration);
+        $tempNewsLetterConfig['image_url'] = $imageUrl;
+        $newsLetter->configuration = $tempNewsLetterConfig->toArray();
+        $newsLetter->save();
+        return $newsLetter->refresh();
     }
 }

@@ -179,6 +179,8 @@ Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('cal
 Route::get('/about', 'AboutController@index')->name('pages.about');
 
 
+Route::get('/test', 'NewsletterEmailController@test');
+
 
 
 /*
@@ -204,6 +206,9 @@ Route::middleware(['auth'])->group(function () {
 
     /* @see NewsletterEmailController::sendEmails() */
     Route::post('/emails/newsletter/send-emails', 'NewsletterEmailController@sendEmails')->name('newsletter.send');
+
+    /* @see NewsletterEmailController::uploadImage() */
+    Route::post('/emails/newsletter/upload-image', 'NewsletterEmailController@uploadImage')->name('newsletter.upload-image');
 });
 
 
