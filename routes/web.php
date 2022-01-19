@@ -11,7 +11,6 @@
 |
 */
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +29,6 @@ Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
 
 /* @see HomeController::index() */
 Route::get('/', 'HomeController@index')->name('home.index');
-
 
 
 
@@ -177,9 +175,6 @@ Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('cal
 
 /* @see AboutController::index() */
 Route::get('/about', 'AboutController@index')->name('pages.about');
-
-
-Route::get('/test', 'NewsletterEmailController@test');
 
 
 
