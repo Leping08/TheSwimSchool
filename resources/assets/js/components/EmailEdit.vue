@@ -122,7 +122,10 @@
           </div>
         </div>
         <div class="uk-grid-margin">
-          <div class="uk-width-1-2@s">
+          <div class="uk-width-1-1@s">
+            <div class="uk-margin-top uk-margin-left uk-margin-right uk-margin-bottom uk-text-large uk-text-bold">
+              {{ subject }}
+            </div>
             <div v-html="markdown"></div>
           </div>
         </div>
@@ -159,7 +162,6 @@
     },
     created() {
       this.init();
-      // todo: add the subject and outline like an email
     },
     methods: {
       async uploadImage() {

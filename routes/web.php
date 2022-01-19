@@ -217,15 +217,15 @@ Route::middleware(['auth'])->group(function () {
  * Static Pages
  */
 
- Route::get('/contact-us', function() {
+ Route::get('/contact-us', function () {
     return view('pages.contact-us');
 })->name('pages.contact-us');
 
-Route::get('/group-lessons/policies-and-procedures', function() {
+Route::get('/group-lessons/policies-and-procedures', function () {
     return view('groups.terms');
 })->name('groups.terms');
 
-Route::get('/swim-team/policies-and-procedures', function() {
+Route::get('/swim-team/policies-and-procedures', function () {
     return view('swim-team.terms');
 })->name('swim-team.terms');
 
