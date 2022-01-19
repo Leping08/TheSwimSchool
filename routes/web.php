@@ -31,6 +31,7 @@ Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
 Route::get('/', 'HomeController@index')->name('home.index');
 
 
+
 /*
  * Group Lessons
  */
@@ -167,6 +168,7 @@ Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('cal
 
 
 
+
 /*
  * About Page
  */
@@ -177,18 +179,48 @@ Route::get('/about', 'AboutController@index')->name('pages.about');
 
 
 /*
+ * Custom Email
+ */
+
+Route::middleware(['auth'])->group(function () {
+    
+    /* @see NewsletterEmailController::index() */
+    Route::get('/emails/newsletter', 'NewsletterEmailController@index')->name('newsletter.index');
+
+    /* @see NewsletterEmailController::show() */
+    Route::get('/emails/newsletter/show', 'NewsletterEmailController@show')->name('newsletter.show');
+    
+    /* @see NewsletterEmailController::store() */
+    Route::post('/emails/newsletter/store', 'NewsletterEmailController@store')->name('newsletter.store');
+    
+    /* @see NewsletterEmailController::preview() */
+    Route::post('/emails/newsletter/view-preview', 'NewsletterEmailController@preview')->name('newsletter.preview.view');
+    
+    /* @see NewsletterEmailController::sendPreview() */
+    Route::post('/emails/newsletter/send-preview', 'NewsletterEmailController@sendPreview')->name('newsletter.preview.send');
+
+    /* @see NewsletterEmailController::sendEmails() */
+    Route::post('/emails/newsletter/send-emails', 'NewsletterEmailController@sendEmails')->name('newsletter.send');
+
+    /* @see NewsletterEmailController::uploadImage() */
+    Route::post('/emails/newsletter/upload-image', 'NewsletterEmailController@uploadImage')->name('newsletter.upload-image');
+});
+
+
+
+/*
  * Static Pages
  */
 
-Route::get('/contact-us', function(){
+ Route::get('/contact-us', function () {
     return view('pages.contact-us');
 })->name('pages.contact-us');
 
-Route::get('/group-lessons/policies-and-procedures', function(){
+Route::get('/group-lessons/policies-and-procedures', function () {
     return view('groups.terms');
 })->name('groups.terms');
 
-Route::get('/swim-team/policies-and-procedures', function(){
+Route::get('/swim-team/policies-and-procedures', function () {
     return view('swim-team.terms');
 })->name('swim-team.terms');
 

@@ -9,18 +9,20 @@ import swimTeamRoster from './components/SwimTeamRoster.vue'
 import promo_code from './components/promoCode.vue'
 import privateCalendar from './components/PrivateCalendar.vue'
 import instructorCalendar from './components/InstructorCalendar.vue'
+import emailEdit from './components/EmailEdit.vue'
 
 Vue.use(VueMoment, {
     moment,
 });
 
-const app = new Vue({
+new Vue({
     el: '#app',
     components: {
         swimTeamRoster,
         //privateLessonRequestForm,
         privateCalendar,
         instructorCalendar,
-        promo_code: promo_code
+        promo_code: promo_code,
+        emailEdit
     }
 });
