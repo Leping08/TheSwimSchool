@@ -40,7 +40,7 @@ class CustomNewsLetter extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.newsletter.testing')
+        return $this->markdown('email.newsletter.custom')
                     ->from(config('mail.from.address'))
                     ->subject($this->email_subject)
                     ->with([

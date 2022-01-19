@@ -6,7 +6,7 @@
 {!! \Illuminate\Mail\Markdown::parse($body) !!}
 @endcomponent
 
-@component('mail::button', ['url' => "{$button_url}?utm_source=newsletter&utm_medium=email&utm_campaign=new_location"])
+@component('mail::button', ['url' => "{$button_url}?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter"])
 {{ $button_text }}
 @endcomponent
 
