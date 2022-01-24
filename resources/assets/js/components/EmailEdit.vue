@@ -22,12 +22,6 @@
                 <input type="text" class="uk-input" name="email_subject" v-model="subject" @input="update">
               </div>
             </div>
-            <!-- <div class="uk-width-1-1@s uk-margin">
-              <label class="uk-form-label uk-heading-bullet" for="image_url">Image Url</label>
-              <div class="uk-form-controls">
-                <input type="text" class="uk-input" name="image_url" v-model="image_url" @input="update">
-              </div>
-            </div> -->
             <div class="uk-width-1-1@s uk-margin">
               <label class="uk-form-label uk-heading-bullet" for="image_url">Image</label>
               <div class="uk-form-controls">
@@ -94,7 +88,7 @@
               <div class="" uk-grid>
                 <div>
                   <!-- This is a button toggling the modal -->
-                  <button class="uk-button uk-button-primary" :disabled="!preview_email_address" uk-toggle="target: #send-all-emails" type="button">Send To Everyone</button>
+                  <button class="uk-button uk-button-primary" uk-toggle="target: #send-all-emails" type="button">Send To Everyone</button>
                 </div>
                 <div>
                   <div v-if="email_blast_loading" uk-spinner="ratio: 0.75"></div>
