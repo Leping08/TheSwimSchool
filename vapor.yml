@@ -4,6 +4,7 @@ environments:
     production:
         storage: theswimschool-bucket
         database: production
+        timeout: 30
         memory: 1024
         runtime: php-7.4
         domain: theswimschoolfl.com
@@ -17,6 +18,7 @@ environments:
     staging:
         storage: theswimschool-bucket
         database: production
+        timeout: 30
         memory: 1024
         runtime: php-7.4
         domain: staging.theswimschoolfl.com
