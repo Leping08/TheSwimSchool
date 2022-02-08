@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\EmailList;
+use App\Jobs\NewsLetter\QueueCustomNewsLetterEmails;
+use App\Jobs\NewsLetter\SendCustomNewsLetterEmail;
 use App\Mail\NewsLetter\CustomNewsLetter;
 use App\PageParameters;
 use App\User;
@@ -11,6 +13,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
 
 class CustomNewsLetterEmailTest extends TestCase
 {
@@ -36,7 +39,7 @@ class CustomNewsLetterEmailTest extends TestCase
     /** @test */
     public function a_user_should_be_able_to_render_the_email_if_all_the_prams_are_sent_to_the_preview_route()
     {
-      /** @var User $user */
+        /** @var User $user */
         $user = User::factory()->create();
 
         $this->actingAs($user);
@@ -116,7 +119,7 @@ class CustomNewsLetterEmailTest extends TestCase
     /** @test */
     public function a_user_should_be_update_the_email_content_by_hitting_the_route()
     {
-      /** @var User $user */
+        /** @var User $user */
         $user = User::factory()->create();
 
         $this->actingAs($user);
@@ -201,14 +204,82 @@ class CustomNewsLetterEmailTest extends TestCase
             'api.mailgun.net/v3/theswimschoolfl.com/complaints' => Http::response($fake_response, 200)
         ]);
 
-        PageParameters::factory()->customNewsLetter()->create();
+        Queue::fake();
 
+        Queue::assertNothingPushed();
+        
+        PageParameters::factory()->customNewsLetter()->create();
+        
+        $this->json('POST', route('newsletter.send'))
+        ->assertStatus(200);
+        
+        Queue::assertPushed(QueueCustomNewsLetterEmails::class);
+    }
+    
+    /** @test */
+    public function the_send_custom_news_letter_email_job_does_send_the_email()
+    {   
+        /** @var User $user */
+        $user = User::factory()->create();
+
+        $this->actingAs($user);
+        
         Mail::fake();
         Mail::assertNothingSent();
 
-        $this->json('POST', route('newsletter.send'))
-            ->assertStatus(200);
+        $email = $this->faker->safeEmail;
 
-        Mail::assertSent(CustomNewsLetter::class, 3);
+        // Set up the news letter email in the db
+        $customNewsLetter = [
+            "subject" => $this->faker->word,
+            "image_url" => $this->faker->imageUrl,
+            "button_url" => $this->faker->url,
+            "button_text" => $this->faker->word,
+            "body_text" => $this->faker->paragraph,
+            "preview_email_address" => $this->faker->safeEmail
+          ];
+  
+        $pageParameters = PageParameters::factory()
+            ->create([
+              'name' => 'News Letter Email',
+              'configuration' => [
+                'subject' => $customNewsLetter['subject'],
+                'body_text' => $customNewsLetter['body_text'],
+                'image_url' => $customNewsLetter['image_url'],
+                'button_url' => $customNewsLetter['button_url'],
+                'button_text' => $customNewsLetter['button_text'],
+                'preview_email_address' => $customNewsLetter['preview_email_address'],
+              ]
+            ]);
+        
+        Mail::assertNothingSent();
+
+        SendCustomNewsLetterEmail::dispatch($email, $pageParameters);
+ 
+        Mail::assertSent(CustomNewsLetter::class);
+    }
+
+    /** @test */
+    public function the_queue_custom_news_letter_emails_job_will_queue_emails_for_subscribed_emails()
+    {
+        /** @var User $user */
+        $user = User::factory()->create();
+
+        $this->actingAs($user);
+
+        Queue::fake();
+        Mail::fake();
+
+        Queue::assertNothingPushed();
+
+        EmailList::factory()->count(3)->create();
+        EmailList::factory()->count(3)->create([
+          'subscribe' => false
+        ]);
+
+        QueueCustomNewsLetterEmails::dispatch();
+
+        Queue::assertPushed(SendCustomNewsLetterEmail::class, 3);
+        Mail::assertNothingSent();
     }
 }
