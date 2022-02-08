@@ -258,28 +258,4 @@ class CustomNewsLetterEmailTest extends TestCase
  
         Mail::assertSent(CustomNewsLetter::class);
     }
-
-    /** @test */
-    public function the_queue_custom_news_letter_emails_job_will_queue_emails_for_subscribed_emails()
-    {
-        /** @var User $user */
-        $user = User::factory()->create();
-
-        $this->actingAs($user);
-
-        Queue::fake();
-        Mail::fake();
-
-        Queue::assertNothingPushed();
-
-        EmailList::factory()->count(3)->create();
-        EmailList::factory()->count(3)->create([
-          'subscribe' => false
-        ]);
-
-        QueueCustomNewsLetterEmails::dispatch();
-
-        Queue::assertPushed(SendCustomNewsLetterEmail::class, 3);
-        Mail::assertNothingSent();
-    }
 }
