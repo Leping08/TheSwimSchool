@@ -257,6 +257,7 @@
             this.email_blast_error = error;
           }).finally(() => {
             this.email_blast_loading = false;
+            UIkit.modal(document.getElementById('send-all-emails')).hide();
           });
       },
       update() {

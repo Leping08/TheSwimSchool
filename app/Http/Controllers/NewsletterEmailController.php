@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EmailList;
-use App\Jobs\NewsLetter\SendCustomNewsLetterEmail;
+use App\Jobs\NewsLetter\QueueCustomNewsLetterEmails;
 use App\Library\Mailgun\Mailgun;
 use App\PageParameters;
 use Illuminate\Http\Request;
@@ -96,14 +96,12 @@ class NewsletterEmailController extends Controller
             throw new \Exception('No email newsletter in the database');
         }
 
-        $emailList = EmailList::where('subscribe', '=', true)
-            ->pluck('email')
-            ->map(function ($email) use ($pageParameters) {
-                SendCustomNewsLetterEmail::dispatch($email, $pageParameters);
-            });
+        QueueCustomNewsLetterEmails::dispatch(); // Dispatch the job to queue up all the emails
+
+        $emailListCount = EmailList::where('subscribe', '=', true)->count();
 
         return collect([
-            'message' => "{$emailList->count()} emails sent successfully!"
+            'message' => "$emailListCount emails sent queued up!"
         ]);
     }
 

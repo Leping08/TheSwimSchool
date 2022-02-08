@@ -63,20 +63,21 @@ class SendCustomNewsLetterEmail implements ShouldQueue
      */
     public function handle()
     {
-        try {
-            Log::info("Sending registration open now email to $this->email");
-            Mail::to($this->email)->send(new CustomNewsLetter(
-                $this->email,
-                $this->pageParameters->configuration['subject'],
-                $this->pageParameters->configuration['body_text'],
-                $this->pageParameters->configuration['image_url'],
-                $this->pageParameters->configuration['button_url'],
-                $this->pageParameters->configuration['button_text']
-            ));
-            Log::info("Registration open now email successfully sent to $this->email");
-        } catch (\Exception $e) {
-            Log::warning("Email error: $e");
-            throw $e;
-        }
+        Log::info("Running fake to send email blast to $this->email");
+        // try {
+        //     Log::info("Sending registration open now email to $this->email");
+        //     Mail::to($this->email)->send(new CustomNewsLetter(
+        //         $this->email,
+        //         $this->pageParameters->configuration['subject'],
+        //         $this->pageParameters->configuration['body_text'],
+        //         $this->pageParameters->configuration['image_url'],
+        //         $this->pageParameters->configuration['button_url'],
+        //         $this->pageParameters->configuration['button_text']
+        //     ));
+        //     Log::info("Registration open now email successfully sent to $this->email");
+        // } catch (\Exception $e) {
+        //     Log::warning("Email error: $e");
+        //     throw $e;
+        // }
     }
 }
