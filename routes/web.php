@@ -204,18 +204,6 @@ Route::middleware(['auth'])->group(function () {
 
     /* @see NewsletterEmailController::uploadImage() */
     Route::post('/emails/newsletter/upload-image', 'NewsletterEmailController@uploadImage')->name('newsletter.upload-image');
-
-    Route::get('/temp/send-emails', function () {
-        $page = \App\PageParameters::getNewsLetterEmail();
-        \App\EmailList::where('subscribe', '=', true)
-            ->where('id', '>', 2050)
-            ->pluck('email')
-            ->map(function ($email) use ($page) {
-                \App\Jobs\NewsLetter\SendCustomNewsLetterEmail::dispatch($email, $page);
-            });
-
-        return 'done';
-    });
 });
 
 
