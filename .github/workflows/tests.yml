@@ -39,7 +39,9 @@ jobs:
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
 
       - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: |
+          composer config "http-basic.nova.laravel.com" "${{ secrets.NOVA_USERNAME }}" "${{ secrets.NOVA_PASSWORD }}"
+          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
