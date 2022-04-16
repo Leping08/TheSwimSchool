@@ -92,10 +92,8 @@
                 </table>
             </div>
 
-            <p>*Class times vary per level and session so the specific class times are not available until registration opens for each session.</p>
-
-            {{-- <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>Summer 2021 Sessions</span></h2>
+            <div class="uk-margin-large-top">
+                <h2 class="uk-heading-line"><span>2022 Summer Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
@@ -105,20 +103,20 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>June 7th-June 17th</td>
-                            <td>May 31st</td>
+                            <td>June 6th-June 16th</td>
+                            <td>May 23rd</td>
                         </tr>
                         <tr>
-                            <td>June 21st-July 1st</td>
-                            <td>June 14th</td>
+                            <td>June 20th-June 30th</td>
+                            <td>June 13th</td>
                         </tr>
                         <tr>
-                            <td>July 5th-July 15th</td>
-                            <td>June 28th</td>
+                            <td>July 11th-July 21st</td>
+                            <td>June 27th</td>
                         </tr>
                         <tr>
-                            <td>July 19th-July 29th</td>
-                            <td>July 12th</td>
+                            <td>July 25th-August 4th</td>
+                            <td>July 18th</td>
                         </tr>
                     </tbody>
                 </table>
@@ -134,12 +132,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>June 5th-July 17th (No Class July 3rd)</td>
-                            <td>May 17th</td>
+                            <td>July 9th-August 13th</td>
+                            <td>June 27th</td>
                         </tr>
                         <tr>
-                            <td>July 24th-August 28th</td>
-                            <td>July 12th</td>
+                            <td>August 20th-October 1st (No Classes Labor Day Weekend 9/3)</td>
+                            <td>August 8th</td>
                         </tr>
                     </tbody>
                 </table>
@@ -155,20 +153,22 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>June 6th-July 18th (No Class July 4th)</td>
-                            <td>May 17th</td>
+                            <td>July 10th-August 14th (No class July 4th)</td>
+                            <td>June 27th</td>
                         </tr>
                         <tr>
-                            <td>July 25th-August 29th</td>
-                            <td>July 12th</td>
+                            <td>August 21st-October 2nd (No Classes Labor Day Weekend 9/4)</td>
+                            <td>August 8th</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <p>*Class times vary per level and session so the specific class times are not available until registration opens for each session.</p>
+            <p>*Class times vary per level and session based on facility and instructor availability, so the specific class
+                times are not available until registration opens for each session. <a href="{{ route('groups.lessons.index') }}">Registration</a> is completed online
+                through the “Levels” by clicking on the “Find Classes” button.</p>
 
-            <div class="uk-margin-large-top">
+            {{-- <div class="uk-margin-large-top">
                 <h2 class="uk-heading-line"><span>Fall 2021 Sessions</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>

@@ -12,6 +12,11 @@
 @section('content')
     <div class="uk-section-default uk-section uk-section-small">
         <div class="uk-container">
+            <div class="uk-child-width-1-1@s uk-margin-bottom">
+                Thank You For Signing Up! You should receive two emails shortly, one containing your transaction receipt and the other with swim information specific to your registration. 
+                Please check your Junk and Spam folders for an email from <a href="mailto:info@theswimschoolfl.com">info@theswimschoolfl.com</a> if it does not appear in your inbox. 
+                Moving this email to your inbox will allow future emails to be delivered there.
+            </div>
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true">
                 <div>
                     <img alt="Private Swim Lessons Ellenton" class="uk-border-rounded uk-box-shadow-large" src="{{ asset('/img/thank-you/float.jpg') }}">
