@@ -40,7 +40,6 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          composer config "http-basic.nova.laravel.com" "${{ secrets.NOVA_USERNAME }}" "${{ secrets.NOVA_LICENSE_KEY }}"
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
@@ -103,7 +102,6 @@ jobs:
 
       - name: Require Vapor CLI
         run: |
-          composer config "http-basic.nova.laravel.com" "${{ secrets.NOVA_USERNAME }}" "${{ secrets.NOVA_LICENSE_KEY }}"
           composer global require laravel/vapor-cli
 
       - name: Install Dependencies
