@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Library\Marketing\Emails;
+namespace App\Library\Marketing\Emails\SwimTeam;
 
 
 use App\Mail\SwimTeam\Awards;
