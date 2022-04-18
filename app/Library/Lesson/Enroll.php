@@ -98,6 +98,7 @@ class Enroll
     public function sendClassSignUpEmail(Swimmer $swimmer)
     {
         try {
+            // \Illuminate\Support\Facades\Mail::to(\App\Swimmer::find(3)->email)->send(new \App\Mail\Groups\SignUp(\App\Swimmer::find(3)->lesson));
             Mail::to($swimmer->email)->send(new SignUp($swimmer->lesson));
             Log::info("Group Lesson sign up email sent to {$swimmer->email}. Swimmer ID: {$swimmer->id} Lesson ID: {$swimmer->lesson->id}.");
         } catch (\Exception $e) {

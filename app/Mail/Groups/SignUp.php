@@ -36,7 +36,7 @@ class SignUp extends Mailable
         return $this->subject($this->lesson->group->type)
             ->from(config('mail.from.address'))
             ->markdown('email.groups.lessonSignUp')
-            ->with(['lesson' => $this->lesson])
-            ->attach(public_path('pdf/The_Swim_School_Policies_and_Procedures.pdf'));
+            ->with(['lesson' => $this->lesson]);
+            // ->attach(public_path('pdf/The_Swim_School_Policies_and_Procedures.pdf')); todo fix this path
     }
 }
