@@ -9,6 +9,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Carbon\Carbon;
 use App\Group;
+use App\Mail\Groups\SignUp;
+use Illuminate\Support\Facades\Mail;
 
 class LessonsTest extends TestCase
 {
@@ -261,6 +263,54 @@ class LessonsTest extends TestCase
             "email" => $attributes['email'],
             "lesson_id" => $attributes['lesson_id']
         ]);
+    }
+    
+    /** @test  **/
+    public function a_swimmer_will_get_a_sign_up_email_after_hitting_the_lesson_sign_up_route()
+    {
+        Mail::fake();
+ 
+        $lesson = Lesson::factory()->create();
+
+        $attributes = [
+            'firstName' => $this->faker->firstName,
+            'lastName' => $this->faker->lastName,
+            'birthDate' => Carbon::yesterday()->toDateString(),
+            'email' => $this->faker->email,
+            'phone' => '9998887777',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->word,
+            'zip' => $this->faker->numberBetween(10000, 90000),
+            'emergencyName' => $this->faker->name,
+            'emergencyRelationship' => $this->faker->word,
+            'emergencyPhone' => '999-999-9999',
+            'emailUpdates' => 'off',
+            'lesson_id' => $lesson->id,
+            'stripeToken' => 'tok_visa'
+        ];
+
+
+        $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
+            ->assertStatus(200);
+
+        $this->assertEquals(0,  Swimmer::all()->count());
+
+        $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
+
+        $response->assertRedirect('/thank-you');
+
+        $this->assertEquals(1,  Swimmer::all()->count());
+
+        $this->assertDatabaseHas('swimmers', [
+            "firstName" => $attributes['firstName'],
+            "lastName" => $attributes['lastName'],
+            "email" => $attributes['email'],
+            "lesson_id" => $attributes['lesson_id']
+        ]);
+
+        Mail::assertSent(SignUp::class);
     }
 
     /** @test  **/

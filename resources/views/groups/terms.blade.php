@@ -52,11 +52,11 @@ The Swim School Policies & Procedures
 
 
             <dt>Severe Tropical Weather:</dt>
-            <dd>In the event of severe tropical storms or hurricanes, The Swim School may cancel swim classes if the Realhab Physical Therapy, Aquatics and Wellness Center needs to close its facility. The Swim School will either make up or partially refund cancelled classes due to severe tropical weather.</dd>
+            <dd>In the event of severe tropical storms or hurricanes, The Swim School may cancel swim classes if the Realhab Physical Therapy, Aquatics and Wellness Center needs to close its facility. The Swim School will either make up or partially refund canceled classes due to severe tropical weather.</dd>
 
 
             <dt>Make Up Classes:</dt>
-            <dd>Make up classes will only be scheduled if swim lesson classes are cancelled by the instructor. Because of the progressive nature of The Swim School programs, limited class sizes and limited instructor availability, no special make up classes will be offered for lessons missed by participants due to holidays, vacation, illness, etc. However, it may be possible to accommodate a make up class for a student if the same class is available on a different day/time that is not full.</dd>
+            <dd>Make up classes will only be scheduled if swim lesson classes are canceled by the instructor. Because of the progressive nature of The Swim School programs, limited class sizes and limited instructor availability, no special make up classes will be offered for lessons missed by participants due to holidays, vacation, illness, etc. However, it may be possible to accommodate a make up class for a student if the same class is available on a different day/time that is not full.</dd>
 
 
             <dt>Parent & Infant-toddler Class:</dt>

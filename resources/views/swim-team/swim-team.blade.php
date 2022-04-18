@@ -23,9 +23,9 @@
                     <div class="uk-container">
                         <div class="uk-width-1-1@m">
                             <h2 class="uk-heading-line"><span>Location</span></h2>
-                            <p>Swim club and swim team take place seasonally in an outdoor pool at River Wilderness Golf & Country Club in Parrish, Florida.</p>
+                            <p>Starting Wednesday, June 1st, 2022, swim team will take place in an outdoor pool at the new Lincoln Aquatics Center in Palmetto, Florida.</p>
                             <div class="uk-card uk-card-default">
-                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=2250%20Wilderness%20Blvd.%20West%20Parrish%20FL%2C%2034219&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Lincoln%20Park%20715%2017th%20Street%20East%20Palmetto,%20Florida%2034221&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>2021 {{ config('swim-team.name') }} Swim Team</span></h2>
+                        <h2 class="uk-heading-line"><span>2022 {{ config('swim-team.name') }} Swim Team Tryouts Information</span></h2>
                         <div class="uk-dropcap uk-margin">
 {{--                            <p>--}}
 {{--                                Our 2021 spring pre-season training has begun! For more information and to register, check out our <a title="Swimming Team Parrish" href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a>--}}
@@ -44,7 +44,7 @@
 {{--                                Sessions are held weekday evenings. Information regarding our 2021 Summer Swim Team tryouts and season will be available by April 15th.--}}
 {{--                                Stay up to date with everything we are doing on our <a title="Parrish Swim Team Facebook" href="https://www.facebook.com/Parrish-Bull-Sharks-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.--}}
 {{--                            </p>--}}
-                            <p>
+                            {{-- <p>
                                 The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.
                                 The summer season runs <strong>Tuesday, June 1st - Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
                                 Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
@@ -55,6 +55,22 @@
                             </p>
                             <p>
                                 Need to learn the strokes first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available now to get your child ready for their tryout.
+                            </p> --}}
+                            <p>
+                                Registration for swim team tryouts opens on May 1st. All interested participants including returning swim team members must register and attend one of the available tryout options. There is no fee to tryout for the swim team. Tryouts are being held at our indoor pool location, Realhab Physical Therapy, Aquatics & Wellness Center, 12159 US-301, Parrish (while the Lincoln Aquatics Center construction is being completed). Each tryout session will take approximately one hour.
+                            </p>
+                            <ul class="uk-list uk-list-bullet">
+                                <li>Tuesday, May 17th 6:30PM</li>
+                                <li>Thursday, May 19th 7:30PM</li>
+                                <li>Friday, May 20th 4:30PM</li>
+                                <li>Friday, May 20th 5:30PM</li>
+                                <li>Friday, May 20th 6:30PM</li>
+                            </ul>
+                            <p>
+                                *Minimum Requirement: Each child must be able to swim at least one full individual length without stopping (25 yards) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
+                            </p>
+                            <p>
+                                Need some practice first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available to get your child ready for their tryout.
                             </p>
                         </div>
                     </div>
@@ -101,7 +117,7 @@
     </div>
 
 
-    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+    {{-- <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
@@ -129,7 +145,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
@@ -144,7 +160,7 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                     <div class="uk-panel">
-                        <div class="uk-margin">No Registration Fees! 10% Discount for River Wilderness Country Club Members (Must provide ID number for verification). 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt. Price also includes swim meet entry fees and ribbons for the entire season (with the exception of the Suncoast Swim League championship meet fee) as well as end of season awards.</div>
+                        <div class="uk-margin">The summer season runs Wednesday, June 1st - Saturday, July 30th. No Registration Fees! 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt. Price also includes swim meet entry fees and ribbons for the entire season (with the exception of the Suncoast Swim League championship meet fee) as well as end of season awards.</div>
                         <ul class="uk-list uk-list-bullet">
                             <li><b>White Team:</b> $250</li>
                             <li><b>Gray Team:</b> $310</li>
@@ -162,28 +178,6 @@
                     <div class="uk-panel">
                         <div class="uk-margin">
                             <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Instruction Parrish" src="{{ asset('/img/swim-team/breaststroke.jpg') }}">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
-        <div class="uk-container">
-            <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>
-                <div class="uk-child-width-expand@s" uk-grid>
-                    <div class="uk-width-expand@m uk-first-column">
-                        <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Team near Ellenton" src="{{ asset('/img/swim-team/new-log-cap.jpg') }}">
-                        </div>
-                    </div>
-                    <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
-                        <div>
-                            <div class="uk-margin">Download the 2021 swim meet schedule. All swim meets are optional but participation is highly encouraged.</div>
-                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_2021_Swim_Meet_Schedule.pdf') }}" download="PBS 2021 Swim Meet Schedule.pdf">Download</a>
                         </div>
                     </div>
                 </div>
@@ -222,6 +216,28 @@
 
                         @endforelse
                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+        <div class="uk-container">
+            <div class="uk-width-1-1@m uk-margin-top">
+                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>
+                <div class="uk-child-width-expand@s" uk-grid>
+                    <div class="uk-width-expand@m uk-first-column">
+                        <div class="uk-margin">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Team near Ellenton" src="{{ asset('/img/swim-team/new-log-cap.jpg') }}">
+                        </div>
+                    </div>
+                    <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
+                        <div>
+                            <div class="uk-margin">Download the 2021 swim meet schedule. All swim meets are optional but participation is highly encouraged.</div>
+                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_2021_Swim_Meet_Schedule.pdf') }}" download="PBS 2021 Swim Meet Schedule.pdf">Download</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
