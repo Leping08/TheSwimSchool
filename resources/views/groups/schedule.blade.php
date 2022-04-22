@@ -153,7 +153,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>July 10th-August 14th (No class July 4th)</td>
+                            <td>July 10th-August 14th</td>
                             <td>June 27th</td>
                         </tr>
                         <tr>

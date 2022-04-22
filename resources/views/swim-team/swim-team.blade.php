@@ -60,8 +60,8 @@
                                 Registration for swim team tryouts opens on May 1st. All interested participants including returning swim team members must register and attend one of the available tryout options. There is no fee to tryout for the swim team. Tryouts are being held at our indoor pool location, Realhab Physical Therapy, Aquatics & Wellness Center, 12159 US-301, Parrish (while the Lincoln Aquatics Center construction is being completed). Each tryout session will take approximately one hour.
                             </p>
                             <ul class="uk-list uk-list-bullet">
-                                <li>Tuesday, May 17th 6:30PM</li>
-                                <li>Thursday, May 19th 7:30PM</li>
+                                <li>Tuesday, May 17th 7:15PM</li>
+                                <li>Thursday, May 19th 7:15PM</li>
                                 <li>Friday, May 20th 4:30PM</li>
                                 <li>Friday, May 20th 5:30PM</li>
                                 <li>Friday, May 20th 6:30PM</li>
