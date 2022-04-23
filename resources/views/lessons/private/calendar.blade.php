@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="uk-form-controls">
                                     <label><input class="uk-checkbox" type="checkbox" name="emailUpdates" checked>
-                                        Send me Swim School updates!
+                                        Receive our email notifications
                                     </label>
                                 </div>
 
