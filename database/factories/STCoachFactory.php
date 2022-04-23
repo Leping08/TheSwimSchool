@@ -25,6 +25,7 @@ class STCoachFactory extends Factory
             'name' => $this->faker->name,
             'phone' => '9998887777',
             'active' => true,
+            'image_url' => $this->faker->imageUrl(),
             'bio' => $this->faker->paragraph
         ];
     }

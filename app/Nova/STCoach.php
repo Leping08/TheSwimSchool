@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\VaporImage;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class STCoach extends Resource
@@ -49,6 +50,8 @@ class STCoach extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name', 'name'),
+            // Text::make('Image URL', 'image_url')->nullable(),
+            VaporImage::make('Image', 'image_url')->prunable(),
             Number::make('Phone', 'phone'),
             Boolean::make('Active', 'active'),
             Text::make('Bio', 'bio')->hideFromIndex(),

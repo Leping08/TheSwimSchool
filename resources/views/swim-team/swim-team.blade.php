@@ -206,10 +206,25 @@
                     <ul id="js-350" class="uk-switcher" uk-height-match="row: false">
                         @forelse($coaches as $coach)
                             <li class="el-item">
-                                <h3 class="el-title uk-margin uk-heading-bullet">{{$coach->name}}</h3>
-                                <div class="el-content uk-margin">
-                                    <p>{{$coach->bio}}</p>
-                                    <a title="Contact {{$coach->name}}" class="uk-button uk-button-default" title="Swim Instruction Parrish" href="tel:+1{{$coach->phone}}"><span uk-icon="icon: receiver;" class="uk-margin-small-right"></span> {{$coach->phone}}</a>
+                                <div class="uk-grid uk-flex-middle">
+                                    @if ($coach->image_url)
+                                        <div class="uk-width-1-1@s uk-width-1-6@m uk-width-1-6@l uk-width-1-6@xl">
+                                            <div class="uk-margin-bottom uk-margin-top">
+                                                <img class="uk-border-rounded uk-box-shadow-large" src="{{$coach->image_url}}" alt="{{ config('swim-team.name') }}" srcset="">
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-1@s uk-width-5-6@m uk-width-5-6@l uk-width-5-6@xl">
+                                            <div>
+                                                <div>{{$coach->bio}}</div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="uk-width-1-1">
+                                            <div>
+                                                <div>{{$coach->bio}}</div>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </li>
                         @empty
@@ -249,12 +264,7 @@
             <div class="uk-width-1-1@m uk-margin-top">
                 <h2 class="uk-heading-line"><span>Record Holders</span></h2>
                 <div class="uk-grid-margin uk-grid" uk-grid="">
-                    <div class="uk-width-expand@m uk-first-column">
-                        <div class="uk-margin">
-                            <img class="uk-border-rounded uk-box-shadow-large" alt="Kids Swimming near Bradenton" src="{{ asset('/img/swim-team/backstroke.jpg') }}">
-                        </div>
-                    </div>
-                    <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
+                    <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                         <div class="">
                             <div>
                                 <div class="uk-margin">Check out the current {{ config('swim-team.name') }} swim team record holders.</div>
@@ -263,6 +273,11 @@
                                 <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-left uk-margin-right" href="{{ asset('pdf/Boys_Record_Holders.pdf') }}" download="Swim Team Boys Record Holders.pdf">Boys Records</a>
                                 <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-left uk-margin-right" href="{{ asset('pdf/Girls_Record_Holders.pdf') }}" download="Swim Team Girls Record Holders.pdf">Girls Records</a>
                             </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-expand@m">
+                        <div class="uk-margin">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Kids Swimming near Bradenton" src="{{ asset('/img/swim-team/backstroke.jpg') }}">
                         </div>
                     </div>
                 </div>
