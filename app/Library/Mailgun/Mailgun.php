@@ -9,14 +9,19 @@ use Illuminate\Support\Facades\Log;
 class Mailgun
 {
     /**
+     * @var string $base_url
+     */
+    private static $base_url = 'https://api.mailgun.net/v3/theswimschoolfl.com/';
+
+    /**
      * @return \Illuminate\Support\Collection
      * @throws \Illuminate\Http\Client\RequestException
      */
-    public static function complaints()
+    public static function apiGet(string $path)
     {
         $response = Http::withToken(config('mail.mailers.mailgun.api_token'), 'Basic')
             ->acceptJson()
-            ->get('https://api.mailgun.net/v3/theswimschoolfl.com/complaints');
+            ->get(static::$base_url . $path);
 
         $response->throw();
 
@@ -31,7 +36,7 @@ class Mailgun
     public static function removeComplaintsEmails()
     {
         try {
-            $complaints = Mailgun::complaints();
+            $complaints = Mailgun::apiGet('complaints');
         } catch (\Exception $e) {
             Log::error('Error trying to get the list of complaint emails from mailgun');
             Log::error('Error: ' . $e->getMessage());
@@ -41,6 +46,25 @@ class Mailgun
 
         collect($complaints->get('items'))->map(function($complaintEmail) {
             NewsLetter::unsubscribe($complaintEmail['address']);
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public static function removeBouncedEmails()
+    {
+        try {
+            $bounces = Mailgun::apiGet('bounces');
+        } catch (\Exception $e) {
+            Log::error('Error trying to get the list of bounce emails from mailgun');
+            Log::error('Error: ' . $e->getMessage());
+            Log::error('Get trace as string: ' . $e->getTraceAsString());
+            return;
+        }
+
+        collect($bounces->get('items'))->map(function($bounceEmail) {
+            NewsLetter::unsubscribe($bounceEmail['address']);
         });
     }
 }

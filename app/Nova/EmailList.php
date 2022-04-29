@@ -107,7 +107,10 @@ class EmailList extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new Actions\RemoveBouncedEmails,
+            new Actions\RemoveComplaintEmails,
+        ];
     }
 
     public static function label()
