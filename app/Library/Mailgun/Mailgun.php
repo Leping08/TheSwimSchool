@@ -36,7 +36,7 @@ class Mailgun
     public static function removeComplaintsEmails()
     {
         try {
-            $complaints = Mailgun::apiGet('complaints');
+            $complaints = Mailgun::apiGet('complaints?limit=1000');
         } catch (\Exception $e) {
             Log::error('Error trying to get the list of complaint emails from mailgun');
             Log::error('Error: ' . $e->getMessage());
@@ -55,7 +55,7 @@ class Mailgun
     public static function removeBouncedEmails()
     {
         try {
-            $bounces = Mailgun::apiGet('bounces');
+            $bounces = Mailgun::apiGet('bounces?limit=1000');
         } catch (\Exception $e) {
             Log::error('Error trying to get the list of bounce emails from mailgun');
             Log::error('Error: ' . $e->getMessage());
