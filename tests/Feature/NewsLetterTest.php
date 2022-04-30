@@ -70,7 +70,7 @@ class NewsLetterTest extends TestCase
         ];
 
         Http::fake([
-            'api.mailgun.net/v3/theswimschoolfl.com/complaints' => Http::response($fake_response, 200)
+            'api.mailgun.net/v3/theswimschoolfl.com/complaints?limit=1000' => Http::response($fake_response, 200)
         ]);
 
         $email_before = EmailList::where('email', $email_subscribed)->first();
