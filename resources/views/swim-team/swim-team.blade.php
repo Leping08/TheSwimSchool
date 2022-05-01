@@ -69,6 +69,9 @@
                             <p>
                                 *Minimum Requirement: Each child must be able to swim at least one full individual length without stopping (25 yards) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
                             </p>
+                            <div>
+                                <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>
+                            </div>
                             <p>
                                 Need some practice first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available to get your child ready for their tryout.
                             </p>
@@ -83,36 +86,36 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="uk-grid-margin uk-grid">--}}
-{{--                <div class="uk-grid-item-match uk-flex-middle uk-width-1-1@m uk-first-column">--}}
-{{--                    <div>--}}
-{{--                        <div>--}}
-{{--                            <h2 class="uk-heading-line"><span>Tryouts</span></h2>--}}
-{{--                            <p>--}}
-{{--                                Registration for swim team tryouts is now open. There is no fee to tryout for the swim team. Tryouts are held at the River Wilderness Golf & Country Club pool. Select one tryout from the three available options.--}}
-{{--                                <strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim team.</strong>--}}
-{{--                            </p>--}}
-{{--                            <ul class="uk-list uk-list-bullet">--}}
-{{--                                <li>Saturday, May 1st at 1:30PM</li>--}}
-{{--                                <li>Tuesday, May 4th at 5:30PM</li>--}}
-{{--                                <li>Thursday, May 6th at 6:30PM</li>--}}
-{{--                            </ul>--}}
-{{--                            <p>--}}
-{{--                                *Minimum Requirement: Each child must be able to swim at least one full individual length without stopping (25 meters) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.--}}
-{{--                            </p>--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>--}}
-{{--                            <p>The {{ config('swim-team.name') }} practices at the <a title="{{ config('swim-team.full-name') }}" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>--}}
-{{--                            <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>--}}
-{{--                            <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            {{-- <div class="uk-grid-margin uk-grid">
+                <div class="uk-grid-item-match uk-flex-middle uk-width-1-1@m uk-first-column">
+                    <div>
+                        <div>
+                            <h2 class="uk-heading-line"><span>Tryouts</span></h2>
+                            <p>
+                                Registration for swim team tryouts is now open. There is no fee to tryout for the swim team. Tryouts are held at the River Wilderness Golf & Country Club pool. Select one tryout from the three available options.
+                                <strong>All interested participants must sign up for and attend one of the team tryouts. There is no fee to tryout for the swim team.</strong>
+                            </p>
+                            <ul class="uk-list uk-list-bullet">
+                                <li>Saturday, May 1st at 1:30PM</li>
+                                <li>Tuesday, May 4th at 5:30PM</li>
+                                <li>Thursday, May 6th at 6:30PM</li>
+                            </ul>
+                            <p>
+                                *Minimum Requirement: Each child must be able to swim at least one full individual length without stopping (25 meters) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
+                            </p>
+                        </div>
+                        <div>
+                            <h2 class="uk-heading-line"><span>2019 Fall Swim Team Season</span></h2>
+                            <p>The {{ config('swim-team.name') }} practices at the <a title="{{ config('swim-team.full-name') }}" target="_blank" href="http://www.riverwildernesscc.com/">River Wilderness Country Club</a> and competes in the Suncoast Swim League, a seasonal developmental league that runs September 5th - October 31st.</p>
+                            <p>Season Runs Tuesday, September 3rd - Wednesday, October 30th and is held at the River Wilderness Golf & Country Club pool.</p>
+                        </div>
+                        <div>
+                            <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>
+                            <a class="uk-button uk-button-default" disabled>Registration Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
         </div>
     </div>
 
