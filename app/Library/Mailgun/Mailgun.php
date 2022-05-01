@@ -2,6 +2,7 @@
 
 namespace App\Library\Mailgun;
 
+use App\EmailList;
 use App\Library\NewsLetter\NewsLetter;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -63,8 +64,16 @@ class Mailgun
             return;
         }
 
-        collect($bounces->get('items'))->map(function($bounceEmail) {
-            NewsLetter::unsubscribe($bounceEmail['address']);
+        $allEmails = EmailList::all();
+
+        collect($bounces->get('items'))->map(function($bounceEmail) use ($allEmails) {
+            $emailList = $allEmails->where('email', trim($bounceEmail['address']))->first();
+            if ($emailList) {
+                $emailList->update([
+                    'subscribe' => false
+                ]);
+            }
+            Log::info("{$emailList} has unsubscribed.");
         });
     }
 }
