@@ -16,7 +16,7 @@
 * Availability: {{$privateLessonLead->availability}}
 @endcomponent
 
-@component('mail::button', ['url' => config('app.url').'admin/resources/private-lesson-requests/'.$privateLessonLead->id])
+@component('mail::button', ['url' => config('app.url').'/admin/resources/private-lesson-requests/'.$privateLessonLead->id])
 View Details
 @endcomponent
 
