@@ -55,10 +55,10 @@ class STLevel extends Resource
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsToMany::make('Day', 'schedule', Day::class)->fields(function () {
                 return [
-                    DateTime::make( 'start_time'),
+                    DateTime::make('start_time'),
                     DateTime::make('end_time'),
                 ];
-            })
+            })->allowDuplicateRelations()
         ];
     }
 
