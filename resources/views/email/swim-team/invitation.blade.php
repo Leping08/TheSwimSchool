@@ -7,7 +7,7 @@
 @endslot
 
 @component('mail::panel')
-<img style="margin-bottom: 2em;" src="{{asset('img/swim-team/dive-cropped.jpg')}}" alt="">
+<img style="margin-bottom: 2em;" src="{{asset('img/swim-team/2021-class.jpg')}}" alt="">
 
 # Congratulations!
 
@@ -23,8 +23,8 @@ Based on tryouts, we would like to place you in {{$athlete->level->name}} level.
 @endforeach
 
 ## Practice Location
-2250 Wilderness Blvd W,\
-Parrish, FL 34219
+715 17th St East,\
+Palmetto, FL 34221
 
 @if($promoCode)
 ## Promo Code
