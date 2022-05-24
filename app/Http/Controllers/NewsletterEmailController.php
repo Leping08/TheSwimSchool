@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Athlete;
 use App\EmailList;
 use App\Jobs\NewsLetter\QueueCustomNewsLetterEmails;
+use App\Jobs\NewsLetter\SendCustomNewsLetterEmail;
 use App\Library\Mailgun\Mailgun;
 use App\PageParameters;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -88,21 +91,34 @@ class NewsletterEmailController extends Controller
 
     public function sendEmails()
     {
-        Mailgun::removeComplaintsEmails();
-
+        // Swim team only emails for summer 2022 tryout swimmers
+        $athletes = Athlete::where('s_t_season_id', 7)->get();
+        $athletesCount = $athletes->count();
         $pageParameters = PageParameters::getNewsLetterEmail();
 
-        if (!$pageParameters) {
-            throw new \Exception('No email newsletter in the database');
-        }
-
-        QueueCustomNewsLetterEmails::dispatch(); // Dispatch the job to queue up all the emails
-
-        $emailListCount = EmailList::where('subscribe', '=', true)->count();
+        $athletes->map(function ($athlete) use ($pageParameters) {
+            SendCustomNewsLetterEmail::dispatch($athlete->email, $pageParameters);
+        });
 
         return collect([
-            'message' => "$emailListCount emails sent queued up!"
+            'message' => "$athletesCount swim team tryout emails sent!"
         ]);
+
+        // Mailgun::removeComplaintsEmails();
+
+        // $pageParameters = PageParameters::getNewsLetterEmail();
+
+        // if (!$pageParameters) {
+        //     throw new \Exception('No email newsletter in the database');
+        // }
+
+        // QueueCustomNewsLetterEmails::dispatch(); // Dispatch the job to queue up all the emails
+
+        // $emailListCount = EmailList::where('subscribe', '=', true)->count();
+
+        // return collect([
+        //     'message' => "$emailListCount emails sent!"
+        // ]);
     }
 
     public function uploadImage(Request $request)
