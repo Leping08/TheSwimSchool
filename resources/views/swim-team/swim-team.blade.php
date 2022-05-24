@@ -191,6 +191,38 @@
 
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
+                <div class="uk-width-1-1@m uk-first-column">
+                    <h2 class="uk-heading-line">
+                        <span>Practice Schedule</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
+                    <div class="uk-panel">
+                        <ul class="uk-list uk-list-bullet">
+                            <li><b>White 1 & 2 Groups:</b> M/T/W/TH 9:00AM-9:45AM (Choose 3 days per week at your convenience)</li>
+                            <li><b>Gray Group:</b> M/T/W/TH 9:45AM-10:45AM</li>
+                            <li><b>Blue Group:</b> M/T/W/TH 10:45AM-12:00PM</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
+                    <div class="uk-panel">
+                        <div class="uk-margin">
+                            <img class="uk-border-rounded uk-box-shadow-large" alt="Swim Instruction Parrish" src="{{ asset('/img/swim-team/2021-class.jpg') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
+        <div class="uk-container">
             <div class="uk-width-1-1@m">
                 <h2 class="uk-heading-line"><span>Coaches</span></h2>
                 <div class="uk-margin">

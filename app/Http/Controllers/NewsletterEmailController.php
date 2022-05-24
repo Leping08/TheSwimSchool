@@ -91,34 +91,21 @@ class NewsletterEmailController extends Controller
 
     public function sendEmails()
     {
-        // Swim team only emails for summer 2022 tryout swimmers
-        $athletes = Athlete::where('s_t_season_id', 7)->get();
-        $athletesCount = $athletes->count();
+        Mailgun::removeComplaintsEmails();
+
         $pageParameters = PageParameters::getNewsLetterEmail();
 
-        $athletes->map(function ($athlete) use ($pageParameters) {
-            SendCustomNewsLetterEmail::dispatch($athlete->email, $pageParameters);
-        });
+        if (!$pageParameters) {
+            throw new \Exception('No email newsletter in the database');
+        }
+
+        QueueCustomNewsLetterEmails::dispatch(); // Dispatch the job to queue up all the emails
+
+        $emailListCount = EmailList::where('subscribe', '=', true)->count();
 
         return collect([
-            'message' => "$athletesCount swim team tryout emails sent!"
+            'message' => "$emailListCount emails sent!"
         ]);
-
-        // Mailgun::removeComplaintsEmails();
-
-        // $pageParameters = PageParameters::getNewsLetterEmail();
-
-        // if (!$pageParameters) {
-        //     throw new \Exception('No email newsletter in the database');
-        // }
-
-        // QueueCustomNewsLetterEmails::dispatch(); // Dispatch the job to queue up all the emails
-
-        // $emailListCount = EmailList::where('subscribe', '=', true)->count();
-
-        // return collect([
-        //     'message' => "$emailListCount emails sent!"
-        // ]);
     }
 
     public function uploadImage(Request $request)

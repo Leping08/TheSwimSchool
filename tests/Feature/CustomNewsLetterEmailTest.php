@@ -179,43 +179,42 @@ class CustomNewsLetterEmailTest extends TestCase
     }
 
     /** @test */
-    // TODO uncomment this test after the email is sent out
-    // public function a_user_should_send_the_news_letter_out_to_everyone_on_the_newsletter_email_list()
-    // {
-    //     /** @var User $user */
-    //     $user = User::factory()->create();
+    public function a_user_should_send_the_news_letter_out_to_everyone_on_the_newsletter_email_list()
+    {
+        /** @var User $user */
+        $user = User::factory()->create();
 
-    //     $this->actingAs($user);
+        $this->actingAs($user);
 
-    //     EmailList::factory()->count(3)->create();
-    //     EmailList::factory()->count(3)->create([
-    //       'subscribe' => false
-    //     ]);
+        EmailList::factory()->count(3)->create();
+        EmailList::factory()->count(3)->create([
+          'subscribe' => false
+        ]);
 
-    //     $fake_response = [
-    //         'items' => [
-    //             [
-    //                 'address' => $this->faker->safeEmail,
-    //                 'created_at' => 'Mon, 11 Oct 2021 13:48:43 UTC',
-    //             ]
-    //         ]
-    //     ];
+        $fake_response = [
+            'items' => [
+                [
+                    'address' => $this->faker->safeEmail,
+                    'created_at' => 'Mon, 11 Oct 2021 13:48:43 UTC',
+                ]
+            ]
+        ];
 
-    //     Http::fake([
-    //         'api.mailgun.net/v3/theswimschoolfl.com/complaints' => Http::response($fake_response, 200)
-    //     ]);
+        Http::fake([
+            'api.mailgun.net/v3/theswimschoolfl.com/complaints' => Http::response($fake_response, 200)
+        ]);
 
-    //     Queue::fake();
+        Queue::fake();
 
-    //     Queue::assertNothingPushed();
+        Queue::assertNothingPushed();
         
-    //     PageParameters::factory()->customNewsLetter()->create();
+        PageParameters::factory()->customNewsLetter()->create();
         
-    //     $this->json('POST', route('newsletter.send'))
-    //     ->assertStatus(200);
+        $this->json('POST', route('newsletter.send'))
+        ->assertStatus(200);
         
-    //     Queue::assertPushed(QueueCustomNewsLetterEmails::class);
-    // }
+        Queue::assertPushed(QueueCustomNewsLetterEmails::class);
+    }
     
     /** @test */
     public function the_send_custom_news_letter_email_job_does_send_the_email()
