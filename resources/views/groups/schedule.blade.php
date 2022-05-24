@@ -164,12 +164,8 @@
                 </table>
             </div>
 
-            <p>*Class times vary per level and session based on facility and instructor availability, so the specific class
-                times are not available until registration opens for each session. <a href="{{ route('groups.lessons.index') }}">Registration</a> is completed online
-                through the “Levels” by clicking on the “Find Classes” button.</p>
-
             {{-- <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>Fall 2021 Sessions</span></h2>
+                <h2 class="uk-heading-line"><span>Winter 2022 Sessions</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
@@ -226,9 +222,11 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
 
-            <p>*Class times vary per level and session so the specific class times are not available until registration opens for each session.</p> --}}
+            <p>*Class times vary per level and session based on facility and instructor availability, so the specific class
+                times are not available until registration opens for each session. <a href="{{ route('groups.lessons.index') }}">Registration</a> is completed online
+                through the “Levels” by clicking on the “Find Classes” button.</p>
 
         </div>
     </div>
