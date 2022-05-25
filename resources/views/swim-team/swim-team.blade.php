@@ -202,9 +202,9 @@
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                     <div class="uk-panel">
                         <ul class="uk-list uk-list-bullet">
-                            <li><b>White 1 & 2 Groups:</b> M/T/W/TH 9:00AM-9:45AM (Choose 3 days per week at your convenience)</li>
-                            <li><b>Gray Group:</b> M/T/W/TH 9:45AM-10:45AM</li>
-                            <li><b>Blue Group:</b> M/T/W/TH 10:45AM-12:00PM</li>
+                            <li><b>White Teams 1 & 2:</b> M/T/W/TH 9:00AM-9:45AM (Choose 3 days per week at your convenience)</li>
+                            <li><b>Gray Team:</b> M/T/W/TH 9:45AM-10:45AM</li>
+                            <li><b>Blue Team:</b> M/T/W/TH 10:45AM-12:00PM</li>
                         </ul>
                     </div>
                 </div>
