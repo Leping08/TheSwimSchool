@@ -28,8 +28,8 @@
 
 @component('mail::panel')
 ### Practice Location
-2250 Wilderness Blvd W,\
-Parrish, FL 34219
+715 17th St East,\
+Palmetto, FL 34221
 @endcomponent
 
 @component('mail::panel')
