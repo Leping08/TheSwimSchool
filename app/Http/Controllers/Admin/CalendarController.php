@@ -10,6 +10,7 @@ use App\Lesson;
 use App\PrivatePoolSession;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class CalendarController extends Controller
 {
@@ -19,23 +20,27 @@ class CalendarController extends Controller
         'empty' => '#a0aec0'
     ];
 
-    public function show(Instructor $instructor)
+    public function show(Request $request, Instructor $instructor)
     {
-        $events = $this->calendarEvents($instructor);
+        $events = $this->calendarEvents($instructor, $request->input('start_date') ?? null);
 
         return view('admin.calendar.show', compact('events', 'instructor'));
     }
 
     /**
      * @param  Instructor  $instructor
+     * @param  String  $startDate
      * @return array
      */
-    public function calendarEvents(Instructor $instructor)
+    public function calendarEvents(Instructor $instructor, $startDate = null)
     {
         $events = collect();
+        // Get the start date if its passed though as a query param
+        // If not, use the current date sub 3 months
+        $requestStartDate = Carbon::parse($startDate) ?? Carbon::now()->subMonths(3);
 
         //Get all the lessons from 3 months ago and up
-        $lessons = Lesson::whereDate('class_end_date', '>=', Carbon::now()->subMonths(3))
+        $lessons = Lesson::whereDate('class_end_date', '>=', $requestStartDate)
                             ->where('instructor_id', $instructor->id)
                             ->with(['group', 'swimmers', 'location', 'waitList'])
                             ->get();

@@ -25,7 +25,7 @@
                                 {{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
                             @endforeach
                         </div>
-                        <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong><br>715 17th St East,<br>Palmetto, FL 34221</div>
+                        <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong><br>{{ config('swim-team.address') }}</div>
                     </div>
 
                     <hr class="uk-width-1-1">

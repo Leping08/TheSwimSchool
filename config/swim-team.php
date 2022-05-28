@@ -15,6 +15,8 @@ return [
 
     'name' => 'Parrish Bull Sharks',
 
-    'full-name' => 'Parrish Bull Sharks Swim Team'
+    'full-name' => 'Parrish Bull Sharks Swim Team',
+
+    'address' => 'Lincoln Splash Pad 715 17th St East Palmetto, FL 34221',
 
 ];

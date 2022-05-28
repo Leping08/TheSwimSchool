@@ -28,8 +28,7 @@
 
 @component('mail::panel')
 ### Practice Location
-715 17th St East,\
-Palmetto, FL 34221
+{{ config('swim-team.address') }}
 @endcomponent
 
 @component('mail::panel')

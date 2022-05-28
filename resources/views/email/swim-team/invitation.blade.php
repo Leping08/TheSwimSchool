@@ -23,8 +23,7 @@ Based on tryouts, we would like to place you in {{$athlete->level->name}} level.
 @endforeach
 
 ## Practice Location
-715 17th St East,\
-Palmetto, FL 34221
+{{ config('swim-team.address') }}
 
 @if($promoCode)
 ## Promo Code
