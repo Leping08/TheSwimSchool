@@ -10,8 +10,6 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\Metrics\SwimmersPerDay;
 use App\Nova\Metrics\NewSwimmers;
 use App\Nova\Metrics\LessonsPerLevel;
-//use Spatie\TailTool\TailTool;
-use Gregoriohc\LaravelNovaThemeResponsive\ThemeServiceProvider;
 use Leping\ParrishBullSharks\ParrishBullSharks;
 use Tightenco\NovaStripe\NovaStripe;
 
