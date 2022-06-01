@@ -25,7 +25,7 @@
         "leping/lesson-link": "*",
         "leping/parrish-bull-sharks": "*",
         "leping/swim-school-theme": "*",
-        "opanegro/nova-custom-controller": "^1.5",
+        "opanegro/nova-custom-controller": "*",
         "stripe/stripe-php": "^7.0",
         "symfony/translation": "^5.0",
         "tightenco/nova-stripe": "^0.2.2"
@@ -69,6 +69,10 @@
         {
             "type": "path",
             "url": "./nova"
+        },
+        {
+            "type": "path",
+            "url": "./nova-custom-controller"
         },
         {
             "type": "path",
