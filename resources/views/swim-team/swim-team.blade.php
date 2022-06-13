@@ -284,8 +284,8 @@
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
-                            <div class="uk-margin">Download the 2021 swim meet schedule. All swim meets are optional but participation is highly encouraged.</div>
-                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_2021_Swim_Meet_Schedule.pdf') }}" download="PBS 2021 Swim Meet Schedule.pdf">Download</a>
+                            <div class="uk-margin">Download the 2022 swim meet schedule. All swim meets are optional but participation is highly encouraged.</div>
+                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_2022_Swim_Meet_Schedule.pdf') }}" download="PBS 2022 Swim Meet Schedule.pdf">Download</a>
                         </div>
                     </div>
                 </div>
