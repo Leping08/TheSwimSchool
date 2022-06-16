@@ -164,27 +164,31 @@
                 </table>
             </div>
 
-            {{-- <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>Winter 2022 Sessions</span></h2>
+            <div class="uk-margin-large-top">
+                <h2 class="uk-heading-line"><span>2022 Winter & Spring Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
-                            <th class="uk-width-1-2"><h5>Weekday AM & PM Sessions (M/W; T/TH 2x/wk for 4 weeks)</h5></th>
+                            <th class="uk-width-1-2"><h5>Weekday AM & PM Sessions (M/W 2x/wk for 4 weeks)</h5></th>
                             <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>August 9th-September 2nd</td>
-                            <td>August 2nd</td>
+                            <td>January 17th-February 9th</td>
+                            <td>January 3rd</td>
                         </tr>
                         <tr>
-                            <td>September 13th-October 7th</td>
-                            <td>September 6th</td>
+                            <td>February 14th-March 9th</td>
+                            <td>February 7th</td>
                         </tr>
                         <tr>
-                            <td>October 11th-November 4th</td>
-                            <td>October 4th</td>
+                            <td>March 21st-April 13th</td>
+                            <td>March 7th</td>
+                        </tr>
+                        <tr>
+                            <td>April 25th-May 18th</td>
+                            <td>April 11th</td>
                         </tr>
                     </tbody>
                 </table>
@@ -200,8 +204,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>September 11th-October 16th</td>
-                            <td>August 30th</td>
+                            <td>January 29th-March 5th</td>
+                            <td>January 10th</td>
+                        </tr>
+                        <tr>
+                            <td>March 26th-May 7th (No Class Easter Weekend 4/16)</td>
+                            <td>March 7th</td>
+                        </tr>
+                        <tr>
+                            <td>May 14th-June 25th (No Class Memorial Day Weekend 5/28)</td>
+                            <td>May 2nd</td>
                         </tr>
                     </tbody>
                 </table>
@@ -217,12 +229,20 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>September 12th-October 17th</td>
-                            <td>August 30th</td>
+                            <td>January 30th-March 6th</td>
+                            <td>January 10th</td>
+                        </tr>
+                        <tr>
+                            <td>March 27th-May 8th (No Class Easter Weekend 4/17)</td>
+                            <td>March 7th</td>
+                        </tr>
+                        <tr>
+                            <td>May 15th-June 26th (No Class Memorial Day Weekend 5/29)</td>
+                            <td>May 2nd</td>
                         </tr>
                     </tbody>
                 </table>
-            </div> --}}
+            </div>
 
             <p>*Class times vary per level and session based on facility and instructor availability, so the specific class
                 times are not available until registration opens for each session. <a href="{{ route('groups.lessons.index') }}">Registration</a> is completed online
