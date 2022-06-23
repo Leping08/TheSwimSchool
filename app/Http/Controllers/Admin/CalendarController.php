@@ -37,15 +37,17 @@ class CalendarController extends Controller
         $events = collect();
         // Get the start date if its passed though as a query param
         // If not, use the current date sub 3 months
-        $requestStartDate = Carbon::parse($startDate) ?? Carbon::now()->subMonths(3);
+        $requestStartDate = $startDate ? Carbon::parse($startDate) : Carbon::now()->subMonths(3);
 
         //Get all the lessons from 3 months ago and up
         $lessons = Lesson::whereDate('class_end_date', '>=', $requestStartDate)
                             ->where('instructor_id', $instructor->id)
-                            ->with(['group', 'swimmers', 'location', 'waitList'])
+                            ->with(['group', 'swimmers', 'location', 'waitList', 'daysOfTheWeek'])
+                            ->withCount(['swimmers'])
                             ->get();
 
         //Loop over the group lessons and generate pool sessions for them
+        // todo refactor calendarEvents method to not be as heavy on the DB
         foreach ($lessons as $lesson) {
             $events->push($lesson->calendarEvents->map(function ($eventDate) use ($lesson) {
                 $eventDate = Carbon::parse($eventDate);
@@ -54,7 +56,7 @@ class CalendarController extends Controller
                     'title' => $lesson->group->type,
                     'start' => Carbon::parse($eventDate->toDateString().$lesson->class_start_time->toTimeString()),
                     'end' => Carbon::parse($eventDate->toDateString().$lesson->class_end_time->toTimeString()),
-                    'color' => $lesson->swimmers->count() ? self::COLORS['group'] : self::COLORS['empty'],
+                    'color' => $lesson->swimmers_count ? self::COLORS['group'] : self::COLORS['empty'],
                     'details_link' => '/admin/resources/lessons/'.$lesson->id,
                     'swimmers' => $lesson->swimmers,
                     'location' => $lesson->location->name,
@@ -71,14 +73,15 @@ class CalendarController extends Controller
 
         //Map the Private Lessons into calendar events
         $events->push($poolSessions->map(function ($session) {
+            $swimmer = $session->swimmer();
             return [
                 'id' => $session->id,
                 'title' => 'Private',
                 'start' => $session->start,
                 'end' => $session->end,
-                'color' => $session->swimmer() ? self::COLORS['private'] : self::COLORS['empty'],
+                'color' => $swimmer ? self::COLORS['private'] : self::COLORS['empty'],
                 'details_link' => '/admin/resources/private-pool-sessions/'.$session->id,
-                'swimmers' => [$session->swimmer()],
+                'swimmers' => [$swimmer],
                 'location' => $session->location->name,
                 'waitList' => []
             ];
