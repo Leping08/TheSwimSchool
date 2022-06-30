@@ -16,7 +16,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/helpers": "^1.1",
-        "laravel/nova": "^3.0",
+        "laravel/nova": "~3.0",
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.0",
         "laravel/vapor-core": "^2.10",
@@ -67,8 +67,8 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "./nova"
+            "type": "composer",
+            "url": "https://nova.laravel.com"
         },
         {
             "type": "path",
