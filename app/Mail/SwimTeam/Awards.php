@@ -35,6 +35,6 @@ class Awards extends Mailable
     {
         return $this->markdown('email.swim-team.awards')
             ->from(config('mail.from.address'))
-            ->subject('Awards Luau Luncheon');
+            ->subject('Parrish Bull Sharks Awards Dinner');
     }
 }

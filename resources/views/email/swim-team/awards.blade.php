@@ -2,17 +2,21 @@
 
 @slot('header')
 @component('mail::header', ['url' => route('swim-team.index')])
-<img alt="" style="max-width: 350px;" src="{{asset('img/logos/parrish-bull-sharks.png')}}">
+<img alt="" style="max-width: 300px;" src="{{asset('img/logos/parrish-bull-sharks.png')}}">
 @endcomponent
 @endslot
 
-# {{ config('swim-team.full-name') }} Awards Luau Luncheon Info
+# {{ config('swim-team.full-name') }} Awards Dinner
 
 @component('mail::panel')
-Please follow the link below to the Awards Luau Luncheon RSVP form. Please complete pre-order no later than 8/18. We hope to see you there!!!
+<img alt="" style="max-width: 100%;" src="{{asset('img/swim-team/RSVP2.jpg')}}">
 @endcomponent
 
-@component('mail::button', ['url' => 'https://forms.gle/rgU35E2TPenKh7GUA'])
+@component('mail::panel')
+Please RSVP for our team awards dinner no later than Thursday, August 18th using the form below.
+@endcomponent
+
+@component('mail::button', ['url' => 'https://docs.google.com/forms/d/e/1FAIpQLScL-VjdnGorWjgjF2_rptuPvpi8_vUu9-zVKIvy_1CiJXB5bw/viewform'])
 RSVP Here
 @endcomponent
 
