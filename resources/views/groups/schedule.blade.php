@@ -56,8 +56,8 @@
                             <td>August 8th</td>
                         </tr>
                         <tr>
-                            <td>October 8th-November 12th</td>
-                            <td>September 26th</td>
+                            <td>October 15th-November 19th</td>
+                            <td>October 3rd</td>
                         </tr>
                     </tbody>
                 </table>
@@ -78,7 +78,7 @@
                         </tr>
                         <tr>
                             <td>October 9th-November 13th</td>
-                            <td>September 26th</td>
+                            <td>October 3rd</td>
                         </tr>
                     </tbody>
                 </table>
