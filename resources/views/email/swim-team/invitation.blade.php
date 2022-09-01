@@ -14,8 +14,8 @@
 **{{$athlete->firstName}} {{$athlete->lastName}}**, you made the {{ config('swim-team.full-name') }}!
 Based on tryouts, we would like to place you in {{$athlete->level->name}} level.
 
-## Season
-{{$athlete->season->dates}}
+{{-- ## Season --}}
+{{-- {{$athlete->season->dates}} --}}
 
 ## {{$athlete->level->name}} Level Practice Schedule
 @foreach($athlete->level->schedule as $day)

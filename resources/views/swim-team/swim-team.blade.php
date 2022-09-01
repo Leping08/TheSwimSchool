@@ -25,7 +25,7 @@
                             <h2 class="uk-heading-line"><span>Location</span></h2>
                             <p>Starting Wednesday, June 1st, 2022, swim team will take place in an outdoor pool at the new Lincoln Aquatics Center in Palmetto, Florida.</p>
                             <div class="uk-card uk-card-default">
-                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{urlencode(config('swim-team.address'))}}&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                                <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{urlencode(config('google-maps-query'))}}&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>

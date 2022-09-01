@@ -17,6 +17,8 @@ return [
 
     'full-name' => 'Parrish Bull Sharks Swim Team',
 
-    'address' => 'Lincoln Splash Pad 715 17th St East Palmetto, FL 34221',
+    'address' => '715 17th St E, Palmetto, FL 34221',
+
+    'google-maps-query' => 'Lincoln+Aquatic+Center',
 
 ];

@@ -30,7 +30,7 @@
                         <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Time:</strong> {{$tryout->event_time->format('g:i a')}} - {{$tryout->event_time->addHour()->format('g:i a')}}</div>
                     </div>
                     <div class="uk-child-width-expand@s" uk-grid>
-                        <iframe height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{{$tryout->location->street}}}+{{{$tryout->location->city}}}+{{{$tryout->location->state}}}+{{{$tryout->location->zip}}}&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                        <iframe height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{urlencode(config('google-maps-query'))}}&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="uk-card uk-card-default uk-margin-top">
