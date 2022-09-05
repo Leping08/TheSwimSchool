@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Library\Interfaces\PaymentMethod;
 
 /**
- * Class Stripe
+ * Class StripeCharge
  * @package App\Library
  */
 class StripeCharge implements PaymentMethod

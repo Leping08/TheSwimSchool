@@ -121,6 +121,8 @@ class Athlete extends Model
     }
 
     /**
+     * @method static findByHash()
+     * 
      * @param $query
      * @param $hash
      * @return mixed
