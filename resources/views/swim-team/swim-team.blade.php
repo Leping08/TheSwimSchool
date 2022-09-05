@@ -23,7 +23,7 @@
                     <div class="uk-container">
                         <div class="uk-width-1-1@m">
                             <h2 class="uk-heading-line"><span>Location</span></h2>
-                            <p>Starting Wednesday, June 1st, 2022, swim team will take place in an outdoor pool at the new Lincoln Aquatics Center in Palmetto, Florida.</p>
+                            <p>The Parrish Bull Sharks swim team is located at the Lincoln Aquatic Center, 715 17th St. E Palmetto, Florida 34221.</p>
                             <div class="uk-card uk-card-default">
                                 <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{urlencode(config('swim-team.google-maps-query'))}}&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                             </div>
@@ -36,27 +36,19 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>2022 {{ config('swim-team.name') }} Swim Team Tryouts Information</span></h2>
+                        <h2 class="uk-heading-line"><span>Tryouts</span></h2>
                         <div class="uk-dropcap uk-margin">
-{{--                            <p>--}}
-{{--                                Our 2021 spring pre-season training has begun! For more information and to register, check out our <a title="Swimming Team Parrish" href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a>--}}
-{{--                                for 6-8 year olds ($100 per session) and our <a title="Parrish Swim Club" href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club</a> for ages 9 years & up ($125 per session).--}}
-{{--                                Sessions are held weekday evenings. Information regarding our 2021 Summer Swim Team tryouts and season will be available by April 15th.--}}
-{{--                                Stay up to date with everything we are doing on our <a title="Parrish Swim Team Facebook" href="https://www.facebook.com/Parrish-Bull-Sharks-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.--}}
-{{--                            </p>--}}
+                            <p>
+                                Come join our team! We are a year round swim team with four program levels based on age and ability. All interested participants must register for and complete one of our available tryout sessions. There is no fee to tryout for the team. Each tryout session will take approximately one hour.
+                            </p>
+                            <p>
+                                <b>Minimum Requirement</b>: Each child must be able to swim at least one full individual length without stopping (25 yards) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
+                            </p>
+                            
                             {{-- <p>
-                                The {{ config('swim-team.full-name') }} competes in a seasonal, developmental swim league.
-                                The summer season runs <strong>Tuesday, June 1st - Sunday, August 2nd</strong> and practices are held at the River Wilderness Golf & Country Club pool.
-                                Stay up to date with everything we are doing on our <a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="_blank">Facebook page</a>.
-                            </p>
-                            <p>
-                                Need some practice first? Join in on our spring pre-season Swim Team. For more information and to register, check out our <a href="/lessons/Flying%20Fish%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Flying Fish Swim Club</a>
-                                for 6-8 year olds ($100 per session) and our <a href="/lessons/Shark%20Level%20(Youth%20Advanced%20-%20Swim%20Club)">Shark Swim Club</a> for ages 9 years & up ($125 per session). Sessions are held weekday evenings.
-                            </p>
-                            <p>
                                 Need to learn the strokes first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available now to get your child ready for their tryout.
                             </p> --}}
-                            <p>
+                            {{-- <p>
                                 Registration for swim team tryouts opens on May 1st. All interested participants including returning swim team members must register and attend one of the available tryout options. There is no fee to tryout for the swim team. Tryouts are being held at our indoor pool location, Realhab Physical Therapy, Aquatics & Wellness Center, 12159 US-301, Parrish (while the Lincoln Aquatics Center construction is being completed). Each tryout session will take approximately one hour.
                             </p>
                             <ul class="uk-list uk-list-bullet">
@@ -65,10 +57,7 @@
                                 <li>Friday, May 20th 4:30PM</li>
                                 <li>Friday, May 20th 5:30PM</li>
                                 <li>Friday, May 20th 6:30PM</li>
-                            </ul>
-                            <p>
-                                *Minimum Requirement: Each child must be able to swim at least one full individual length without stopping (25 yards) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
-                            </p>
+                            </ul> --}}
                             <div>
                                 <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>
                             </div>
@@ -163,17 +152,23 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                     <div class="uk-panel">
-                        <div class="uk-margin">The summer season runs Wednesday, June 1st - Saturday, July 30th. No Registration Fees! 10% Multiple Child Discount. Each child will receive one free team swim cap and team t-shirt. Price also includes swim meet entry fees and ribbons for the entire season (with the exception of the Suncoast Swim League championship meet fee) as well as end of season awards.</div>
-                        <ul class="uk-list uk-list-bullet">
-                            <li><b>White Team:</b> $250</li>
-                            <li><b>Gray Team:</b> $310</li>
-                            <li><b>Blue Team:</b> $450</li>
-                        </ul>
-                        <div class="uk-margin">*Parent Non-Volunteer Fee per swimmer per season (optional): $50</div>
                         <div class="uk-margin">
+                            There is a $100 Registration/Apparel Fee per swimmer. As part of this fee, each swimmer will receive one team swimsuit, cap, t-shirt, water bottle and drawstring bag.
+                        </div>
+                        <div class="uk-margin">
+                            A recurring monthly fee will be applied on the 1st of each month per swimmer based on their assigned program level. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration. *Fees are subject to an increase for the Blue Team as we plan to expand practice options for this group in the near future.
+                        </div>
+                        <ul class="uk-list uk-list-bullet">
+                            <li><b>White Team 1:</b> $125</li>
+                            <li><b>Gray Team 2:</b> $125</li>
+                            <li><b>Gray Team:</b> $150</li>
+                            <li><b>Blue Team:</b> $150</li>
+                        </ul>
+                        <div class="uk-margin">*Parent Non-Volunteer Fee per swimmer (optional): $100</div>
+                        {{-- <div class="uk-margin">
                             You can find all official {{ config('swim-team.name') }} apparel for the swim season at our team apparel store below.
                         </div>
-                        <a class="uk-button uk-button-primary" target="_blank" href="https://www.destinationathlete.com/teams/store.aspx?team=2159&dept=2173">Team Apparel Store</a>
+                        <a class="uk-button uk-button-primary" target="_blank" href="https://www.destinationathlete.com/teams/store.aspx?team=2159&dept=2173">Team Apparel Store</a> --}}
                     </div>
                 </div>
 
@@ -202,9 +197,10 @@
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                     <div class="uk-panel">
                         <ul class="uk-list uk-list-bullet">
-                            <li><b>White Teams 1 & 2:</b> M/T/W/TH 9:00AM-9:45AM (Choose 3 days per week at your convenience)</li>
-                            <li><b>Gray Team:</b> M/T/W/TH 9:45AM-10:45AM</li>
-                            <li><b>Blue Team:</b> M/T/W/TH 10:45AM-12:00PM</li>
+                            <li><b>White Team 1:</b> M/W/F 5:00PM-5:45PM</li>
+                            <li><b>White Team 2:</b> M/W/F 5:00PM-5:45PM</li>
+                            <li><b>Gray Team:</b> M/W/F 5:00PM-6:00PM</li>
+                            <li><b>Blue Team:</b> M/W/F 5:00PM-6:00PM</li>
                         </ul>
                     </div>
                 </div>
