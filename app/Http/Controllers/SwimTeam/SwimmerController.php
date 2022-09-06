@@ -13,8 +13,10 @@ use App\STSeason;
 use App\STShirtSize;
 use App\STSwimmer;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Stripe\PaymentIntent;
 
 class SwimmerController extends Controller
 {
@@ -31,6 +33,51 @@ class SwimmerController extends Controller
         $season = STSeason::currentSeason();
         $sizes = STShirtSize::all();
         return view('swim-team.signUp', compact('level', 'season', 'athlete', 'sizes'));
+    }
+
+    /**
+     * @param  Request  $request
+     * @param  STLevel  $level
+     * @param  null  $hash
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function store2(Request $request, STLevel $level, $hash)
+    {
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $paymentIntent = PaymentIntent::retrieve($request->query('payment_intent'));
+
+        // find the athlete by the hash
+        $athlete = Athlete::findByHash($hash)->first();
+
+        // create a swimmer from the athlete data
+        $swimmer = STSwimmer::create([
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+            'email' => $athlete->email,
+            'phone' => $athlete->phone,
+            'birthDate' => $athlete->birthDate,
+            'parent' => $athlete->parent,
+            'notes' => json_encode([
+                'stripe_payment_intent' => $paymentIntent->id,
+                'stripe_customer_id' => $paymentIntent->customer,
+            ]),
+            'street' => $athlete->street,
+            'city' => $athlete->city,
+            'state' => $athlete->state,
+            'zip' => $athlete->zip,
+            'emergencyName' => $athlete->emergencyName,
+            'emergencyRelationship' => $athlete->emergencyRelationship,
+            'emergencyPhone' => $athlete->emergencyPhone,
+            's_t_level_id' => $level->id,
+            's_t_season_id' => STSeason::currentSeason()->id,
+            'promo_code' => $request->get('promo_code'),
+        ]);
+
+        // send a confirmation email with the first practice date
+        // todo send confirmation email or forward to swim team thank you page
+
+        // redirect to thank you page
+        return view('pages.thank-you', compact('swimmer'));
     }
 
     /**

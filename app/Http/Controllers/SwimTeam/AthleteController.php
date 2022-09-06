@@ -53,4 +53,70 @@ class AthleteController extends Controller
         session()->flash('success', "Thanks for signing up! Don't forget to mark your calendar for the tryout.");
         return redirect("/swim-team");
     }
+
+    public function update(Request $request)
+    {
+        // find the athlete by the hash
+        $athlete = Athlete::findByHash($request->hash)->first() ?? null;
+
+        if($athlete === null){
+            return response()->json([
+                'message' => 'Athlete not found'
+            ], 404);
+        }
+
+        // filter down only values that have changed
+        $athlete->update($request->only([
+            'firstName',
+            'lastName',
+            'birthDate',
+            'email',
+            'phone',
+            'parent',
+            'street',
+            'city',
+            'state',
+            'zip',
+            'emergencyName',
+            'emergencyRelationship',
+            'emergencyPhone'
+        ]));
+
+        // return the athlete
+        return response()->json($athlete);
+    }
+
+    /**
+     * @param Request $request
+     * @param Tryout $tryout
+     * @return Redirect
+     */
+    public function new(Request $request, Tryout $tryout)
+    {
+        $athlete = $request->validate([
+            'firstName' => 'required|string|max:191',
+            'lastName' => 'required|string|max:191',
+            'birthDate' => 'required|date|before:today',
+            'email' => 'required|string|email|max:191',
+            'phone' => 'required|max:20',
+            'parent' => 'nullable|max:191',
+            'street' => 'required|max:191',
+            'city' => 'required|max:191',
+            'state' => 'required|max:191',
+            'zip' => 'required|max:15',
+            'emergencyName' => 'required|max:191',
+            'emergencyRelationship' => 'required|max:191',
+            'emergencyPhone' => 'required|max:20'
+        ]);
+
+        $athlete['birthDate'] = Carbon::parse($athlete['birthDate']);
+        $athlete['tryout_id'] = $tryout->id;
+
+        $athlete['s_t_season_id'] = STSeason::currentseason()->id;
+
+        $newAthlete = Athlete::create($athlete);
+
+        Log::info("Athlete ID: $newAthlete->id signed up for Tryout ID: $tryout->id!");
+        return $newAthlete;
+    }
 }

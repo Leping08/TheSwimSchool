@@ -100,11 +100,15 @@ Route::get('/roster', 'SwimTeam\RosterController@index')->name('swim-team.roster
 Route::get('/swim-team', 'SwimTeam\CoachesController@index')->name('swim-team.index');
 
 /* @see SwimmerController::index() */
+// this shows the sign up form with everything pre filled
 Route::get('/swim-team/level/{level}/swimmer/{athlete?}', 'SwimTeam\SwimmerController@index')->name('swim-team.swimmer.show');
 
 /* @see SwimmerController::store() */
-Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'SwimTeam\SwimmerController@store')->name('swim-team.swimmer.store');
+// Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'SwimTeam\SwimmerController@store')->name('swim-team.swimmer.store');
 
+/* @see SwimmerController::store2() */
+// this runs the logic to save the data that was submitted after the stripe charge
+Route::get('/swim-team/save-swimmer/level/{level}/swimmer/{athlete}', 'SwimTeam\SwimmerController@store2')->name('swim-team.swimmer.store2');
 
 
 

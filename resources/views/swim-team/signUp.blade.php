@@ -30,40 +30,10 @@
 
                     <hr class="uk-width-1-1">
 
-                    <script src="https://checkout.stripe.com/checkout.js"></script>
-                    <script>
-                        let form = null;
-                        document.addEventListener('DOMContentLoaded', function() {
-                            form = document.getElementById('sign-up');
-                        }, false);
-
-                        function openStripeCheckout() {
-                            if(!(document.getElementById('price').innerText <= 0)){
-                                StripeCheckout.open({
-                                    name: 'The Swim School',
-                                    description: '{{ config('swim-team.full-name') }} {{$level->name}} Level',
-                                    key: '{{ config('services.stripe.key') }}',
-                                    image: '{{ asset('/img/logos/TSS_png.png') }}',
-                                    locale: 'auto',
-                                    token: function (token) {
-                                        let hiddenInput = document.createElement('input');
-                                        hiddenInput.setAttribute('type', 'hidden');
-                                        hiddenInput.setAttribute('name', 'stripeToken');
-                                        hiddenInput.setAttribute('value', token.id);
-                                        form.appendChild(hiddenInput);
-                                        // Submit the form
-                                        form.submit();
-                                    }
-                                })
-                            } else {
-                                form.submit();
-                            }
-                        }
-                    </script>
-
-                    <form class="uk-grid-small" id="sign-up" uk-grid action="{{ route('swim-team.swimmer.store', ['level' => $level]) }}" method="POST">
+                    <form class="uk-grid-small" id="sign-up" uk-grid action="" method="POST">
                         {{ csrf_field() }}
-                        <input type="hidden" name="level_id" value="{{{$level->id}}}" required>
+                        <input type="hidden" name="level_id" id="level_id" value="{{{$level->id}}}" required>
+                        <input type="hidden" name="athlete_id" id="athlete_id" value="{{{$athlete->id ?? null}}}" required>
                         <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
                             Swimmer Information
                         </div>
@@ -197,10 +167,231 @@
                         </div>
 
                         <div class="uk-margin uk-width-1-1@s">
-                            <button class="uk-button uk-button-primary" onclick="event.preventDefault(); if(form.reportValidity()){openStripeCheckout();}">Checkout</button>
-                            {{--<button type="submit" class="uk-button uk-button-primary">Payment Method</button>--}}
+                            <button class="uk-button uk-button-primary" id="checkout" onclick="event.preventDefault(); if(form.reportValidity()){saveAthleteData();}">Checkout</button>
                         </div>
+
+                        {{-- <div class="uk-margin uk-width-1-1@s">
+                            <button class="uk-button uk-button-primary" onclick="event.preventDefault(); if(form.reportValidity()){openStripeCheckout();}">Checkout</button>
+                        </div> --}}
                     </form>
+
+                    <script src="https://js.stripe.com/v3/" type="application/javascript"></script>
+                    <!-- Display a payment form -->
+                    <form id="payment-form">
+                        <!-- <input type="text" id="email" placeholder="Enter email address" /> -->
+                        <div id="payment-element">
+                            <!--Stripe.js injects the Payment Element-->
+                        </div>
+                        <button class="uk-button uk-button-primary" id="submit" type="submit">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">Pay now</span>
+                        </button>
+                        <div id="payment-message" class="hidden"></div>
+                    </form>
+
+                    <script type="application/javascript">
+                        // This is your test publishable API key.
+                        const stripe = Stripe(window.laravelConfig.STRIPE_PUBLIC);
+                        let elements;
+
+                        // Hide pay now button
+                        const payNowButton = document.getElementById('submit').style.display = 'none';
+
+                        let hash = "{{$athlete->hash ?? null}}";
+                        let level_id = "{{$level->id}}";
+
+                        function saveAthleteData() {
+                            let swimmerData = {
+                                "firstName": document.getElementById("firstName").value,
+                                "lastName": document.getElementById("lastName").value,
+                                "birthDate": document.getElementById("birthDate").value,
+                                "email": document.getElementById("email").value,
+                                "parent": document.getElementById("parent").value,
+                                "phone": document.getElementById("phone").value,
+                                "street": document.getElementById("street").value,
+                                "city": document.getElementById("city").value,
+                                "state": document.getElementById("state").value,
+                                "zip": document.getElementById("zip").value,
+                                "emergencyName": document.getElementById("emergencyName").value,
+                                "emergencyRelationship": document.getElementById("emergencyRelationship").value,
+                                "emergencyPhone": document.getElementById("emergencyPhone").value,
+                            }
+
+                            // check if the hash is not set and if so create a new athlete
+                            if (!hash) {
+                                fetch('/api/athlete/new', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    },
+                                    body: JSON.stringify(swimmerData),
+                                })
+                                .then(response => response.json())
+                                .then(athlete => {
+                                    hash = athlete.hash;
+                                    document.getElementById("athlete_id").value = athlete.id;
+                                    openCheckoutComponent();
+                                    return;
+                                })
+                                .catch((error) => {
+                                    console.error('Error:', error);
+                                });   
+                            } else { // else update the old athlete with the new data
+                                // Send post request to '/athlete/{hash}'
+                                fetch('/api/athlete/' + hash, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    },
+                                    body: JSON.stringify(swimmerData),
+                                }) 
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    openCheckoutComponent();
+                                })
+                                .catch((error) => {
+                                    console.error('Error:', error);
+                                });  
+                            }
+
+                        }
+
+                        function openCheckoutComponent() {
+                            // Show pay now button
+                            const payNowButton = document.getElementById('submit').style.display = 'inline-block';
+                            // Hide checkout button
+                            const checkoutButton = document.getElementById('checkout').style.display = 'none';
+
+
+                            var formElem = document.getElementById('sign-up');
+                            const formData = new FormData(formElem);
+
+                            let data = {
+                                name: formData.get('firstName') + ' ' + formData.get('lastName'),
+                                email: formData.get('email'),
+                                athlete_id: formData.get('athlete_id'),
+                                level_id: formData.get('level_id'),
+                                promo_code: formData.get('promo_code'),
+                            };
+
+                            console.log(data);
+
+                            initialize(data);
+                            checkStatus();
+
+                            // wait for the js to load
+                            setTimeout(() => {
+                                document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
+                            }, 500);
+                        }
+
+                        // Fetches a payment intent and captures the client secret
+                        async function initialize(data) {
+                            // todo add try catch here
+                            // todo handel backend errors better here. Right now its just a 302 and does nothing
+                            const { clientSecret } = await fetch("/api/stripe-token/payment-intent", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    name: data.name,
+                                    email: data.email,
+                                    athlete_id: data.athlete_id,
+                                    level_id: data.level_id,
+                                    promo_code: data.promo_code
+                                }),
+                            }).then((r) => r.json());
+                    
+                            elements = stripe.elements({ clientSecret });
+                    
+                            const paymentElement = elements.create("payment");
+                            paymentElement.mount("#payment-element");
+                        }
+                
+                        async function handleSubmit(e) {
+                            e.preventDefault();
+                            setLoading(true);
+                    
+                            const { error } = await stripe.confirmPayment({
+                                elements,
+                                confirmParams: {
+                                    // Make sure to change this to your payment completion page
+                                    return_url: "{{ route('home.index') }}" + "/swim-team/save-swimmer/level/" + level_id + "/swimmer/" + hash + "?athlete_id=" + hash,
+                                    receipt_email: document.getElementById("email").value,
+                                }
+                            });
+                    
+                            // This point will only be reached if there is an immediate error when
+                            // confirming the payment. Otherwise, your customer will be redirected to
+                            // your `return_url`. For some payment methods like iDEAL, your customer will
+                            // be redirected to an intermediate site first to authorize the payment, then
+                            // redirected to the `return_url`.
+                            if (error.type === "card_error" || error.type === "validation_error") {
+                                showMessage(error.message);
+                            } else {
+                                showMessage("An unexpected error occurred.");
+                            }
+                    
+                            setLoading(false);
+                        }
+                
+                        // Fetches the payment intent status after payment submission
+                        async function checkStatus() {
+                            const clientSecret = new URLSearchParams(window.location.search).get(
+                                "payment_intent_client_secret"
+                            );
+                    
+                            if (!clientSecret) {
+                                return;
+                            }
+                    
+                            const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
+                    
+                            switch (paymentIntent.status) {
+                                case "succeeded":
+                                    showMessage("Payment succeeded!");
+                                break;
+                                case "processing":
+                                    showMessage("Your payment is processing.");
+                                break;
+                                case "requires_payment_method":
+                                    showMessage("Your payment was not successful, please try again.");
+                                break;
+                                default:
+                                    showMessage("Something went wrong.");
+                                break;
+                            }
+                        }
+                
+                        // ------- UI helpers -------
+                
+                        function showMessage(messageText) {
+                            const messageContainer = document.querySelector("#payment-message");
+                    
+                            messageContainer.classList.remove("hidden");
+                            messageContainer.textContent = messageText;
+                    
+                            setTimeout(function () {
+                                messageContainer.classList.add("hidden");
+                                messageText.textContent = "";
+                            }, 4000);
+                        }
+                
+                        // Show a spinner on payment submission
+                        function setLoading(isLoading) {
+                            if (isLoading) {
+                                // Disable the button and show a spinner
+                                document.querySelector("#submit").disabled = true;
+                                document.querySelector("#spinner").classList.remove("hidden");
+                                document.querySelector("#button-text").classList.add("hidden");
+                            } else {
+                                document.querySelector("#submit").disabled = false;
+                                document.querySelector("#spinner").classList.add("hidden");
+                                document.querySelector("#button-text").classList.remove("hidden");
+                            }
+                        }
+                    </script>
                 </div>
             </div>
         </div>
