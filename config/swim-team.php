@@ -21,4 +21,6 @@ return [
 
     'google-maps-query' => 'Lincoln+Aquatic+Center',
 
+    'email' => ' info@theswimschoolfl.com',
+
 ];

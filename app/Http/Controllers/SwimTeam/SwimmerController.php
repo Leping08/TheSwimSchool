@@ -8,6 +8,7 @@ use App\Http\Requests\SwimTeamSignUp;
 use App\Library\Helpers\Promo;
 use App\Library\StripeCharge;
 use App\Mail\SwimTeam\STSignUp;
+use App\PromoCode;
 use App\STLevel;
 use App\STSeason;
 use App\STShirtSize;
@@ -35,49 +36,121 @@ class SwimmerController extends Controller
         return view('swim-team.signUp', compact('level', 'season', 'athlete', 'sizes'));
     }
 
+    public function register(STLevel $level, STSwimmer $swimmer)
+    {
+        $season = STSeason::currentSeason();
+        return view('swim-team.register', compact('level', 'season', 'swimmer'));
+    }
+
+    public function savePromoCode(Request $request)
+    {
+        $request->validate([
+            'promo_code' => 'required',
+            'swimmer_id' => 'required'
+        ]);
+
+        // check if the promo code is valid
+        $promoCode = PromoCode::where('code', '=', $request->get('promo_code'))->first();
+
+        // check if the percentage off is over 100% and if so set the note in the swimmer details
+        if ($promoCode->discount_percent > 100) {
+            $swimmer = STSwimmer::find($request->get('swimmer_id'));
+            $swimmer->notes = json_encode([
+                'promo_code' => $promoCode->code
+            ]);
+            $swimmer->save();
+        }
+
+        // todo send the confirmation email
+        return [
+            'success' => true,
+            'redirect' => route('swim-team.thank-you')
+        ];
+    }
+
+    public function update(Request $request)
+    {
+        $swimmer = STSwimmer::find($request->get('swimmerId'));
+
+        // filter down only values that have changed
+        $swimmer->update($request->only([
+            'firstName',
+            'lastName',
+            'birthDate',
+            'parent',
+            'email',
+            'phone',
+            'parent',
+            'street',
+            'city',
+            'state',
+            'zip',
+            'emergencyName',
+            'emergencyRelationship',
+            'emergencyPhone'
+        ]));
+        // update the season to be the current season
+        $swimmer->s_t_season_id = STSeason::currentSeason()->id;
+        $swimmer->save();
+
+        return response()->json($swimmer);
+    }
+
     /**
      * @param  Request  $request
      * @param  STLevel  $level
      * @param  null  $hash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function store2(Request $request, STLevel $level, $hash)
+    public function store2(Request $request, STLevel $level)
     {
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $paymentIntent = PaymentIntent::retrieve($request->query('payment_intent'));
 
-        // find the athlete by the hash
-        $athlete = Athlete::findByHash($hash)->first();
+        // find the swimmer by id
+        $swimmer = STSwimmer::find($request->get('swimmer_id'))->first();
+
+        // update the swimmer notes with the stripe data
+        $swimmer->notes = json_encode([
+            'stripe_payment_intent' => $paymentIntent->id,
+            'stripe_customer_id' => $paymentIntent->customer,
+        ]);
+        $swimmer->save();
+        
+        // send a confirmation email with the first practice date
+        // todo send confirmation email or forward to swim team thank you page
+        // redirect to the thank you page
+        return redirect()->route('swim-team.thank-you');
 
         // create a swimmer from the athlete data
-        $swimmer = STSwimmer::create([
-            'firstName' => $athlete->firstName,
-            'lastName' => $athlete->lastName,
-            'email' => $athlete->email,
-            'phone' => $athlete->phone,
-            'birthDate' => $athlete->birthDate,
-            'parent' => $athlete->parent,
-            'notes' => json_encode([
-                'stripe_payment_intent' => $paymentIntent->id,
-                'stripe_customer_id' => $paymentIntent->customer,
-            ]),
-            'street' => $athlete->street,
-            'city' => $athlete->city,
-            'state' => $athlete->state,
-            'zip' => $athlete->zip,
-            'emergencyName' => $athlete->emergencyName,
-            'emergencyRelationship' => $athlete->emergencyRelationship,
-            'emergencyPhone' => $athlete->emergencyPhone,
-            's_t_level_id' => $level->id,
-            's_t_season_id' => STSeason::currentSeason()->id,
-            'promo_code' => $request->get('promo_code'),
-        ]);
+        // $swimmer = STSwimmer::create([
+        //     'firstName' => $athlete->firstName,
+        //     'lastName' => $athlete->lastName,
+        //     'email' => $athlete->email,
+        //     'phone' => $athlete->phone,
+        //     'birthDate' => $athlete->birthDate,
+        //     'parent' => $athlete->parent,
+        //     'notes' => json_encode([
+        //         'stripe_payment_intent' => $paymentIntent->id,
+        //         'stripe_customer_id' => $paymentIntent->customer,
+        //     ]),
+        //     'street' => $athlete->street,
+        //     'city' => $athlete->city,
+        //     'state' => $athlete->state,
+        //     'zip' => $athlete->zip,
+        //     'emergencyName' => $athlete->emergencyName,
+        //     'emergencyRelationship' => $athlete->emergencyRelationship,
+        //     'emergencyPhone' => $athlete->emergencyPhone,
+        //     's_t_level_id' => $level->id,
+        //     's_t_season_id' => STSeason::currentSeason()->id,
+        //     'promo_code' => $request->get('promo_code'),
+        // ]);
 
         // send a confirmation email with the first practice date
         // todo send confirmation email or forward to swim team thank you page
 
         // redirect to thank you page
-        return view('pages.thank-you', compact('swimmer'));
+        // return view('pages.thank-you', compact('swimmer'));
     }
 
     /**
@@ -136,5 +209,10 @@ class SwimmerController extends Controller
         Log::info("$swimNewTeamSwimmer->firstName $swimNewTeamSwimmer->lastName, ID: $swimNewTeamSwimmer->id has signed up for Level ID: $swimNewTeamSwimmer->s_t_level_id with the ".config('swim-team.full-name').'.');
         session()->flash('success', 'Thanks for signing up for the '.config('swim-team.full-name').'!');
         return redirect('/thank-you');
+    }
+
+    public function thankyou()
+    {
+        return view('swim-team.thank-you');
     }
 }

@@ -18,7 +18,7 @@ class StripePaymentIntentController extends Controller
         $request->validate([
             'name' => ['required', 'min:2', 'max:255'],
             'email' => ['required', 'email', 'min:2', 'max:255'],
-            'athlete_id' => ['required', 'integer'],
+            'swimmer_id' => ['required', 'integer'],
             'level_id' => ['required', 'integer'],
             // 'promo_code' => ['sometimes', 'string', 'min:2', 'max:255'], // todo figure out the promo code validation better
         ]);
@@ -43,7 +43,7 @@ class StripePaymentIntentController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'metadata' => [
-                'athlete_id' => $request->get('athlete_id'),
+                'swimmer_id' => $request->get('swimmer_id'),
                 'level_id' => $request->get('level_id'),
                 'level_name' => $level->name,
             ]

@@ -27,6 +27,10 @@ Route::post('/athlete/new', 'SwimTeam\AthleteController@new')->name('api.athlete
 
 Route::post('/athlete/{hash}', 'SwimTeam\AthleteController@update')->name('api.athlete.update');
 
-Route::post('/stripe-token/payment-intent', 'StripePaymentIntentController@store');
+Route::post('/swim-team/swimmer', 'SwimTeam\SwimmerController@update')->name('api.swimmer.update');
+
+Route::post('/swim-team/swimmer/promo-code', 'SwimTeam\SwimmerController@savePromoCode')->name('api.swimmer.update');
+
+Route::post('/stripe-token/payment-intent/swimmer', 'StripePaymentIntentController@store');
 
 Route::post('/promo-code', 'PromoCodeController@index');

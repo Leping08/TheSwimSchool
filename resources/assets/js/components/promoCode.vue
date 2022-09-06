@@ -31,7 +31,7 @@
                 </template>
             </div>
             <div class="uk-margin-top">
-                <h2>Price: $<span id="price">{{(price - (price * (discount_percent * 0.01))).toFixed(2)}}</span></h2>
+                <h2>Registration Fee $<span id="price">{{(price - (price * (discount_percent * 0.01))).toFixed(2)}}</span></h2>
             </div>
         </div>
     </div>
