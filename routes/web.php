@@ -11,13 +11,14 @@
 |
 */
 
+use App\Mail\SwimTeam\SwimTeamCurrentSwimmerRegistration;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 /* Email testing route */
-// Route::get('/email', function () {
-//     return new \App\Mail\NewsLetter\RegistrationOpen('test@gmail.com');
-// });
+Route::get('/email-test/swim-team-registration', function () {
+    return new SwimTeamCurrentSwimmerRegistration(\App\STSwimmer::find(1));
+});
 
 
 /* @see \Laravel\Ui\AuthRouteMethods::auth() */

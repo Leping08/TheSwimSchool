@@ -56,7 +56,7 @@
 
                     <div class="uk-margin">
                       <h3 class="uk-margin-remove-bottom">3. Pay the Registration Fee</h3>
-                      <div>Once you've completed the registration form, you'll be able to pay the registration fee. The registration fee is <b>${{$level->price}}</b> and is due at the time of registration.</div>
+                      <div>Once you've completed the registration form, you'll be able to pay the registration fee. The registration fee is <b>$50</b> and is due at the time of registration.</div>
                     </div>
 
                     <div class="uk-margin">
@@ -174,7 +174,7 @@
                             </div>
                         </div>
 
-                        <promo_code price="{{$level->price}}"></promo_code>
+                        <promo_code :price="50"></promo_code>
 
                         <div class="uk-width-1-1@s">
                             <div class="uk-form-controls">
@@ -286,7 +286,7 @@
                                     }
                                 }
                             }
-                            
+
                             openCheckoutComponent();
                         }
 

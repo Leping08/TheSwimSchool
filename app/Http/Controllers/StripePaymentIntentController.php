@@ -23,9 +23,8 @@ class StripePaymentIntentController extends Controller
             // 'promo_code' => ['sometimes', 'string', 'min:2', 'max:255'], // todo figure out the promo code validation better
         ]);
     
-        // Get the price form the level id
         $level = STLevel::find($request->get('level_id'));
-        $price = $level->price;
+        $price = 50; // hard coded for now
     
         // Apply promo code if promo code is provided
         if ($request->get('promo_code')) {

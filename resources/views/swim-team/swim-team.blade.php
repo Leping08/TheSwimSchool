@@ -145,7 +145,7 @@
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
                     <h2 class="uk-heading-line">
-                        <span>Season Pricing</span>
+                        <span>Pricing</span>
                     </h2>
                 </div>
             </div>

@@ -80,7 +80,7 @@
                         <div class="uk-card-body">
                             <h3 class="el-title uk-margin uk-h2 uk-heading-bullet">Swim Team</h3>
                             <div class="el-content uk-margin">Love to swim? Join the {{ config('swim-team.full-name') }},
-                                a seasonal program run by The Swim School. Quality level coaches provide a fun atmosphere
+                                a year round program run by The Swim School. Quality level coaches provide a fun atmosphere
                                 for children ages 5-18 to improve their technique of the four competitive strokes, build
                                 endurance and learn about sportsmanship through local competition.
                             </div>
