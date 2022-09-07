@@ -160,7 +160,7 @@
                         </div>
                         <ul class="uk-list uk-list-bullet">
                             <li><b>White Team 1:</b> $125</li>
-                            <li><b>Gray Team 2:</b> $125</li>
+                            <li><b>White Team 2:</b> $125</li>
                             <li><b>Gray Team:</b> $150</li>
                             <li><b>Blue Team:</b> $150</li>
                         </ul>
