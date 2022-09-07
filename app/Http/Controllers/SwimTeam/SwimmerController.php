@@ -118,7 +118,10 @@ class SwimmerController extends Controller
         $swimmer->save();
         
         // send a confirmation email with the first practice date
-        // todo send confirmation email or forward to swim team thank you page
+        Log::info("Sending swim team sign up email to $swimmer->email for STSwimmer ID: $swimmer->id.");
+        // Mail::to($swimmer->email)->queue(new STSignUp($swimmer));
+        Mail::to($swimmer->email)->send(new STSignUp($swimmer));
+
         // redirect to the thank you page
         return redirect()->route('swim-team.thank-you');
 

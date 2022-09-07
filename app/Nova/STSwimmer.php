@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\SendSwimTeamRegistrationEmail;
 use App\Nova\Filters\ShirtSize;
 use App\Nova\Filters\SwimTeamLevel;
 use App\Nova\Filters\SwimTeamSeason;
@@ -133,7 +134,9 @@ class STSwimmer extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new SendSwimTeamRegistrationEmail()
+        ];
     }
 
     /**

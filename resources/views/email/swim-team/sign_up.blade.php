@@ -22,7 +22,7 @@
 @endcomponent
 
 @component('mail::panel')
-### Season Length
+### Season
 {{$swimmer->season->dates}}
 @endcomponent
 
