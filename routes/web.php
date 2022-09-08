@@ -11,13 +11,16 @@
 |
 */
 
-use App\Mail\SwimTeam\SwimTeamCurrentSwimmerRegistration;
+use App\Mail\SwimTeam\STSignUp;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+// handel strip errors better
+// add loading state to stripe button
+
 /* Email testing route */
 Route::get('/email-test/swim-team-registration', function () {
-    return new SwimTeamCurrentSwimmerRegistration(\App\STSwimmer::find(1));
+    return new STSignUp(\App\STSwimmer::find(1));
 });
 
 
