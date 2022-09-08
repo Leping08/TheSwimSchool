@@ -35,7 +35,7 @@
 
 					<div class="uk-margin">
 						<h3 class="uk-margin-remove-bottom">1. Review the practice schedule</h3>
-						<p class="uk-margin-remove-top">We believe you ready to swim in the <b>{{$level->name}}</b> level for the {{$season->dates}} season. Please review the practice schedule for the {{$level->name}} level and let us know if you have any questions.</p>
+						<p class="uk-margin-remove-top">We believe you are ready to swim in the <b>{{$level->name}}</b> level for the {{$season->dates}} season. Please review the practice schedule.</p>
 					</div>
 
 					<div class="uk-child-width-expand@s uk-margin" uk-grid>
@@ -51,17 +51,17 @@
 
                     <div class="uk-margin">
                       <h3 class="uk-margin-remove-bottom">2. Complete the Registration Form</h3>
-                      <div>Before you can start swimming with us, we need to make sure you're all set up in our system. Please complete the registration form below. If you have any questions, please contact us at <a href="mailto:{{ config('swim-team.email') }}">{{ config('swim-team.email') }}</a>.</div>
+                      <div>We need to make sure you're all set up in our system. Please complete the registration form below.</div>
                     </div>
 
                     <div class="uk-margin">
                       <h3 class="uk-margin-remove-bottom">3. Pay the Registration Fee</h3>
-                      <div>Once you've completed the registration form, you'll be able to pay the registration fee. The registration fee is <b>$50</b> and is due at the time of registration.</div>
+                      <div>Once you've completed the registration form, you'll be able to pay the registration fee. It is $50 and due at the time of registration.</div>
                     </div>
 
                     <div class="uk-margin">
                       <h3 class="uk-margin-remove-bottom">4. Show Up to Practice</h3>
-                      <div>Once you've completed the registration form, paid the registration fee, you're all set to start swimming with us! We can't wait to see you at practice!</div>
+                      <div>You're all set to start swimming with us! We can't wait to see you at practice! The first recurring monthly fee will be withdrawn on the 1st of the next month. please contact us at <a href="mailto:{{ config('swim-team.email') }}">{{ config('swim-team.email') }}</a>.</div>
                     </div>
 					
                     <form class="uk-grid-small" id="sign-up" uk-grid action="" method="POST">

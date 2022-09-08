@@ -6,36 +6,30 @@
 @endcomponent
 @endslot
 
-<img style="margin-bottom: 2em;" src="{{asset('img/swim-team/dive-cropped.jpg')}}">
-
 # Welcome to the {{ config('swim-team.full-name') }}!
 
 @component('mail::panel')
+<img style="max-width: 100%;" src="{{asset('img/swim-team/dive-cropped.jpg')}}">
+@endcomponent
+
+@component('mail::panel')
 **{{$swimmer->firstName}} {{$swimmer->lastName}}**, thanks for signing up for the {{ config('swim-team.full-name') }} {{$swimmer->level->name}} Level.
-@endcomponent
 
-@component('mail::panel')
-### {{$swimmer->level->name}} Level Practice Schedule
+## {{$swimmer->level->name}} Level Practice Schedule
 @foreach($swimmer->level->schedule as $day)
-{{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
+- {{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
 @endforeach
-@endcomponent
 
-@component('mail::panel')
-### Season
+## What To Bring
+- Bathing Suit
+- Towel
+- Goggles
+
+## Practice Location
+{{config('swim-team.address')}}
+
+## Season
 {{$swimmer->season->dates}}
-@endcomponent
-
-@component('mail::panel')
-### Practice Location
-{{ config('swim-team.address') }}
-@endcomponent
-
-@component('mail::panel')
-### What To Bring
-* Bathing Suit
-* Towel
-* Goggles
 @endcomponent
 
 Thanks,<br>

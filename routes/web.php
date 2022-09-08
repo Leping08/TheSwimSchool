@@ -19,10 +19,13 @@ use Illuminate\Support\Facades\Auth;
 // add loading state to stripe button
 
 /* Email testing route */
-Route::get('/email-test/swim-team-registration', function () {
+Route::get('/email-test/swim-team-registration-confirmation-email', function () {
     return new STSignUp(\App\STSwimmer::find(1));
 });
 
+Route::get('/email-test/registration-link-email', function () {
+    return new \App\Mail\SwimTeam\SwimTeamCurrentSwimmerRegistration(\App\STSwimmer::find(1));
+});
 
 /* @see \Laravel\Ui\AuthRouteMethods::auth() */
 Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
