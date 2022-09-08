@@ -21,6 +21,6 @@ return [
 
     'google-maps-query' => 'Lincoln+Aquatic+Center+715+17th+St+E,+Palmetto,+FL+34221',
 
-    'email' => ' info@theswimschoolfl.com',
+    'email' => 'info@theswimschoolfl.com',
 
 ];
