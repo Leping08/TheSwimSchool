@@ -34,7 +34,7 @@
                     </div>
 
 					<div class="uk-margin">
-						<h3 class="uk-margin-remove-bottom">1. Review the practice schedule</h3>
+						<h3 class="uk-margin-remove-bottom">1. Review the Practice Schedule</h3>
 						<p class="uk-margin-remove-top">We believe you are ready to swim in the <b>{{$level->name}}</b> level for the {{$season->dates}} season. Please review the practice schedule.</p>
 					</div>
 
@@ -61,7 +61,7 @@
 
                     <div class="uk-margin">
                       <h3 class="uk-margin-remove-bottom">4. Show Up to Practice</h3>
-                      <div>You're all set to start swimming with us! We can't wait to see you at practice! The first recurring monthly fee will be withdrawn on the 1st of the next month. please contact us at <a href="mailto:{{ config('swim-team.email') }}">{{ config('swim-team.email') }}</a>.</div>
+                      <div>You're all set to start swimming with us! We can't wait to see you at practice! The first recurring monthly fee will be withdrawn on the 1st of the next month. Please contact us at <a href="mailto:{{ config('swim-team.email') }}">{{ config('swim-team.email') }}</a> if you have any questions.</div>
                     </div>
 					
                     <form class="uk-grid-small" id="sign-up" uk-grid action="" method="POST">

@@ -11,21 +11,22 @@
 |
 */
 
-use App\Mail\SwimTeam\STSignUp;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 // handel strip errors better
 // add loading state to stripe button
+// fix the email no going out after the payment has been made
+// no notes were set when signing up
+
+// fix the roster
+// remove the need to have the shirt size on a swim team swimmer
+// expose notes field on swim team swimmer
 
 /* Email testing route */
-Route::get('/email-test/swim-team-registration-confirmation-email', function () {
-    return new STSignUp(\App\STSwimmer::find(1));
-});
-
-Route::get('/email-test/registration-link-email', function () {
-    return new \App\Mail\SwimTeam\SwimTeamCurrentSwimmerRegistration(\App\STSwimmer::find(1));
-});
+// Route::get('/email', function () {
+//     return new STSignUp(\App\STSwimmer::find(1));
+// });
 
 /* @see \Laravel\Ui\AuthRouteMethods::auth() */
 Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
