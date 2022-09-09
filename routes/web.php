@@ -17,11 +17,9 @@ use Illuminate\Support\Facades\Auth;
 // handel strip errors better
 // add loading state to stripe button
 // fix the email no going out after the payment has been made
-// no notes were set when signing up
-
+    // no notes were set when signing up    
+    // seems like a bug in the controller
 // fix the roster
-// remove the need to have the shirt size on a swim team swimmer
-// expose notes field on swim team swimmer
 
 /* Email testing route */
 // Route::get('/email', function () {

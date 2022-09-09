@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
@@ -78,9 +79,10 @@ class STSwimmer extends Resource
                     'birthDate' => $this->birthDate
                 ])->render();
             })->hideFromIndex(),
+            Textarea::make('Notes', 'notes')->hideFromIndex(),
             BelongsTo::make('Level', 'level', STLevel::class),
             BelongsTo::make('Season', 'season', STSeason::class),
-            BelongsTo::make('Shirt Size', 'shirtSize', STShirtSize::class),
+            // BelongsTo::make('Shirt Size', 'shirtSize', STShirtSize::class),
             (new Panel('Payment Info', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
