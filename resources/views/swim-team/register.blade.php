@@ -348,7 +348,7 @@
                                 confirmParams: {
                                     // Make sure to change this to your payment completion page
 									// todo update this page to work with swimmer or athlete
-                                    return_url: "{{ route('home.index') }}" + "/swim-team/save-swimmer/level/" + level_id + "/swimmer/" + document.getElementById('swimmer_id').value + "?swimmer_id=" + document.getElementById('swimmer_id').value,
+                                    return_url: "{{ route('home.index') }}" + "/swim-team/save-swimmer/level/" + level_id + "/swimmer/" + document.getElementById('swimmer_id').value,
                                     receipt_email: document.getElementById("email").value,
                                 }
                             });

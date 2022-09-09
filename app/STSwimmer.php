@@ -3,13 +3,14 @@
 namespace App;
 
 use App\Library\Helpers\Ages;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
 
 class STSwimmer extends Model
 {
-    use SoftDeletes, Ages, Actionable;
+    use SoftDeletes, Ages, Actionable, HasFactory;
 
     /**
      * @var array

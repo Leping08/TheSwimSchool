@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Auth;
 // handel strip errors better
 // add loading state to stripe button
 // fix the email no going out after the payment has been made
-    // no notes were set when signing up    
-    // seems like a bug in the controller
 // fix the roster
 
 /* Email testing route */

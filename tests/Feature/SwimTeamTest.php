@@ -7,11 +7,14 @@ use App\PromoCode;
 use App\STLevel;
 use App\STSeason;
 use App\STShirtSize;
+use App\STSwimmer;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
+
+use function PHPUnit\Framework\assertContains;
 
 class SwimTeamTest extends TestCase
 {
@@ -21,9 +24,38 @@ class SwimTeamTest extends TestCase
 
     // remove the warning of a test class having no tests
     /** @test **/
-    public function placeholder_test()
+    // public function placeholder_test()
+    // {
+    //     $this->assertTrue(true);
+    // }
+
+    /** @test **/
+    public function a_swimmer_can_pay_the_registration_fee_by_hitting_the_register_endpoint()
     {
-        $this->assertTrue(true);
+        Mail::fake();
+        
+        $level = STLevel::factory()->create();
+        $season = STSeason::factory()->create();
+        $swimmer = STSwimmer::factory()->create([
+            's_t_level_id' => $level->id,
+            's_t_season_id' => $season->id,
+        ]);
+
+        $data = [
+            'payment_intent' => 'pi_3LfvfuC1VfPOUMV409eBd2q4',
+            'level' => $level->id,
+            'swimmer' => $swimmer->id,
+        ];
+
+        $this->get(route('swim-team.swimmer.store2', $data))
+            ->assertStatus(302);
+
+        $updatedSwimmer = STSwimmer::find($swimmer->id);
+        $this->assertStringContainsString('stripe_payment_intent', $updatedSwimmer->notes);
+        $this->assertStringContainsString('pi_3LfvfuC1VfPOUMV409eBd2q4', $updatedSwimmer->notes);
+        $this->assertStringContainsString('stripe_customer_id', $updatedSwimmer->notes);
+
+        Mail::assertSent(STSignUp::class, 1);
     }
 
     // /** @test **/

@@ -102,13 +102,10 @@ class SwimmerController extends Controller
      * @param  null  $hash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function store2(Request $request, STLevel $level)
+    public function store2(Request $request, STLevel $level, STSwimmer $swimmer)
     {
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $paymentIntent = PaymentIntent::retrieve($request->query('payment_intent'));
-
-        // find the swimmer by id
-        $swimmer = STSwimmer::find($request->get('swimmer_id'))->first();
 
         // update the swimmer notes with the stripe data
         $swimmer->notes = json_encode([
@@ -119,8 +116,8 @@ class SwimmerController extends Controller
         
         // send a confirmation email with the first practice date
         Log::info("Sending swim team sign up email to $swimmer->email for STSwimmer ID: $swimmer->id.");
-        // Mail::to($swimmer->email)->queue(new STSignUp($swimmer));
         Mail::to($swimmer->email)->send(new STSignUp($swimmer));
+        Log::info("Swim team sign up email sent to $swimmer->email for STSwimmer ID: $swimmer->id.");
 
         // redirect to the thank you page
         return redirect()->route('swim-team.thank-you');
@@ -148,9 +145,6 @@ class SwimmerController extends Controller
         //     's_t_season_id' => STSeason::currentSeason()->id,
         //     'promo_code' => $request->get('promo_code'),
         // ]);
-
-        // send a confirmation email with the first practice date
-        // todo send confirmation email or forward to swim team thank you page
 
         // redirect to thank you page
         // return view('pages.thank-you', compact('swimmer'));
