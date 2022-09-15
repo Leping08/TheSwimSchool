@@ -47,7 +47,7 @@
 
                     <div class="uk-margin">
                       <h3 class="uk-margin-remove-bottom">3. Pay the Registration Fee</h3>
-                      <div>Once you've completed the registration form, you'll be able to pay the registration fee. It is $50 and due at the time of registration.</div>
+                      <div>Once you've completed the registration form, you'll be able to pay the registration fee. It is $100 and due at the time of registration.</div>
                     </div>
 
                     <div class="uk-margin">
