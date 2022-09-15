@@ -77,8 +77,7 @@ class StripePaymentIntentController extends Controller
         ]);
     
         $level = STLevel::find($request->get('level_id'));
-        // todo ask if this should be hard coded or not
-        $price = 50; // hard coded for now
+        $price = 100; // hard coded but the promo code applies if there is one
     
         // Apply promo code if promo code is provided
         if ($request->get('promo_code')) {

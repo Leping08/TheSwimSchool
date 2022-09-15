@@ -161,7 +161,7 @@
                             </div>
                         </div>
 
-                        <promo_code :price="50"></promo_code>
+                        <promo_code :price="100"></promo_code>
 
                         <div class="uk-width-1-1@s">
                             <div class="uk-form-controls">
