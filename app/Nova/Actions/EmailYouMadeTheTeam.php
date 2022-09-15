@@ -38,7 +38,6 @@ class EmailYouMadeTheTeam extends Action
 
                 Log::info("Sending email to Athlete ID: $model->id, Email: $model->email a you made the team email for swim school level ID: $fields->level_id");
                 Mail::to($model->email)->send(new STInvitation($model, PromoCode::find($fields->promo_code_id) ?? null));
-                $model->update(['s_t_sign_up_email' => 1]);     //TODO Is this needed with actions being a thing?
                 return Action::message("Email sent to $model->email!");
             } catch (\Exception $e) {
                 Log::error($e->getMessage());

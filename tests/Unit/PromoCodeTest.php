@@ -70,4 +70,27 @@ class PromoCodeTest extends TestCase
 
         $this->assertEquals($promoCode->apply($price), 0);
     }
+
+    /** @test  **/
+    public function the_promo_code_endpoint_works_with_a_valid_promo_code()
+    {
+        $promoCode = PromoCode::factory()->create([
+            'code' => 'HALFOFF',
+            'discount_percent' => 50
+        ]);
+
+        // assert the response has the discount percent
+        $this->post(route('api.promo-code.index'), ['code' => $promoCode->code])
+            ->assertStatus(200)
+            ->assertSeeText($promoCode->discount_percent);
+    }
+
+    /** @test  **/
+    public function the_promo_code_endpoint_works_with_a_bad_promo_code()
+    {
+        // assert the response has the discount percent
+        $this->post(route('api.promo-code.index'), ['code' => 'INVALID_PROMO_CODE'])
+            ->assertStatus(200)
+            ->assertSeeText(0);
+    }
 }

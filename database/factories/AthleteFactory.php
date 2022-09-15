@@ -24,6 +24,7 @@ class AthleteFactory extends Factory
     public function definition()
     {
         return [
+            'hash' => $this->faker->lexify('??????????'),
             'firstName' => $this->faker->firstName,
             'lastName' => $this->faker->lastName,
             'email' => $this->faker->safeEmail,

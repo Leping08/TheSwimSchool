@@ -15,25 +15,50 @@
             <div class="uk-card uk-card-default">
                 <div class="uk-card-body">
                     <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
-                        {{$level->name}} Level Details
-                    </div>
-                    <div class="uk-child-width-expand@s" uk-grid>
-                        {{--<div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$level->price}}</div>--}}
-                        <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Season Length:<br></strong> {{$season->dates}}</div>
-                        <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Practice Schedule:<br></strong>
-                            @foreach($level->schedule as $day)
-                                {{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
-                            @endforeach
-                        </div>
-                        <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong><br>{{ config('swim-team.address') }}</div>
+                        {{$season->dates}} Registration
                     </div>
 
                     <hr class="uk-width-1-1">
 
+                    <div>
+                      Hey <b>{{$athlete->firstName}} {{$athlete->lastName}}</b>, we're so excited to have you join us for the {{$season->dates}} season! We've got a few things we need to get squared away before you can start swimming with us.
+                    </div>
+
+					<div class="uk-margin">
+						<h3 class="uk-margin-remove-bottom">1. Review the Practice Schedule</h3>
+						<p class="uk-margin-remove-top">We believe you are ready to swim in the <b>{{$level->name}}</b> level for the {{$season->dates}} season. Please review the practice schedule.</p>
+					</div>
+
+					<div class="uk-child-width-expand@s uk-margin" uk-grid>
+						<div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Season:<br></strong> {{$season->dates}}</div>
+						<div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Practice Schedule:<br></strong>
+							@foreach($level->schedule as $day)
+								{{$day->day}} {{\Carbon\Carbon::parse($day->pivot->start_time)->format('g:ia')}} - {{\Carbon\Carbon::parse($day->pivot->end_time)->format('g:ia')}}<br>
+							@endforeach
+						</div>
+						<div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong><br>{{ config('swim-team.address') }}</div>
+						<div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Monthly Price:</strong><br>${{ $level->price }}</div>
+					</div>
+
+                    <div class="uk-margin">
+                      <h3 class="uk-margin-remove-bottom">2. Complete the Registration Form</h3>
+                      <div>We need to make sure you're all set up in our system. Please complete the registration form below.</div>
+                    </div>
+
+                    <div class="uk-margin">
+                      <h3 class="uk-margin-remove-bottom">3. Pay the Registration Fee</h3>
+                      <div>Once you've completed the registration form, you'll be able to pay the registration fee. It is $50 and due at the time of registration.</div>
+                    </div>
+
+                    <div class="uk-margin">
+                      <h3 class="uk-margin-remove-bottom">4. Show Up to Practice</h3>
+                      <div>You're all set to start swimming with us! We can't wait to see you at practice! The first recurring monthly fee will be withdrawn on the 1st of the next month. Please contact us at <a href="mailto:{{ config('swim-team.email') }}">{{ config('swim-team.email') }}</a> if you have any questions.</div>
+                    </div>
+
                     <form class="uk-grid-small" id="sign-up" uk-grid action="" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="level_id" id="level_id" value="{{{$level->id}}}" required>
-                        <input type="hidden" name="athlete_id" id="athlete_id" value="{{{$athlete->id ?? null}}}" required>
+                        <input type="hidden" name="athlete_hash" id="athlete_hash" value="{{{$athlete->hash ?? null}}}" required>
                         <div class="uk-h2 uk-margin uk-width-1-1 uk-margin-remove-top">
                             Swimmer Information
                         </div>
@@ -61,22 +86,6 @@
                                 <input type="text" class="uk-input" id="parent" name="parent" placeholder="Parent/Guardian" value="{{ old('parent', $athlete->parent ?? '') }}">
                             </div>
                         </div>
-
-                        {{--<div class="uk-margin uk-width-1-1@m">
-                            <label class="uk-form-label uk-heading-bullet" for="shirt_size_id">Shirt Size</label>
-                            <div class="uk-form-controls">
-                                <select class="uk-select" name="shirt_size_id" id="shirt_size_id" required>
-                                    <option disabled selected value>-- Select an Option --</option>
-                                    @forelse($sizes as $size)
-                                        <option value="{{$size->id}}">{{$size->size}}</option>
-                                    @empty
-                                        <option value="">No Shirt Sizes Available</option>
-                                    @endforelse
-                                </select>
-                            </div>
-                        </div>--}}
-
-
 
                         <hr class="uk-width-1-1">
                         <div class="uk-h2 uk-margin uk-width-1-1">
@@ -111,8 +120,6 @@
                         </div>
 
 
-
-
                         <hr class="uk-width-1-1">
                         <div class="uk-h2 uk-margin uk-width-1-1">
                             Contact Information
@@ -129,8 +136,6 @@
                                 <input type="email" class="uk-input" id="email" name="email" placeholder="Email" value="{{ old('email', $athlete->email ?? '') }}" required>
                             </div>
                         </div>
-
-
 
 
                         <hr class="uk-width-1-1">
@@ -156,7 +161,7 @@
                             </div>
                         </div>
 
-                        <promo_code price="{{$level->price}}"></promo_code>
+                        <promo_code :price="50"></promo_code>
 
                         <div class="uk-width-1-1@s">
                             <div class="uk-form-controls">
@@ -170,9 +175,6 @@
                             <button class="uk-button uk-button-primary" id="checkout" onclick="event.preventDefault(); if(form.reportValidity()){saveAthleteData();}">Checkout</button>
                         </div>
 
-                        {{-- <div class="uk-margin uk-width-1-1@s">
-                            <button class="uk-button uk-button-primary" onclick="event.preventDefault(); if(form.reportValidity()){openStripeCheckout();}">Checkout</button>
-                        </div> --}}
                     </form>
 
                     <script src="https://js.stripe.com/v3/" type="application/javascript"></script>
@@ -197,11 +199,8 @@
                         // Hide pay now button
                         const payNowButton = document.getElementById('submit').style.display = 'none';
 
-                        let hash = "{{$athlete->hash}}";
-                        let level_id = "{{$level->id}}";
-
-                        function saveAthleteData() {
-                            let swimmerData = {
+                        async function saveAthleteData() {
+                            let athleteData = {
                                 "firstName": document.getElementById("firstName").value,
                                 "lastName": document.getElementById("lastName").value,
                                 "birthDate": document.getElementById("birthDate").value,
@@ -217,29 +216,62 @@
                                 "emergencyPhone": document.getElementById("emergencyPhone").value,
                             }
 
-                            // check if the has is set and if so update the athlete
-                            if (hash) {
-                                // Send post request to '/athlete/{hash}'
-                                fetch('/api/athlete/' + hash, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                    },
-                                    body: JSON.stringify(swimmerData),
-                                }) 
-                                .then((response) => response.json())
-                                .then((data) => {
-                                    openCheckoutComponent();
-                                })
-                                .catch((error) => {
-                                    console.error('Error:', error);
-                                });  
-                            } else {
-                                // todo show message
-                                console.log('hash not set, aborting');
+                            // make api call to save the athlete data
+                            let hash = document.getElementById('athlete_hash').value;
+                            const response = await fetch(`/api/athlete/${hash}`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                },
+                                body: JSON.stringify(athleteData)
+                            });
+
+                            let promoCode = document.getElementById('promo_code').value;
+
+                            // Check if the promo code has something in it
+                            if (promoCode) {
+                                // Check for free promo code
+                                let promoResponse = await fetch('/api/promo-code', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                        },
+                                        body: JSON.stringify({
+                                            "code": document.getElementById("promo_code").value,
+                                        })
+                                    })
+                                    .then((response) => {
+                                        return response.json();
+                                    });
+                                
+                                // Create the swimmer from the athlete data with a free promo code
+                                if (promoResponse >= 100) {
+                                    let saveSwimmerResponse = await fetch('/api/swim-team/athlete/promo-code', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                        },
+                                        body: JSON.stringify({
+                                            "promo_code": document.getElementById("promo_code").value,
+                                            "athlete_hash": document.getElementById('athlete_hash').value,
+                                        })
+                                    })
+                                    .then((response) => {
+                                        return response.json();
+                                    });
+
+                                    // Redirect to the thank you page
+                                    if (saveSwimmerResponse.redirect) {
+                                        window.location.href = saveSwimmerResponse.redirect;
+                                    }
+                                }
                             }
 
+                            // If the promo was not free then open the stripe checkout
+                            openCheckoutComponent();
                         }
 
                         function openCheckoutComponent() {
@@ -255,7 +287,7 @@
                             let data = {
                                 name: formData.get('firstName') + ' ' + formData.get('lastName'),
                                 email: formData.get('email'),
-                                athlete_id: formData.get('athlete_id'),
+                                athlete_hash: formData.get('athlete_hash'),
                                 level_id: formData.get('level_id'),
                                 promo_code: formData.get('promo_code'),
                             };
@@ -272,14 +304,13 @@
                         // Fetches a payment intent and captures the client secret
                         async function initialize(data) {
                             // todo add try catch here
-                            // todo handel backend errors better here. Right now its just a 302 and does nothing
-                            const { clientSecret } = await fetch("/api/stripe-token/payment-intent", {
+                            const { clientSecret } = await fetch("/api/stripe-token/payment-intent/athlete", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify({
                                     name: data.name,
                                     email: data.email,
-                                    athlete_id: data.athlete_id,
+                                    athlete_hash: data.athlete_hash,
                                     level_id: data.level_id,
                                     promo_code: data.promo_code
                                 }),
@@ -295,11 +326,13 @@
                             e.preventDefault();
                             setLoading(true);
                     
+                            // todo write test for this tonight
                             const { error } = await stripe.confirmPayment({
                                 elements,
                                 confirmParams: {
                                     // Make sure to change this to your payment completion page
-                                    return_url: "{{ route('home.index') }}" + "/swim-team/save-swimmer/level/" + level_id + "/swimmer/" + hash + "?athlete_id=" + hash,
+									// todo update this page to work with athlete
+                                    return_url: "{{ route('home.index') }}" + `/swim-team/save-swimmer/athlete/${document.getElementById('athlete_hash').value}`,
                                     receipt_email: document.getElementById("email").value,
                                 }
                             });

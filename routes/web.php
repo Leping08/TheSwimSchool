@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 // handel strip errors better
 // add loading state to stripe button
-// fix the email no going out after the payment has been made
-// fix the roster
 
 /* Email testing route */
 // Route::get('/email', function () {
@@ -103,19 +101,16 @@ Route::get('/roster', 'SwimTeam\RosterController@index')->name('swim-team.roster
 /* @see CoachesController::index() */
 Route::get('/swim-team', 'SwimTeam\CoachesController@index')->name('swim-team.index');
 
-/* @see SwimmerController::index() */
-// this shows the sign up form with everything pre filled
-Route::get('/swim-team/level/{level}/swimmer/{athlete?}', 'SwimTeam\SwimmerController@index')->name('swim-team.swimmer.show');
+// Register the new swimmer for the swim team
+Route::get('/swim-team/athlete/{hash}', 'SwimTeam\SwimmerController@index')->name('swim-team.swimmer.show');
 
-/* @see SwimmerController::register() */
+// todo deprecate soon
+// Register the old swimmer for the swim team
 Route::get('/swim-team/register/{level}/swimmer/{swimmer}', 'SwimTeam\SwimmerController@register')->name('swim-team.swimmer.register');
-
-/* @see SwimmerController::store() */
-// Route::post('/swim-team/level/{level}/swimmer/{athlete?}', 'SwimTeam\SwimmerController@store')->name('swim-team.swimmer.store');
-
-/* @see SwimmerController::store2() */
-// this runs the logic to save the data that was submitted after the stripe charge
 Route::get('/swim-team/save-swimmer/level/{level}/swimmer/{swimmer}', 'SwimTeam\SwimmerController@store2')->name('swim-team.swimmer.store2');
+
+// Register the new athlete for the swim team
+Route::get('/swim-team/save-swimmer/athlete/{hash}', 'SwimTeam\SwimmerController@store3')->name('swim-team.swimmer.create');
 
 Route::get('/swim-team/thank-you', 'SwimTeam\SwimmerController@thankYou')->name('swim-team.thank-you');
 

@@ -9,9 +9,6 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-//\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\SwimTeam\STInvitation(\App\Athlete::find(371)));
-//\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\SwimTeam\STInvitation(\App\Athlete::find(371)));
-
 class STInvitation extends Mailable
 {
     use Queueable, SerializesModels;

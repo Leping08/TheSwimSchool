@@ -19,33 +19,41 @@ class AthleteTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_update_the_athlete_data_by_hitting_the_api_endpoint()
+    public function a_user_can_update_an_athlete_by_hash()
     {
         $athlete = Athlete::factory()->create();
 
-        $this->post(route('api.athlete.update', $athlete->hash), [
-                'firstName' => 'New First Name',
-                'lastName' => 'New Last Name',
-                'email' => 'testing@gmail.com'
-        ]);
+        $this->post("/api/athlete/{$athlete->hash}", [
+            'firstName' => 'John',
+            'lastName' => 'Doe',
+            // 'birthDate' => '2019-01-01',
+            'email' => 'test@gmail.com',
+            'phone' => '555-555-5555',
+            'parent' => 'John Doe',
+            'street' => '123 Main St',
+            'city' => 'Anytown',
+            'state' => 'CA',
+            'zip' => '12345',
+            'emergencyName' => 'Jane Doe',
+            'emergencyRelationship' => 'Mother',
+            'emergencyPhone' => '555-555-5555',
+        ])->assertStatus(200);
 
-        $this->assertEquals('New First Name', $athlete->fresh()->firstName);
-        $this->assertEquals('New Last Name', $athlete->fresh()->lastName);
-        $this->assertEquals('testing@gmail.com', $athlete->fresh()->email);
+        $freshAthlete = Athlete::findByHash($athlete->hash)->first();
+
+        $this->assertEquals('John', $freshAthlete->firstName);
+        $this->assertEquals('Doe', $freshAthlete->lastName);
+        // todo format carbon date to string for assertion
+        // $this->assertEquals('2019-01-01', $freshAthlete->birthDate);
+        $this->assertEquals('test@gmail.com', $freshAthlete->email);
+        $this->assertEquals('555-555-5555', $freshAthlete->phone);
+        $this->assertEquals('John Doe', $freshAthlete->parent);
+        $this->assertEquals('123 Main St', $freshAthlete->street);
+        $this->assertEquals('Anytown', $freshAthlete->city);
+        $this->assertEquals('CA', $freshAthlete->state);
+        $this->assertEquals('12345', $freshAthlete->zip);
+        $this->assertEquals('Jane Doe', $freshAthlete->emergencyName);
+        $this->assertEquals('Mother', $freshAthlete->emergencyRelationship);
+        $this->assertEquals('555-555-5555', $freshAthlete->emergencyPhone);
     }
-
-    /** @test */
-    public function an_update_user_request_must_have_a_matching_hash()
-    {
-        // Bad hash
-        $this->post(route('api.athlete.update', 'fdsafdsafdsa'), [
-            'firstName' => 'New First Name',
-            'lastName' => 'New Last Name',
-            'email' => 'testing@gmail.com'
-        ])->assertStatus(404);
-    }
-
-    // todo write a test for the stripe payment intent
-    // todo write a test for the promo code
-    // todo write a test for the new athlete api endpoint
 }

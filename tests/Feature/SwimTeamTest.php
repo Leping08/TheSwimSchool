@@ -2,32 +2,20 @@
 
 namespace Tests\Feature;
 
+use App\Athlete;
 use App\Mail\SwimTeam\STSignUp;
 use App\PromoCode;
 use App\STLevel;
 use App\STSeason;
-use App\STShirtSize;
 use App\STSwimmer;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 
-use function PHPUnit\Framework\assertContains;
-
 class SwimTeamTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
-
-    //TODO use named routes instead of links
-
-    // remove the warning of a test class having no tests
-    /** @test **/
-    // public function placeholder_test()
-    // {
-    //     $this->assertTrue(true);
-    // }
 
     /** @test **/
     public function a_swimmer_can_pay_the_registration_fee_by_hitting_the_register_endpoint()
@@ -58,265 +46,162 @@ class SwimTeamTest extends TestCase
         Mail::assertSent(STSignUp::class, 1);
     }
 
-    // /** @test **/
-    // public function a_swimmer_can_sign_up_by_hitting_the_swim_team_sign_up_route()
-    // {
-    //     Mail::fake();
-    //     Mail::assertNothingSent();
+    /** @test **/
+    public function an_athlete_can_sign_up_with_a_free_promo_code()
+    {
+        Mail::fake();
+        
+        $athlete = Athlete::factory()->create();
+        $level = STLevel::factory()->create();
+        $promoCode = PromoCode::factory()->create([
+            'discount_percent' => 100,
+        ]);
 
-    //     $level = STLevel::factory()->create();
-    //     $season = STSeason::factory()->create();
-    //     $size = STShirtSize::factory()->create();
+        $data = [
+            'hash' => $athlete->hash,
+            'level_id' => $level->id,
+            'promo_code' => $promoCode->code,
+        ];
 
-    //     $attributes = [
-    //         'firstName' => $this->faker->firstName,
-    //         'lastName' => $this->faker->lastName,
-    //         'birthDate' => Carbon::yesterday()->toDateString(),
-    //         'email' => $this->faker->email,
-    //         'phone' => '9998887777',
-    //         'parent' => $this->faker->name,
-    //         'street' => $this->faker->streetAddress,
-    //         'city' => $this->faker->city,
-    //         'state' => $this->faker->word,
-    //         'zip' => $this->faker->numberBetween(10000, 90000),
-    //         'emergencyName' => $this->faker->name,
-    //         'emergencyRelationship' => $this->faker->word,
-    //         'emergencyPhone' => '999-999-9999',
-    //         'level_id' => $level->id,
-    //         'shirt_size_id' => $size->id,
-    //         'stripeToken' => 'tok_visa'
-    //     ];
+        $this->post(route('api.athlete.promo-code.update', $data))
+            ->assertStatus(302);
 
+        // assert the swimmer is created
+        $this->assertDatabaseHas('s_t_swimmers', [
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+        ]);
 
-    //     $this->get("/swim-team/level/{$level->id}/swimmer/")
-    //         ->assertStatus(200);
+        Mail::assertSent(STSignUp::class, 1);
+    }
 
-    //     $this->assertEquals(0,  \App\STSwimmer::all()->count());
+    /** @test **/
+    public function it_throws_an_error_with_a_bad_hash()
+    {
+        Mail::fake();
+        
+        $athlete = Athlete::factory()->create();
+        $level = STLevel::factory()->create();
+        $promoCode = PromoCode::factory()->create([
+            'discount_percent' => 100,
+        ]);
 
-    //     $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
+        $data = [
+            'hash' => "a-bad-hash-that-does-not-exist",
+            'level_id' => $level->id,
+            'promo_code' => $promoCode->code,
+        ];
 
-    //     $response->assertRedirect('/thank-you');
+        $this->post(route('api.athlete.promo-code.update', $data))
+            ->assertStatus(500);
 
-    //     Mail::assertSent(STSignUp::class);
+        // assert the swimmer is created
+        $this->assertDatabaseMissing('s_t_swimmers', [
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+        ]);
 
-    //     $this->assertEquals(1,  \App\STSwimmer::all()->count());
+        Mail::assertNothingSent();
+    }
 
-    //     $this->assertDatabaseHas('s_t_swimmers', [
-    //         "firstName" => $attributes['firstName'],
-    //         "lastName" => $attributes['lastName'],
-    //         "email" => $attributes['email'],
-    //         "s_t_level_id" => $attributes['level_id'],
-    //         's_t_shirt_size_id' => $attributes['shirt_size_id']
-    //     ]);
-    // }
+    /** @test **/
+    public function it_throws_an_error_if_the_promo_is_not_100_percent()
+    {
+        Mail::fake();
+        
+        $athlete = Athlete::factory()->create();
+        $level = STLevel::factory()->create();
+        $promoCode = PromoCode::factory()->create([
+            'discount_percent' => 90,
+        ]);
 
-    // /** @test **/
-    // public function a_swimmer_can_sign_up_by_hitting_the_swim_team_sign_up_route_with_a_promo_code()
-    // {
-    //     Mail::fake();
-    //     Mail::assertNothingSent();
+        $data = [
+            'hash' => $athlete->hash,
+            'level_id' => $level->id,
+            'promo_code' => $promoCode->code,
+        ];
 
-    //     $level = STLevel::factory()->create([
-    //         'price' => 100
-    //     ]);
-    //     $season = STSeason::factory()->create();
-    //     $promoCode = PromoCode::factory()->create([
-    //         'code' => 'HALFOFF',
-    //         'discount_percent' => 50
-    //     ]);
-    //     $size = STShirtSize::factory()->create();
+        $this->post(route('api.athlete.promo-code.update', $data))
+            ->assertStatus(500);
 
-    //     $attributes = [
-    //         'firstName' => $this->faker->firstName,
-    //         'lastName' => $this->faker->lastName,
-    //         'birthDate' => Carbon::yesterday()->toDateString(),
-    //         'email' => $this->faker->email,
-    //         'phone' => '9998887777',
-    //         'parent' => $this->faker->name,
-    //         'street' => $this->faker->streetAddress,
-    //         'city' => $this->faker->city,
-    //         'state' => $this->faker->word,
-    //         'zip' => $this->faker->numberBetween(10000, 90000),
-    //         'emergencyName' => $this->faker->name,
-    //         'emergencyRelationship' => $this->faker->word,
-    //         'emergencyPhone' => '999-999-9999',
-    //         'level_id' => $level->id,
-    //         'shirt_size_id' => $size->id,
-    //         'stripeToken' => 'tok_visa',
-    //         'promo_code' => 'HALFOFF'
-    //     ];
+        // assert the swimmer is created
+        $this->assertDatabaseMissing('s_t_swimmers', [
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+        ]);
 
-    //     $this->get("/swim-team/level/{$level->id}/swimmer/")
-    //         ->assertStatus(200);
+        Mail::assertNothingSent();
+    }
 
-    //     $this->assertEquals(0, \App\STSwimmer::all()->count());
+    /** @test **/
+    public function it_throws_an_error_if_the_promo_is_not_valid()
+    {
+        Mail::fake();
+        
+        $athlete = Athlete::factory()->create();
+        $level = STLevel::factory()->create();
 
-    //     $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
+        $data = [
+            'hash' => $athlete->hash,
+            'level_id' => $level->id,
+            'promo_code' => 'not-a-valid-promo-code',
+        ];
 
-    //     $response->assertRedirect('/thank-you');
+        $this->post(route('api.athlete.promo-code.update', $data))
+            ->assertStatus(500);
 
-    //     Mail::assertSent(STSignUp::class);
+        // assert the swimmer is created
+        $this->assertDatabaseMissing('s_t_swimmers', [
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+        ]);
 
-    //     $this->assertEquals(1, \App\STSwimmer::all()->count());
+        Mail::assertNothingSent();
+    }
 
-    //     $this->assertDatabaseHas('s_t_swimmers', [
-    //         "firstName" => $attributes['firstName'],
-    //         "lastName" => $attributes['lastName'],
-    //         "email" => $attributes['email'],
-    //         "s_t_level_id" => $attributes['level_id'],
-    //         's_t_shirt_size_id' => $attributes['shirt_size_id'],
-    //         'promo_code_id' => $promoCode->id
-    //     ]);
-    // }
+    /** @test **/
+    public function a_user_can_create_a_payment_intent()
+    {
+        $athlete = Athlete::factory()->create();
+        $level = STLevel::factory()->create();
 
-    // /** @test **/
-    // public function a_swimmer_should_be_able_to_sigh_up_for_free_with_a_promo_code_and_not_hit_stripe()
-    // {
-    //     Mail::fake();
-    //     Mail::assertNothingSent();
+        $data = [
+            'name' => $athlete->firstName . ' ' . $athlete->lastName,
+            'email' => $athlete->email,
+            'athlete_hash' => $athlete->hash,
+            'level_id' => $level->id,
+        ];
 
-    //     $level = STLevel::factory()->create([
-    //         'price' => 100
-    //     ]);
-    //     $season = STSeason::factory()->create();
-    //     $promo = PromoCode::factory()->create([
-    //         'code' => 'FORFREE',
-    //         'discount_percent' => 100
-    //     ]);
-    //     $size = STShirtSize::factory()->create();
+        $this->post(route('api.athlete.payment-intent', $data))
+            ->assertStatus(200)
+            ->assertSee('pi_');
+    }
 
-    //     $attributes = [
-    //         'firstName' => $this->faker->firstName,
-    //         'lastName' => $this->faker->lastName,
-    //         'birthDate' => Carbon::yesterday()->toDateString(),
-    //         'email' => $this->faker->email,
-    //         'phone' => '9998887777',
-    //         'parent' => $this->faker->name,
-    //         'street' => $this->faker->streetAddress,
-    //         'city' => $this->faker->city,
-    //         'state' => $this->faker->word,
-    //         'zip' => $this->faker->numberBetween(10000, 90000),
-    //         'emergencyName' => $this->faker->name,
-    //         'emergencyRelationship' => $this->faker->word,
-    //         'emergencyPhone' => '999-999-9999',
-    //         'level_id' => $level->id,
-    //         'shirt_size_id' => $size->id,
-    //         'stripeToken' => 'tok_visa',
-    //         'promo_code' => $promo->code
-    //     ];
+    /** @test **/
+    public function an_athlete_can_sign_up_as_a_swimmer()
+    {
+        Mail::fake();
 
-    //     $this->get("/swim-team/level/{$level->id}/swimmer/")
-    //         ->assertStatus(200);
+        STSeason::factory()->create();
+        $level = STLevel::factory()->create();
+        $athlete = Athlete::factory()->create([
+            's_t_level' => $level->id,
+        ]);
 
-    //     $this->assertEquals(0, \App\STSwimmer::all()->count());
+        $this->assertDatabaseMissing('s_t_swimmers', [
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+        ]);
 
-    //     $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
+        $this->get("/swim-team/save-swimmer/athlete/{$athlete->hash}?payment_intent=pi_3LfvfuC1VfPOUMV409eBd2q4")
+            ->assertStatus(302);
 
-    //     $response->assertRedirect('/thank-you');
+        // assert the db has the swimmer
+        $this->assertDatabaseHas('s_t_swimmers', [
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+        ]);
 
-    //     Mail::assertSent(STSignUp::class);
-
-    //     $this->assertEquals(1, \App\STSwimmer::all()->count());
-
-    //     $this->assertDatabaseHas('s_t_swimmers', [
-    //         "firstName" => $attributes['firstName'],
-    //         "lastName" => $attributes['lastName'],
-    //         "email" => $attributes['email'],
-    //         "s_t_level_id" => $attributes['level_id'],
-    //         's_t_shirt_size_id' => $attributes['shirt_size_id'],
-    //         'promo_code_id' => $promo->id,
-    //         'stripeChargeId' => 'For Free Promo Code'
-    //     ]);
-    // }
-
-    // /** @test **/
-    // public function a_swimmer_can_sign_up_without_a_shirt_size()
-    // {
-    //     Mail::fake();
-    //     Mail::assertNothingSent();
-
-    //     $level = STLevel::factory()->create();
-    //     $season = STSeason::factory()->create();
-    //     $size = STShirtSize::factory()->create();
-
-    //     $attributes = [
-    //         'firstName' => $this->faker->firstName,
-    //         'lastName' => $this->faker->lastName,
-    //         'birthDate' => Carbon::yesterday()->toDateString(),
-    //         'email' => $this->faker->email,
-    //         'phone' => '9998887777',
-    //         'parent' => $this->faker->name,
-    //         'street' => $this->faker->streetAddress,
-    //         'city' => $this->faker->city,
-    //         'state' => $this->faker->word,
-    //         'zip' => $this->faker->numberBetween(10000, 90000),
-    //         'emergencyName' => $this->faker->name,
-    //         'emergencyRelationship' => $this->faker->word,
-    //         'emergencyPhone' => '999-999-9999',
-    //         'level_id' => $level->id,
-    //         //'shirt_size_id' => $size->id,
-    //         'stripeToken' => 'tok_visa'
-    //     ];
-
-
-    //     $this->get("/swim-team/level/{$level->id}/swimmer/")
-    //         ->assertStatus(200);
-
-    //     $this->assertEquals(0,  \App\STSwimmer::all()->count());
-
-    //     $response = $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes);
-
-    //     $response->assertRedirect('/thank-you');
-
-    //     Mail::assertSent(STSignUp::class);
-
-    //     $this->assertEquals(1,  \App\STSwimmer::all()->count());
-
-    //     $this->assertDatabaseHas('s_t_swimmers', [
-    //         "firstName" => $attributes['firstName'],
-    //         "lastName" => $attributes['lastName'],
-    //         "email" => $attributes['email'],
-    //         "s_t_level_id" => $attributes['level_id'],
-    //         's_t_shirt_size_id' => NULL
-    //     ]);
-    // }
-
-    // /** @test **/
-    // public function a_swimmer_will_get_an_error_message_if_the_card_fails()
-    // {
-    //     $level = STLevel::factory()->create();
-    //     $season = STSeason::factory()->create();
-    //     $size = STShirtSize::factory()->create();
-
-    //     $attributes = [
-    //         'firstName' => $this->faker->firstName,
-    //         'lastName' => $this->faker->lastName,
-    //         'birthDate' => Carbon::yesterday()->toDateString(),
-    //         'email' => $this->faker->email,
-    //         'phone' => '9998887777',
-    //         'parent' => $this->faker->name,
-    //         'street' => $this->faker->streetAddress,
-    //         'city' => $this->faker->city,
-    //         'state' => $this->faker->word,
-    //         'zip' => $this->faker->numberBetween(10000, 90000),
-    //         'emergencyName' => $this->faker->name,
-    //         'emergencyRelationship' => $this->faker->word,
-    //         'emergencyPhone' => '999-999-9999',
-    //         'level_id' => $level->id,
-    //         'shirt_size_id' => $size->id,
-    //         'stripeToken' => 'tok_chargeDeclined'
-    //     ];
-
-
-    //     $this->get("/swim-team/level/{$level->id}/swimmer/")
-    //         ->assertStatus(200);
-
-    //     $this->assertEquals(0,  \App\STSwimmer::all()->count());
-
-    //     $this->json('POST', "/swim-team/level/{$level->id}/swimmer/", $attributes)
-    //             ->assertStatus(302)
-    //             ->assertSessionHas('error', 'Oops, something went wrong with the payment. Your card was declined.');
-
-    //     $this->assertEquals(0,  \App\STSwimmer::all()->count());
-    // }
+        Mail::assertSent(STSignUp::class, 1);
+    }
 }
