@@ -27,26 +27,17 @@
                                     <th>Date Of Birth</th>
                                     <th>Years Old</th>
                                     <th>Email</th>
-                                    <th>Shirt Size</th>
                                     <th>Emergency Contact Name</th>
                                     <th>Emergency Contact Phone</th>
                                 </tr>
                             </thead>
                             <tbody v-for="(swimmer, index) in level.swimmers" :key="swimmer.id">
-                                <tr v-if="swimmer.season.id === selectedSeasonId" :class="{'stripe-list': index % 2 === 0 }">
+                                <tr v-if="swimmer.s_t_season_id === selectedSeasonId" :class="{'stripe-list': index % 2 === 0 }">
                                     <td>{{swimmer.firstName}} {{swimmer.lastName}}</td>
                                     <td>{{swimmer.phone}}</td>
                                     <td>{{swimmer.birthDate | moment("MM/DD/YY")}}</td>
                                     <td>{{swimmer.birthDate | yearsOld }}</td>
                                     <td>{{swimmer.email}}</td>
-                                    <td>
-                                        <template v-if="swimmer.shirt_size">
-                                            {{swimmer.shirt_size.size}}
-                                        </template>
-                                        <template v-else>
-                                            --
-                                        </template>
-                                    </td>
                                     <td>{{swimmer.emergencyName}}</td>
                                     <td>{{swimmer.emergencyPhone}}</td>
                                 </tr>
