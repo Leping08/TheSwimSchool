@@ -15,7 +15,7 @@
                 <div v-for="level in levels" :key="level.id" class="uk-margin-bottom">
                     <h2 class="uk-heading-line">
                         <span>
-                            {{level.name}} <!--TODO: Add total here-->
+                            {{level.name}}
                         </span>
                     </h2>
                     <div class="uk-overflow-auto">
@@ -31,8 +31,8 @@
                                     <th>Emergency Contact Phone</th>
                                 </tr>
                             </thead>
-                            <tbody v-for="(swimmer, index) in level.swimmers" :key="swimmer.id">
-                                <tr v-if="swimmer.s_t_season_id === selectedSeasonId" :class="{'stripe-list': index % 2 === 0 }">
+                            <tbody v-for="(swimmer, index) in filteredSwimmers(level.id)" :key="swimmer.id">
+                                <tr :class="{'stripe-list': index % 2 === 0 }">
                                     <td>{{swimmer.firstName}} {{swimmer.lastName}}</td>
                                     <td>{{swimmer.phone}}</td>
                                     <td>{{swimmer.birthDate | moment("MM/DD/YY")}}</td>
@@ -57,7 +57,8 @@
         props: [
             'seasons',
             'levels',
-            'currentseason'
+            'currentseason',
+            'swimmers'
         ],
         data: function () {
             return {
@@ -71,6 +72,11 @@
         },
         created() {
             this.selectedSeasonId = this.currentseason[0].id
+        },
+        methods: {
+            filteredSwimmers(level_id) {
+                return this.swimmers.filter(swimmer => swimmer.s_t_season_id === this.selectedSeasonId && swimmer.s_t_level_id === level_id)
+            }
         }
     }
 </script>
