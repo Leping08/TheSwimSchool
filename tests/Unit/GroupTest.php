@@ -48,6 +48,23 @@ class GroupTest extends TestCase
     }
 
     /** @test  **/
+    public function shark_is_a_private_lesson()
+    {
+        Group::factory()->create([
+            'type' => 'Star Fish'
+        ]);
+
+        $this->assertEquals(1,  Group::public()->count());
+
+        Group::factory()->create([
+            'type' => 'Shark Level (Youth Advanced - Swim Club)'
+        ]);
+
+        $this->assertEquals(1,  Group::public()->count());
+        $this->assertEquals(2,  Group::all()->count());
+    }
+
+    /** @test  **/
     public function it_has_private_lessons_the_public_can_not_see()
     {
         Group::factory()->create([

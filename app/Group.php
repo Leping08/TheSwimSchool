@@ -62,7 +62,10 @@ class Group extends Model
      */
     public function scopePublic($query)
     {
-        return $query->where('type', 'NOT LIKE', '%Private%');
+        return $query->where([
+            ['type', 'NOT LIKE', '%Private%'],
+            ['type', 'NOT LIKE', '%Shark%'] // todo remove this in january 2023 and delete the shark group
+        ]);
     }
 
     /**
