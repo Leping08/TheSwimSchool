@@ -29,161 +29,132 @@ Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
  * Home page
  */
 
-/* @see HomeController::index() */
-Route::get('/', 'HomeController@index')->name('home.index');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
 /*
  * Group Lessons
  */
 
 //List lessons
-/* @see LessonsController::index() */
-Route::get('/lessons', 'Groups\LessonsController@index')->name('groups.lessons.index');
+Route::get('/lessons', [\App\Http\Controllers\Groups\LessonsController::class, 'index'])->name('groups.lessons.index');
 
 //Get the lesson schedule page
-/* @see ScheduleController::index() */
-Route::get('/lessons/schedule', 'Groups\ScheduleController@index')->name('groups.schedule.index');
+Route::get('/lessons/schedule', [\App\Http\Controllers\Groups\ScheduleController::class, 'index'])->name('groups.schedule.index');
 
 //List details of the group lesson
-/* @see LessonsController::show() */
-Route::get('/lessons/{group}', 'Groups\LessonsController@show')->name('groups.lessons.show');
+Route::get('/lessons/{group}', [\App\Http\Controllers\Groups\LessonsController::class, 'show'])->name('groups.lessons.show');
 
 //Sign up form for that lesson
-/* @see LessonsController::create() */
-Route::get('/lessons/{group}/{lesson}', 'Groups\LessonsController@create')->name('groups.lessons.create');
+Route::get('/lessons/{group}/{lesson}', [\App\Http\Controllers\Groups\LessonsController::class, 'create'])->name('groups.lessons.create');
 
 //Save the results of the sign up form
-/* @see SwimmerController::store() */
-Route::post('/lessons/{group}/{lesson}', 'Groups\SwimmerController@store')->name('groups.swimmers.store');
+Route::post('/lessons/{group}/{lesson}', [\App\Http\Controllers\Groups\SwimmerController::class, 'store'])->name('groups.swimmers.store');
 
 /*
  * Wait List
  */
 
-/* @see WaitListController::store() */
-Route::post('/wait-list/{lesson}', 'Groups\WaitListController@store')->name('groups.lessons.wait-list');
+Route::post('/wait-list/{lesson}', [\App\Http\Controllers\Groups\WaitListController::class, 'store'])->name('groups.lessons.wait-list');
 
 /*
  * Swim Team Tryouts
  */
 
 //The Link to see all tryouts
-/* @see TryoutController::index() */
-Route::get('/swim-team/tryouts', 'SwimTeam\TryoutController@index')->name('swim-team.tryouts.index');
+Route::get('/swim-team/tryouts', [\App\Http\Controllers\SwimTeam\TryoutController::class, 'index'])->name('swim-team.tryouts.index');
 
 //The Link to sign up for a tryout
-/* @see TryoutController::show() */
-Route::get('/swim-team/tryouts/{tryout}', 'SwimTeam\TryoutController@show')->name('swim-team.tryouts.show');
+Route::get('/swim-team/tryouts/{tryout}', [\App\Http\Controllers\SwimTeam\TryoutController::class, 'show'])->name('swim-team.tryouts.show');
 
 //Save the results of the sign up form
-/* @see AthleteController::store() */
-Route::post('/swim-team/tryouts/{tryout}', 'SwimTeam\AthleteController@store')->name('swim-team.athlete.store');
+Route::post('/swim-team/tryouts/{tryout}', [\App\Http\Controllers\SwimTeam\AthleteController::class, 'store'])->name('swim-team.athlete.store');
 
 //The roster for the current season
-/* @see RosterController::index() */
-Route::get('/roster', 'SwimTeam\RosterController@index')->name('swim-team.roster.index');
+Route::get('/roster', [\App\Http\Controllers\SwimTeam\RosterController::class, 'index'])->name('swim-team.roster.index');
 
 /*
  * Swim Team Registration
  */
 
-/* @see CoachesController::index() */
-Route::get('/swim-team', 'SwimTeam\CoachesController@index')->name('swim-team.index');
+Route::get('/swim-team', [\App\Http\Controllers\SwimTeam\CoachesController::class, 'index'])->name('swim-team.index');
 
 // Register the new swimmer for the swim team
-Route::get('/swim-team/athlete/{hash}', 'SwimTeam\SwimmerController@index')->name('swim-team.swimmer.show');
+Route::get('/swim-team/athlete/{hash}', [\App\Http\Controllers\SwimTeam\SwimmerController::class, 'index'])->name('swim-team.swimmer.show');
 
 // todo deprecate soon
 // Register the old swimmer for the swim team
-Route::get('/swim-team/register/{level}/swimmer/{swimmer}', 'SwimTeam\SwimmerController@register')->name('swim-team.swimmer.register');
-Route::get('/swim-team/save-swimmer/level/{level}/swimmer/{swimmer}', 'SwimTeam\SwimmerController@store2')->name('swim-team.swimmer.store2');
+Route::get('/swim-team/register/{level}/swimmer/{swimmer}', [\App\Http\Controllers\SwimTeam\SwimmerController::class, 'register'])->name('swim-team.swimmer.register');
+Route::get('/swim-team/save-swimmer/level/{level}/swimmer/{swimmer}', [\App\Http\Controllers\SwimTeam\SwimmerController::class, 'store2'])->name('swim-team.swimmer.store2');
 
 // Register the new athlete for the swim team
-Route::get('/swim-team/save-swimmer/athlete/{hash}', 'SwimTeam\SwimmerController@store3')->name('swim-team.swimmer.create');
+Route::get('/swim-team/save-swimmer/athlete/{hash}', [\App\Http\Controllers\SwimTeam\SwimmerController::class, 'store3'])->name('swim-team.swimmer.create');
 
-Route::get('/swim-team/thank-you', 'SwimTeam\SwimmerController@thankYou')->name('swim-team.thank-you');
+Route::get('/swim-team/thank-you', [\App\Http\Controllers\SwimTeam\SwimmerController::class, 'thankYou'])->name('swim-team.thank-you');
 
 /*
  * Public Contact Forms
  */
 
-/* @see LeadController::store() */
-Route::post('/contact-us', 'LeadController@store')->name('contact-us.store');
+Route::post('/contact-us', [\App\Http\Controllers\Privates\LeadController::class, 'store'])->name('contact-us.store');
 
-/* @see CalendarController::index() */
-Route::get('/private-semi-private', 'Privates\CalendarController@index')->name('private_lesson.index');
+Route::get('/private-semi-private', [\App\Http\Controllers\Privates\CalendarController::class, 'index'])->name('private_lesson.index');
 
-/* @see CalendarController::store() */
-Route::post('/private-semi-private', 'Privates\CalendarController@store')->name('private_lesson.store');
+Route::post('/private-semi-private', [\App\Http\Controllers\Privates\CalendarController::class, 'store'])->name('private_lesson.store');
 
-/* @see LeadController::index() */
-Route::get('/home-private-lesson', 'Privates\LeadController@index')->name('home_privates.index');
+Route::get('/home-private-lesson', [\App\Http\Controllers\Privates\LeadController::class, 'index'])->name('home_privates.index');
 
-/* @see LeadController::store() */
-Route::post('/home-private-lesson', 'Privates\LeadController@store')->name('home_privates.store');
+Route::post('/home-private-lesson', [\App\Http\Controllers\Privates\LeadController::class, 'store'])->name('home_privates.store');
 
 /*
  * Email marketing unsubscribe page
  */
 
-/* @see EmailListController::unsubscribe() */
-Route::get('/newsletter/unsubscribe/{email}', 'EmailListController@unsubscribe')->name('newsletter.unsubscribe');
+// todo check why we have post and get for unsubscribe
+Route::get('/newsletter/unsubscribe/{email}', [\App\Http\Controllers\EmailListController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
-/* @see EmailListController::unsubscribe() */
-Route::post('/newsletter/unsubscribe/{email}', 'EmailListController@unsubscribe');
+Route::post('/newsletter/unsubscribe/{email}', [\App\Http\Controllers\EmailListController::class, 'unsubscribe']);
 
-/* @see EmailListController::subscribe() */
-Route::post('/newsletter/subscribe', 'EmailListController@subscribe')->name('newsletter.subscribe');
+Route::post('/newsletter/subscribe', [\App\Http\Controllers\EmailListController::class, 'subscribe'])->name('newsletter.subscribe');
 
 /*
  * Email marketing unsubscribe page
  */
 
-/* @see FeedbackController::index() */
-Route::get('/feedback', 'FeedbackController@index')->name('feedback.index');
+// todo is this still being used?
+Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback.index');
 
-/* @see FeedbackController::store() */
-Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
+Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'store'])->name('feedback.store');
 
 /*
  * Instructor specific calendar
  */
 
-/* @see CalendarController::show() */
-Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('calendar')->middleware('auth');
+Route::get('/calendar/{instructor}', [\App\Http\Controllers\Admin\CalendarController::class, 'show'])->name('calendar')->middleware('auth');
 
 /*
  * About Page
  */
 
-/* @see AboutController::index() */
-Route::get('/about', 'AboutController@index')->name('pages.about');
+Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('pages.about');
 
 /*
  * Custom Email
  */
 
 Route::middleware(['auth'])->group(function () {
-    /* @see NewsletterEmailController::index() */
-    Route::get('/emails/newsletter', 'NewsletterEmailController@index')->name('newsletter.index');
+    Route::get('/emails/newsletter', [\App\Http\Controllers\NewsletterEmailController::class, 'index'])->name('newsletter.index');
 
-    /* @see NewsletterEmailController::show() */
-    Route::get('/emails/newsletter/show', 'NewsletterEmailController@show')->name('newsletter.show');
+    Route::get('/emails/newsletter/show', [\App\Http\Controllers\NewsletterEmailController::class, 'show'])->name('newsletter.show');
 
-    /* @see NewsletterEmailController::store() */
-    Route::post('/emails/newsletter/store', 'NewsletterEmailController@store')->name('newsletter.store');
+    Route::post('/emails/newsletter/store', [\App\Http\Controllers\NewsletterEmailController::class, 'store'])->name('newsletter.store');
 
-    /* @see NewsletterEmailController::preview() */
-    Route::post('/emails/newsletter/view-preview', 'NewsletterEmailController@preview')->name('newsletter.preview.view');
+    Route::post('/emails/newsletter/view-preview', [\App\Http\Controllers\NewsletterEmailController::class, 'preview'])->name('newsletter.preview.view');
 
-    /* @see NewsletterEmailController::sendPreview() */
-    Route::post('/emails/newsletter/send-preview', 'NewsletterEmailController@sendPreview')->name('newsletter.preview.send');
+    Route::post('/emails/newsletter/send-preview', [\App\Http\Controllers\NewsletterEmailController::class, 'sendPreview'])->name('newsletter.preview.send');
 
-    /* @see NewsletterEmailController::sendEmails() */
-    Route::post('/emails/newsletter/send-emails', 'NewsletterEmailController@sendEmails')->name('newsletter.send');
+    Route::post('/emails/newsletter/send-emails', [\App\Http\Controllers\NewsletterEmailController::class, 'sendEmails'])->name('newsletter.send');
 
-    /* @see NewsletterEmailController::uploadImage() */
-    Route::post('/emails/newsletter/upload-image', 'NewsletterEmailController@uploadImage')->name('newsletter.upload-image');
+    Route::post('/emails/newsletter/upload-image', [\App\Http\Controllers\NewsletterEmailController::class, 'uploadImage'])->name('newsletter.upload-image');
 });
 
 /*
