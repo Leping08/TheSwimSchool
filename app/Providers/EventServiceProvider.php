@@ -31,7 +31,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $observers = [
         Lesson::class => [LessonObserver::class],
-        Athlete::class => [AthleteObserver::class]
+        Athlete::class => [AthleteObserver::class],
     ];
 
     /**
