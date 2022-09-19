@@ -39,7 +39,7 @@
         "@fullcalendar/list": "^4.4.0",
         "@fullcalendar/timegrid": "^4.4.0",
         "@fullcalendar/vue": "^4.4.0",
-        "moment": "^2.24.0",
+        "moment": "^2.29.4",
         "vue-moment": "^4.1.0",
         "vue-resource": "^1.5.1"
     }
