@@ -2,23 +2,24 @@
 
 namespace Opanegro\NovaCustomController\Http\Controllers;
 
-use ReflectionException;
-use Illuminate\Support\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Laravel\Nova\Actions\ActionEvent;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Access\AuthorizationException;
 use Laravel\Nova\Http\Requests\UpdateResourceRequest;
+use ReflectionException;
 
 class ResourceUpdateController extends Controller
 {
     /**
      * Create a new resource.
      *
-     * @param UpdateResourceRequest $request
+     * @param  UpdateResourceRequest  $request
      * @return JsonResponse
+     *
      * @throws AuthorizationException
      * @throws ReflectionException
      * @throws \Throwable
@@ -62,8 +63,9 @@ class ResourceUpdateController extends Controller
                 }
 
                 if (isset($resource::$unsetCustomFields) && count($resource::$unsetCustomFields) > 0) {
-                    foreach ($resource::$unsetCustomFields as $field)
+                    foreach ($resource::$unsetCustomFields as $field) {
                         unset($model->$field);
+                    }
                 }
 
                 ActionEvent::forResourceUpdate($request->user(), $model)->save();
@@ -90,15 +92,15 @@ class ResourceUpdateController extends Controller
     /**
      * Determine if the model has been updated since it was retrieved.
      *
-     * @param UpdateResourceRequest $request
-     * @param Model                 $model
+     * @param  UpdateResourceRequest  $request
+     * @param  Model  $model
      * @return bool
      */
     protected function modelHasBeenUpdatedSinceRetrieval(UpdateResourceRequest $request, $model)
     {
         $column = $model->getUpdatedAtColumn();
 
-        if (!$model->{$column}) {
+        if (! $model->{$column}) {
             return false;
         }
 
@@ -108,9 +110,9 @@ class ResourceUpdateController extends Controller
     /**
      * Default response on update controller
      *
-     * @param Model $model
-     * @param       $resource
-     * @param       $request
+     * @param  Model  $model
+     * @param    $resource
+     * @param    $request
      * @return JsonResponse
      */
     private function defaultResponseUpdate(Model $model, $resource, $request)

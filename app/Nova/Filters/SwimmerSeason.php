@@ -25,7 +25,7 @@ class SwimmerSeason extends Filter
     {
         $result = collect([]);
 
-        foreach (\App\Season::all() as $season){
+        foreach (\App\Season::all() as $season) {
             $result->put($season->name, $season->id);
         }
 
@@ -34,6 +34,6 @@ class SwimmerSeason extends Filter
 
     public function name()
     {
-        return "Season";
+        return 'Season';
     }
 }

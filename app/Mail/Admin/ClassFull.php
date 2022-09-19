@@ -2,11 +2,10 @@
 
 namespace App\Mail\Admin;
 
+use App\Lesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Lesson;
 
 class ClassFull extends Mailable
 {
@@ -17,10 +16,10 @@ class ClassFull extends Mailable
      */
     public $lesson;
 
-
     /**
      * ClassFull constructor.
-     * @param Lesson $lesson
+     *
+     * @param  Lesson  $lesson
      */
     public function __construct(Lesson $lesson)
     {

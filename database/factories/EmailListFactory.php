@@ -23,7 +23,7 @@ class EmailListFactory extends Factory
     {
         return [
             'email' => $this->faker->email,
-            'subscribe' => 1
+            'subscribe' => 1,
         ];
     }
 }

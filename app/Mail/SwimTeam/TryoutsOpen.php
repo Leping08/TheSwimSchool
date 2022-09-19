@@ -5,7 +5,6 @@ namespace App\Mail\SwimTeam;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 //Test to people
 //\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\SwimTeam\TryoutsOpen('derek@deltavcreative.com'));
@@ -30,6 +29,7 @@ class TryoutsOpen extends Mailable
 
     /**
      * Create a new message instance.
+     *
      * @param $emailAddress
      * @return void
      */

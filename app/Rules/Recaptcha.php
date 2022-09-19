@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use GuzzleHttp\Client;
+use Illuminate\Contracts\Validation\Rule;
 
 class Recaptcha implements Rule
 {
@@ -17,25 +17,25 @@ class Recaptcha implements Rule
         //
     }
 
-
     /**
-     * @param string $attribute
-     * @param mixed $value
+     * @param  string  $attribute
+     * @param  mixed  $value
      * @return bool
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function passes($attribute, $value)
     {
         $client = new Client([
             'base_uri' => 'https://www.google.com/recaptcha/api/',
-            'timeout' => 2.0
+            'timeout' => 2.0,
         ]);
 
         $response = $client->request('POST', 'siteverify', [
             'query' => [
                 'secret' => config('google.recaptcha.secret'),
-                'response' => $value
-            ]
+                'response' => $value,
+            ],
         ]);
 
         return json_decode($response->getBody())->success;

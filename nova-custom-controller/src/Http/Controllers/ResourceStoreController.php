@@ -2,21 +2,22 @@
 
 namespace Opanegro\NovaCustomController\Http\Controllers;
 
-use ReflectionException;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Laravel\Nova\Actions\ActionEvent;
-use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Http\Requests\CreateResourceRequest;
+use ReflectionException;
 
 class ResourceStoreController extends Controller
 {
     /**
      * Create a new resource.
      *
-     * @param CreateResourceRequest $request
+     * @param  CreateResourceRequest  $request
      * @return JsonResponse
+     *
      * @throws ReflectionException
      * @throws \Throwable
      */
@@ -52,8 +53,9 @@ class ResourceStoreController extends Controller
                 }
 
                 if (isset($resource::$unsetCustomFields) && count($resource::$unsetCustomFields) > 0) {
-                    foreach ($resource::$unsetCustomFields as $field)
+                    foreach ($resource::$unsetCustomFields as $field) {
                         unset($model->$field);
+                    }
                 }
 
                 if ($request->viaRelationship()) {
@@ -86,9 +88,9 @@ class ResourceStoreController extends Controller
     /**
      * Default response on store controller
      *
-     * @param Model $model
-     * @param       $resource
-     * @param       $request
+     * @param  Model  $model
+     * @param    $resource
+     * @param    $request
      * @return JsonResponse
      */
     private function defaultResponseStore(Model $model, $resource, $request)

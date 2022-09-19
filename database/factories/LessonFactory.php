@@ -35,7 +35,7 @@ class LessonFactory extends Factory
             'class_end_date' => $this->faker->dateTimeBetween('now', '+10 months'),
             'registration_open' => $this->faker->dateTimeBetween('-1 month', 'yesterday'),
             'class_start_time' => $this->faker->dateTime(),
-            'class_end_time' => $this->faker->dateTimeAd('+1 hour')
+            'class_end_time' => $this->faker->dateTimeAd('+1 hour'),
         ];
     }
 }

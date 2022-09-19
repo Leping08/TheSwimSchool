@@ -12,7 +12,7 @@ use Laravel\Nova\Actions\Actionable;
 /**
  * An Eloquent Model: 'Instructor'
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $bio
  * @property string $hex_color
@@ -24,7 +24,6 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read Lesson $lessons
  * @property-read PrivatePoolSession $privatePoolSessions
  */
-
 class Instructor extends Model
 {
     use HasFactory, SoftDeletes, Actionable;
@@ -57,14 +56,13 @@ class Instructor extends Model
         });
     }
 
-     /**
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
     }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -73,5 +71,4 @@ class Instructor extends Model
     {
         return $this->hasMany(PrivatePoolSession::class);
     }
-
 }

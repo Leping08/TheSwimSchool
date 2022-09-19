@@ -24,7 +24,7 @@ class STSeasonFactory extends Factory
         return [
             'name' => $this->faker->word,
             'dates' => $this->faker->word,
-            'current_season' => true
+            'current_season' => true,
         ];
     }
 }

@@ -22,7 +22,7 @@ class FeedbackSurveyFactory extends Factory
     public function definition()
     {
         return [
-            'viewed' => false
+            'viewed' => false,
         ];
     }
 }

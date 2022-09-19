@@ -4,12 +4,11 @@ namespace App\Nova;
 
 use App\Nova\Metrics\ContactUsPerDay;
 use App\Nova\Metrics\OpenContactUs;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ContactUs extends Resource
 {
@@ -44,7 +43,7 @@ class ContactUs extends Resource
         'name',
         'email',
         'phone',
-        'message'
+        'message',
     ];
 
     /**
@@ -62,20 +61,20 @@ class ContactUs extends Resource
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
-                    'text' => $this->email
+                    'text' => $this->email,
                 ])->render();
             })->asHtml()->sortable(),
             Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
-                    'text' => $this->phone
+                    'text' => $this->phone,
                 ])->render();
             })->asHtml(),
             Boolean::make('Followed Up', 'followed_up')->sortable(),
             Text::make('Message', 'message')->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 
@@ -89,7 +88,7 @@ class ContactUs extends Resource
     {
         return [
             (new ContactUsPerDay())->width('2/3'),
-            (new OpenContactUs())->width('1/3')
+            (new OpenContactUs())->width('1/3'),
         ];
     }
 
@@ -128,6 +127,16 @@ class ContactUs extends Resource
 
     public static function label()
     {
-        return 'Contact Us';
+        return __('Contact Us');
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return __('Contact Us');
     }
 }

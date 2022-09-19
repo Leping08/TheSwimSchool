@@ -2,10 +2,10 @@
 
 namespace App\Mail\Groups;
 
+use App\Lesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Lesson;
 
 class SignUp extends Mailable
 {
@@ -16,10 +16,10 @@ class SignUp extends Mailable
      */
     public $lesson;
 
-
     /**
      * SignUp constructor.
-     * @param Lesson $lesson
+     *
+     * @param  Lesson  $lesson
      */
     public function __construct(Lesson $lesson)
     {

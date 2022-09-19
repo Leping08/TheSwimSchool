@@ -9,7 +9,6 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class PrivateLesson extends Resource
 {
@@ -52,10 +51,10 @@ class PrivateLesson extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('', function (){
+            Text::make('', function () {
                 return view('partials.buttons', [
                     'next_id' => $this->model()->id + 1,
-                    'previous_id' => $this->model()->id - 1
+                    'previous_id' => $this->model()->id - 1,
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
@@ -63,7 +62,7 @@ class PrivateLesson extends Resource
             HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
             HasOne::make('Swimmer', 'swimmer', PrivateSwimmer::class),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 
@@ -110,7 +109,6 @@ class PrivateLesson extends Resource
     {
         return [];
     }
-
 
     public static function label()
     {

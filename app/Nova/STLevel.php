@@ -2,14 +2,12 @@
 
 namespace App\Nova;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class STLevel extends Resource
 {
@@ -28,16 +26,21 @@ class STLevel extends Resource
     public static $title = 'name';
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Swim Team';
+
+    /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
         'id',
-        'name'
+        'name',
     ];
-
-    public static $displayInNavigation = false;
 
     /**
      * Get the fields displayed by the resource.
@@ -58,7 +61,7 @@ class STLevel extends Resource
                     DateTime::make('start_time'),
                     DateTime::make('end_time'),
                 ];
-            })->allowDuplicateRelations()
+            })->allowDuplicateRelations(),
         ];
     }
 

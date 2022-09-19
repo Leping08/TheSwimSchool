@@ -6,7 +6,6 @@ use App\Tryout;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class TryoutReminder extends Mailable
 {
@@ -24,7 +23,8 @@ class TryoutReminder extends Mailable
 
     /**
      * TryoutReminder constructor.
-     * @param Tryout $tryout
+     *
+     * @param  Tryout  $tryout
      */
     public function __construct(Tryout $tryout)
     {
@@ -38,12 +38,12 @@ class TryoutReminder extends Mailable
      */
     public function build()
     {
-        return $this->subject(config('swim-team.full-name') . ' Tryout')
+        return $this->subject(config('swim-team.full-name').' Tryout')
             ->from(config('mail.from.address'))
             ->markdown('email.swim-team.tryoutReminder')
             ->with([
                 'tryout' => $this->tryout,
-                'theme' => $this->theme
+                'theme' => $this->theme,
             ]);
     }
 }

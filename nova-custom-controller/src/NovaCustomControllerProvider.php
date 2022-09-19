@@ -26,7 +26,7 @@ class NovaCustomControllerProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach (glob(__DIR__ . '/Helpers/*.php') as $file) {
+        foreach (glob(__DIR__.'/Helpers/*.php') as $file) {
             require_once $file;
         }
     }
@@ -44,7 +44,9 @@ class NovaCustomControllerProvider extends ServiceProvider
                 array_keys((new \ReflectionClass(Resource::class))->getTraits())
             );
 
-            if ($usingTrait) $this->routes();
+            if ($usingTrait) {
+                $this->routes();
+            }
         });
 
         $this->commands(NovaCustomControllerCommand::class);

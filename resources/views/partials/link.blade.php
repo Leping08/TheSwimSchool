@@ -1,3 +1,3 @@
-<a href="{{{ $link }}}" class="no-underline font-bold dim text-primary">
+<a href="{{{ $link }}}" class="link-default">
     {{ $text }}
 </a>

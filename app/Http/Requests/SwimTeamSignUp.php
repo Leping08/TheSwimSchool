@@ -46,7 +46,7 @@ class SwimTeamSignUp extends FormRequest
     public function messages()
     {
         return [
-            'level_id.required' => "The swim team level seems to be missing. Refresh the page and try that again.",
+            'level_id.required' => 'The swim team level seems to be missing. Refresh the page and try that again.',
             //'shirt_size_id.required' => "The shirt size seems to be missing. Refresh the page and try that again.",
             //'stripeToken.required' => "Something went wrong with stripe try that again."
         ];

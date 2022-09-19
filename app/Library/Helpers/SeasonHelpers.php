@@ -2,8 +2,8 @@
 
 namespace App\Library\Helpers;
 
-use Carbon\Carbon;
 use App\Season;
+use Carbon\Carbon;
 
 class SeasonHelpers
 {
@@ -14,6 +14,7 @@ class SeasonHelpers
     {
         //TODO Get this to work in the first 2 months of the year when it is winter for last year
         $now = Carbon::now();
+
         return Season::where('year', '=', $now->year)
             ->where('season', '=', SeasonHelpers::getSeasonString($now->month))
             ->first();
@@ -26,29 +27,27 @@ class SeasonHelpers
     public static function seasonFromDate($date)
     {
         $carbonDate = Carbon::parse($date);
+
         return Season::where('year', '=', $carbonDate->year)
             ->where('season', '=', SeasonHelpers::getSeasonString($carbonDate->month))
             ->first();
     }
 
     /**
-     * @param int $currentMonth
+     * @param  int  $currentMonth
      * @return string
      */
     public static function getSeasonString(int $currentMonth)
     {
         //retrieve season
-        if ($currentMonth>=3 && $currentMonth<=5){
-            return "Spring";
-        }
-        elseif ($currentMonth>=6 && $currentMonth<=8){
-            return "Summer";
-        }
-        elseif ($currentMonth>=9 && $currentMonth<=11){
-            return "Fall";
-        }
-        else{
-            return "Winter";
+        if ($currentMonth >= 3 && $currentMonth <= 5) {
+            return 'Spring';
+        } elseif ($currentMonth >= 6 && $currentMonth <= 8) {
+            return 'Summer';
+        } elseif ($currentMonth >= 9 && $currentMonth <= 11) {
+            return 'Fall';
+        } else {
+            return 'Winter';
         }
     }
 }

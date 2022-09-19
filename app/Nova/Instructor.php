@@ -10,7 +10,6 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\VaporImage;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Instructor extends Resource
 {
@@ -42,7 +41,7 @@ class Instructor extends Resource
      */
     public static $search = [
         'id',
-        'name'
+        'name',
     ];
 
     /**
@@ -63,14 +62,13 @@ class Instructor extends Resource
                     'color' => $this->hex_color,
                 ])->render();
             })->asHtml(),
-            // Text::make('Image URL', 'image_url')->nullable(),
             VaporImage::make('Image', 'image_url')->prunable(),
             Text::make('Phone', 'phone')->nullable()->hideFromIndex(),
             Textarea::make('Bio', 'bio')->rows(3)->nullable()->hideFromIndex(),
             Text::make('Calendar', function () {
                 return view('partials.link', [
                     'link' => url('/calendar/'.$this->id),
-                    'text' => 'View'
+                    'text' => 'View',
                     //'new_tab' => true TODO: Add new tab option to link partial
                 ])->render();
             })->asHtml()->hideFromIndex(),

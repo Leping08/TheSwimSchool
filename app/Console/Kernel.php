@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use App\Jobs\SendFeedbackEmails;
 use App\Jobs\SendGroupLessonsReminderEmails;
 use App\Jobs\SendPrivatePoolSessionReminderEmails;
 use App\Jobs\SendTryoutReminderEmails;
@@ -12,13 +11,6 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     /**
-     * The Artisan commands provided by your application.
-     *
-     * @var array
-     */
-    protected $commands = [];
-
-    /**
      * Define the application's command schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
@@ -26,11 +18,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //Send feedback email survey
-//        $schedule->call(function (){
-//            SendFeedbackEmails::dispatchNow();
-//        })->dailyAt('7:00');
-
         //Send group lesson reminder emails
         $schedule->call(function () {
             SendGroupLessonsReminderEmails::dispatchSync();
@@ -51,12 +38,14 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * Register the Closure based commands for the application.
+     * Register the commands for the application.
      *
      * @return void
      */
     protected function commands()
     {
+        $this->load(__DIR__.'/Commands');
+
         require base_path('routes/console.php');
     }
 }

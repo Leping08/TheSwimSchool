@@ -2,8 +2,8 @@
 
 namespace Opanegro\NovaCustomController\Traits;
 
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 trait NovaCustomEvents
 {
@@ -31,8 +31,8 @@ trait NovaCustomEvents
     /**
      * Before updated in controller
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      */
     public static function beforeUpdated(Request $request, Model $model)
     {
@@ -41,8 +41,8 @@ trait NovaCustomEvents
     /**
      * After updated in controller
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      */
     public static function afterUpdated(Request $request, Model $model)
     {
@@ -51,8 +51,8 @@ trait NovaCustomEvents
     /**
      * Before created in controller
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      */
     public static function beforeCreated(Request $request, Model $model)
     {
@@ -61,8 +61,8 @@ trait NovaCustomEvents
     /**
      * After created in controller
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      */
     public static function afterCreated(Request $request, Model $model)
     {
@@ -71,8 +71,8 @@ trait NovaCustomEvents
     /**
      * Custom store controller
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      * @return Model
      */
     public static function customStoreController(Request $request, Model $model)
@@ -83,8 +83,8 @@ trait NovaCustomEvents
     /**
      * Custom update controller
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      * @return Model $model
      */
     public static function customUpdateController(Request $request, Model $model)
@@ -95,8 +95,8 @@ trait NovaCustomEvents
     /**
      * After create & update events
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      */
     public static function afterSave(Request $request, Model $model)
     {
@@ -105,8 +105,8 @@ trait NovaCustomEvents
     /**
      * Before create & update events
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      */
     public static function beforeSave(Request $request, Model $model)
     {

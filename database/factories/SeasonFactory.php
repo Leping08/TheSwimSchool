@@ -23,7 +23,7 @@ class SeasonFactory extends Factory
     {
         return [
             'year' => '2017',
-            'season' => 'fall'
+            'season' => 'fall',
         ];
     }
 }

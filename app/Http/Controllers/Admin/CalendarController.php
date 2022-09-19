@@ -1,14 +1,11 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
-
 
 use App\Http\Controllers\Controller;
 use App\Instructor;
 use App\Lesson;
 use App\PrivatePoolSession;
-use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -17,7 +14,7 @@ class CalendarController extends Controller
     const COLORS = [
         'private' => '#4299e1',
         'group' => '#ed64a6',
-        'empty' => '#a0aec0'
+        'empty' => '#a0aec0',
     ];
 
     public function show(Request $request, Instructor $instructor)
@@ -29,7 +26,7 @@ class CalendarController extends Controller
 
     /**
      * @param  Instructor  $instructor
-     * @param  String  $startDate
+     * @param  string  $startDate
      * @return array
      */
     public function calendarEvents(Instructor $instructor, $startDate = null)
@@ -51,6 +48,7 @@ class CalendarController extends Controller
         foreach ($lessons as $lesson) {
             $events->push($lesson->calendarEvents->map(function ($eventDate) use ($lesson) {
                 $eventDate = Carbon::parse($eventDate);
+
                 return [
                     'id' => $lesson->id,
                     'title' => $lesson->group->type,
@@ -60,7 +58,7 @@ class CalendarController extends Controller
                     'details_link' => '/admin/resources/lessons/'.$lesson->id,
                     'swimmers' => $lesson->swimmers,
                     'location' => $lesson->location->name,
-                    'waitList' => $lesson->waitList
+                    'waitList' => $lesson->waitList,
                 ];
             }));
         }
@@ -74,6 +72,7 @@ class CalendarController extends Controller
         //Map the Private Lessons into calendar events
         $events->push($poolSessions->map(function ($session) {
             $swimmer = $session->swimmer();
+
             return [
                 'id' => $session->id,
                 'title' => 'Private',
@@ -83,7 +82,7 @@ class CalendarController extends Controller
                 'details_link' => '/admin/resources/private-pool-sessions/'.$session->id,
                 'swimmers' => [$swimmer],
                 'location' => $session->location->name,
-                'waitList' => []
+                'waitList' => [],
             ];
         }));
 

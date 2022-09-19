@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers\SwimTeam;
 
+use App\Athlete;
 use App\Http\Controllers\Controller;
 use App\STSeason;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Tryout;
-use App\Athlete;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
 class AthleteController extends Controller
 {
     /**
-     * @param Request $request
-     * @param Tryout $tryout
+     * @param  Request  $request
+     * @param  Tryout  $tryout
      * @return Redirect
      */
     public function store(Request $request, Tryout $tryout)
     {
         //Check to see if the lesson is full
-        if($tryout->isFull()){
+        if ($tryout->isFull()) {
             $request->session()->flash('danger', 'The tryout is full.');
+
             return back();
         }
 
@@ -39,7 +40,7 @@ class AthleteController extends Controller
             'zip' => 'required|max:15',
             'emergencyName' => 'required|max:191',
             'emergencyRelationship' => 'required|max:191',
-            'emergencyPhone' => 'required|max:20'
+            'emergencyPhone' => 'required|max:20',
         ]);
 
         $athlete['birthDate'] = Carbon::parse($athlete['birthDate']);
@@ -51,7 +52,8 @@ class AthleteController extends Controller
 
         Log::info("Athlete ID: $newAthlete->id signed up for Tryout ID: $tryout->id!");
         session()->flash('success', "Thanks for signing up! Don't forget to mark your calendar for the tryout.");
-        return redirect("/swim-team");
+
+        return redirect('/swim-team');
     }
 
     public function update(Request $request)
@@ -59,9 +61,9 @@ class AthleteController extends Controller
         // find the athlete by the hash
         $athlete = Athlete::findByHash($request->hash)->first() ?? null;
 
-        if($athlete === null){
+        if ($athlete === null) {
             return response()->json([
-                'message' => 'Athlete not found'
+                'message' => 'Athlete not found',
             ], 404);
         }
 
@@ -79,7 +81,7 @@ class AthleteController extends Controller
             'zip',
             'emergencyName',
             'emergencyRelationship',
-            'emergencyPhone'
+            'emergencyPhone',
         ]));
 
         // return the athlete
@@ -87,8 +89,8 @@ class AthleteController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Tryout $tryout
+     * @param  Request  $request
+     * @param  Tryout  $tryout
      * @return Redirect
      */
     public function new(Request $request, Tryout $tryout)
@@ -106,7 +108,7 @@ class AthleteController extends Controller
             'zip' => 'required|max:15',
             'emergencyName' => 'required|max:191',
             'emergencyRelationship' => 'required|max:191',
-            'emergencyPhone' => 'required|max:20'
+            'emergencyPhone' => 'required|max:20',
         ]);
 
         $athlete['birthDate'] = Carbon::parse($athlete['birthDate']);
@@ -117,6 +119,7 @@ class AthleteController extends Controller
         $newAthlete = Athlete::create($athlete);
 
         Log::info("Athlete ID: $newAthlete->id signed up for Tryout ID: $tryout->id!");
+
         return $newAthlete;
     }
 }

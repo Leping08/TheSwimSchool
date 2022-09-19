@@ -3,7 +3,6 @@
 namespace App\Mail\NewsLetter;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -25,6 +24,7 @@ class Covid extends Mailable
 
     /**
      * Create a new message instance.
+     *
      * @param $emailAddress
      * @return void
      */
@@ -44,9 +44,9 @@ class Covid extends Mailable
             ->from(config('mail.from.address'))
             ->subject('COVID-19 Safety Precautions')
             ->with(['emailAddress' => $this->emailAddress])
-            ->withSwiftMessage(function ($message) {
+            ->withSymfonyMessage(function ($message) {
                 $message->getHeaders()
-                    ->addTextHeader('List-Unsubscribe', '<' . route('newsletter.unsubscribe', ['email' => $this->emailAddress]) . '>');
+                    ->addTextHeader('List-Unsubscribe', '<'.route('newsletter.unsubscribe', ['email' => $this->emailAddress]).'>');
             });
     }
 }

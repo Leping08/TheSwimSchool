@@ -10,19 +10,20 @@ use Illuminate\Support\Facades\Log;
 class Mailgun
 {
     /**
-     * @var string $base_url
+     * @var string
      */
     private static $base_url = 'https://api.mailgun.net/v3/theswimschoolfl.com/';
 
     /**
      * @return \Illuminate\Support\Collection
+     *
      * @throws \Illuminate\Http\Client\RequestException
      */
     public static function apiGet(string $path)
     {
         $response = Http::withToken(config('mail.mailers.mailgun.api_token'), 'Basic')
             ->acceptJson()
-            ->get(static::$base_url . $path);
+            ->get(static::$base_url.$path);
 
         $response->throw();
 
@@ -40,12 +41,13 @@ class Mailgun
             $complaints = Mailgun::apiGet('complaints?limit=1000');
         } catch (\Exception $e) {
             Log::error('Error trying to get the list of complaint emails from mailgun');
-            Log::error('Error: ' . $e->getMessage());
-            Log::error('Get trace as string: ' . $e->getTraceAsString());
+            Log::error('Error: '.$e->getMessage());
+            Log::error('Get trace as string: '.$e->getTraceAsString());
+
             return;
         }
 
-        collect($complaints->get('items'))->map(function($complaintEmail) {
+        collect($complaints->get('items'))->map(function ($complaintEmail) {
             NewsLetter::unsubscribe($complaintEmail['address']);
         });
     }
@@ -59,18 +61,19 @@ class Mailgun
             $bounces = Mailgun::apiGet('bounces?limit=1000');
         } catch (\Exception $e) {
             Log::error('Error trying to get the list of bounce emails from mailgun');
-            Log::error('Error: ' . $e->getMessage());
-            Log::error('Get trace as string: ' . $e->getTraceAsString());
+            Log::error('Error: '.$e->getMessage());
+            Log::error('Get trace as string: '.$e->getTraceAsString());
+
             return;
         }
 
         $allEmails = EmailList::all();
 
-        collect($bounces->get('items'))->map(function($bounceEmail) use ($allEmails) {
+        collect($bounces->get('items'))->map(function ($bounceEmail) use ($allEmails) {
             $emailList = $allEmails->where('email', trim($bounceEmail['address']))->first();
             if ($emailList) {
                 $emailList->update([
-                    'subscribe' => false
+                    'subscribe' => false,
                 ]);
             }
             Log::info("{$emailList} has unsubscribed.");

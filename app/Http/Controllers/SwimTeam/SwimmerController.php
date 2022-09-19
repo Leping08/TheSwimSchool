@@ -32,17 +32,19 @@ class SwimmerController extends Controller
     public function index(STLevel $level, $hash)
     {
         $athlete = Athlete::findByHash($hash)->first();
-        if (!$athlete) {
+        if (! $athlete) {
             abort(404);
         }
         $level = $athlete->level;
         $season = STSeason::currentSeason();
+
         return view('swim-team.signUp', compact('level', 'season', 'athlete'));
     }
 
     public function register(STLevel $level, STSwimmer $swimmer)
     {
         $season = STSeason::currentSeason();
+
         return view('swim-team.register', compact('level', 'season', 'swimmer'));
     }
 
@@ -50,7 +52,7 @@ class SwimmerController extends Controller
     {
         $request->validate([
             'promo_code' => 'required',
-            'swimmer_id' => 'required'
+            'swimmer_id' => 'required',
         ]);
 
         // check if the promo code is valid
@@ -60,21 +62,21 @@ class SwimmerController extends Controller
         if ($promoCode->discount_percent >= 100) {
             $swimmer = STSwimmer::find($request->get('swimmer_id'));
             $swimmer->notes = json_encode([
-                'promo_code' => $promoCode->code
+                'promo_code' => $promoCode->code,
             ]);
             $swimmer->promo_code_id = $promoCode->id;
             $swimmer->save();
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'The promo code you entered is not 100% off.'
+                'message' => 'The promo code you entered is not 100% off.',
             ]);
         }
 
         // todo send the confirmation email
         return [
             'success' => true,
-            'redirect' => route('swim-team.thank-you')
+            'redirect' => route('swim-team.thank-you'),
         ];
     }
 
@@ -97,7 +99,7 @@ class SwimmerController extends Controller
             'zip',
             'emergencyName',
             'emergencyRelationship',
-            'emergencyPhone'
+            'emergencyPhone',
         ]));
         // update the season to be the current season
         $swimmer->s_t_season_id = STSeason::currentSeason()->id;
@@ -123,7 +125,7 @@ class SwimmerController extends Controller
             'stripe_customer_id' => $paymentIntent->customer,
         ]);
         $swimmer->save();
-        
+
         // send a confirmation email with the first practice date
         Log::info("Sending swim team sign up email to $swimmer->email for STSwimmer ID: $swimmer->id.");
         Mail::to($swimmer->email)->send(new STSignUp($swimmer));
@@ -148,7 +150,7 @@ class SwimmerController extends Controller
             's_t_level_id' => $level->id,
             's_t_season_id' => STSeason::currentSeason()->id,
             'promo_code_id' => $promo->id ?? null,
-            's_t_shirt_size_id' => $size->id ?? null
+            's_t_shirt_size_id' => $size->id ?? null,
         ]);
 
         $price = $promo ? $promo->apply($level->price) : $level->price;
@@ -157,7 +159,7 @@ class SwimmerController extends Controller
         if ($price <= 0) {
             Log::info("Swim Team Swimmer $swimTeamSwimmer->firstName $swimTeamSwimmer->lastName, Email: $swimTeamSwimmer->email has signed up with out paying. They used promo code ID: $swimTeamSwimmer->promo_code_id");
             $swimTeamSwimmer = request()->merge([
-                'stripeChargeId' => 'For Free Promo Code'
+                'stripeChargeId' => 'For Free Promo Code',
             ]);
         } else {
             try {
@@ -165,14 +167,14 @@ class SwimmerController extends Controller
                     request()->stripeToken,
                     $price,
                     request()->email,
-                    config('swim-team.full-name')." ".$level->name." Level for ".request()->firstName." ".request()->lastName."."
+                    config('swim-team.full-name').' '.$level->name.' Level for '.request()->firstName.' '.request()->lastName.'.'
                 ))->charge()->id;
             } catch (\Exception $exception) {
                 return back();
             }
 
             $swimTeamSwimmer = request()->merge([
-                'stripeChargeId' => $stripeChargeId
+                'stripeChargeId' => $stripeChargeId,
             ]);
         }
 
@@ -183,11 +185,12 @@ class SwimmerController extends Controller
             Log::info("Sending swim team sign up email to $swimNewTeamSwimmer->email for STSwimmer ID: $swimNewTeamSwimmer->id.");
             Mail::to($swimNewTeamSwimmer->email)->send(new STSignUp($swimNewTeamSwimmer));
         } catch (\Exception $e) {
-            Log::error("Swim Team sign up Email Error: ".$e);
+            Log::error('Swim Team sign up Email Error: '.$e);
         }
 
         Log::info("$swimNewTeamSwimmer->firstName $swimNewTeamSwimmer->lastName, ID: $swimNewTeamSwimmer->id has signed up for Level ID: $swimNewTeamSwimmer->s_t_level_id with the ".config('swim-team.full-name').'.');
         session()->flash('success', 'Thanks for signing up for the '.config('swim-team.full-name').'!');
+
         return redirect('/thank-you');
     }
 
@@ -205,14 +208,14 @@ class SwimmerController extends Controller
     {
         $promo_code = $request->get('promo_code');
         $promo = PromoCode::where('code', $promo_code)->first();
-        
+
         // Throw error if no promo code is found
-        if (!$promo) {
+        if (! $promo) {
             throw new Exception('Invalid promo code.', 400);
         }
-        
+
         // Check if it is over 100% off
-        if (!($promo->discount_percent >= 100)) {
+        if (! ($promo->discount_percent >= 100)) {
             throw new Exception('Not over 100% off.', 400);
         }
 
@@ -220,7 +223,7 @@ class SwimmerController extends Controller
         $level = STLevel::findOrFail($request->get('level_id'));
 
         // if no ash is found, throw an error
-        if (!$athlete) {
+        if (! $athlete) {
             throw new Exception('Invalid hash.', 400);
         }
 
@@ -261,7 +264,7 @@ class SwimmerController extends Controller
     {
         $athlete = Athlete::where('hash', $hash)->first();
 
-        if (!$athlete) {
+        if (! $athlete) {
             throw new Exception('Invalid hash.', 400);
         }
 

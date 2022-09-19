@@ -6,15 +6,14 @@ use App\Nova\Actions\SendSwimTeamRegistrationEmail;
 use App\Nova\Filters\ShirtSize;
 use App\Nova\Filters\SwimTeamLevel;
 use App\Nova\Filters\SwimTeamSeason;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
 class STSwimmer extends Resource
@@ -27,6 +26,13 @@ class STSwimmer extends Resource
     public static $model = \App\STSwimmer::class;
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Swim Team';
+
+    /**
      * The columns that should be searched.
      *
      * @var array
@@ -35,10 +41,8 @@ class STSwimmer extends Resource
         'id',
         'firstName',
         'lastName',
-        'email'
+        'email',
     ];
-
-    public static $displayInNavigation = false;
 
     /**
      * Get the fields displayed by the resource.
@@ -49,10 +53,10 @@ class STSwimmer extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('', function (){
+            Text::make('', function () {
                 return view('partials.buttons', [
                     'next_id' => $this->model()->id + 1,
-                    'previous_id' => $this->model()->id - 1
+                    'previous_id' => $this->model()->id - 1,
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
@@ -62,21 +66,21 @@ class STSwimmer extends Resource
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
-                    'text' => $this->email
+                    'text' => $this->email,
                 ])->render();
             })->asHtml()->sortable()->hideFromIndex(),
             Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
-                    'text' => $this->phone
+                    'text' => $this->phone,
                 ])->render();
             })->asHtml()->hideFromIndex(),
             Date::make('Date of Birth', 'birthDate')->hideFromIndex(),
             Text::make('Parent', 'parent')->hideFromIndex(),
             Text::make('Age', function () {
                 return view('partials.age', [
-                    'birthDate' => $this->birthDate
+                    'birthDate' => $this->birthDate,
                 ])->render();
             })->hideFromIndex(),
             Textarea::make('Notes', 'notes')->hideFromIndex(),
@@ -87,7 +91,7 @@ class STSwimmer extends Resource
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 
@@ -113,7 +117,7 @@ class STSwimmer extends Resource
         return [
             new SwimTeamSeason(),
             new SwimTeamLevel(),
-            new ShirtSize()
+            new ShirtSize(),
         ];
     }
 
@@ -137,7 +141,7 @@ class STSwimmer extends Resource
     public function actions(Request $request)
     {
         return [
-            new SendSwimTeamRegistrationEmail()
+            new SendSwimTeamRegistrationEmail(),
         ];
     }
 
@@ -155,7 +159,7 @@ class STSwimmer extends Resource
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->emergencyPhone,
-                    'text' => $this->emergencyPhone
+                    'text' => $this->emergencyPhone,
                 ])->render();
             })->asHtml()->hideFromIndex(),
         ];
@@ -172,9 +176,9 @@ class STSwimmer extends Resource
             Text::make('Charge Id', function () {
                 return view('partials.link', [
                     'link' => config('nova.path').'/nova-stripe/charge/'.$this->stripeChargeId,
-                    'text' => $this->stripeChargeId
+                    'text' => $this->stripeChargeId,
                 ])->render();
-            })->asHtml()->hideFromIndex()
+            })->asHtml()->hideFromIndex(),
         ];
     }
 

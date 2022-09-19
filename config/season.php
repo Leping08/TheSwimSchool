@@ -18,16 +18,16 @@ return [
         'season' => true,
 
         'next_season' => [
-            'registration_open' => 'May 23th'
-        ]
+            'registration_open' => 'May 23th',
+        ],
     ],
 
     'groups' => [
         'season' => true,
 
         'next_season' => [
-            'registration_open' => 'May 23th'
-        ]
-    ]
+            'registration_open' => 'May 23th',
+        ],
+    ],
 
 ];

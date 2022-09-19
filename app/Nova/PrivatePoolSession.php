@@ -4,15 +4,13 @@ namespace App\Nova;
 
 use App\DaysOfTheWeek;
 use Carbon\Carbon;
-use Fourstacks\NovaCheckboxes\Checkboxes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Leping\NovaCheckBoxes\NovaCheckBoxes;
 
 class PrivatePoolSession extends Resource
 {
@@ -37,7 +35,6 @@ class PrivatePoolSession extends Resource
      */
     public static $group = 'Privates';
 
-
     /**
      * The columns that should be searched.
      *
@@ -50,14 +47,13 @@ class PrivatePoolSession extends Resource
     /**
      * Custom store controller
      *
-     * @param Request $request
-     * @param Model   $model
+     * @param  Request  $request
+     * @param  Model  $model
      * @return Model
      */
     public static function customStoreController(Request $request, Model $model)
     {
-        //TODO Write test for this
-        $daysOfTheWeek = collect(json_decode($request['days']))->filter(function($value, $key) {
+        $daysOfTheWeek = collect(json_decode($request['days']))->filter(function ($value, $key) {
             return $value === true;
         })->keys();
 
@@ -71,7 +67,7 @@ class PrivatePoolSession extends Resource
                 4 => Carbon::THURSDAY,
                 5 => Carbon::FRIDAY,
                 6 => Carbon::SATURDAY,
-                7 => Carbon::SUNDAY
+                7 => Carbon::SUNDAY,
             ]);
 
             //Parse the date and go back one day to account for the start date being accessible
@@ -94,7 +90,7 @@ class PrivatePoolSession extends Resource
                 'start' => $start,
                 'end' => $end,
                 'location_id' => $request['location'],
-                'instructor_id' => $request['instructor']
+                'instructor_id' => $request['instructor'],
             ]);
         }
 
@@ -110,10 +106,10 @@ class PrivatePoolSession extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('', function (){
+            Text::make('', function () {
                 return view('partials.buttons', [
                     'next_id' => $this->model()->id + 1,
-                    'previous_id' => $this->model()->id - 1
+                    'previous_id' => $this->model()->id - 1,
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
@@ -123,18 +119,18 @@ class PrivatePoolSession extends Resource
             //Date::make('End Date', 'end_date')->onlyOnForms()->hideWhenUpdating(),
             DateTime::make('Start Date and Time', 'start_date_time')->onlyOnForms()->hideWhenUpdating(),
             DateTime::make('End Date and Time', 'end_date_time')->onlyOnForms()->hideWhenUpdating(),
-            Checkboxes::make('Days', 'days')
+            NovaCheckBoxes::make('Days', 'days')
                 ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                     return [$item['id'] => $item['day']];
                 }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
             BelongsTo::make('Lesson', 'lesson', PrivateLesson::class)->nullable(),
             BelongsTo::make('Location', 'location', Location::class)->withMeta([
                 //Select River Wilderness by default
-                'belongsToId' => $this->location_id ?? 63 //REALHAB location id
+                'belongsToId' => $this->location_id ?? 63, //REALHAB location id
             ])->searchable(),
             BelongsTo::make('Instructor', 'instructor', Instructor::class),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 

@@ -7,14 +7,14 @@ use App\Jobs\SendFeedbackEmails;
 use App\Lesson;
 use App\Swimmer;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class FeedbackTest extends TestCase
 {
-    use DatabaseMigrations, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     /** @test */
     public function a_user_can_fill_out_the_feedback_survey()
@@ -63,11 +63,11 @@ class FeedbackTest extends TestCase
     {
         $lesson = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->subDays(14),
-            'class_end_date' => Carbon::now()->subDays(7)
+            'class_end_date' => Carbon::now()->subDays(7),
         ]);
 
         Swimmer::factory()->create([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->assertCount(1, Swimmer::all());
@@ -90,22 +90,22 @@ class FeedbackTest extends TestCase
         $lesson = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->subDays(14),
             'class_end_date' => Carbon::now()->subDays(7),
-            'class_size' => 3
+            'class_size' => 3,
         ]);
 
         Swimmer::factory()->create([
             'lesson_id' => $lesson->id,
-            'email' => $email
+            'email' => $email,
         ]);
 
         Swimmer::factory()->create([
             'lesson_id' => $lesson->id,
-            'email' => $email
+            'email' => $email,
         ]);
 
         Swimmer::factory()->create([
             'lesson_id' => $lesson->id,
-            'email' => $email
+            'email' => $email,
         ]);
 
         $this->assertCount(3, Swimmer::all());

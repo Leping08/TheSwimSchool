@@ -27,7 +27,7 @@ class LocationFactory extends Factory
             'city' => $this->faker->city,
             'state' => $this->faker->word,
             'zip' => $this->faker->randomNumber(5),
-            'pool_access_instructions' => $this->faker->paragraph()
+            'pool_access_instructions' => $this->faker->paragraph(),
         ];
     }
 }

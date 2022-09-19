@@ -11,7 +11,7 @@ use Laravel\Nova\Actions\Actionable;
 /**
  * An Eloquent Model: 'Location'
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property bool $active
  * @property string $created_time

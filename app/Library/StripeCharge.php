@@ -1,15 +1,12 @@
 <?php
 
-
 namespace App\Library;
 
-
-use Illuminate\Support\Facades\Log;
 use App\Library\Interfaces\PaymentMethod;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class StripeCharge
- * @package App\Library
  */
 class StripeCharge implements PaymentMethod
 {
@@ -17,26 +14,29 @@ class StripeCharge implements PaymentMethod
      * @var string
      */
     public $token;
+
     /**
      * @var int
      */
     public $price;
+
     /**
      * @var string
      */
     public $email;
+
     /**
      * @var string
      */
     public $description;
 
-
     /**
      * StripeCharge constructor.
-     * @param string $token
-     * @param int $price
-     * @param string $email
-     * @param string|null $description
+     *
+     * @param  string  $token
+     * @param  int  $price
+     * @param  string  $email
+     * @param  string|null  $description
      */
     public function __construct(string $token, int $price, string $email, string $description = null)
     {
@@ -46,16 +46,14 @@ class StripeCharge implements PaymentMethod
         $this->description = $description;
     }
 
-
-
     public function charge()
     {
         $charge = [
-            "amount" => $this->price * 100,
-            "currency" => "usd",
-            "receipt_email" => $this->email,
-            "description" => $this->description,
-            "source" => $this->token //Obtained with Stripe.js
+            'amount' => $this->price * 100,
+            'currency' => 'usd',
+            'receipt_email' => $this->email,
+            'description' => $this->description,
+            'source' => $this->token, //Obtained with Stripe.js
         ];
 
         Log::info('Stripe charge request array:');
@@ -64,10 +62,10 @@ class StripeCharge implements PaymentMethod
         return $this->pay($charge);
     }
 
-
     /**
      * @param  array  $charge
-     * @return Mixed
+     * @return mixed
+     *
      * @throws \Exception
      */
     public function pay(array $charge)
@@ -79,6 +77,7 @@ class StripeCharge implements PaymentMethod
             $result = \Stripe\Charge::create($charge);
             Log::info('Stripe charge complete');
             Log::info('Stripe charge ID: '.$result->id);
+
             return $result;
         } catch (\Stripe\Exception\CardException $e) {
             // Since it's a decline, \Stripe\Exception\CardException will be caught
@@ -107,25 +106,26 @@ class StripeCharge implements PaymentMethod
         } catch (\Exception $e) {
             // Something else happened, completely unrelated to Stripe
             Log::error('Something else happened, completely unrelated to Stripe');
-            Log::error('Error: ' . $e->getMessage());
-            Log::error('Get trace as string: ' . $e->getTraceAsString());
+            Log::error('Error: '.$e->getMessage());
+            Log::error('Get trace as string: '.$e->getTraceAsString());
             throw $e;
         }
     }
 
     /**
      * @param $e
+     *
      * @throws \Exception
      */
     private function logStripeError($e)
     {
         $body = $e->getJsonBody();
-        $err  = $body['error'];
-        Log::error('Status is:' . $e->getHttpStatus());
-        Log::error('Type is:' . $err['type']);
-        Log::error('Code is:' . $err['code']);
+        $err = $body['error'];
+        Log::error('Status is:'.$e->getHttpStatus());
+        Log::error('Type is:'.$err['type']);
+        Log::error('Code is:'.$err['code']);
         Log::error(print_r($err, true));
-        session()->flash('error', 'Oops, something went wrong with the payment. ' . $err['message']);
+        session()->flash('error', 'Oops, something went wrong with the payment. '.$err['message']);
         throw $e;
     }
 }

@@ -2,14 +2,13 @@
 
 namespace App\Nova;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class WaitList extends Resource
 {
@@ -43,7 +42,7 @@ class WaitList extends Resource
         'id',
         'name',
         'email',
-        'phone'
+        'phone',
     ];
 
     /**
@@ -60,26 +59,26 @@ class WaitList extends Resource
             Date::make('Date of Birth', 'date_of_birth')->hideFromIndex(),
             Text::make('Age', function () {
                 return view('partials.age', [
-                    'birthDate' => $this->date_of_birth
+                    'birthDate' => $this->date_of_birth,
                 ])->render();
             })->hideFromIndex(),
             Text::make('Email', 'email')->onlyOnForms(),
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
-                    'text' => $this->email
+                    'text' => $this->email,
                 ])->render();
             })->asHtml()->sortable(),
             Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
-                    'text' => $this->phone
+                    'text' => $this->phone,
                 ])->render();
             })->asHtml(),
             Boolean::make('Followed Up', 'followed_up'),
             Number::make('Lesson ID', 'lesson_id')->onlyOnForms(),
-            BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail()
+            BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail(),
         ];
     }
 

@@ -4,18 +4,18 @@ namespace App\Nova\Actions;
 
 use App\Mail\Privates\PrivateLessonSignUp;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ResendPrivateSignUpEmail extends Action
 {
     use InteractsWithQueue, Queueable;
 
-    public $name = "Resend Sign Up Email";
+    public $name = 'Resend Sign Up Email';
 
     /**
      * Perform the action on the given models.
@@ -31,17 +31,19 @@ class ResendPrivateSignUpEmail extends Action
                 Mail::to($swimmer->email)->send(new PrivateLessonSignUp($swimmer->lesson));
             }
         } catch (\Exception $exception) {
-            return Action::danger("An error occurred trying to send the email");
+            return Action::danger('An error occurred trying to send the email');
         }
-        return Action::message("Email sent!");
+
+        return Action::message('Email sent!');
     }
 
     /**
      * Get the fields available on the action.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function fields()
+    public function fields(NovaRequest $request)
     {
         return [];
     }

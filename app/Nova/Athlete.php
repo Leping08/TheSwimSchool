@@ -3,15 +3,13 @@
 namespace App\Nova;
 
 use App\Nova\Actions\EmailYouMadeTheTeam;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
 class Athlete extends Resource
@@ -24,6 +22,13 @@ class Athlete extends Resource
     public static $model = \App\Athlete::class;
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Swim Team';
+
+    /**
      * The columns that should be searched.
      *
      * @var array
@@ -32,10 +37,8 @@ class Athlete extends Resource
         'id',
         'firstName',
         'lastName',
-        'email'
+        'email',
     ];
-
-    public static $displayInNavigation = false;
 
     /**
      * Get the fields displayed by the resource.
@@ -46,10 +49,10 @@ class Athlete extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('', function (){
+            Text::make('', function () {
                 return view('partials.buttons', [
                     'next_id' => $this->model()->id + 1,
-                    'previous_id' => $this->model()->id - 1
+                    'previous_id' => $this->model()->id - 1,
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
@@ -60,21 +63,21 @@ class Athlete extends Resource
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
-                    'text' => $this->email
+                    'text' => $this->email,
                 ])->render();
             })->asHtml()->sortable(),
             Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
-                    'text' => $this->phone
+                    'text' => $this->phone,
                 ])->render();
             })->asHtml()->hideFromIndex(),
             Date::make('Date of Birth', 'birthDate')->hideFromIndex(),
             Text::make('Parent', 'parent')->hideFromIndex(),
             Text::make('Age', function () {
                 return view('partials.age', [
-                    'birthDate' => $this->birthDate
+                    'birthDate' => $this->birthDate,
                 ])->render();
             })->hideFromIndex(),
             BelongsTo::make('Tryout'),
@@ -130,7 +133,7 @@ class Athlete extends Resource
     public function actions(Request $request)
     {
         return [
-            new EmailYouMadeTheTeam()
+            new EmailYouMadeTheTeam(),
         ];
     }
 
@@ -148,11 +151,10 @@ class Athlete extends Resource
             Text::make('Postal Code', 'zip')->hideFromIndex(),
             Text::make('Country', function () {
                 return 'US';
-            })->hideFromIndex()
+            })->hideFromIndex(),
             //Country::make('Country')->hideFromIndex(),
         ];
     }
-
 
     /**
      * Get the address fields for the resource.
@@ -164,7 +166,7 @@ class Athlete extends Resource
         return [
             Text::make('Name', 'emergencyName')->hideFromIndex(),
             Text::make('Relationship', 'emergencyRelationship')->hideFromIndex(),
-            Text::make('Phone', 'emergencyPhone')->hideFromIndex()
+            Text::make('Phone', 'emergencyPhone')->hideFromIndex(),
         ];
     }
 

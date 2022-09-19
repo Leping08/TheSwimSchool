@@ -2,19 +2,19 @@
 
 namespace Tests\Feature;
 
-use App\Lesson;
-use App\Swimmer;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\WithFaker;
-use Carbon\Carbon;
 use App\Group;
+use App\Lesson;
 use App\Mail\Groups\SignUp;
+use App\Swimmer;
+use Carbon\Carbon;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
+use Tests\TestCase;
 
 class LessonsTest extends TestCase
 {
-    use DatabaseMigrations, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     //TODO links in this file are a bit messy
 
@@ -24,7 +24,7 @@ class LessonsTest extends TestCase
         $lessonInProgress = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $this->get($lessonInProgress->path())
@@ -37,7 +37,7 @@ class LessonsTest extends TestCase
         $registrationNotOpenYet = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->addDays(3),
             'registration_open' => Carbon::now()->addDays(2),
-            'class_end_date' => Carbon::now()->addDays(5)
+            'class_end_date' => Carbon::now()->addDays(5),
         ]);
 
         $this->get($registrationNotOpenYet->path())
@@ -50,7 +50,7 @@ class LessonsTest extends TestCase
         $lessonFinished = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->subDays(4),
             'registration_open' => Carbon::now()->subDays(6),
-            'class_end_date' => Carbon::now()->subDays(2)
+            'class_end_date' => Carbon::now()->subDays(2),
         ]);
 
         $this->get($lessonFinished->path())
@@ -63,25 +63,25 @@ class LessonsTest extends TestCase
         $registrationOpen = Lesson::factory()->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $lessonFinished = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->subDays(4),
             'registration_open' => Carbon::now()->subDays(6),
-            'class_end_date' => Carbon::now()->subDays(2)
+            'class_end_date' => Carbon::now()->subDays(2),
         ]);
 
         $lessonInProgress = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->subDays(2),
             'registration_open' => Carbon::now()->subDays(4),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $registrationNotOpenYet = Lesson::factory()->create([
             'class_start_date' => Carbon::now()->addDays(3),
             'registration_open' => Carbon::now()->addDays(2),
-            'class_end_date' => Carbon::now()->addDays(5)
+            'class_end_date' => Carbon::now()->addDays(5),
         ]);
 
         $this->get('/lessons')
@@ -101,7 +101,7 @@ class LessonsTest extends TestCase
         $registrationOpen = Lesson::factory()->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $this->get($registrationOpen->path())
@@ -119,7 +119,7 @@ class LessonsTest extends TestCase
         $registrationOpen = Lesson::factory()->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
-            'class_end_date' => Carbon::now()->addDays(2)
+            'class_end_date' => Carbon::now()->addDays(2),
         ]);
 
         $this->get($registrationOpen->path())
@@ -133,9 +133,8 @@ class LessonsTest extends TestCase
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
             'class_end_date' => Carbon::now()->addDays(2),
-            'class_size' => 1
+            'class_size' => 1,
         ]);
-
 
         $this->get($registrationOpen->path())
             ->assertSee('Sign Up');
@@ -154,10 +153,10 @@ class LessonsTest extends TestCase
         $lesson = Lesson::factory()->create();
         $group = Group::factory()->create();
         $lesson->update([
-            'group_id' => $group->id
+            'group_id' => $group->id,
         ]);
         $group->update([
-            'type' => 'Private LessonTest'
+            'type' => 'Private LessonTest',
         ]);
 
         $testSet = Group::public()->get();
@@ -196,15 +195,15 @@ class LessonsTest extends TestCase
         $group = Group::factory()->create();
         $lesson->update([
             'group_id' => $group->id,
-            'class_size' => 1
+            'class_size' => 1,
         ]);
         $group->update([
-            'type' => 'Private LessonTest'
+            'type' => 'Private LessonTest',
         ]);
 
         $swimmer = Swimmer::factory()->create();
         $swimmer->update([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
@@ -215,7 +214,7 @@ class LessonsTest extends TestCase
     public function a_user_can_not_see_a_lesson_that_starts_today()
     {
         $lesson = Lesson::factory()->create([
-            'class_start_date' => Carbon::now()
+            'class_start_date' => Carbon::now(),
         ]);
 
         $this->assertFalse(Lesson::registrationOpen()->get()->contains($lesson));
@@ -242,34 +241,33 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_visa'
+            'stripeToken' => 'tok_visa',
         ];
-
 
         $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  Swimmer::all()->count());
+        $this->assertEquals(0, Swimmer::all()->count());
 
         $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
 
         $response->assertRedirect('/thank-you');
 
-        $this->assertEquals(1,  Swimmer::all()->count());
+        $this->assertEquals(1, Swimmer::all()->count());
 
         $this->assertDatabaseHas('swimmers', [
-            "firstName" => $attributes['firstName'],
-            "lastName" => $attributes['lastName'],
-            "email" => $attributes['email'],
-            "lesson_id" => $attributes['lesson_id']
+            'firstName' => $attributes['firstName'],
+            'lastName' => $attributes['lastName'],
+            'email' => $attributes['email'],
+            'lesson_id' => $attributes['lesson_id'],
         ]);
     }
-    
+
     /** @test  **/
     public function a_swimmer_will_get_a_sign_up_email_after_hitting_the_lesson_sign_up_route()
     {
         Mail::fake();
- 
+
         $lesson = Lesson::factory()->create();
 
         $attributes = [
@@ -288,26 +286,25 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_visa'
+            'stripeToken' => 'tok_visa',
         ];
-
 
         $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  Swimmer::all()->count());
+        $this->assertEquals(0, Swimmer::all()->count());
 
         $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
 
         $response->assertRedirect('/thank-you');
 
-        $this->assertEquals(1,  Swimmer::all()->count());
+        $this->assertEquals(1, Swimmer::all()->count());
 
         $this->assertDatabaseHas('swimmers', [
-            "firstName" => $attributes['firstName'],
-            "lastName" => $attributes['lastName'],
-            "email" => $attributes['email'],
-            "lesson_id" => $attributes['lesson_id']
+            'firstName' => $attributes['firstName'],
+            'lastName' => $attributes['lastName'],
+            'email' => $attributes['email'],
+            'lesson_id' => $attributes['lesson_id'],
         ]);
 
         Mail::assertSent(SignUp::class);
@@ -317,7 +314,7 @@ class LessonsTest extends TestCase
     public function a_user_can_not_sign_up_for_a_group_lesson_that_is_full()
     {
         $lesson = Lesson::factory()->create([
-            'class_size' => 0
+            'class_size' => 0,
         ]);
 
         $swimmer = [
@@ -336,7 +333,7 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_visa'
+            'stripeToken' => 'tok_visa',
         ];
 
         $this->assertTrue($lesson->isFull());
@@ -367,14 +364,13 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_chargeDeclined' //This is a declined card
+            'stripeToken' => 'tok_chargeDeclined', //This is a declined card
         ];
-
 
         $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  Swimmer::all()->count());
+        $this->assertEquals(0, Swimmer::all()->count());
 
         $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
 
@@ -382,6 +378,6 @@ class LessonsTest extends TestCase
 
         $response->assertSessionHas('error', 'Oops, something went wrong with the payment. Your card was declined.');
 
-        $this->assertEquals(0,  Swimmer::all()->count());
+        $this->assertEquals(0, Swimmer::all()->count());
     }
 }

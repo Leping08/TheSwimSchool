@@ -23,7 +23,7 @@ class STLevelFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'price' => $this->faker->numberBetween(1, 400)
+            'price' => $this->faker->numberBetween(1, 400),
         ];
     }
 }

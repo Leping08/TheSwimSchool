@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Instructor;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class AboutController extends Controller

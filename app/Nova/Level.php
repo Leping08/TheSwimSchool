@@ -3,16 +3,12 @@
 namespace App\Nova;
 
 use App\Nova\Metrics\LessonsPerLevel;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\VaporImage;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Level extends Resource
 {
@@ -46,7 +42,7 @@ class Level extends Resource
         'id',
         'type',
         'ages',
-        'description'
+        'description',
     ];
 
     /**
@@ -66,7 +62,7 @@ class Level extends Resource
             Text::make('Description', 'description')->hideFromIndex(),
             HasMany::make('Lessons', 'lessons', Lesson::class),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 
@@ -79,7 +75,7 @@ class Level extends Resource
     public function cards(Request $request)
     {
         return [
-            (new LessonsPerLevel)->width('full')
+            (new LessonsPerLevel)->width('full'),
         ];
     }
 

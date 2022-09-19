@@ -2,18 +2,13 @@
 
 namespace App\Nova;
 
-
 use App\Nova\Metrics\OpenPrivateRequests;
 use App\Nova\Metrics\PrivateRequestsPerDay;
-use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class PrivateLessonRequest extends Resource
 {
@@ -52,7 +47,7 @@ class PrivateLessonRequest extends Resource
         'length',
         'location',
         'availability',
-        'address'
+        'address',
     ];
 
     /**
@@ -64,10 +59,10 @@ class PrivateLessonRequest extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('', function (){
+            Text::make('', function () {
                 return view('partials.buttons', [
                     'next_id' => $this->model()->id + 1,
-                    'previous_id' => $this->model()->id - 1
+                    'previous_id' => $this->model()->id - 1,
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
@@ -76,19 +71,19 @@ class PrivateLessonRequest extends Resource
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
-                    'text' => $this->email
+                    'text' => $this->email,
                 ])->render();
             })->asHtml(),
             Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
-                    'text' => $this->phone
+                    'text' => $this->phone,
                 ])->render();
             })->asHtml(),
             Text::make('Age', function () {
                 return view('partials.age', [
-                    'birthDate' => $this->swimmer_birth_date
+                    'birthDate' => $this->swimmer_birth_date,
                 ])->render();
             })->hideFromIndex(),
             Text::make('Type', 'type')->hideFromIndex(),
@@ -99,7 +94,7 @@ class PrivateLessonRequest extends Resource
             Text::make('Availability', 'availability')->hideFromIndex(),
             Boolean::make('Followed Up', 'followed_up')->sortable(),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 
@@ -113,7 +108,7 @@ class PrivateLessonRequest extends Resource
     {
         return [
             (new PrivateRequestsPerDay())->width('2/3'),
-            (new OpenPrivateRequests())->width('1/3')
+            (new OpenPrivateRequests())->width('1/3'),
         ];
     }
 

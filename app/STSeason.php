@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class STSeason extends Model
 {
@@ -17,7 +16,7 @@ class STSeason extends Model
     {
         return $this->hasMany(STSwimmer::class)
                     ->where('s_t_swimmers.stripeChargeId', '!=', null);
-                    //->currentseason();
+        //->currentseason();
     }
 
     public function tryouts()

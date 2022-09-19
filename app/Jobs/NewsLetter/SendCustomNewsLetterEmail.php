@@ -5,7 +5,6 @@ namespace App\Jobs\NewsLetter;
 use App\Mail\NewsLetter\CustomNewsLetter;
 use App\PageParameters;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -41,12 +40,13 @@ class SendCustomNewsLetterEmail implements ShouldQueue
     /**
      * The page parameters model with the email data in the config
      *
-     * @var PageParameters $pageParameters
+     * @var PageParameters
      */
     public $pageParameters;
 
     /**
      * Create a new message instance.
+     *
      * @param  string  $email
      */
     public function __construct(string $email, PageParameters $pageParameters)
@@ -59,6 +59,7 @@ class SendCustomNewsLetterEmail implements ShouldQueue
      * Execute the job.
      *
      * @return void
+     *
      * @throws \Exception
      */
     public function handle()

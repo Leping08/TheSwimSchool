@@ -7,21 +7,21 @@ use App\Library\TryoutReminderEmail;
 use App\Mail\SwimTeam\TryoutReminder;
 use App\Tryout;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class TryoutTest extends TestCase
 {
-    use DatabaseMigrations, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     /** @test  **/
     public function a_user_should_be_able_to_see_the_sign_up_button_if_registration_is_open()
     {
         $tryout = Tryout::factory()->create([
             'event_time' => Carbon::now()->addDays(2),
-            'registration_open' => Carbon::now()->subDays(2)
+            'registration_open' => Carbon::now()->subDays(2),
         ]);
 
         $registrationOpen = Tryout::registrationOpen()->get();
@@ -38,7 +38,7 @@ class TryoutTest extends TestCase
     {
         $tryout = Tryout::factory()->create([
             'event_time' => Carbon::now()->subDays(2),
-            'registration_open' => Carbon::now()->subDays(4)
+            'registration_open' => Carbon::now()->subDays(4),
         ]);
 
         $registrationOpen = Tryout::registrationOpen()->get();
@@ -53,7 +53,7 @@ class TryoutTest extends TestCase
     {
         $tryout = Tryout::factory()->create([
             'event_time' => Carbon::now()->subDays(2),
-            'registration_open' => Carbon::now()->subDays(4)
+            'registration_open' => Carbon::now()->subDays(4),
         ]);
 
         $this->get(route('swim-team.tryouts.show', [$tryout]))
@@ -83,23 +83,22 @@ class TryoutTest extends TestCase
             //'tryout_id' => $tryout->id,
         ];
 
-
         $this->get(route('swim-team.tryouts.show', [$tryout]))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  Athlete::all()->count());
+        $this->assertEquals(0, Athlete::all()->count());
 
         $response = $this->post(route('swim-team.athlete.store', [$tryout]), $attributes);
 
         $response->assertRedirect(route('swim-team.index'));
 
-        $this->assertEquals(1,  Athlete::all()->count());
+        $this->assertEquals(1, Athlete::all()->count());
 
         $this->assertDatabaseHas('athletes', [
-            "firstName" => $attributes['firstName'],
-            "lastName" => $attributes['lastName'],
-            "email" => $attributes['email'],
-            "tryout_id" => $tryout->id
+            'firstName' => $attributes['firstName'],
+            'lastName' => $attributes['lastName'],
+            'email' => $attributes['email'],
+            'tryout_id' => $tryout->id,
         ]);
     }
 
@@ -108,14 +107,14 @@ class TryoutTest extends TestCase
     {
         $tryout = Tryout::factory()->create([
             'event_time' => Carbon::tomorrow(),
-            'registration_open' => Carbon::yesterday()
+            'registration_open' => Carbon::yesterday(),
         ]);
 
         $registrationOpen = Tryout::registrationOpen()->get();
         $this->assertTrue($registrationOpen->contains($tryout->id));
 
         $athlete = Athlete::factory()->create([
-            'tryout_id' => $tryout->id
+            'tryout_id' => $tryout->id,
         ]);
 
         Mail::fake();

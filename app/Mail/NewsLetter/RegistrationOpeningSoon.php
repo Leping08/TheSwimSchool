@@ -5,7 +5,6 @@ namespace App\Mail\NewsLetter;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 //Test to people
 //\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpeningSoon('derek@deltavcreative.com'));
@@ -25,6 +24,7 @@ class RegistrationOpeningSoon extends Mailable
 
     /**
      * Create a new message instance.
+     *
      * @param $emailAddress
      * @return void
      */
@@ -44,9 +44,9 @@ class RegistrationOpeningSoon extends Mailable
             ->from(config('mail.from.address'))
             ->subject('2021 Swim Season Is Almost Here!')
             ->with(['emailAddress' => $this->emailAddress])
-            ->withSwiftMessage(function ($message) {
+            ->withSymfonyMessage(function ($message) {
                 $message->getHeaders()
-                    ->addTextHeader('List-Unsubscribe', '<' . route('newsletter.unsubscribe', ['email' => $this->emailAddress]) . '>');
+                    ->addTextHeader('List-Unsubscribe', '<'.route('newsletter.unsubscribe', ['email' => $this->emailAddress]).'>');
             });
     }
 }

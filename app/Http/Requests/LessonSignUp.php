@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
 
 class LessonSignUp extends FormRequest
 {
@@ -39,15 +38,15 @@ class LessonSignUp extends FormRequest
             'emergencyRelationship' => 'required|max:191',
             'emergencyPhone' => 'required|max:20',
             'lesson_id' => 'required|integer',
-            'stripeToken' => 'required'
+            'stripeToken' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'lesson_id.required' => "The lesson seems to be missing. Refresh the page and try that again.",
-            'stripeToken.required' => "Something went wrong with stripe try that again."
+            'lesson_id.required' => 'The lesson seems to be missing. Refresh the page and try that again.',
+            'stripeToken.required' => 'Something went wrong with stripe try that again.',
         ];
     }
 }

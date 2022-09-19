@@ -11,12 +11,11 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
-
 class WaitListController extends Controller
 {
     /**
-     * @param Request $request
-     * @param Lesson $lesson
+     * @param  Request  $request
+     * @param  Lesson  $lesson
      * @return Redirect
      */
     public function store(Request $request, Lesson $lesson)
@@ -25,14 +24,15 @@ class WaitListController extends Controller
             'name' => 'required|string|max:191',
             'email' => 'required|string|max:191',
             'phone' => 'required|max:20',
-            'date_of_birth' => 'required'
+            'date_of_birth' => 'required',
         ]);
 
-        try{
+        try {
             $waitingSwimmer['lesson_id'] = $lesson->id;
         } catch (\Exception $e) {
             Log::error($e);
-            session()->flash("warning", "Something has gone wrong. The lesson id in the url does not match the lesson id in the wait list form data.");
+            session()->flash('warning', 'Something has gone wrong. The lesson id in the url does not match the lesson id in the wait list form data.');
+
             return back();
         }
 
@@ -41,11 +41,11 @@ class WaitListController extends Controller
                 //Check to see if the same swimmer is signing up again
                 if ($swimmer->email === $waitingSwimmer['email'] && $swimmer->name === $waitingSwimmer['name']) {
                     session()->flash('warning', 'Email already on the wait list.');
+
                     return back();
                 }
             }
         }
-
 
         $waitingSwimmer['date_of_birth'] = Carbon::parse($waitingSwimmer['date_of_birth'])->format('Y-m-d');
 
@@ -55,11 +55,12 @@ class WaitListController extends Controller
 
         Log::info("New swimmer added to the wait list: ID $newWaitingSwimmer->id, Name: $newWaitingSwimmer->name");
         session()->flash('success', 'You have been added to the wait list!');
+
         return back();
     }
 
     /**
-     * @param Lesson $lesson
+     * @param  Lesson  $lesson
      */
     private function sendWaitListAdminEmail(Lesson $lesson)
     {

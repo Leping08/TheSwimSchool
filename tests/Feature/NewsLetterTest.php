@@ -1,25 +1,23 @@
 <?php
 
-
 namespace Tests\Feature;
-
 
 use App\EmailList;
 use App\Library\Mailgun\Mailgun;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class NewsLetterTest extends TestCase
 {
-    use DatabaseMigrations, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     /** @test  **/
     public function it_allows_someone_to_sign_up()
     {
         $data = [
-            'email' => $this->faker->safeEmail
+            'email' => $this->faker->safeEmail,
         ];
 
         $this->assertCount(0, EmailList::all());
@@ -34,7 +32,7 @@ class NewsLetterTest extends TestCase
     public function it_will_not_throw_an_error_when_the_same_email_is_entered_twice()
     {
         $data = [
-            'email' => $this->faker->safeEmail
+            'email' => $this->faker->safeEmail,
         ];
 
         $this->assertCount(0, EmailList::all());
@@ -57,7 +55,7 @@ class NewsLetterTest extends TestCase
 
         EmailList::create([
             'email' => $email_subscribed,
-            'subscribe' => true
+            'subscribe' => true,
         ]);
 
         $fake_response = [
@@ -65,12 +63,12 @@ class NewsLetterTest extends TestCase
                 [
                     'address' => $email_subscribed,
                     'created_at' => 'Mon, 11 Oct 2021 13:48:43 UTC',
-                ]
-            ]
+                ],
+            ],
         ];
 
         Http::fake([
-            'api.mailgun.net/v3/theswimschoolfl.com/complaints?limit=1000' => Http::response($fake_response, 200)
+            'api.mailgun.net/v3/theswimschoolfl.com/complaints?limit=1000' => Http::response($fake_response, 200),
         ]);
 
         $email_before = EmailList::where('email', $email_subscribed)->first();
@@ -89,13 +87,13 @@ class NewsLetterTest extends TestCase
 
         EmailList::create([
             'email' => $email_subscribed,
-            'subscribe' => true
+            'subscribe' => true,
         ]);
 
-        $fake_response = "An error happened";
+        $fake_response = 'An error happened';
 
         Http::fake([
-            'api.mailgun.net/v3/theswimschoolfl.com/complaints' => Http::response($fake_response, 400)
+            'api.mailgun.net/v3/theswimschoolfl.com/complaints' => Http::response($fake_response, 400),
         ]);
 
         $email_before = EmailList::where('email', $email_subscribed)->first();

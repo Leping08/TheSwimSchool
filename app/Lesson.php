@@ -2,24 +2,23 @@
 
 namespace App;
 
-use App\Observers\LessonObserver;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Nova\Actions\Actionable;
 use Illuminate\Support\Collection;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * An Eloquent Model: 'Lesson'
  *
- * @property integer $id
- * @property integer $season_id
- * @property integer $group_id
- * @property integer $location_id
- * @property integer $price
- * @property integer $class_size
+ * @property int $id
+ * @property int $season_id
+ * @property int $group_id
+ * @property int $location_id
+ * @property int $price
+ * @property int $class_size
  * @property \Illuminate\Support\Carbon $registration_open
  * @property \Illuminate\Support\Carbon $class_start_time
  * @property \Illuminate\Support\Carbon $class_end_time
@@ -35,7 +34,6 @@ use Illuminate\Support\Collection;
  * @property-read WaitList $waitlist
  * @property-read User $instructor
  */
-
 class Lesson extends Model
 {
     use SoftDeletes, Actionable, Notifiable, HasFactory;
@@ -58,7 +56,7 @@ class Lesson extends Model
         'class_end_time',
         'class_start_date',
         'class_end_date',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**
@@ -82,7 +80,7 @@ class Lesson extends Model
         'friday',
         'saturday',
         'sunday',
-        'days'
+        'days',
     ];
 
     /**
@@ -224,13 +222,13 @@ class Lesson extends Model
 
     /**
      * This is a collection of carbon dates for each pool session
+     *
      * @return Collection
      */
     public function getCalendarEventsAttribute()
     {
         $dates = collect();
         foreach ($this->DaysOfTheWeekArray() as $day) {
-
             $carbonConstants = collect([
                 'Monday' => Carbon::MONDAY,
                 'Tuesday' => Carbon::TUESDAY,
@@ -242,7 +240,7 @@ class Lesson extends Model
             ]);
 
             foreach ($carbonConstants as $key => $carbonConstant) {
-                if($key === $day) {
+                if ($key === $day) {
                     $carbonDayConstant = $carbonConstant;
                 }
             }
@@ -254,6 +252,7 @@ class Lesson extends Model
                 $dates->push($date->toISOString());
             }
         }
+
         return $dates;
     }
 }

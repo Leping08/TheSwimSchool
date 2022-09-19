@@ -24,7 +24,7 @@ class BannerFactory extends Factory
         return [
             'active' => true,
             'page' => '/swim-team',
-            'text' => $this->faker->sentence
+            'text' => $this->faker->sentence,
         ];
     }
 }

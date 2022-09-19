@@ -27,7 +27,7 @@ class TryoutFactory extends Factory
             's_t_season_id' => STSeason::factory(),
             'location_id' => Location::factory(),
             'registration_open' => $this->faker->dateTimeBetween('-1 month', 'yesterday'),
-            'event_time' => $this->faker->dateTimeBetween('tomorrow', '+1 week')
+            'event_time' => $this->faker->dateTimeBetween('tomorrow', '+1 week'),
         ];
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Mail\NewsLetter;
-
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -15,7 +13,6 @@ use Illuminate\Queue\SerializesModels;
 //Send to everyone
 //\App\Library\Marketing\Emails\Events\UpdateEmail::send();
 
-
 class Update extends Mailable
 {
     use Queueable, SerializesModels;
@@ -27,6 +24,7 @@ class Update extends Mailable
 
     /**
      * Create a new message instance.
+     *
      * @param $emailAddress
      * @return void
      */
@@ -46,9 +44,9 @@ class Update extends Mailable
             ->from(config('mail.from.address'))
             ->markdown('email.newsletter.update')
             ->with(['emailAddress' => $this->emailAddress])
-            ->withSwiftMessage(function ($message) {
+            ->withSymfonyMessage(function ($message) {
                 $message->getHeaders()
-                    ->addTextHeader('List-Unsubscribe', '<' . route('newsletter.unsubscribe', ['email' => $this->emailAddress]) . '>');
+                    ->addTextHeader('List-Unsubscribe', '<'.route('newsletter.unsubscribe', ['email' => $this->emailAddress]).'>');
             });
     }
 }

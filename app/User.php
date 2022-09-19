@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Actions\Actionable;
 
 /**
@@ -13,7 +13,7 @@ use Laravel\Nova\Actions\Actionable;
  *
  * An Eloquent Model: 'User'
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $email
  * @property string $hex_color
@@ -24,9 +24,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read PrivatePoolSession $pool_sessions
- *
  */
-
 class User extends Authenticatable
 {
     use Notifiable, Actionable, SoftDeletes, HasFactory;
@@ -34,16 +32,16 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'hex_color'
+        'name', 'email', 'password', 'hex_color',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password', 'remember_token',

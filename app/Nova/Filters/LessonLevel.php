@@ -31,11 +31,12 @@ class LessonLevel extends Filter
     {
         $types = Group::pluck('type');
         $ids = Group::pluck('id');
+
         return $types->combine($ids);
     }
 
     public function name()
     {
-        return "Level";
+        return 'Level';
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Library\Marketing\Emails\SwimTeam;
-
 
 use App\Mail\SwimTeam\Awards;
 use App\STSeason;
@@ -23,8 +21,7 @@ class AwardsDinner
 
     public static function send()
     {
-        foreach(self::getEmailAddresses() as $email)
-        {
+        foreach (self::getEmailAddresses() as $email) {
             try {
                 Log::info("Sending swim team awards email to $email");
                 Mail::to($email)->queue(new Awards());

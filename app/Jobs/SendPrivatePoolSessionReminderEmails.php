@@ -33,7 +33,7 @@ class SendPrivatePoolSessionReminderEmails implements ShouldQueue
      */
     public function handle()
     {
-        Log::info("Starting to send private lesson pool session reminder emails.");
+        Log::info('Starting to send private lesson pool session reminder emails.');
         $pool_sessions = PrivatePoolSession::startingTomorrow()->get();
         if (count($pool_sessions)) {
             foreach ($pool_sessions as $pool_session) {
@@ -52,6 +52,6 @@ class SendPrivatePoolSessionReminderEmails implements ShouldQueue
         } else {
             Log::info('No pool sessions tomorrow. Not sending any emails.');
         }
-        Log::info("Finished sending private lesson pool session reminder emails.");
+        Log::info('Finished sending private lesson pool session reminder emails.');
     }
 }

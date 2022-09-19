@@ -1,8 +1,8 @@
 <?php
 
+use App\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Lesson;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ Route::post('/stripe-token/payment-intent/swimmer', 'StripePaymentIntentControll
 // Used to update the athlete data in the DB when signing up for the swim team
 Route::post('/athlete/{hash}', 'SwimTeam\AthleteController@update')->name('api.athlete.update');
 
-// Used when signing up an athlete and the promo code is for free. 
+// Used when signing up an athlete and the promo code is for free.
 // It will create the swimmer and send out the email but no payment is needed.
 Route::post('/swim-team/athlete/promo-code', 'SwimTeam\SwimmerController@save')->name('api.athlete.promo-code.update');
 

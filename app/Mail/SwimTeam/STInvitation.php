@@ -7,7 +7,6 @@ use App\PromoCode;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class STInvitation extends Mailable
 {
@@ -28,11 +27,11 @@ class STInvitation extends Mailable
      */
     public $theme = 'the_swim_team';
 
-
     /**
      * STInvitation constructor.
-     * @param Athlete $athlete
-     * @param PromoCode $promoCode
+     *
+     * @param  Athlete  $athlete
+     * @param  PromoCode  $promoCode
      */
     public function __construct(Athlete $athlete, PromoCode $promoCode = null)
     {
@@ -52,7 +51,7 @@ class STInvitation extends Mailable
             ->markdown('email.swim-team.invitation')
             ->with([
                 'athlete' => $this->athlete,
-                'promoCode' => $this->promoCode
+                'promoCode' => $this->promoCode,
             ]);
     }
 }

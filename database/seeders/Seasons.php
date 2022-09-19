@@ -18,7 +18,7 @@ class Seasons extends Seeder
             'Spring',
             'Summer',
             'Fall',
-            'Winter'
+            'Winter',
         ];
 
         $years = range(2017, 2025);
@@ -29,7 +29,7 @@ class Seasons extends Seeder
                     'year' => $year,
                     'season' => $season,
                     'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()
+                    'updated_at' => Carbon::now(),
                 ]);
             }
         }

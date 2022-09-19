@@ -55,6 +55,6 @@ class ContactUsPerDay extends Trend
 
     public function name()
     {
-        return "Contact Us";
+        return 'Contact Us';
     }
 }

@@ -4,7 +4,6 @@ namespace App\Mail\Privates;
 
 use App\PrivateLesson;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -17,8 +16,8 @@ class PrivateLessonSignUp extends Mailable
     /**
      * Create a new message instance.
      *
+     * @param  PrivateLesson  $privateLesson
      * @return void
-     * @param PrivateLesson $privateLesson
      */
     public function __construct(PrivateLesson $privateLesson)
     {
@@ -42,7 +41,7 @@ class PrivateLessonSignUp extends Mailable
                 'pool_sessions' => $this->privateLesson->pool_sessions,
                 'first_pool_session' => $firstPoolSession,
                 'location' => $firstPoolSession->location,
-                'instructor' => $firstPoolSession->instructor
+                'instructor' => $firstPoolSession->instructor,
             ]);
     }
 }

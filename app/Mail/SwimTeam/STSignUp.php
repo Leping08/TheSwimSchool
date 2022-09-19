@@ -6,7 +6,6 @@ use App\STSwimmer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class STSignUp extends Mailable
 {
@@ -24,7 +23,8 @@ class STSignUp extends Mailable
 
     /**
      * STSignUp constructor.
-     * @param STSwimmer $swimmer
+     *
+     * @param  STSwimmer  $swimmer
      */
     public function __construct(STSwimmer $swimmer)
     {

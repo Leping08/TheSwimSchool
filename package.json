@@ -15,7 +15,9 @@
         "build-price-tracker": "cd nova-components/PriceTracker && npm run dev",
         "build-price-tracker-prod": "cd nova-components/PriceTracker && npm run prod",
         "build-parrish-bull-sharks": "cd nova-components/ParrishBullSharks && npm run dev",
-        "build-parrish-bull-sharks-prod": "cd nova-components/ParrishBullSharks && npm run prod"
+        "build-parrish-bull-sharks-prod": "cd nova-components/ParrishBullSharks && npm run prod",
+        "build-swim-team-roster": "cd nova-components/SwimTeamRoster && npm run dev",
+        "build-swim-team-roster-prod": "cd nova-components/SwimTeamRoster && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.21.1",

@@ -13,9 +13,9 @@ return [
         | application.
         |
         */
-    
+
         'number' => '(941) 981-5716',
-    
+
         /*
         |--------------------------------------------------------------------------
         | Phone Link
@@ -25,7 +25,7 @@ return [
         | application.
         |
         */
-    
+
         'link' => 'tel:+19419815716',
 
     ],
@@ -41,7 +41,7 @@ return [
         | application.
         |
         */
-    
+
         'address' => 'info@theswimschoolfl.com',
 
         /*

@@ -5,7 +5,6 @@ namespace App\Mail\Groups;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class GroupLessonReminder extends Mailable
 {
@@ -16,9 +15,9 @@ class GroupLessonReminder extends Mailable
      */
     public $lesson;
 
-
     /**
      * GroupLessonReminder constructor.
+     *
      * @param $lesson
      */
     public function __construct($lesson)

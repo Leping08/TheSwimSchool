@@ -9,14 +9,14 @@ use App\PrivateLesson;
 use App\PrivatePoolSession;
 use App\PrivateSwimmer;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class PrivateLessonCalendarRequestTest extends TestCase
 {
-    use DatabaseMigrations, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     /** @test  **/
     public function a_user_can_request_a_private_lesson_with_more_than_one_pool_session()
@@ -31,7 +31,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->withoutExceptionHandling();
 
         $sessions = PrivatePoolSession::factory()->count(4)->create([
-            'private_lesson_id' => null
+            'private_lesson_id' => null,
         ]);
 
         $session_ids = $sessions->implode('id', ',');
@@ -51,27 +51,27 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'emergency_relationship' => 'Mom',
             'emergency_phone' => '999-999-9999',
             'pool_session_ids' => $session_ids,
-            'stripe_token' => 'tok_visa'
+            'stripe_token' => 'tok_visa',
         ];
 
         $this->get(route('private_lesson.index'))
             ->assertStatus(200);
 
-        $this->assertEquals(0,  PrivateLesson::all()->count());
+        $this->assertEquals(0, PrivateLesson::all()->count());
 
         $response = $this->post(route('private_lesson.store'), $data);
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  PrivateLesson::all()->count());
-        $this->assertEquals(4,  PrivateLesson::first()->pool_sessions()->count());
+        $this->assertEquals(1, PrivateLesson::all()->count());
+        $this->assertEquals(4, PrivateLesson::first()->pool_sessions()->count());
 
         $this->assertDatabaseHas('private_swimmers', [
-            "first_name" => $data['first_name'],
-            "last_name" => $data['last_name'],
-            "email" => $data['email'],
-            "birth_date" => $data['birth_date'],
-            "phone" => $data['phone'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'birth_date' => $data['birth_date'],
+            'phone' => $data['phone'],
             'emergency_name' => $data['emergency_name'],
             'emergency_relationship' => $data['emergency_relationship'],
             'emergency_phone' => $data['emergency_phone'],
@@ -93,7 +93,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->withoutExceptionHandling();
 
         $session = PrivatePoolSession::factory()->create([
-            'private_lesson_id' => null
+            'private_lesson_id' => null,
         ]);
 
         $session_ids = (string) $session->id;
@@ -113,7 +113,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'emergency_relationship' => 'Mom',
             'emergency_phone' => '999-999-9999',
             'pool_session_ids' => $session_ids,
-            'stripe_token' => 'tok_visa'
+            'stripe_token' => 'tok_visa',
         ];
 
         $this->get(route('private_lesson.index'))
@@ -128,11 +128,11 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->assertEquals(1, PrivateLesson::all()->count());
 
         $this->assertDatabaseHas('private_swimmers', [
-            "first_name" => $data['first_name'],
-            "last_name" => $data['last_name'],
-            "email" => $data['email'],
-            "birth_date" => $data['birth_date'],
-            "phone" => $data['phone'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'birth_date' => $data['birth_date'],
+            'phone' => $data['phone'],
             'emergency_name' => $data['emergency_name'],
             'emergency_relationship' => $data['emergency_relationship'],
             'emergency_phone' => $data['emergency_phone'],
@@ -156,17 +156,17 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $lesson = PrivateLesson::factory()->create();
 
         $private_swimmer = PrivateSwimmer::factory()->create([
-             'private_lesson_id' => $lesson->id
+            'private_lesson_id' => $lesson->id,
         ]);
 
         $pool_session = PrivatePoolSession::factory()->create([
             'private_lesson_id' => $lesson->id,
-            'start' => Carbon::tomorrow()
+            'start' => Carbon::tomorrow(),
         ]);
 
         $pool_session2 = PrivatePoolSession::factory()->create([
             'private_lesson_id' => $lesson->id,
-            'start' => Carbon::now()->addWeek()
+            'start' => Carbon::now()->addWeek(),
         ]);
 
         SendPrivatePoolSessionReminderEmails::dispatch();
@@ -182,13 +182,13 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $next_week = PrivatePoolSession::factory()->create([
             'start' => Carbon::now()->addWeek(),
             'end' => Carbon::now()->addWeek()->addHour(),
-            'private_lesson_id' => null
+            'private_lesson_id' => null,
         ]);
 
         $last_week = PrivatePoolSession::factory()->create([
             'start' => Carbon::now()->subWeek(),
             'end' => Carbon::now()->subWeek()->subHour(),
-            'private_lesson_id' => null
+            'private_lesson_id' => null,
         ]);
 
         $this->get(route('private_lesson.index'))
@@ -205,7 +205,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         //$this->withoutExceptionHandling();
 
         $session = PrivatePoolSession::factory()->create([
-            'private_lesson_id' => null
+            'private_lesson_id' => null,
         ]);
 
         $session_ids = (string) $session->id;
@@ -225,7 +225,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'emergency_relationship' => 'Mom',
             'emergency_phone' => '999-999-9999',
             'pool_session_ids' => $session_ids,
-            'stripe_token' => 'tok_chargeDeclined'
+            'stripe_token' => 'tok_chargeDeclined',
         ];
 
         $this->get(route('private_lesson.index'))
@@ -246,7 +246,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->seed();
 
         $session = PrivatePoolSession::factory()->create([
-            'private_lesson_id' => null
+            'private_lesson_id' => null,
         ]);
 
         $session_ids = (string) $session->id;
@@ -266,7 +266,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'emergency_relationship' => 'Mom',
             'emergency_phone' => '999-999-9999',
             'pool_session_ids' => $session_ids,
-            'stripe_token' => 'tok_visa'
+            'stripe_token' => 'tok_visa',
         ];
 
         $this->get(route('private_lesson.index'))
@@ -278,8 +278,8 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $response->assertStatus(302);
 
-        $this->assertEquals(1,  PrivateLesson::all()->count());
-        $this->assertEquals(1,  PrivateLesson::first()->pool_sessions()->count());
+        $this->assertEquals(1, PrivateLesson::all()->count());
+        $this->assertEquals(1, PrivateLesson::first()->pool_sessions()->count());
     }
 
     /** @test  **/
@@ -288,11 +288,11 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->seed();
 
         PrivatePoolSession::factory()->count(4)->create([
-            'private_lesson_id' => null
+            'private_lesson_id' => null,
         ]);
 
         //This is the same id that was already signed up for
-        $session_ids_1 = "1";
+        $session_ids_1 = '1';
 
         $data_1 = [
             'first_name' => $this->faker->firstName,
@@ -309,7 +309,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'emergency_relationship' => 'Mom',
             'emergency_phone' => '999-999-9999',
             'pool_session_ids' => $session_ids_1,
-            'stripe_token' => 'tok_visa'
+            'stripe_token' => 'tok_visa',
         ];
 
         $response = $this->post(route('private_lesson.store'), $data_1);
@@ -319,9 +319,8 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->assertCount(1, PrivateSwimmer::all());
 
-
         //This is the same id that was already signed up for
-        $session_ids_2 = "1";
+        $session_ids_2 = '1';
 
         $data_2 = [
             'first_name' => $this->faker->firstName,
@@ -338,7 +337,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'emergency_relationship' => 'Mom',
             'emergency_phone' => '999-999-9999',
             'pool_session_ids' => $session_ids_2,
-            'stripe_token' => 'tok_visa'
+            'stripe_token' => 'tok_visa',
         ];
 
         $response = $this->post(route('private_lesson.store'), $data_2);

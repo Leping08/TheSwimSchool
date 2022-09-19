@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateDaysOfTheWeekTable extends Migration
 {
@@ -19,7 +19,7 @@ class CreateDaysOfTheWeekTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('days_of_the_week_lesson', function (Blueprint $table){
+        Schema::create('days_of_the_week_lesson', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('lesson_id');
             $table->integer('days_of_the_week_id');

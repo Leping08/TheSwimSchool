@@ -39,7 +39,7 @@ class PrivateSwimmer extends Model
         'stripe_charge_id',
         'private_lesson_id',
         'private_lesson_id',
-        'private_lesson_id'
+        'private_lesson_id',
     ];
 
     /**

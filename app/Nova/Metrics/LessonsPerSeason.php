@@ -2,7 +2,6 @@
 
 namespace App\Nova\Metrics;
 
-use App\Lesson;
 use App\Nova\Helpers\NovaHelpers;
 use App\Season;
 use Illuminate\Http\Request;
@@ -11,6 +10,7 @@ use Laravel\Nova\Metrics\Partition;
 class LessonsPerSeason extends Partition
 {
     use NovaHelpers;
+
     /**
      * Calculate the value of the metric.
      *
@@ -21,7 +21,7 @@ class LessonsPerSeason extends Partition
     {
         $locations = Season::withCount('lessons')->orderBy('lessons_count', 'desc')->get()->toArray();
 
-        return $this->makePartitionResult(collect($locations), 'name','lessons_count');
+        return $this->makePartitionResult(collect($locations), 'name', 'lessons_count');
     }
 
     /**

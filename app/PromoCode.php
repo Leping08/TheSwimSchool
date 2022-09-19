@@ -13,16 +13,14 @@ use Laravel\Nova\Actions\Actionable;
  *
  * An Eloquent Model: 'Promo Code'
  *
- * @property integer $id
+ * @property int $id
  * @property string $code
  * @property int $discount_percent
  * @property int $discount
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon $deleted_at
- *
  */
-
 class PromoCode extends Model
 {
     use SoftDeletes, Actionable, HasFactory;

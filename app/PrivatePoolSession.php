@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Instructor;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +15,7 @@ use Laravel\Nova\Actions\Actionable;
  * An Eloquent Model: 'PrivatePoolSession'
  * TODO: Make this go away in the future and just have it be a bunch of pool sessions
  *
- * @property integer $id
+ * @property int $id
  * @property string $private_lesson_id
  * @property string $location_id
  * @property string $instructor_id
@@ -30,7 +29,6 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read Location $location
  * @property-read User $instructor
  */
-
 class PrivatePoolSession extends Model
 {
     use SoftDeletes, Actionable, Notifiable, HasFactory;
@@ -154,7 +152,6 @@ class PrivatePoolSession extends Model
      *
      * If today is before the 25th of this month then just
      * show this months lessons.
-     *
      */
     public function scopeStartConditionallyNextMonth($query)
     {

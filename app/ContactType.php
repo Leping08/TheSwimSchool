@@ -9,12 +9,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * An Eloquent Model: 'ContactType'
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  */
-
 class ContactType extends Model
 {
     /**

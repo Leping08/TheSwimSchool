@@ -5,7 +5,6 @@ namespace App\Jobs\NewsLetter;
 use App\EmailList;
 use App\PageParameters;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -34,7 +33,7 @@ class QueueCustomNewsLetterEmails implements ShouldQueue
     {
         $pageParameters = PageParameters::getNewsLetterEmail();
 
-        if (!$pageParameters) {
+        if (! $pageParameters) {
             throw new \Exception('No email newsletter in the database');
         }
 

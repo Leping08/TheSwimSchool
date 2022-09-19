@@ -10,7 +10,6 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
 class PrivateSwimmer extends Resource
@@ -38,7 +37,7 @@ class PrivateSwimmer extends Resource
         'id',
         'first_name',
         'last_name',
-        'email'
+        'email',
     ];
 
     /**
@@ -50,10 +49,10 @@ class PrivateSwimmer extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('', function (){
+            Text::make('', function () {
                 return view('partials.buttons', [
                     'next_id' => $this->model()->id + 1,
-                    'previous_id' => $this->model()->id - 1
+                    'previous_id' => $this->model()->id - 1,
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
@@ -63,21 +62,21 @@ class PrivateSwimmer extends Resource
             Text::make('Email', function () {
                 return view('partials.link', [
                     'link' => 'mailto:'.$this->email,
-                    'text' => $this->email
+                    'text' => $this->email,
                 ])->render();
             })->asHtml()->sortable()->hideFromIndex(),
             Text::make('Phone', 'phone')->onlyOnForms(),
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->phone,
-                    'text' => $this->phone
+                    'text' => $this->phone,
                 ])->render();
             })->asHtml()->hideFromIndex(),
             Date::make('Date of Birth', 'birth_date')->hideFromIndex(),
             Text::make('Parent', 'parent')->hideFromIndex(),
             Text::make('Age', function () {
                 return view('partials.age', [
-                    'birthDate' => $this->birth_date
+                    'birthDate' => $this->birth_date,
                 ])->render();
             })->hideFromIndex(),
             BelongsTo::make('Lesson', 'lesson', PrivateLesson::class),
@@ -85,7 +84,7 @@ class PrivateSwimmer extends Resource
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 
@@ -131,7 +130,7 @@ class PrivateSwimmer extends Resource
     public function actions(Request $request)
     {
         return [
-            new ResendPrivateSignUpEmail()
+            new ResendPrivateSignUpEmail(),
         ];
     }
 
@@ -154,7 +153,7 @@ class PrivateSwimmer extends Resource
             Text::make('Phone', function () {
                 return view('partials.link', [
                     'link' => 'tel:1'.$this->emergency_phone,
-                    'text' => $this->emergency_phone
+                    'text' => $this->emergency_phone,
                 ])->render();
             })->asHtml()->hideFromIndex(),
         ];
@@ -171,9 +170,9 @@ class PrivateSwimmer extends Resource
             Text::make('Charge Id', function () {
                 return view('partials.link', [
                     'link' => config('nova.path').'/nova-stripe/charge/'.$this->stripe_charge_id,
-                    'text' => $this->stripe_charge_id
+                    'text' => $this->stripe_charge_id,
                 ])->render();
-            })->asHtml()->hideFromIndex()
+            })->asHtml()->hideFromIndex(),
         ];
     }
 

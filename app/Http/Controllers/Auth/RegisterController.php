@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -36,7 +36,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        if(env('GUEST_REGISTRATION')){
+        if (env('GUEST_REGISTRATION')) {
             $this->middleware('guest'); //Guest can register as admin
         } else {
             $this->middleware('auth');  //Only admin can register new admin

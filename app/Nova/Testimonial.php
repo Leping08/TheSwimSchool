@@ -2,13 +2,12 @@
 
 namespace App\Nova;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Testimonial extends Resource
 {
@@ -40,7 +39,7 @@ class Testimonial extends Resource
      */
     public static $search = [
         'id',
-        'message'
+        'message',
     ];
 
     /**
@@ -57,12 +56,13 @@ class Testimonial extends Resource
             Boolean::make('Active', 'active'),
             Textarea::make('Message', 'message'),
             Text::make('Message', 'message')
-                ->displayUsing(function($id) {
+                ->displayUsing(function ($id) {
                     $part = strip_tags(substr($id, 0, 50));
-                    return $part . " ...";
+
+                    return $part.' ...';
                 })->onlyOnIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 

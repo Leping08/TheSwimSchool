@@ -2,9 +2,9 @@
 
 namespace Opanegro\NovaCustomController\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class NovaCustomControllerCommand extends Command
 {
@@ -30,7 +30,8 @@ class NovaCustomControllerCommand extends Command
      *
      * @return void
      */
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -38,6 +39,7 @@ class NovaCustomControllerCommand extends Command
      * Execute the console command.
      *
      * @return mixed
+     *
      * @throws \Exception
      */
     public function handle()
@@ -49,14 +51,15 @@ class NovaCustomControllerCommand extends Command
     /**
      * Get the stub file for the generator.
      *
-     * @param string $event
+     * @param  string  $event
      * @return string
+     *
      * @throws \Exception
      */
     protected function getStub(string $event)
     {
-        if (file_exists(__DIR__ . '/stubs/' . $event . '.stub')) {
-            return file_get_contents(__DIR__ . '/stubs/' . $event . '.stub');
+        if (file_exists(__DIR__.'/stubs/'.$event.'.stub')) {
+            return file_get_contents(__DIR__.'/stubs/'.$event.'.stub');
         }
 
         throw new \Exception('The event has not exists in this package.');
@@ -65,7 +68,8 @@ class NovaCustomControllerCommand extends Command
     /**
      * Create file controller
      *
-     * @param string $name
+     * @param  string  $name
+     *
      * @throws \Exception
      */
     protected function controller(string $name)
@@ -91,8 +95,8 @@ class NovaCustomControllerCommand extends Command
     /**
      * Add custom route in file routes/api.php
      *
-     * @param string $event
-     * @param string $name
+     * @param  string  $event
+     * @param  string  $name
      */
     protected function updateRoute(string $event, string $name)
     {

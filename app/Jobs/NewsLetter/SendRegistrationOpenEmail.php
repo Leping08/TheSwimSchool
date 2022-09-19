@@ -15,7 +15,6 @@ class SendRegistrationOpenEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-
     /**
      * The number of times the job may be attempted.
      *
@@ -39,6 +38,7 @@ class SendRegistrationOpenEmail implements ShouldQueue
 
     /**
      * Create a new message instance.
+     *
      * @param  string  $email
      */
     public function __construct(string $email)
@@ -50,6 +50,7 @@ class SendRegistrationOpenEmail implements ShouldQueue
      * Execute the job.
      *
      * @return void
+     *
      * @throws \Exception
      */
     public function handle()

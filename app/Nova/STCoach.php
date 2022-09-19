@@ -2,14 +2,13 @@
 
 namespace App\Nova;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\VaporImage;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class STCoach extends Resource
 {
@@ -28,16 +27,21 @@ class STCoach extends Resource
     public static $title = 'id';
 
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Swim Team';
+
+    /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
         'id',
-        'name'
+        'name',
     ];
-
-    public static $displayInNavigation = false;
 
     /**
      * Get the fields displayed by the resource.
@@ -50,7 +54,6 @@ class STCoach extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name', 'name'),
-            // Text::make('Image URL', 'image_url')->nullable(),
             VaporImage::make('Image', 'image_url')->prunable(),
             Number::make('Phone', 'phone'),
             Boolean::make('Active', 'active'),

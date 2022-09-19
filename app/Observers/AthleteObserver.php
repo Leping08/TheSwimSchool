@@ -15,7 +15,7 @@ class AthleteObserver
      */
     public function created(Athlete $athlete)
     {
-        $athlete->hash = RandomString::generate();
+        $athlete->hash = RandomString::generate(); // todo update this to the laravel uuid
         $athlete->save();
     }
 

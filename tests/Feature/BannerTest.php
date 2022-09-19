@@ -2,14 +2,13 @@
 
 namespace Tests\Feature;
 
-
 use App\Banner;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class BannerTest extends TestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     /** @test  **/
     public function a_user_should_see_a_banner_if_its_active()
@@ -17,7 +16,7 @@ class BannerTest extends TestCase
         $banner = Banner::factory()->create([
             'page' => '/swim-team',
             'active' => false,
-            'text' => 'This is the banner'
+            'text' => 'This is the banner',
         ]);
 
         $this->get(route('swim-team.index'))

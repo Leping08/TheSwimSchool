@@ -2,8 +2,6 @@
 
 namespace App;
 
-
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,11 +11,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Actions\Actionable;
 
-
 /**
  * An Eloquent Model: 'PrivateLesson'
  *
- * @property integer $id
+ * @property int $id
  * @property string $season_id
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -26,7 +23,6 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read PrivatePoolSession $pool_sessions
  * @property-read PrivateSwimmer $swimmer
  */
-
 class PrivateLesson extends Model
 {
     use SoftDeletes, Actionable, Notifiable, HasFactory;

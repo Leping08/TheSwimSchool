@@ -14,7 +14,7 @@ class StripeChargeTest extends TestCase
             'card' => 'tok_visa',
             'price' => 85,
             'email' => 'derek@deltavcreative.com',
-            'description' => "Testing the stripe API"
+            'description' => 'Testing the stripe API',
         ]);
 
         $charge = (new StripeCharge(
@@ -42,7 +42,7 @@ class StripeChargeTest extends TestCase
             'card' => 'tok_chargeDeclined',
             'price' => 85,
             'email' => 'derek@deltavcreative.com',
-            'description' => "Testing the stripe API"
+            'description' => 'Testing the stripe API',
         ]);
 
         $this->expectException(\Stripe\Exception\CardException::class);

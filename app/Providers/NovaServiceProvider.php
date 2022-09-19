@@ -2,16 +2,16 @@
 
 namespace App\Providers;
 
+use App\Nova\Dashboards\Main;
+use App\Nova\Metrics\LessonsPerLevel;
 use App\Nova\Metrics\LessonsPerSeason;
 use App\Nova\Metrics\NewLessons;
-use Laravel\Nova\Nova;
-use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\NovaApplicationServiceProvider;
-use App\Nova\Metrics\SwimmersPerDay;
 use App\Nova\Metrics\NewSwimmers;
-use App\Nova\Metrics\LessonsPerLevel;
-use Leping\ParrishBullSharks\ParrishBullSharks;
-use Tightenco\NovaStripe\NovaStripe;
+use App\Nova\Metrics\SwimmersPerDay;
+use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Nova;
+use Laravel\Nova\NovaApplicationServiceProvider;
+use Leping\SwimTeamRoster\SwimTeamRoster;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -78,7 +78,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function dashboards()
     {
-        return [];
+        return [
+            new Main(),
+        ];
     }
 
     /**
@@ -89,9 +91,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            new NovaStripe(),
-            new ParrishBullSharks()
-            //new TailTool
+            new SwimTeamRoster(),
+            // new \Tighten\NovaStripe\NovaStripe // bring back when css transparent button is fixed
+            // new ParrishBullSharks()
+            // new TailTool
         ];
     }
 

@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Location;
 use App\PrivateLesson;
 use App\Season;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -24,7 +23,7 @@ class PrivateLessonFactory extends Factory
     public function definition()
     {
         return [
-            'season_id' => Season::factory()
+            'season_id' => Season::factory(),
         ];
     }
 }

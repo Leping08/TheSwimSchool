@@ -37,8 +37,8 @@ class PrivateSwimmerFactory extends Factory
             'emergency_name' => $this->faker->firstNameFemale,
             'emergency_relationship' => 'Mom',
             'emergency_phone' => $this->faker->phoneNumber,
-            'stripe_charge_id' => 'ch_' . $this->faker->bothify('##??##??##??##??##??##??##??##??'),
-            'private_lesson_id' => PrivateLesson::factory()
+            'stripe_charge_id' => 'ch_'.$this->faker->bothify('##??##??##??##??##??##??##??##??'),
+            'private_lesson_id' => PrivateLesson::factory(),
         ];
     }
 }

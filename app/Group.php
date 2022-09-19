@@ -5,13 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 use Laravel\Nova\Actions\Actionable;
 
 /**
  * An Eloquent Model: 'Group'
  *
- * @property integer $id
+ * @property int $id
  * @property string $type
  * @property string $ages
  * @property string $icon
@@ -20,7 +19,6 @@ use Laravel\Nova\Actions\Actionable;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  */
-
 class Group extends Model
 {
     use SoftDeletes, Actionable, HasFactory;
@@ -64,7 +62,7 @@ class Group extends Model
     {
         return $query->where([
             ['type', 'NOT LIKE', '%Private%'],
-            ['type', 'NOT LIKE', '%Shark%'] // todo remove this in january 2023 and delete the shark group
+            ['type', 'NOT LIKE', '%Shark%'], // todo remove this in january 2023 and delete the shark group
         ]);
     }
 

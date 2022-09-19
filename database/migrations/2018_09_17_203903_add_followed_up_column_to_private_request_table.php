@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddFollowedUpColumnToPrivateRequestTable extends Migration
 {
@@ -17,7 +17,7 @@ class AddFollowedUpColumnToPrivateRequestTable extends Migration
             $table->boolean('followed_up')->default(false)->after('availability');
         });
 
-        foreach (\App\PrivateLessonLead::all() as $private){
+        foreach (\App\PrivateLessonLead::all() as $private) {
             $private->followed_up = 1;
             $private->save();
         }
@@ -26,7 +26,7 @@ class AddFollowedUpColumnToPrivateRequestTable extends Migration
             $table->boolean('followed_up')->default(false)->after('message');
         });
 
-        foreach (\App\Contact::all() as $contact){
+        foreach (\App\Contact::all() as $contact) {
             $contact->followed_up = 1;
             $contact->save();
         }

@@ -3,12 +3,11 @@
 namespace App\Nova;
 
 use App\Nova\Metrics\LessonsPerSeason;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Season extends Resource
 {
@@ -34,7 +33,7 @@ class Season extends Resource
     public static $search = [
         'id',
         'year',
-        'season'
+        'season',
     ];
 
     /**
@@ -51,7 +50,7 @@ class Season extends Resource
             Text::make('Season', 'season')->sortable(),
             HasMany::make('Lessons', 'lessons', Lesson::class),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 

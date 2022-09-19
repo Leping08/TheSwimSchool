@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Library\Marketing\Emails\Events;
-
 
 use App\EmailList;
 use App\Mail\NewsLetter\Update;
@@ -15,8 +13,7 @@ class UpdateEmail
     {
         $emails = EmailList::where('subscribe', '=', true)->pluck('email')->all();
 
-        foreach($emails as $email)
-        {
+        foreach ($emails as $email) {
             try {
                 Log::info("Sending update email to: $email");
                 Mail::to($email)->send(new Update($email));

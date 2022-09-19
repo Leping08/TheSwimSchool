@@ -11,12 +11,11 @@ use Laravel\Nova\Actions\Actionable;
  *
  * An Eloquent Model: 'Banner'
  *
- * @property integer $id
+ * @property int $id
  * @property bool $active
  * @property string $page
  * @property string $text
  */
-
 class Banner extends Model
 {
     use Actionable, HasFactory;
@@ -24,6 +23,6 @@ class Banner extends Model
     protected $fillable = [
         'active',
         'page',
-        'text'
+        'text',
     ];
 }

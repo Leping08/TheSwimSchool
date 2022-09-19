@@ -3,14 +3,12 @@
 namespace Tests\Feature;
 
 use App\Instructor;
-use App\Swimmer;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Lesson;
 
 class AboutTest extends TestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     /** @test */
     public function a_user_can_only_see_active_instructors_on_the_about_page()

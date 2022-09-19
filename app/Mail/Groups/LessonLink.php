@@ -6,7 +6,6 @@ use App\Lesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class LessonLink extends Mailable
 {
@@ -17,10 +16,10 @@ class LessonLink extends Mailable
      */
     public $lesson;
 
-
     /**
      * LessonLink constructor.
-     * @param Lesson $lesson
+     *
+     * @param  Lesson  $lesson
      */
     public function __construct(Lesson $lesson)
     {

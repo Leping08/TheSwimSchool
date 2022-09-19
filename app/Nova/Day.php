@@ -3,12 +3,11 @@
 namespace App\Nova;
 
 use App\Nova\Metrics\LessonsPerDay;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Day extends Resource
 {
@@ -35,7 +34,7 @@ class Day extends Resource
      */
     public static $search = [
         'id',
-        'day'
+        'day',
     ];
 
     /**
@@ -52,12 +51,12 @@ class Day extends Resource
             BelongsToMany::make('Lessons', 'lessons', Lesson::class),
             BelongsToMany::make('Swim Team Levels', 'levels', STLevel::class)->fields(function () {
                 return [
-                    DateTime::make( 'start_time'),
+                    DateTime::make('start_time'),
                     DateTime::make('end_time'),
                 ];
             }),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 
@@ -70,7 +69,7 @@ class Day extends Resource
     public function cards(Request $request)
     {
         return [
-            (new LessonsPerDay())->width('full')
+            (new LessonsPerDay())->width('full'),
         ];
     }
 

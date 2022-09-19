@@ -5,7 +5,6 @@ namespace App\Mail\NewsLetter;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class HappyHolidays extends Mailable
 {
@@ -18,6 +17,7 @@ class HappyHolidays extends Mailable
 
     /**
      * Create a new message instance.
+     *
      * @param $emailAddress
      * @return void
      */
@@ -36,9 +36,9 @@ class HappyHolidays extends Mailable
         return $this->markdown('email.newsletter.covid')
             ->from(config('mail.from.address'))
             ->with(['emailAddress' => $this->emailAddress])
-            ->withSwiftMessage(function ($message) {
+            ->withSymfonyMessage(function ($message) {
                 $message->getHeaders()
-                    ->addTextHeader('List-Unsubscribe', '<' . route('newsletter.unsubscribe', ['email' => $this->emailAddress]) . '>');
+                    ->addTextHeader('List-Unsubscribe', '<'.route('newsletter.unsubscribe', ['email' => $this->emailAddress]).'>');
             });
     }
 }

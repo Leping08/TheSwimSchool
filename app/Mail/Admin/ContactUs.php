@@ -5,7 +5,6 @@ namespace App\Mail\Admin;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ContactUs extends Mailable
 {
@@ -15,14 +14,15 @@ class ContactUs extends Mailable
      * @var
      */
     public $data;
+
     /**
      * @var
      */
     public $subject;
 
-
     /**
      * ContactUs constructor.
+     *
      * @param $data
      * @param $subject
      */
@@ -44,7 +44,7 @@ class ContactUs extends Mailable
             ->markdown('email.admin.contactUs')
             ->with([
                 'data' => $this->data,
-                'subject' => $this->subject
+                'subject' => $this->subject,
             ]);
     }
 }

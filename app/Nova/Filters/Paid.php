@@ -4,7 +4,6 @@ namespace App\Nova\Filters;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
-use Mockery\Matcher\Not;
 
 class Paid extends Filter
 {
@@ -31,7 +30,7 @@ class Paid extends Filter
     {
         return [
             'Paid' => 1,
-            'Unpaid' => 0
+            'Unpaid' => 0,
         ];
     }
 }

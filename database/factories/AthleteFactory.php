@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Athlete;
-use App\Tryout;
 use App\STSeason;
+use App\Tryout;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AthleteFactory extends Factory
@@ -41,7 +41,7 @@ class AthleteFactory extends Factory
             'emergencyRelationship' => 'Mom',
             'emergencyPhone' => $this->faker->phoneNumber,
             's_t_season_id' => STSeason::factory(),
-            's_t_sign_up_email' => false
+            's_t_sign_up_email' => false,
         ];
     }
 }

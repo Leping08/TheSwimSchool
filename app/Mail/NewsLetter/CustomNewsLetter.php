@@ -3,7 +3,6 @@
 namespace App\Mail\NewsLetter;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -12,10 +11,15 @@ class CustomNewsLetter extends Mailable
     use Queueable, SerializesModels;
 
     protected $email_address;
+
     protected $email_subject;
+
     protected $body;
+
     protected $image_url;
+
     protected $button_url;
+
     protected $button_text;
 
     /**
@@ -50,9 +54,9 @@ class CustomNewsLetter extends Mailable
                         'image_url' => $this->image_url,
                         'body' => $this->body,
                     ])
-                    ->withSwiftMessage(function ($message) {
+                    ->withSymfonyMessage(function ($message) {
                         $message->getHeaders()
-                            ->addTextHeader('List-Unsubscribe', '<' . route('newsletter.unsubscribe', ['email' => $this->email_address]) . '>');
+                            ->addTextHeader('List-Unsubscribe', '<'.route('newsletter.unsubscribe', ['email' => $this->email_address]).'>');
                     });
     }
 }

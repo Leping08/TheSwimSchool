@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Library\Marketing\Emails\Lessons;
-
 
 use App\EmailList;
 use App\Mail\NewsLetter\RegistrationOpeningSoon;
@@ -15,8 +13,7 @@ class RegistrationOpeningSoonEmail
     {
         $emails = EmailList::where('subscribe', '=', true)->pluck('email')->all();
 
-        foreach($emails as $email)
-        {
+        foreach ($emails as $email) {
             try {
                 Log::info("Sending lesson registration open now email to $email");
                 Mail::to($email)->send(new RegistrationOpeningSoon($email));

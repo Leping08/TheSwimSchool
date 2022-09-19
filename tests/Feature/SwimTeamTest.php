@@ -8,20 +8,20 @@ use App\PromoCode;
 use App\STLevel;
 use App\STSeason;
 use App\STSwimmer;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class SwimTeamTest extends TestCase
 {
-    use DatabaseMigrations, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     /** @test **/
     public function a_swimmer_can_pay_the_registration_fee_by_hitting_the_register_endpoint()
     {
         Mail::fake();
-        
+
         $level = STLevel::factory()->create();
         $season = STSeason::factory()->create();
         $swimmer = STSwimmer::factory()->create([
@@ -50,7 +50,7 @@ class SwimTeamTest extends TestCase
     public function an_athlete_can_sign_up_with_a_free_promo_code()
     {
         Mail::fake();
-        
+
         $athlete = Athlete::factory()->create();
         $level = STLevel::factory()->create();
         $promoCode = PromoCode::factory()->create([
@@ -79,7 +79,7 @@ class SwimTeamTest extends TestCase
     public function it_throws_an_error_with_a_bad_hash()
     {
         Mail::fake();
-        
+
         $athlete = Athlete::factory()->create();
         $level = STLevel::factory()->create();
         $promoCode = PromoCode::factory()->create([
@@ -87,7 +87,7 @@ class SwimTeamTest extends TestCase
         ]);
 
         $data = [
-            'hash' => "a-bad-hash-that-does-not-exist",
+            'hash' => 'a-bad-hash-that-does-not-exist',
             'level_id' => $level->id,
             'promo_code' => $promoCode->code,
         ];
@@ -108,7 +108,7 @@ class SwimTeamTest extends TestCase
     public function it_throws_an_error_if_the_promo_is_not_100_percent()
     {
         Mail::fake();
-        
+
         $athlete = Athlete::factory()->create();
         $level = STLevel::factory()->create();
         $promoCode = PromoCode::factory()->create([
@@ -137,7 +137,7 @@ class SwimTeamTest extends TestCase
     public function it_throws_an_error_if_the_promo_is_not_valid()
     {
         Mail::fake();
-        
+
         $athlete = Athlete::factory()->create();
         $level = STLevel::factory()->create();
 
@@ -166,7 +166,7 @@ class SwimTeamTest extends TestCase
         $level = STLevel::factory()->create();
 
         $data = [
-            'name' => $athlete->firstName . ' ' . $athlete->lastName,
+            'name' => $athlete->firstName.' '.$athlete->lastName,
             'email' => $athlete->email,
             'athlete_hash' => $athlete->hash,
             'level_id' => $level->id,

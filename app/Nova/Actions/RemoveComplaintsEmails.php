@@ -4,11 +4,11 @@ namespace App\Nova\Actions;
 
 use App\Library\Mailgun\Mailgun;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class RemoveComplaintEmails extends Action
 {
@@ -24,15 +24,17 @@ class RemoveComplaintEmails extends Action
     public function handle(ActionFields $fields, Collection $models)
     {
         Mailgun::removeComplaintsEmails();
-        return Action::message("Complaint emails removed!");
+
+        return Action::message('Complaint emails removed!');
     }
 
     /**
      * Get the fields available on the action.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function fields()
+    public function fields(NovaRequest $request)
     {
         return [];
     }

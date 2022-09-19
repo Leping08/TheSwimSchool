@@ -10,6 +10,7 @@ use Laravel\Nova\Metrics\Partition;
 class LessonsPerDay extends Partition
 {
     use NovaHelpers;
+
     /**
      * Calculate the value of the metric.
      *
@@ -20,7 +21,7 @@ class LessonsPerDay extends Partition
     {
         $groups = DaysOfTheWeek::withCount('lessons')->orderBy('lessons_count', 'desc')->get();
 
-        return $this->makePartitionResult($groups, 'day','lessons_count');
+        return $this->makePartitionResult($groups, 'day', 'lessons_count');
     }
 
     /**

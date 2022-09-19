@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\STLevel;
 use Illuminate\Database\Eloquent\Model;
 
 class DaysOfTheWeek extends Model

@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class PromoCodeController extends Controller
 {
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return int
      */
     public function index(Request $request)
     {
         $validatedData = $request->validate([
-            'code' => 'required'
+            'code' => 'required',
         ]);
 
         $promoCode = PromoCode::where('code', '=', $validatedData['code'])->first() ?? null;

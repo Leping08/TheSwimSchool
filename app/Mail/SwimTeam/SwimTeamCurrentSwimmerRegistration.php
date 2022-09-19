@@ -4,7 +4,6 @@ namespace App\Mail\SwimTeam;
 
 use App\STSwimmer;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -24,7 +23,8 @@ class SwimTeamCurrentSwimmerRegistration extends Mailable
 
     /**
      * STSignUp constructor.
-     * @param STSwimmer $swimmer
+     *
+     * @param  STSwimmer  $swimmer
      */
     public function __construct(STSwimmer $swimmer)
     {

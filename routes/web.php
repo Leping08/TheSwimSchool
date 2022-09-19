@@ -11,8 +11,8 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 // handel strip errors better
 // add loading state to stripe button
@@ -31,8 +31,6 @@ Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
 
 /* @see HomeController::index() */
 Route::get('/', 'HomeController@index')->name('home.index');
-
-
 
 /*
  * Group Lessons
@@ -58,18 +56,12 @@ Route::get('/lessons/{group}/{lesson}', 'Groups\LessonsController@create')->name
 /* @see SwimmerController::store() */
 Route::post('/lessons/{group}/{lesson}', 'Groups\SwimmerController@store')->name('groups.swimmers.store');
 
-
-
-
 /*
  * Wait List
  */
 
 /* @see WaitListController::store() */
 Route::post('/wait-list/{lesson}', 'Groups\WaitListController@store')->name('groups.lessons.wait-list');
-
-
-
 
 /*
  * Swim Team Tryouts
@@ -91,9 +83,6 @@ Route::post('/swim-team/tryouts/{tryout}', 'SwimTeam\AthleteController@store')->
 /* @see RosterController::index() */
 Route::get('/roster', 'SwimTeam\RosterController@index')->name('swim-team.roster.index');
 
-
-
-
 /*
  * Swim Team Registration
  */
@@ -114,8 +103,6 @@ Route::get('/swim-team/save-swimmer/athlete/{hash}', 'SwimTeam\SwimmerController
 
 Route::get('/swim-team/thank-you', 'SwimTeam\SwimmerController@thankYou')->name('swim-team.thank-you');
 
-
-
 /*
  * Public Contact Forms
  */
@@ -135,9 +122,6 @@ Route::get('/home-private-lesson', 'Privates\LeadController@index')->name('home_
 /* @see LeadController::store() */
 Route::post('/home-private-lesson', 'Privates\LeadController@store')->name('home_privates.store');
 
-
-
-
 /*
  * Email marketing unsubscribe page
  */
@@ -151,9 +135,6 @@ Route::post('/newsletter/unsubscribe/{email}', 'EmailListController@unsubscribe'
 /* @see EmailListController::subscribe() */
 Route::post('/newsletter/subscribe', 'EmailListController@subscribe')->name('newsletter.subscribe');
 
-
-
-
 /*
  * Email marketing unsubscribe page
  */
@@ -164,18 +145,12 @@ Route::get('/feedback', 'FeedbackController@index')->name('feedback.index');
 /* @see FeedbackController::store() */
 Route::post('/feedback', 'FeedbackController@store')->name('feedback.store');
 
-
-
-
 /*
  * Instructor specific calendar
  */
 
 /* @see CalendarController::show() */
 Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('calendar')->middleware('auth');
-
-
-
 
 /*
  * About Page
@@ -184,26 +159,23 @@ Route::get('/calendar/{instructor}', 'Admin\CalendarController@show')->name('cal
 /* @see AboutController::index() */
 Route::get('/about', 'AboutController@index')->name('pages.about');
 
-
-
 /*
  * Custom Email
  */
 
 Route::middleware(['auth'])->group(function () {
-    
     /* @see NewsletterEmailController::index() */
     Route::get('/emails/newsletter', 'NewsletterEmailController@index')->name('newsletter.index');
 
     /* @see NewsletterEmailController::show() */
     Route::get('/emails/newsletter/show', 'NewsletterEmailController@show')->name('newsletter.show');
-    
+
     /* @see NewsletterEmailController::store() */
     Route::post('/emails/newsletter/store', 'NewsletterEmailController@store')->name('newsletter.store');
-    
+
     /* @see NewsletterEmailController::preview() */
     Route::post('/emails/newsletter/view-preview', 'NewsletterEmailController@preview')->name('newsletter.preview.view');
-    
+
     /* @see NewsletterEmailController::sendPreview() */
     Route::post('/emails/newsletter/send-preview', 'NewsletterEmailController@sendPreview')->name('newsletter.preview.send');
 
@@ -214,13 +186,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/emails/newsletter/upload-image', 'NewsletterEmailController@uploadImage')->name('newsletter.upload-image');
 });
 
-
-
 /*
  * Static Pages
  */
 
- Route::get('/contact-us', function () {
+Route::get('/contact-us', function () {
     return view('pages.contact-us');
 })->name('pages.contact-us');
 

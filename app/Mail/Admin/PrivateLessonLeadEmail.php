@@ -6,7 +6,6 @@ use App\PrivateLessonLead;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class PrivateLessonLeadEmail extends Mailable
 {
@@ -17,16 +16,15 @@ class PrivateLessonLeadEmail extends Mailable
      */
     public $privateLessonLead;
 
-
     /**
      * PrivateLessonLeadEmail constructor.
-     * @param PrivateLessonLead $privateLessonLead
+     *
+     * @param  PrivateLessonLead  $privateLessonLead
      */
     public function __construct(PrivateLessonLead $privateLessonLead)
     {
         $this->privateLessonLead = $privateLessonLead;
     }
-
 
     /**
      * @return $this

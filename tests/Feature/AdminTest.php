@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\Swimmer;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Lesson;
+use App\Swimmer;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AdminTest extends TestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     /** @test */
     public function a_non_admin_can_not_see_swimmers_in_a_lesson()

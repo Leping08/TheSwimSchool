@@ -2,15 +2,13 @@
 
 namespace App\Nova;
 
-use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Tryout extends Resource
 {
@@ -27,6 +25,13 @@ class Tryout extends Resource
      * @var string
      */
     public static $title = 'id';
+
+    /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Swim Team';
 
     /**
      * The columns that should be searched.
@@ -51,14 +56,14 @@ class Tryout extends Resource
             ID::make()->sortable(),
             BelongsTo::make('Location'),
             BelongsTo::make('Season', 'season', STSeason::class),
-            Number::make('Spots Remaining', function (){
+            Number::make('Spots Remaining', function () {
                 return $this->class_size - $this->athletes->count();
             }),
             Number::make('Class Size', 'class_size')->hideFromIndex(),
             Text::make('Link', function () {
                 return view('partials.link', [
                     'link' => url('/swim-team/tryouts/'.$this->id),
-                    'text' => 'Sign Up Link'
+                    'text' => 'Sign Up Link',
                     //'new_tab' => true TODO: Add new tab option to link partial
                 ])->render();
             })->asHtml()->hideFromIndex(),
@@ -66,7 +71,7 @@ class Tryout extends Resource
             DateTime::make('Registration Open', 'registration_open'),
             DateTime::make('Tryout Start', 'event_time'),
             DateTime::make('Created At')->onlyOnDetail(),
-            DateTime::make('Updated At')->onlyOnDetail()
+            DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }
 

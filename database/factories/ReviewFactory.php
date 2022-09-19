@@ -25,7 +25,7 @@ class ReviewFactory extends Factory
             'name' => $this->faker->name,
             'active' => true,
             'created_time' => $this->faker->unique()->randomDigit,
-            'message' => $this->faker->sentence
+            'message' => $this->faker->sentence,
         ];
     }
 }

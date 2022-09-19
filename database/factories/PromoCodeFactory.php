@@ -23,7 +23,7 @@ class PromoCodeFactory extends Factory
     {
         return [
             'code' => $this->faker->word,
-            'discount_percent' => $this->faker->numberBetween(1, 100)
+            'discount_percent' => $this->faker->numberBetween(1, 100),
         ];
     }
 }

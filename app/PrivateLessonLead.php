@@ -2,9 +2,9 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 use Laravel\Nova\Actions\Actionable;
 
 class PrivateLessonLead extends Model
@@ -29,7 +29,7 @@ class PrivateLessonLead extends Model
         'location',
         'hr_resident',
         'availability',
-        'address'
+        'address',
     ];
 
     /**

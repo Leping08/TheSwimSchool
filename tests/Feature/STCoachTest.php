@@ -3,23 +3,23 @@
 namespace Tests\Feature;
 
 use App\STCoach;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class STCoachTest extends TestCase
 {
-    use DatabaseMigrations, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     /** @test **/
     public function a_coach_will_show_up_on_the_swim_team_page_if_they_are_active()
     {
         $activeCoach = STCoach::factory()->create([
-            'active' => true
+            'active' => true,
         ]);
 
         $notActiveCoach = STCoach::factory()->create([
-            'active' => false
+            'active' => false,
         ]);
 
         $this->get(route('swim-team.index'))

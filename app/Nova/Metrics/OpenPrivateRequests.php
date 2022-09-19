@@ -14,8 +14,6 @@ class OpenPrivateRequests extends Value
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-
-
     public function calculate(Request $request)
     {
         return $this->result(PrivateLessonLead::where('followed_up', false)->count());
@@ -53,6 +51,6 @@ class OpenPrivateRequests extends Value
 
     public function name()
     {
-        return "Privates Not Followed Up";
+        return 'Privates Not Followed Up';
     }
 }

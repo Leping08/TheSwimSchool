@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Library\Marketing\Emails\Lessons;
-
 
 use App\EmailList;
 use App\Jobs\NewsLetter\SendRegistrationOpenEmail;

@@ -28,7 +28,7 @@ class PrivatePoolSessionFactory extends Factory
             'start' => Carbon::now(),
             'end' => Carbon::now()->addHour(),
             'private_lesson_id' => PrivateLesson::factory(),
-            'location_id' => Location::factory()
+            'location_id' => Location::factory(),
         ];
     }
 }

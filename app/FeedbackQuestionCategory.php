@@ -11,15 +11,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * An Eloquent Model: 'FeedbackQuestionCategory'
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read \App\FeedbackQuestion $questions
- *
  */
-
 class FeedbackQuestionCategory extends Model
 {
     use SoftDeletes;

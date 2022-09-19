@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\PromoCode;
 use App\STLevel;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Stripe\Customer;
@@ -23,19 +22,19 @@ class StripePaymentIntentController extends Controller
             'level_id' => ['required', 'integer'],
             // 'promo_code' => ['sometimes', 'string', 'min:2', 'max:255'], // todo figure out the promo code validation better
         ]);
-    
+
         $level = STLevel::find($request->get('level_id'));
         $price = 50; // hard coded for now
-    
+
         // Apply promo code if promo code is provided
         if ($request->get('promo_code')) {
             $promoCode = PromoCode::where('code', $request->get('promo_code'))->first();
             $price = $promoCode->apply($price);
         }
-    
+
         // This is your test secret API key.
         Stripe::setApiKey(config('services.stripe.secret'));
-    
+
         // todo add try catch logic
         // Alternatively, set up a webhook to listen for the payment_intent.succeeded event
         // and attach the PaymentMethod to a new Customer
@@ -46,10 +45,10 @@ class StripePaymentIntentController extends Controller
                 'swimmer_id' => $request->get('swimmer_id'),
                 'level_id' => $request->get('level_id'),
                 'level_name' => $level->name,
-            ]
+            ],
         ]);
 
-        Log::info('Stripe customer created: ' . $customer->id);
+        Log::info('Stripe customer created: '.$customer->id);
 
         // Create a PaymentIntent with amount and currency
         $paymentIntent = PaymentIntent::create([
@@ -59,7 +58,7 @@ class StripePaymentIntentController extends Controller
             'currency' => 'usd',
             'automatic_payment_methods' => [
                 'enabled' => true,
-            ]
+            ],
         ]);
 
         return [
@@ -75,19 +74,19 @@ class StripePaymentIntentController extends Controller
             'athlete_hash' => ['required', 'string'], // todo remove this? not being used for anything
             'level_id' => ['required', 'integer'],
         ]);
-    
+
         $level = STLevel::find($request->get('level_id'));
         $price = 100; // hard coded but the promo code applies if there is one
-    
+
         // Apply promo code if promo code is provided
         if ($request->get('promo_code')) {
             $promoCode = PromoCode::where('code', $request->get('promo_code'))->first();
             $price = $promoCode->apply($price);
         }
-    
+
         // This is your test secret API key.
         Stripe::setApiKey(config('services.stripe.secret'));
-    
+
         // todo add try catch logic
         // Create a new customer
         $customer = Customer::create([
@@ -97,10 +96,10 @@ class StripePaymentIntentController extends Controller
                 'swimmer_id' => $request->get('swimmer_id'),
                 'level_id' => $request->get('level_id'),
                 'level_name' => $level->name,
-            ]
+            ],
         ]);
 
-        Log::info('Stripe customer created: ' . $customer->id);
+        Log::info('Stripe customer created: '.$customer->id);
 
         // todo add try catch logic
         // Create a PaymentIntent with amount and currency and attach the customer
@@ -111,7 +110,7 @@ class StripePaymentIntentController extends Controller
             'currency' => 'usd',
             'automatic_payment_methods' => [
                 'enabled' => true,
-            ]
+            ],
         ]);
 
         return [

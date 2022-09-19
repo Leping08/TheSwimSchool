@@ -1,19 +1,18 @@
 <?php
 
-
 namespace Tests\Feature;
 
 use App\Instructor;
 use App\Lesson;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class InstructorCalendarTest extends TestCase
 {
-    use DatabaseMigrations, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     /** @test  **/
     public function only_an_admin_can_visit_the_instructor_calendar_page()
@@ -47,7 +46,7 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->addWeek(),
             'class_start_time' => Carbon::now(),
             'class_end_time' => Carbon::now()->addHour(),
-            'days' => '1,3'
+            'days' => '1,3',
         ]);
         $lesson_1->DaysOfTheWeek()->sync(explode(',', $lesson_1->days));
 
@@ -57,7 +56,7 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->addWeek(),
             'class_start_time' => Carbon::now(),
             'class_end_time' => Carbon::now()->addHour(),
-            'days' => "1,3"
+            'days' => '1,3',
         ]);
         $lesson_2->DaysOfTheWeek()->sync(explode(',', $lesson_2->days));
 
@@ -88,7 +87,7 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->addWeek(),
             'class_start_time' => Carbon::now(),
             'class_end_time' => Carbon::now()->addHour(),
-            'days' => '1,3'
+            'days' => '1,3',
         ]);
         $lesson_1->DaysOfTheWeek()->sync(explode(',', $lesson_1->days));
 
@@ -98,7 +97,7 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->subDays(100), //Around 3 months
             'class_start_time' => Carbon::now(),
             'class_end_time' => Carbon::now()->addHour(),
-            'days' => '1,3'
+            'days' => '1,3',
         ]);
         $lesson_2->DaysOfTheWeek()->sync(explode(',', $lesson_2->days));
 
@@ -122,7 +121,7 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::parse('2020-06-11'),
             'class_start_time' => Carbon::parse('2020-06-01 9:30:00 AM'),
             'class_end_time' => Carbon::parse('2020-06-01 10:00:00 AM'),
-            'days' => '1,2,3,4'
+            'days' => '1,2,3,4',
         ]);
 
         $lesson_1->DaysOfTheWeek()->sync(explode(',', $lesson_1->days));

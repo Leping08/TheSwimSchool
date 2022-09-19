@@ -5,8 +5,8 @@ namespace Tests\Unit;
 use App\Group;
 use App\Lesson;
 use App\Swimmer;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class LessonTest extends TestCase
 {
@@ -16,19 +16,19 @@ class LessonTest extends TestCase
     public function it_can_have_enough_swimmers_that_makes_it_full()
     {
         $lesson = Lesson::factory()->create([
-            'class_size' => 2
+            'class_size' => 2,
         ]);
 
         $this->assertEquals(false, $lesson->isFull());
 
         Swimmer::factory()->create([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->assertEquals(false, $lesson->isFull());
 
         Swimmer::factory()->create([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->assertEquals(true, $lesson->isFull());
@@ -42,7 +42,7 @@ class LessonTest extends TestCase
         $this->assertEquals(false, $lesson->hasSwimmers());
 
         Swimmer::factory()->create([
-            'lesson_id' => $lesson->id
+            'lesson_id' => $lesson->id,
         ]);
 
         $this->assertEquals(true, $lesson->hasSwimmers());
@@ -52,17 +52,17 @@ class LessonTest extends TestCase
     public function it_can_be_private()
     {
         $group = Group::factory()->create([
-            'type' => 'Star Fish'
+            'type' => 'Star Fish',
         ]);
 
         $lesson = Lesson::factory()->create([
-            'group_id' => $group->id
+            'group_id' => $group->id,
         ]);
 
         $this->assertEquals(false, $lesson->isPrivate());
 
         $group->update([
-            'type' => 'Private'
+            'type' => 'Private',
         ]);
 
         $lesson = $lesson->fresh();

@@ -21,11 +21,12 @@ class LessonsController extends Controller
         //Get public facing groups for the groups index page
         $groups = Group::public()->get();
         $banner = Banner::where('page', '/lessons')->first();
+
         return view('groups.list', compact('groups', 'banner'));
     }
 
     /**
-     * @param Group $group
+     * @param  Group  $group
      * @return View
      */
     public static function show(Group $group)
@@ -38,14 +39,15 @@ class LessonsController extends Controller
     }
 
     /**
-     * @param Group $group
-     * @param Lesson $lesson
+     * @param  Group  $group
+     * @param  Lesson  $lesson
      * @return View
      */
     public function create(Group $group, Lesson $lesson)
     {
         $lesson->load(['group', 'location', 'season', 'swimmers']);  //Eager load the data
         Log::info("Found lesson ID: $lesson->id. The Group id for that lesson is: $lesson->group_id");
+
         return view('groups.signUp', compact('lesson'));
     }
 }

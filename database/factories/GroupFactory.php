@@ -23,9 +23,9 @@ class GroupFactory extends Factory
     {
         return [
             'type' => $this->faker->lastName,
-            'ages' => "6 years old",
+            'ages' => '6 years old',
             'icon' => $this->faker->word,
-            'description' => $this->faker->paragraph
+            'description' => $this->faker->paragraph,
         ];
     }
 }
