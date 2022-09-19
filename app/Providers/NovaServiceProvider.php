@@ -8,13 +8,13 @@ use App\Nova\Metrics\LessonsPerSeason;
 use App\Nova\Metrics\NewLessons;
 use App\Nova\Metrics\NewSwimmers;
 use App\Nova\Metrics\SwimmersPerDay;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Menu\Menu;
+use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Leping\SwimTeamRoster\SwimTeamRoster;
-use Illuminate\Http\Request;
-use Laravel\Nova\Menu\Menu;
-use Laravel\Nova\Menu\MenuItem;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {

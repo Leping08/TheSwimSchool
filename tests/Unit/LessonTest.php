@@ -6,6 +6,7 @@ use App\Group;
 use App\Lesson;
 use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class LessonTest extends TestCase
@@ -68,5 +69,19 @@ class LessonTest extends TestCase
         $lesson = $lesson->fresh();
 
         $this->assertEquals(true, $lesson->isPrivate());
+    }
+
+    /** @test  **/
+    public function it_sets_the_days_when_created()
+    {
+        Artisan::call('db:seed');
+
+        $lesson = Lesson::factory()->create([
+            'days' => '1,2,3', // Monday, Tuesday, Wednesday
+        ]);
+
+        $lesson = $lesson->fresh();
+
+        $this->assertEquals(3, $lesson->daysOfTheWeek->count());
     }
 }
