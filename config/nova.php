@@ -163,7 +163,7 @@ return [
     */
 
     'brand' => [
-        // 'logo' => resource_path('/img/example-logo.svg'),
+        'logo' => resource_path('views/images/the-swim-school.svg'),
 
         'colors' => [
             '400' => '244, 114, 182',
