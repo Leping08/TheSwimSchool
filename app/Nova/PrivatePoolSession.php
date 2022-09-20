@@ -10,7 +10,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Leping\NovaCheckBoxes\NovaCheckBoxes;
+use Leping\NovaCheckBoxes\NovaCheckboxes;
 
 class PrivatePoolSession extends Resource
 {
@@ -119,10 +119,10 @@ class PrivatePoolSession extends Resource
             //Date::make('End Date', 'end_date')->onlyOnForms()->hideWhenUpdating(),
             DateTime::make('Start Date and Time', 'start_date_time')->onlyOnForms()->hideWhenUpdating(),
             DateTime::make('End Date and Time', 'end_date_time')->onlyOnForms()->hideWhenUpdating(),
-            // NovaCheckBoxes::make('Days', 'days')
-            //     ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
-            //         return [$item['id'] => $item['day']];
-            //     }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
+            NovaCheckboxes::make('Days', 'days')
+                ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
+                    return [$item['id'] => $item['day']];
+                }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
             BelongsTo::make('Lesson', 'lesson', PrivateLesson::class)->nullable(),
             BelongsTo::make('Location', 'location', Location::class)->withMeta([
                 //Select River Wilderness by default

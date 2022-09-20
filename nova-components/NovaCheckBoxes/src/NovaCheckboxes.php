@@ -1,6 +1,6 @@
 <?php
 
-namespace Leping\NovaCheckboxes;
+namespace Leping\NovaCheckBoxes;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
