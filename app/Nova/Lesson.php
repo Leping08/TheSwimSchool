@@ -79,10 +79,10 @@ class Lesson extends Resource
                 //Select River Wilderness by default
                 'belongsToId' => $this->location_id ?? 63, //REALHAB location id
             ])->searchable(),
-            NovaCheckboxes::make('Days', 'days')
-                ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
-                    return [$item['id'] => $item['day']];
-                }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
+            // NovaCheckboxes::make('Days', 'days')
+            //     ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
+            //         return [$item['id'] => $item['day']];
+            //     }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
             Text::make('Lesson Link', function () {
                 return "<a class='link-default' target='_blank' href='/lessons/{$this?->group?->type}/{$this->id}'>Sign Up Link</a>";
             })->asHtml(),
