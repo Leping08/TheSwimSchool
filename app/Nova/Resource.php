@@ -4,12 +4,9 @@ namespace App\Nova;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource as NovaResource;
-use Opanegro\NovaCustomController\Traits\NovaCustomEvents;
 
 abstract class Resource extends NovaResource
 {
-    use NovaCustomEvents;
-
     /**
      * Build an "index" query for the given resource.
      *
