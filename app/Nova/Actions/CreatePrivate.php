@@ -36,7 +36,6 @@ class CreatePrivate extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        // todo write test for this functionality
         $daysOfTheWeek = collect(explode(',', $fields->days))->toArray();
         $dates = collect();
 
