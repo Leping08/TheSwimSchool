@@ -210,10 +210,12 @@
                             <li class="uk-margin-left"><b>Goal:</b> 4 Practices per week</li>
                             <li class="uk-margin-left"><b>Dryland:</b> 5:00pm-5:15pm</li>
                         </ul> --}}
-                        <li><b>White Team 1:</b> M/W/F 5:00PM-5:45PM</li>
-                        <li><b>White Team 2:</b> M/W/F 5:00PM-5:45PM</li>
-                        <li><b>Gray Team:</b> M/W/F 5:00PM-6:00PM</li>
-                        <li><b>Blue Team:</b> M/W/F 5:00PM-6:00PM</li>
+                        <ul class="uk-list uk-list-bullet">
+                            <li><b>White Team 1:</b> M/W/F 5:00PM-5:45PM</li>
+                            <li><b>White Team 2:</b> M/W/F 5:00PM-5:45PM</li>
+                            <li><b>Gray Team:</b> M/W/F 5:00PM-6:00PM</li>
+                            <li><b>Blue Team:</b> M/W/F 5:00PM-6:00PM</li>
+                        </ul>
                     </div>
                 </div>
 
