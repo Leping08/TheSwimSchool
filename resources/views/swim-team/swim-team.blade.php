@@ -161,7 +161,7 @@
                         <ul class="uk-list uk-list-bullet">
                             <li><b>White Team 1:</b> $125</li>
                             <li><b>White Team 2:</b> $125</li>
-                            <li><b>Gray Team:</b> $150</li>
+                            <li><b>Gray Team:</b> $135</li>
                             <li><b>Blue Team:</b> $150</li>
                         </ul>
                         <div class="uk-margin">*Parent Non-Volunteer Fee per swimmer (optional): $100</div>
@@ -288,7 +288,7 @@
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
-                            <div class="uk-margin">Download the 2022 swim meet schedule. All swim meets are optional but participation is highly encouraged.</div>
+                            <div class="uk-margin">Download the swim meet schedule.</div>
                             <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_2022_2023_Swim_Meet_Schedule.pdf') }}" download="PBS 2022-2023 Swim Meet Schedule.pdf">Download</a>
                         </div>
                     </div>
