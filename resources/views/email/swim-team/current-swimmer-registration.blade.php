@@ -19,7 +19,7 @@ It's official! The Parrish Bull Sharks swim team is going year round starting Mo
 
 To secure your spot, there is a $50 Registration Fee per swimmer due by Friday, September 16th.
 
-A recurring monthly fee will be applied on the 1st of each month (starting October 1st) per swimmer based on their assigned practice level within the program. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration. *Fees are subject to an increase for the Blue Team as we plan to expand practice options for this group in the near future.
+A recurring monthly fee will be applied on the 1st of each month (starting October 1st) per swimmer based on their assigned practice level within the program. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration.
 
 - White Team 1
   - $125/month
@@ -30,7 +30,7 @@ A recurring monthly fee will be applied on the 1st of each month (starting Octob
   - Practices: M/W/F 5:00PM-5:45PM
 
 - Gray Team 
-  - $150/month
+  - $135/month
   - Practices: M/W/F 5:00PM-6:00PM
 
 - Blue Team

@@ -156,7 +156,7 @@
                             There is a $100 Registration/Apparel Fee per swimmer. As part of this fee, each swimmer will receive one team swimsuit, cap, t-shirt, water bottle and drawstring bag.
                         </div>
                         <div class="uk-margin">
-                            A recurring monthly fee will be applied on the 1st of each month per swimmer based on their assigned program level. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration. *Fees are subject to an increase for the Blue Team as we plan to expand practice options for this group in the near future.
+                            A recurring monthly fee will be applied on the 1st of each month per swimmer based on their assigned program level. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration.
                         </div>
                         <ul class="uk-list uk-list-bullet">
                             <li><b>White Team 1:</b> $125</li>
