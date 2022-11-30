@@ -27,7 +27,7 @@ Route::get('/lesson-link/{lesson}', function (Lesson $lesson) {
 // these were the routes for the old swimmer registration form
 Route::post('/swim-team/swimmer', [\App\Http\Controllers\SwimTeam\SwimmerController::class, 'update'])->name('api.swimmer.update');
 Route::post('/swim-team/swimmer/promo-code', [\App\Http\Controllers\SwimTeam\SwimmerController::class, 'savePromoCode'])->name('api.swimmer.promo-code.update');
-Route::post('/stripe-token/payment-intent/swimmer', [\App\Http\Controllers\StripePaymentIntentController::class, '@store']);
+Route::post('/stripe-token/payment-intent/swimmer', [\App\Http\Controllers\StripePaymentIntentController::class, 'store']);
 
 // Used to update the athlete data in the DB when signing up for the swim team
 Route::post('/athlete/{hash}', [\App\Http\Controllers\SwimTeam\AthleteController::class, 'update'])->name('api.athlete.update');
