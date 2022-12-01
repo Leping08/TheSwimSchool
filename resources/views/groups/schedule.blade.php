@@ -17,7 +17,7 @@
             </div>
 
             <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>2022 Fall Schedule</span></h2>
+                <h2 class="uk-heading-line"><span>2023 Winter & Spring Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
@@ -27,16 +27,20 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>August 22nd-September 15th</td>
-                            <td>August 8th</td>
+                            <td>January 9th-February 2nd</td>
+                            <td>January 2nd</td>
                         </tr>
                         <tr>
-                            <td>September 26th-October 20th</td>
-                            <td>September 19th</td>
+                            <td>February 13th-March 9th</td>
+                            <td>February 6th</td>
                         </tr>
                         <tr>
-                            <td>October 24th-November 17th **(No Classes Halloween 10/31; Makeup Fri 11/4)</td>
-                            <td>October 17th</td>
+                            <td>March 20th-April 13th</td>
+                            <td>March 13th</td>
+                        </tr>
+                        <tr>
+                            <td>April 24th-May 18th</td>
+                            <td>April 17th</td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,12 +56,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>August 20th-October 1st **(No Classes 9/10)</td>
-                            <td>August 8th</td>
+                            <td>January 14th-February 18th</td>
+                            <td>January 2nd</td>
                         </tr>
                         <tr>
-                            <td>October 15th-November 19th</td>
-                            <td>October 3rd</td>
+                            <td>February 25th-April 1st</td>
+                            <td>February 20th</td>
+                        </tr>
+                        <tr>
+                            <td>April 15th-May 20th</td>
+                            <td>April 3rd</td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,42 +81,46 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>August 21st-October 2nd **(No Classes 9/11)</td>
-                            <td>August 8th</td>
+                            <td>January 15th-February 19th</td>
+                            <td>January 2nd</td>
                         </tr>
                         <tr>
-                            <td>October 9th-November 13th</td>
-                            <td>October 3rd</td>
+                            <td>February 26th-April 2nd</td>
+                            <td>February 20th</td>
+                        </tr>
+                        <tr>
+                            <td>April 16th-May 21st</td>
+                            <td>April 3rd</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>2022 Summer Schedule</span></h2>
+                <h2 class="uk-heading-line"><span>2023 Summer Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
-                            <th class="uk-width-1-2"><h5>Weekday AM Sessions (M/T/W/TH 4x/wk for 2 weeks)</h5></th>
+                            <th class="uk-width-1-2"><h5>Weekday AM & PM Sessions (M/T/W/TH 4x/wk for 2 weeks)</h5></th>
                             <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>June 6th-June 16th</td>
-                            <td>May 23rd</td>
+                            <td>June 5th-June 15th</td>
+                            <td>May 22nd</td>
                         </tr>
                         <tr>
-                            <td>June 20th-June 30th</td>
-                            <td>June 13th</td>
+                            <td>June 19th-June 29th</td>
+                            <td>June 12th</td>
                         </tr>
                         <tr>
-                            <td>July 11th-July 21st</td>
-                            <td>June 27th</td>
+                            <td>July 10th-July 20th</td>
+                            <td>July 3rd</td>
                         </tr>
                         <tr>
-                            <td>July 25th-August 4th</td>
-                            <td>July 18th</td>
+                            <td>July 24th-August 3rd</td>
+                            <td>July 17th</td>
                         </tr>
                     </tbody>
                 </table>
@@ -124,8 +136,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>July 9th-August 13th</td>
-                            <td>June 27th</td>
+                            <td>June 3rd-July 8th</td>
+                            <td>May 22nd</td>
+                        </tr>
+                        <tr>
+                            <td>July 22nd-August 26th</td>
+                            <td>July 10th</td>
                         </tr>
                     </tbody>
                 </table>
@@ -141,14 +157,18 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>July 10th-August 14th</td>
-                            <td>June 27th</td>
+                            <td>June 4th-July 9th</td>
+                            <td>May 22nd</td>
+                        </tr>
+                        <tr>
+                            <td>July 23rd-August 27th</td>
+                            <td>July 10th</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div class="uk-margin-large-top">
+            {{-- <div class="uk-margin-large-top">
                 <h2 class="uk-heading-line"><span>2022 Winter & Spring Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
@@ -226,7 +246,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
 
             <p>*Class times vary per level and session based on facility and instructor availability, so the specific class
                 times are not available until registration opens for each session. <a href="{{ route('groups.lessons.index') }}">Registration</a> is completed online
