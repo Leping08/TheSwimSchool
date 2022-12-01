@@ -27,19 +27,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>January 9th-February 2nd</td>
+                            <td>January 9th - February 2nd</td>
                             <td>January 2nd</td>
                         </tr>
                         <tr>
-                            <td>February 13th-March 9th</td>
+                            <td>February 13th - March 9th</td>
                             <td>February 6th</td>
                         </tr>
                         <tr>
-                            <td>March 20th-April 13th</td>
+                            <td>March 20th - April 13th</td>
                             <td>March 13th</td>
                         </tr>
                         <tr>
-                            <td>April 24th-May 18th</td>
+                            <td>April 24th - May 18th</td>
                             <td>April 17th</td>
                         </tr>
                     </tbody>
@@ -56,15 +56,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>January 14th-February 18th</td>
+                            <td>January 14th - February 18th</td>
                             <td>January 2nd</td>
                         </tr>
                         <tr>
-                            <td>February 25th-April 1st</td>
+                            <td>February 25th - April 1st</td>
                             <td>February 20th</td>
                         </tr>
                         <tr>
-                            <td>April 15th-May 20th</td>
+                            <td>April 15th - May 20th</td>
                             <td>April 3rd</td>
                         </tr>
                     </tbody>
@@ -81,15 +81,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>January 15th-February 19th</td>
+                            <td>January 15th - February 19th</td>
                             <td>January 2nd</td>
                         </tr>
                         <tr>
-                            <td>February 26th-April 2nd</td>
+                            <td>February 26th - April 2nd</td>
                             <td>February 20th</td>
                         </tr>
                         <tr>
-                            <td>April 16th-May 21st</td>
+                            <td>April 16th - May 21st</td>
                             <td>April 3rd</td>
                         </tr>
                     </tbody>
@@ -107,19 +107,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>June 5th-June 15th</td>
+                            <td>June 5th - June 15th</td>
                             <td>May 22nd</td>
                         </tr>
                         <tr>
-                            <td>June 19th-June 29th</td>
+                            <td>June 19th - June 29th</td>
                             <td>June 12th</td>
                         </tr>
                         <tr>
-                            <td>July 10th-July 20th</td>
+                            <td>July 10th - July 20th</td>
                             <td>July 3rd</td>
                         </tr>
                         <tr>
-                            <td>July 24th-August 3rd</td>
+                            <td>July 24th - August 3rd</td>
                             <td>July 17th</td>
                         </tr>
                     </tbody>
@@ -136,11 +136,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>June 3rd-July 8th</td>
+                            <td>June 3rd - July 8th</td>
                             <td>May 22nd</td>
                         </tr>
                         <tr>
-                            <td>July 22nd-August 26th</td>
+                            <td>July 22nd - August 26th</td>
                             <td>July 10th</td>
                         </tr>
                     </tbody>
@@ -157,11 +157,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>June 4th-July 9th</td>
+                            <td>June 4th - July 9th</td>
                             <td>May 22nd</td>
                         </tr>
                         <tr>
-                            <td>July 23rd-August 27th</td>
+                            <td>July 23rd - August 27th</td>
                             <td>July 10th</td>
                         </tr>
                     </tbody>
