@@ -85,7 +85,7 @@
                             <td>January 2nd</td>
                         </tr>
                         <tr>
-                            <td>February 26th - April 2nd</td>
+                            <td>February 25th-April 1st</td>
                             <td>February 20th</td>
                         </tr>
                         <tr>
