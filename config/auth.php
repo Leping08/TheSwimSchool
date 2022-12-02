@@ -122,6 +122,7 @@ return [
         'theswimschoolfl@gmail.com',
         'smunyer1015@gmail.com',
         'jaciedyer@icloud.com',
+        'bbmurphy76@gmail.com',
     ],
 
     'superAdminEmails' => [
