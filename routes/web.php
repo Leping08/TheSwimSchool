@@ -95,7 +95,7 @@ Route::get('/swim-team/thank-you', [\App\Http\Controllers\SwimTeam\SwimmerContro
  * Public Contact Forms
  */
 
-Route::post('/contact-us', [\App\Http\Controllers\Privates\LeadController::class, 'store'])->name('contact-us.store');
+Route::post('/contact-us', [\App\Http\Controllers\ContactUsController::class, 'store'])->name('contact-us.store');
 
 Route::get('/private-semi-private', [\App\Http\Controllers\Privates\CalendarController::class, 'index'])->name('private_lesson.index');
 
