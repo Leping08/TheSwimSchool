@@ -113,8 +113,24 @@ class PrivatePoolSession extends Resource
         return [new CreatePrivate()];
     }
 
+    /**
+     * This is the label for the resource
+     *
+     * @return string
+     */
     public static function label()
     {
         return 'Pool Sessions';
+    }
+
+    /**
+     * This removes the Create button for the resource
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
     }
 }
