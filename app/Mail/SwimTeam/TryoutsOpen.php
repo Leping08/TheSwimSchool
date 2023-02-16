@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 
 //Test to people
 //\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\SwimTeam\TryoutsOpen('derek@deltavcreative.com'));
-//\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\SwimTeam\TryoutsOpen('theswimschoolfl@gmail.com'));
+//\Illuminate\Support\Facades\Mail::to(config('contact.email.address'))->send(new \App\Mail\SwimTeam\TryoutsOpen(config('contact.email.address')));
 
 //Send to everyone
 //\App\Library\Marketing\Emails\SwimTeam\TryoutRegistrationOpen::send(\App\STSeason::find(5));

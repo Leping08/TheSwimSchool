@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 
 //Test to people
 //\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\Covid('derek@deltavcreative.com'));
-//\Illuminate\Support\Facades\Mail::to('theswimschoolfl@gmail.com')->send(new \App\Mail\NewsLetter\Covid('theswimschoolfl@gmail.com'));
+//\Illuminate\Support\Facades\Mail::to(config('contact.email.address'))->send(new \App\Mail\NewsLetter\Covid(config('contact.email.address')));
 
 //Send to everyone
 //(new \App\Library\Marketing\Emails\Events\Covid())->send();
