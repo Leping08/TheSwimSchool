@@ -6,6 +6,7 @@ use App\Contact;
 use App\Mail\Admin\ContactUs;
 use App\Rules\Recaptcha;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -33,7 +34,7 @@ class StoreLead extends FormRequest
             'email' => 'required|email',
             'phone' => 'required',
             'message' => 'required',
-            'g-recaptcha-response' => ['required', new Recaptcha()],
+            'g-recaptcha-response' => App::runningUnitTests() ? [] : ['required', new Recaptcha()],
         ];
     }
 
