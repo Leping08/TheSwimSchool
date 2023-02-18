@@ -22,8 +22,8 @@
 @slot('footer')
 @component('mail::footer')
 <div style="padding-top:10px; text-align:center !important;">
-<a href="tel:1-941-773-1424" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}" alt=""></a>
-<a href="mailto:theswimschoolfl@gmail.com"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}" alt=""></a>
+<a href="{{ config('contact.phone.link') }}" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}" alt=""></a>
+<a href="{{ config('contact.email.link') }}"><img style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}" alt=""></a>
 <a href="https://www.facebook.com/theswimschoolfl/" target="blank"><img style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}" alt=""></a>
 </div>
 © {{ date('Y') }} {{ config('app.name') }}. @lang('All rights reserved.')
