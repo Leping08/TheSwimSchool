@@ -3,6 +3,7 @@
 namespace App\Library\Mailgun;
 
 use App\EmailList;
+use App\Jobs\NewsLetter\RemoveEmails;
 use App\Library\NewsLetter\NewsLetter;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -47,8 +48,8 @@ class Mailgun
             return;
         }
 
-        collect($complaints->get('items'))->map(function ($complaintEmail) {
-            NewsLetter::unsubscribe($complaintEmail['address']);
+        collect($complaints->get('items'))->chunk(100)->each(function ($chunk) {
+            RemoveEmails::dispatch($chunk->toArray());
         });
     }
 
