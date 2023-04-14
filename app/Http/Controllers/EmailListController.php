@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\EmailList;
 use App\Library\NewsLetter\NewsLetter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -29,6 +30,25 @@ class EmailListController extends Controller
      */
     public function subscribe(Request $request)
     {
+        // Check if all honeypot fields are empty
+        $emptyHoneypot = collect([
+            $request->email_address,
+            $request->emailaddress,
+        ])->filter()->isEmpty();
+
+        if (!$emptyHoneypot) {
+            Log::info('Honeypot fields were not empty.');
+            session()->flash('warning', 'Are you a robot?');
+            return back();
+        }
+
+        // Get the timestamp field and check if it is not within the last 3 seconds
+        if ((int)$request->time > (Carbon::now()->timestamp - 3)) {
+            Log::info('Timestamp was not within the last 3 seconds.');
+            session()->flash('warning', 'Are you a robot?');
+            return back();
+        }
+
         $request->validate([
             'email' => 'required|email',
         ]);

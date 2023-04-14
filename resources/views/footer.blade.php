@@ -80,6 +80,11 @@
                                 <input class="el-input uk-input uk-form-large" type="email" name="email" placeholder="Your E-Mail Address" required>
                             </div>
                         </div>
+                        
+                        <input type="text" autocomplete="off" name="emailaddress" id="emailaddress" placeholder="" value="" class="uk-hidden" tabindex="-1">
+                        <input type="text" autocomplete="off" name="email_address" id="email_address" placeholder="" value="" class="uk-hidden" tabindex="-1">
+                        <input type="text" autocomplete="off" name="time" id="time" value="{{ Carbon\Carbon::now()->timestamp }}" class="uk-hidden" tabindex="-1">
+                        
                         <div class="message uk-margin uk-hidden"></div>
                     </form>
                 </div>

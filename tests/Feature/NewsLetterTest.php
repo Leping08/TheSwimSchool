@@ -6,6 +6,7 @@ use App\EmailList;
 use App\Library\Mailgun\Mailgun;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
@@ -103,5 +104,55 @@ class NewsLetterTest extends TestCase
 
         $email_after = EmailList::where('email', $email_subscribed)->first();
         $this->assertEquals(1, $email_after->subscribe);
+    }
+
+    /** @test  **/
+    public function it_will_not_allow_someone_to_sign_up_if_a_honeypot_field_is_filled_out()
+    {
+        $data = [
+            'email' => $this->faker->safeEmail,
+
+            // honeypot field
+            'email_address' => $this->faker->safeEmail,
+        ];
+
+        $this->assertCount(0, EmailList::all());
+
+        $this->post(route('newsletter.subscribe'), $data)
+            ->assertStatus(302);
+
+        $this->assertCount(0, EmailList::all());
+    }    
+    
+    /** @test  **/
+    public function it_will_not_allow_someone_to_sign_up_if_they_move_too_fast_like_a_bot()
+    {
+        $data = [
+            'email' => $this->faker->safeEmail,
+            'time' => Carbon::now()->timestamp,
+        ];
+
+        $this->assertCount(0, EmailList::all());
+
+        $this->post(route('newsletter.subscribe'), $data)
+            ->assertStatus(302);
+
+        $this->assertCount(0, EmailList::all());
+    }
+    
+    /** @test  **/
+    public function it_will_allow_someone_to_sign_up_if_they_at_human_speeds()
+    {
+        $data = [
+            'email' => $this->faker->safeEmail,
+            'time' => Carbon::now()->timestamp - 5,
+        ];
+
+        $this->assertCount(0, EmailList::all());
+
+        $this->post(route('newsletter.subscribe'), $data)
+            ->assertStatus(302);
+
+        $this->assertCount(1, EmailList::all());
     }
 }
