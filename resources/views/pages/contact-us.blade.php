@@ -44,6 +44,16 @@ Contact Us
                                         <textarea name="message" rows="5" class="uk-textarea" placeholder="Your Message" required>{{ old('message') }}</textarea>
                                     </div>
                                 </div>
+
+                                <input type="text" autocomplete="off" name="first_name" id="first_name" placeholder="First Name" value="" class="uk-hidden" tabindex="-1">
+                                <input type="text" autocomplete="off" name="last_name" id="last_name" placeholder="Last Name" value="" class="uk-hidden" tabindex="-1">
+                                <input type="text" autocomplete="off" name="address" id="address" placeholder="Address" value="" class="uk-hidden" tabindex="-1">
+                                <input type="text" autocomplete="off" name="city" id="city" placeholder="City" value="" class="uk-hidden" tabindex="-1">
+                                <input type="text" autocomplete="off" name="state" id="state" placeholder="State" value="" class="uk-hidden" tabindex="-1">
+                                <input type="text" autocomplete="off" name="zip" id="zip" placeholder="Zip" value="" class="uk-hidden" tabindex="-1">
+                                <input type="text" autocomplete="off" name="country" id="country" placeholder="Country" value="" class="uk-hidden" tabindex="-1">
+                                <input type="text" autocomplete="off" name="time" id="time" value="{{ Carbon\Carbon::now()->timestamp }}" class="uk-hidden" tabindex="-1">
+
                                 <div class="uk-grid">
                                     <div class="uk-width-1-2@s uk-margin">
                                         <button class="g-recaptcha uk-button-primary uk-button uk-button-large" 
