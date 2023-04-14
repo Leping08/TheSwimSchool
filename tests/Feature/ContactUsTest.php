@@ -134,7 +134,7 @@ class ContactUsTest extends TestCase
             'message' => $this->faker->sentence(),
 
             // honeypot fields
-            'time' => Carbon::now()->timestamp,
+            'time' => Carbon::now()->timestamp - 5,
         ];
 
         $this->post(route('contact-us.store'), $data)
