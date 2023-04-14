@@ -8,7 +8,7 @@ return [
 
     'recaptcha' => [
         'secret' => env('RECAPTCHA_SECRET'),
-        'public' => env('RECAPTCHA_PUBLIC'),
+        'site' => env('RECAPTCHA_SITE_KEY'),
     ],
 
 ];

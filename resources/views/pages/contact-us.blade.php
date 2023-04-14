@@ -18,7 +18,7 @@ Contact Us
                 <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
                     <div class="uk-card uk-card-default uk-card-body">
                         <div class="uk-h2">Send us a message</div>
-                            <form action="{{ route('contact-us.store') }}" method="post">
+                            <form id="contact_form" action="{{ route('contact-us.store') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="uk-margin">
                                     <label class="uk-form-label uk-heading-bullet" for="">Name</label>
@@ -44,16 +44,22 @@ Contact Us
                                         <textarea name="message" rows="5" class="uk-textarea" placeholder="Your Message" required>{{ old('message') }}</textarea>
                                     </div>
                                 </div>
-                                <div class="uk-margin">
-                                    <div class="g-recaptcha" data-sitekey="{{ config('google.recaptcha.public') }}"></div>
-                                </div>
-                                <div uk-grid="" class="uk-grid">
+                                <div class="uk-grid">
                                     <div class="uk-width-1-2@s uk-margin">
-                                        <input type="submit" value="Send" class="uk-button-primary uk-button uk-button-large">
+                                        <button class="g-recaptcha uk-button-primary uk-button uk-button-large" 
+                                            data-sitekey="{{ config('google.recaptcha.site') }}" 
+                                            data-callback='onSubmit'
+                                            data-action='submit'>Send</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+
+                        <script>
+                            function onSubmit(token) {
+                                document.getElementById("contact_form").submit();
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
