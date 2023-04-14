@@ -30,16 +30,6 @@ class StoreLead extends FormRequest
     public function rules()
     {
         return [
-            // Honeypot fields
-            // @todo this is not working correctly, figure out why
-            'first_name' => 'prohibited',
-            'last_name' => 'prohibited',
-            'address' => 'prohibited',
-            'city' => 'prohibited',
-            'state' => 'prohibited',
-            'zip' => 'prohibited',
-            'country' => 'prohibited',
-
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',

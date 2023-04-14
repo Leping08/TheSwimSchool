@@ -19,7 +19,6 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        // @todo add timestamp field and validation to email news letter
         // @todo clean up store lead request
 
         // Check if all honeypot fields are empty
