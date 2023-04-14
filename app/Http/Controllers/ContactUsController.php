@@ -19,13 +19,11 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        // @todo add test for timestamp field
-        // @todo add tests for honeypot fields
         // @todo add timestamp field and validation to email news letter
         // @todo clean up store lead request
 
         // Check if all honeypot fields are empty
-        $honeypotFieldValues = collect([
+        $emptyHoneypot = collect([
             $request->first_name,
             $request->last_name,
             $request->address,
@@ -33,9 +31,9 @@ class ContactUsController extends Controller
             $request->state,
             $request->zip,
             $request->country,
-        ]);
+        ])->filter()->isEmpty();
 
-        if (!$honeypotFieldValues->empty()) {
+        if (!$emptyHoneypot) {
             Log::info('Honeypot fields were not empty.');
             session()->flash('warning', 'Are you a robot?');
             return back();
