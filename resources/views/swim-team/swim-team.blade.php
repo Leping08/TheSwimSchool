@@ -189,27 +189,51 @@
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
                     <h2 class="uk-heading-line">
-                        <span>Practice Schedule</span>
+                        <span>Practice Schedules</span>
                     </h2>
                 </div>
             </div>
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
-                    <div class="uk-panel">
-                        <div class="uk-margin">
-                            Practices are offered four days per week for all practice levels.
+                    <div class="">
+                        <div class="uk-panel uk-margin-large-bottom">
+                            <h2>
+                                School Year Practice Schedule
+                            </h2>
+                            <div class="uk-margin">
+                                Runs <b>September-May</b> and practices are offered four days per week for all practice levels.
+                            </div>
+                            <ul class="uk-list uk-list-bullet">
+                                <li><b>White Team 1:</b> M/T/W/TH 4:30PM-5:15PM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
+                                <li><b>White Team 2:</b> M/T/W/TH 4:30PM-5:15PM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
+                                <li><b>Gray Team:</b> M/W 5:15PM-6:15PM & T/TH 4:30PM-5:30PM or 5:30PM-6:30PM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
+                                <li><b>Blue Team:</b> M/T/W/TH 5:00PM-6:30PM (Dryland: 5:00PM-5:15PM)</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 4 practices per week</li>
+                                <li class="uk-margin-left"><b>Dryland:</b> 5:00pm-5:15pm</li>
+                            </ul>
                         </div>
-                        <ul class="uk-list uk-list-bullet">
-                            <li><b>White Team 1:</b> M/T/W/TH 4:30PM-5:15PM</li>
-                            <li class="uk-margin-left"><b>Goal:</b> 2 Practices per week</li>
-                            <li><b>White Team 2:</b> M/T/W/TH 4:30PM-5:15PM</li>
-                            <li class="uk-margin-left"><b>Goal:</b> 3 Practices per week</li>
-                            <li><b>Gray Team:</b> M/T/W/TH 5:15PM-6:15PM</li>
-                            <li class="uk-margin-left"><b>Goal:</b> 3 Practices per week</li>
-                            <li><b>Blue Team:</b> M/T/W/TH 5:00PM-6:30PM</li>
-                            <li class="uk-margin-left"><b>Goal:</b> 4 Practices per week</li>
-                            <li class="uk-margin-left"><b>Dryland:</b> 5:00pm-5:15pm</li>
-                        </ul>
+                        
+                        <div class="uk-panel">
+                            <h2>
+                                Summer Practice Schedule
+                            </h2>
+                            <div class="uk-margin">
+                                Runs <b>June 1st-August 5th</b> and practices are offered five days per week for all practice levels.
+                            </div>
+                            <ul class="uk-list uk-list-bullet">
+                                <li><b>White Team 1:</b> Mon/Wed/Fri 8:30AM-9:15AM, Tues/Thurs 8:00AM-8:45AM or 10:15AM-11:00AM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
+                                <li><b>White Team 2:</b> Mon/Wed/Fri 9:15AM-10:00AM, Tues/Thurs 8:00AM-8:45AM or 10:15AM-11:00AM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
+                                <li><b>Gray Team:</b> Mon/Wed/Fri 8:30AM-9:30AM, Tues/Thurs 8:45AM-9:45AM or 9:15AM-10:15AM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
+                                <li><b>Blue Team:</b> Mon/Wed/Fri 8:30AM-10:00AM (Dryland: 8:15AM-8:30AM)                                    Tues/Thurs 8:00AM-9:15AM or 9:45AM-11:00AM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
