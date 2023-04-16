@@ -289,7 +289,7 @@
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">Download the swim meet schedule.</div>
-                            <a title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_2022_2023_Swim_Meet_Schedule.pdf') }}" download="PBS 2022-2023 Swim Meet Schedule.pdf">Download</a>
+                            <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_May-August_2023.pdf') }}" download="PBS_Swim_Meet_Schedule_May-August_2023.pdf">Download</a>
                         </div>
                     </div>
                 </div>
