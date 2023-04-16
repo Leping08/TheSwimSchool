@@ -212,7 +212,6 @@
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li><b>Blue Team:</b> M/T/W/TH 5:00PM-6:30PM (Dryland: 5:00PM-5:15PM)</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 4 practices per week</li>
-                                <li class="uk-margin-left"><b>Dryland:</b> 5:00pm-5:15pm</li>
                             </ul>
                         </div>
                         
@@ -230,7 +229,7 @@
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li><b>Gray Team:</b> Mon/Wed/Fri 8:30AM-9:30AM, Tues/Thurs 8:45AM-9:45AM or 9:15AM-10:15AM</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li><b>Blue Team:</b> Mon/Wed/Fri 8:30AM-10:00AM (Dryland: 8:15AM-8:30AM)                                    Tues/Thurs 8:00AM-9:15AM or 9:45AM-11:00AM</li>
+                                <li><b>Blue Team:</b> Mon/Wed/Fri 8:30AM-10:00AM (Dryland: 8:15AM-8:30AM), Tues/Thurs 8:00AM-9:15AM or 9:45AM-11:00AM</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
                             </ul>
                         </div>
