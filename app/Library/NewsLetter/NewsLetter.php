@@ -80,4 +80,39 @@ class NewsLetter
             return false;
         }
     }
+
+    /**
+     * @return void
+     */
+    public static function cleanUpBotEmails()
+    {
+        // Get all the emails that are not deleted
+        $newsLetterEmails = EmailList::all();
+        
+        // Loop through the emails
+        foreach ($newsLetterEmails as $newsLetterEmail) {
+            // Check if the email is a bot
+            if (NewsLetter::isBotEmail($newsLetterEmail)) {
+                // Log the email in the logs
+                Log::info("{$newsLetterEmail->email} is a bot email and is being deleted.");
+                // Unsubscribe the email
+                $newsLetterEmail->delete();
+            }
+        }
+    }
+
+    /**
+     * @param  EmailList  $email
+     * @return bool
+     */
+    public static function isBotEmail(EmailList $emailList): bool
+    {
+        // Check if the email is has a capital after the @ sympbol
+        $emailParts = explode('@', $emailList->email);
+        if (preg_match('/[A-Z]/', $emailParts[1])) {
+            return true;
+        }
+
+        return false;
+    }
 }
