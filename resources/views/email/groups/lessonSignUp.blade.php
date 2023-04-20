@@ -24,7 +24,6 @@ Lessons are on @foreach($lesson->DaysOfTheWeek as $day){{$day->day}}{{$loop->las
 ### What To Bring
 * Bathing Suit
 * Towel
-* No Swim Shirts/Rash Guards Please
 @endcomponent
 
 

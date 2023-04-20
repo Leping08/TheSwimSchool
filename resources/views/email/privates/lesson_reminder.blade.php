@@ -28,7 +28,6 @@ Tomorrow {{$pool_session->start->format('l F jS')}}\
 ### What To Bring
 * Bathing Suit
 * Towel
-* No Swim Shirts/Rash Guards Please
 @endcomponent
 
 @if($location->pool_access_instructions)

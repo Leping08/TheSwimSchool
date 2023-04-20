@@ -26,7 +26,6 @@ The first lesson is {{$first_pool_session->start->format('g:ia')}} - {{$first_po
 ### What To Bring
 * Bathing Suit
 * Towel
-* No Swim Shirts/Rash Guards Please
 @endcomponent
 
 @component('mail::panel')
