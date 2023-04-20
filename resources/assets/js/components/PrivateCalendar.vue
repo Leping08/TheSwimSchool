@@ -32,8 +32,9 @@
                         <div class="uk-h3 uk-width-1-2">Cart</div>
                         <div class="uk-h3 uk-width-1-2 uk-text-right"><i class="fa fa-shopping-cart fa-lg"></i></div>
                     </div>
-                    <div v-for="event in cart" :key="event" class="uk-card uk-card-default uk-card-body uk-width-1-1@m uk-margin">
+                    <div v-for="(event, index) in cart" :key="index" class="uk-card uk-card-default uk-card-body uk-width-1-1@m uk-margin">
                         <button @click="remove(event)" class="uk-offcanvas-close uk-button-small" type="button" uk-close></button>
+                        <div>{{event.location_name}}</div>
                         <div>{{event.start.toDateString()}}</div>
                         <div>{{event.start.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}} - {{event.end.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}}</div>
                     </div>
@@ -83,7 +84,11 @@
                     id: event.id,
                     start: Date.parse(event.start),
                     end: Date.parse(event.end),
-                    color: event.instructor.hex_color
+                    color: event.instructor.hex_color,
+                    extendedProps: {
+                        // Custom data goes here
+                        location: event.location
+                    }
                 };
             });
         },
@@ -98,7 +103,8 @@
                 this.cart.push({
                     'id': event.event.id,
                     'start': event.event.start,
-                    'end': event.event.end
+                    'end': event.event.end,
+                    'location_name': event.event.extendedProps.location.name
                 });
 
                 //Set the color of the selected item

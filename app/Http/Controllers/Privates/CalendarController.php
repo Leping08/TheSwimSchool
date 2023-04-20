@@ -21,7 +21,7 @@ class CalendarController extends Controller
 {
     public function index()
     {
-        $private_pool_sessions = PrivatePoolSession::with('instructor:id,name,hex_color')->available()->startConditionallyNextMonth()->get();
+        $private_pool_sessions = PrivatePoolSession::with(['instructor:id,name,hex_color', 'location:id,name'])->available()->startConditionallyNextMonth()->get();
         $banner = Banner::where('page', '/private-semi-private')->first();
 
         return view('lessons.private.calendar', ['events' => $private_pool_sessions, 'banner' => $banner]);
