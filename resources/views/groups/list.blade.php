@@ -20,12 +20,34 @@
             @endif
 
             <div class="uk-width-1-1@m uk-first-column uk-margin-top">
-                <h2 class="uk-heading-line"><span>Location</span></h2>
-                <p>Group Lessons take place year-round in an indoor, heated pool at Realhab Physical Therapy, Aquatics & Wellness Center located at 12159 US-301 N, Parrish, FL 34219.</p>
-                <div class="uk-card uk-card-default">
-                    <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                <h2 class="uk-heading-line"><span>Locations</span></h2>
+                <p>Group Lessons take place at two different locations. Realhab Physical Therapy and Lincoln Aquatic Center.</p>
+                <div class="uk-grid-small uk-grid-match uk-child-width-expand@s uk-grid">
+                    <div class="uk-first-column">
+                        <div class="uk-card uk-card-default uk-card-body uk-margin-top">
+                            <h5>Realhab Physical Therapy</h5>
+                            <ul class="uk-list uk-list-bullet">
+                                <li>Weekday evening and weekend lessons</li>
+                                <li>Heated pool</li>
+                                <li>Outdoor</li>
+                            </ul>
+                            <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body uk-margin-top">
+                            <h5>Lincoln Aquatic Center</h5>
+                            <ul class="uk-list uk-list-bullet">
+                                <li>Weekday morning lessons</li>
+                                <li>Heated pool</li>
+                                <li>Indoor</li>
+                            </ul>
+                            <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Lincoln_Aquatic_Center&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
 
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-width-4-4@m uk-first-column">
