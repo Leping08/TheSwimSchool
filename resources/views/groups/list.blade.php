@@ -29,7 +29,7 @@
                             <ul class="uk-list uk-list-bullet">
                                 <li>Weekday evening and weekend lessons</li>
                                 <li>Heated pool</li>
-                                <li>Outdoor</li>
+                                <li>Indoor</li>
                             </ul>
                             <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                         </div>
@@ -40,10 +40,23 @@
                             <ul class="uk-list uk-list-bullet">
                                 <li>Weekday morning lessons</li>
                                 <li>Heated pool</li>
-                                <li>Indoor</li>
+                                <li>Outdoor</li>
                             </ul>
                             <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Lincoln_Aquatic_Center&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="uk-section-default uk-section-overlap uk-section">
+                <div class="uk-container">
+                    <div>
+                        <h2 class="uk-heading-line"><span>Session & Registration Schedule</span></h2>
+
+                        <p>Class times vary per level and session based on facility and instructor availability, so the specific class times are not available until registration opens for each session. Once registration opens, it is completed online through the Levels by clicking on the “Find Classes” button.</p>
+
+                        <p><a title="Group Swimming Lessons Schedule" class="uk-button uk-button-primary" href="{{ route('groups.schedule.index') }}">Registration Schedule</a></p>
                     </div>
                 </div>
             </div>
@@ -75,18 +88,6 @@
                 </div>
             </div>
             
-            <div class="uk-section-default uk-section-overlap uk-section">
-                <div class="uk-container">
-                    <div>
-                        <h2 class="uk-heading-line"><span>Session & Registration Schedule</span></h2>
-
-                        <p>Class times vary per level and session based on facility and instructor availability, so the specific class times are not available until registration opens for each session. Once registration opens, it is completed online through the Levels by clicking on the “Find Classes” button.</p>
-
-                        <p><a title="Group Swimming Lessons Schedule" class="uk-button uk-button-primary" href="{{ route('groups.schedule.index') }}">Registration Schedule</a></p>
-                    </div>
-                </div>
-            </div>
-
             <div class="uk-width-1-1@m uk-first-column">
                 <h2 class="uk-heading-line"><span>Levels</span></h2>
                 <div class="uk-grid-small uk-grid-match uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@lg" uk-grid>
