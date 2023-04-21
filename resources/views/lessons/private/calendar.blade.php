@@ -30,6 +30,7 @@
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Weekday evening and weekend lessons</li>
                                     <li>Heated pool</li>
+                                    <li>Year Round</li>
                                     <li>Indoor</li>
                                 </ul>
                                 <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
@@ -41,6 +42,7 @@
                                 <ul class="uk-list uk-list-bullet">
                                     <li>Weekday morning lessons</li>
                                     <li>Heated pool</li>
+                                    <li>Seasonal</li>
                                     <li>Outdoor</li>
                                 </ul>
                                 <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Lincoln_Aquatic_Center&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
