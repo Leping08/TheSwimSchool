@@ -204,4 +204,36 @@ class SwimTeamTest extends TestCase
 
         Mail::assertSent(STSignUp::class, 1);
     }
+
+    /** @test **/
+    public function an_athlete_will_not_sign_up_for_the_news_letter_when_signing_up_for_the_swim_team()
+    {
+        Mail::fake();
+
+        STSeason::factory()->create();
+        $level = STLevel::factory()->create();
+        $athlete = Athlete::factory()->create([
+            's_t_level' => $level->id,
+        ]);
+
+        $this->assertDatabaseMissing('s_t_swimmers', [
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+        ]);
+
+        $this->get("/swim-team/save-swimmer/athlete/{$athlete->hash}?payment_intent=pi_3LfvfuC1VfPOUMV409eBd2q4")
+            ->assertStatus(302);
+
+        // assert the db has the swimmer
+        $this->assertDatabaseHas('s_t_swimmers', [
+            'firstName' => $athlete->firstName,
+            'lastName' => $athlete->lastName,
+        ]);
+
+        Mail::assertSent(STSignUp::class, 1);
+
+        $this->assertDatabaseMissing('email_lists', [
+            'email' => $athlete->email,
+        ]);
+    }
 }
