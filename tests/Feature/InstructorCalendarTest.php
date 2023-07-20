@@ -6,13 +6,13 @@ use App\Instructor;
 use App\Lesson;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class InstructorCalendarTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use DatabaseMigrations, WithFaker;
 
     /** @test  **/
     public function only_an_admin_can_visit_the_instructor_calendar_page()
@@ -32,6 +32,7 @@ class InstructorCalendarTest extends TestCase
     /** @test  **/
     public function the_calendar_page_shows_lessons_only_for_the_instructor_calendar_being_looked_at()
     {
+        $this->runDatabaseMigrations();
         $this->seed();
 
         $user_1 = User::factory()->create();
@@ -76,6 +77,7 @@ class InstructorCalendarTest extends TestCase
     /** @test  **/
     public function the_calendar_will_not_show_lessons_older_then_3_months_ago()
     {
+        $this->runDatabaseMigrations();
         $this->seed();
 
         $user = User::factory()->create();
@@ -111,6 +113,7 @@ class InstructorCalendarTest extends TestCase
     /** @test  **/
     public function the_calendar_will_show_the_correct_number_of_events_for_a_lesson()
     {
+        $this->runDatabaseMigrations();
         $this->seed();
 
         $instructor = User::factory()->create();

@@ -11,6 +11,9 @@ class STSchedule extends Pivot
         'end_time',
     ];
 
+    /**
+     * @var array
+     */
     protected $casts = [
         'end_time' => 'datetime',
         'start_time' => 'datetime',

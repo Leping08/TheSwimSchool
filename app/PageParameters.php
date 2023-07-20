@@ -17,6 +17,9 @@ class PageParameters extends Model
         'configuration',
     ];
 
+    /**
+     * @var array
+     */
     protected $casts = [
         'configuration' => 'array',
     ];

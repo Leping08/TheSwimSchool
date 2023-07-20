@@ -26,11 +26,6 @@ class Group extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at'];
-
-    /**
-     * @var array
-     */
     protected $fillable = ['type', 'ages', 'description', 'icon'];
 
     /**

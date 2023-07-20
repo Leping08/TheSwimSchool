@@ -36,7 +36,10 @@ class PrivatePoolSession extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at', 'start', 'end'];
+    protected $casts = [
+        'start' => 'datetime',
+        'end' => 'datetime'
+    ];
 
     /**
      * @var array

@@ -28,7 +28,9 @@ class WaitList extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at', 'date_of_birth'];
+    protected $casts = [
+        'date_of_birth' => 'datetime',
+    ];
 
     /**
      * @var array

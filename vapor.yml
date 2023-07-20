@@ -6,7 +6,7 @@ environments:
         database: production
         timeout: 60
         memory: 1024
-        runtime: php-8.1:al2
+        runtime: php-8.2:al2
         domain: theswimschoolfl.com
         queue-concurrency: 100
         build:
@@ -20,7 +20,7 @@ environments:
         database: production
         timeout: 60
         memory: 1024
-        runtime: php-8.1:al2
+        runtime: php-8.2:al2
         domain: staging.theswimschoolfl.com
         queue-concurrency: 100
         build:

@@ -29,11 +29,6 @@ class FeedbackQuestion extends Model
     protected $fillable = ['question', 'feedback_question_type_id', 'feedback_question_category_id'];
 
     /**
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function type()

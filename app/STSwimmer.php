@@ -15,7 +15,9 @@ class STSwimmer extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at', 'birthDate'];
+    protected $casts = [
+        'birth_date' => 'datetime',
+    ];
 
     /**
      * @var array

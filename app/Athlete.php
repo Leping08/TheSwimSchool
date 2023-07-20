@@ -47,9 +47,9 @@ class Athlete extends Model
     /**
      * @var array
      */
-    protected $dates = [
-        'deleted_at',
-        'birthDate',
+    protected $casts = [
+        'deleted_at' => 'datetime',
+        'birthDate' => 'datetime',
     ];
 
     /**

@@ -28,11 +28,6 @@ class FeedbackAnswer extends Model
      */
     protected $fillable = ['answer', 'feedback_question_id', 'feedback_survey_id'];
 
-    /**
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
-
     public function question()
     {
         return $this->belongsTo(FeedbackQuestion::class, 'feedback_question_id');

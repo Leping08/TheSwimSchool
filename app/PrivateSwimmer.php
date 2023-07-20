@@ -16,7 +16,9 @@ class PrivateSwimmer extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at', 'birth_date'];
+    protected $casts = [
+        'birth_date' => 'datetime',
+    ];
 
     /**
      * @var array

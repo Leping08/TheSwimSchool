@@ -32,7 +32,10 @@ class Tryout extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at', 'registration_open', 'event_time'];
+    protected $casts = [
+        'registration_open' => 'datetime',
+        'event_time' => 'datetime',
+    ];
 
     /**
      * @var array

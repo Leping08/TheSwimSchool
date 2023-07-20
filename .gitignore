@@ -1,10 +1,14 @@
+/.phpunit.cache
 /node_modules
+/public/build
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
 /.idea
 /.vagrant
+/.fleet
+/.vscode
 Homestead.json
 Homestead.yaml
 npm-debug.log
@@ -15,6 +19,7 @@ public/mix-manifest.json
 public/js/app.js
 auth.json
 .phpunit.result.cache.vapor/
+.env.backup
 .env.production
 .env.staging
 .env.testing
