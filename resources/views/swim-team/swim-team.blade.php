@@ -312,7 +312,7 @@
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">Download the swim meet schedule.</div>
-                            <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_May-August_2023.pdf') }}" download="PBS_Swim_Meet_Schedule_May-August_2023.pdf">Download</a>
+                            <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_2023-2024.pdf') }}" download="PBS_Swim_Meet_Schedule_2023-2024.pdf">Download</a>
                         </div>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                                 <div class="uk-margin">Check out the current {{ config('swim-team.name') }} swim team record holders.</div>
                             </div>
                             <div>
-                                <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-right" href="{{ asset('pdf/PBS_Team_Records.pdf') }}" download="PBS Team Records.pdf">Download Records</a>
+                                <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-right" href="{{ asset('pdf/PBS_Team_Records.pdf') }}" download="PBS_Team_Records.pdf">Download Records</a>
                             </div>
                         </div>
                     </div>
