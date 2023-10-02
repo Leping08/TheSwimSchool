@@ -44,12 +44,8 @@ class Athlete extends Model
 {
     use SoftDeletes, Actionable, HasFactory;
 
-    /**
-     * @var array
-     */
-    protected $dates = [
-        'deleted_at',
-        'birthDate',
+    protected $casts = [
+        'birthDate' => 'date',
     ];
 
     /**

@@ -41,8 +41,9 @@ class Swimmer extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at', 'birthDate'];
-
+    protected $casts = [
+        'birthDate' => 'date',
+    ];
     /**
      * @var array
      */
