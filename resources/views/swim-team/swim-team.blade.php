@@ -201,17 +201,15 @@
                                 School Year Practice Schedule
                             </h2>
                             <div class="uk-margin">
-                                Runs <b>August-May</b> and practices are offered five days per week for all practice levels.
+                                Runs <b>August-May</b>:
                             </div>
                             <ul class="uk-list uk-list-bullet">
-                                <li><b>White Team 1:</b> M/W 4:30PM-5:15PM OR 5:45PM-6:30PM, T/TH 4:30PM-5:15PM & Sat 9:30AM-10:15AM</li>
+                                <li><b>White Team:</b> Mon/Wed/Fri 4:30PM-5:15PM OR 5:45PM-6:30PM & Sat 9:30AM-10:15AM</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
-                                <li><b>White Team 2:</b> M/W 4:30PM-5:15PM OR 5:45PM-6:30PM, T/TH 4:30PM-5:15PM & Sat 9:30AM-10:15AM</li>
+                                <li><b>Gray Team:</b> Mon/Wed/Fri 4:30PM-5:30PM OR 5:30PM-6:30PM, Tues 6:30PM-7:30PM (Swim Clinic) & Sat 9:30AM-10:30AM</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li><b>Gray Team:</b> M/W 4:30PM-5:30PM OR 5:30PM-6:30PM, T/TH 5:30PM-6:30PM & Sat 9:30AM-10:30AM</li>
-                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li><b>Blue Team:</b> M/W 5:00PM-6:30PM, T/TH 5:15PM-6:30PM w/ Dryland 5:00PM-5:15PM & Sat 9:30AM-11:00AM</li>
-                                <li class="uk-margin-left"><b>Goal:</b> 3-5 practices per week</li>
+                                <li><b>Blue Team:</b> Mon/Wed/Fri 5:00PM-6:30PM, Tues/Thurs 5:00AM-6:30AM, Tues 6:30PM-7:30PM (Swim Clinic) & Sat 9:30AM-11:00AM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
                             </ul>
                         </div>
                         
