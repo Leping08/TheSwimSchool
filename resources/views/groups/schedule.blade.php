@@ -13,7 +13,7 @@
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div>
-                *Class days & times are subject to change per session and level based on facility and instructor availability, so the specific class day & times are not available until registration opens for each session. Registration is completed online through the “Levels” by clicking on the “Find Classes” button.
+                *Class days & times are subject to change per session and level based on facility and instructor availability, so the specific class days & times are not available until registration opens for each session. Registration is completed online through the “Levels” by clicking on the “Find Classes” button.
             </div>
 
             <div class="uk-margin-large-top">
@@ -56,11 +56,11 @@
                             <td>November 20th</td>
                         </tr>
                         <tr>
-                            <td>January 16th-February 8th **(No Classes MLK Jr. Day 1/15; Makeup Fri 1/19)</td>
+                            <td>January 16th-February 12th **(No Classes MLK Jr. Day 1/15; Makeup Mon 2/12)</td>
                             <td>January 2nd</td>
                         </tr>
                         <tr>
-                            <td>February 20th-March 14th **(No Classes Presidents Day 2/19; Makeup Fri 2/23)</td>
+                            <td>February 20th-March 18th **(No Classes Presidents Day 2/19; Makeup Mon 3/18)</td>
                             <td>February 12th</td>
                         </tr>
                     </tbody>
