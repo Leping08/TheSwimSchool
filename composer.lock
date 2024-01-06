@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3a80ca4a7a0f14868a753116bce6d5f",
+    "content-hash": "d328473a5b7cf065c4a8d2c940541d85",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -10214,8 +10214,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "leping/nova-check-boxes": 20,
+        "leping/swim-team-roster": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
