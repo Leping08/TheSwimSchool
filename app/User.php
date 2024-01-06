@@ -52,7 +52,7 @@ class User extends Authenticatable
      */
     public function pool_sessions()
     {
-        return $this->hasMany(PrivatePoolSession::class, 'instructor_id');
+        return $this->hasMany(PoolSession::class, 'instructor_id');
     }
 
     /**

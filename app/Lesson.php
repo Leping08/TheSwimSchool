@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
@@ -19,6 +20,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property int $location_id
  * @property int $price
  * @property int $class_size
+ * @property int $instructor_id
  * @property \Illuminate\Support\Carbon $registration_open
  * @property \Illuminate\Support\Carbon $class_start_time
  * @property \Illuminate\Support\Carbon $class_end_time
@@ -129,6 +131,14 @@ class Lesson extends Model
     public function DaysOfTheWeek()
     {
         return $this->belongsToMany(DaysOfTheWeek::class)->withTimestamps();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function pool_sessions(): MorphMany
+    {
+        return $this->morphMany(PoolSession::class, 'pool_sessionable');
     }
 
     /**
