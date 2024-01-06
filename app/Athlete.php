@@ -45,6 +45,7 @@ class Athlete extends Model
     use SoftDeletes, Actionable, HasFactory;
 
     protected $casts = [
+        's_t_sign_up_email' => 'boolean',
         'birthDate' => 'date',
     ];
 

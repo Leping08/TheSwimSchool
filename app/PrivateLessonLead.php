@@ -14,7 +14,9 @@ class PrivateLessonLead extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at', 'swimmer_birth_date'];
+    protected $casts = [
+        'swimmer_birth_date' => 'date',
+    ];
 
     /**
      * @var array

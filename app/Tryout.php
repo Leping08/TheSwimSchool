@@ -32,7 +32,13 @@ class Tryout extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at', 'registration_open', 'event_time'];
+    protected $casts = [
+        'class_size' => 'integer',
+        'location_id' => 'integer',
+        's_t_season_id' => 'integer',
+        'registration_open' => 'datetime',
+        'event_time' => 'datetime',
+    ];
 
     /**
      * @var array

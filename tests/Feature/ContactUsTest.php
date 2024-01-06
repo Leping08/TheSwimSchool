@@ -118,7 +118,6 @@ class ContactUsTest extends TestCase
         $this->assertCount(0, Contact::all());
     }
 
-    
     /** @test */
     public function a_user_can_submit_a_contact_us_if_timestamp_is_within_the_last_3_seconds()
     {
