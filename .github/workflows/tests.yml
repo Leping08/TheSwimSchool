@@ -85,7 +85,7 @@ jobs:
           STRIPE_PUBLIC: ${{ secrets.STRIPE_TEST_PUBLIC }}
           STRIPE_SECRET: ${{ secrets.STRIPE_TEST_SECRET }}
         run: |
-          vendor/bin/phpunit -v
+          php artisan test
 
   vapor:
     needs: [ci_tests]
