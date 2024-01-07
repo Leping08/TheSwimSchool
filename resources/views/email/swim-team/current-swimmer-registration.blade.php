@@ -29,7 +29,7 @@ A recurring monthly fee will be applied on the 1st of each month (starting Octob
   - $125/month
   - Practices: M/W/F 5:00PM-5:45PM
 
-- Gray Team 
+- Gray Team
   - $135/month
   - Practices: M/W/F 5:00PM-6:00PM
 
@@ -41,7 +41,7 @@ Swim meets will occur once per month during the school year (with the exception 
 
 We will take program breaks throughout the school year in accordance with Manatee County School District holidays, vacations, etc. We will also continue to take an annual break in August and will host our annual awards banquet at the end of August. Program fees will not be prorated for scheduled breaks, including the month of August. Program fees for the month of August will go towards the cost of the awards banquet.
 
-Please contact me with any questions you may have by using either the Remind App, emailing info@theswimschoolfl.com or calling {{ config('contact.phone.number') }}! Let's Go Bull Sharks! Chomp, Chomp, Chomp!
+Please contact me with any questions you may have by using either the Remind App, emailing <a href="mailto:{{config('swim-team.email')}}">{{config('swim-team.email')}}</a> or calling <a href="tel:+1{{config('contact.phone.number')}}">{{ config('contact.phone.number') }}</a>! Let's Go Bull Sharks! Chomp, Chomp, Chomp!
 @endcomponent
 
 @component('mail::button', ['url' => route('swim-team.swimmer.register', ['swimmer' => $swimmer, 'level' => $swimmer->level])])
