@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45f98202225e15658aebc33feb0120a2",
+    "content-hash": "50741af4aafe371fca9abb2f8c5006c1",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3037,42 +3037,6 @@
                 }
             ],
             "time": "2023-10-17T14:13:20+00:00"
-        },
-        {
-            "name": "leping/swim-team-roster",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "./nova-components/SwimTeamRoster",
-                "reference": "45ae9521374efddf991c2311170232ec3180ef71"
-            },
-            "require": {
-                "php": "^7.3|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Leping\\SwimTeamRoster\\ToolServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Leping\\SwimTeamRoster\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova tool.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "monolog/monolog",
@@ -10106,9 +10070,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "leping/swim-team-roster": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

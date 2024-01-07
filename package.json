@@ -7,9 +7,7 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production",
-        "build-swim-team-roster": "cd nova-components/SwimTeamRoster && npm run dev",
-        "build-swim-team-roster-prod": "cd nova-components/SwimTeamRoster && npm run prod"
+        "production": "mix --production"
     },
     "devDependencies": {
         "axios": "^0.21.1",

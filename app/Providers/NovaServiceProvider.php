@@ -12,9 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Menu\Menu;
 use Laravel\Nova\Menu\MenuItem;
+use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use Leping\SwimTeamRoster\SwimTeamRoster;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -27,7 +27,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
         Nova::userMenu(function (Request $request, Menu $menu) {
-            return $menu->append(MenuItem::externalLink('Email Blast', '/emails/newsletter'));
+            return $menu
+                ->append(MenuItem::externalLink('Email Blast', route('newsletter.index')))
+                ->append(MenuItem::externalLink('Swim Team Roster', route('swim-team.roster.index')));
         });
     }
 
@@ -39,9 +41,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -96,9 +98,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [
-            new SwimTeamRoster(),
-        ];
+        return [];
     }
 
     /**
