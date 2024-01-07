@@ -38,6 +38,9 @@ class Lesson extends Model
 {
     use SoftDeletes, Actionable, Notifiable, HasFactory;
 
+    /**
+     * @var array
+     */
     protected $casts = [
         'days' => 'string',
         'season_id' => 'integer',
@@ -45,18 +48,11 @@ class Lesson extends Model
         'location_id' => 'integer',
         'instructor_id' => 'integer',
         'class_size' => 'integer',
-    ];
-
-    /**
-     * @var array
-     */
-    protected $dates = [
-        'registration_open',
-        'class_start_time',
-        'class_end_time',
-        'class_start_date',
-        'class_end_date',
-        'deleted_at',
+        'registration_open' => 'datetime',
+        'class_start_time' => 'datetime',
+        'class_end_time' => 'datetime',
+        'class_start_date' => 'date',
+        'class_end_date' => 'date',
     ];
 
     /**

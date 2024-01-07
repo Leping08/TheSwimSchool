@@ -33,11 +33,6 @@ class Contact extends Model
     protected $fillable = ['name', 'phone', 'message', 'email', 'contact_type_id'];
 
     /**
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function Type()

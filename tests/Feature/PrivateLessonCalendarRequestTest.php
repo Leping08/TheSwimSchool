@@ -9,14 +9,14 @@ use App\PrivateLesson;
 use App\PrivatePoolSession;
 use App\PrivateSwimmer;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class PrivateLessonCalendarRequestTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use DatabaseMigrations, WithFaker;
 
     /** @test  **/
     public function a_user_can_request_a_private_lesson_with_more_than_one_pool_session()

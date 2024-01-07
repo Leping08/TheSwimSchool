@@ -77,7 +77,7 @@ class FeedbackTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        SendFeedbackEmails::dispatchNow();
+        SendFeedbackEmails::dispatchSync();
 
         Mail::assertSent(\App\Mail\Admin\FeedbackSurvey::class);
     }
@@ -115,7 +115,7 @@ class FeedbackTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        SendFeedbackEmails::dispatchNow();
+        SendFeedbackEmails::dispatchSync();
 
         Mail::assertSent(\App\Mail\Admin\FeedbackSurvey::class, 1);
     }

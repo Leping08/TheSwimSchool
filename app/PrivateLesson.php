@@ -30,11 +30,6 @@ class PrivateLesson extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at'];
-
-    /**
-     * @var array
-     */
     protected $fillable = ['season_id'];
 
     /**

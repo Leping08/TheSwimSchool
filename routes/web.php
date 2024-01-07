@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 /* Email testing route */
 // Route::get('/email', function () {
-//     return new STSignUp(\App\STSwimmer::find(1));
+//     return new ReturningSwimmerRegistration(\App\STSwimmer::find(1));
 // });
 
 /* @see \Laravel\Ui\AuthRouteMethods::auth() */

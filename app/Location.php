@@ -28,11 +28,6 @@ class Location extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at'];
-
-    /**
-     * @var array
-     */
     protected $fillable = ['name', 'street', 'city', 'state', 'zip'];
 
     /**
