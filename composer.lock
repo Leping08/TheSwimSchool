@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d328473a5b7cf065c4a8d2c940541d85",
+    "content-hash": "9fb3d4ef1e3aff94869123bbbb7978d4",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -7516,71 +7516,6 @@
                 }
             ],
             "time": "2023-11-06T11:00:25+00:00"
-        },
-        {
-            "name": "tightenco/nova-stripe",
-            "version": "v2.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tighten/nova-stripe.git",
-                "reference": "285be66897368f253088f871a304f0755625aa85"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tighten/nova-stripe/zipball/285be66897368f253088f871a304f0755625aa85",
-                "reference": "285be66897368f253088f871a304f0755625aa85",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4|^8.0|^8.1",
-                "stripe/stripe-php": ">=5.0"
-            },
-            "require-dev": {
-                "laravel/nova": "^4.0",
-                "orchestra/testbench": ">=3.6.x-dev",
-                "phpunit/phpunit": "9.5.*",
-                "tightenco/duster": "^0.3.2"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Tighten\\NovaStripe\\ToolServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Tighten\\NovaStripe\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Samantha Geitz",
-                    "email": "samantha@tighten.co"
-                },
-                {
-                    "name": "Alison Kirk",
-                    "email": "alison.kirk@tighten.co"
-                }
-            ],
-            "description": "A tool to create a quick Stripe dashboard in your Laravel Nova admin panels",
-            "keywords": [
-                "laravel",
-                "nova",
-                "stripe",
-                "tighten",
-                "tightenco"
-            ],
-            "support": {
-                "issues": "https://github.com/tighten/nova-stripe/issues",
-                "source": "https://github.com/tighten/nova-stripe/tree/v2.0.7"
-            },
-            "time": "2022-10-31T12:15:21+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

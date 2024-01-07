@@ -98,9 +98,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new SwimTeamRoster(),
-            // new \Tighten\NovaStripe\NovaStripe // bring back when css transparent button is fixed
-            // new ParrishBullSharks()
-            // new TailTool
         ];
     }
 

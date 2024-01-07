@@ -191,12 +191,7 @@ class Swimmer extends Resource
     protected function paymentInfo()
     {
         return [
-            Text::make('Charge Id', function () {
-                return view('partials.link', [
-                    'link' => config('nova.path').'/nova-stripe/charge/'.$this->stripeChargeId,
-                    'text' => $this->stripeChargeId,
-                ])->render();
-            })->asHtml()->hideFromIndex(),
+            Text::make('Charge Id', 'stripe_charge_id')->hideFromIndex(),
         ];
     }
 

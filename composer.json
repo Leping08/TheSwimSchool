@@ -19,11 +19,10 @@
         "laravel/vapor-core": "^2.12",
         "laravel/vapor-ui": "^1.0",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "leping/nova-check-boxes": "dev-master",
-        "leping/swim-team-roster": "dev-master",
+        "leping/nova-check-boxes": "@dev",
+        "leping/swim-team-roster": "@dev",
         "stripe/stripe-php": "^9.0",
-        "symfony/mailgun-mailer": "^6.1",
-        "tightenco/nova-stripe": "^2.0"
+        "symfony/mailgun-mailer": "^6.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
