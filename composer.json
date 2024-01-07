@@ -19,7 +19,6 @@
         "laravel/vapor-core": "^2.12",
         "laravel/vapor-ui": "^1.0",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "leping/nova-check-boxes": "@dev",
         "leping/swim-team-roster": "@dev",
         "stripe/stripe-php": "^9.0",
         "symfony/mailgun-mailer": "^6.1"
@@ -70,10 +69,6 @@
         {
             "type": "path",
             "url": "./nova-components/SwimTeamRoster"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/NovaCheckBoxes"
         }
     ],
     "minimum-stability": "stable",

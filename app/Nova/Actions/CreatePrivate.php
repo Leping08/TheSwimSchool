@@ -12,9 +12,9 @@ use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Leping\NovaCheckBoxes\NovaCheckboxes;
 
 class CreatePrivate extends Action
 {
@@ -36,10 +36,13 @@ class CreatePrivate extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        $daysOfTheWeek = collect(explode(',', $fields->days))->toArray();
+        // $days = ["1" => true,"2" => true,"3" => true,"4" => false,"5" => false,"6" => false,"7" => false];
+        $daysOfTheWeekId = collect($fields->days)->filter(function ($value, $key) {
+            return $value === true;
+        })->keys()->toArray();
         $dates = collect();
 
-        foreach ($daysOfTheWeek as $day) {
+        foreach ($daysOfTheWeekId as $dayId) {
             $carbonDayMappings = collect([
                 1 => Carbon::MONDAY,
                 2 => Carbon::TUESDAY,
@@ -51,7 +54,7 @@ class CreatePrivate extends Action
             ]);
 
             //Parse the date and go back one day to account for the start date being accessible
-            $startDate = Carbon::parse($fields->start_date_time)->subDay()->next($carbonDayMappings->get($day));
+            $startDate = Carbon::parse($fields->start_date_time)->subDay()->next($carbonDayMappings->get($dayId));
             $endDate = Carbon::parse($fields->end_date_time);
 
             for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
@@ -86,12 +89,11 @@ class CreatePrivate extends Action
     public function fields(NovaRequest $request)
     {
         return [
-            DateTime::make('Start and Time', 'start_date_time')->onlyOnForms()->hideWhenUpdating(),
-            DateTime::make('End and Time', 'end_date_time')->onlyOnForms()->hideWhenUpdating(),
-            NovaCheckboxes::make('Days', 'days')
-                ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
-                    return [$item['id'] => $item['day']];
-                }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
+            DateTime::make('Start Date and Time', 'start_date_time')->onlyOnForms()->hideWhenUpdating(),
+            DateTime::make('End Date and Time', 'end_date_time')->onlyOnForms()->hideWhenUpdating(),
+            BooleanGroup::make('Days', 'days')->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
+                return [$item['id'] => $item['day']];
+            }))->hideFalseValues()->onlyOnForms()->hideFromDetail()->hideWhenUpdating(),
             BelongsTo::make('Location', 'location', Location::class)->withMeta([
                 'belongsToId' => $this->location_id ?? 63, //REALHAB location id
             ])->searchable(),

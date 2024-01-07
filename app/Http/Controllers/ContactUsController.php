@@ -19,8 +19,6 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        // @todo clean up store lead request
-
         // Check if all honeypot fields are empty
         $emptyHoneypot = collect([
             $request->first_name,
@@ -75,7 +73,6 @@ class ContactUsController extends Controller
     /**
      * @param  Contact  $contact
      */
-    // @todo move this over to the Contact model
     private function emailAdmins(Contact $contact)
     {
         foreach (config('mail.lead_dest_emails') as $email) {

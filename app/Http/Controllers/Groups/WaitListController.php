@@ -20,6 +20,31 @@ class WaitListController extends Controller
      */
     public function store(Request $request, Lesson $lesson)
     {
+        // Stop bots from using this form
+        $emptyHoneypot = collect([
+            $request->first_name,
+            $request->last_name,
+            $request->address,
+            $request->city,
+            $request->state,
+            $request->zip,
+            $request->country,
+        ])->filter()->isEmpty();
+
+        if (!$emptyHoneypot) {
+            Log::info('Honeypot fields were not empty.');
+            session()->flash('warning', 'Are you a robot?');
+            return back();
+        }
+
+        // Get the timestamp field and check if it is not within the last 3 seconds
+        if ((int)$request->time > (Carbon::now()->timestamp - 3)) {
+            Log::info('Timestamp was not within the last 3 seconds.');
+            session()->flash('warning', 'Are you a robot?');
+            return back();
+        }
+
+        // If needed add google recaptcha to the form
         $waitingSwimmer = $request->validate([
             'name' => 'required|string|max:191',
             'email' => 'required|string|max:191',

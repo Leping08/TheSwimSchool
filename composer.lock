@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9fb3d4ef1e3aff94869123bbbb7978d4",
+    "content-hash": "45f98202225e15658aebc33feb0120a2",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3037,42 +3037,6 @@
                 }
             ],
             "time": "2023-10-17T14:13:20+00:00"
-        },
-        {
-            "name": "leping/nova-check-boxes",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "./nova-components/NovaCheckBoxes",
-                "reference": "3f46413673a9c9e9a299d7ed4a37e5a5cc02f8c1"
-            },
-            "require": {
-                "php": "^7.3|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Leping\\NovaCheckBoxes\\FieldServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Leping\\NovaCheckBoxes\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova field.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "leping/swim-team-roster",
@@ -10143,7 +10107,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "leping/nova-check-boxes": 20,
         "leping/swim-team-roster": 20
     },
     "prefer-stable": true,

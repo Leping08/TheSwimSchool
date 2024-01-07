@@ -77,7 +77,11 @@ class LessonTest extends TestCase
         Artisan::call('db:seed');
 
         $lesson = Lesson::factory()->create([
-            'days' => '1,2,3', // Monday, Tuesday, Wednesday
+            'days' => [
+                '1' => true, // Monday
+                '2' => true, // Tuesday
+                '3' => true, // Wednesday
+            ]
         ]);
 
         $lesson = $lesson->fresh();

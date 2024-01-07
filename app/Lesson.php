@@ -42,7 +42,7 @@ class Lesson extends Model
      * @var array
      */
     protected $casts = [
-        'days' => 'string',
+        'days' => 'array',
         'season_id' => 'integer',
         'group_id' => 'integer',
         'location_id' => 'integer',

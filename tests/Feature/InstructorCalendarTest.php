@@ -46,7 +46,10 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->addWeek(),
             'class_start_time' => Carbon::now(),
             'class_end_time' => Carbon::now()->addHour(),
-            'days' => '1,3',
+            'days' => [
+                '1' => true,
+                '3' => true
+            ]
         ]);
 
         $lesson_2 = Lesson::factory()->create([
@@ -55,7 +58,10 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->addWeek(),
             'class_start_time' => Carbon::now(),
             'class_end_time' => Carbon::now()->addHour(),
-            'days' => '1,3',
+            'days' => [
+                '1' => true,
+                '3' => true
+            ],
         ]);
 
         $this->actingAs($user_1);
@@ -85,7 +91,10 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->addWeek(),
             'class_start_time' => Carbon::now(),
             'class_end_time' => Carbon::now()->addHour(),
-            'days' => '1,3',
+            'days' => [
+                '1' => true,
+                '3' => true
+            ],
         ]);
 
         $lesson_2 = Lesson::factory()->create([
@@ -94,7 +103,10 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->subDays(100), //Around 3 months
             'class_start_time' => Carbon::now(),
             'class_end_time' => Carbon::now()->addHour(),
-            'days' => '1,3',
+            'days' => [
+                '1' => true,
+                '3' => true
+            ],
         ]);
 
         $this->actingAs($user);
@@ -117,10 +129,13 @@ class InstructorCalendarTest extends TestCase
             'class_end_date' => Carbon::now()->addWeeks(2),
             'class_start_time' => Carbon::createFromTimeString('09:30:00 AM'),
             'class_end_time' => Carbon::createFromTimeString('10:00:00 AM'),
-            'days' => '1,2,3,4',
+            'days' => [
+                '1' => true,
+                '2' => true,
+                '3' => true,
+                '4' => true
+            ],
         ]);
-
-        $lesson_1->DaysOfTheWeek()->sync(explode(',', $lesson_1->days));
 
         $this->assertCount(8, $lesson_1->calendarEvents);
     }

@@ -46,12 +46,12 @@ Lessons
                                 <div><i class="fa fa-users fa-lg" aria-hidden="true"></i> <strong>Class Size:</strong> {{$lesson->class_size}}</div>
                                 <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->swimmers->count()}}</div>
                             </div>
-                            
+
                             <div class="uk-child-width-expand@s" uk-grid>
                                 <div><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> <strong>Instructor:</strong> <a href="{{ route('pages.about') . '#'. $lesson->instructor->name }}">{{$lesson->instructor->name}}</a></div>
                                 <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Dates:</strong> {{$lesson->class_start_date->toFormattedDateString()}} - {{$lesson->class_end_date->toFormattedDateString()}}</div>
                             </div>
-                            
+
                             <div class="uk-child-width-expand@s" uk-grid>
                                 <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{{$lesson->location->street}}}+{{{$lesson->location->city}}}+{{{$lesson->location->state}}}+{{{$lesson->location->zip}}}">{{$lesson->location->street}}, <br>{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}</a></div>
                                 <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Times:</strong><br>
@@ -60,7 +60,7 @@ Lessons
                                     @endforeach
                                 </div>
                             </div>
-                            
+
                             <div class="uk-child-width-expand@s" uk-grid>
                                 <div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$lesson->price}}</div>
                             </div>
@@ -126,6 +126,15 @@ Lessons
                                             <label class="uk-form-label uk-heading-bullet" for="phone">Phone</label>
                                             <input type="tel" id="phone" name="phone" placeholder="999-123-4567" class="uk-input" value="{{ old('phone') }}" required />
                                         </div>
+
+                                        <input type="text" autocomplete="off" name="first_name" id="first_name" placeholder="First Name" value="" class="uk-hidden" tabindex="-1">
+                                        <input type="text" autocomplete="off" name="last_name" id="last_name" placeholder="Last Name" value="" class="uk-hidden" tabindex="-1">
+                                        <input type="text" autocomplete="off" name="address" id="address" placeholder="Address" value="" class="uk-hidden" tabindex="-1">
+                                        <input type="text" autocomplete="off" name="city" id="city" placeholder="City" value="" class="uk-hidden" tabindex="-1">
+                                        <input type="text" autocomplete="off" name="state" id="state" placeholder="State" value="" class="uk-hidden" tabindex="-1">
+                                        <input type="text" autocomplete="off" name="zip" id="zip" placeholder="Zip" value="" class="uk-hidden" tabindex="-1">
+                                        <input type="text" autocomplete="off" name="country" id="country" placeholder="Country" value="" class="uk-hidden" tabindex="-1">
+                                        <input type="text" autocomplete="off" name="time" id="time" value="{{ Carbon\Carbon::now()->timestamp }}" class="uk-hidden" tabindex="-1">
                                     </div>
                                 </div>
                                 <div class="uk-text-right uk-card-footer">

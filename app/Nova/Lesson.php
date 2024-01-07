@@ -10,13 +10,13 @@ use App\Nova\Metrics\NewLessons;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Leping\NovaCheckBoxes\NovaCheckboxes;
 
 class Lesson extends Resource
 {
@@ -79,10 +79,9 @@ class Lesson extends Resource
                 //Select River Wilderness by default
                 'belongsToId' => $this->location_id ?? 63, //REALHAB location id
             ])->searchable(),
-            NovaCheckboxes::make('Days', 'days')
-                ->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
-                    return [$item['id'] => $item['day']];
-                }))->saveAsString()->hideFromIndex()->hideFromDetail()->hideWhenUpdating(),
+            BooleanGroup::make('Days', 'days')->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
+                return [$item['id'] => $item['day']];
+            }))->hideFalseValues()->onlyOnForms()->hideFromDetail()->hideWhenUpdating(),
             Text::make('Lesson Link', function () {
                 return "<a class='link-default' target='_blank' href='/lessons/{$this?->group?->type}/{$this->id}'>Sign Up Link</a>";
             })->asHtml(),
