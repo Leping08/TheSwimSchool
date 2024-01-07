@@ -3044,13 +3044,10 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaCheckBoxes",
-                "reference": "5591859ec6ff74fbbdf175e67b27ef9bd25283db"
+                "reference": "3f46413673a9c9e9a299d7ed4a37e5a5cc02f8c1"
             },
             "require": {
-                "php": ">=7.1.0"
-            },
-            "require-dev": {
-                "laravel/nova": "^4.0"
+                "php": "^7.3|^8.0"
             },
             "type": "library",
             "extra": {
@@ -3063,11 +3060,6 @@
             "autoload": {
                 "psr-4": {
                     "Leping\\NovaCheckBoxes\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Leping\\NovaCheckBoxes\\Tests\\": "tests/"
                 }
             },
             "license": [
