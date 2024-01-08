@@ -20,6 +20,7 @@
         "laravel/vapor-ui": "^1.0",
         "league/flysystem-aws-s3-v3": "^3.0",
         "stripe/stripe-php": "^9.0",
+        "symfony/http-client": "^7.0",
         "symfony/mailgun-mailer": "^6.1"
     },
     "require-dev": {
