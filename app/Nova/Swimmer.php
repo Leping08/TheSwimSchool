@@ -191,7 +191,7 @@ class Swimmer extends Resource
     protected function paymentInfo()
     {
         return [
-            Text::make('Charge Id', 'stripe_charge_id')->hideFromIndex(),
+            Text::make('Charge Id', 'stripeChargeId')->hideFromIndex(),
         ];
     }
 

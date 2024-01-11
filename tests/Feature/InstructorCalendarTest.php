@@ -125,10 +125,10 @@ class InstructorCalendarTest extends TestCase
 
         $lesson_1 = Lesson::factory()->create([
             'instructor_id' => $instructor->id,
-            'class_start_date' => Carbon::now(),
-            'class_end_date' => Carbon::now()->addWeeks(2),
-            'class_start_time' => Carbon::createFromTimeString('09:30:00 AM'),
-            'class_end_time' => Carbon::createFromTimeString('10:00:00 AM'),
+            'class_start_date' => Carbon::parse('2020-06-01'),
+            'class_end_date' => Carbon::parse('2020-06-11'),
+            'class_start_time' => Carbon::parse('2020-06-01 9:30:00 AM'),
+            'class_end_time' => Carbon::parse('2020-06-01 10:00:00 AM'),
             'days' => [
                 '1' => true,
                 '2' => true,
