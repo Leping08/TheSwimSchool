@@ -111,12 +111,12 @@
                             <td>December 26th</td>
                         </tr>
                         <tr>
-                            <td>February 17th-March 23rd</td>
+                            <td>February 24th-April 6th **(No Classes Easter Weekend 3/30; Makeup Sat 4/6)</td>
                             <td>February 12th</td>
                         </tr>
                         <tr>
-                            <td>April 6th-May 11th</td>
-                            <td>March 25th</td>
+                            <td>April 13th-May 18th</td>
+                            <td>April 8th</td>
                         </tr>
                         <tr>
                             <td>June 1st-July 6th</td>
@@ -152,12 +152,12 @@
                             <td>December 26th</td>
                         </tr>
                         <tr>
-                            <td>February 18th-March 24th</td>
+                            <td>February 25th-April 7th **(No Classes Easter Weekend 3/31; Makeup Sun 4/7)</td>
                             <td>February 12th</td>
                         </tr>
                         <tr>
-                            <td>April 7th-May 12th</td>
-                            <td>March 25th</td>
+                            <td>April 14th-May 19th</td>
+                            <td>April 8th</td>
                         </tr>
                         <tr>
                             <td>June 2nd-July 7th</td>
