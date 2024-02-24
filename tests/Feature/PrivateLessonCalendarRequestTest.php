@@ -180,8 +180,8 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->seed();
 
         $next_week = PrivatePoolSession::factory()->create([
-            'start' => Carbon::now()->addWeek(),
-            'end' => Carbon::now()->addWeek()->addHour(),
+            'start' => Carbon::now()->addDay(),
+            'end' => Carbon::now()->addDay()->addHour(),
             'private_lesson_id' => null,
         ]);
 
