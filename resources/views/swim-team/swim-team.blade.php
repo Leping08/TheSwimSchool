@@ -44,7 +44,7 @@
                             <p>
                                 <b>Minimum Requirement</b>: Each child must be able to swim at least one full individual length without stopping (25 yards) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
                             </p>
-                            
+
                             {{-- <p>
                                 Need to learn the strokes first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available now to get your child ready for their tryout.
                             </p> --}}
@@ -212,7 +212,7 @@
                                 <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
                             </ul>
                         </div>
-                        
+
                         <div class="uk-panel">
                             <h2>
                                 Summer Practice Schedule
@@ -309,8 +309,15 @@
                     </div>
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
-                            <div class="uk-margin">Download the swim meet schedule.</div>
-                            <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_2023-2024.pdf') }}" download="PBS_Swim_Meet_Schedule_2023-2024.pdf">Download</a>
+                            <div class="uk-margin">
+                                Download the swim meet schedule.
+                            </div>
+                            <div class="uk-margin">
+                                <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_2023-2024.pdf') }}" download="PBS_Swim_Meet_Schedule_2023-2024.pdf">School Year Schedule</a>
+                            </div>
+                            <div>
+                                <a target="_blank" title="Parrish Swim Team Schedule" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_Summer_2024.pdf') }}" download="PBS_Swim_Meet_Schedule_Summer_2024.pdf">Summer Schedule</a>
+                            </div>
                         </div>
                     </div>
                 </div>
