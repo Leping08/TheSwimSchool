@@ -21,21 +21,20 @@ To secure your spot, there is a $50 Registration Fee per swimmer due by Friday, 
 
 A recurring monthly fee will be applied on the 1st of each month (starting October 1st) per swimmer based on their assigned practice level within the program. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration.
 
-- White Team 1
+- White Team
   - $125/month
-  - Practices: M/W/F 5:00PM-5:45PM
-
-- White Team 2
-  - $125/month
-  - Practices: M/W/F 5:00PM-5:45PM
+  - Practices: Mon/Tues/Wed/Thurs/Fri 9:15PM-10:00AM
+  - Goal: 2-3 practices per week
 
 - Gray Team
   - $135/month
-  - Practices: M/W/F 5:00PM-6:00PM
+  - Practices: Mon/Tues/Wed/Thurs/Fri 8:00AM-9:15AM
+  - Goal: 3-4 practices per week
 
 - Blue Team
   - $150/month
-  - Practices: M/W/F 5:00PM-6:00PM
+  - Practices: Mon/Tues/Wed/Thurs/Fri 8:00AM-10:00AM
+  - Goal: 4-5 practices per week
 
 Swim meets will occur once per month during the school year (with the exception of January and August) and twice per month in June and July. The Parent Non-Volunteer Fee (optional) is being increased to $100 per swimmer to accommodate the increase in swim meets throughout a calendar year. This fee will now be due prior to each swimmer's participation in their first swim meet if you choose this option in lieu of volunteering.
 
