@@ -108,38 +108,6 @@
         </div>
     </div>
 
-
-    {{-- <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
-        <div class="uk-container">
-            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
-                <div class="uk-width-1-1@m uk-first-column">
-                    <h2 class="uk-heading-line">
-                        <span>Groups &amp; Practice Schedules</span>
-                    </h2>
-                </div>
-            </div>
-            <div class="uk-grid-margin uk-grid" uk-grid="">
-                <div class="uk-width-expand@m uk-first-column">
-                    <div class="uk-margin">
-                        <img class="uk-border-rounded uk-box-shadow-large" alt="Parrish Swim Team" src="{{ asset('/img/swim-team/2021-class.jpg') }}">
-                    </div>
-                </div>
-                <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
-                    <div class="uk-panel">
-                        <div class="uk-margin">Swim team tryout will determine group placement.</div>
-                        <ul class="uk-list uk-list-bullet">
-                            <li><b>White Team 1:</b> Mon/Wed/Fri 5PM-5:45PM</li>
-                            <li><b>White Team 2:</b> Tues/Thurs/Fri 5PM-5:45PM</li>
-                            <li><b>Gray Team:</b> Mon/Wed/Fri 5:45PM-6:45PM</li>
-                            <li><b>Blue Team:</b> Mon/Wed 6:45PM-7:45PM, Tues/Thurs 5:45PM-7:15PM</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
@@ -159,8 +127,7 @@
                             A recurring monthly fee will be applied on the 1st of each month per swimmer based on their assigned program level. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration.
                         </div>
                         <ul class="uk-list uk-list-bullet">
-                            <li><b>White Team 1:</b> $125</li>
-                            <li><b>White Team 2:</b> $125</li>
+                            <li><b>White Team:</b> $125</li>
                             <li><b>Gray Team:</b> $135</li>
                             <li><b>Blue Team:</b> $150</li>
                         </ul>
@@ -221,13 +188,11 @@
                                 Runs <b>June 3rd-August 3rd</b> and practices are offered five days per week for all practice levels
                             </div>
                             <ul class="uk-list uk-list-bullet">
-                                <li><b>White Team 1:</b> Mon/Wed/Fri 8:30AM-9:15AM, Tues/Thurs 8:00AM-8:45AM or 10:15AM-11:00AM</li>
+                                <li><b>White Team:</b> Mon/Tues/Wed/Thurs/Fri 9:15AM-10:00AM</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
-                                <li><b>White Team 2:</b> Mon/Wed/Fri 9:15AM-10:00AM, Tues/Thurs 8:00AM-8:45AM or 10:15AM-11:00AM</li>
+                                <li><b>Gray Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-9:15AM</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li><b>Gray Team:</b> Mon/Wed/Fri 8:30AM-9:30AM, Tues/Thurs 8:45AM-9:45AM or 9:15AM-10:15AM</li>
-                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li><b>Blue Team:</b> Mon/Wed/Fri 8:30AM-10:00AM (Dryland: 8:15AM-8:30AM), Tues/Thurs 8:00AM-9:15AM or 9:45AM-11:00AM</li>
+                                <li><b>Blue Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-10:00AM</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
                             </ul>
                         </div>
