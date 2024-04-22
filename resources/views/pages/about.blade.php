@@ -23,7 +23,7 @@ About The Swim School
                 <hr class="uk-divider-icon uk-scrollspy-inview uk-animation-slide-top-medium">
                 <div class="uk-margin uk-dropcap">
                     <p>
-                        In May 2015, The Swim School began offering <a title="Private Swim Lessons Parrish" href="{{ route('private_lesson.index') }}">private</a> and <a title="Group Swimming Parrish" href="{{ route('groups.lessons.index') }}">group swim lessons</a> in Manatee County for adults and children 6 months of age and older. In addition to providing quality stroke instruction for all ability levels, The Swim School expanded their services and started the <a title="Youth Swim Team near Ellenton" href="{{ route('swim-team.index') }}">{{ config('swim-team.full-name') }}</a> in May 2018, a seasonal program for youth ages 5-18.
+                        In May 2015, The Swim School began offering <a title="Private Swim Lessons Parrish" href="{{ route('private_lesson.index') }}">private</a> and <a title="Group Swimming Parrish" href="{{ route('groups.lessons.index') }}">group swim lessons</a> in Manatee County for adults and children 6 months of age and older. In addition to providing quality stroke instruction for all ability levels, The Swim School expanded their services and started the <a title="Youth Swim Team near Ellenton" href="{{ route('swim-team.index') }}">{{ config('swim-team.full-name') }}</a> in May 2018, a year round program for youth ages 5-18.
                     </p>
                 </div>
             </div>
