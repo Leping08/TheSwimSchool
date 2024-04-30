@@ -17,6 +17,117 @@
             </div>
 
             <div class="uk-margin-large-top">
+                <h2 class="uk-heading-line"><span>2024 Summer Weekday Schedule</span></h2>
+                <table class="uk-table uk-table-striped">
+                    <thead>
+                        <tr>
+                            <th class="uk-width-1-2"><h5>Weekday AM & PM Sessions (M/T/W/TH 4x/wk for 2 weeks)</h5></th>
+                            <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>June 3rd-June 13th</td>
+                            <td>May 20th</td>
+                        </tr>
+                        <tr>
+                            <td>June 17th-June 27th</td>
+                            <td>June 10th</td>
+                        </tr>
+                        <tr>
+                            <td>July 8th-July 18th</td>
+                            <td>July 1st</td>
+                        </tr>
+                        <tr>
+                            <td>July 22nd-August 1st</td>
+                            <td>July 15th</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="uk-margin-large-top">
+                <h2 class="uk-heading-line"><span>2023-2024 Weekend Schedule</span></h2>
+                <table class="uk-table uk-table-striped">
+                    <thead>
+                        <tr>
+                            <th class="uk-width-1-2"><h5>Saturday AM Sessions (1x/wk for 6 weeks)</h5></th>
+                            <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>September 2nd-October 7th</td>
+                            <td>August 28th</td>
+                        </tr>
+                        <tr>
+                            <td>October 14th-November 18th</td>
+                            <td>October 9th</td>
+                        </tr>
+                        <tr>
+                            <td>January 6th-February 10th</td>
+                            <td>December 26th</td>
+                        </tr>
+                        <tr>
+                            <td>February 24th-April 6th **(No Classes Easter Weekend 3/30; Makeup Sat 4/6)</td>
+                            <td>February 12th</td>
+                        </tr>
+                        <tr>
+                            <td>April 13th-May 18th</td>
+                            <td>April 8th</td>
+                        </tr>
+                        <tr>
+                            <td>June 1st-July 6th</td>
+                            <td>May 20th</td>
+                        </tr>
+                        <tr>
+                            <td>July 20th-August 24th</td>
+                            <td>July 8th</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="uk-table uk-table-striped">
+                    <thead>
+                        <tr>
+                            <th class="uk-width-1-2"><h5>Sunday AM Sessions (1x/wk for 6 weeks)</h5></th>
+                            <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>September 3rd-October 8th</td>
+                            <td>August 28th</td>
+                        </tr>
+                        <tr>
+                            <td>October 15th-November 19th</td>
+                            <td>October 9th</td>
+                        </tr>
+                        <tr>
+                            <td>January 7th-February 11th</td>
+                            <td>December 26th</td>
+                        </tr>
+                        <tr>
+                            <td>February 25th-April 7th **(No Classes Easter Weekend 3/31; Makeup Sun 4/7)</td>
+                            <td>February 12th</td>
+                        </tr>
+                        <tr>
+                            <td>April 14th-May 19th</td>
+                            <td>April 8th</td>
+                        </tr>
+                        <tr>
+                            <td>June 2nd-July 7th</td>
+                            <td>May 20th</td>
+                        </tr>
+                        <tr>
+                            <td>July 21th-August 25th</td>
+                            <td>July 8th</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="uk-margin-large-top">
                 <h2 class="uk-heading-line"><span>2023-2024 School Year Weekday Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
@@ -83,119 +194,6 @@
                         <tr>
                             <td>April 29th-May 23rd</td>
                             <td>April 22nd</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>2023-2024 Weekend Schedule</span></h2>
-                <table class="uk-table uk-table-striped">
-                    <thead>
-                        <tr>
-                            <th class="uk-width-1-2"><h5>Saturday AM Sessions (1x/wk for 6 weeks)</h5></th>
-                            <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>September 2nd-October 7th</td>
-                            <td>August 28th</td>
-                        </tr>
-                        <tr>
-                            <td>October 14th-November 18th</td>
-                            <td>October 9th</td>
-                        </tr>
-                        <tr>
-                            <td>January 6th-February 10th</td>
-                            <td>December 26th</td>
-                        </tr>
-                        <tr>
-                            <td>February 24th-April 6th **(No Classes Easter Weekend 3/30; Makeup Sat 4/6)</td>
-                            <td>February 12th</td>
-                        </tr>
-                        <tr>
-                            <td>April 13th-May 18th</td>
-                            <td>April 8th</td>
-                        </tr>
-                        <tr>
-                            <td>June 1st-July 6th</td>
-                            <td>May 20th</td>
-                        </tr>
-                        <tr>
-                            <td>July 20th-August 24th</td>
-                            <td>July 8th</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <hr>
-
-                <table class="uk-table uk-table-striped">
-                    <thead>
-                        <tr>
-                            <th class="uk-width-1-2"><h5>Sunday AM Sessions (1x/wk for 6 weeks)</h5></th>
-                            <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>September 3rd-October 8th</td>
-                            <td>August 28th</td>
-                        </tr>
-                        <tr>
-                            <td>October 15th-November 19th</td>
-                            <td>October 9th</td>
-                        </tr>
-                        <tr>
-                            <td>January 7th-February 11th</td>
-                            <td>December 26th</td>
-                        </tr>
-                        <tr>
-                            <td>February 25th-April 7th **(No Classes Easter Weekend 3/31; Makeup Sun 4/7)</td>
-                            <td>February 12th</td>
-                        </tr>
-                        <tr>
-                            <td>April 14th-May 19th</td>
-                            <td>April 8th</td>
-                        </tr>
-                        <tr>
-                            <td>June 2nd-July 7th</td>
-                            <td>May 20th</td>
-                        </tr>
-                        <tr>
-                            <td>July 21st-August 25th</td>
-                            <td>July 8th</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>2024 Summer Weekday Schedule</span></h2>
-                <table class="uk-table uk-table-striped">
-                    <thead>
-                        <tr>
-                            <th class="uk-width-1-2"><h5>Weekday AM & PM Sessions (M/T/W/TH 4x/wk for 2 weeks)</h5></th>
-                            <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>June 3rd-June 13th</td>
-                            <td>May 27th</td>
-                        </tr>
-                        <tr>
-                            <td>June 17th-June 27th</td>
-                            <td>June 10th</td>
-                        </tr>
-                        <tr>
-                            <td>July 8th-July 18th</td>
-                            <td>July 1st</td>
-                        </tr>
-                        <tr>
-                            <td>July 22nd-August 1st</td>
-                            <td>July 15th</td>
                         </tr>
                     </tbody>
                 </table>
