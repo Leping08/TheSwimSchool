@@ -85,14 +85,14 @@ class Lesson extends Resource
             Text::make('Lesson Link', function () {
                 return "<a class='link-default' target='_blank' href='/lessons/{$this?->group?->type}/{$this->id}'>Sign Up Link</a>";
             })->asHtml(),
-            Text::make('Text Message Link', function () {
-                return view('partials.swimmers_sms_link', [
-                    'swimmers_phone_numbers_string' => $this->swimmers->pluck('phone')->map(function ($phone_number) {
-                        // Remove the - from the phone number
-                        return '+1' . str_replace('-', '', $phone_number);
-                    })->implode(',')
-                ])->render();
-            })->asHtml()->onlyOnDetail(),
+            // Text::make('Text Message Link', function () {
+            //     return view('partials.swimmers_sms_link', [
+            //         'swimmers_phone_numbers_string' => $this->swimmers->pluck('phone')->map(function ($phone_number) {
+            //             // Remove the - from the phone number
+            //             return '+1' . str_replace('-', '', $phone_number);
+            //         })->implode(',')
+            //     ])->render();
+            // })->asHtml()->onlyOnDetail(),
             Number::make('Price')->hideFromIndex(),
             Text::make('Class Size', 'class_size')->withMeta([
                 'value' => $this->class_size ?? '4',
