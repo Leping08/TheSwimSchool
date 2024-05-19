@@ -61,10 +61,13 @@
                 <div class="uk-margin uk-text-center">
                     <div class="uk-child-width-auto uk-grid-small uk-flex-center" uk-grid>
                         <div>
-                            <a title="The Swim School Facebook" uk-icon="icon: facebook" href="https://www.facebook.com/theswimschoolfl/" class="el-link uk-icon-button"></a>
+                            <a title="The Swim School Facebook" target="_blank" uk-icon="icon: facebook" href="{{ config('social.the_swim_school.facebook') }}" class="el-link uk-icon-button"></a>
                         </div>
                         <div>
-                            <a title="The Swim School Instagram" uk-icon="icon: instagram" href="https://www.instagram.com/theswimschoolfl/" class="el-link uk-icon-button"></a>
+                            <a title="The Swim School Instagram" target="_blank" uk-icon="icon: instagram" href="{{ config('social.the_swim_school.instagram') }}" class="el-link uk-icon-button"></a>
+                        </div>
+                        <div>
+                            <a title="The Swim School TikTok" target="_blank" uk-icon="icon: tiktok" href="{{ config('social.the_swim_school.tiktok') }}" class="el-link uk-icon-button"></a>
                         </div>
                     </div>
                 </div>
@@ -80,11 +83,11 @@
                                 <input class="el-input uk-input uk-form-large" type="email" name="email" placeholder="Your E-Mail Address" required>
                             </div>
                         </div>
-                        
+
                         <input type="text" autocomplete="off" name="emailaddress" id="emailaddress" placeholder="" value="" class="uk-hidden" tabindex="-1">
                         <input type="text" autocomplete="off" name="email_address" id="email_address" placeholder="" value="" class="uk-hidden" tabindex="-1">
                         <input type="text" autocomplete="off" name="time" id="time" value="{{ Carbon\Carbon::now()->timestamp }}" class="uk-hidden" tabindex="-1">
-                        
+
                         <div class="message uk-margin uk-hidden"></div>
                     </form>
                 </div>

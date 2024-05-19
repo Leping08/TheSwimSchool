@@ -52,17 +52,9 @@ Thanks,<br>
 
 @slot('footer')
 @component('mail::footer')
-<div>
-<div style="padding-top:10px; text-align:center !important;">
-<a href="{{ config('contact.phone.link') }}" target="blank"><img alt="" style="padding: 10px;" src="{{asset('img/icons/phone-24x24.png')}}"></a>
-<a href="{{ config('contact.email.link') }}"><img alt="" style="padding: 10px;" src="{{asset('img/icons/email-24x24.png')}}"></a>
-<a href="https://www.facebook.com/North-River-Rapids-Swim-Team-209249439805502/" target="blank"><img alt="" style="padding: 10px;" src="{{asset('img/icons/facebook-box-24x24.png')}}"></a>
-</div>
 
-<p>
-&copy; {{ date('Y') }} The Swim School. All rights reserved.
-</p>
-</div>
+@include('email.components.swim-team.footer')
+
 @endcomponent
 @endslot
 

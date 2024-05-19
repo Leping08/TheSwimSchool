@@ -18,6 +18,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <!-- Uikit JS -->
     <script src="{{asset('js/uikit.js')}}"></script>
+    <script src="{{asset('js/uikit-icons.js')}}"></script>
     {{--TODO: Find out if the STRIPE_PUBLIC is still needed--}}
     <script>
         window.laravelConfig = JSON.parse('{!! json_encode([
