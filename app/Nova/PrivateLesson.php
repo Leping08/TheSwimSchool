@@ -60,6 +60,14 @@ class PrivateLesson extends Resource
             ID::make()->sortable(),
             BelongsTo::make('Season', 'season', Season::class),
             HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
+            Text::make('Text Message Link', function () {
+                return view('partials.swimmers_sms_link', [
+                    'swimmers_phone_numbers_string' => $this->swimmers->pluck('phone')->map(function ($phone_number) {
+                        // Remove the - from the phone number
+                        return '+1' . str_replace('-', '', $phone_number);
+                    })->implode(',')
+                ])->render();
+            })->asHtml()->onlyOnDetail(),
             HasOne::make('Swimmer', 'swimmer', PrivateSwimmer::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
