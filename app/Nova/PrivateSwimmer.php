@@ -79,7 +79,7 @@ class PrivateSwimmer extends Resource
                     'birthDate' => $this->birth_date,
                 ])->render();
             })->hideFromIndex(),
-            BelongsTo::make('Lesson', 'lesson', PrivateLesson::class),
+            BelongsTo::make('Private Lesson', 'lesson', PrivateLesson::class)->nullable(),
             (new Panel('Payment Info', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),

@@ -3,14 +3,13 @@
 namespace App\Nova\Actions;
 
 use App\DaysOfTheWeek;
-use App\Instructor as AppInstructor;
-use App\Location as AppLocation;
-use App\Nova\Instructor;
-use App\Nova\Location;
+use App\Instructor;
+use App\Location;
 use App\PrivateLesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\BelongsTo;
@@ -61,13 +60,12 @@ class CreatePoolSessionsForPrivateLessons extends Action
             BooleanGroup::make('Days', 'days')->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                 return [$item['id'] => $item['day']];
             }))->hideFalseValues()->onlyOnForms()->hideFromDetail()->hideWhenUpdating(),
-            // BelongsTo::make('Location', 'location', Location::class)->withMeta([
-            //     'belongsToId' => 63, //REALHAB location id
-            // ])->searchable(),
-            // @todo make these work better. Default values like they were working before
-            Select::make('Location', 'location_id')->options(AppLocation::all()->pluck('name', 'id')),
-            // BelongsTo::make('Instructor', 'instructor', Instructor::class),
-            Select::make('Instructor', 'instructor_id')->options(AppInstructor::all()->pluck('name', 'id')),
+            Select::make('Location', 'location_id')
+                ->options(Location::all()->pluck('name', 'id'))
+                ->default(63), // Realhab default
+            Select::make('Instructor', 'instructor_id')
+                ->options(Instructor::all()->pluck('name', 'id'))
+                ->default(Auth::user()->id),
         ];
     }
 }

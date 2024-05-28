@@ -82,7 +82,7 @@ class Swimmer extends Resource
             Number::make('Lesson Id', 'lesson_id')->onlyOnForms(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail(),
+            BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail()->nullable(),
             (new Panel('Payment Info', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),
