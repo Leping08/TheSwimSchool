@@ -3,6 +3,8 @@
 namespace App\Nova\Actions;
 
 use App\DaysOfTheWeek;
+use App\Instructor as AppInstructor;
+use App\Location as AppLocation;
 use App\Nova\Instructor;
 use App\Nova\Location;
 use App\PrivateLesson;
@@ -14,6 +16,7 @@ use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class CreatePoolSessionsForPrivateLessons extends Action
@@ -53,15 +56,18 @@ class CreatePoolSessionsForPrivateLessons extends Action
     public function fields(NovaRequest $request)
     {
         return [
-            DateTime::make('Start Date and Time', 'start_date_time')->onlyOnForms()->hideWhenUpdating(),
-            DateTime::make('End Date and Time', 'end_date_time')->onlyOnForms()->hideWhenUpdating(),
+            DateTime::make('Start Date and Time', 'start_date_time'),
+            DateTime::make('End Date and Time', 'end_date_time'),
             BooleanGroup::make('Days', 'days')->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                 return [$item['id'] => $item['day']];
             }))->hideFalseValues()->onlyOnForms()->hideFromDetail()->hideWhenUpdating(),
-            BelongsTo::make('Location', 'location', Location::class)->withMeta([
-                'belongsToId' => $this->location_id ?? 63, //REALHAB location id
-            ])->searchable(),
-            BelongsTo::make('Instructor', 'instructor', Instructor::class),
+            // BelongsTo::make('Location', 'location', Location::class)->withMeta([
+            //     'belongsToId' => 63, //REALHAB location id
+            // ])->searchable(),
+            // @todo make these work better. Default values like they were working before
+            Select::make('Location', 'location_id')->options(AppLocation::all()->pluck('name', 'id')),
+            // BelongsTo::make('Instructor', 'instructor', Instructor::class),
+            Select::make('Instructor', 'instructor_id')->options(AppInstructor::all()->pluck('name', 'id')),
         ];
     }
 }
