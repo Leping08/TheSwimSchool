@@ -321,7 +321,6 @@ class Lesson extends Model implements PoolSessionable
             ]);
         }
 
-        // @todo test if this is working correctly
         $days = collect($this->days)->filter(function ($day) {
             return $day === true;
         })->keys();
