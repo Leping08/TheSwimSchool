@@ -77,7 +77,7 @@ class Instructor extends Resource
             DateTime::make('Updated At')->onlyOnDetail(),
             DateTime::make('Deleted At')->onlyOnDetail(),
             HasMany::make('Lessons', 'lessons', Lesson::class),
-            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
+            HasMany::make('Pool Sessions', 'pool_sessions', PoolSession::class),
         ];
     }
 

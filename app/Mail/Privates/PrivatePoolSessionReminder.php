@@ -2,7 +2,7 @@
 
 namespace App\Mail\Privates;
 
-use App\PrivatePoolSession;
+use App\PoolSession;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -16,9 +16,9 @@ class PrivatePoolSessionReminder extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param  PrivatePoolSession  $pool_session
+     * @param  PoolSession  $pool_session
      */
-    public function __construct(PrivatePoolSession $pool_session)
+    public function __construct(PoolSession $pool_session)
     {
         $this->pool_session = $pool_session;
     }

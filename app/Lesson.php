@@ -2,12 +2,18 @@
 
 namespace App;
 
+use App\Library\PoolSessionable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Actions\Actionable;
 
 /**
@@ -19,6 +25,8 @@ use Laravel\Nova\Actions\Actionable;
  * @property int $location_id
  * @property int $price
  * @property int $class_size
+ * @property int $instructor_id
+ * @property string $days
  * @property \Illuminate\Support\Carbon $registration_open
  * @property \Illuminate\Support\Carbon $class_start_time
  * @property \Illuminate\Support\Carbon $class_end_time
@@ -34,7 +42,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property-read WaitList $waitlist
  * @property-read User $instructor
  */
-class Lesson extends Model
+class Lesson extends Model implements PoolSessionable
 {
     use SoftDeletes, Actionable, Notifiable, HasFactory;
 
@@ -80,51 +88,59 @@ class Lesson extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function Swimmers()
+    public function Swimmers(): HasMany
     {
         return $this->hasMany(Swimmer::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function Season()
+    public function Season(): BelongsTo
     {
         return $this->belongsTo(Season::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function Group()
+    public function Group(): BelongsTo
     {
         return $this->belongsTo(Group::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function Location()
+    public function Location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function Instructor()
+    public function Instructor(): BelongsTo
     {
         return $this->belongsTo(Instructor::class, 'instructor_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function DaysOfTheWeek()
+    public function DaysOfTheWeek(): BelongsToMany
     {
         return $this->belongsToMany(DaysOfTheWeek::class)->withTimestamps();
+    }
+
+    /**
+     * @return MorphMany
+     */
+    public function pool_sessions(): MorphMany
+    {
+        return $this->morphMany(PoolSession::class, 'pool_sessionable', 'pool_session_type', 'pool_session_id');
     }
 
     /**
@@ -180,7 +196,7 @@ class Lesson extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function WaitList()
     {
@@ -250,5 +266,68 @@ class Lesson extends Model
         }
 
         return $dates;
+    }
+
+    /**
+     * A method to generate pool sessions for a lesson
+     *
+     * @param array $fields
+     *
+     * @return void
+     */
+    public function generatePoolSessions(array $unused): void
+    {
+        // $days = ["1" => true,"2" => true,"3" => true,"4" => false,"5" => false,"6" => false,"7" => false];
+        $daysOfTheWeekIds = collect($this->days)->filter(function ($day) {
+            return $day === true;
+        })->keys();
+
+        $dates = collect();
+
+        foreach ($daysOfTheWeekIds as $dayId) {
+            $carbonDayMappings = collect([
+                1 => Carbon::MONDAY,
+                2 => Carbon::TUESDAY,
+                3 => Carbon::WEDNESDAY,
+                4 => Carbon::THURSDAY,
+                5 => Carbon::FRIDAY,
+                6 => Carbon::SATURDAY,
+                7 => Carbon::SUNDAY,
+            ]);
+
+            //Parse the date and go back one day to account for the start date being accessible
+            $startDate = Carbon::parse($this->class_start_date)->subDay()->next($carbonDayMappings->get($dayId));
+            $endDate = Carbon::parse($this->class_end_date);
+
+            for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
+                $dates->push(Carbon::parse($date));
+            }
+        }
+
+        $startTimeString = Carbon::parse($this->class_start_time)->toTimeString();
+        $endTimeString = Carbon::parse($this->class_end_time)->toTimeString();
+
+        foreach ($dates as $poolSessionDate) {
+            $start = Carbon::parse($poolSessionDate)->setTimeFromTimeString($startTimeString);
+            $end = Carbon::parse($poolSessionDate)->setTimeFromTimeString($endTimeString);
+
+            PoolSession::firstOrCreate([
+                'start' => $start,
+                'end' => $end,
+                'location_id' => $this->location_id,
+                'instructor_id' => $this->instructor_id,
+                'pool_session_id' => $this->id,
+                'pool_session_type' => Lesson::class,
+            ]);
+        }
+
+        $days = collect($this->days)->filter(function ($day) {
+            return $day === true;
+        })->keys();
+
+        if ($days->count() > 0) {
+            Log::info("Setting the days of the week for lesson id {$this->id}.");
+            $this->DaysOfTheWeek()->sync($days->toArray());
+        }
     }
 }

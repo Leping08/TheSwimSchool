@@ -5,8 +5,10 @@ namespace App;
 use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * An Eloquent Model: 'Swimmer'
@@ -33,6 +35,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read \App\Lesson $lesson
+ * @property-read $encryptedId
  */
 class Swimmer extends Model
 {
@@ -73,5 +76,23 @@ class Swimmer extends Model
     public function Lesson()
     {
         return $this->belongsTo(Lesson::class);
+    }
+
+    /**
+     * Get all of the post's comments.
+     */
+    public function swimmer(): MorphMany
+    {
+        return $this->morphMany(PoolSessionAttendance::class, 'swimmable')->withPivot('id');
+    }
+
+    public static function findByEncryptedId(string $encrypted_swimmer_id)
+    {
+        return Swimmer::find(Crypt::decrypt($encrypted_swimmer_id));
+    }
+
+    public function getEncryptedIdAttribute()
+    {
+        return Crypt::encrypt($this->id);
     }
 }

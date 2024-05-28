@@ -2,9 +2,11 @@
 
 namespace App\Console;
 
+use App\Jobs\CreatePoolSessionAttendanceForDay;
 use App\Jobs\SendGroupLessonsReminderEmails;
 use App\Jobs\SendPrivatePoolSessionReminderEmails;
 use App\Jobs\SendTryoutReminderEmails;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -35,6 +37,9 @@ class Kernel extends ConsoleKernel
 
         // https://laravel.com/docs/10.x/upgrade#redis-cache-tags
         $schedule->command('cache:prune-stale-tags')->hourly();
+
+        // Queue a new job to create pool session attendance for the day
+        $schedule->job(new CreatePoolSessionAttendanceForDay(Carbon::now()))->dailyAt('3:00');
     }
 
     /**

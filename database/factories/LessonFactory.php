@@ -30,6 +30,15 @@ class LessonFactory extends Factory
             'group_id' => Group::factory(),
             'location_id' => Location::factory(),
             'instructor_id' => Instructor::factory(),
+            'days' => [
+                '1' => false,
+                '2' => false,
+                '3' => false,
+                '4' => false,
+                '5' => false,
+                '6' => false,
+                '7' => false
+            ],
             'price' => $this->faker->numberBetween(1, 150),
             'class_start_date' => $this->faker->dateTimeBetween('now', '+1 month'),
             'class_end_date' => $this->faker->dateTimeBetween('now', '+10 months'),

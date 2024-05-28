@@ -27,27 +27,49 @@
                 </div>
                 <div class="uk-padding-small">
                     <div class="uk-h5">Swimmers:</div>
-                    <div v-for="swimmer in selectedEvent.swimmers" :key="swimmer">
+                    <div v-for="swimmer in selectedEvent.swimmers" :key="swimmer.id">
                         <div class="uk-padding-small" v-if="swimmer">
                             <div><i class="fa fa-user uk-margin-small-right" aria-hidden="true"></i> {{ swimmer.firstName || swimmer.first_name }} {{ swimmer.lastName || swimmer.last_name }}</div>
                             <div><i class="fa fa-phone uk-margin-small-right" aria-hidden="true"></i> <a :href="'sms:' + swimmer.phone">{{ swimmer.phone }}</a></div>
-                            <div><i class="fa fa-calendar uk-margin-small-right" aria-hidden="true"></i> {{ (swimmer.birthDate || swimmer.birth_date) | age }}</div>
+                            <div><i class="fa fa-clock-o uk-margin-small-right" aria-hidden="true"></i> {{ (swimmer.birthDate || swimmer.birth_date) | age }}</div>
+                            <!-- @todo wire up number of times attended in the future -->
+                            <!-- <div><i class="fa fa-calendar-check-o uk-margin-small-right" aria-hidden="true"></i> {{ attended }} time{{ attended >=2 || attended <= 0 ? 's' : '' }}</div> -->
+                            <div v-if="swimmer.attendance">
+                                <input class="uk-checkbox" type="checkbox" v-model="swimmer.attendance.attended"> <label for="checkbox" class="uk-margin-small-left">Todays Attendance</label>
+                            </div>
                         </div>
+                    </div>
+                    <div class="uk-padding-small">
+                        <a :href="'sms:' + phoneNumbersLinkString" class="uk-button uk-button-secondary" type="button">Text All <i class="fa fa-comment" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="uk-padding-small">
                     <div class="uk-h5">Wait List:</div>
-                    <div v-for="person in selectedEvent.waitList" :key="person">
+                    <div v-for="person in selectedEvent.waitList" :key="person.id">
                         <div class="uk-padding-small" v-if="person">
                             <div><i class="fa fa-user uk-margin-small-right" aria-hidden="true"></i> {{ person.name }}</div>
                             <div><i class="fa fa-phone uk-margin-small-right" aria-hidden="true"></i> <a :href="'sms:' + person.phone">{{ person.phone }}</a></div>
-                            <div><i class="fa fa-calendar uk-margin-small-right" aria-hidden="true"></i> {{ person.date_of_birth | age }}</div>
+                            <div><i class="fa fa-clock-o uk-margin-small-right" aria-hidden="true"></i> {{ person.date_of_birth | age }}</div>
                         </div>
                     </div>
                 </div>
+                <div v-if="saveSuccess">
+                    <div class="uk-alert-success" uk-alert>
+                        <a class="uk-alert-close" @click="clearStates" uk-close></a>
+                        <p><strong>Attendance saved!</strong></p>
+                    </div>
+                </div>
+                <div v-if="saveError">
+                    <div class="uk-alert-success" uk-alert>
+                        <a class="uk-alert-close" @click="clearStates" uk-close></a>
+                        <p><strong>Error saving attendance.</strong></p>
+                    </div>
+                </div>
                 <div class="uk-padding-small">
-                    <a :href="selectedEvent.url" target="_blank" class="uk-button uk-button-primary">Edit</a>
+                    <button @click="saveAttendance" class="uk-button uk-button-primary" type="button">Save</button>
+                    <a :href="selectedEvent.url" target="_blank" class="uk-button uk-button-default">More Info <i class="fa fa-external-link" aria-hidden="true"></i></a>
                     <button class="uk-modal-close uk-button uk-button-default" type="button">Close</button>
+                    <div v-if="saveLoading" uk-spinner="ratio: 0.75"></div>
                 </div>
             </div>
         </div>
@@ -55,6 +77,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import FullCalendar from '@fullcalendar/vue'
     import dayGrid from '@fullcalendar/daygrid'
     import timeGrid from '@fullcalendar/timegrid'
@@ -79,11 +102,25 @@
                 ],
                 calendarEvents: [],
                 showModal: false,
-                selectedEvent: null
+                selectedEvent: null,
+                saveLoading: false,
+                saveSuccess: false,
+                saveError: false,
+                attended: 2
             }
         },
         created() {
             this.calendarEvents = JSON.parse(this.events).map(function(event, index) {
+
+                // Loop over the swimmers and add the attendance to the swimmer object
+                event?.swimmers?.forEach(swimmer => {
+                    // Check if the swimmer is a null object
+                    if (swimmer === null) {
+                        return;
+                    }
+                    swimmer.attendance = event?.attendances?.find(attendance => attendance?.swimmable_id === swimmer?.id) ?? null;
+                });
+
                 return {
                     id: index,
                     title: event.title,
@@ -97,11 +134,49 @@
                 };
             });
         },
+        computed: {
+            phoneNumbers() {
+                return this.selectedEvent.swimmers.map(swimmer => swimmer?.phone);
+            },
+            phoneNumbersLinkString() {
+                return this.phoneNumbers.map(phone => {
+                    return '+1' + phone.replace(/-/g, '');
+                }).join(',');
+            }
+        },
         methods: {
             eventClicked: function (event) {
                 event.jsEvent.preventDefault(); // don't let the browser navigate
+                this.clearStates();
                 this.selectedEvent = this.calendarEvents[event.event.id]; //This is the index of the event in the selectedEvent object
                 UIkit.modal(this.$refs.modal).show();
+            },
+            clearStates() {
+                this.saveSuccess = false;
+                this.saveError = false;
+            },
+            async saveAttendance() {
+                // Loop over the swimmers and save the attendance
+                this.saveLoading = true;
+                let promises = [];
+                this.selectedEvent.swimmers.forEach(swimmer => {
+                    if (swimmer.attendance) {
+                        promises.push(axios.post(`/api/pool-session-attendance/${swimmer.attendance.id}`, {
+                            attended: swimmer.attendance.attended
+                        }));
+                    }
+                });
+
+                await Promise.all(promises)
+                    .then(responses => {
+                        this.saveSuccess = true;
+                    })
+                    .catch(error => {
+                        this.saveError = true;
+                    })
+                    .finally(() => {
+                        this.saveLoading = false;
+                    });
             }
         },
         filters: {

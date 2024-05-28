@@ -23,7 +23,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
- * @property-read PrivatePoolSession $pool_sessions
+ * @property-read PoolSessions $pool_sessions
  */
 class User extends Authenticatable
 {
@@ -52,7 +52,7 @@ class User extends Authenticatable
      */
     public function pool_sessions()
     {
-        return $this->hasMany(PrivatePoolSession::class, 'instructor_id');
+        return $this->hasMany(PoolSession::class, 'instructor_id');
     }
 
     /**

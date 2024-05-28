@@ -3,35 +3,22 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\MorphMany;
+use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class PoolSession extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var string
+     * @var class-string<\App\PoolSession>
      */
-    public static $model = \App\User::class;
-
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'name';
-
-    /**
-     * The logical group associated with the resource.
-     *
-     * @var string
-     */
-    public static $group = 'Admin';
+    public static $model = \App\PoolSession::class;
 
     /**
      * The columns that should be searched.
@@ -39,7 +26,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
     ];
 
     /**
@@ -52,21 +39,18 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', Rules\Password::defaults())
-                ->updateRules('nullable', Rules\Password::defaults()),
+            MorphTo::make('Pool Sessionable', 'pool_sessionable')->types([
+                Lesson::class,
+                PrivateLesson::class,
+            ]),
+            BelongsTo::make('Location'),
+            BelongsTo::make('Instructor'),
+            DateTime::make('Start'),
+            DateTime::make('End'),
+            HasMany::make('Attendances', 'attendances', PoolSessionAttendance::class),
+            DateTime::make('Created At')->onlyOnDetail(),
+            DateTime::make('Updated At')->onlyOnDetail(),
+            DateTime::make('Deleted At')->onlyOnDetail(),
         ];
     }
 
@@ -114,8 +98,8 @@ class User extends Resource
         return [];
     }
 
-    public static function label()
+    public function title()
     {
-        return 'Users';
+        return $this->start->format('m/d h:i A');
     }
 }

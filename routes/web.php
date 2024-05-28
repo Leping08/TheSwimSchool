@@ -50,6 +50,9 @@ Route::get('/lessons/{group}/{lesson}', [\App\Http\Controllers\Groups\LessonsCon
 //Save the results of the sign up form
 Route::post('/lessons/{group}/{lesson}', [\App\Http\Controllers\Groups\SwimmerController::class, 'store'])->name('groups.swimmers.store');
 
+//Show the certificate
+Route::get('/lessons/groups/certificate/{encrypted_swimmer_id}', [\App\Http\Controllers\Groups\CertificateController::class, 'show'])->name('groups.certificate.show');
+
 /*
  * Wait List
  */

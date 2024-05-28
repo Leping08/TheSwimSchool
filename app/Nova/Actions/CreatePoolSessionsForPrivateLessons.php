@@ -5,7 +5,7 @@ namespace App\Nova\Actions;
 use App\DaysOfTheWeek;
 use App\Nova\Instructor;
 use App\Nova\Location;
-use Carbon\Carbon;
+use App\PrivateLesson;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
@@ -16,7 +16,7 @@ use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class CreatePrivate extends Action
+class CreatePoolSessionsForPrivateLessons extends Action
 {
     use InteractsWithQueue, Queueable;
 
@@ -36,46 +36,10 @@ class CreatePrivate extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        // $days = ["1" => true,"2" => true,"3" => true,"4" => false,"5" => false,"6" => false,"7" => false];
-        $daysOfTheWeekId = collect($fields->days)->filter(function ($value, $key) {
-            return $value === true;
-        })->keys()->toArray();
-        $dates = collect();
+        /** @var PrivateLesson $privateLesson */
+        $privateLesson = PrivateLesson::first();
 
-        foreach ($daysOfTheWeekId as $dayId) {
-            $carbonDayMappings = collect([
-                1 => Carbon::MONDAY,
-                2 => Carbon::TUESDAY,
-                3 => Carbon::WEDNESDAY,
-                4 => Carbon::THURSDAY,
-                5 => Carbon::FRIDAY,
-                6 => Carbon::SATURDAY,
-                7 => Carbon::SUNDAY,
-            ]);
-
-            //Parse the date and go back one day to account for the start date being accessible
-            $startDate = Carbon::parse($fields->start_date_time)->subDay()->next($carbonDayMappings->get($dayId));
-            $endDate = Carbon::parse($fields->end_date_time);
-
-            for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
-                $dates->push(Carbon::parse($date));
-            }
-        }
-
-        $startTimeString = Carbon::parse($fields->start_date_time)->toTimeString();
-        $endTimeString = Carbon::parse($fields->end_date_time)->toTimeString();
-
-        foreach ($dates as $poolSessionDate) {
-            $start = Carbon::parse($poolSessionDate)->setTimeFromTimeString($startTimeString);
-            $end = Carbon::parse($poolSessionDate)->setTimeFromTimeString($endTimeString);
-
-            \App\PrivatePoolSession::create([
-                'start' => $start,
-                'end' => $end,
-                'location_id' => $fields->location->id,
-                'instructor_id' => $fields->instructor->id,
-            ]);
-        }
+        $privateLesson->generatePoolSessions(collect($fields)->toArray());
 
         return Action::message('Pool Sessions Created!');
     }

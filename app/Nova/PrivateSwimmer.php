@@ -136,7 +136,7 @@ class PrivateSwimmer extends Resource
 
     public static function label()
     {
-        return 'Swimmers';
+        return 'Private Swimmers';
     }
 
     /**
