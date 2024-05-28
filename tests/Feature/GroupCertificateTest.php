@@ -11,6 +11,12 @@ class GroupCertificateTest extends TestCase
 {
     use RefreshDatabase;
 
+    /** @test */
+    public function placeholder()
+    {
+        $this->assertTrue(true);
+    }
+
     // /** @test */
     // public function a_user_should_see_swimmer_certificate()
     // {
