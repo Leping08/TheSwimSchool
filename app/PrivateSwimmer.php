@@ -6,6 +6,7 @@ use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
 
@@ -40,8 +41,6 @@ class PrivateSwimmer extends Model
         'emergency_phone',
         'stripe_charge_id',
         'private_lesson_id',
-        'private_lesson_id',
-        'private_lesson_id',
     ];
 
     /**
@@ -53,10 +52,18 @@ class PrivateSwimmer extends Model
     }
 
     /**
-     * @return PrivatePoolSession|null
+     * @return PoolSession|null
      */
     public function pool_sessions()
     {
         return $this->lesson->pool_sessions ?? null;
+    }
+
+    /**
+     * Get all of the post's comments.
+     */
+    public function swimmer(): MorphMany
+    {
+        return $this->morphMany(PoolSessionAttendance::class, 'swimmable')->withPivot('id');
     }
 }

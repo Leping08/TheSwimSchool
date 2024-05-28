@@ -42,3 +42,6 @@ Route::post('/stripe-token/payment-intent/athlete', [\App\Http\Controllers\Strip
 
 // Used to get the discount percentage for a promo code
 Route::post('/promo-code', [\App\Http\Controllers\PromoCodeController::class, 'index'])->name('api.promo-code.index');
+
+// Update the attendance for the pool session
+Route::post('/pool-session-attendance/{poolSessionAttendanceId}', [\App\Http\Controllers\PoolSessionAttendanceController::class, 'update'])->name('api.pool-session-attendance.update');

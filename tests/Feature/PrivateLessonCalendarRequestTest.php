@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use App\Jobs\SendPrivatePoolSessionReminderEmails;
 use App\Mail\Privates\PrivateLessonSignUp;
 use App\Mail\Privates\PrivatePoolSessionReminder;
+use App\PoolSession;
 use App\PrivateLesson;
-use App\PrivatePoolSession;
 use App\PrivateSwimmer;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -30,8 +30,9 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->withoutExceptionHandling();
 
-        $sessions = PrivatePoolSession::factory()->count(4)->create([
-            'private_lesson_id' => null,
+        $sessions = PoolSession::factory()->count(4)->create([
+            'pool_session_id' => null,
+            'pool_session_type' => PrivateLesson::class,
         ]);
 
         $session_ids = $sessions->implode('id', ',');
@@ -92,8 +93,9 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->withoutExceptionHandling();
 
-        $session = PrivatePoolSession::factory()->create([
-            'private_lesson_id' => null,
+        $session = PoolSession::factory()->create([
+            'pool_session_id' => null,
+            'pool_session_type' => PrivateLesson::class,
         ]);
 
         $session_ids = (string) $session->id;
@@ -159,13 +161,15 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'private_lesson_id' => $lesson->id,
         ]);
 
-        $pool_session = PrivatePoolSession::factory()->create([
-            'private_lesson_id' => $lesson->id,
+        $pool_session = PoolSession::factory()->create([
+            'pool_session_id' => $lesson->id,
+            'pool_session_type' => PrivateLesson::class,
             'start' => Carbon::tomorrow(),
         ]);
 
-        $pool_session2 = PrivatePoolSession::factory()->create([
-            'private_lesson_id' => $lesson->id,
+        $pool_session2 = PoolSession::factory()->create([
+            'pool_session_id' => $lesson->id,
+            'pool_session_type' => PrivateLesson::class,
             'start' => Carbon::now()->addWeek(),
         ]);
 
@@ -179,16 +183,18 @@ class PrivateLessonCalendarRequestTest extends TestCase
     {
         $this->seed();
 
-        $next_week = PrivatePoolSession::factory()->create([
+        $next_week = PoolSession::factory()->create([
             'start' => Carbon::now()->addDay(),
             'end' => Carbon::now()->addDay()->addHour(),
-            'private_lesson_id' => null,
+            'pool_session_id' => null,
+            'pool_session_type' => PrivateLesson::class,
         ]);
 
-        $last_week = PrivatePoolSession::factory()->create([
+        $last_week = PoolSession::factory()->create([
             'start' => Carbon::now()->subWeek(),
             'end' => Carbon::now()->subWeek()->subHour(),
-            'private_lesson_id' => null,
+            'pool_session_id' => null,
+            'pool_session_type' => PrivateLesson::class,
         ]);
 
         $this->get(route('private_lesson.index'))
@@ -204,8 +210,9 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         //$this->withoutExceptionHandling();
 
-        $session = PrivatePoolSession::factory()->create([
-            'private_lesson_id' => null,
+        $session = PoolSession::factory()->create([
+            'pool_session_id' => null,
+            'pool_session_type' => PrivateLesson::class,
         ]);
 
         $session_ids = (string) $session->id;
@@ -245,8 +252,9 @@ class PrivateLessonCalendarRequestTest extends TestCase
     {
         $this->seed();
 
-        $session = PrivatePoolSession::factory()->create([
-            'private_lesson_id' => null,
+        $session = PoolSession::factory()->create([
+            'pool_session_id' => null,
+            'pool_session_type' => PrivateLesson::class,
         ]);
 
         $session_ids = (string) $session->id;
@@ -287,8 +295,9 @@ class PrivateLessonCalendarRequestTest extends TestCase
     {
         $this->seed();
 
-        PrivatePoolSession::factory()->count(4)->create([
-            'private_lesson_id' => null,
+        PoolSession::factory()->count(4)->create([
+            'pool_session_id' => null,
+            'pool_session_type' => PrivateLesson::class,
         ]);
 
         //This is the same id that was already signed up for

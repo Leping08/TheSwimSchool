@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Privates;
 
 use App\Banner;
 use App\Http\Controllers\Controller;
-use App\Lesson;
 use App\Library\Helpers\SeasonHelpers;
 use App\Library\NewsLetter\NewsLetter;
 use App\Library\StripeCharge;
 use App\Mail\Privates\PrivateLessonSignUp;
+use App\PoolSession;
 use App\PrivateLesson;
-use App\PrivatePoolSession;
 use App\PrivateSwimmer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,7 +20,7 @@ class CalendarController extends Controller
 {
     public function index()
     {
-        $private_pool_sessions = PrivatePoolSession::with(['instructor:id,name,hex_color', 'location:id,name'])->available()->startConditionallyNextMonth()->get();
+        $private_pool_sessions = PoolSession::with(['instructor:id,name,hex_color', 'location:id,name'])->privateLessonsAvailable()->startConditionallyNextMonth()->get();
         $banner = Banner::where('page', '/private-semi-private')->first();
 
         return view('lessons.private.calendar', ['events' => $private_pool_sessions, 'banner' => $banner]);
@@ -65,7 +64,7 @@ class CalendarController extends Controller
 
         //Make sure the pool sessions are still available
         foreach ($pool_session_ids as $pool_session_id) {
-            $lesson = PrivatePoolSession::available()->where('id', '=', $pool_session_id)->get();
+            $lesson = PoolSession::PrivateLessonsAvailable()->where('id', '=', $pool_session_id)->get();
             if ($lesson->isEmpty()) { //Check if lesson has already been taken
                 Log::error("Pool Session Id $pool_session_id has already been taken. Redirecting back.");
                 session()->flash('warning', 'Sorry, one of the classes was already taken.');
@@ -116,14 +115,15 @@ class CalendarController extends Controller
 
         //Assign the pool sessions
         foreach ($pool_session_ids as $pool_session_id) {
-            $pool_session = PrivatePoolSession::available()->find($pool_session_id);
+            $pool_session = PoolSession::PrivateLessonsAvailable()->find($pool_session_id);
             if (! $pool_session) {
                 Log::warning("Someone has already taken the pool session id: $pool_session_id");
                 session()->flash('warning', 'Sorry, one of the classes was already taken.');
                 //TODO: Refund the swimmer the charge or schedule different pool sessions, possibly an email here
                 return redirect()->back();
             }
-            $pool_session->private_lesson_id = $private_lesson->id;
+            $pool_session->pool_session_id = $private_lesson->id;
+            $pool_session->pool_session_type = PrivateLesson::class;
             $pool_session->save();
         }
 

@@ -15,6 +15,7 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 
@@ -107,9 +108,10 @@ class Lesson extends Resource
             DateTime::make('End Time', 'class_end_time')->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            BelongsToMany::make('Days', 'DaysOfTheWeek', Day::class),
             HasMany::make('Swimmers', 'swimmers', Swimmer::class),
+            MorphMany::make('Pool Sessions', 'pool_sessions', PoolSession::class),
             HasMany::make('Wait List', 'WaitList', WaitList::class),
+            BelongsToMany::make('Days', 'DaysOfTheWeek', Day::class),
         ];
     }
 

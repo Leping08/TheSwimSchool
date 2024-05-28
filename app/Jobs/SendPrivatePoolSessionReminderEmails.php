@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\Privates\PrivatePoolSessionReminder;
-use App\PrivatePoolSession;
+use App\PoolSession;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -34,24 +34,23 @@ class SendPrivatePoolSessionReminderEmails implements ShouldQueue
     public function handle()
     {
         Log::info('Starting to send private lesson pool session reminder emails.');
-        $pool_sessions = PrivatePoolSession::startingTomorrow()->get();
-        if (count($pool_sessions)) {
-            foreach ($pool_sessions as $pool_session) {
-                if ($pool_session->swimmer()) {
-                    $email = $pool_session->swimmer()->email;
-                    if ($email) {
-                        try {
-                            Log::info("Sending group lesson reminder email to $email for pool_session ID: $pool_session->id");
-                            Mail::to($email)->send(new PrivatePoolSessionReminder($pool_session));
-                        } catch (\Exception $e) {
-                            Log::warning("Email error: $e");
-                        }
-                    }
-                }
-            }
-        } else {
+        $pool_sessions = PoolSession::startingTomorrow()->privateLessons()->with('lesson.swimmers')->get();
+
+        if ($pool_sessions->isEmpty()) {
             Log::info('No pool sessions tomorrow. Not sending any emails.');
+            return;
         }
+
+        $pool_sessions->each(function ($pool_session) {
+            $email = collect(data_get($pool_session, 'lesson.swimmers.*.email'))->first();
+            try {
+                Log::info("Sending group lesson reminder email to $email for pool_session ID: $pool_session->id");
+                Mail::to($email)->send(new PrivatePoolSessionReminder($pool_session));
+            } catch (\Exception $e) {
+                Log::warning("Email error: $e");
+            }
+        });
+
         Log::info('Finished sending private lesson pool session reminder emails.');
     }
 }

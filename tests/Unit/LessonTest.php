@@ -4,7 +4,9 @@ namespace Tests\Unit;
 
 use App\Group;
 use App\Lesson;
+use App\PoolSession;
 use App\Swimmer;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
@@ -87,5 +89,60 @@ class LessonTest extends TestCase
         $lesson = $lesson->fresh();
 
         $this->assertEquals(3, $lesson->daysOfTheWeek->count());
+    }
+
+    /** @test  **/
+    public function it_creates_pool_sessions_when_created()
+    {
+        Artisan::call('db:seed');
+
+        $lesson = Lesson::factory()->create([
+            'class_start_date' => Carbon::parse('2021-01-01'),
+            'class_end_date' => Carbon::parse('2021-01-14'),
+            'days' => [
+                '1' => true, // Monday
+                '2' => true, // Tuesday
+                '3' => true, // Wednesday
+            ]
+        ]);
+
+        $this->assertEquals(6, $lesson->pool_sessions->count());
+    }
+
+    /** @test  **/
+    public function it_has_pool_sessions()
+    {
+        $lesson = Lesson::factory()->create();
+        $poolSession = PoolSession::factory()->create([
+            'pool_session_id' => $lesson->id,
+            'pool_session_type' => Lesson::class
+        ]);
+
+        $this->assertEquals(1, $lesson->pool_sessions->count());
+        $this->assertEquals($poolSession->id, $lesson->pool_sessions->first()->id);
+    }
+
+    // Test to see if it wont create the same pool sessions
+    // twice if the lesson->generatePoolSessions is called again
+    /** @test  **/
+    public function it_wont_create_the_same_pool_sessions_twice()
+    {
+        Artisan::call('db:seed');
+
+        $lesson = Lesson::factory()->create([
+            'class_start_date' => Carbon::parse('2021-01-01'),
+            'class_end_date' => Carbon::parse('2021-01-14'),
+            'days' => [
+                '1' => true, // Monday
+                '2' => true, // Tuesday
+                '3' => true, // Wednesday
+            ]
+        ]);
+
+        $this->assertEquals(6, $lesson->pool_sessions->count());
+
+        $lesson->generatePoolSessions([]);
+
+        $this->assertEquals(6, $lesson->pool_sessions->count());
     }
 }

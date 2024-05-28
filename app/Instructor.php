@@ -22,7 +22,7 @@ use Laravel\Nova\Actions\Actionable;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
  * @property-read Lesson $lessons
- * @property-read PrivatePoolSession $privatePoolSessions
+ * @property-read PoolSession $poolSessions
  */
 class Instructor extends Model
 {
@@ -69,6 +69,6 @@ class Instructor extends Model
      */
     public function pool_sessions()
     {
-        return $this->hasMany(PrivatePoolSession::class);
+        return $this->hasMany(PoolSession::class);
     }
 }

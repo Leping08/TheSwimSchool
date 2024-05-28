@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\CreatePoolSessionsForPrivateLessons;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
@@ -58,11 +59,13 @@ class PrivateLesson extends Resource
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
-            BelongsTo::make('Season', 'season', Season::class),
-            HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
+            // BelongsTo::make('Season', 'season', Season::class),
+            // HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
+            // @todo add attendances
+            // @todo fix the pool sessions relationship
             Text::make('Text Message Link', function () {
                 return view('partials.swimmers_sms_link', [
-                    'swimmers_phone_numbers_string' => collect($this->swimmer->phone)->map(function ($phone_number) {
+                    'swimmers_phone_numbers_string' => $this->swimmers->pluck('phone')->map(function ($phone_number) {
                         // Remove the - from the phone number
                         return '+1' . str_replace('-', '', $phone_number);
                     })->implode(',')
@@ -115,11 +118,11 @@ class PrivateLesson extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [new CreatePoolSessionsForPrivateLessons()];
     }
 
     public static function label()
     {
-        return 'Lessons';
+        return 'Private Lessons';
     }
 }
