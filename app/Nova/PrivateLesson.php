@@ -6,9 +6,9 @@ use App\Nova\Actions\CreatePoolSessionsForPrivateLessons;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Text;
 
 class PrivateLesson extends Resource
@@ -59,10 +59,8 @@ class PrivateLesson extends Resource
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
-            // BelongsTo::make('Season', 'season', Season::class),
-            // HasMany::make('Pool Sessions', 'pool_sessions', PrivatePoolSession::class),
-            // @todo add attendances
-            // @todo fix the pool sessions relationship
+            BelongsTo::make('Season', 'season', Season::class),
+            MorphMany::make('Pool Sessions', 'pool_sessions', PoolSession::class),
             Text::make('Text Message Link', function () {
                 return view('partials.swimmers_sms_link', [
                     'swimmers_phone_numbers_string' => $this->swimmers->pluck('phone')->map(function ($phone_number) {
