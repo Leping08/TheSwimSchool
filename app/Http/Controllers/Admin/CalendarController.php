@@ -75,7 +75,6 @@ class CalendarController extends Controller
                 'start' => $session->start,
                 'end' => $session->end,
                 'color' => $swimmer ? self::COLORS['private'] : self::COLORS['empty'],
-                // @todo update the details link to the correct route for private lessons
                 'details_link' => '/admin/resources/private-lessons/'.$session->lesson->id,
                 'swimmers' => [$swimmer],
                 'location' => $session->location->name,

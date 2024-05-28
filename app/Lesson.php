@@ -304,7 +304,6 @@ class Lesson extends Model implements PoolSessionable
             }
         }
 
-        // @todo this is not working correctly
         $startTimeString = Carbon::parse($this->class_start_time)->toTimeString();
         $endTimeString = Carbon::parse($this->class_end_time)->toTimeString();
 
