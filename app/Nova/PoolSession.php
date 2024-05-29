@@ -2,13 +2,16 @@
 
 namespace App\Nova;
 
+use App\Lesson as AppLesson;
+use App\PrivateLesson as AppPrivateLesson;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class PoolSession extends Resource
@@ -42,7 +45,12 @@ class PoolSession extends Resource
             MorphTo::make('Pool Sessionable', 'pool_sessionable')->types([
                 Lesson::class,
                 PrivateLesson::class,
-            ]),
+            ])->exceptOnForms(),
+            Select::make('Pool Sessionable Type', 'pool_session_type')->options([
+                AppPrivateLesson::class => 'Private Lesson',
+                AppLesson::class => 'Group Lesson',
+            ])->displayUsingLabels(),
+            Number::make('Pool Sessionable Id', 'pool_session_id')->hideFromIndex(),
             BelongsTo::make('Location'),
             BelongsTo::make('Instructor'),
             DateTime::make('Start'),
