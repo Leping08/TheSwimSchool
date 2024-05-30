@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Panel;
@@ -80,6 +81,7 @@ class PrivateSwimmer extends Resource
                 ])->render();
             })->hideFromIndex(),
             BelongsTo::make('Private Lesson', 'lesson', PrivateLesson::class)->nullable(),
+            MorphMany::make('Attendances', 'attendances', PoolSessionAttendance::class),
             (new Panel('Payment Info', $this->paymentInfo())),
             (new Panel('Address', $this->addressFields())),
             (new Panel('Emergency Contact', $this->emergencyContact())),

@@ -51,19 +51,8 @@ class PrivateSwimmer extends Model
         return $this->belongsTo(PrivateLesson::class, 'private_lesson_id');
     }
 
-    /**
-     * @return PoolSession|null
-     */
-    public function pool_sessions()
+    public function attendances()
     {
-        return $this->lesson->pool_sessions ?? null;
-    }
-
-    /**
-     * Get all of the post's comments.
-     */
-    public function swimmer(): MorphMany
-    {
-        return $this->morphMany(PoolSessionAttendance::class, 'swimmable')->withPivot('id');
+        return $this->morphMany(PoolSessionAttendance::class, 'swimmable', 'swimmable_type', 'swimmable_id');
     }
 }

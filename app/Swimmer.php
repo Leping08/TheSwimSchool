@@ -78,12 +78,9 @@ class Swimmer extends Model
         return $this->belongsTo(Lesson::class);
     }
 
-    /**
-     * Get all of the post's comments.
-     */
-    public function swimmer(): MorphMany
+    public function attendances()
     {
-        return $this->morphMany(PoolSessionAttendance::class, 'swimmable')->withPivot('id');
+        return $this->morphMany(PoolSessionAttendance::class, 'swimmable', 'swimmable_type', 'swimmable_id');
     }
 
     public static function findByEncryptedId(string $encrypted_swimmer_id)

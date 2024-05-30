@@ -32,8 +32,7 @@
                             <div><i class="fa fa-user uk-margin-small-right" aria-hidden="true"></i> {{ swimmer.firstName || swimmer.first_name }} {{ swimmer.lastName || swimmer.last_name }}</div>
                             <div><i class="fa fa-phone uk-margin-small-right" aria-hidden="true"></i> <a :href="'sms:' + swimmer.phone">{{ swimmer.phone }}</a></div>
                             <div><i class="fa fa-clock-o uk-margin-small-right" aria-hidden="true"></i> {{ (swimmer.birthDate || swimmer.birth_date) | age }}</div>
-                            <!-- @todo wire up number of times attended in the future -->
-                            <!-- <div><i class="fa fa-calendar-check-o uk-margin-small-right" aria-hidden="true"></i> {{ attended }} time{{ attended >=2 || attended <= 0 ? 's' : '' }}</div> -->
+                            <div><i class="fa fa-calendar-check-o uk-margin-small-right" aria-hidden="true"></i> {{ swimmer.attendance_count }} Time{{ swimmer.attendance_count >= 2 || swimmer.attendance_count <= 0 ? 's' : '' }}</div>
                             <div v-if="swimmer.attendance">
                                 <input class="uk-checkbox" type="checkbox" v-model="swimmer.attendance.attended"> <label for="checkbox" class="uk-margin-small-left">Todays Attendance</label>
                             </div>
@@ -119,6 +118,7 @@
                         return;
                     }
                     swimmer.attendance = event?.attendances?.find(attendance => attendance?.swimmable_id === swimmer?.id) ?? null;
+                    swimmer.attendance_count = swimmer.attendances.filter(attendance => attendance.attended).length ?? 0;
                 });
 
                 return {
