@@ -45,8 +45,9 @@
                                 <ul class="uk-nav-sub">
                                     <li><a href="/admin"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
                                     <li><a href="{{ route('newsletter.index') }}"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i> Email Blast</a></li>
+                                    <li><a href="/realhab-attendance"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Realhab Attendance</a></li>
                                     {{-- <li><a href="https://datastudio.google.com/open/17dj-YhyTBpc5Rev_w3puKIfPKBALD6oL" target="_blank"><i class="fa fa-area-chart fa-lg" aria-hidden="true"></i> Analytics</a></li> --}}
-                                    <li><a href="/admin/resources/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
+                                    <li><a href="/admin/resources/swimmers"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> Swimmers</a></li>
                                     <li><a href="/admin/resources/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
                                     <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
                                     <li>
@@ -119,6 +120,7 @@
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li><a href="/admin"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Dashboard</a></li>
                                     <li><a href="{{ route('newsletter.index') }}"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i> Email Blast</a></li>
+                                    <li><a href="/realhab-attendance"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> Realhab Attendance</a></li>
                                     {{-- <li><a href="https://datastudio.google.com/open/17dj-YhyTBpc5Rev_w3puKIfPKBALD6oL" target="_blank"><i class="fa fa-area-chart fa-lg" aria-hidden="true"></i> Analytics</a></li> --}}
                                     <li><a href="/admin/resources/swimmers"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Swimmers</a></li>
                                     <li><a href="/admin/resources/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
