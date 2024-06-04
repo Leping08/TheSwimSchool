@@ -158,6 +158,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/emails/newsletter/send-emails', [\App\Http\Controllers\NewsletterEmailController::class, 'sendEmails'])->name('newsletter.send');
 
     Route::post('/emails/newsletter/upload-image', [\App\Http\Controllers\NewsletterEmailController::class, 'uploadImage'])->name('newsletter.upload-image');
+
+    Route::get('/realhab-attendance', [\App\Http\Controllers\RealhabAttendanceController::class, 'index'])->name('realhab-attendance.index');
 });
 
 /*
