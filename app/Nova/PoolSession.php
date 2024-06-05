@@ -45,7 +45,7 @@ class PoolSession extends Resource
             MorphTo::make('Pool Sessionable', 'pool_sessionable')->types([
                 Lesson::class,
                 PrivateLesson::class,
-            ])->exceptOnForms(),
+            ])->exceptOnForms()->searchable(),
             Select::make('Pool Sessionable Type', 'pool_session_type')->options([
                 AppPrivateLesson::class => 'Private Lesson',
                 AppLesson::class => 'Group Lesson',

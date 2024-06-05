@@ -46,11 +46,11 @@ class PoolSessionAttendance extends Resource
         return [
             ID::make()->sortable(),
             Boolean::make('Attended'),
-            BelongsTo::make('Pool Session', 'pool_session', PoolSession::class),
+            BelongsTo::make('Pool Session', 'pool_session', PoolSession::class)->searchable(),
             MorphTo::make('Swimmable')->types([
                 Swimmer::class,
                 PrivateSwimmer::class,
-            ]),
+            ])->searchable(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             DateTime::make('Deleted At')->onlyOnDetail(),
