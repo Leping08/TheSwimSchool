@@ -126,8 +126,8 @@
                 // Update the url query string
                 // Get the start and end date form the week
                 let [year, week] = this.week.split('-W');
-                let startDate = moment().year(year).week(week).startOf('week').format('YYYY-MM-DD');
-                let endDate = moment().year(year).week(week).endOf('week').format('YYYY-MM-DD');
+                let startDate = moment().year(year).week(week).startOf('isoWeek').format('YYYY-MM-DD');
+                let endDate = moment().year(year).week(week).endOf('isoWeek').format('YYYY-MM-DD');
                 this.urlParams.set('start', startDate);
                 this.urlParams.set('end', endDate);
                 window.history.replaceState({}, '', `${location.pathname}?${this.urlParams}`);
