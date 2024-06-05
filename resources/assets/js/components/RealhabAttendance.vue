@@ -89,7 +89,7 @@
                 return moment().diff(value, 'year');
             },
             readableDateTime: function (value) {
-                return moment(value).format('MM/DD/YY h:mm a');
+                return moment(value).format('MM/DD h:mm a');
             },
             readableTime: function (value) {
                 return moment(value).format('h:mm a');
