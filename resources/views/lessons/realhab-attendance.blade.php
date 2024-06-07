@@ -1,12 +1,12 @@
 @extends('layouts.app-uikit')
 
 @section('seo')
-    <title>Realhab Attandance</title>
-    <meta name="description" content="Realhab Attandance"/>
+    <title>Realhab Attendance</title>
+    <meta name="description" content="Realhab Attendance"/>
 @endsection
 
 @section('heading')
-    Realhab Attandance
+    Realhab Attendance
 @endsection
 
 @section('content')
