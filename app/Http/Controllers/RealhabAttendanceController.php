@@ -13,7 +13,7 @@ class RealhabAttendanceController extends Controller
     public function index(Request $request)
     {
         $startDate = Carbon::parse($request->get('start'));
-        $endDate = Carbon::parse($request->get('end'));
+        $endDate = Carbon::parse($request->get('end'))->endOfDay();
 
         $poolSessionTypes = collect([
             'group' => Lesson::class,
