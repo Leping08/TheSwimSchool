@@ -36,8 +36,8 @@ class PrivatePoolSessionTest extends TestCase
                 '6' => false, // '6' is Saturday
                 '7' => false, // '7' is Sunday
             ],
-            "location" => $location,
-            "instructor" => $instructor,
+            "location_id" => $location->id,
+            "instructor_id" => $instructor->id
         ]);
 
         $action = new ActionFields($fields, collect());
@@ -72,8 +72,8 @@ class PrivatePoolSessionTest extends TestCase
                 '6' => true, // '6' is Saturday
                 '7' => true, // '7' is Sunday
             ],
-            "location" => $location,
-            "instructor" => $instructor,
+            "location_id" => $location->id,
+            "instructor_id" => $instructor->id
         ]);
 
         $action = new ActionFields($fields, collect());
@@ -102,8 +102,8 @@ class PrivatePoolSessionTest extends TestCase
                 '2' => true, // '2' is Tuesday
                 '5' => true, // '5' is Friday
             ],
-            "location" => $location,
-            "instructor" => $instructor,
+            "location_id" => $location->id,
+            "instructor_id" => $instructor->id
         ]);
 
         $action = new ActionFields($fields, collect());
@@ -132,8 +132,8 @@ class PrivatePoolSessionTest extends TestCase
                 '2' => true, // '2' is Tuesday
                 '5' => true, // '5' is Friday
             ],
-            "location" => $location,
-            "instructor" => $instructor,
+            "location_id" => $location->id,
+            "instructor_id" => $instructor->id
         ]);
 
         $action = new ActionFields($fields, collect());

@@ -109,8 +109,8 @@ class PrivateLesson extends Model implements PoolSessionable
             PoolSession::firstOrCreate([
                 'start' => $start,
                 'end' => $end,
-                'location_id' => data_get($fields, 'location.id'),
-                'instructor_id' => data_get($fields, 'instructor.id'),
+                'location_id' => data_get($fields, 'location_id'),
+                'instructor_id' => data_get($fields, 'instructor_id'),
                 'pool_session_id' => null,
                 'pool_session_type' => PrivateLesson::class,
             ]);
