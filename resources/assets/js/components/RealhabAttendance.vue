@@ -33,14 +33,9 @@
                                     <th>Phone</th>
                                     <th>Number of swimmers</th>
                                     <th>Date/Time</th>
-                                    <!-- <th>Years Old</th>
-                                    <th>Date Of Birth</th>
-                                    <th>Email</th>
-                                    <th>Emergency Contact Name</th>
-                                    <th>Emergency Contact Phone</th> -->
                                 </tr>
                             </thead>
-                            <tbody v-for="(pool_session, index) in sessions" :key="index">
+                            <tbody v-for="(pool_session, index) in sortedSessions" :key="index">
                                 <tr :class="{'stripe-list': index % 2 === 0 }">
                                     <td>
                                         <div v-for="attendance in pool_session.filtered_attendances" :key="attendance.id">
@@ -54,11 +49,6 @@
                                     </td>
                                     <td>{{ pool_session.filtered_attendances.length }}</td>
                                     <td>{{ pool_session.start | readableDateTime }} - {{ pool_session.end | readableTime }}</td>
-                                    <!-- <td>{{swimmer.birthDate || swimmer.birth_date | yearsOld }}</td>
-                                    <td>{{swimmer.birthDate | moment("MM/DD/YY")}}</td>
-                                    <td>{{swimmer.email}}</td>
-                                    <td>{{swimmer.emergencyName}}</td>
-                                    <td>{{swimmer.emergencyPhone}}</td> -->
                                 </tr>
                             </tbody>
                         </table>
@@ -81,7 +71,8 @@
             return {
                 lesson_type: 'group',
                 urlParams: new URLSearchParams(window.location.search),
-                week: ''
+                week: '',
+                sortedSessions: []
             }
         },
         filters: {
@@ -96,6 +87,12 @@
             }
         },
         created() {
+            // Take the sessions object of objects and convert it to an array
+            this.sortedSessions = Object.values(this.sessions).sort((a, b) => {
+                // Order the sessions by start date
+                return new Date(a.start) - new Date(b.start);
+            });
+
             // Get the lesson_type from the url query string
             if (!this.urlParams.has('type')) {
                 this.urlParams.set('type', this.lesson_type);

@@ -29,7 +29,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Nova::userMenu(function (Request $request, Menu $menu) {
             return $menu
                 ->append(MenuItem::externalLink('Email Blast', route('newsletter.index')))
-                ->append(MenuItem::externalLink('Realhab Attendance', route('swim-team.index')))
+                ->append(MenuItem::externalLink('Realhab Attendance', route('realhab-attendance.index')))
                 ->append(MenuItem::externalLink('Swim Team Roster', route('swim-team.roster.index')));
         });
     }
