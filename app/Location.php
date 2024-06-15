@@ -33,12 +33,12 @@ class Location extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function Lessons()
+    public function lessons()
     {
         return $this->hasMany(Lesson::class);
     }
 
-    public function Tryouts()
+    public function tryouts()
     {
         $this->hasMany(Tryout::class);
     }

@@ -77,7 +77,7 @@ class Athlete extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Tryout()
+    public function tryout()
     {
         return $this->belongsTo(Tryout::class);
     }
@@ -85,7 +85,7 @@ class Athlete extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Season()
+    public function season()
     {
         return $this->belongsTo(STSeason::class, 's_t_season_id');
     }
@@ -93,7 +93,7 @@ class Athlete extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Level()
+    public function level()
     {
         return $this->belongsTo(STLevel::class, 's_t_level');
     }

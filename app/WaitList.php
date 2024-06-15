@@ -47,7 +47,7 @@ class WaitList extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Lesson()
+    public function lesson()
     {
         return $this->belongsTo(Lesson::class);
     }

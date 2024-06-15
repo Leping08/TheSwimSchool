@@ -90,7 +90,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * @return HasMany
      */
-    public function Swimmers(): HasMany
+    public function swimmers(): HasMany
     {
         return $this->hasMany(Swimmer::class);
     }
@@ -98,7 +98,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * @return BelongsTo
      */
-    public function Season(): BelongsTo
+    public function season(): BelongsTo
     {
         return $this->belongsTo(Season::class);
     }
@@ -106,7 +106,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * @return BelongsTo
      */
-    public function Group(): BelongsTo
+    public function group(): BelongsTo
     {
         return $this->belongsTo(Group::class);
     }
@@ -114,7 +114,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * @return BelongsTo
      */
-    public function Location(): BelongsTo
+    public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
     }
@@ -122,7 +122,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * @return BelongsTo
      */
-    public function Instructor(): BelongsTo
+    public function instructor(): BelongsTo
     {
         return $this->belongsTo(Instructor::class, 'instructor_id');
     }
@@ -130,7 +130,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * @return BelongsToMany
      */
-    public function DaysOfTheWeek(): BelongsToMany
+    public function daysOfTheWeek(): BelongsToMany
     {
         return $this->belongsToMany(DaysOfTheWeek::class)->withTimestamps();
     }
@@ -170,7 +170,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * @return array
      */
-    public function DaysOfTheWeekArray(): array
+    public function daysOfTheWeekArray(): array
     {
         return collect($this->DaysOfTheWeek()->get())->map(function ($item) {
             return $item->day;
@@ -180,7 +180,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * @return array
      */
-    public function DaysOfTheWeekIdsArray(): array
+    public function daysOfTheWeekIdsArray(): array
     {
         return collect($this->DaysOfTheWeek()->get())->map(function ($item) {
             return $item->id;
@@ -192,13 +192,13 @@ class Lesson extends Model implements PoolSessionable
      */
     public function hasSwimmers(): bool
     {
-        return $this->Swimmers()->count() > 0;
+        return $this->swimmers()->count() > 0;
     }
 
     /**
      * @return HasMany
      */
-    public function WaitList()
+    public function waitList()
     {
         return $this->hasMany(WaitList::class)->orderBy('created_at', 'asc');
     }

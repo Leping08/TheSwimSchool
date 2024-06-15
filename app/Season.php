@@ -28,7 +28,7 @@ class Season extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function Lessons()
+    public function lessons()
     {
         return $this->hasMany(Lesson::class);
     }

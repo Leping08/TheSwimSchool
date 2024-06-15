@@ -19,7 +19,7 @@ class ContactType extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function Contacts()
+    public function contacts()
     {
         return $this->hasMany(Contact::class);
     }

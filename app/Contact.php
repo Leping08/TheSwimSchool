@@ -35,7 +35,7 @@ class Contact extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Type()
+    public function type()
     {
         return $this->belongsTo(ContactType::class, 'contact_type_id');
     }

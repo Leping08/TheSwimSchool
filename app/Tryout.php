@@ -54,7 +54,7 @@ class Tryout extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function Athletes()
+    public function athletes()
     {
         return $this->hasMany(Athlete::class);
     }
@@ -62,7 +62,7 @@ class Tryout extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Location()
+    public function location()
     {
         return $this->belongsTo(Location::class);
     }
@@ -70,7 +70,7 @@ class Tryout extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Season()
+    public function season()
     {
         return $this->belongsTo(STSeason::class, 's_t_season_id');
     }

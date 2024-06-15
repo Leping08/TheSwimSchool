@@ -15,6 +15,7 @@ use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -57,6 +58,7 @@ class CreatePoolSessionsForPrivateLessons extends Action
         return [
             DateTime::make('Start Date and Time', 'start_date_time'),
             DateTime::make('End Date and Time', 'end_date_time'),
+            Number::make('Price', 'price')->default(35),
             BooleanGroup::make('Days', 'days')->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                 return [$item['id'] => $item['day']];
             }))->hideFalseValues()->onlyOnForms()->hideFromDetail()->hideWhenUpdating(),
