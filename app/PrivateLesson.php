@@ -111,6 +111,7 @@ class PrivateLesson extends Model implements PoolSessionable
                 'end' => $end,
                 'location_id' => data_get($fields, 'location_id'),
                 'instructor_id' => data_get($fields, 'instructor_id'),
+                'price' => data_get($fields, 'price'),
                 'pool_session_id' => null,
                 'pool_session_type' => PrivateLesson::class,
             ]);

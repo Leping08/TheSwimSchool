@@ -99,7 +99,7 @@
                         StripeCheckout.open({
                             name: 'The Swim School',
                             description: 'Private Lessons with The Swim School',
-                            amount: (window.cartLength * 35) * 100,
+                            amount: window.cartPrice * 100, // Stripe wants the price in cents
                             key: '{{config('services.stripe.key')}}',
                             image: '{{ asset('/img/logos/TSS_png.png') }}',
                             locale: 'auto',
@@ -110,7 +110,6 @@
                                 hiddenInput.setAttribute('name', 'stripe_token');
                                 hiddenInput.setAttribute('value', token.id);
                                 form.appendChild(hiddenInput);
-                                console.log(form);
                                 // Submit the form
                                 form.submit();
                             }

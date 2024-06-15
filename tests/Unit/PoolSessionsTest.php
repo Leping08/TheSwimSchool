@@ -101,11 +101,16 @@ class PoolSessionsTest extends TestCase
             ]
         ]);
 
-        $poolSession = PoolSession::where('pool_session_id', $groupLesson->id)
+        $poolSessions = PoolSession::where('pool_session_id', $groupLesson->id)
             ->where('pool_session_type', Lesson::class)
             ->get();
 
-        $this->assertNotNull($poolSession);
-        $this->assertEquals(2, $poolSession->count());
+        $this->assertNotNull($poolSessions);
+        $this->assertEquals(2, $poolSessions->count());
+
+        // The poolsession has a price of null
+        $poolSessions->each(function ($poolSession) {
+            $this->assertNull($poolSession->price);
+        });
     }
 }

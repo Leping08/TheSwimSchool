@@ -73,11 +73,27 @@ class CalendarController extends Controller
             }
         }
 
+        // Get all the pool session in the pool_session_ids array
+        $poolSessions = PoolSession::whereIn('id', $pool_session_ids)->get();
+
+        // Loop ove the pool sessions
+        // If the price is null set the price to 35
+        $poolSessions = $poolSessions->map(function ($poolSession) {
+            if ($poolSession->price == null) {
+                $poolSession->price = 35;
+            }
+
+            return $poolSession;
+        });
+
+        // Get the total price of all the pool sessions
+        $price = $poolSessions->sum('price');
+
         //Charge the card
         try {
             $stripe_charge = (new StripeCharge(
                 request()->stripe_token,
-                (35 * count($pool_session_ids)),  //$35.00 is the cost of one private lesson
+                $price,
                 request()->email,
                 'Private swim lessons for '.request()->first_name.' '.request()->last_name.' through The Swim School.'
             ))->charge();

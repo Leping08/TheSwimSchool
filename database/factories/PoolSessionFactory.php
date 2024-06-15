@@ -25,6 +25,7 @@ class PoolSessionFactory extends Factory
             'pool_session_type' => $this->faker->word(),
             'location_id' => Location::factory(),
             'instructor_id' => Instructor::factory(),
+            'price' => null,
         ];
     }
 }

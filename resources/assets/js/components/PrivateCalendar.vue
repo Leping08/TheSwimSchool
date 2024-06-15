@@ -37,9 +37,10 @@
                         <div>{{event.location_name}}</div>
                         <div>{{event.start.toDateString()}}</div>
                         <div>{{event.start.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}} - {{event.end.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit', hour12: true})}}</div>
+                        <div>${{event.price}}</div>
                     </div>
                     <div>
-                        <div class="uk-h3 uk-margin-top">Total: ${{ cart.length * 35 }}</div>
+                        <div class="uk-h3 uk-margin-top">Total: ${{ cartPrice }}</div>
                     </div>
                 </div>
             </div>
@@ -85,6 +86,7 @@
                     start: Date.parse(event.start),
                     end: Date.parse(event.end),
                     color: event.instructor.hex_color,
+                    price: event.price,
                     extendedProps: {
                         // Custom data goes here
                         location: event.location
@@ -104,7 +106,8 @@
                     'id': event.event.id,
                     'start': event.event.start,
                     'end': event.event.end,
-                    'location_name': event.event.extendedProps.location.name
+                    'location_name': event.event.extendedProps.location.name,
+                    'price': event.event.extendedProps.price ?? 35
                 });
 
                 //Set the color of the selected item
@@ -152,12 +155,16 @@
                     seen.add(instructor.id);
                     return !duplicate;
                 });
+            },
+            cartPrice: function () {
+                return this.cart.reduce((total, item) => total + item.price, 0);
             }
         },
         watch: {
             cart: {
                 handler: function (after, before) {
                     window.cartLength = Object.keys(after).length;
+                    window.price = this.cartPrice;
                 },
                 deep: true
             }

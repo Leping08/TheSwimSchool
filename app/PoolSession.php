@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pool_session_type
  * @property string $location_id
  * @property string $instructor_id
+ * @property int $price
  * @property \Illuminate\Support\Carbon $start
  * @property \Illuminate\Support\Carbon $end
  * @property \Illuminate\Support\Carbon $created_at
@@ -28,7 +29,7 @@ class PoolSession extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['start', 'end', 'pool_session_id', 'pool_session_type', 'location_id', 'instructor_id'];
+    protected $fillable = ['start', 'end', 'pool_session_id', 'pool_session_type', 'location_id', 'instructor_id', 'price'];
 
     protected $casts = [
         'start' => 'datetime',

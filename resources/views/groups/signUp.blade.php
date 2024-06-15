@@ -16,7 +16,6 @@ Sign Up
         <div class="uk-card uk-card-default">
             <div class="uk-card-body">
                 <div>This class is full. We recommend signing up for a different class with openings. If you choose to join the waitlist, we will notify you if any spots become available within 24-48 hours of the session start date.</div>
-{{--                <div>Sorry this lesson is full. Sign up for a different lesson <a title="Bradenton Swimming Lessons"href="{{ route('groups.lessons.index') }}">here</a>.</div>--}}
             </div>
         </div>
     @else
@@ -50,12 +49,12 @@ Sign Up
                     <div><i class="fa fa-users fa-lg" aria-hidden="true"></i> <strong>Class Size:</strong> {{$lesson->class_size}}</div>
                     <div><i class="fa fa-user fa-lg" aria-hidden="true"></i> <strong>Spots Remaining:</strong> {{$lesson->class_size - $lesson->swimmers->count()}}</div>
                 </div>
-                
+
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> <strong>Instructor:</strong> <a href="{{ route('pages.about') . '#'. $lesson->instructor->name }}">{{$lesson->instructor->name}}</a></div>
                     <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Dates:</strong> {{$lesson->class_start_date->toFormattedDateString()}} - {{$lesson->class_end_date->toFormattedDateString()}}</div>
                 </div>
-                
+
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> <strong>Location:</strong> {{$lesson->location->name}}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{{$lesson->location->street}}}+{{{$lesson->location->city}}}+{{{$lesson->location->state}}}+{{{$lesson->location->zip}}}">{{$lesson->location->street}}, <br>{{$lesson->location->city}}, {{$lesson->location->state}} {{$lesson->location->zip}}</a></div>
                     <div><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> <strong>Times:</strong><br>
@@ -64,7 +63,7 @@ Sign Up
                         @endforeach
                     </div>
                 </div>
-                
+
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div><i class="fa fa-money fa-lg" aria-hidden="true"></i> <strong>Price:</strong> ${{$lesson->price}}</div>
                 </div>
@@ -93,7 +92,6 @@ Sign Up
                                 hiddenInput.setAttribute('name', 'stripeToken');
                                 hiddenInput.setAttribute('value', token.id);
                                 form.appendChild(hiddenInput);
-                                console.log(form);
                                 // Submit the form
                                 form.submit();
                             }
