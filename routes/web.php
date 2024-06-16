@@ -104,10 +104,6 @@ Route::get('/private-semi-private', [\App\Http\Controllers\Privates\CalendarCont
 
 Route::post('/private-semi-private', [\App\Http\Controllers\Privates\CalendarController::class, 'store'])->name('private_lesson.store');
 
-// Route::get('/home-private-lesson', [\App\Http\Controllers\Privates\LeadController::class, 'index'])->name('home_privates.index');
-
-// Route::post('/home-private-lesson', [\App\Http\Controllers\Privates\LeadController::class, 'store'])->name('home_privates.store');
-
 /*
  * Email marketing unsubscribe page
  */
