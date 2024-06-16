@@ -32,7 +32,7 @@ class SendTryoutReminderEmails implements ShouldQueue
     public function handle()
     {
         Log::info('Starting to send tryout reminder emails.');
-        (new TryoutReminderEmail)->sendReminderEmails();
+        TryoutReminderEmail::sendReminderEmails();
         Log::info('Starting to send tryout reminder emails.');
     }
 }

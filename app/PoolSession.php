@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pool_session_type
  * @property string $location_id
  * @property string $instructor_id
- * @property int $price
+ * @property int $price - This is only for private lessons
  * @property \Illuminate\Support\Carbon $start
  * @property \Illuminate\Support\Carbon $end
  * @property \Illuminate\Support\Carbon $created_at

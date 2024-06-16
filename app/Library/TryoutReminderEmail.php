@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Mail;
 
 class TryoutReminderEmail
 {
-    public function sendReminderEmails()
+    public static function sendReminderEmails()
     {
-        $tryouts = $this->getTryoutsStartingTomorrow();
+        $tryouts = Tryout::whereDate('event_time', Carbon::tomorrow())->with('Athletes', 'Location')->get();
         if (count($tryouts)) {
             foreach ($tryouts as $tryout) {
                 foreach ($tryout->athletes as $athlete) {
@@ -29,10 +29,5 @@ class TryoutReminderEmail
         } else {
             Log::info('No tryouts tomorrow.');
         }
-    }
-
-    private function getTryoutsStartingTomorrow()
-    {
-        return Tryout::whereDate('event_time', Carbon::tomorrow())->with('Athletes', 'Location')->get();
     }
 }

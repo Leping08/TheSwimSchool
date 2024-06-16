@@ -25,3 +25,4 @@ auth.json
 .phpunit.result.cache.env.help
 .phpunit.result.cache
 /.phpunit.cache
+coverage/

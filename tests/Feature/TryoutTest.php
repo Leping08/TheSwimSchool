@@ -120,7 +120,7 @@ class TryoutTest extends TestCase
         Mail::fake();
         Mail::assertNothingSent();
 
-        (new TryoutReminderEmail)->sendReminderEmails();
+        TryoutReminderEmail::sendReminderEmails();
 
         Mail::assertSent(TryoutReminder::class);
     }

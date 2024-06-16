@@ -32,7 +32,7 @@ class SendGroupLessonsReminderEmails implements ShouldQueue
     public function handle()
     {
         Log::info('Starting to send lesson reminder emails.');
-        (new GroupLessonsReminderEmail)->sendReminderEmails();
+        GroupLessonsReminderEmail::sendReminderEmails();
         Log::info('Finished sending lesson reminder emails.');
     }
 }
