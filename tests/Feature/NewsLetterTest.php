@@ -73,12 +73,12 @@ class NewsLetterTest extends TestCase
         ]);
 
         $email_before = EmailList::where('email', $email_subscribed)->first();
-        $this->assertEquals(1, $email_before->subscribe);
+        $this->assertEquals(true, $email_before->subscribe);
 
         Mailgun::removeComplaintsEmails();
 
         $email_after = EmailList::where('email', $email_subscribed)->first();
-        $this->assertEquals(0, $email_after->subscribe);
+        $this->assertEquals(false, $email_after->subscribe);
     }
 
     /** @test  **/
@@ -98,12 +98,12 @@ class NewsLetterTest extends TestCase
         ]);
 
         $email_before = EmailList::where('email', $email_subscribed)->first();
-        $this->assertEquals(1, $email_before->subscribe);
+        $this->assertEquals(true, $email_before->subscribe);
 
         Mailgun::removeComplaintsEmails();
 
         $email_after = EmailList::where('email', $email_subscribed)->first();
-        $this->assertEquals(1, $email_after->subscribe);
+        $this->assertEquals(true, $email_after->subscribe);
     }
 
     /** @test  **/
@@ -122,8 +122,8 @@ class NewsLetterTest extends TestCase
             ->assertStatus(302);
 
         $this->assertCount(0, EmailList::all());
-    }    
-    
+    }
+
     /** @test  **/
     public function it_will_not_allow_someone_to_sign_up_if_they_move_too_fast_like_a_bot()
     {
@@ -139,7 +139,7 @@ class NewsLetterTest extends TestCase
 
         $this->assertCount(0, EmailList::all());
     }
-    
+
     /** @test  **/
     public function it_will_allow_someone_to_sign_up_if_they_at_human_speeds()
     {
@@ -154,5 +154,33 @@ class NewsLetterTest extends TestCase
             ->assertStatus(302);
 
         $this->assertCount(1, EmailList::all());
+    }
+
+    /** @test  **/
+    public function it_allows_someone_resubscribe_with_the_same_email()
+    {
+        $safeEmail = $this->faker->safeEmail();
+
+        EmailList::create([
+            'email' => $safeEmail,
+            'subscribe' => false,
+        ]);
+
+        // Assert the email is not subscribed
+        $this->assertCount(1, EmailList::all());
+        $this->assertEquals(false, EmailList::where('email', $safeEmail)->first()->subscribe);
+
+        $data = [
+            'email' => $safeEmail,
+            'time' => Carbon::now()->timestamp - 5,
+        ];
+
+        // Run the resubscribe
+        $this->post(route('newsletter.subscribe'), $data)
+            ->assertStatus(302);
+
+        // Assert that the email is subscribed
+        $this->assertCount(1, EmailList::all());
+        $this->assertEquals(true, EmailList::where('email', $safeEmail)->first()->subscribe);
     }
 }

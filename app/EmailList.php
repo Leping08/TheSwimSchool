@@ -22,6 +22,10 @@ class EmailList extends Model
 {
     use Actionable, HasFactory;
 
+    protected $casts = [
+        'subscribe' => 'boolean',
+    ];
+
     /**
      * @var array
      */
