@@ -22,7 +22,7 @@ class NewsLetter
                 $emailList = EmailList::where('email', $email)->firstOrFail();
                 Log::info("{$emailList->email} was already on the email list.");
                 //They want to resubscribe
-                if ($emailList->subscribe = false) {
+                if ($emailList->subscribe === false) {
                     $emailList->resubscribe();
                     Log::info("{$emailList->email} resubscribed to the email list.");
                 }
@@ -88,7 +88,7 @@ class NewsLetter
     {
         // Get all the emails that are not deleted
         $newsLetterEmails = EmailList::all();
-        
+
         // Loop through the emails
         foreach ($newsLetterEmails as $newsLetterEmail) {
             // Check if the email is a bot
