@@ -47,8 +47,8 @@ class GenerateCertificate implements ShouldQueue
         // For local testing only
         // $pdf = Browsershot::url('http://127.0.0.1:8001' . '/lessons/groups/certificate/' . Crypt::encryptString($this->swimmer->encryptedId))
         $pdf = BrowsershotLambda::url(route('groups.certificate.show', ['encrypted_swimmer_id' => $this->swimmer->encryptedId]))
-            ->windowSize(562, 1000)
-            ->paperSize(562, 1000, 'px')
+            ->windowSize(900, 1400)
+            ->paperSize(900, 1400, 'px')
             ->landscape()
             ->showBackground()
             ->margins(0, 0, 0, 0)
