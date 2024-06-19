@@ -25,7 +25,7 @@ class RegistrationOpen extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param $emailAddress
+     * @param  $emailAddress
      * @return void
      */
     public function __construct($emailAddress)
