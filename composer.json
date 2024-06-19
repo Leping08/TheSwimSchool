@@ -9,6 +9,7 @@
     "type": "project",
     "require": {
         "php": "^8.2",
+        "hammerstone/sidecar": "^0.6.1",
         "laravel/framework": "^11.0",
         "laravel/nova": "~4.0",
         "laravel/sanctum": "^4.0",
@@ -16,9 +17,11 @@
         "laravel/tinker": "^2.9",
         "laravel/vapor-core": "^2.12",
         "league/flysystem-aws-s3-v3": "^3.0",
+        "spatie/browsershot": "^4.0",
         "stripe/stripe-php": "^9.0",
         "symfony/http-client": "^7.0",
-        "symfony/mailgun-mailer": "^7.0"
+        "symfony/mailgun-mailer": "^7.0",
+        "wnx/sidecar-browsershot": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

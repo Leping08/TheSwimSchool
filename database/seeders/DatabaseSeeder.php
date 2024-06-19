@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             ContactTypes::class,
             DaysOfTheWeek::class,
             Seasons::class,
+            SkillsSeeder::class,
         ]);
     }
 }

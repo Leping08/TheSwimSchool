@@ -73,7 +73,7 @@ class Swimmer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Lesson()
+    public function lesson()
     {
         return $this->belongsTo(Lesson::class);
     }
@@ -86,6 +86,11 @@ class Swimmer extends Model
     public static function findByEncryptedId(string $encrypted_swimmer_id)
     {
         return Swimmer::find(Crypt::decrypt($encrypted_swimmer_id));
+    }
+
+    public function progressReports()
+    {
+        return $this->hasMany(ProgressReport::class);
     }
 
     public function getEncryptedIdAttribute()

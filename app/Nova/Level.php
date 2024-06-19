@@ -61,6 +61,7 @@ class Level extends Resource
             //Image::make('Icon', 'icon')->disk('sea-life')->hideWhenUpdating()->hideWhenCreating(),
             Text::make('Description', 'description')->hideFromIndex(),
             HasMany::make('Lessons', 'lessons', Lesson::class),
+            HasMany::make('Skills', 'skills', Skill::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
         ];

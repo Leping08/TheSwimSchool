@@ -36,7 +36,7 @@ class Group extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function Lessons()
+    public function lessons()
     {
         return $this->hasMany(Lesson::class);
     }
@@ -44,9 +44,17 @@ class Group extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function Swimmers()
+    public function swimmers()
     {
         return $this->hasManyThrough(\App\Swimmer::class, \App\Lesson::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
     }
 
     /**

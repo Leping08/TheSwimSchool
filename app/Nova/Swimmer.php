@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\CompleteProgressReport;
 use App\Nova\Actions\ResendGroupSignUpEmail;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -143,6 +144,7 @@ class Swimmer extends Resource
     {
         return [
             new ResendGroupSignUpEmail(),
+            (new CompleteProgressReport($this->model())),
         ];
     }
 
