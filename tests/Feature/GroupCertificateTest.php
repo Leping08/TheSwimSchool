@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Lesson;
 use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Crypt;
 use Tests\TestCase;
 
 class GroupCertificateTest extends TestCase
@@ -39,7 +40,7 @@ class GroupCertificateTest extends TestCase
     /** @test */
     public function a_user_get_an_error_with_the_wrong_swimmer_id()
     {
-        $encrypted_id = 'eyJpdiI6IjVDTjJTK1dha0NIcW9nM1hpMXBBenc9PSIsInZhbHVlIjoiNzdWVFNCckcramduZGV4VUFZU0JlUT09IiwibWFjIjoiY2ZiYTk2M2Y4NGVmMDI2MmNhNWQ5ZTc4ODU0NWE2MmZkZWIyMmNhNWVlMWY5NzhmMWE4NDM3ZDgyMWM2MjJiMyIsInRhZyI6IiJ9';
+        $encrypted_id = Crypt::encryptString('5');
         $this->get(route('groups.certificate.show', ['encrypted_swimmer_id' => $encrypted_id]))
             ->assertStatus(404)
             ->assertSee('Swimmer not found');

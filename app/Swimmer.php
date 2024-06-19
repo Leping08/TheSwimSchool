@@ -85,7 +85,7 @@ class Swimmer extends Model
 
     public static function findByEncryptedId(string $encrypted_swimmer_id)
     {
-        return Swimmer::find(Crypt::decrypt($encrypted_swimmer_id));
+        return Swimmer::find(Crypt::decryptString($encrypted_swimmer_id));
     }
 
     public function progressReports()
@@ -95,6 +95,6 @@ class Swimmer extends Model
 
     public function getEncryptedIdAttribute()
     {
-        return Crypt::encrypt($this->id);
+        return Crypt::encryptString((string) $this->id);
     }
 }

@@ -13,7 +13,7 @@ class CertificateController extends Controller
     {
         // Check if the $encrypted_swimmer_id is a valid encrypted string
         try {
-            Crypt::decrypt($encrypted_swimmer_id);
+            Crypt::decryptString($encrypted_swimmer_id);
         } catch (\Exception $e) {
             return Response::make('Invalid encrypted swimmer', 400);
         }
