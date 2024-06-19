@@ -45,8 +45,8 @@ class GenerateCertificate implements ShouldQueue
         $this->swimmer->load(['lesson.group', 'lesson.instructor']);
 
         // For local testing only
-        // $pdf = Browsershot::url('http://127.0.0.1:8001' . '/lessons/groups/certificate/' . Crypt::encryptString($this->swimmer->id))
-        $pdf = BrowsershotLambda::url(config('app.url') . '/swimmer-test/' . Crypt::encryptString($this->swimmer->id))
+        // $pdf = Browsershot::url('http://127.0.0.1:8001' . '/lessons/groups/certificate/' . Crypt::encryptString($this->swimmer->encryptedId))
+        $pdf = BrowsershotLambda::url(config('app.url') . '/lessons/groups/certificate/' . Crypt::encryptString($this->swimmer->encryptedId))
             ->windowSize(562, 1000)
             ->paperSize(562, 1000, 'px')
             ->landscape()
