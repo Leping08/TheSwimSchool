@@ -955,7 +955,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 <div class="text-2xl uppercase text-gray-800">In recognition of mastering skills and</div>
                 <div class="text-2xl uppercase text-gray-800">Achieving level progression</div>
                 <div class="flex items-center justify-end my-4">
-                    <img src="{{ $level_icon }}" class="-my-2 mr-8 w-28" />
+                    <img src="{{ asset($level_icon) }}" class="-my-2 mr-8 w-28" />
                     <div class="text-4xl font-bold italic text-blue-800">{{ $level_name }}</div>
                 </div>
                 <div class="mb-6 flex items-center justify-end">
