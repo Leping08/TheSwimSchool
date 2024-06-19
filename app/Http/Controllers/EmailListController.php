@@ -36,16 +36,18 @@ class EmailListController extends Controller
             $request->emailaddress,
         ])->filter()->isEmpty();
 
-        if (!$emptyHoneypot) {
+        if (! $emptyHoneypot) {
             Log::info('Honeypot fields were not empty.');
             session()->flash('warning', 'Are you a robot?');
+
             return back();
         }
 
         // Get the timestamp field and check if it is not within the last 3 seconds
-        if ((int)$request->time > (Carbon::now()->timestamp - 3)) {
+        if ((int) $request->time > (Carbon::now()->timestamp - 3)) {
             Log::info('Timestamp was not within the last 3 seconds.');
             session()->flash('warning', 'Are you a robot?');
+
             return back();
         }
 

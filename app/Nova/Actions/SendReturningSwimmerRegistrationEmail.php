@@ -5,7 +5,6 @@ namespace App\Nova\Actions;
 use App\Mail\SwimTeam\ReturningSwimmerRegistration;
 use App\STSwimmer;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;

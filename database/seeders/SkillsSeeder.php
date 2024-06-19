@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -32,8 +31,8 @@ class SkillsSeeder extends Seeder
                     'Retrieves objects on surface of water',
                     'Submerges under water with support willingly',
                     'Kicks on back, assisted',
-                    'Submerges under water voluntarily/holds breath'
-                ]
+                    'Submerges under water voluntarily/holds breath',
+                ],
             ],
             [
                 'group_name' => 'Parent & Toddler Advanced',
@@ -47,8 +46,8 @@ class SkillsSeeder extends Seeder
                     'Swims from parent to instructor',
                     'Kicks & paddles on front w/ face in water holding breath unassisted to wall',
                     'Jumps into water & returns to wall unassisted',
-                    'Climbs out of pool independently'
-                ]
+                    'Climbs out of pool independently',
+                ],
             ],
             [
                 'group_name' => 'Shrimp',
@@ -67,8 +66,8 @@ class SkillsSeeder extends Seeder
                     'Underwater exploration',
                     'Back float for 10 seconds, assisted',
                     'Completely comfortable under water',
-                    'Kicks on back, assisted'
-                ]
+                    'Kicks on back, assisted',
+                ],
             ],
             [
                 'group_name' => 'Seahourse',
@@ -81,8 +80,8 @@ class SkillsSeeder extends Seeder
                     'Back float for 20 seconds, unassisted',
                     'Takes regular breaths independently while swimming',
                     'Basic back stroke, unassisted',
-                    'Swim Float Swim'
-                ]
+                    'Swim Float Swim',
+                ],
             ],
             [
                 'group_name' => 'Starfish',
@@ -93,8 +92,8 @@ class SkillsSeeder extends Seeder
                     'Swim Float Swim',
                     'Basic butterfly movement',
                     'Basic front stroke, taking regular breaths',
-                    'Basic breaststroke movement'
-                ]
+                    'Basic breaststroke movement',
+                ],
             ],
             [
                 'group_name' => 'Stingray',
@@ -107,8 +106,8 @@ class SkillsSeeder extends Seeder
                     'Back float for 20 seconds, unassisted',
                     'Basic front stroke unassisted w/ face in water',
                     'Basic back stroke, unassisted w/ proper holding breath & catching breaths independently arm rhythm as needed',
-                    'Swim Float Swim Independently'
-                ]
+                    'Swim Float Swim Independently',
+                ],
             ],
             [
                 'group_name' => 'Dolphin',
@@ -120,8 +119,8 @@ class SkillsSeeder extends Seeder
                     'Uses swim float swim full length of pool as safety',
                     'Swims basic breaststroke stroke',
                     'Swims Individual Medley (width of pool)',
-                    'Swims full length of pool freestyle stroke, taking regular breaths as needed'
-                ]
+                    'Swims full length of pool freestyle stroke, taking regular breaths as needed',
+                ],
             ],
             [
                 'group_name' => 'Flying Fish',
@@ -131,9 +130,9 @@ class SkillsSeeder extends Seeder
                     'Swims 25 yards breaststroke',
                     'Swims 25 yards backstroke',
                     'Swims Individual Medley (length of pool)',
-                    'Swims 25 yards butterfly'
-                ]
-            ]
+                    'Swims 25 yards butterfly',
+                ],
+            ],
         ];
 
         // Check to see if records already exist in the skills table
@@ -149,7 +148,7 @@ class SkillsSeeder extends Seeder
                     'group_id' => $group['group_id'],
                     'description' => $skill,
                     'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()
+                    'updated_at' => Carbon::now(),
                 ]);
             }
         }

@@ -18,7 +18,7 @@ class GroupLessonReminder extends Mailable
     /**
      * GroupLessonReminder constructor.
      *
-     * @param $lesson
+     * @param  $lesson
      */
     public function __construct($lesson)
     {

@@ -38,6 +38,7 @@ class SendPrivatePoolSessionReminderEmails implements ShouldQueue
 
         if ($pool_sessions->isEmpty()) {
             Log::info('No pool sessions tomorrow. Not sending any emails.');
+
             return;
         }
 

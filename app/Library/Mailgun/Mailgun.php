@@ -4,7 +4,6 @@ namespace App\Library\Mailgun;
 
 use App\EmailList;
 use App\Jobs\NewsLetter\RemoveEmails;
-use App\Library\NewsLetter\NewsLetter;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 

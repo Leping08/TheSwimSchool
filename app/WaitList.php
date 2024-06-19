@@ -23,7 +23,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class WaitList extends Model
 {
-    use SoftDeletes, Ages, Actionable;
+    use Actionable, Ages, SoftDeletes;
 
     /**
      * @var array

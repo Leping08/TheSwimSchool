@@ -32,7 +32,7 @@ class CustomNewsLetterEmailTest extends TestCase
         $this->actingAs($user);
 
         $this->get(route('newsletter.index'))
-           ->assertStatus(200);
+            ->assertStatus(200);
     }
 
     /** @test */
@@ -61,12 +61,12 @@ class CustomNewsLetterEmailTest extends TestCase
             'button_text' => $customNewsLetter['button_text'],
             'preview_email_address' => $customNewsLetter['preview_email_address'],
         ])
-        ->assertStatus(200)
-        ->assertSee($customNewsLetter['body_text'])
-        ->assertSee($customNewsLetter['image_url'])
-        ->assertSee($customNewsLetter['button_url'])
-        ->assertSee($customNewsLetter['button_text'])
-        ->assertSee($customNewsLetter['preview_email_address']);
+            ->assertStatus(200)
+            ->assertSee($customNewsLetter['body_text'])
+            ->assertSee($customNewsLetter['image_url'])
+            ->assertSee($customNewsLetter['button_url'])
+            ->assertSee($customNewsLetter['button_text'])
+            ->assertSee($customNewsLetter['preview_email_address']);
     }
 
     /** @test */
@@ -108,7 +108,7 @@ class CustomNewsLetterEmailTest extends TestCase
         $this->json('POST', route('newsletter.preview.send'), [
             'preview_email_address' => $previewEmail,
         ])
-          ->assertStatus(200);
+            ->assertStatus(200);
 
         Mail::assertSent(CustomNewsLetter::class, function ($mail) use ($previewEmail) {
             return $mail->hasTo($previewEmail);
@@ -152,16 +152,16 @@ class CustomNewsLetterEmailTest extends TestCase
             'button_text' => $customNewsLetter_1['button_text'],
             'preview_email_address' => $customNewsLetter_1['preview_email_address'],
         ])
-        ->assertStatus(200)
-        ->assertSee($customNewsLetter_1['body_text'])
-        ->assertSee($customNewsLetter_1['button_text'])
-        ->assertSee($customNewsLetter_1['preview_email_address']);
+            ->assertStatus(200)
+            ->assertSee($customNewsLetter_1['body_text'])
+            ->assertSee($customNewsLetter_1['button_text'])
+            ->assertSee($customNewsLetter_1['preview_email_address']);
 
         $this->get(route('newsletter.show'))
-        ->assertStatus(200)
-        ->assertSee($customNewsLetter_1['body_text'])
-        ->assertSee($customNewsLetter_1['button_text'])
-        ->assertSee($customNewsLetter_1['preview_email_address']);
+            ->assertStatus(200)
+            ->assertSee($customNewsLetter_1['body_text'])
+            ->assertSee($customNewsLetter_1['button_text'])
+            ->assertSee($customNewsLetter_1['preview_email_address']);
 
         $this->json('POST', route('newsletter.store'), [
             'subject' => $customNewsLetter_2['subject'],
@@ -171,10 +171,10 @@ class CustomNewsLetterEmailTest extends TestCase
             'button_text' => $customNewsLetter_2['button_text'],
             'preview_email_address' => $customNewsLetter_2['preview_email_address'],
         ])
-        ->assertStatus(200)
-        ->assertSee($customNewsLetter_2['body_text'])
-        ->assertSee($customNewsLetter_2['button_text'])
-        ->assertSee($customNewsLetter_2['preview_email_address']);
+            ->assertStatus(200)
+            ->assertSee($customNewsLetter_2['body_text'])
+            ->assertSee($customNewsLetter_2['button_text'])
+            ->assertSee($customNewsLetter_2['preview_email_address']);
     }
 
     /** @test */
@@ -210,7 +210,7 @@ class CustomNewsLetterEmailTest extends TestCase
         PageParameters::factory()->customNewsLetter()->create();
 
         $this->json('POST', route('newsletter.send'))
-        ->assertStatus(200);
+            ->assertStatus(200);
 
         Queue::assertPushed(QueueCustomNewsLetterEmails::class);
     }

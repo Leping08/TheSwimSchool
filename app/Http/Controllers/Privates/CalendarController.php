@@ -135,6 +135,7 @@ class CalendarController extends Controller
             if (! $pool_session) {
                 Log::warning("Someone has already taken the pool session id: $pool_session_id");
                 session()->flash('warning', 'Sorry, one of the classes was already taken.');
+
                 //TODO: Refund the swimmer the charge or schedule different pool sessions, possibly an email here
                 return redirect()->back();
             }

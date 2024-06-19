@@ -194,7 +194,7 @@ class WaitListTest extends TestCase
             'address' => $this->faker->streetAddress,
             'city' => $this->faker->city,
             'state' => $this->faker->stateAbbr,
-            'zip' => $this->faker->postcode
+            'zip' => $this->faker->postcode,
         ];
 
         $this->post(route('groups.lessons.wait-list', ['lesson' => $lesson]), $swimmer2)

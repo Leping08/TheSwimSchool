@@ -21,7 +21,7 @@ class SeasonHelpers
     }
 
     /**
-     * @param $date
+     * @param  $date
      * @return mixed
      */
     public static function seasonFromDate($date)

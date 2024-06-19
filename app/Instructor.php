@@ -26,7 +26,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Instructor extends Model
 {
-    use HasFactory, SoftDeletes, Actionable;
+    use Actionable, HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',

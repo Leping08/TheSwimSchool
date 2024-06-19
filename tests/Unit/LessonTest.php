@@ -83,7 +83,7 @@ class LessonTest extends TestCase
                 '1' => true, // Monday
                 '2' => true, // Tuesday
                 '3' => true, // Wednesday
-            ]
+            ],
         ]);
 
         $lesson = $lesson->fresh();
@@ -103,7 +103,7 @@ class LessonTest extends TestCase
                 '1' => true, // Monday
                 '2' => true, // Tuesday
                 '3' => true, // Wednesday
-            ]
+            ],
         ]);
 
         $this->assertEquals(6, $lesson->pool_sessions->count());
@@ -115,7 +115,7 @@ class LessonTest extends TestCase
         $lesson = Lesson::factory()->create();
         $poolSession = PoolSession::factory()->create([
             'pool_session_id' => $lesson->id,
-            'pool_session_type' => Lesson::class
+            'pool_session_type' => Lesson::class,
         ]);
 
         $this->assertEquals(1, $lesson->pool_sessions->count());
@@ -136,7 +136,7 @@ class LessonTest extends TestCase
                 '1' => true, // Monday
                 '2' => true, // Tuesday
                 '3' => true, // Wednesday
-            ]
+            ],
         ]);
 
         $this->assertEquals(6, $lesson->pool_sessions->count());

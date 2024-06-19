@@ -9,7 +9,6 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-
 class Skill extends Resource
 {
     /**
@@ -46,7 +45,7 @@ class Skill extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Description'),
-            BelongsTo::make('Level', 'group', Level::class)->hideFromIndex()
+            BelongsTo::make('Level', 'group', Level::class)->hideFromIndex(),
         ];
     }
 

@@ -25,7 +25,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Contact extends Model
 {
-    use SoftDeletes, Actionable;
+    use Actionable, SoftDeletes;
 
     /**
      * @var array

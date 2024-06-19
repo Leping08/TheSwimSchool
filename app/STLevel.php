@@ -16,9 +16,9 @@ class STLevel extends Model
     public function schedule()
     {
         return $this->belongsToMany(DaysOfTheWeek::class, 's_t_schedules')
-                        ->using(STSchedule::class)
-                        ->withPivot('start_time', 'end_time')
-                        ->withTimestamps();
+            ->using(STSchedule::class)
+            ->withPivot('start_time', 'end_time')
+            ->withTimestamps();
     }
 
     /**
@@ -27,6 +27,6 @@ class STLevel extends Model
     public function swimmers()
     {
         return $this->hasMany(STSwimmer::class)
-                    ->where('s_t_swimmers.stripeChargeId', '!=', null);
+            ->where('s_t_swimmers.stripeChargeId', '!=', null);
     }
 }

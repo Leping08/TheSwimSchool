@@ -20,12 +20,12 @@ class LessonStatus extends Filter
     {
         if ($value === 'open-signups') {
             return $query->whereDate('class_start_date', '>', Carbon::yesterday())
-                         ->whereDate('registration_open', '<=', Carbon::now());
+                ->whereDate('registration_open', '<=', Carbon::now());
         }
 
         if ($value === 'active') {
             return $query->whereDate('class_end_date', '>=', Carbon::now())   // 9/15
-                         ->whereDate('class_start_date', '<=', Carbon::now()); // 8/25
+                ->whereDate('class_start_date', '<=', Carbon::now()); // 8/25
         }
 
         if ($value === 'complete') {

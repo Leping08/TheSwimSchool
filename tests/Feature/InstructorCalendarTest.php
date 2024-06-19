@@ -52,8 +52,8 @@ class InstructorCalendarTest extends TestCase
             'class_end_time' => Carbon::now()->addHour(),
             'days' => [
                 '1' => true,
-                '3' => true
-            ]
+                '3' => true,
+            ],
         ]);
 
         $lesson_2 = Lesson::factory()->create([
@@ -64,7 +64,7 @@ class InstructorCalendarTest extends TestCase
             'class_end_time' => Carbon::now()->addHour(),
             'days' => [
                 '1' => true,
-                '3' => true
+                '3' => true,
             ],
         ]);
 
@@ -106,8 +106,8 @@ class InstructorCalendarTest extends TestCase
             'class_end_time' => Carbon::now()->addHour(),
             'days' => [
                 '1' => true,
-                '3' => true
-            ]
+                '3' => true,
+            ],
         ]);
 
         $lesson_2 = Lesson::factory()->create([
@@ -119,8 +119,8 @@ class InstructorCalendarTest extends TestCase
             'class_end_time' => Carbon::now()->addHour(),
             'days' => [
                 '1' => true,
-                '3' => true
-            ]
+                '3' => true,
+            ],
         ]);
 
         $this->actingAs($user);
@@ -147,7 +147,7 @@ class InstructorCalendarTest extends TestCase
                 '1' => true,
                 '2' => true,
                 '3' => true,
-                '4' => true
+                '4' => true,
             ],
         ]);
 
@@ -226,10 +226,10 @@ class InstructorCalendarTest extends TestCase
         $this->assertCount(2, PoolSession::all());
 
         $calendarSessions = PoolSession::where('instructor_id', $instructor->id)
-                            ->privateLessonsSignedUp()
-                            ->whereDate('start', '>=', Carbon::now()->subMonths(3))
-                            ->with(['lesson.swimmer', 'location'])
-                            ->get();
+            ->privateLessonsSignedUp()
+            ->whereDate('start', '>=', Carbon::now()->subMonths(3))
+            ->with(['lesson.swimmer', 'location'])
+            ->get();
 
         $this->assertCount(1, $calendarSessions);
 

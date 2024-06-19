@@ -38,7 +38,7 @@ class StripeCharge implements PaymentMethod
      * @param  string  $email
      * @param  string|null  $description
      */
-    public function __construct(string $token, int $price, string $email, string $description = null)
+    public function __construct(string $token, int $price, string $email, ?string $description = null)
     {
         $this->token = $token;
         $this->price = $price;
@@ -113,7 +113,7 @@ class StripeCharge implements PaymentMethod
     }
 
     /**
-     * @param $e
+     * @param  $e
      *
      * @throws \Exception
      */

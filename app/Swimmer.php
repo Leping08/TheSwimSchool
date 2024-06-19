@@ -5,10 +5,9 @@ namespace App;
 use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Nova\Actions\Actionable;
 use Illuminate\Support\Facades\Crypt;
+use Laravel\Nova\Actions\Actionable;
 
 /**
  * An Eloquent Model: 'Swimmer'
@@ -39,7 +38,7 @@ use Illuminate\Support\Facades\Crypt;
  */
 class Swimmer extends Model
 {
-    use SoftDeletes, Ages, Actionable, HasFactory;
+    use Actionable, Ages, HasFactory, SoftDeletes;
 
     /**
      * @var array
@@ -47,6 +46,7 @@ class Swimmer extends Model
     protected $casts = [
         'birthDate' => 'date',
     ];
+
     /**
      * @var array
      */

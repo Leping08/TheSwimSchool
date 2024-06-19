@@ -10,7 +10,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class STSwimmer extends Model
 {
-    use SoftDeletes, Ages, Actionable, HasFactory;
+    use Actionable, Ages, HasFactory, SoftDeletes;
 
     /**
      * @var array
@@ -97,6 +97,6 @@ class STSwimmer extends Model
     public function signedUpSwimmers()
     {
         return $this->belongsTo(STLevel::class, 's_t_level_id')
-                    ->where('stripeChargeId', '!=', null);
+            ->where('stripeChargeId', '!=', null);
     }
 }

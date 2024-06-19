@@ -23,8 +23,8 @@ class ContactUs extends Mailable
     /**
      * ContactUs constructor.
      *
-     * @param $data
-     * @param $subject
+     * @param  $data
+     * @param  $subject
      */
     public function __construct($data, $subject)
     {

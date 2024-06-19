@@ -20,8 +20,8 @@ class DaysOfTheWeek extends Model
     public function levels()
     {
         return $this->belongsToMany(STLevel::class, 's_t_schedules')
-                    ->using(STSchedule::class)
-                    ->withPivot('start_time', 'end_time')
-                    ->withTimestamps();
+            ->using(STSchedule::class)
+            ->withPivot('start_time', 'end_time')
+            ->withTimestamps();
     }
 }

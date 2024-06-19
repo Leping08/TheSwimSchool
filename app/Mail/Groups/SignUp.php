@@ -37,6 +37,6 @@ class SignUp extends Mailable
             ->from(config('mail.from.address'))
             ->markdown('email.groups.lessonSignUp')
             ->with(['lesson' => $this->lesson]);
-            // ->attach(asset('pdf/The_Swim_School_Policies_and_Procedures.pdf')); // @todo This is not working
+        // ->attach(asset('pdf/The_Swim_School_Policies_and_Procedures.pdf')); // @todo This is not working
     }
 }

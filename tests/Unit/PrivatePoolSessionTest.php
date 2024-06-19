@@ -25,9 +25,9 @@ class PrivatePoolSessionTest extends TestCase
 
         $private = (new CreatePoolSessionsForPrivateLessons());
         $fields = collect([
-            "start_date_time" => "2022-04-10T08:00:00.000-04:00",
-            "end_date_time" => "2022-04-16T09:00:00.000-04:00",
-            "days" => [
+            'start_date_time' => '2022-04-10T08:00:00.000-04:00',
+            'end_date_time' => '2022-04-16T09:00:00.000-04:00',
+            'days' => [
                 '1' => true, // '1' is Monday
                 '2' => true, // '2' is Tuesday
                 '3' => false, // '3' is Wednesday
@@ -36,8 +36,8 @@ class PrivatePoolSessionTest extends TestCase
                 '6' => false, // '6' is Saturday
                 '7' => false, // '7' is Sunday
             ],
-            "location_id" => $location->id,
-            "instructor_id" => $instructor->id
+            'location_id' => $location->id,
+            'instructor_id' => $instructor->id,
         ]);
 
         $action = new ActionFields($fields, collect());
@@ -61,9 +61,9 @@ class PrivatePoolSessionTest extends TestCase
 
         $private = (new CreatePoolSessionsForPrivateLessons());
         $fields = collect([
-            "start_date_time" => "2022-04-10T08:00:00.000-04:00",
-            "end_date_time" => "2022-04-16T09:00:00.000-04:00",
-            "days" => [
+            'start_date_time' => '2022-04-10T08:00:00.000-04:00',
+            'end_date_time' => '2022-04-16T09:00:00.000-04:00',
+            'days' => [
                 '1' => true, // '1' is Monday
                 '2' => true, // '2' is Tuesday
                 '3' => true, // '3' is Wednesday
@@ -72,8 +72,8 @@ class PrivatePoolSessionTest extends TestCase
                 '6' => true, // '6' is Saturday
                 '7' => true, // '7' is Sunday
             ],
-            "location_id" => $location->id,
-            "instructor_id" => $instructor->id
+            'location_id' => $location->id,
+            'instructor_id' => $instructor->id,
         ]);
 
         $action = new ActionFields($fields, collect());
@@ -96,14 +96,14 @@ class PrivatePoolSessionTest extends TestCase
 
         $private = (new CreatePoolSessionsForPrivateLessons());
         $fields = collect([
-            "start_date_time" => "2022-04-04T08:00:00.000-04:00",
-            "end_date_time" => "2022-04-15T09:00:00.000-04:00",
-            "days" => [
+            'start_date_time' => '2022-04-04T08:00:00.000-04:00',
+            'end_date_time' => '2022-04-15T09:00:00.000-04:00',
+            'days' => [
                 '2' => true, // '2' is Tuesday
                 '5' => true, // '5' is Friday
             ],
-            "location_id" => $location->id,
-            "instructor_id" => $instructor->id
+            'location_id' => $location->id,
+            'instructor_id' => $instructor->id,
         ]);
 
         $action = new ActionFields($fields, collect());
@@ -126,14 +126,14 @@ class PrivatePoolSessionTest extends TestCase
 
         $private = (new CreatePoolSessionsForPrivateLessons());
         $fields = collect([
-            "start_date_time" => "2022-04-04T08:00:00.000-04:00",
-            "end_date_time" => "2022-04-15T09:00:00.000-04:00",
-            "days" => [
+            'start_date_time' => '2022-04-04T08:00:00.000-04:00',
+            'end_date_time' => '2022-04-15T09:00:00.000-04:00',
+            'days' => [
                 '2' => true, // '2' is Tuesday
                 '5' => true, // '5' is Friday
             ],
-            "location_id" => $location->id,
-            "instructor_id" => $instructor->id
+            'location_id' => $location->id,
+            'instructor_id' => $instructor->id,
         ]);
 
         $action = new ActionFields($fields, collect());
@@ -160,10 +160,10 @@ class PrivatePoolSessionTest extends TestCase
 
         $private = (new CreatePoolSessionsForPrivateLessons());
         $fields = collect([
-            "start_date_time" => "2022-04-10T08:00:00.000-04:00",
-            "end_date_time" => "2022-04-16T09:00:00.000-04:00",
-            "price" => 35,
-            "days" => [
+            'start_date_time' => '2022-04-10T08:00:00.000-04:00',
+            'end_date_time' => '2022-04-16T09:00:00.000-04:00',
+            'price' => 35,
+            'days' => [
                 '1' => true, // '1' is Monday
                 '2' => true, // '2' is Tuesday
                 '3' => true, // '3' is Wednesday
@@ -172,8 +172,8 @@ class PrivatePoolSessionTest extends TestCase
                 '6' => true, // '6' is Saturday
                 '7' => true, // '7' is Sunday
             ],
-            "location_id" => $location->id,
-            "instructor_id" => $instructor->id
+            'location_id' => $location->id,
+            'instructor_id' => $instructor->id,
         ]);
 
         $action = new ActionFields($fields, collect());

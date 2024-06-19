@@ -42,7 +42,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Athlete extends Model
 {
-    use SoftDeletes, Actionable, HasFactory;
+    use Actionable, HasFactory, SoftDeletes;
 
     protected $casts = [
         's_t_sign_up_email' => 'boolean',
@@ -117,8 +117,8 @@ class Athlete extends Model
     /**
      * @method static findByHash()
      *
-     * @param $query
-     * @param $hash
+     * @param  $query
+     * @param  $hash
      * @return mixed
      */
     public function scopeFindByHash($query, $hash)

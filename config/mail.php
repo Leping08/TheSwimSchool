@@ -55,9 +55,9 @@ return [
         'mailgun' => [
             'transport' => 'mailgun',
             'api_token' => env('MAILGUN_API_TOKEN'),
-			'client' => [
-				'http_version' => '1.1',
-			]
+            'client' => [
+                'http_version' => '1.1',
+            ],
         ],
 
         'postmark' => [

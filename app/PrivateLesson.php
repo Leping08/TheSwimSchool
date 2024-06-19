@@ -6,8 +6,8 @@ use App\Library\PoolSessionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
@@ -27,7 +27,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class PrivateLesson extends Model implements PoolSessionable
 {
-    use SoftDeletes, Actionable, Notifiable, HasFactory;
+    use Actionable, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * @var array

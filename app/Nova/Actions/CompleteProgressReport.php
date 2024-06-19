@@ -60,6 +60,7 @@ class CompleteProgressReport extends Action
         $defaultValues = $skills->mapWithKeys(function ($skill) use ($progressReports) {
             // Sync the existing progress report if it exists with the already selected values if they exist
             $existingValue = $progressReports->where('skill_id', $skill->id)->first()?->passed;
+
             return [$skill->id => $existingValue ?? true];
         });
 

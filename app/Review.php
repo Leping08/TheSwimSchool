@@ -22,7 +22,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Review extends Model
 {
-    use SoftDeletes, Actionable, HasFactory;
+    use Actionable, HasFactory, SoftDeletes;
 
     protected $fillable = ['name', 'active', 'created_time', 'message'];
 

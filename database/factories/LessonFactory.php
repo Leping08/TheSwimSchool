@@ -37,7 +37,7 @@ class LessonFactory extends Factory
                 '4' => false,
                 '5' => false,
                 '6' => false,
-                '7' => false
+                '7' => false,
             ],
             'price' => $this->faker->numberBetween(1, 150),
             'class_start_date' => $this->faker->dateTimeBetween('now', '+1 month'),

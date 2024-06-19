@@ -33,7 +33,7 @@ class STInvitation extends Mailable
      * @param  Athlete  $athlete
      * @param  PromoCode  $promoCode
      */
-    public function __construct(Athlete $athlete, PromoCode $promoCode = null)
+    public function __construct(Athlete $athlete, ?PromoCode $promoCode = null)
     {
         $this->athlete = $athlete;
         $this->promoCode = $promoCode;

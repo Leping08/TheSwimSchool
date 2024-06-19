@@ -143,7 +143,7 @@ class STSwimmer extends Resource
     {
         return [
             new SendSwimTeamRegistrationEmail(),
-            new SendReturningSwimmerRegistrationEmail()
+            new SendReturningSwimmerRegistrationEmail(),
         ];
     }
 

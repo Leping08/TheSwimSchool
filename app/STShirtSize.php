@@ -9,7 +9,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class STShirtSize extends Model
 {
-    use SoftDeletes, Actionable, HasFactory;
+    use Actionable, HasFactory, SoftDeletes;
 
     protected $table = 's_t_shirt_sizes';
 

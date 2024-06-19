@@ -27,7 +27,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Tryout extends Model
 {
-    use SoftDeletes, Actionable, HasFactory;
+    use Actionable, HasFactory, SoftDeletes;
 
     /**
      * @var array
@@ -76,13 +76,13 @@ class Tryout extends Model
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopeRegistrationOpen($query)
     {
         return $query->whereDate('event_time', '>', Carbon::now())
-                    ->whereDate('registration_open', '<=', Carbon::now());
+            ->whereDate('registration_open', '<=', Carbon::now());
     }
 
     /**

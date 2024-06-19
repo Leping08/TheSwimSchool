@@ -45,18 +45,18 @@ class CustomNewsLetter extends Mailable
     public function build()
     {
         return $this->markdown('email.newsletter.custom')
-                    ->from(config('mail.from.address'))
-                    ->subject($this->email_subject)
-                    ->with([
-                        'emailAddress' => $this->email_address,
-                        'button_text' => $this->button_text,
-                        'button_url' => $this->button_url,
-                        'image_url' => $this->image_url,
-                        'body' => $this->body,
-                    ])
-                    ->withSymfonyMessage(function ($message) {
-                        $message->getHeaders()
-                            ->addTextHeader('List-Unsubscribe', '<'.route('newsletter.unsubscribe', ['email' => $this->email_address]).'>');
-                    });
+            ->from(config('mail.from.address'))
+            ->subject($this->email_subject)
+            ->with([
+                'emailAddress' => $this->email_address,
+                'button_text' => $this->button_text,
+                'button_url' => $this->button_url,
+                'image_url' => $this->image_url,
+                'body' => $this->body,
+            ])
+            ->withSymfonyMessage(function ($message) {
+                $message->getHeaders()
+                    ->addTextHeader('List-Unsubscribe', '<'.route('newsletter.unsubscribe', ['email' => $this->email_address]).'>');
+            });
     }
 }

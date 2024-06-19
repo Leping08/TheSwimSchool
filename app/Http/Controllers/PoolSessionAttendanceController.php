@@ -11,7 +11,7 @@ class PoolSessionAttendanceController extends Controller
     {
         // Validate the request has attended
         $validated = request()->validate([
-            'attended' => 'required|boolean'
+            'attended' => 'required|boolean',
         ]);
 
         // Find the pool session attendance
@@ -19,7 +19,7 @@ class PoolSessionAttendanceController extends Controller
 
         // Update the attendance for the pool session
         $poolSessionAttendance->update([
-            'attended' => $validated['attended']
+            'attended' => $validated['attended'],
         ]);
 
         return response()->json($poolSessionAttendance);

@@ -42,8 +42,9 @@ class RealhabAttendanceController extends Controller
         // Filter out any attendances that dont have a swimmer
         $sessions = $sessions->map(function ($session) {
             $session->filtered_attendances = collect(data_get($session, 'attendances'))->filter(function ($attendance) {
-                return !empty($attendance->swimmer);
+                return ! empty($attendance->swimmer);
             });
+
             return $session;
         });
 

@@ -6,19 +6,18 @@ use App\Library\Helpers\Ages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Nova\Actions\Actionable;
 
 class PrivateSwimmer extends Model
 {
-    use SoftDeletes, Ages, Actionable, HasFactory;
+    use Actionable, Ages, HasFactory, SoftDeletes;
 
     /**
      * @var array
      */
     protected $casts = [
-        'birth_date' => 'date'
+        'birth_date' => 'date',
     ];
 
     /**

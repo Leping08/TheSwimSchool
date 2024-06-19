@@ -70,11 +70,11 @@ class PoolSession extends Model
     public function scopePrivateLessonsAvailable($query)
     {
         return $query->where('pool_session_type', PrivateLesson::class)
-                    ->whereNull('pool_session_id');
+            ->whereNull('pool_session_id');
     }
 
     /**
-    * Scope a query to only include private pool session that are available.
+     * Scope a query to only include private pool session that are available.
      *
      * @param  Builder  $query
      * @return Builder
@@ -82,7 +82,7 @@ class PoolSession extends Model
     public function scopePrivateLessonsSignedUp($query)
     {
         return $query->where('pool_session_type', PrivateLesson::class)
-                    ->whereNotNull('pool_session_id');
+            ->whereNotNull('pool_session_id');
     }
 
     /**
@@ -108,7 +108,7 @@ class PoolSession extends Model
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopeStartingTomorrow($query)
@@ -117,7 +117,7 @@ class PoolSession extends Model
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      *
      * If today is after the 25th of the month then show the lessons

@@ -32,7 +32,7 @@ class EmailList extends Model
     protected $fillable = ['email', 'subscribe'];
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopeSubscribed($query)
@@ -41,7 +41,7 @@ class EmailList extends Model
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopeUnsubscribed($query)

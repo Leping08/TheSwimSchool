@@ -49,8 +49,8 @@ class RealhabAttendanceTest extends TestCase
             'class_end_time' => now()->addHour(),
             'days' => [
                 '1' => true,
-                '3' => true
-            ]
+                '3' => true,
+            ],
         ]);
 
         // Create a pool session for the group lesson
@@ -75,14 +75,14 @@ class RealhabAttendanceTest extends TestCase
         $response = $this->get(route('realhab-attendance.index', [
             'start' => now()->subWeek()->format('Y-m-d'),
             'end' => now()->addWeek()->format('Y-m-d'),
-            'type' => 'group'
+            'type' => 'group',
         ]));
 
         $response->assertStatus(200);
         $response->assertViewIs('lessons.realhab-attendance');
         $response->assertViewHasAll([
             'sessions',
-            'swimmers'
+            'swimmers',
         ]);
         // Assert see swimmer name
         $response->assertSee($swimmer->name);
@@ -105,8 +105,8 @@ class RealhabAttendanceTest extends TestCase
             'class_end_time' => now()->addHour(),
             'days' => [
                 '1' => true,
-                '3' => true
-            ]
+                '3' => true,
+            ],
         ]);
 
         // Create a pool session for the group lesson
@@ -131,14 +131,14 @@ class RealhabAttendanceTest extends TestCase
         $response = $this->get(route('realhab-attendance.index', [
             'start' => now()->subWeek()->format('Y-m-d'),
             'end' => now()->addWeek()->format('Y-m-d'),
-            'type' => 'group'
+            'type' => 'group',
         ]));
 
         $response->assertStatus(200);
         $response->assertViewIs('lessons.realhab-attendance');
         $response->assertViewHasAll([
             'sessions',
-            'swimmers'
+            'swimmers',
         ]);
         // Assert see swimmer name
         $response->assertDontSee($swimmer->name);
@@ -176,14 +176,14 @@ class RealhabAttendanceTest extends TestCase
         $response = $this->get(route('realhab-attendance.index', [
             'start' => now()->subWeek()->format('Y-m-d'),
             'end' => now()->addWeek()->format('Y-m-d'),
-            'type' => 'private'
+            'type' => 'private',
         ]));
 
         $response->assertStatus(200);
         $response->assertViewIs('lessons.realhab-attendance');
         $response->assertViewHasAll([
             'sessions',
-            'swimmers'
+            'swimmers',
         ]);
         // Assert see swimmer name
         $response->assertSee($privateSwimmer->name);

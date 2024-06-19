@@ -44,7 +44,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Lesson extends Model implements PoolSessionable
 {
-    use SoftDeletes, Actionable, Notifiable, HasFactory;
+    use Actionable, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * @var array
@@ -204,7 +204,7 @@ class Lesson extends Model implements PoolSessionable
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopeRegistrationOpen($query)
@@ -215,7 +215,7 @@ class Lesson extends Model implements PoolSessionable
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopeStartingTomorrow($query)
@@ -224,7 +224,7 @@ class Lesson extends Model implements PoolSessionable
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopeEndedOneWeekAgo($query)
@@ -271,8 +271,7 @@ class Lesson extends Model implements PoolSessionable
     /**
      * A method to generate pool sessions for a lesson
      *
-     * @param array $fields
-     *
+     * @param  array  $fields
      * @return void
      */
     public function generatePoolSessions(array $unused): void

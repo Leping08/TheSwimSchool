@@ -16,10 +16,10 @@ class SwimmersPerLevel extends Partition
      */
     public function calculate(Request $request)
     {
-//        $groups = Group::withCount('swimmers')->get();
-//        $result = $groups->mapWithKeys(function ($item) {
-//            return [$item['type'] => $item['swimmers_count']];
-//        })->toArray();
+        //        $groups = Group::withCount('swimmers')->get();
+        //        $result = $groups->mapWithKeys(function ($item) {
+        //            return [$item['type'] => $item['swimmers_count']];
+        //        })->toArray();
 
         return $this->result([
             'Parent and Infant-Toddler Level I' => 62,
@@ -38,7 +38,7 @@ class SwimmersPerLevel extends Partition
     /**
      * Determine for how many minutes the metric should be cached.
      *
-     * @return  \DateTimeInterface|\DateInterval|float|int
+     * @return \DateTimeInterface|\DateInterval|float|int
      */
     public function cacheFor()
     {

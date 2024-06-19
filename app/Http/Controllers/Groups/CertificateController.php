@@ -20,14 +20,14 @@ class CertificateController extends Controller
 
         $swimmer = Swimmer::findByEncryptedId($encrypted_swimmer_id);
 
-        if (!$swimmer) {
+        if (! $swimmer) {
             return Response::make('Swimmer not found', 404);
         }
 
         $swimmer->load(['lesson.group', 'lesson.instructor']);
 
         return view('groups.certificate', with([
-            'swimmer_name' => $swimmer->firstName . ' ' . $swimmer->lastName,
+            'swimmer_name' => $swimmer->firstName.' '.$swimmer->lastName,
             'instructor_name' => $swimmer->lesson->instructor->name,
             'lesson_completed_date' => $swimmer->lesson->class_end_date->format('m/d/y'),
             'level_icon' => $swimmer->lesson->group->icon_path,

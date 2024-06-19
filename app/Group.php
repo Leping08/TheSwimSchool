@@ -21,7 +21,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class Group extends Model
 {
-    use SoftDeletes, Actionable, HasFactory;
+    use Actionable, HasFactory, SoftDeletes;
 
     /**
      * @var array
@@ -58,7 +58,7 @@ class Group extends Model
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopePublic($query)
@@ -70,7 +70,7 @@ class Group extends Model
     }
 
     /**
-     * @param $query
+     * @param  $query
      * @return mixed
      */
     public function scopePrivate($query)

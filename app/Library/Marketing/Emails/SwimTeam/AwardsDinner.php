@@ -15,8 +15,8 @@ class AwardsDinner
         $currentSeason = STSeason::where('current_season', true)->first();
 
         return STSwimmer::where('s_t_season_id', $currentSeason->id)
-                        ->pluck('email')
-                        ->unique();
+            ->pluck('email')
+            ->unique();
     }
 
     public static function send()

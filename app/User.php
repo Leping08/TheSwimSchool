@@ -27,7 +27,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class User extends Authenticatable
 {
-    use Notifiable, Actionable, SoftDeletes, HasFactory;
+    use Actionable, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

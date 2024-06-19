@@ -28,7 +28,7 @@ class ProgressReportActionTest extends TestCase
         $fields = collect([
             'skills' => $defaultValues,
             'gruadated' => false,
-            'swimmer_id' => $swimmer->id
+            'swimmer_id' => $swimmer->id,
         ]);
 
         $progressReport = new CompleteProgressReport();
@@ -61,7 +61,7 @@ class ProgressReportActionTest extends TestCase
         $fields = collect([
             'skills' => $defaultValues,
             'gruadated' => false,
-            'swimmer_id' => $swimmer->id
+            'swimmer_id' => $swimmer->id,
         ]);
 
         $progressReport = new CompleteProgressReport();
@@ -85,7 +85,7 @@ class ProgressReportActionTest extends TestCase
         $fields = collect([
             'skills' => $defaultValues,
             'gruadated' => false,
-            'swimmer_id' => $swimmer->id
+            'swimmer_id' => $swimmer->id,
         ]);
 
         $action = new ActionFields($fields, collect());

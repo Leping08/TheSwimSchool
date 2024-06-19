@@ -65,8 +65,8 @@ class PrivateLesson extends Resource
                 return view('partials.swimmers_sms_link', [
                     'swimmers_phone_numbers_string' => $this->swimmers->pluck('phone')->map(function ($phone_number) {
                         // Remove the - from the phone number
-                        return '+1' . str_replace('-', '', $phone_number);
-                    })->implode(',')
+                        return '+1'.str_replace('-', '', $phone_number);
+                    })->implode(','),
                 ])->render();
             })->asHtml()->onlyOnDetail(),
             HasOne::make('Swimmer', 'swimmer', PrivateSwimmer::class),

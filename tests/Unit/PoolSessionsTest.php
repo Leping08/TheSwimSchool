@@ -97,8 +97,8 @@ class PoolSessionsTest extends TestCase
                 '4' => false,
                 '5' => false,
                 '6' => false,
-                '7' => false
-            ]
+                '7' => false,
+            ],
         ]);
 
         $poolSessions = PoolSession::where('pool_session_id', $groupLesson->id)

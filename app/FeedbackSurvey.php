@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class FeedbackSurvey extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * @var array

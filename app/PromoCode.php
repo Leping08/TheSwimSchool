@@ -23,7 +23,7 @@ use Laravel\Nova\Actions\Actionable;
  */
 class PromoCode extends Model
 {
-    use SoftDeletes, Actionable, HasFactory;
+    use Actionable, HasFactory, SoftDeletes;
 
     /**
      * @return float

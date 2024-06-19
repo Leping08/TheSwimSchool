@@ -9,7 +9,7 @@ use Laravel\Nova\Actions\Actionable;
 
 class PoolSessionAttendance extends Pivot
 {
-    use SoftDeletes, HasFactory, Actionable;
+    use Actionable, HasFactory, SoftDeletes;
 
     protected $table = 'pool_session_attendance';
 
