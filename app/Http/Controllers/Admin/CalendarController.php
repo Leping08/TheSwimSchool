@@ -59,14 +59,14 @@ class CalendarController extends Controller
 
         //Get all private pool sessions from 3 months ago and up
         $privatePoolSessions = PoolSession::where('instructor_id', $instructor->id)
-            ->privateLessons()
+            ->privateLessonsSignedUp()
             ->whereDate('start', '>=', Carbon::now()->subMonths(3))
             ->with(['lesson.swimmer.attendances', 'location', 'attendances'])
             ->get();
 
         //Map the Private Lessons into calendar events
         $events->push($privatePoolSessions->map(function ($session) {
-            $swimmer = $session?->lesson?->swimmer;
+            $swimmer = $session->lesson->swimmer;
 
             return [
                 'id' => $session->id,
