@@ -25,7 +25,7 @@
                         <div><i class="fa fa-stop-circle uk-margin-small-right" aria-hidden="true"></i>{{ selectedEvent.end | timeFormat }}</div>
                     </div>
                 </div>
-                <div class="uk-padding-small">
+                <div class="uk-padding-small" v-if="selectedEvent.swimmers.length">
                     <div class="uk-h5">Swimmers:</div>
                     <div v-for="swimmer in selectedEvent.swimmers" :key="swimmer.id">
                         <div class="uk-padding-small" v-if="swimmer">
