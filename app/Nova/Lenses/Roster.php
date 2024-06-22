@@ -61,8 +61,8 @@ class Roster extends Lens
     public function filters(Request $request)
     {
         return [
-            new SwimTeamSeason(),
-            new SwimTeamLevel(),
+            SwimTeamSeason::make(),
+            SwimTeamLevel::make(),
         ];
     }
 

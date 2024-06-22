@@ -4,6 +4,10 @@ namespace App\Nova;
 
 use App\Nova\Actions\CompleteProgressReport;
 use App\Nova\Actions\ResendGroupSignUpEmail;
+use App\Nova\Filters\SwimmerLevel;
+use App\Nova\Filters\SwimmerSeason;
+use App\Nova\Metrics\NewSwimmers;
+use App\Nova\Metrics\SwimmersPerDay;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
@@ -11,7 +15,6 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Panel;
 
@@ -86,9 +89,9 @@ class Swimmer extends Resource
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail()->nullable(),
             MorphMany::make('Attendances', 'attendances', PoolSessionAttendance::class),
-            (new Panel('Payment Info', $this->paymentInfo())),
-            (new Panel('Address', $this->addressFields())),
-            (new Panel('Emergency Contact', $this->emergencyContact())),
+            Panel::make('Payment Info', $this->paymentInfo()),
+            Panel::make('Address', $this->addressFields()),
+            Panel::make('Emergency Contact', $this->emergencyContact()),
             Text::make('Notes', 'notes')->hideFromIndex(),
         ];
     }
@@ -102,9 +105,9 @@ class Swimmer extends Resource
     public function cards(Request $request)
     {
         return [
-            (new Metrics\SwimmersPerDay)->width('2/3'),
-            (new Metrics\NewSwimmers)->width('1/3'),
-            //(new Metrics\SwimmersPerLevel)->width('1/2')
+            SwimmersPerDay::make()->width('2/3'),
+            NewSwimmers::make()->width('1/3'),
+            // SwimmersPerLevel::make()->width('1/2')
         ];
     }
 
@@ -117,9 +120,9 @@ class Swimmer extends Resource
     public function filters(Request $request)
     {
         return [
-            //new Filters\Paid,
-            new Filters\SwimmerLevel,
-            new Filters\SwimmerSeason,
+            // Paid::make(),
+            SwimmerLevel::make(),
+            SwimmerSeason::make(),
         ];
     }
 
@@ -143,8 +146,8 @@ class Swimmer extends Resource
     public function actions(Request $request)
     {
         return [
-            new ResendGroupSignUpEmail(),
-            (new CompleteProgressReport($this->model())),
+            ResendGroupSignUpEmail::make(),
+            CompleteProgressReport::make(),
         ];
     }
 
@@ -156,7 +159,7 @@ class Swimmer extends Resource
     protected function addressFields()
     {
         return [
-            Place::make('Address', 'street')->hideFromIndex(),
+            Text::make('Address', 'address')->hideFromIndex(),
             Text::make('City', 'city')->hideFromIndex(),
             Text::make('State', 'state')->hideFromIndex(),
             Text::make('Postal Code', 'zip')->hideFromIndex(),

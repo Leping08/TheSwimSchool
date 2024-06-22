@@ -85,9 +85,9 @@ class Athlete extends Resource
             BelongsTo::make('Season', 'season', STSeason::class),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
-            (new Panel('Address', $this->addressFields())),
-            (new Panel('Emergency Contact', $this->emergencyContact())),
-            (new Panel('Notes', $this->notes())),
+            Panel::make('Address', $this->addressFields()),
+            Panel::make('Emergency Contact', $this->emergencyContact()),
+            Panel::make('Notes', $this->notes()),
         ];
     }
 
@@ -133,7 +133,7 @@ class Athlete extends Resource
     public function actions(Request $request)
     {
         return [
-            new EmailYouMadeTheTeam(),
+            EmailYouMadeTheTeam::make(),
         ];
     }
 

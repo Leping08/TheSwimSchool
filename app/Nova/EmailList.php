@@ -2,6 +2,9 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\RemoveBouncedEmails;
+use App\Nova\Actions\RemoveComplaintEmails;
+use App\Nova\Filters\SubscriptionStatus;
 use App\Nova\Metrics\NewEmailList;
 use App\Nova\Metrics\SubscribedEmails;
 use Illuminate\Http\Request;
@@ -69,8 +72,8 @@ class EmailList extends Resource
     public function cards(Request $request)
     {
         return [
-            (new NewEmailList)->width('1/2'),
-            (new SubscribedEmails)->width('1/2'),
+            NewEmailList::make()->width('1/2'),
+            SubscribedEmails::make()->width('1/2'),
         ];
     }
 
@@ -83,7 +86,7 @@ class EmailList extends Resource
     public function filters(Request $request)
     {
         return [
-            new Filters\SubscriptionStatus,
+            SubscriptionStatus::make(),
         ];
     }
 
@@ -107,8 +110,8 @@ class EmailList extends Resource
     public function actions(Request $request)
     {
         return [
-            new Actions\RemoveBouncedEmails,
-            new Actions\RemoveComplaintEmails,
+            RemoveBouncedEmails::make(),
+            RemoveComplaintEmails::make(),
         ];
     }
 

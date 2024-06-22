@@ -75,7 +75,7 @@ class Location extends Resource
     public function cards(Request $request)
     {
         return [
-            (new LessonsPerLocation)->width('full'),
+            LessonsPerLocation::make()->width('full'),
         ];
     }
 

@@ -82,9 +82,9 @@ class PrivateSwimmer extends Resource
             })->hideFromIndex(),
             BelongsTo::make('Private Lesson', 'lesson', PrivateLesson::class)->nullable(),
             MorphMany::make('Attendances', 'attendances', PoolSessionAttendance::class),
-            (new Panel('Payment Info', $this->paymentInfo())),
-            (new Panel('Address', $this->addressFields())),
-            (new Panel('Emergency Contact', $this->emergencyContact())),
+            Panel::make('Payment Info', $this->paymentInfo()),
+            Panel::make('Address', $this->addressFields()),
+            Panel::make('Emergency Contact', $this->emergencyContact()),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
         ];
@@ -132,7 +132,7 @@ class PrivateSwimmer extends Resource
     public function actions(Request $request)
     {
         return [
-            new ResendPrivateSignUpEmail(),
+            ResendPrivateSignUpEmail::make(),
         ];
     }
 

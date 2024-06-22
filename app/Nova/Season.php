@@ -63,7 +63,7 @@ class Season extends Resource
     public function cards(Request $request)
     {
         return [
-            (new LessonsPerSeason)->width('full'),
+            LessonsPerSeason::make()->width('full'),
         ];
     }
 

@@ -116,7 +116,9 @@ class PrivateLesson extends Resource
      */
     public function actions(Request $request)
     {
-        return [new CreatePoolSessionsForPrivateLessons()];
+        return [
+            CreatePoolSessionsForPrivateLessons::make(),
+        ];
     }
 
     public static function label()

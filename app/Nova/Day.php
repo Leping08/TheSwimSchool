@@ -69,7 +69,7 @@ class Day extends Resource
     public function cards(Request $request)
     {
         return [
-            (new LessonsPerDay())->width('full'),
+            LessonsPerDay::make()->width('full'),
         ];
     }
 

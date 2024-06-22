@@ -87,8 +87,8 @@ class ContactUs extends Resource
     public function cards(Request $request)
     {
         return [
-            (new ContactUsPerDay())->width('2/3'),
-            (new OpenContactUs())->width('1/3'),
+            ContactUsPerDay::make()->width('2/3'),
+            OpenContactUs::make()->width('1/3'),
         ];
     }
 

@@ -5,6 +5,9 @@ namespace App\Nova;
 use App\DaysOfTheWeek;
 use App\Library\Helpers\SeasonHelpers;
 use App\Nova\Actions\EmailLessonLink;
+use App\Nova\Filters\LessonLevel;
+use App\Nova\Filters\LessonStatus;
+use App\Nova\Filters\Season;
 use App\Nova\Metrics\LessonsPerLevel;
 use App\Nova\Metrics\NewLessons;
 use Illuminate\Http\Request;
@@ -124,8 +127,8 @@ class Lesson extends Resource
     public function cards(Request $request)
     {
         return [
-            (new LessonsPerLevel)->width('2/3'),
-            (new NewLessons)->width('1/3'),
+            LessonsPerLevel::make()->width('2/3'),
+            NewLessons::make()->width('1/3'),
         ];
     }
 
@@ -138,9 +141,9 @@ class Lesson extends Resource
     public function filters(Request $request)
     {
         return [
-            new Filters\LessonStatus,
-            new Filters\LessonLevel,
-            new Filters\Season,
+            LessonStatus::make(),
+            LessonLevel::make(),
+            Season::make(),
         ];
     }
 
@@ -164,7 +167,7 @@ class Lesson extends Resource
     public function actions(Request $request)
     {
         return [
-            new EmailLessonLink(),
+            EmailLessonLink::make(),
         ];
     }
 

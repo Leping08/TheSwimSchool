@@ -76,7 +76,7 @@ class Level extends Resource
     public function cards(Request $request)
     {
         return [
-            (new LessonsPerLevel)->width('full'),
+            LessonsPerLevel::make()->width('full'),
         ];
     }
 

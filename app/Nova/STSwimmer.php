@@ -88,9 +88,9 @@ class STSwimmer extends Resource
             BelongsTo::make('Level', 'level', STLevel::class),
             BelongsTo::make('Season', 'season', STSeason::class),
             // BelongsTo::make('Shirt Size', 'shirtSize', STShirtSize::class),
-            (new Panel('Payment Info', $this->paymentInfo())),
-            (new Panel('Address', $this->addressFields())),
-            (new Panel('Emergency Contact', $this->emergencyContact())),
+            Panel::make('Payment Info', $this->paymentInfo()),
+            Panel::make('Address', $this->addressFields()),
+            Panel::make('Emergency Contact', $this->emergencyContact()),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
         ];
@@ -116,9 +116,9 @@ class STSwimmer extends Resource
     public function filters(Request $request)
     {
         return [
-            new SwimTeamSeason(),
-            new SwimTeamLevel(),
-            new ShirtSize(),
+            SwimTeamSeason::make(),
+            SwimTeamLevel::make(),
+            ShirtSize::make(),
         ];
     }
 
@@ -142,8 +142,8 @@ class STSwimmer extends Resource
     public function actions(Request $request)
     {
         return [
-            new SendSwimTeamRegistrationEmail(),
-            new SendReturningSwimmerRegistrationEmail(),
+            SendSwimTeamRegistrationEmail::make(),
+            SendReturningSwimmerRegistrationEmail::make(),
         ];
     }
 
