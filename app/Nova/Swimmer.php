@@ -10,8 +10,10 @@ use App\Nova\Metrics\NewSwimmers;
 use App\Nova\Metrics\SwimmersPerDay;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Number;
@@ -85,9 +87,13 @@ class Swimmer extends Resource
                 ])->render();
             })->hideFromIndex(),
             Number::make('Lesson Id', 'lesson_id')->onlyOnForms(),
+            Boolean::make('Progress Report Sent', function ($model) {
+                return $model->progressReports->count() > 0;
+            }),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail()->nullable(),
+            HasMany::make('Progress Reports', 'progressReports', ProgressReport::class),
             MorphMany::make('Attendances', 'attendances', PoolSessionAttendance::class),
             Panel::make('Payment Info', $this->paymentInfo()),
             Panel::make('Address', $this->addressFields()),
