@@ -51,7 +51,9 @@ Sign Up
                 </div>
 
                 <div class="uk-child-width-expand@s" uk-grid>
-                    <div><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> <strong>Instructor:</strong> <a href="{{ route('pages.about') . '#'. $lesson->instructor->name }}">{{$lesson->instructor->name}}</a></div>
+                    @if ($lesson?->instructor?->name)
+                        <div><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> <strong>Instructor:</strong> <a href="{{ route('pages.about') . '#'. $lesson->instructor->name }}">{{$lesson->instructor->name}}</a></div>
+                    @endif
                     <div><i class="fa fa-calendar fa-lg" aria-hidden="true"></i> <strong>Dates:</strong> {{$lesson->class_start_date->toFormattedDateString()}} - {{$lesson->class_end_date->toFormattedDateString()}}</div>
                 </div>
 
