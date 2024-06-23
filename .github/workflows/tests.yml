@@ -116,3 +116,8 @@ jobs:
         run: vapor deploy production
         env:
           VAPOR_API_TOKEN: ${{ secrets.VAPOR_API_TOKEN }}
+          SIDECAR_ACCESS_KEY_ID: ${{ secrets.SIDECAR_ACCESS_KEY_ID }}
+          SIDECAR_SECRET_ACCESS_KEY: ${{ secrets.SIDECAR_SECRET_ACCESS_KEY }}
+          SIDECAR_REGION: ${{ secrets.SIDECAR_REGION }}
+          SIDECAR_ARTIFACT_BUCKET_NAME: ${{ secrets.SIDECAR_ARTIFACT_BUCKET_NAME }}
+          SIDECAR_EXECUTION_ROLE: ${{ secrets.SIDECAR_EXECUTION_ROLE }}
