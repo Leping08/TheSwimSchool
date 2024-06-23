@@ -165,7 +165,7 @@ class Swimmer extends Resource
     protected function addressFields()
     {
         return [
-            Text::make('Address', 'address')->hideFromIndex(),
+            Text::make('Address', 'street')->hideFromIndex(),
             Text::make('City', 'city')->hideFromIndex(),
             Text::make('State', 'state')->hideFromIndex(),
             Text::make('Postal Code', 'zip')->hideFromIndex(),
