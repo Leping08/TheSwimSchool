@@ -73,7 +73,7 @@ class CompleteProgressReport extends Action
         });
 
         return [
-            Boolean::make('Gruadated'),
+            Boolean::make('Gruadated')->default(true),
             BooleanGroup::make('Skills')
                 ->options($options)
                 ->withMeta(['value' => $defaultValues]),
