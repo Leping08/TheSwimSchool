@@ -947,7 +947,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             <div class="p-10 text-right">
                 <div class="mb-8 mt-10 text-8xl font-bold uppercase tracking-widest text-blue-800">Graduation</div>
                 <div class="mb-6 flex items-center justify-end">
-                    <div class="text-4xl font-bold uppercase tracking-widest text-sky-500">Dipolima</div>
+                    <div class="text-4xl font-bold uppercase tracking-widest text-sky-500">Diploma</div>
                     <div class="h-1 w-36 bg-blue-800"></div>
                 </div>
                 <div class="mb-6 text-2xl font-bold uppercase text-black">Proudly Awarded To</div>

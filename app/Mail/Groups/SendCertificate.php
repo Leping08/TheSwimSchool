@@ -39,7 +39,7 @@ class SendCertificate extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(Lesson $lesson, Swimmer $swimmer, string $pdf)
+    public function __construct(Lesson $lesson, Swimmer $swimmer, string $pdf = '')
     {
         $this->lesson = $lesson;
         $this->swimmer = $swimmer;
@@ -52,7 +52,7 @@ class SendCertificate extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: ' Cretificate',
+            subject: 'Group Swim Lesson Progress Report',
             from: config('mail.from.address')
         );
     }
@@ -67,6 +67,9 @@ class SendCertificate extends Mailable
             with: [
                 'lesson' => $this->lesson,
                 'swimmer' => $this->swimmer,
+                'graduated' => ! empty($this->pdf),
+                'skills_passed' => $this->swimmer->progressReports->where('passed', true),
+                'skills_failed' => $this->swimmer->progressReports->where('passed', false),
             ]
         );
     }
@@ -78,6 +81,11 @@ class SendCertificate extends Mailable
      */
     public function attachments(): array
     {
+        // If the PDF is empty then return an empty array
+        if (empty($this->pdf)) {
+            return [];
+        }
+
         return [
             Attachment::fromData(fn () => $this->pdf, 'certificate.pdf')
                 ->withMime('application/pdf'),

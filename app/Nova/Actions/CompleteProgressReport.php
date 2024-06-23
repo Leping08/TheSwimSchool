@@ -2,6 +2,7 @@
 
 namespace App\Nova\Actions;
 
+use App\Jobs\SendLessonCompletedEmail;
 use App\ProgressReport;
 use App\Swimmer;
 use Illuminate\Bus\Queueable;
@@ -39,6 +40,9 @@ class CompleteProgressReport extends Action
             ]);
         });
 
+        // Check if the swimmer has graduated and if so send the certificate email
+        SendLessonCompletedEmail::dispatch($model, $fields->gruadated);
+
         return Action::message('Progress report updated!');
     }
 
@@ -51,6 +55,10 @@ class CompleteProgressReport extends Action
     public function fields(NovaRequest $request)
     {
         $swimmer = Swimmer::find($request->resourceId ?? $request->resources);
+
+        if (! $swimmer) {
+            return [];
+        }
 
         $swimmer->load('lesson.group.skills', 'progressReports');
         $skills = $swimmer->lesson->group->skills;
@@ -65,8 +73,6 @@ class CompleteProgressReport extends Action
         });
 
         return [
-            // @todo send out the report card PDF
-            // @todo wire up the send gruadation certificate PDF if they graduated
             Boolean::make('Gruadated'),
             BooleanGroup::make('Skills')
                 ->options($options)
