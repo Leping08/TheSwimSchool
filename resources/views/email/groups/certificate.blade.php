@@ -5,7 +5,6 @@ Hey {{ $swimmer->firstName }}, congratulations on completing your {{$lesson->gro
 
 @if ($graduated)
 You can find your progress report below. It looks like you mastered all the skills for the {{$lesson->group->type}}.
-We have attached your certificate to this email. Keep up the good work and we hope to see you in the next level soon.
 @else
 You can find your progress report below. It looks like you still need to work on some skills before you can graduate to the next level.<br>
 @endif
@@ -28,6 +27,10 @@ You can find your progress report below. It looks like you still need to work on
 ✗ {{ $progressReport->skill->description }}<br>
 @endforeach
 @endcomponent
+@endif
+
+@if ($graduated)
+We have attached your {{$lesson->group->type}} diploma to this email. Keep up the good work and we hope to see you in the next level soon.
 @endif
 
 Thanks,<br>
