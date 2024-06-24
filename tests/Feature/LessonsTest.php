@@ -16,8 +16,6 @@ class LessonsTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    //TODO links in this file are a bit messy
-
     /** @test  **/
     public function a_user_can_not_see_a_lesson_in_progress()
     {
@@ -84,7 +82,7 @@ class LessonsTest extends TestCase
             'class_end_date' => Carbon::now()->addDays(5),
         ]);
 
-        $this->get('/lessons')
+        $this->get(route('groups.lessons.index'))
             ->assertSee($registrationOpen->Group->type)
             ->assertSee($registrationOpen->Group->description)
             ->assertSee($lessonFinished->Group->type)
@@ -174,7 +172,7 @@ class LessonsTest extends TestCase
         $group->type = 'Private LessonTest';
         $group->update();
 
-        $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
+        $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
             ->assertSee($lesson->Group->type)
             ->assertSee($lesson->Location->name)
             ->assertSee($lesson->Location->street)
@@ -206,7 +204,7 @@ class LessonsTest extends TestCase
             'lesson_id' => $lesson->id,
         ]);
 
-        $this->get('/lessons/'.$lesson->Group->type.'/'.$lesson->id)
+        $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
             ->assertSee('This class is full.');
     }
 
@@ -251,7 +249,7 @@ class LessonsTest extends TestCase
 
         $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
 
-        $response->assertRedirect('/thank-you');
+        $response->assertRedirect(route('pages.thank-you'));
 
         $this->assertEquals(1, Swimmer::all()->count());
 
@@ -294,9 +292,9 @@ class LessonsTest extends TestCase
 
         $this->assertEquals(0, Swimmer::all()->count());
 
-        $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
+        $response = $this->json('POST', route('groups.swimmers.store', [$lesson->group, $lesson]), $attributes);
 
-        $response->assertRedirect('/thank-you');
+        $response->assertRedirect(route('pages.thank-you'));
 
         $this->assertEquals(1, Swimmer::all()->count());
 
@@ -338,7 +336,7 @@ class LessonsTest extends TestCase
 
         $this->assertTrue($lesson->isFull());
 
-        $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $swimmer);
+        $response = $this->json('POST', route('groups.swimmers.store', [$lesson->group, $lesson]), $swimmer);
 
         $response->assertStatus(302);
     }
@@ -372,7 +370,7 @@ class LessonsTest extends TestCase
 
         $this->assertEquals(0, Swimmer::all()->count());
 
-        $response = $this->json('POST', "/lessons/{$lesson->group->type}/{$lesson->id}", $attributes);
+        $response = $this->json('POST', route('groups.swimmers.store', [$lesson->group, $lesson]), $attributes);
 
         $response->assertRedirect(route('groups.lessons.create', [$lesson->group, $lesson]));
 

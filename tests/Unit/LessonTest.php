@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Group;
 use App\Lesson;
+use App\Location;
 use App\PoolSession;
 use App\Swimmer;
 use Carbon\Carbon;
@@ -144,5 +145,37 @@ class LessonTest extends TestCase
         $lesson->generatePoolSessions([]);
 
         $this->assertEquals(6, $lesson->pool_sessions->count());
+    }
+
+    /** @test  **/
+    public function it_will_update_the_location_on_all_pool_sessions_if_the_location_is_changed_on_the_lesson()
+    {
+        $location_1 = Location::factory()->create();
+        $location_2 = Location::factory()->create();
+
+        $lesson = Lesson::factory()->create([
+            'class_start_date' => Carbon::parse('2021-01-01'),
+            'class_end_date' => Carbon::parse('2021-01-14'),
+            'location_id' => $location_1->id,
+            'days' => [
+                '1' => true, // Monday
+                '2' => true, // Tuesday
+                '3' => true, // Wednesday
+            ],
+        ]);
+
+        $this->assertEquals(6, $lesson->pool_sessions->count());
+
+        $lesson->update([
+            'location_id' => $location_2->id,
+        ]);
+
+        $this->assertEquals(6, $lesson->pool_sessions->count());
+
+        $poolSessions = $lesson->pool_sessions->fresh();
+
+        $poolSessions->each(function ($poolSession) use ($lesson) {
+            $this->assertEquals($lesson->location_id, $poolSession->location_id);
+        });
     }
 }

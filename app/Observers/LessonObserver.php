@@ -25,7 +25,19 @@ class LessonObserver
      */
     public function updated(Lesson $lesson)
     {
-        //
+        /**
+         * Make sure if the lesson gets updated and the location is changed
+         * the pool sessions locations are updated to the new location as well.
+         */
+        $lesson?->pool_sessions?->each(function ($poolSession) use ($lesson) {
+            if ($poolSession->location_id === $lesson->location_id) {
+                return; // Do nothing the location is the same
+            }
+
+            $poolSession->update([
+                'location_id' => $lesson->location_id,
+            ]);
+        });
     }
 
     /**
