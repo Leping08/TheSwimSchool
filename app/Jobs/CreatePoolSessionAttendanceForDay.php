@@ -39,7 +39,8 @@ class CreatePoolSessionAttendanceForDay implements ShouldQueue
 
         // Loop through each pool session and create the attendance
         $poolSessions->each(function ($poolSession) {
-            $poolSession->lesson->swimmers->each(function ($swimmer) use ($poolSession) {
+            // @todo write a test for a lesson that has no swimmers
+            $poolSession?->lesson?->swimmers?->each(function ($swimmer) use ($poolSession) {
                 $poolSession->attendances()->firstOrCreate([
                     'pool_session_id' => $poolSession->id,
                     'swimmable_id' => $swimmer->id,
