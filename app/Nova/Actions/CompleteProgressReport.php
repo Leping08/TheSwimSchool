@@ -41,7 +41,8 @@ class CompleteProgressReport extends Action
         });
 
         // Check if the swimmer has graduated and if so send the certificate email
-        SendLessonCompletedEmail::dispatch($model, $fields->gruadated);
+        // Run this as snyc so any errors will be shown in the UI
+        SendLessonCompletedEmail::dispatchSync($model, $fields->gruadated);
 
         return Action::message('Progress report updated!');
     }
