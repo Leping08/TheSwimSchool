@@ -87,13 +87,17 @@ class Swimmer extends Resource
                 ])->render();
             })->hideFromIndex(),
             Number::make('Lesson Id', 'lesson_id')->onlyOnForms(),
-            Boolean::make('Progress Report Sent', function ($model) {
+            Boolean::make('Report Card Sent', function ($model) {
                 return $model->progressReports->count() > 0;
             }),
+            // @todo get this wired up in the action to send out the progress report email
+            // Boolean::make('Graduated', function ($model) {
+            //     return $model->progressReports->where('passed', true)->count() === $model->progressReports->count();
+            // }),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail()->nullable(),
-            HasMany::make('Progress Reports', 'progressReports', ProgressReport::class),
+            HasMany::make('Report Card', 'progressReports', ProgressReport::class),
             MorphMany::make('Attendances', 'attendances', PoolSessionAttendance::class),
             Panel::make('Payment Info', $this->paymentInfo()),
             Panel::make('Address', $this->addressFields()),

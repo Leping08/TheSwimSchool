@@ -18,6 +18,8 @@ class CompleteProgressReport extends Action
 {
     use InteractsWithQueue, Queueable;
 
+    public $name = 'Complete Report Card';
+
     /**
      * Perform the action on the given models.
      *
@@ -44,7 +46,7 @@ class CompleteProgressReport extends Action
         // Run this as snyc so any errors will be shown in the UI
         SendLessonCompletedEmail::dispatchSync($model, $fields->graduated);
 
-        return Action::message('Progress report updated!');
+        return Action::message('Report card updated!');
     }
 
     /**

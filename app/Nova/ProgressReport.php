@@ -50,7 +50,7 @@ class ProgressReport extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Swimmer'),
+            BelongsTo::make('Swimmer')->searchable(),
             BelongsTo::make('Skill'),
             Boolean::make('Passed'),
         ];
@@ -98,5 +98,15 @@ class ProgressReport extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    /**
+     * Get the displayable label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return 'Report Card';
     }
 }

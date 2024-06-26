@@ -52,7 +52,7 @@ class SendCertificate extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Group Swim Lesson Progress Report',
+            subject: 'Group Swim Lesson Report Card',
             from: config('mail.from.address')
         );
     }
