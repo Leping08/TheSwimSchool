@@ -42,7 +42,7 @@ class CompleteProgressReport extends Action
 
         // Check if the swimmer has graduated and if so send the certificate email
         // Run this as snyc so any errors will be shown in the UI
-        SendLessonCompletedEmail::dispatchSync($model, $fields->gruadated);
+        SendLessonCompletedEmail::dispatchSync($model, $fields->graduated);
 
         return Action::message('Progress report updated!');
     }
@@ -70,11 +70,11 @@ class CompleteProgressReport extends Action
             // Sync the existing progress report if it exists with the already selected values if they exist
             $existingValue = $progressReports->where('skill_id', $skill->id)->first()?->passed;
 
-            return [$skill->id => $existingValue ?? true];
+            return [$skill->id => $existingValue ?? false];
         });
 
         return [
-            Boolean::make('Gruadated')->default(true),
+            Boolean::make('Graduated'),
             BooleanGroup::make('Skills')
                 ->options($options)
                 ->withMeta(['value' => $defaultValues]),

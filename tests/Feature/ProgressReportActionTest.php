@@ -31,7 +31,7 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'gruadated' => false,
+            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -64,7 +64,7 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'gruadated' => false,
+            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -88,7 +88,7 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'gruadated' => false,
+            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -125,7 +125,7 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'gruadated' => false,
+            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -149,7 +149,7 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'gruadated' => true,
+            'graduated' => true,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -180,7 +180,7 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'gruadated' => false,
+            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -219,7 +219,7 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'gruadated' => false,
+            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -257,7 +257,7 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'gruadated' => false,
+            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
