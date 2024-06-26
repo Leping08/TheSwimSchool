@@ -107,6 +107,6 @@ class ProgressReport extends Resource
      */
     public static function label()
     {
-        return 'Report Card';
+        return 'Report Cards';
     }
 }
