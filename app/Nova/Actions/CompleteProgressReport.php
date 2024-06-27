@@ -84,7 +84,8 @@ class CompleteProgressReport extends Action
         return [
             BooleanGroup::make('Skills')
                 ->options($options)
-                ->withMeta(['value' => $defaultValues]),
+                ->withMeta(['value' => $defaultValues])
+                ->help('The swimmer will only get a depolmia if they have passed all skills. If they have not passed all skills, they will get a progress report noting the skills they need to work on.'),
         ];
     }
 }
