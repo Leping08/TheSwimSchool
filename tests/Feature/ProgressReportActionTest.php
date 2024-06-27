@@ -18,8 +18,6 @@ class ProgressReportActionTest extends TestCase
     /** @test */
     public function is_should_save_the_skills_that_are_checked()
     {
-        $this->seed();
-
         $group = \App\Group::factory()->create();
         $swimmer = \App\Swimmer::factory()->create();
         $skills = $group->skills;
@@ -51,8 +49,6 @@ class ProgressReportActionTest extends TestCase
     /** @test */
     public function is_should_update_the_skills_if_the_action_is_run_twice()
     {
-        $this->seed();
-
         $group = \App\Group::factory()->create();
         $swimmer = \App\Swimmer::factory()->create();
         $skills = $group->skills;
@@ -112,8 +108,6 @@ class ProgressReportActionTest extends TestCase
         Mail::fake();
         Queue::fake();
 
-        $this->seed();
-
         $group = \App\Group::factory()->create();
         $swimmer = \App\Swimmer::factory()->create();
         $skills = $group->skills;
@@ -167,7 +161,6 @@ class ProgressReportActionTest extends TestCase
     public function is_should_email_the_swimmer_the_list_of_skills_they_passed()
     {
         Mail::fake();
-        $this->seed();
 
         $group = \App\Group::factory()->create();
         $swimmer = \App\Swimmer::factory()->create();
@@ -206,7 +199,6 @@ class ProgressReportActionTest extends TestCase
     public function if_the_pdf_exists_it_gets_attatched_to_the_email()
     {
         Mail::fake();
-        $this->seed();
 
         $group = \App\Group::factory()->create();
         $swimmer = \App\Swimmer::factory()->create();
@@ -244,7 +236,6 @@ class ProgressReportActionTest extends TestCase
     public function it_should_not_attatch_the_certificate_if_the_swimmer_does_not_graduate()
     {
         Mail::fake();
-        $this->seed();
 
         $group = \App\Group::factory()->create();
         $swimmer = \App\Swimmer::factory()->create();
@@ -277,5 +268,61 @@ class ProgressReportActionTest extends TestCase
 
         // Assert the email does not have the certificate attached
         $this->assertEmpty($mailable->attachments);
+    }
+
+    /** @test */
+    public function it_will_delete_any_skills_that_are_not_assigned_to_the_swimmer_level()
+    {
+        Mail::fake();
+
+        $group = \App\Group::factory()->create();
+        $skills = \App\Skill::factory()->count(3)->create([
+            'group_id' => $group->id,
+        ]);
+        $lesson = \App\Lesson::factory()->create([
+            'group_id' => $group->id,
+        ]);
+
+        $group_2 = \App\Group::factory()->create();
+        $skill_2 = \App\Skill::factory()->create([
+            'group_id' => $group_2->id,
+        ]);
+
+        $swimmer = \App\Swimmer::factory()->create([
+            'lesson_id' => $lesson->id,
+        ]);
+
+        $swimmer->progressReports()->create([
+            'skill_id' => $skill_2->id,
+            'passed' => true,
+        ]);
+
+        $defaultValues = $skills->mapWithKeys(function ($skill) {
+            // Sync the existing progress report if it exists with the already selected values if they exist
+            return [$skill->id => true];
+        });
+
+        $fields = collect([
+            'skills' => $defaultValues,
+            'graduated' => false,
+            'swimmer_id' => $swimmer->id,
+        ]);
+
+        $progressReport = new CompleteProgressReport();
+        $action = new ActionFields($fields, collect());
+        $progressReport->handle($action, collect([$swimmer]));
+
+        $swimmer = $swimmer->fresh();
+
+        // Assert the progress report was created for every skill
+        $this->assertCount($skills->count(), $swimmer->progressReports);
+
+        // Assert that the progress report was created with the correct values
+        $swimmer->progressReports->each(function ($progressReport) {
+            $this->assertTrue($progressReport->passed);
+        });
+
+        // Assert the skill that was not in the group was deleted
+        $this->assertEmpty($swimmer->progressReports->where('skill_id', $skill_2->id));
     }
 }

@@ -29,22 +29,29 @@ class CompleteProgressReport extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        $model = $models->first();
+        $swimmer = $models->first();
 
-        collect($fields->skills)->map(function ($value, $key) use ($model) {
+        collect($fields->skills)->map(function ($value, $key) use ($swimmer) {
             ProgressReport::updateOrCreate([
-                'swimmer_id' => $model->id,
+                'swimmer_id' => $swimmer->id,
                 'skill_id' => $key,
             ], [
-                'swimmer_id' => $model->id,
+                'swimmer_id' => $swimmer->id,
                 'skill_id' => $key,
                 'passed' => $value,
             ]);
         });
 
+        $levelSkills = $swimmer->lesson->group->skills->pluck('id');
+
+        // Delete any skills that are no longer in the group
+        $swimmer->progressReports()
+            ->whereNotIn('skill_id', $levelSkills)
+            ->delete();
+
         // Check if the swimmer has graduated and if so send the certificate email
         // Run this as snyc so any errors will be shown in the UI
-        SendLessonCompletedEmail::dispatchSync($model, $fields->graduated);
+        SendLessonCompletedEmail::dispatchSync($swimmer, $fields->graduated);
 
         return Action::message('Report card updated!');
     }

@@ -32,6 +32,7 @@ class Skill extends Resource
      */
     public static $search = [
         'id',
+        'description',
     ];
 
     /**
