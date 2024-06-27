@@ -23,17 +23,11 @@ class SendLessonCompletedEmail implements ShouldQueue
     protected $swimmer;
 
     /**
-     * @var bool
-     */
-    protected $graduated;
-
-    /**
      * Create a new job instance.
      */
-    public function __construct(Swimmer $swimmer, $graduated = false)
+    public function __construct(Swimmer $swimmer)
     {
         $this->swimmer = $swimmer;
-        $this->graduated = $graduated;
     }
 
     /**
@@ -43,7 +37,7 @@ class SendLessonCompletedEmail implements ShouldQueue
     {
         $this->swimmer->load(['lesson.group', 'lesson.instructor', 'progressReports.skill']);
 
-        if ($this->graduated) {
+        if ($this->swimmer->graduated()) {
             $pdf = $this->generatePdf();
         } else {
             // If the swimmer has not graduated then do not send the PDF

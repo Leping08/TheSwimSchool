@@ -10,7 +10,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -51,7 +50,7 @@ class CompleteProgressReport extends Action
 
         // Check if the swimmer has graduated and if so send the certificate email
         // Run this as snyc so any errors will be shown in the UI
-        SendLessonCompletedEmail::dispatchSync($swimmer, $fields->graduated);
+        SendLessonCompletedEmail::dispatchSync($swimmer);
 
         return Action::message('Report card updated!');
     }
@@ -83,7 +82,6 @@ class CompleteProgressReport extends Action
         });
 
         return [
-            Boolean::make('Graduated'),
             BooleanGroup::make('Skills')
                 ->options($options)
                 ->withMeta(['value' => $defaultValues]),

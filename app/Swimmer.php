@@ -97,4 +97,17 @@ class Swimmer extends Model
     {
         return Crypt::encryptString((string) $this->id);
     }
+
+    public function graduated(): bool
+    {
+        // Check if no progress reports exist
+        if ($this->progressReports->isEmpty()) {
+            return false;
+        }
+
+        // Check if all progress reports have passed
+        return $this->progressReports->every(function ($report) {
+            return $report->passed;
+        });
+    }
 }

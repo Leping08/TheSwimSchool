@@ -29,7 +29,6 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -60,7 +59,6 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -84,7 +82,6 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -119,7 +116,6 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -173,7 +169,6 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -211,7 +206,6 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -248,7 +242,6 @@ class ProgressReportActionTest extends TestCase
 
         $fields = collect([
             'skills' => $defaultValues,
-            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -299,12 +292,11 @@ class ProgressReportActionTest extends TestCase
 
         $defaultValues = $skills->mapWithKeys(function ($skill) {
             // Sync the existing progress report if it exists with the already selected values if they exist
-            return [$skill->id => true];
+            return [$skill->id => false];
         });
 
         $fields = collect([
             'skills' => $defaultValues,
-            'graduated' => false,
             'swimmer_id' => $swimmer->id,
         ]);
 
@@ -319,7 +311,7 @@ class ProgressReportActionTest extends TestCase
 
         // Assert that the progress report was created with the correct values
         $swimmer->progressReports->each(function ($progressReport) {
-            $this->assertTrue($progressReport->passed);
+            $this->assertFalse($progressReport->passed);
         });
 
         // Assert the skill that was not in the group was deleted
