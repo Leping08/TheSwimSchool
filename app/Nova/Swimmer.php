@@ -92,7 +92,7 @@ class Swimmer extends Resource
             }),
             Boolean::make('Graduated', function ($model) {
                 return $model->graduated();
-            }),
+            })->hideFromIndex(),
             DateTime::make('Created At')->onlyOnDetail(),
             DateTime::make('Updated At')->onlyOnDetail(),
             BelongsTo::make('Lesson', 'lesson', Lesson::class)->onlyOnDetail()->nullable(),
