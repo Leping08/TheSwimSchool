@@ -1,12 +1,14 @@
 @component('mail::message')
-# Group Swim Lesson Progress Report
-
-Hey {{ $swimmer->firstName }}, congratulations on completing your {{$lesson->group->type}} swim lessons.<br>
+# The Swim School Group Lesson Report Card
 
 @if ($graduated)
-You can find your progress report below. It looks like you mastered all the skills for the {{$lesson->group->type}}.
+Congratulations, {{ $swimmer->firstName }}!  You've completed the {{$lesson->group->type}} swim course!<br>
+
+Below is your Report Card for this session. You've mastered all the skills required to graduate to the next level!
 @else
-You can find your progress report below. It looks like you still need to work on some skills before you can graduate to the next level.<br>
+Hi, {{ $swimmer->firstName }}! Thanks for swimming with us in the {{$lesson->group->type}} swim course!<br>
+
+Below is your Report Card for this session. You've been able to achieve the following skills.
 @endif
 
 {{-- List out all the skills_passed that the swimmer learned in the lesson --}}
@@ -20,9 +22,9 @@ You can find your progress report below. It looks like you still need to work on
 @endif
 
 {{-- List out all the skills_failed that the swimmer learned in the lesson --}}
-@if ($skills_failed->count() > 0)
+@if ($skills_failed->count() > 0 && !$graduated)
 @component('mail::panel')
-## Skills that still need work
+## Skills needed for graduation
 @foreach ($skills_failed as $progressReport)
 ✗ {{ $progressReport->skill->description }}<br>
 @endforeach
@@ -30,9 +32,11 @@ You can find your progress report below. It looks like you still need to work on
 @endif
 
 @if ($graduated)
-We have attached your {{$lesson->group->type}} diploma to this email. Keep up the good work and we hope to see you in the next level soon.
+We're so proud of you! Your Graduation Diploma for the {{$lesson->group->type}} is attached to this email. We look forward to continuing to swim with you in the next level.
+@else
+We're proud of your accomplishments so far! Keep practicing and working hard in the {{$lesson->group->type}}, and you'll be ready to graduate to the next level very soon!
 @endif
 
-Thanks,<br>
+See you at the pool,<br>
 The Swim School
 @endcomponent
