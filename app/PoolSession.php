@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * An Eloquent Model: 'PoolSession'
@@ -27,7 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PoolSession extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = ['start', 'end', 'pool_session_id', 'pool_session_type', 'location_id', 'instructor_id', 'price'];
 
