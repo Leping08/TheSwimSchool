@@ -34,7 +34,7 @@ class CalendarController extends Controller
         //Get all private pool sessions from 3 months ago and up
         $groupPoolSessions = PoolSession::where('instructor_id', $instructor->id)
             ->groupLessons()
-            ->whereDate('start', '>=', Carbon::now()->subMonths(3))
+            ->whereDate('start', '>=', Carbon::now()->subMonths(1))
             ->with(['lesson.swimmers.attendances', 'lesson.group', 'lesson.waitList', 'location', 'attendances'])
             ->get();
 
