@@ -48,7 +48,12 @@ class LessonObserver
      */
     public function deleted(Lesson $lesson)
     {
-        //
+        /**
+         * Remove all the pool sessions related to this lesson.
+         * This fixes a problem with instructor calendar not loading
+         * when the lesson is deleted but the pool sessions still exists.
+         */
+        $lesson->pool_sessions->each->delete();
     }
 
     /**

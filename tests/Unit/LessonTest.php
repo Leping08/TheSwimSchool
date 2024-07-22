@@ -178,4 +178,27 @@ class LessonTest extends TestCase
             $this->assertEquals($lesson->location_id, $poolSession->location_id);
         });
     }
+
+    /** @test  **/
+    public function it_will_delete_all_pool_sessions_when_the_lesson_is_deleted()
+    {
+        $location = Location::factory()->create();
+
+        $lesson = Lesson::factory()->create([
+            'class_start_date' => Carbon::parse('2021-01-01'),
+            'class_end_date' => Carbon::parse('2021-01-14'),
+            'location_id' => $location->id,
+            'days' => [
+                '1' => true, // Monday
+                '2' => true, // Tuesday
+                '3' => true, // Wednesday
+            ],
+        ]);
+
+        $this->assertEquals(6, $lesson->pool_sessions->count());
+
+        $lesson->delete();
+
+        $this->assertEquals(0, PoolSession::count());
+    }
 }
