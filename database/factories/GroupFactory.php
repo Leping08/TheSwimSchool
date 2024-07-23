@@ -24,6 +24,7 @@ class GroupFactory extends Factory
         return [
             'type' => $this->faker->lastName,
             'ages' => '6 years old',
+            'next_level_id' => null,
             'icon' => $this->faker->word,
             'description' => $this->faker->paragraph,
         ];

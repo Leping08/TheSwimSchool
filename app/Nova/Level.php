@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Nova\Metrics\LessonsPerLevel;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -57,6 +58,7 @@ class Level extends Resource
             ID::make()->sortable(),
             Text::make('Name', 'type')->sortable(),
             Text::make('Ages', 'ages')->sortable(),
+            BelongsTo::make('Next Level', 'nextLevel', Level::class)->nullable()->hideFromIndex(),
             //TODO Make the image work on vapor
             //Image::make('Icon', 'icon')->disk('sea-life')->hideWhenUpdating()->hideWhenCreating(),
             Text::make('Description', 'description')->hideFromIndex(),

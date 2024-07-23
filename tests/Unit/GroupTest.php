@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Group;
 use App\Lesson;
+use App\Skill;
 use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -114,5 +115,42 @@ class GroupTest extends TestCase
         ]);
 
         $this->assertEquals(2, $group->swimmers()->count());
+    }
+
+    /** @test  **/
+    public function it_has_manny_skills()
+    {
+        $group = Group::factory()->create();
+
+        $lesson = Lesson::factory()->create([
+            'group_id' => $group->id,
+        ]);
+
+        $swimmer = Swimmer::factory()->create([
+            'lesson_id' => $lesson->id,
+        ]);
+
+        $skill = Skill::factory()->create([
+            'group_id' => $group->id,
+        ]);
+
+        $this->assertInstanceOf(Skill::class, $group->skills()->first());
+
+        $this->assertEquals(1, $group->skills()->count());
+    }
+
+    /** @test  **/
+    public function it_belongs_to_a_next_level()
+    {
+        $group = Group::factory()->create();
+
+        $nextLevel = Group::factory()->create();
+
+        $group->update([
+            'next_level_id' => $nextLevel->id,
+        ]);
+
+        $this->assertInstanceOf(Group::class, $group->nextLevel);
+        $this->assertEquals($nextLevel->id, $group->nextLevel->id);
     }
 }

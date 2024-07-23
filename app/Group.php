@@ -26,7 +26,7 @@ class Group extends Model
     /**
      * @var array
      */
-    protected $fillable = ['type', 'ages', 'description', 'icon'];
+    protected $fillable = ['type', 'ages', 'description', 'icon', 'next_level_id'];
 
     /**
      * @var array
@@ -55,6 +55,14 @@ class Group extends Model
     public function skills()
     {
         return $this->hasMany(Skill::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function nextLevel()
+    {
+        return $this->belongsTo(Group::class, 'next_level_id');
     }
 
     /**
