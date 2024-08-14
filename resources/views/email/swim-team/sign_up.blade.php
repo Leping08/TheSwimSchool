@@ -27,9 +27,6 @@
 
 ## Practice Location
 {{config('swim-team.address')}}
-
-## Season
-{{$swimmer->season->dates}}
 @endcomponent
 
 Thanks,<br>
