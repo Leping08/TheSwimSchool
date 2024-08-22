@@ -11,6 +11,8 @@ class PoolSessionAttendance extends Pivot
 {
     use Actionable, HasFactory, SoftDeletes;
 
+    public $incrementing = true;
+
     protected $table = 'pool_session_attendance';
 
     protected $fillable = [
