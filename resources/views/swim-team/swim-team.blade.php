@@ -23,7 +23,7 @@
                     <div class="uk-container">
                         <div class="uk-width-1-1@m">
                             <h2 class="uk-heading-line"><span>Location</span></h2>
-                            <p>The Parrish Bull Sharks swim team is located at the Lincoln Aquatic Center, 715 17th St. E Palmetto, Florida 34221.</p>
+                            <p>The {{ config('swim-team.full-name') }} is located at the Lincoln Aquatic Center, {{ config('swim-team.address') }}.</p>
                             <div class="uk-card uk-card-default">
                                 <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{urlencode(config('swim-team.google-maps-query'))}}&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                             </div>
