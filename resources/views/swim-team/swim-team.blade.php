@@ -265,7 +265,7 @@
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Swim Meet Schedule</span></h2>
+                <h2 class="uk-heading-line"><span>Swim Meet Schedules</span></h2>
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div class="uk-width-expand@m uk-first-column">
                         <div class="uk-margin">
@@ -278,10 +278,10 @@
                                 Download the swim meet schedules.
                             </div>
                             <div class="uk-margin">
-                                <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_2023-2024.pdf') }}" download="PBS_Swim_Meet_Schedule_2023-2024.pdf">School Year Schedule</a>
+                                <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS School Year 2024-2025 Developmental Swim Meet Schedule.pdf') }}" download="PBS School Year 2024-2025 Developmental Swim Meet Schedule.pdf">Developmental School Year Schedule</a>
                             </div>
                             <div>
-                                <a target="_blank" title="Parrish Swim Team Schedule" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_Summer_2024.pdf') }}" download="PBS_Swim_Meet_Schedule_Summer_2024.pdf">Summer Schedule</a>
+                                <a target="_blank" title="Parrish Swim Team Schedule" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_Summer_2024.pdf') }}" download="PBS_Swim_Meet_Schedule_Summer_2024.pdf">Developmental Summer Schedule</a>
                             </div>
                         </div>
                     </div>
