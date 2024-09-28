@@ -32,6 +32,29 @@ npm install
 npm run production
 ```
 
+6. Start the server
+
+```bash
+php artisan serve
+```
+
+## Testing
+
+Create an .env.testing file and update the database connection to use the testing database. 
+
+To run all the tests, use the following command:
+
+```bash
+php artisan test
+```
+
+To filter down to a specific test, use the following command:
+
+```bash
+php artisan test --filter=InstructorCalendarTest
+```
+
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
