@@ -31,12 +31,12 @@
                             <td>August 5th</td>
                         </tr>
                         <tr>
-                            <td>September 23rd-October 17th</td>
+                            <td>September 23rd-October 24th <br>(Hurricane Makeup Days 10/21-10/24)</td>
                             <td>September 16th</td>
                         </tr>
                         <tr>
-                            <td>October 21st-November 19th <br>**(No Classes Halloween Thurs 10/31; Makeup Tues 11/19) <br>**(No Classes Veterans Day Mon 11/11; Makeup Mon 11/18)</td>
-                            <td>October 14th</td>
+                            <td>October 28th-November 26th <br>**(No Classes Halloween Thurs 10/31; Makeup Tues 11/26) <br>**(No Classes Veterans Day Mon 11/11; Makeup Mon 11/25)</td>
+                            <td>October 21st</td>
                         </tr>
                     </tbody>
                 </table>
