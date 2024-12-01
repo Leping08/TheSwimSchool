@@ -130,6 +130,7 @@
                             <li><b>White Team:</b> $125</li>
                             <li><b>Gray Team:</b> $135</li>
                             <li><b>Blue Team:</b> $150</li>
+                            <li><b>Senior Team:</b> $165</li>
                         </ul>
                         <div class="uk-margin">*Parent Non-Volunteer Fee per swimmer (optional): $100</div>
                         {{-- <div class="uk-margin">
@@ -177,6 +178,8 @@
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li><b>Blue Team:</b> Mon/Wed 5:00PM-6:30PM, Tues/Thurs 6:30PM-8:00PM & Sat 9:30AM-11:00AM</li>
                                 <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
+                                <li><b>Senior Team:</b> Senior Team: Mon/Wed 5:00AM-6:30AM, Mon/Wed 4:30PM-6:30PM, Tues/Thurs 6:00PM-8:00PM (Dry land training 6:00PM-6:30PM), Sat 9:00AM-11:00AM</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 5-6 practices per week</li>
                             </ul>
                         </div>
 
