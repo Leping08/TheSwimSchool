@@ -13,7 +13,7 @@
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div>
-                *Class days & times are subject to change per session and level based on facility and instructor availability, so the specific class days & times are not available until registration opens for each session. Registration is completed online through the “Levels” by clicking on the “Find Classes” button.
+                *Class days & times are subject to change per session and level based on facility and instructor availability, so the specic class days & times are not available until registration opens for each session. Registration is completed online through the “Levels” by clicking on the “Find Classes” button.
             </div>
 
             <div class="uk-margin-large-top">
@@ -140,12 +140,12 @@
                             <td>October 14th</td>
                         </tr>
                         <tr>
-                            <td>January 5th-February 9th</td>
+                            <td>January 5th-February 16th</td>
                             <td>December 23rd</td>
                         </tr>
                         <tr>
-                            <td>February 16th-March 23rd</td>
-                            <td>February 10th</td>
+                            <td>February 23rd-March 30th</td>
+                            <td>February 17th</td>
                         </tr>
                         <tr>
                             <td>April 6th-May 18th <br>**(No Classes Easter Weekend Sun 4/20; Makeup Sun 5/18)</td>
