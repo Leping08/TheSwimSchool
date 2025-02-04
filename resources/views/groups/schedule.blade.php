@@ -101,12 +101,12 @@
                             <td>October 14th</td>
                         </tr>
                         <tr>
-                            <td>January 4th-February 8th</td>
+                            <td>January 4th-February 15th</td>
                             <td>December 23rd</td>
                         </tr>
                         <tr>
-                            <td>February 15th-March 22nd</td>
-                            <td>February 10th</td>
+                            <td>February 22nd-March 29th</td>
+                            <td>February 17th</td>
                         </tr>
                         <tr>
                             <td>April 5th-May 17th <br>**(No Classes Easter Weekend Sat 4/19; Makeup Sat 5/17)</td>
