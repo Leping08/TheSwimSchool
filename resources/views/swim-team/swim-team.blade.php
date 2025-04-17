@@ -169,7 +169,7 @@
                                 School Year Practice Schedule
                             </h2>
                             <div class="uk-margin">
-                                Runs <b>August 19th-May 17th</b>:
+                                Runs <b>August 19th-May 22nd</b>:
                             </div>
                             <ul class="uk-list uk-list-bullet">
                                 <li><b>White Team:</b> Mon/Wed 4:30PM-5:15PM OR 5:30PM-6:15PM, Tues/Thurs 6:30PM-7:15PM & Sat 9:30AM-10:15AM</li>
@@ -188,15 +188,25 @@
                                 Summer Practice Schedule
                             </h2>
                             <div class="uk-margin">
-                                Runs <b>June 3rd-August 3rd</b> and practices are offered five days per week for all practice levels
+                                Runs <b>June 2nd-August 2nd</b>:
                             </div>
                             <ul class="uk-list uk-list-bullet">
-                                <li><b>White Team:</b> Mon/Tues/Wed/Thurs/Fri 9:15AM-10:00AM</li>
+                                <li>
+                                    <b>White Team:</b> Mon/Tues/Wed/Thurs/Fri 9:00AM-9:45AM &amp; Tues/Thurs 4:45PM-5:30PM<br>
+                                </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
-                                <li><b>Gray Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-9:15AM</li>
+                                <li>
+                                    <b>Gray Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-9:00AM &amp; Tues/Thurs 5:30PM-6:30PM<br>
+                                </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li><b>Blue Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-10:00AM</li>
+                                <li>
+                                    <b>Blue Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-9:30AM &amp; Tues/Thurs 5:00PM-6:30PM<br>
+                                </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
+                                <li>
+                                    <b>Senior Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-10:00AM &amp; Tues/Thurs 4:30PM-6:30PM<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 5-6 practices per week</li>
                             </ul>
                         </div>
                     </div>
@@ -284,7 +294,7 @@
                                 <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS School Year 2024-2025 Developmental Swim Meet Schedule.pdf') }}" download="PBS School Year 2024-2025 Developmental Swim Meet Schedule.pdf">Developmental School Year Schedule</a>
                             </div>
                             <div>
-                                <a target="_blank" title="Parrish Swim Team Schedule" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule_Summer_2024.pdf') }}" download="PBS_Swim_Meet_Schedule_Summer_2024.pdf">Developmental Summer Schedule</a>
+                                <a target="_blank" title="Parrish Swim Team Schedule" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Summer_2025_Swim_Meet_Schedule.pdf') }}" download="PBS_Summer_2025_Swim_Meet_Schedule.pdf">Developmental Summer Schedule</a>
                             </div>
                         </div>
                     </div>
