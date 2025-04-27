@@ -31,6 +31,8 @@ class Enroll
     {
         //Validation happens on the controller
         if ($this->isFull()) {
+            Log::warning('Someone tried to sign up for a lesson that is full.');
+            session()->flash('danger', 'Sorry the lesson is full.');
             return back();
         }
         $lesson = $this->getLesson();
