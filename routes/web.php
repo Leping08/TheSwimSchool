@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 /* @see \Laravel\Ui\AuthRouteMethods::auth() */
-Auth::routes(['login' => true, 'logout' => true, 'reset' => true]);
+Auth::routes(['login' => true, 'logout' => true, 'reset' => true, 'register' => false]);
 
 /*
  * Home page
