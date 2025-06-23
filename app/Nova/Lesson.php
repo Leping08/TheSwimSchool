@@ -82,7 +82,7 @@ class Lesson extends Resource
             BelongsTo::make('Location')->withMeta([
                 //Select River Wilderness by default
                 'belongsToId' => $this->location_id ?? 63, //REALHAB location id
-            ])->searchable(),
+            ]),
             BooleanGroup::make('Days', 'days')->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                 return [$item['id'] => $item['day']];
             }))->hideFalseValues()->onlyOnForms()->hideFromDetail()->hideWhenUpdating(),
