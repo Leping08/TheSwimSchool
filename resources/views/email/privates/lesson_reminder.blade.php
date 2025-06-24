@@ -28,6 +28,7 @@ Tomorrow {{$pool_session->start->format('l F jS')}}\
 ### What To Bring
 * Bathing Suit
 * Towel
+* Goggles (except for parent toddlers)
 @endcomponent
 
 @if($location->pool_access_instructions)

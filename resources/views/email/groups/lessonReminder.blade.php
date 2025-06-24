@@ -9,6 +9,7 @@ The first lesson is tomorrow {{$lesson->class_start_time->format('g:ia')}} - {{$
 ### What To Bring
 * Bathing Suit
 * Towel
+* Goggles (except for parent toddlers)
 @endcomponent
 
 
