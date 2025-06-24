@@ -21,7 +21,7 @@ class PrivateLessonSignUp extends Mailable
      */
     public function __construct(PrivateLesson $privateLesson)
     {
-        $this->privateLesson = $privateLesson;
+        $this->privateLesson = $privateLesson->load('pool_sessions.location');
     }
 
     /**
@@ -31,17 +31,14 @@ class PrivateLessonSignUp extends Mailable
      */
     public function build()
     {
-        $firstPoolSession = collect($this->privateLesson->pool_sessions->sortBy('start'))->first();
+        $sorted_pool_sessions = $this->privateLesson->pool_sessions->sortBy('start');
 
         return $this->subject('Private Lesson with The Swim School')
             ->from(config('mail.from.address'))
             ->markdown('email.privates.sign_up')
             ->with([
-                'lesson' => $this->privateLesson,
-                'pool_sessions' => $this->privateLesson->pool_sessions,
-                'first_pool_session' => $firstPoolSession,
-                'location' => $firstPoolSession->location,
-                'instructor' => $firstPoolSession->instructor,
+                'stoted_pool_sessions' => $sorted_pool_sessions,
+                'unique_locations' => $sorted_pool_sessions->pluck('location')->unique('id'),
             ]);
     }
 }
