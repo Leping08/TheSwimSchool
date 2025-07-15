@@ -13,11 +13,11 @@
     <div class="uk-section-default uk-section-overlap uk-section">
         <div class="uk-container">
             <div>
-                *Class days & times are subject to change per session and level based on facility and instructor availability, so the specic class days & times are not available until registration opens for each session. Registration is completed online through the “Levels” by clicking on the “Find Classes” button.
+                *Class days & times are subject to change per session and level based on facility and instructor availability, so the specific class days & times are not available until registration opens for each session. Registration is completed online through the “Levels” by clicking on the “Find Classes” button.
             </div>
 
             <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>2024-2025 School Year Weekday Schedule</span></h2>
+                <h2 class="uk-heading-line"><span>2025-2026 School Year Weekday Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
@@ -27,34 +27,34 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>August 19th-September 17th <br>**(No Classes Thurs 8/29; Makeup Tues 9/17) <br>**(No Classes Labor Day Mon 9/2; Makeup Mon 9/16)</td>
-                            <td>August 5th</td>
+                            <td>August 18th-September 15th **(No Classes Labor Day Mon 9/1; Makeup Mon 9/15)</td>
+                            <td>August 4th</td>
                         </tr>
                         <tr>
-                            <td>September 23rd-October 24th <br>(Hurricane Makeup Days 10/21-10/24)</td>
-                            <td>September 16th</td>
+                            <td>September 22nd-October 16th</td>
+                            <td>September 15th</td>
                         </tr>
                         <tr>
-                            <td>October 28th-November 26th <br>**(No Classes Halloween Thurs 10/31; Makeup Tues 11/26) <br>**(No Classes Veterans Day Mon 11/11; Makeup Mon 11/25)</td>
-                            <td>October 21st</td>
+                            <td>October 20th-November 18th **(No Classes Veterans Day Tues 11/11; Makeup Tues 11/18)</td>
+                            <td>October 13th</td>
                         </tr>
                     </tbody>
                 </table>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
-                            <th class="uk-width-1-2"><h5>Winter Weekday PM Sessions (2x/wk for 4 weeks)</h5></th>
+                            <th class="uk-width-1-2"><h5>Winter Weekday PM Sessions (2x/wk for 4 weeks) </h5></th>
                             <th class="uk-width-1-2"><h5>Registration Opens</h5></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>January 6th-February 3rd <br>**(No Classes MLK Jr. Day Mon 1/20; Makeup Mon 2/3)</td>
-                            <td>December 23rd</td>
+                            <td>January 5th-February 2nd **(No Classes MLK Jr. Day Mon 1/19; Makeup Mon 2/2)</td>
+                            <td>December 22nd</td>
                         </tr>
                         <tr>
-                            <td>February 10th-March 10th <br>**(No Classes Presidents Day Mon 2/17; Makeup Mon 3/10)</td>
-                            <td>February 3rd</td>
+                            <td>February 9th-March 9th **(No Classes Presidents Day Mon 2/16; Makeup Mon 3/9)</td>
+                            <td>February 2nd</td>
                         </tr>
                     </tbody>
                 </table>
@@ -67,19 +67,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>March 24th-April 17th</td>
-                            <td>March 10th</td>
+                            <td>March 23rd-April 16th</td>
+                            <td>March 9th</td>
                         </tr>
                         <tr>
-                            <td>April 21st-May 15th</td>
-                            <td>April 14th</td>
+                            <td>April 20th-May 14th</td>
+                            <td>April 13th</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>2024-2025 Weekend Schedule</span></h2>
+                <h2 class="uk-heading-line"><span>2025-2026 Weekend Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
@@ -89,32 +89,32 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>July 20th-August 24th</td>
-                            <td>July 8th</td>
+                            <td>July 26th-August 30th</td>
+                            <td>July 21st</td>
                         </tr>
                         <tr>
-                            <td>September 7th-October 12th</td>
-                            <td>August 26th</td>
+                            <td>September 6th-October 11th</td>
+                            <td>September 1st</td>
                         </tr>
                         <tr>
-                            <td>October 19th-November 23rd</td>
-                            <td>October 14th</td>
+                            <td>October 18th-November 22nd</td>
+                            <td>October 13th</td>
                         </tr>
                         <tr>
-                            <td>January 4th-February 15th</td>
-                            <td>December 23rd</td>
+                            <td>January 3rd-February 7th</td>
+                            <td>December 22nd</td>
                         </tr>
                         <tr>
-                            <td>February 22nd-March 29th</td>
-                            <td>February 17th</td>
+                            <td>February 21st-March 28th</td>
+                            <td>February 9th</td>
                         </tr>
                         <tr>
-                            <td>April 5th-May 17th <br>**(No Classes Easter Weekend Sat 4/19; Makeup Sat 5/17)</td>
-                            <td>March 24th</td>
+                            <td>April 11th-May 16th</td>
+                            <td>March 30th</td>
                         </tr>
                         <tr>
-                            <td>June 7th-July 19th <br>**(No Classes Independence Day Weekend Sat 7/5; Makeup Sat 7/19)</td>
-                            <td>May 19th</td>
+                            <td>May 30th-July 11th **(No Classes Independence Day Weekend Sat 7/4; Makeup Sat 7/11) </td>
+                            <td>May 18th</td>
                         </tr>
                     </tbody>
                 </table>
@@ -128,39 +128,39 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>July 21st-August 25th</td>
-                            <td>July 8th</td>
+                            <td>July 27th-August 31st</td>
+                            <td>July 21st</td>
                         </tr>
                         <tr>
-                            <td>September 8th-October 13th</td>
-                            <td>August 26th</td>
+                            <td>September 7th-October 12th</td>
+                            <td>September 1st</td>
                         </tr>
                         <tr>
-                            <td>October 20th-November 24th</td>
-                            <td>October 14th</td>
+                            <td>October 19th-November 23rd</td>
+                            <td>October 13th</td>
                         </tr>
                         <tr>
-                            <td>January 5th-February 16th</td>
-                            <td>December 23rd</td>
+                            <td>January 4th-February 8th</td>
+                            <td>December 22nd</td>
                         </tr>
                         <tr>
-                            <td>February 23rd-March 30th</td>
-                            <td>February 17th</td>
+                            <td>February 22nd-March 29th</td>
+                            <td>February 9th</td>
                         </tr>
                         <tr>
-                            <td>April 6th-May 18th <br>**(No Classes Easter Weekend Sun 4/20; Makeup Sun 5/18)</td>
-                            <td>March 24th</td>
+                            <td>April 12th-May 17th</td>
+                            <td>March 30th</td>
                         </tr>
                         <tr>
-                            <td>June 8th-July 20th <br>**(No Classes Independence Day Weekend Sun 7/6; Makeup Sun 7/20)</td>
-                            <td>May 19th</td>
+                            <td>May 31st-July 12th **(No Classes Independence Day Weekend Sun 7/5; Makeup Sun 7/12)</td>
+                            <td>May 18th</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="uk-margin-large-top">
-                <h2 class="uk-heading-line"><span>2025 Summer Weekday Schedule</span></h2>
+                <h2 class="uk-heading-line"><span>2026 Summer Weekday Schedule</span></h2>
                 <table class="uk-table uk-table-striped">
                     <thead>
                         <tr>
@@ -170,24 +170,24 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>June 2nd-June 12th</td>
-                            <td>May 19th</td>
+                            <td>June 1st-June 11th</td>
+                            <td>May 18th</td>
                         </tr>
                         <tr>
-                            <td>June 16th-June 26th</td>
-                            <td>June 9th</td>
+                            <td>June 15th-June 25th</td>
+                            <td>June 8th</td>
                         </tr>
                         <tr>
-                            <td>June 30th-July 10th</td>
-                            <td>June 23rd</td>
+                            <td>June 29th-July 9th</td>
+                            <td>June 22nd</td>
                         </tr>
                         <tr>
-                            <td>July 14th-July 24th</td>
-                            <td>July 7th</td>
+                            <td>July 13th-July 23rd</td>
+                            <td>July 6th</td>
                         </tr>
                         <tr>
-                            <td>July 28th-August 7th</td>
-                            <td>July 21st</td>
+                            <td>July 27th-August 6th</td>
+                            <td>July 20th</td>
                         </tr>
                     </tbody>
                 </table>
