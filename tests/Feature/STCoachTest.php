@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\STCoach;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class STCoachTest extends TestCase
@@ -14,6 +15,8 @@ class STCoachTest extends TestCase
     /** @test **/
     public function a_coach_will_show_up_on_the_swim_team_page_if_they_are_active()
     {
+        Storage::fake('s3');
+
         $activeCoach = STCoach::factory()->create([
             'active' => true,
         ]);

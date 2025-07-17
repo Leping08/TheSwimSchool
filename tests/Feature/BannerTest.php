@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Banner;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class BannerTest extends TestCase
@@ -13,6 +14,8 @@ class BannerTest extends TestCase
     /** @test  **/
     public function a_user_should_see_a_banner_if_its_active()
     {
+        Storage::fake('s3');
+
         $banner = Banner::factory()->create([
             'page' => '/swim-team',
             'active' => false,
