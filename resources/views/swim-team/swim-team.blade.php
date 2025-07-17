@@ -307,7 +307,7 @@
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Record Holders</span></h2>
+                <h2 id="record_holders" class="uk-heading-line"><span>Record Holders</span></h2>
                 <div class="uk-grid-margin uk-grid" uk-grid="">
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                         <div class="">
@@ -315,7 +315,23 @@
                                 <div class="uk-margin">Check out the current {{ config('swim-team.name') }} swim team record holders.</div>
                             </div>
                             <div>
-                                <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-right" href="{{ asset('pdf/PBS_Team_Records.pdf') }}" download="PBS_Team_Records.pdf">Download Records</a>
+                                <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-right" href="{{ Storage::disk('s3')->url('pdf/PBS_Team_Records.pdf') }}" target="_blank" rel="noopener" download="PBS_Team_Records.pdf">Download Records</a>
+                                @auth
+                                <button class="uk-button uk-button-secondary uk-margin-small-left" type="button" uk-toggle="target: #edit-records-modal">Edit</button>
+                                <div id="edit-records-modal" uk-modal>
+                                    <div class="uk-modal-dialog uk-modal-body">
+                                        <h2 class="uk-modal-title">Upload New Records PDF</h2>
+                                        <form method="POST" action="{{ route('swim-team.records.upload') }}" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="uk-margin">
+                                                <input class="uk-input" type="file" name="records_pdf" accept="application/pdf" required>
+                                            </div>
+                                            <button class="uk-button uk-button-primary" type="submit">Upload</button>
+                                            <button class="uk-button uk-button-secondary uk-modal-close" type="button">Cancel</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                @endauth
                             </div>
                         </div>
                     </div>

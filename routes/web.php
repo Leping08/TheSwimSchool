@@ -75,6 +75,9 @@ Route::post('/swim-team/tryouts/{tryout}', [\App\Http\Controllers\SwimTeam\Athle
 //The roster for the current season
 Route::get('/roster', [\App\Http\Controllers\SwimTeam\RosterController::class, 'index'])->name('swim-team.roster.index');
 
+// Record Holders PDF upload
+Route::post('/swim-team/records/upload', [\App\Http\Controllers\SwimTeam\RecordsController::class, 'upload'])->name('swim-team.records.upload')->middleware('auth');
+
 /*
  * Swim Team Registration
  */
