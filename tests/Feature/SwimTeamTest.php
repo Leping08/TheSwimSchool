@@ -12,12 +12,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class SwimTeamTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test **/
+    #[Test]
     public function a_swimmer_can_pay_the_registration_fee_by_hitting_the_register_endpoint()
     {
         Mail::fake();
@@ -46,7 +47,7 @@ class SwimTeamTest extends TestCase
         Mail::assertSent(STSignUp::class, 1);
     }
 
-    /** @test **/
+    #[Test]
     public function an_athlete_can_sign_up_with_a_free_promo_code()
     {
         Mail::fake();
@@ -75,7 +76,7 @@ class SwimTeamTest extends TestCase
         Mail::assertSent(STSignUp::class, 1);
     }
 
-    /** @test **/
+    #[Test]
     public function it_throws_an_error_with_a_bad_hash()
     {
         Mail::fake();
@@ -104,7 +105,7 @@ class SwimTeamTest extends TestCase
         Mail::assertNothingSent();
     }
 
-    /** @test **/
+    #[Test]
     public function it_throws_an_error_if_the_promo_is_not_100_percent()
     {
         Mail::fake();
@@ -133,7 +134,7 @@ class SwimTeamTest extends TestCase
         Mail::assertNothingSent();
     }
 
-    /** @test **/
+    #[Test]
     public function it_throws_an_error_if_the_promo_is_not_valid()
     {
         Mail::fake();
@@ -159,7 +160,7 @@ class SwimTeamTest extends TestCase
         Mail::assertNothingSent();
     }
 
-    /** @test **/
+    #[Test]
     public function a_user_can_create_a_payment_intent()
     {
         $athlete = Athlete::factory()->create();
@@ -177,7 +178,7 @@ class SwimTeamTest extends TestCase
             ->assertSee('pi_');
     }
 
-    /** @test **/
+    #[Test]
     public function an_athlete_can_sign_up_as_a_swimmer()
     {
         Mail::fake();
@@ -205,7 +206,7 @@ class SwimTeamTest extends TestCase
         Mail::assertSent(STSignUp::class, 1);
     }
 
-    /** @test **/
+    #[Test]
     public function an_athlete_will_not_sign_up_for_the_news_letter_when_signing_up_for_the_swim_team()
     {
         Mail::fake();

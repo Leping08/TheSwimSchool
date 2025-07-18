@@ -9,12 +9,13 @@ use App\PoolSession;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Nova\Fields\ActionFields;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class PrivatePoolSessionTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_should_create_pool_sessions_when_a_private_lesson_is_creted()
     {
         $this->seed();
@@ -49,7 +50,7 @@ class PrivatePoolSessionTest extends TestCase
         $this->assertCount(2, PoolSession::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_create_a_weeks_worth_of_pool_sessions()
     {
 
@@ -85,7 +86,7 @@ class PrivatePoolSessionTest extends TestCase
         $this->assertCount(7, PoolSession::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_create_multiple_weeks_worth_of_pool_sessions()
     {
         $this->seed();
@@ -115,7 +116,7 @@ class PrivatePoolSessionTest extends TestCase
         $this->assertCount(4, PoolSession::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_not_create_the_same_pool_sessions_twice()
     {
         $this->seed();
@@ -149,7 +150,7 @@ class PrivatePoolSessionTest extends TestCase
         $this->assertCount(4, PoolSession::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_sets_the_price_for_all_the_pool_sessions_being_created()
     {
         $this->seed();

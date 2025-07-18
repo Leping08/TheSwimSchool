@@ -7,12 +7,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class STCoachTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test **/
+    #[Test]
     public function a_coach_will_show_up_on_the_swim_team_page_if_they_are_active()
     {
         Storage::fake('s3');

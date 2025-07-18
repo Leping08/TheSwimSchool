@@ -9,12 +9,13 @@ use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class GroupLessonReminderEmailTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_should_send_emails_out_to_all_swimmers_in_lessons_starting_tomorrow()
     {
         Mail::fake();
@@ -33,7 +34,7 @@ class GroupLessonReminderEmailTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_only_send_emails_out_to_all_swimmers_in_lessons_starting_tomorrow()
     {
         Mail::fake();

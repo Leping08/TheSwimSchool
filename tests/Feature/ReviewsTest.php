@@ -5,12 +5,13 @@ namespace Tests\Feature;
 use App\Review;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ReviewsTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test  **/
+    #[Test]
     public function a_user_should_see_active_reviews_on_the_home_page()
     {
         $firstReview = Review::factory()->create([
@@ -29,7 +30,7 @@ class ReviewsTest extends TestCase
             ->assertSee($secondReview->message);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_should_not_see_disabled_reviews_on_the_home_page()
     {
         $review = Review::factory()->create([

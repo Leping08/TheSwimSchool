@@ -8,12 +8,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class WaitListTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function a_user_is_able_to_sign_up_for_the_wait_list_of_a_lesson_that_is_full()
     {
         Mail::fake();
@@ -54,7 +55,7 @@ class WaitListTest extends TestCase
         Mail::assertSent(WaitList::class);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_sign_up_for_the_same_wait_list_twice()
     {
         $lesson = Lesson::factory()->create([
@@ -94,7 +95,7 @@ class WaitListTest extends TestCase
         $this->assertEquals(1, $lesson->waitlist()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_sign_up_with_the_same_email_and_a_different_swimmer_name()
     {
         $lesson = Lesson::factory()->create([
@@ -148,7 +149,7 @@ class WaitListTest extends TestCase
         ]);
     }
 
-    /** @test  **/
+    #[Test]
     public function bots_can_not_sign_up()
     {
         $lesson = Lesson::factory()->create([

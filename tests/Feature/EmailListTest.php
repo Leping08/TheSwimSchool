@@ -6,12 +6,13 @@ use App\EmailList;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class EmailListTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test */
+    #[Test]
     public function a_user_should_be_able_to_unsubscribe_by_hitting_the_unsubscribe_page()
     {
         //Set up an email
@@ -36,7 +37,7 @@ class EmailListTest extends TestCase
         $this->assertEquals(1, EmailList::unsubscribed()->count());
     }
 
-    /** @test */
+    #[Test]
     public function a_user_should_be_able_to_subscribe_by_filling_out_the_sing_up_for_the_news_letter_form()
     {
         $this->assertEquals(0, EmailList::all()->count());

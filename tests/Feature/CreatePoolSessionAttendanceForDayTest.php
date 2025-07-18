@@ -11,12 +11,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class CreatePoolSessionAttendanceForDayTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test */
+    #[Test]
     public function running_the_create_pool_sessionattendance_for_day_job_does_create_pool_sessions_for_date()
     {
         $this->seed();
@@ -50,7 +51,7 @@ class CreatePoolSessionAttendanceForDayTest extends TestCase
         $this->assertCount(4, PoolSessionAttendance::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_only_creates_the_pool_session_attendance_for_that_day()
     {
         $this->seed();
@@ -84,7 +85,7 @@ class CreatePoolSessionAttendanceForDayTest extends TestCase
         $this->assertCount(0, PoolSessionAttendance::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_will_not_create_duplicate_pool_session_attendance_for_that_day()
     {
         $this->seed();

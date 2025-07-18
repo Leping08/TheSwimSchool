@@ -5,12 +5,13 @@ namespace Tests\Unit;
 use App\STCoach;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class STCoachesTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test  **/
+    #[Test]
     public function it_can_have_active_coaches()
     {
         STCoach::factory()->create([

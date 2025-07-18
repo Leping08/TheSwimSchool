@@ -9,12 +9,13 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class NewsLetterTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function it_allows_someone_to_sign_up()
     {
         $data = [
@@ -29,7 +30,7 @@ class NewsLetterTest extends TestCase
         $this->assertCount(1, EmailList::all());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_not_throw_an_error_when_the_same_email_is_entered_twice()
     {
         $data = [
@@ -49,7 +50,7 @@ class NewsLetterTest extends TestCase
         $this->assertCount(1, EmailList::all());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_remove_all_emails_that_have_submitted_complaints_before_sending_news_letter_emails()
     {
         $email_subscribed = $this->faker->safeEmail();
@@ -81,7 +82,7 @@ class NewsLetterTest extends TestCase
         $this->assertEquals(false, $email_after->subscribe);
     }
 
-    /** @test  **/
+    #[Test]
     public function it_can_handle_an_api_error_to_mailgun()
     {
         $email_subscribed = $this->faker->safeEmail();
@@ -106,7 +107,7 @@ class NewsLetterTest extends TestCase
         $this->assertEquals(true, $email_after->subscribe);
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_not_allow_someone_to_sign_up_if_a_honeypot_field_is_filled_out()
     {
         $data = [
@@ -124,7 +125,7 @@ class NewsLetterTest extends TestCase
         $this->assertCount(0, EmailList::all());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_not_allow_someone_to_sign_up_if_they_move_too_fast_like_a_bot()
     {
         $data = [
@@ -140,7 +141,7 @@ class NewsLetterTest extends TestCase
         $this->assertCount(0, EmailList::all());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_allow_someone_to_sign_up_if_they_at_human_speeds()
     {
         $data = [
@@ -156,7 +157,7 @@ class NewsLetterTest extends TestCase
         $this->assertCount(1, EmailList::all());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_allows_someone_resubscribe_with_the_same_email()
     {
         $safeEmail = $this->faker->safeEmail();

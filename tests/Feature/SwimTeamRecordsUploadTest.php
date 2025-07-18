@@ -7,17 +7,20 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use App\User;
+use PHPUnit\Framework\Attributes\Test;
 
 class SwimTeamRecordsUploadTest extends TestCase
 {
     use RefreshDatabase;
 
+    #[Test]
     public function test_guest_cannot_upload_records_pdf()
     {
         $response = $this->post('/swim-team/records/upload', []);
         $response->assertRedirect('/login');
     }
 
+    #[Test]
     public function test_authenticated_user_can_upload_records_pdf()
     {
         Storage::fake('s3');
@@ -33,6 +36,7 @@ class SwimTeamRecordsUploadTest extends TestCase
         $this->assertTrue(Storage::disk('s3')->exists('pdf/PBS_Team_Records.pdf'));
     }
 
+    #[Test]
     public function test_upload_requires_pdf_file()
     {
         $user = User::factory()->create();

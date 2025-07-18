@@ -6,12 +6,13 @@ use App\Tryout;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class TryoutTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test  **/
+    #[Test]
     public function it_can_be_open_for_registration()
     {
         $this->withExceptionHandling();
@@ -31,7 +32,7 @@ class TryoutTest extends TestCase
         $this->assertEquals(0, $tryout->registrationOpen()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_can_be_full()
     {
         $tryout = Tryout::factory()->create([

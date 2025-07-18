@@ -11,12 +11,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class TryoutTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function a_user_should_be_able_to_see_the_sign_up_button_if_registration_is_open()
     {
         $tryout = Tryout::factory()->create([
@@ -33,7 +34,7 @@ class TryoutTest extends TestCase
             ->assertDontSee('Sorry No Tryouts Available At This Time');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_should_not_be_able_to_see_the_sign_up_button_if_registration_is_not_open()
     {
         $tryout = Tryout::factory()->create([
@@ -48,7 +49,7 @@ class TryoutTest extends TestCase
             ->assertSee('Sorry No Tryouts Available At This Time');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_should_be_able_to_sign_up_for_tryouts_if_they_have_the_sign_up_link_and_the_registration_is_not_open()
     {
         $tryout = Tryout::factory()->create([
@@ -60,7 +61,7 @@ class TryoutTest extends TestCase
             ->assertStatus(200);
     }
 
-    /** @test  **/
+    #[Test]
     public function an_athlete_should_be_added_to_the_database_if_they_fill_out_the_tryout_sign_up_form()
     {
         $tryout = Tryout::factory()->create();
@@ -102,7 +103,7 @@ class TryoutTest extends TestCase
         ]);
     }
 
-    /** @test  **/
+    #[Test]
     public function reminder_emails_will_be_sent_out_the_day_before_the_tryout()
     {
         $tryout = Tryout::factory()->create([

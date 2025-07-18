@@ -11,12 +11,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class FeedbackTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test */
+    #[Test]
     public function a_user_can_fill_out_the_feedback_survey()
     {
         $this->get(route('feedback.index'))
@@ -58,7 +59,7 @@ class FeedbackTest extends TestCase
         $this->assertEquals(1, $feedback[0]->answers[8]->answer);
     }
 
-    /** @test */
+    #[Test]
     public function a_user_will_be_sent_a_feedback_email_a_week_after_the_lesson()
     {
         $lesson = Lesson::factory()->create([
@@ -82,7 +83,7 @@ class FeedbackTest extends TestCase
         Mail::assertSent(\App\Mail\Admin\FeedbackSurvey::class);
     }
 
-    /** @test */
+    #[Test]
     public function a_user_will_only_receive_one_feedback_survey_if_they_sign_up_multiple_swimmers_with_the_same_email()
     {
         $email = 'test@gmail.com';
