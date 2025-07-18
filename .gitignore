@@ -3,11 +3,14 @@
 /public/build
 /public/storage
 /storage/*.key
+/storage/pail
 /vendor
 /.idea
 /.vagrant
 /.fleet
 /.vscode
+/.nova
+/.zed
 Homestead.json
 Homestead.yaml
 npm-debug.log
@@ -26,3 +29,8 @@ auth.json
 .phpunit.result.cache
 /.phpunit.cache
 coverage/
+*.log
+.phpactor.json
+Homestead.json
+Homestead.yaml
+Thumbs.db
