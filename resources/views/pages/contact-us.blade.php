@@ -13,6 +13,18 @@ Contact Us
 <div class="uk-section-default uk-section-overlap uk-section" uk-scrollspy="{&quot;target&quot;:&quot;[uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-bottom-medium&quot;,&quot;delay&quot;:false}">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <div class="uk-container">
+        <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-margin-medium-bottom" style="">
+            <div class="uk-flex uk-flex-middle">
+                <span uk-icon="icon: info; ratio: 2" class="uk-margin-small-right"></span>
+                <div>
+                    <div class="uk-h4 uk-margin-remove">Looking for swim lessons?</div>
+                    <div class="uk-text-large uk-margin-small-top">
+                        Please visit our <a href="{{ route('groups.lessons.index') }}" class="uk-link uk-underline uk-text-bold">Group Lessons</a> or <a href="{{ route('private_lesson.index') }}" class="uk-link uk-underline uk-text-bold">Private Lessons</a> for details and registration.<br>
+                        <span class="uk-text-meta">Most questions about registration and scheduling can be answered there!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-width-1-1@m uk-first-column">
                 <div class="uk-margin uk-scrollspy-inview uk-animation-slide-bottom-medium" uk-scrollspy-class="">
