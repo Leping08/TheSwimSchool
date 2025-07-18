@@ -53,7 +53,7 @@ class StripeCharge implements PaymentMethod
             'currency' => 'usd',
             'receipt_email' => $this->email,
             'description' => $this->description,
-            'source' => $this->token, //Obtained with Stripe.js
+            'source' => $this->token, // Obtained with Stripe.js
         ];
 
         Log::info('Stripe charge request array:');
@@ -72,9 +72,9 @@ class StripeCharge implements PaymentMethod
     {
         try {
             Log::info('Setting API key');
-            \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+            $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
             Log::info('Stripe API key has been set');
-            $result = \Stripe\Charge::create($charge);
+            $result = $stripe->charges->create($charge);
             Log::info('Stripe charge complete');
             Log::info('Stripe charge ID: '.$result->id);
 
@@ -82,26 +82,6 @@ class StripeCharge implements PaymentMethod
         } catch (\Stripe\Exception\CardException $e) {
             // Since it's a decline, \Stripe\Exception\CardException will be caught
             Log::error('Since it\'s a decline, \Stripe\Exception\CardException will be caught');
-            $this->logStripeError($e);
-        } catch (\Stripe\Exception\RateLimitException $e) {
-            // Too many requests made to the API too quickly
-            Log::error('Too many requests made to the API too quickly');
-            $this->logStripeError($e);
-        } catch (\Stripe\Exception\InvalidRequestException $e) {
-            // Invalid parameters were supplied to Stripe's API
-            Log::error('Invalid parameters were supplied to Stripes API');
-            $this->logStripeError($e);
-        } catch (\Stripe\Exception\AuthenticationException $e) {
-            // Authentication with Stripe's API failed (maybe you changed API keys recently)
-            Log::error('Authentication with Stripes API failed (maybe you changed API keys recently)');
-            $this->logStripeError($e);
-        } catch (\Stripe\Exception\ApiConnectionException $e) {
-            // Network communication with Stripe failed
-            Log::error('Network communication with Stripe failed');
-            $this->logStripeError($e);
-        } catch (\Stripe\Exception\ApiErrorException $e) {
-            // Display a very generic error to the user, and maybe send yourself an email
-            Log::error('Display a very generic error to the user, and maybe send yourself an email');
             $this->logStripeError($e);
         } catch (\Exception $e) {
             // Something else happened, completely unrelated to Stripe

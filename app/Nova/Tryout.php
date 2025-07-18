@@ -62,7 +62,7 @@ class Tryout extends Resource
                 return view('partials.link', [
                     'link' => url('/swim-team/tryouts/'.$this->id),
                     'text' => 'Sign Up Link',
-                    //'new_tab' => true TODO: Add new tab option to link partial
+                    // 'new_tab' => true TODO: Add new tab option to link partial
                 ])->render();
             })->asHtml()->hideFromIndex(),
             HasMany::make('Athletes', 'athletes', Athlete::class),

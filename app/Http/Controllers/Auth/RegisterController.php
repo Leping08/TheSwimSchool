@@ -37,9 +37,9 @@ class RegisterController extends Controller
     public function __construct()
     {
         if (env('GUEST_REGISTRATION')) {
-            $this->middleware('guest'); //Guest can register as admin
+            $this->middleware('guest'); // Guest can register as admin
         } else {
-            $this->middleware('auth');  //Only admin can register new admin
+            $this->middleware('auth');  // Only admin can register new admin
         }
     }
 

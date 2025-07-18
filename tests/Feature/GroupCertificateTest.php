@@ -6,13 +6,14 @@ use App\Lesson;
 use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Crypt;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class GroupCertificateTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function a_user_should_see_swimmer_certificate()
     {
         $lesson = Lesson::factory()->create();
@@ -29,7 +30,7 @@ class GroupCertificateTest extends TestCase
             ->assertSee($swimmer->lesson->group->icon_path);
     }
 
-    /** @test */
+    #[Test]
     public function a_user_get_an_error_with_a_bad_string_for_a_user_id()
     {
         $this->get(route('groups.certificate.show', ['encrypted_swimmer_id' => 'wrong_id']))
@@ -37,7 +38,7 @@ class GroupCertificateTest extends TestCase
             ->assertSee('Invalid encrypted swimmer');
     }
 
-    /** @test */
+    #[Test]
     public function a_user_get_an_error_with_the_wrong_swimmer_id()
     {
         $encrypted_id = Crypt::encryptString('5');

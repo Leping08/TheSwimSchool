@@ -16,7 +16,7 @@ class STSeason extends Model
     {
         return $this->hasMany(STSwimmer::class)
             ->where('s_t_swimmers.stripeChargeId', '!=', null);
-        //->currentseason();
+        // ->currentseason();
     }
 
     public function tryouts()

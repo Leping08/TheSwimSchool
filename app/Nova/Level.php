@@ -59,8 +59,8 @@ class Level extends Resource
             Text::make('Name', 'type')->sortable(),
             Text::make('Ages', 'ages')->sortable(),
             BelongsTo::make('Next Level', 'nextLevel', Level::class)->nullable()->hideFromIndex(),
-            //TODO Make the image work on vapor
-            //Image::make('Icon', 'icon')->disk('sea-life')->hideWhenUpdating()->hideWhenCreating(),
+            // TODO Make the image work on vapor
+            // Image::make('Icon', 'icon')->disk('sea-life')->hideWhenUpdating()->hideWhenCreating(),
             Text::make('Description', 'description')->hideFromIndex(),
             HasMany::make('Lessons', 'lessons', Lesson::class),
             HasMany::make('Skills', 'skills', Skill::class),

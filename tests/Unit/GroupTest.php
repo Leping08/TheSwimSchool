@@ -7,13 +7,14 @@ use App\Lesson;
 use App\Skill;
 use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class GroupTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test  **/
+    #[Test]
     public function it_has_many_lessons()
     {
         $group = Group::factory()->create();
@@ -32,7 +33,7 @@ class GroupTest extends TestCase
         $this->assertEquals(2, $group->lessons()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_has_public_facing_lessons()
     {
         Group::factory()->create([
@@ -49,7 +50,7 @@ class GroupTest extends TestCase
         $this->assertEquals(2, Group::all()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function shark_is_a_private_lesson()
     {
         Group::factory()->create([
@@ -66,7 +67,7 @@ class GroupTest extends TestCase
         $this->assertEquals(2, Group::all()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_has_private_lessons_the_public_can_not_see()
     {
         Group::factory()->create([
@@ -94,7 +95,7 @@ class GroupTest extends TestCase
         $this->assertEquals(3, Group::all()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_has_manny_swimmers()
     {
         $group = Group::factory()->create();
@@ -117,7 +118,7 @@ class GroupTest extends TestCase
         $this->assertEquals(2, $group->swimmers()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_has_manny_skills()
     {
         $group = Group::factory()->create();
@@ -139,7 +140,7 @@ class GroupTest extends TestCase
         $this->assertEquals(1, $group->skills()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_belongs_to_a_next_level()
     {
         $group = Group::factory()->create();

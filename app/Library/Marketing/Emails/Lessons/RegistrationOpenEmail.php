@@ -6,7 +6,7 @@ use App\EmailList;
 use App\Jobs\NewsLetter\SendRegistrationOpenEmail;
 use App\Library\Mailgun\Mailgun;
 
-//\App\Library\Marketing\Emails\Lessons\RegistrationOpenEmail::send();
+// \App\Library\Marketing\Emails\Lessons\RegistrationOpenEmail::send();
 
 class RegistrationOpenEmail
 {

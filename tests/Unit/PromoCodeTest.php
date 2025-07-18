@@ -4,13 +4,14 @@ namespace Tests\Unit;
 
 use App\PromoCode;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class PromoCodeTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test  **/
+    #[Test]
     public function it_can_apply_a_discount_to_a_price()
     {
         $price = 100;
@@ -41,7 +42,7 @@ class PromoCodeTest extends TestCase
         $this->assertEquals($promoCode->apply($price3), 17.50);
     }
 
-    /** @test  **/
+    #[Test]
     public function it_should_not_change_the_price_if_the_discount_percent_is_0()
     {
         $price = 100;
@@ -54,7 +55,7 @@ class PromoCodeTest extends TestCase
         $this->assertEquals($promoCode->apply($price), 100);
     }
 
-    /** @test  **/
+    #[Test]
     public function it_should_make_the_price_0_if_the_discount_percent_is_100()
     {
         $price = 127;
@@ -67,7 +68,7 @@ class PromoCodeTest extends TestCase
         $this->assertEquals($promoCode->apply($price), 0);
     }
 
-    /** @test  **/
+    #[Test]
     public function the_promo_code_endpoint_works_with_a_valid_promo_code()
     {
         $promoCode = PromoCode::factory()->create([
@@ -81,7 +82,7 @@ class PromoCodeTest extends TestCase
             ->assertSeeText($promoCode->discount_percent);
     }
 
-    /** @test  **/
+    #[Test]
     public function the_promo_code_endpoint_works_with_a_bad_promo_code()
     {
         // assert the response has the discount percent

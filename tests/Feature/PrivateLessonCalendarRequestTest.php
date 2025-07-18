@@ -12,13 +12,14 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class PrivateLessonCalendarRequestTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_request_a_private_lesson_with_more_than_one_pool_session()
     {
         Mail::fake();
@@ -81,7 +82,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         Mail::assertSent(PrivateLessonSignUp::class);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_request_a_private_lesson_with_one_pool_session()
     {
         Mail::fake();
@@ -143,7 +144,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         Mail::assertSent(PrivateLessonSignUp::class);
     }
 
-    /** @test  **/
+    #[Test]
     public function the_system_will_send_out_a_reminder_email_to_swimmers_with_lessons_tomorrow()
     {
         Mail::fake();
@@ -178,7 +179,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         Mail::assertSent(PrivatePoolSessionReminder::class, 1);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_only_sign_up_for_a_private_lesson_that_is_available()
     {
         $this->seed();
@@ -203,12 +204,12 @@ class PrivateLessonCalendarRequestTest extends TestCase
             ->assertDontSee($last_week->start->toJSON());
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_will_see_an_error_message_if_the_card_is_declined()
     {
         $this->seed();
 
-        //$this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
 
         $session = PoolSession::factory()->create([
             'pool_session_id' => null,
@@ -247,7 +248,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->assertEquals(0, PrivateLesson::all()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_sign_up_with_this_birth_date_format()
     {
         $this->seed();
@@ -290,7 +291,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $this->assertEquals(1, PrivateLesson::first()->pool_sessions()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_sign_up_for_a_lesson_that_has_been_taken_by_someone_else()
     {
         $this->seed();
@@ -300,7 +301,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'pool_session_type' => PrivateLesson::class,
         ]);
 
-        //This is the same id that was already signed up for
+        // This is the same id that was already signed up for
         $session_ids_1 = '1';
 
         $data_1 = [
@@ -328,7 +329,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->assertCount(1, PrivateSwimmer::all());
 
-        //This is the same id that was already signed up for
+        // This is the same id that was already signed up for
         $session_ids_2 = '1';
 
         $data_2 = [
@@ -354,7 +355,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect(route('private_lesson.index'));
 
-        //Assert the user was not created
+        // Assert the user was not created
         $this->assertCount(1, PrivateSwimmer::all());
     }
 }

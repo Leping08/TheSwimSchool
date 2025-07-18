@@ -51,11 +51,11 @@
                                     <li><a href="/admin/resources/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
                                     <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <a class="dropdown-item" href="{{ route('nova.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('nova.logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -126,11 +126,11 @@
                                     <li><a href="/admin/resources/lessons"><i class="fa fa-tint fa-lg" aria-hidden="true"></i> Lessons</a></li>
                                     <li><a href="https://stripe.com/" target="_blank"><i class="fa fa-money fa-lg" aria-hidden="true"></i> Stripe</a></li>
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <a class="dropdown-item" href="{{ route('nova.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('nova.logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>

@@ -9,13 +9,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use Laravel\Nova\Fields\ActionFields;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ProgressReportActionTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function is_should_save_the_skills_that_are_checked()
     {
         $group = \App\Group::factory()->create();
@@ -32,7 +33,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -45,7 +46,7 @@ class ProgressReportActionTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function is_should_update_the_skills_if_the_action_is_run_twice()
     {
         $group = \App\Group::factory()->create();
@@ -62,7 +63,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -99,7 +100,7 @@ class ProgressReportActionTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function is_should_queue_the_email_when_the_complete_progress_report_action_is_run()
     {
         Mail::fake();
@@ -119,7 +120,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -153,7 +154,7 @@ class ProgressReportActionTest extends TestCase
         Queue::assertPushed(SendLessonCompletedEmail::class);
     }
 
-    /** @test */
+    #[Test]
     public function is_should_email_the_swimmer_the_list_of_skills_they_passed()
     {
         Mail::fake();
@@ -172,7 +173,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -190,7 +191,7 @@ class ProgressReportActionTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function if_the_pdf_exists_it_gets_attatched_to_the_email()
     {
         Mail::fake();
@@ -209,7 +210,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -226,7 +227,7 @@ class ProgressReportActionTest extends TestCase
         $mailable->assertHasAttachedData($pdf, 'certificate.pdf', ['mime' => 'application/pdf']);
     }
 
-    /** @test */
+    #[Test]
     public function it_should_not_attatch_the_certificate_if_the_swimmer_does_not_graduate()
     {
         Mail::fake();
@@ -245,7 +246,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -263,7 +264,7 @@ class ProgressReportActionTest extends TestCase
         $this->assertEmpty($mailable->attachments);
     }
 
-    /** @test */
+    #[Test]
     public function it_will_delete_any_skills_that_are_not_assigned_to_the_swimmer_level()
     {
         Mail::fake();
@@ -300,7 +301,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 

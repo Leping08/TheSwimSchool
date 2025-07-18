@@ -50,7 +50,7 @@ class ContactUsController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'message' => 'required',
-            'g-recaptcha-response' => App::runningUnitTests() ? [] : ['required', new Recaptcha()],
+            'g-recaptcha-response' => App::runningUnitTests() ? [] : ['required', new Recaptcha],
         ]);
 
         try {

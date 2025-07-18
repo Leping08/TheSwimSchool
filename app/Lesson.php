@@ -294,7 +294,7 @@ class Lesson extends Model implements PoolSessionable
                 7 => Carbon::SUNDAY,
             ]);
 
-            //Parse the date and go back one day to account for the start date being accessible
+            // Parse the date and go back one day to account for the start date being accessible
             $startDate = Carbon::parse($this->class_start_date)->subDay()->next($carbonDayMappings->get($dayId));
             $endDate = Carbon::parse($this->class_end_date);
 

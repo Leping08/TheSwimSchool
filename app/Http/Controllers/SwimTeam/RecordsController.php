@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\SwimTeam;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\Controller;
 
 class RecordsController extends Controller
 {
@@ -18,6 +18,6 @@ class RecordsController extends Controller
         $filename = 'PBS_Team_Records.pdf';
         Storage::disk('s3')->putFileAs('pdf', $file, $filename, ['visibility' => 'public']);
 
-		return redirect()->back()->with('success', 'Records PDF updated successfully!')->withFragment('record_holders');
+        return redirect()->back()->with('success', 'Records PDF updated successfully!')->withFragment('record_holders');
     }
 }

@@ -12,13 +12,14 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class InstructorCalendarTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function only_an_admin_can_visit_the_instructor_calendar_page()
     {
         $user = User::factory()->create();
@@ -33,7 +34,7 @@ class InstructorCalendarTest extends TestCase
             ->assertStatus(200);
     }
 
-    /** @test  **/
+    #[Test]
     public function the_calendar_page_shows_lessons_only_for_the_instructor_calendar_being_looked_at()
     {
         $this->seed();
@@ -81,7 +82,7 @@ class InstructorCalendarTest extends TestCase
             ->assertDontSee($lesson_1->group->type);
     }
 
-    /** @test  **/
+    #[Test]
     public function the_calendar_will_not_show_lessons_older_then_3_months_ago()
     {
         $this->seed();
@@ -130,7 +131,7 @@ class InstructorCalendarTest extends TestCase
             ->assertDontSee($group2->type);
     }
 
-    /** @test  **/
+    #[Test]
     public function the_calendar_will_show_the_correct_number_of_events_for_a_lesson()
     {
         $this->seed();
@@ -154,7 +155,7 @@ class InstructorCalendarTest extends TestCase
         $this->assertCount(8, $lesson_1->calendarEvents);
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_show_private_lessons()
     {
         $this->seed();
@@ -193,7 +194,7 @@ class InstructorCalendarTest extends TestCase
             ->assertSee('Private');
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_only_show_private_lessons_from_3_months_ago_and_onward()
     {
         $this->seed();

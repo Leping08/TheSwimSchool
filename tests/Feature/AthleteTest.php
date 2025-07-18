@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\Athlete;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class AthleteTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function a_hash_is_set_when_an_athlete_is_created()
     {
         $athlete = Athlete::factory()->create();
@@ -18,7 +19,7 @@ class AthleteTest extends TestCase
         $this->assertNotEmpty($athlete->hash);
     }
 
-    /** @test */
+    #[Test]
     public function a_user_can_update_an_athlete_by_hash()
     {
         $athlete = Athlete::factory()->create();

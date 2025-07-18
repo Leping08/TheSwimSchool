@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\Instructor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class AboutTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function a_user_can_only_see_active_instructors_on_the_about_page()
     {
         $visible_instructor = Instructor::factory()->create();

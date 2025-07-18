@@ -10,13 +10,14 @@ use App\PrivateSwimmer;
 use App\Swimmer;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class RealhabAttendanceTest extends TestCase
 {
     use DatabaseMigrations;
 
-    /** @test  **/
+    #[Test]
     public function only_admins_can_see_the_realhab_attendance_page()
     {
         /** @var User $user */
@@ -32,7 +33,7 @@ class RealhabAttendanceTest extends TestCase
             ->assertStatus(200);
     }
 
-    /** @test  **/
+    #[Test]
     public function the_realhab_attendance_page_shows_the_correct_group_data()
     {
         $this->seed();
@@ -88,7 +89,7 @@ class RealhabAttendanceTest extends TestCase
         $response->assertSee($swimmer->name);
     }
 
-    /** @test  **/
+    #[Test]
     public function is_will_not_show_a_swimmer_that_has_not_attended_a_pool_session()
     {
         $this->seed();
@@ -144,7 +145,7 @@ class RealhabAttendanceTest extends TestCase
         $response->assertDontSee($swimmer->name);
     }
 
-    /** @test  **/
+    #[Test]
     public function the_realhab_attendance_page_shows_the_correct_private_data()
     {
         $this->seed();

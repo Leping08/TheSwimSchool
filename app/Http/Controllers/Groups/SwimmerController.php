@@ -19,10 +19,11 @@ class SwimmerController extends Controller
     public function store(LessonSignUp $request)
     {
         try {
-            (new Enroll())->handle();
+            (new Enroll)->handle();
         } catch (\Exception $exception) {
             $this->logErrorAndSendEmail($exception);
             session()->flash('danger', "Your registration was unsuccessful. Please call us and we'll assist you with your registration over the phone.");
+
             return back();
         }
 
@@ -31,6 +32,7 @@ class SwimmerController extends Controller
 
     /**
      * @todo remove this when we have a better way to handle exceptions
+     *
      * @param  \Exception  $exception
      * @return void
      */

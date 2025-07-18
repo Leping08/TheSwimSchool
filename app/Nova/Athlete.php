@@ -152,7 +152,7 @@ class Athlete extends Resource
             Text::make('Country', function () {
                 return 'US';
             })->hideFromIndex(),
-            //Country::make('Country')->hideFromIndex(),
+            // Country::make('Country')->hideFromIndex(),
         ];
     }
 

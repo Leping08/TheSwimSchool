@@ -46,15 +46,15 @@ class CalendarController extends Controller
             'stripe_token' => 'required',
         ]);
 
-        //Check if the length of the pool session string is just one.
-        //This would be when someone only picks one lesson.
+        // Check if the length of the pool session string is just one.
+        // This would be when someone only picks one lesson.
         if (strlen(request()->pool_session_ids) == 1) {
             $pool_session_ids = collect(request()->pool_session_ids);
         } else {
             $pool_session_ids = explode(',', request()->pool_session_ids);
         }
 
-        //Check the length of the array of pool session id's
+        // Check the length of the array of pool session id's
         if (! (count($pool_session_ids) >= 1)) {
             Log::warning("Someone went wrong with lesson selection. Pool session ids array: $pool_session_ids");
             session()->flash('warning', 'Something went wrong with the lesson selection.');
@@ -62,10 +62,10 @@ class CalendarController extends Controller
             return redirect()->back();
         }
 
-        //Make sure the pool sessions are still available
+        // Make sure the pool sessions are still available
         foreach ($pool_session_ids as $pool_session_id) {
             $lesson = PoolSession::PrivateLessonsAvailable()->where('id', '=', $pool_session_id)->get();
-            if ($lesson->isEmpty()) { //Check if lesson has already been taken
+            if ($lesson->isEmpty()) { // Check if lesson has already been taken
                 Log::error("Pool Session Id $pool_session_id has already been taken. Redirecting back.");
                 session()->flash('warning', 'Sorry, one of the classes was already taken.');
 
@@ -89,7 +89,7 @@ class CalendarController extends Controller
         // Get the total price of all the pool sessions
         $price = $poolSessions->sum('price');
 
-        //Charge the card
+        // Charge the card
         try {
             $stripe_charge = (new StripeCharge(
                 request()->stripe_token,
@@ -102,14 +102,14 @@ class CalendarController extends Controller
             return back();
         }
 
-        //Create the lesson
+        // Create the lesson
         $private_lesson = PrivateLesson::create([
             'season_id' => SeasonHelpers::currentSeason()->id,
         ]);
 
         $birthDate = Carbon::parse(request()->birth_date);
 
-        //Create the swimmer
+        // Create the swimmer
         $private_swimmer = PrivateSwimmer::create([
             'first_name' => request()->first_name,
             'last_name' => request()->last_name,
@@ -129,14 +129,14 @@ class CalendarController extends Controller
             'private_lesson_id' => $private_lesson->id,
         ]);
 
-        //Assign the pool sessions
+        // Assign the pool sessions
         foreach ($pool_session_ids as $pool_session_id) {
             $pool_session = PoolSession::PrivateLessonsAvailable()->find($pool_session_id);
             if (! $pool_session) {
                 Log::warning("Someone has already taken the pool session id: $pool_session_id");
                 session()->flash('warning', 'Sorry, one of the classes was already taken.');
 
-                //TODO: Refund the swimmer the charge or schedule different pool sessions, possibly an email here
+                // TODO: Refund the swimmer the charge or schedule different pool sessions, possibly an email here
                 return redirect()->back();
             }
             $pool_session->pool_session_id = $private_lesson->id;
@@ -144,7 +144,7 @@ class CalendarController extends Controller
             $pool_session->save();
         }
 
-        //subscribe to the news letter
+        // subscribe to the news letter
         if (request()->email_updates == 'on') {
             NewsLetter::subscribe(request()->email);
         }
@@ -156,8 +156,8 @@ class CalendarController extends Controller
             Log::error("Error trying to send private lesson sign up email to $private_swimmer->email. Error:".$e->getMessage());
         }
 
-        //TODO: send admin email saying the lesson is full???
-        //TODO Add logging in here
+        // TODO: send admin email saying the lesson is full???
+        // TODO Add logging in here
         session()->flash('success', 'Thanks for signing up! Please check your email for a confirmation.');
 
         return redirect()->route('pages.thank-you');

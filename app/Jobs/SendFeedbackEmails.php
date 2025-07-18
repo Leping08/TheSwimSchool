@@ -36,7 +36,7 @@ class SendFeedbackEmails implements ShouldQueue
         $lessons = Lesson::with('swimmers')->endedOneWeekAgo()->get();
 
         if (count($lessons)) {
-            //Collect all the swimmers
+            // Collect all the swimmers
             $swimmers = collect();
             foreach ($lessons as $lesson) {
                 foreach ($lesson->swimmers as $swimmer) {
@@ -44,15 +44,15 @@ class SendFeedbackEmails implements ShouldQueue
                 }
             }
 
-            //Only get swimmers with unique emails
+            // Only get swimmers with unique emails
             $uniqueSwimmers = $swimmers->unique('email');
 
-            //Email the feedback surveys to the unique emails
+            // Email the feedback surveys to the unique emails
             foreach ($uniqueSwimmers as $swimmer) {
                 if ($swimmer->email) {
                     try {
                         Log::info("Sending feedback survey email to $swimmer->email for swimmer ID: $swimmer->id");
-                        Mail::to($swimmer->email)->send(new FeedbackSurvey());
+                        Mail::to($swimmer->email)->send(new FeedbackSurvey);
                     } catch (\Exception $e) {
                         Log::warning("Email error: $e");
                     }

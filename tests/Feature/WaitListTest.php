@@ -7,13 +7,14 @@ use App\Mail\Admin\WaitList;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class WaitListTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function a_user_is_able_to_sign_up_for_the_wait_list_of_a_lesson_that_is_full()
     {
         Mail::fake();
@@ -54,7 +55,7 @@ class WaitListTest extends TestCase
         Mail::assertSent(WaitList::class);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_sign_up_for_the_same_wait_list_twice()
     {
         $lesson = Lesson::factory()->create([
@@ -94,7 +95,7 @@ class WaitListTest extends TestCase
         $this->assertEquals(1, $lesson->waitlist()->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_sign_up_with_the_same_email_and_a_different_swimmer_name()
     {
         $lesson = Lesson::factory()->create([
@@ -129,7 +130,7 @@ class WaitListTest extends TestCase
         ]);
 
         $swimmer2 = [
-            'name' => $this->faker->name, //Different name from the first swimmer
+            'name' => $this->faker->name, // Different name from the first swimmer
             'email' => $swimmer['email'],
             'phone' => $swimmer['phone'],
             'date_of_birth' => $swimmer['date_of_birth'],
@@ -148,7 +149,7 @@ class WaitListTest extends TestCase
         ]);
     }
 
-    /** @test  **/
+    #[Test]
     public function bots_can_not_sign_up()
     {
         $lesson = Lesson::factory()->create([
@@ -183,7 +184,7 @@ class WaitListTest extends TestCase
         ]);
 
         $swimmer2 = [
-            'name' => $this->faker->name, //Different name from the first swimmer
+            'name' => $this->faker->name, // Different name from the first swimmer
             'email' => $swimmer['email'],
             'phone' => $swimmer['phone'],
             'date_of_birth' => $swimmer['date_of_birth'],

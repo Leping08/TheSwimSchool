@@ -8,13 +8,14 @@ use App\Nova\Actions\CreatePoolSessionsForPrivateLessons;
 use App\PoolSession;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Nova\Fields\ActionFields;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class PrivatePoolSessionTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_should_create_pool_sessions_when_a_private_lesson_is_creted()
     {
         $this->seed();
@@ -23,7 +24,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-10T08:00:00.000-04:00',
             'end_date_time' => '2022-04-16T09:00:00.000-04:00',
@@ -49,7 +50,7 @@ class PrivatePoolSessionTest extends TestCase
         $this->assertCount(2, PoolSession::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_create_a_weeks_worth_of_pool_sessions()
     {
 
@@ -59,7 +60,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-10T08:00:00.000-04:00',
             'end_date_time' => '2022-04-16T09:00:00.000-04:00',
@@ -85,7 +86,7 @@ class PrivatePoolSessionTest extends TestCase
         $this->assertCount(7, PoolSession::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_create_multiple_weeks_worth_of_pool_sessions()
     {
         $this->seed();
@@ -94,7 +95,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-04T08:00:00.000-04:00',
             'end_date_time' => '2022-04-15T09:00:00.000-04:00',
@@ -115,7 +116,7 @@ class PrivatePoolSessionTest extends TestCase
         $this->assertCount(4, PoolSession::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_not_create_the_same_pool_sessions_twice()
     {
         $this->seed();
@@ -124,7 +125,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-04T08:00:00.000-04:00',
             'end_date_time' => '2022-04-15T09:00:00.000-04:00',
@@ -149,7 +150,7 @@ class PrivatePoolSessionTest extends TestCase
         $this->assertCount(4, PoolSession::all());
     }
 
-    /** @test */
+    #[Test]
     public function it_sets_the_price_for_all_the_pool_sessions_being_created()
     {
         $this->seed();
@@ -158,7 +159,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-10T08:00:00.000-04:00',
             'end_date_time' => '2022-04-16T09:00:00.000-04:00',

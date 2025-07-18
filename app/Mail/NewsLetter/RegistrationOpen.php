@@ -6,12 +6,12 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-//Test to people
-//\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('derek@deltavcreative.com'));
-//\Illuminate\Support\Facades\Mail::to(config('contact.email.address'))->send(new \App\Mail\NewsLetter\RegistrationOpen(config('contact.email.address')));
+// Test to people
+// \Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\RegistrationOpen('derek@deltavcreative.com'));
+// \Illuminate\Support\Facades\Mail::to(config('contact.email.address'))->send(new \App\Mail\NewsLetter\RegistrationOpen(config('contact.email.address')));
 
-//Send to everyone
-//\App\Library\Marketing\Emails\Lessons\RegistrationOpenEmail::send();
+// Send to everyone
+// \App\Library\Marketing\Emails\Lessons\RegistrationOpenEmail::send();
 
 class RegistrationOpen extends Mailable
 {

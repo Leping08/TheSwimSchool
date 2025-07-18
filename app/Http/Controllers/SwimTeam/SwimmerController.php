@@ -18,7 +18,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Stripe\PaymentIntent;
 
 class SwimmerController extends Controller
 {
@@ -116,8 +115,8 @@ class SwimmerController extends Controller
      */
     public function store2(Request $request, STLevel $level, STSwimmer $swimmer)
     {
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-        $paymentIntent = PaymentIntent::retrieve($request->query('payment_intent'));
+        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
+        $paymentIntent = $stripe->paymentIntents->retrieve($request->query('payment_intent'));
 
         // update the swimmer notes with the stripe data
         $swimmer->notes = json_encode([
@@ -155,7 +154,7 @@ class SwimmerController extends Controller
 
         $price = $promo ? $promo->apply($level->price) : $level->price;
 
-        //Check if the stripe charge is even needed   Ex: 100% off promo code
+        // Check if the stripe charge is even needed   Ex: 100% off promo code
         if ($price <= 0) {
             Log::info("Swim Team Swimmer $swimTeamSwimmer->firstName $swimTeamSwimmer->lastName, Email: $swimTeamSwimmer->email has signed up with out paying. They used promo code ID: $swimTeamSwimmer->promo_code_id");
             $swimTeamSwimmer = request()->merge([
@@ -178,7 +177,7 @@ class SwimmerController extends Controller
             ]);
         }
 
-        //Create the swim team swimmer
+        // Create the swim team swimmer
         $swimNewTeamSwimmer = STSwimmer::create($swimTeamSwimmer->toArray());
 
         try {
@@ -272,8 +271,8 @@ class SwimmerController extends Controller
 
         $request = request();
 
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-        $paymentIntent = PaymentIntent::retrieve($request->query('payment_intent'));
+        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
+        $paymentIntent = $stripe->paymentIntents->retrieve($request->query('payment_intent'));
 
         // create a swimmer from the athlete data
         $swimmer = STSwimmer::create([

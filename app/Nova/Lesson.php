@@ -71,17 +71,17 @@ class Lesson extends Resource
             })->asHtml()->onlyOnDetail(),
             ID::make()->sortable(),
             BelongsTo::make('Instructor', 'instructor', Instructor::class)->withMeta([
-                //Select
+                // Select
                 'belongsToId' => $this->instructor_id ?? auth()->id(),
             ]),
             BelongsTo::make('Level', 'group'),
             BelongsTo::make('Season')->withMeta([
-                //Get the current season
+                // Get the current season
                 'belongsToId' => $this->season_id ?? SeasonHelpers::currentSeason()->id,
             ]),
             BelongsTo::make('Location')->withMeta([
-                //Select River Wilderness by default
-                'belongsToId' => $this->location_id ?? 63, //REALHAB location id
+                // Select River Wilderness by default
+                'belongsToId' => $this->location_id ?? 63, // REALHAB location id
             ]),
             BooleanGroup::make('Days', 'days')->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                 return [$item['id'] => $item['day']];

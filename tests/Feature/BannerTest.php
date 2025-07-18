@@ -5,13 +5,14 @@ namespace Tests\Feature;
 use App\Banner;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class BannerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test  **/
+    #[Test]
     public function a_user_should_see_a_banner_if_its_active()
     {
         Storage::fake('s3');

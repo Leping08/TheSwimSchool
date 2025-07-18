@@ -10,13 +10,14 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class LessonsTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_see_a_lesson_in_progress()
     {
         $lessonInProgress = Lesson::factory()->create([
@@ -29,7 +30,7 @@ class LessonsTest extends TestCase
             ->assertSee('No Classes Available At This Time');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_see_a_lesson_that_does_not_have_open_registration_yet()
     {
         $registrationNotOpenYet = Lesson::factory()->create([
@@ -42,7 +43,7 @@ class LessonsTest extends TestCase
             ->assertSee('No Classes Available At This Time');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_see_a_lesson_that_has_finished()
     {
         $lessonFinished = Lesson::factory()->create([
@@ -55,7 +56,7 @@ class LessonsTest extends TestCase
             ->assertSee('No Classes Available At This Time');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_see_the_groups_for_each_lesson()
     {
         $registrationOpen = Lesson::factory()->create([
@@ -93,7 +94,7 @@ class LessonsTest extends TestCase
             ->assertSee($registrationNotOpenYet->Group->description);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_see_the_details_of_a_lesson_that_is_open_for_registration()
     {
         $registrationOpen = Lesson::factory()->create([
@@ -111,7 +112,7 @@ class LessonsTest extends TestCase
             ->assertSee('$'.$registrationOpen->price);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_sign_up_for_a_lesson_that_is_not_full()
     {
         $registrationOpen = Lesson::factory()->create([
@@ -124,7 +125,7 @@ class LessonsTest extends TestCase
             ->assertSee('Sign Up');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_sign_up_for_a_lesson_that_is_full()
     {
         $registrationOpen = Lesson::factory()->create([
@@ -145,7 +146,7 @@ class LessonsTest extends TestCase
             ->assertSee('Join Wait List');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_see_private_lesson_groups()
     {
         $lesson = Lesson::factory()->create();
@@ -162,7 +163,7 @@ class LessonsTest extends TestCase
         $this->assertNotContains('Private LessonTest', $testSet);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_see_the_private_lesson_sign_up_page_with_a_link()
     {
         $lesson = Lesson::factory()->create();
@@ -186,7 +187,7 @@ class LessonsTest extends TestCase
             ->assertSee('Checkout');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_sign_up_for_a_private_lesson_if_it_is_full()
     {
         $lesson = Lesson::factory()->create();
@@ -208,7 +209,7 @@ class LessonsTest extends TestCase
             ->assertSee('This class is full.');
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_see_a_lesson_that_starts_today()
     {
         $lesson = Lesson::factory()->create([
@@ -218,7 +219,7 @@ class LessonsTest extends TestCase
         $this->assertFalse(Lesson::registrationOpen()->get()->contains($lesson));
     }
 
-    /** @test  **/
+    #[Test]
     public function a_swimmer_can_sign_up_by_hitting_the_lesson_sign_up_route()
     {
         $lesson = Lesson::factory()->create();
@@ -261,7 +262,7 @@ class LessonsTest extends TestCase
         ]);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_swimmer_will_get_a_sign_up_email_after_hitting_the_lesson_sign_up_route()
     {
         Mail::fake();
@@ -308,7 +309,7 @@ class LessonsTest extends TestCase
         Mail::assertSent(SignUp::class);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_user_can_not_sign_up_for_a_group_lesson_that_is_full()
     {
         $lesson = Lesson::factory()->create([
@@ -341,7 +342,7 @@ class LessonsTest extends TestCase
         $response->assertStatus(302);
     }
 
-    /** @test  **/
+    #[Test]
     public function a_swimmer_will_see_an_error_when_trying_to_sign_up_with_a_credit_card_that_is_declined()
     {
         $lesson = Lesson::factory()->create();
@@ -362,7 +363,7 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_chargeDeclined', //This is a declined card
+            'stripeToken' => 'tok_chargeDeclined', // This is a declined card
         ];
 
         $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))

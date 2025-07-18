@@ -3,11 +3,12 @@
 namespace Tests\Unit;
 
 use App\Library\StripeCharge;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class StripeChargeTest extends TestCase
 {
-    /** @test  **/
+    #[Test]
     public function it_will_charge_a_valid_credit_card()
     {
         $testCharge = collect([
@@ -35,7 +36,7 @@ class StripeChargeTest extends TestCase
         $this->assertEquals($testCharge->get('description'), $charge->description);
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_catch_an_error_with_an_declined_card()
     {
         $testCharge = collect([

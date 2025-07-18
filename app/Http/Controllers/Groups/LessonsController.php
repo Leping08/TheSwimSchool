@@ -18,7 +18,7 @@ class LessonsController extends Controller
      */
     public static function index()
     {
-        //Get public facing groups for the groups index page
+        // Get public facing groups for the groups index page
         $groups = Group::public()->get();
         $banner = Banner::where('page', '/lessons')->first();
 
@@ -31,11 +31,11 @@ class LessonsController extends Controller
      */
     public static function show(Group $group)
     {
-        //Get all lessons for a group that are open for registration
-        $group->load(['lessons']); //Eager load the data
+        // Get all lessons for a group that are open for registration
+        $group->load(['lessons']); // Eager load the data
         Log::info("Found group ID: $group->id Group Type: $group->type");
 
-        //TODO: Get DB logic out of the view
+        // TODO: Get DB logic out of the view
         return view('groups.details', compact('group'));
     }
 
@@ -46,7 +46,7 @@ class LessonsController extends Controller
      */
     public function create(Group $group, Lesson $lesson)
     {
-        $lesson->load(['group', 'location', 'season', 'swimmers']);  //Eager load the data
+        $lesson->load(['group', 'location', 'season', 'swimmers']);  // Eager load the data
         Log::info("Found lesson ID: $lesson->id. The Group id for that lesson is: $lesson->group_id");
 
         return view('groups.signUp', compact('lesson'));

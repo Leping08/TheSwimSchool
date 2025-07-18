@@ -12,7 +12,7 @@ class SeasonHelpers
      */
     public static function currentSeason()
     {
-        //TODO Get this to work in the first 2 months of the year when it is winter for last year
+        // TODO Get this to work in the first 2 months of the year when it is winter for last year
         $now = Carbon::now();
 
         return Season::where('year', '=', $now->year)
@@ -39,7 +39,7 @@ class SeasonHelpers
      */
     public static function getSeasonString(int $currentMonth)
     {
-        //retrieve season
+        // retrieve season
         if ($currentMonth >= 3 && $currentMonth <= 5) {
             return 'Spring';
         } elseif ($currentMonth >= 6 && $currentMonth <= 8) {

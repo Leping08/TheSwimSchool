@@ -5,13 +5,14 @@ namespace Tests\Feature;
 use App\PoolSessionAttendance;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class PoolSessionAttendanceEndpointTest extends TestCase
 {
     use DatabaseMigrations, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function it_will_update_the_pool_session_attendance_when_the_attended_field_is_provided()
     {
         // This is not giving the id due to it being a pivot table
@@ -38,7 +39,7 @@ class PoolSessionAttendanceEndpointTest extends TestCase
         $this->assertTrue($poolSessionAttendance->attended);
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_throw_an_error_if_the_attended_field_is_not_provided()
     {
         // This is not giving the id due to it being a pivot table

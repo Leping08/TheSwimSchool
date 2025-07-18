@@ -18,10 +18,10 @@ class NewsLetter
     {
         if (NewsLetter::validateEmail($email)) {
             try {
-                //They are already on the email list
+                // They are already on the email list
                 $emailList = EmailList::where('email', $email)->firstOrFail();
                 Log::info("{$emailList->email} was already on the email list.");
-                //They want to resubscribe
+                // They want to resubscribe
                 if ($emailList->subscribe === false) {
                     $emailList->resubscribe();
                     Log::info("{$emailList->email} resubscribed to the email list.");
@@ -29,7 +29,7 @@ class NewsLetter
 
                 return $emailList;
             } catch (ModelNotFoundException $exception) {
-                //New email to add to the email list
+                // New email to add to the email list
                 $emailList = EmailList::create([
                     'email' => $email,
                     'subscribe' => 1,

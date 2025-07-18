@@ -13,13 +13,14 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CustomNewsLetterEmailTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test  **/
+    #[Test]
     public function a_user_must_be_logged_in_to_see_the_edit_email_page()
     {
         /** @var User $user */
@@ -35,7 +36,7 @@ class CustomNewsLetterEmailTest extends TestCase
             ->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function a_user_should_be_able_to_render_the_email_if_all_the_prams_are_sent_to_the_preview_route()
     {
         /** @var User $user */
@@ -69,7 +70,7 @@ class CustomNewsLetterEmailTest extends TestCase
             ->assertSee($customNewsLetter['preview_email_address']);
     }
 
-    /** @test */
+    #[Test]
     public function a_user_should_be_able_to_send_a_preview_email_to_the_email_in_the_request_params()
     {
         /** @var User $user */
@@ -115,7 +116,7 @@ class CustomNewsLetterEmailTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function a_user_should_be_update_the_email_content_by_hitting_the_route()
     {
         /** @var User $user */
@@ -177,7 +178,7 @@ class CustomNewsLetterEmailTest extends TestCase
             ->assertSee($customNewsLetter_2['preview_email_address']);
     }
 
-    /** @test */
+    #[Test]
     public function a_user_should_send_the_news_letter_out_to_everyone_on_the_newsletter_email_list()
     {
         /** @var User $user */
@@ -215,7 +216,7 @@ class CustomNewsLetterEmailTest extends TestCase
         Queue::assertPushed(QueueCustomNewsLetterEmails::class);
     }
 
-    /** @test */
+    #[Test]
     public function the_send_custom_news_letter_email_job_does_send_the_email()
     {
         /** @var User $user */

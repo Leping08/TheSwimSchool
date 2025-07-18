@@ -10,13 +10,14 @@ use App\Swimmer;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class LessonTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test  **/
+    #[Test]
     public function it_can_have_enough_swimmers_that_makes_it_full()
     {
         $lesson = Lesson::factory()->create([
@@ -38,7 +39,7 @@ class LessonTest extends TestCase
         $this->assertEquals(true, $lesson->isFull());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_has_swimmers()
     {
         $lesson = Lesson::factory()->create();
@@ -52,7 +53,7 @@ class LessonTest extends TestCase
         $this->assertEquals(true, $lesson->hasSwimmers());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_can_be_private()
     {
         $group = Group::factory()->create([
@@ -74,7 +75,7 @@ class LessonTest extends TestCase
         $this->assertEquals(true, $lesson->isPrivate());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_sets_the_days_when_created()
     {
         Artisan::call('db:seed');
@@ -92,7 +93,7 @@ class LessonTest extends TestCase
         $this->assertEquals(3, $lesson->daysOfTheWeek->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_creates_pool_sessions_when_created()
     {
         Artisan::call('db:seed');
@@ -110,7 +111,7 @@ class LessonTest extends TestCase
         $this->assertEquals(6, $lesson->pool_sessions->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_has_pool_sessions()
     {
         $lesson = Lesson::factory()->create();
@@ -125,7 +126,7 @@ class LessonTest extends TestCase
 
     // Test to see if it wont create the same pool sessions
     // twice if the lesson->generatePoolSessions is called again
-    /** @test  **/
+    #[Test]
     public function it_wont_create_the_same_pool_sessions_twice()
     {
         Artisan::call('db:seed');
@@ -147,7 +148,7 @@ class LessonTest extends TestCase
         $this->assertEquals(6, $lesson->pool_sessions->count());
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_update_the_location_on_all_pool_sessions_if_the_location_is_changed_on_the_lesson()
     {
         $location_1 = Location::factory()->create();
@@ -179,7 +180,7 @@ class LessonTest extends TestCase
         });
     }
 
-    /** @test  **/
+    #[Test]
     public function it_will_delete_all_pool_sessions_when_the_lesson_is_deleted()
     {
         $location = Location::factory()->create();

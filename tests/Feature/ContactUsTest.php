@@ -6,13 +6,14 @@ use App\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ContactUsTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    /** @test */
+    #[Test]
     public function a_user_be_able_to_submit_a_contact_us()
     {
         $this->get(route('pages.contact-us'))
@@ -40,7 +41,7 @@ class ContactUsTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function a_user_cannot_submit_a_contact_us_if_honeypot_fields_are_filled_out()
     {
         $this->get(route('pages.contact-us'))
@@ -70,7 +71,7 @@ class ContactUsTest extends TestCase
         $this->assertCount(0, Contact::all());
     }
 
-    /** @test */
+    #[Test]
     public function a_user_cannot_submit_a_contact_us_where_just_one_honeypot_field_is_filled_out()
     {
         $this->get(route('pages.contact-us'))
@@ -94,7 +95,7 @@ class ContactUsTest extends TestCase
         $this->assertCount(0, Contact::all());
     }
 
-    /** @test */
+    #[Test]
     public function a_user_cannot_submit_a_contact_us_if_timestamp_is_not_within_the_last_3_seconds()
     {
         $this->get(route('pages.contact-us'))
@@ -118,7 +119,7 @@ class ContactUsTest extends TestCase
         $this->assertCount(0, Contact::all());
     }
 
-    /** @test */
+    #[Test]
     public function a_user_can_submit_a_contact_us_if_timestamp_is_within_the_last_3_seconds()
     {
         $this->get(route('pages.contact-us'))
