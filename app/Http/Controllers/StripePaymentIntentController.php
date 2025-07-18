@@ -6,13 +6,10 @@ use App\PromoCode;
 use App\STLevel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Stripe\Customer;
-use Stripe\PaymentIntent;
 use Stripe\Stripe;
 
 class StripePaymentIntentController extends Controller
 {
-    // todo deprecate soon
     public function store(Request $request)
     {
         $request->validate([
@@ -33,12 +30,12 @@ class StripePaymentIntentController extends Controller
         }
 
         // This is your test secret API key.
-        Stripe::setApiKey(config('services.stripe.secret'));
+        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
 
         // todo add try catch logic
         // Alternatively, set up a webhook to listen for the payment_intent.succeeded event
         // and attach the PaymentMethod to a new Customer
-        $customer = Customer::create([
+        $customer = $stripe->customers->create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'metadata' => [
@@ -51,13 +48,13 @@ class StripePaymentIntentController extends Controller
         Log::info('Stripe customer created: '.$customer->id);
 
         // Create a PaymentIntent with amount and currency
-        $paymentIntent = PaymentIntent::create([
+        $paymentIntent = $stripe->paymentIntents->create([
             'customer' => $customer->id,
             'setup_future_usage' => 'off_session',
             'amount' => $price * 100, // amount in cents
             'currency' => 'usd',
             'automatic_payment_methods' => [
-                'enabled' => true,
+                'enabled' => true
             ],
         ]);
 
@@ -85,11 +82,11 @@ class StripePaymentIntentController extends Controller
         }
 
         // This is your test secret API key.
-        Stripe::setApiKey(config('services.stripe.secret'));
+        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
 
         // todo add try catch logic
         // Create a new customer
-        $customer = Customer::create([
+        $customer = $stripe->customers->create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'metadata' => [
@@ -103,7 +100,7 @@ class StripePaymentIntentController extends Controller
 
         // todo add try catch logic
         // Create a PaymentIntent with amount and currency and attach the customer
-        $paymentIntent = PaymentIntent::create([
+        $paymentIntent = $stripe->paymentIntents->create([
             'customer' => $customer->id,
             'setup_future_usage' => 'off_session',
             'amount' => $price * 100, // amount in cents

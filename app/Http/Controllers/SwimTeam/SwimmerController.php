@@ -18,7 +18,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Stripe\PaymentIntent;
 
 class SwimmerController extends Controller
 {
@@ -116,8 +115,8 @@ class SwimmerController extends Controller
      */
     public function store2(Request $request, STLevel $level, STSwimmer $swimmer)
     {
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-        $paymentIntent = PaymentIntent::retrieve($request->query('payment_intent'));
+        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
+        $paymentIntent = $stripe->paymentIntents->retrieve($request->query('payment_intent'));
 
         // update the swimmer notes with the stripe data
         $swimmer->notes = json_encode([
@@ -272,8 +271,8 @@ class SwimmerController extends Controller
 
         $request = request();
 
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-        $paymentIntent = PaymentIntent::retrieve($request->query('payment_intent'));
+        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
+        $paymentIntent = $stripe->paymentIntents->retrieve($request->query('payment_intent'));
 
         // create a swimmer from the athlete data
         $swimmer = STSwimmer::create([
