@@ -10,8 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class TryoutTest extends TestCase
 {
@@ -80,8 +80,8 @@ class TryoutTest extends TestCase
             'emergencyName' => $this->faker->name,
             'emergencyRelationship' => $this->faker->word,
             'emergencyPhone' => '999-999-9999',
-            //'emailUpdates' => 'off', TODO add this
-            //'tryout_id' => $tryout->id,
+            // 'emailUpdates' => 'off', TODO add this
+            // 'tryout_id' => $tryout->id,
         ];
 
         $this->get(route('swim-team.tryouts.show', [$tryout]))

@@ -74,7 +74,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function dashboards(): array
     {
         return [
-            new Main(),
+            new Main,
         ];
     }
 

@@ -10,8 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class LessonsTest extends TestCase
 {
@@ -363,7 +363,7 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_chargeDeclined', //This is a declined card
+            'stripeToken' => 'tok_chargeDeclined', // This is a declined card
         ];
 
         $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))

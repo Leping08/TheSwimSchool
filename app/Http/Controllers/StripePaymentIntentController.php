@@ -6,7 +6,6 @@ use App\PromoCode;
 use App\STLevel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Stripe\Stripe;
 
 class StripePaymentIntentController extends Controller
 {
@@ -54,7 +53,7 @@ class StripePaymentIntentController extends Controller
             'amount' => $price * 100, // amount in cents
             'currency' => 'usd',
             'automatic_payment_methods' => [
-                'enabled' => true
+                'enabled' => true,
             ],
         ]);
 

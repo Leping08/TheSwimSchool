@@ -20,7 +20,7 @@ class AthleteController extends Controller
      */
     public function store(Request $request, Tryout $tryout)
     {
-        //Check to see if the lesson is full
+        // Check to see if the lesson is full
         if ($tryout->isFull()) {
             $request->session()->flash('danger', 'The tryout is full.');
 

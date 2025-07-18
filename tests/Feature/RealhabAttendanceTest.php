@@ -10,8 +10,8 @@ use App\PrivateSwimmer;
 use App\Swimmer;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class RealhabAttendanceTest extends TestCase
 {

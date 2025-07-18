@@ -69,7 +69,7 @@ class Instructor extends Resource
                 return view('partials.link', [
                     'link' => url('/calendar/'.$this->id),
                     'text' => 'View',
-                    //'new_tab' => true TODO: Add new tab option to link partial
+                    // 'new_tab' => true TODO: Add new tab option to link partial
                 ])->render();
             })->asHtml()->hideFromIndex(),
 

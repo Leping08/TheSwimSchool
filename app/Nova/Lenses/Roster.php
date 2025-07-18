@@ -40,7 +40,7 @@ class Roster extends Lens
             Text::make('Name', function () {
                 return "$this->firstName $this->lastName";
             }),
-            //Text::make('Email', 'email'),
+            // Text::make('Email', 'email'),
             Text::make('Phone', 'phone'),
             Date::make('Years Old', function () {
                 return now()->diffInYears($this->birthDate);

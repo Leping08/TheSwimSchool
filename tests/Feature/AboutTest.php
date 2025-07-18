@@ -4,8 +4,8 @@ namespace Tests\Feature;
 
 use App\Instructor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class AboutTest extends TestCase
 {

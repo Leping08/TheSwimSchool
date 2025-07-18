@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use App\Lesson;
 use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class AdminTest extends TestCase
 {

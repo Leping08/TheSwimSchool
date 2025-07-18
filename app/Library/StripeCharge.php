@@ -53,7 +53,7 @@ class StripeCharge implements PaymentMethod
             'currency' => 'usd',
             'receipt_email' => $this->email,
             'description' => $this->description,
-            'source' => $this->token, //Obtained with Stripe.js
+            'source' => $this->token, // Obtained with Stripe.js
         ];
 
         Log::info('Stripe charge request array:');

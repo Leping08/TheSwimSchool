@@ -6,8 +6,8 @@ use App\Lesson;
 use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Crypt;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class GroupCertificateTest extends TestCase
 {

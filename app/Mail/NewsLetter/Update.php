@@ -6,12 +6,12 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-//Test to people
-//\Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\Update('derek@deltavcreative.com'));
-//\Illuminate\Support\Facades\Mail::to(config('contact.email.address'))->send(new \App\Mail\NewsLetter\Update(config('contact.email.address')));
+// Test to people
+// \Illuminate\Support\Facades\Mail::to('derek@deltavcreative.com')->send(new \App\Mail\NewsLetter\Update('derek@deltavcreative.com'));
+// \Illuminate\Support\Facades\Mail::to(config('contact.email.address'))->send(new \App\Mail\NewsLetter\Update(config('contact.email.address')));
 
-//Send to everyone
-//\App\Library\Marketing\Emails\Events\UpdateEmail::send();
+// Send to everyone
+// \App\Library\Marketing\Emails\Events\UpdateEmail::send();
 
 class Update extends Mailable
 {

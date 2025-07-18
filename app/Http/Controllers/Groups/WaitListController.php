@@ -65,7 +65,7 @@ class WaitListController extends Controller
 
         if ($lesson->waitlist->count()) {
             foreach ($lesson->waitlist as $swimmer) {
-                //Check to see if the same swimmer is signing up again
+                // Check to see if the same swimmer is signing up again
                 if ($swimmer->email === $waitingSwimmer['email'] && $swimmer->name === $waitingSwimmer['name']) {
                     session()->flash('warning', 'Email already on the wait list.');
 

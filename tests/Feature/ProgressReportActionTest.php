@@ -9,8 +9,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use Laravel\Nova\Fields\ActionFields;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class ProgressReportActionTest extends TestCase
 {
@@ -33,7 +33,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -63,7 +63,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -120,7 +120,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -173,7 +173,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -210,7 +210,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -246,7 +246,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 
@@ -301,7 +301,7 @@ class ProgressReportActionTest extends TestCase
             'swimmer_id' => $swimmer->id,
         ]);
 
-        $progressReport = new CompleteProgressReport();
+        $progressReport = new CompleteProgressReport;
         $action = new ActionFields($fields, collect());
         $progressReport->handle($action, collect([$swimmer]));
 

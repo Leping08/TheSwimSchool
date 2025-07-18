@@ -4,8 +4,8 @@ namespace Tests\Unit;
 
 use App\PromoCode;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class PromoCodeTest extends TestCase
 {

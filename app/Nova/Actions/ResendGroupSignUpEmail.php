@@ -27,7 +27,7 @@ class ResendGroupSignUpEmail extends Action
     {
         try {
             foreach ($swimmers as $swimmer) {
-                (new Enroll())->sendClassSignUpEmail($swimmer);
+                (new Enroll)->sendClassSignUpEmail($swimmer);
             }
         } catch (\Exception $exception) {
             return Action::danger('An error occurred trying to send the email');

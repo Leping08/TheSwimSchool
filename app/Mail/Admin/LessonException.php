@@ -4,7 +4,6 @@ namespace App\Mail\Admin;
 
 use Exception;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -26,7 +25,6 @@ class LessonException extends Mailable
     {
         $this->exception = $exception;
     }
-
 
     /**
      * Get the message envelope.

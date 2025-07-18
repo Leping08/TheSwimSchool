@@ -12,8 +12,8 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class PrivateLessonCalendarRequestTest extends TestCase
 {
@@ -209,7 +209,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
     {
         $this->seed();
 
-        //$this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
 
         $session = PoolSession::factory()->create([
             'pool_session_id' => null,
@@ -301,7 +301,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
             'pool_session_type' => PrivateLesson::class,
         ]);
 
-        //This is the same id that was already signed up for
+        // This is the same id that was already signed up for
         $session_ids_1 = '1';
 
         $data_1 = [
@@ -329,7 +329,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
 
         $this->assertCount(1, PrivateSwimmer::all());
 
-        //This is the same id that was already signed up for
+        // This is the same id that was already signed up for
         $session_ids_2 = '1';
 
         $data_2 = [
@@ -355,7 +355,7 @@ class PrivateLessonCalendarRequestTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect(route('private_lesson.index'));
 
-        //Assert the user was not created
+        // Assert the user was not created
         $this->assertCount(1, PrivateSwimmer::all());
     }
 }

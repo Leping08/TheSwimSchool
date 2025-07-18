@@ -7,8 +7,8 @@ use App\Mail\Admin\WaitList;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class WaitListTest extends TestCase
 {
@@ -130,7 +130,7 @@ class WaitListTest extends TestCase
         ]);
 
         $swimmer2 = [
-            'name' => $this->faker->name, //Different name from the first swimmer
+            'name' => $this->faker->name, // Different name from the first swimmer
             'email' => $swimmer['email'],
             'phone' => $swimmer['phone'],
             'date_of_birth' => $swimmer['date_of_birth'],
@@ -184,7 +184,7 @@ class WaitListTest extends TestCase
         ]);
 
         $swimmer2 = [
-            'name' => $this->faker->name, //Different name from the first swimmer
+            'name' => $this->faker->name, // Different name from the first swimmer
             'email' => $swimmer['email'],
             'phone' => $swimmer['phone'],
             'date_of_birth' => $swimmer['date_of_birth'],

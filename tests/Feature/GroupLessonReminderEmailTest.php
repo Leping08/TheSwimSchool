@@ -8,8 +8,8 @@ use App\Mail\Groups\GroupLessonReminder;
 use App\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class GroupLessonReminderEmailTest extends TestCase
 {

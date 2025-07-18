@@ -7,8 +7,8 @@ use App\PoolSession;
 use App\PrivateLesson;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class PoolSessionsTest extends TestCase
 {

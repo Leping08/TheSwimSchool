@@ -24,7 +24,7 @@ class AwardsDinner
         foreach (self::getEmailAddresses() as $email) {
             try {
                 Log::info("Sending swim team awards email to $email");
-                Mail::to($email)->queue(new Awards());
+                Mail::to($email)->queue(new Awards);
             } catch (\Exception $e) {
                 Log::warning("Email error: $e");
             }

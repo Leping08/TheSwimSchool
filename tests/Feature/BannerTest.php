@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use App\Banner;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Storage;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class BannerTest extends TestCase
 {

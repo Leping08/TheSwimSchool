@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use App\PoolSessionAttendance;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class PoolSessionAttendanceEndpointTest extends TestCase
 {

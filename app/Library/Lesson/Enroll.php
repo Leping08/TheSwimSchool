@@ -29,10 +29,11 @@ class Enroll
 {
     public function handle()
     {
-        //Validation happens on the controller
+        // Validation happens on the controller
         if ($this->isFull()) {
             Log::warning('Someone tried to sign up for a lesson that is full.');
             session()->flash('danger', 'Sorry the lesson is full.');
+
             return back();
         }
         $lesson = $this->getLesson();
@@ -73,7 +74,7 @@ class Enroll
 
     public function applyPromoCode(int $price)
     {
-        //TODO DO PROMO CODE STUFF
+        // TODO DO PROMO CODE STUFF
         return $price;
     }
 
@@ -86,7 +87,7 @@ class Enroll
 
     public function createSwimmer(string $chargeId)
     {
-        //TODO: Logic to check the age of the swimmer against what the lesson age is
+        // TODO: Logic to check the age of the swimmer against what the lesson age is
         request()->merge([
             'birthDate' => Carbon::parse(request()->birthDate),
             'stripeChargeId' => $chargeId,

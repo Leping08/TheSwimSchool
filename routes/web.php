@@ -28,22 +28,22 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
  * Group Lessons
  */
 
-//List lessons
+// List lessons
 Route::get('/lessons', [\App\Http\Controllers\Groups\LessonsController::class, 'index'])->name('groups.lessons.index');
 
-//Get the lesson schedule page
+// Get the lesson schedule page
 Route::get('/lessons/schedule', [\App\Http\Controllers\Groups\ScheduleController::class, 'index'])->name('groups.schedule.index');
 
-//List details of the group lesson
+// List details of the group lesson
 Route::get('/lessons/{group}', [\App\Http\Controllers\Groups\LessonsController::class, 'show'])->name('groups.lessons.show');
 
-//Sign up form for that lesson
+// Sign up form for that lesson
 Route::get('/lessons/{group}/{lesson}', [\App\Http\Controllers\Groups\LessonsController::class, 'create'])->name('groups.lessons.create');
 
-//Save the results of the sign up form
+// Save the results of the sign up form
 Route::post('/lessons/{group}/{lesson}', [\App\Http\Controllers\Groups\SwimmerController::class, 'store'])->name('groups.swimmers.store');
 
-//Show the certificate
+// Show the certificate
 Route::get('/lessons/groups/certificate/{encrypted_swimmer_id}', [\App\Http\Controllers\Groups\CertificateController::class, 'show'])->name('groups.certificate.show');
 
 /*
@@ -56,16 +56,16 @@ Route::post('/wait-list/{lesson}', [\App\Http\Controllers\Groups\WaitListControl
  * Swim Team Tryouts
  */
 
-//The Link to see all tryouts
+// The Link to see all tryouts
 Route::get('/swim-team/tryouts', [\App\Http\Controllers\SwimTeam\TryoutController::class, 'index'])->name('swim-team.tryouts.index');
 
-//The Link to sign up for a tryout
+// The Link to sign up for a tryout
 Route::get('/swim-team/tryouts/{tryout}', [\App\Http\Controllers\SwimTeam\TryoutController::class, 'show'])->name('swim-team.tryouts.show');
 
-//Save the results of the sign up form
+// Save the results of the sign up form
 Route::post('/swim-team/tryouts/{tryout}', [\App\Http\Controllers\SwimTeam\AthleteController::class, 'store'])->name('swim-team.athlete.store');
 
-//The roster for the current season
+// The roster for the current season
 Route::get('/roster', [\App\Http\Controllers\SwimTeam\RosterController::class, 'index'])->name('swim-team.roster.index');
 
 // Record Holders PDF upload

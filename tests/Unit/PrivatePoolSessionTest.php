@@ -8,8 +8,8 @@ use App\Nova\Actions\CreatePoolSessionsForPrivateLessons;
 use App\PoolSession;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Nova\Fields\ActionFields;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class PrivatePoolSessionTest extends TestCase
 {
@@ -24,7 +24,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-10T08:00:00.000-04:00',
             'end_date_time' => '2022-04-16T09:00:00.000-04:00',
@@ -60,7 +60,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-10T08:00:00.000-04:00',
             'end_date_time' => '2022-04-16T09:00:00.000-04:00',
@@ -95,7 +95,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-04T08:00:00.000-04:00',
             'end_date_time' => '2022-04-15T09:00:00.000-04:00',
@@ -125,7 +125,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-04T08:00:00.000-04:00',
             'end_date_time' => '2022-04-15T09:00:00.000-04:00',
@@ -159,7 +159,7 @@ class PrivatePoolSessionTest extends TestCase
         $instructor = Instructor::factory()->create();
         $location = Location::factory()->create();
 
-        $private = (new CreatePoolSessionsForPrivateLessons());
+        $private = (new CreatePoolSessionsForPrivateLessons);
         $fields = collect([
             'start_date_time' => '2022-04-10T08:00:00.000-04:00',
             'end_date_time' => '2022-04-16T09:00:00.000-04:00',

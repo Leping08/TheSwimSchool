@@ -154,7 +154,7 @@ class SwimmerController extends Controller
 
         $price = $promo ? $promo->apply($level->price) : $level->price;
 
-        //Check if the stripe charge is even needed   Ex: 100% off promo code
+        // Check if the stripe charge is even needed   Ex: 100% off promo code
         if ($price <= 0) {
             Log::info("Swim Team Swimmer $swimTeamSwimmer->firstName $swimTeamSwimmer->lastName, Email: $swimTeamSwimmer->email has signed up with out paying. They used promo code ID: $swimTeamSwimmer->promo_code_id");
             $swimTeamSwimmer = request()->merge([
@@ -177,7 +177,7 @@ class SwimmerController extends Controller
             ]);
         }
 
-        //Create the swim team swimmer
+        // Create the swim team swimmer
         $swimNewTeamSwimmer = STSwimmer::create($swimTeamSwimmer->toArray());
 
         try {

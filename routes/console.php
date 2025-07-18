@@ -29,22 +29,22 @@ Schedule::call(function () {
     CreatePoolSessionAttendanceForDay::dispatchSync(Carbon::now());
 })->dailyAt('3:00');
 
-//Send group lesson reminder emails
+// Send group lesson reminder emails
 Schedule::call(function () {
     SendGroupLessonsReminderEmails::dispatchSync();
 })->dailyAt('7:10');
 
-//Send Swim Team Tryout Reminder emails
+// Send Swim Team Tryout Reminder emails
 Schedule::call(function () {
     SendTryoutReminderEmails::dispatchSync();
 })->dailyAt('7:15');
 
-//Send private pool session reminder emails
+// Send private pool session reminder emails
 Schedule::call(function () {
     SendPrivatePoolSessionReminderEmails::dispatchSync();
 })->dailyAt('7:20');
 
-//Prune Telescope Table
+// Prune Telescope Table
 Schedule::command('telescope:prune')->weekly();
 
 // https://laravel.com/docs/10.x/upgrade#redis-cache-tags

@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use App\Library\StripeCharge;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class StripeChargeTest extends TestCase
 {
