@@ -3,13 +3,9 @@
 namespace App\Providers;
 
 use App\Nova\Dashboards\Main;
-use App\Nova\Metrics\LessonsPerLevel;
-use App\Nova\Metrics\LessonsPerSeason;
-use App\Nova\Metrics\NewLessons;
-use App\Nova\Metrics\NewSwimmers;
-use App\Nova\Metrics\SwimmersPerDay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Fortify\Features;
 use Laravel\Nova\Menu\Menu;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Nova;
@@ -19,12 +15,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
+
         Nova::userMenu(function (Request $request, Menu $menu) {
             return $menu
                 ->append(MenuItem::externalLink('Email Blast', route('newsletter.index')))
@@ -34,15 +29,28 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     }
 
     /**
-     * Register the Nova routes.
-     *
-     * @return void
+     * Register the configurations for Laravel Fortify.
      */
-    protected function routes()
+    protected function fortify(): void
+    {
+        Nova::fortify()
+            ->features([
+                Features::updatePasswords(),
+                // Features::emailVerification(),
+                // Features::twoFactorAuthentication(['confirm' => true, 'confirmPassword' => true]),
+            ])
+            ->register();
+    }
+
+    /**
+     * Register the Nova routes.
+     */
+    protected function routes(): void
     {
         Nova::routes()
-            ->withAuthenticationRoutes()
+            ->withAuthenticationRoutes(default: true)
             ->withPasswordResetRoutes()
+            ->withoutEmailVerificationRoutes()
             ->register();
     }
 
@@ -50,10 +58,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      * Register the Nova gate.
      *
      * This gate determines who can access Nova in non-local environments.
-     *
-     * @return void
      */
-    protected function gate()
+    protected function gate(): void
     {
         Gate::define('viewNova', function ($user) {
             return in_array($user->email, config('auth.adminEmails'));
@@ -61,30 +67,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     }
 
     /**
-     * Get the cards that should be displayed on the Nova dashboard.
+     * Get the dashboards that should be listed in the Nova sidebar.
      *
-     * @return array
+     * @return array<int, \Laravel\Nova\Dashboard>
      */
-    protected function cards()
-    {
-        return [
-            (new SwimmersPerDay)->width('2/3'),
-            (new NewSwimmers)->width('1/3'),
-            (new NewLessons)->width('1/3'),
-            (new LessonsPerLevel)->width('2/3'),
-            (new LessonsPerSeason)->width('2/3'),
-            //(new NewEmailList)->width('1/3'),
-            //(new SubscribedEmails)->width('1/3'),
-            //new Help,
-        ];
-    }
-
-    /**
-     * Get the extra dashboards that should be displayed on the Nova dashboard.
-     *
-     * @return array
-     */
-    protected function dashboards()
+    protected function dashboards(): array
     {
         return [
             new Main(),
@@ -94,20 +81,20 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Get the tools that should be listed in the Nova sidebar.
      *
-     * @return array
+     * @return array<int, \Laravel\Nova\Tool>
      */
-    public function tools()
+    public function tools(): array
     {
         return [];
     }
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
+        parent::register();
+
         //
     }
 }

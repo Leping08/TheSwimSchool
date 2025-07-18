@@ -11,19 +11,12 @@
 |
 */
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-// handel strip errors better
-// add loading state to stripe button
 
 /* Email testing route */
 // Route::get('/email', function () {
 //     return new ReturningSwimmerRegistration(\App\STSwimmer::find(1));
 // });
-
-/* @see \Laravel\Ui\AuthRouteMethods::auth() */
-Auth::routes(['login' => true, 'logout' => true, 'reset' => true, 'register' => false]);
 
 /*
  * Home page
