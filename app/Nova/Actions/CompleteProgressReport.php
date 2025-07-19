@@ -63,7 +63,8 @@ class CompleteProgressReport extends Action
      */
     public function fields(NovaRequest $request)
     {
-        $swimmer = Swimmer::find($request->resourceId ?? $request->resources);
+        $swimmerId = $request->resourceId ?? (is_array($request->resources) ? $request->resources[0] ?? null : $request->resources);
+        $swimmer = $swimmerId ? Swimmer::find($swimmerId) : null;
 
         if (! $swimmer) {
             return [];
