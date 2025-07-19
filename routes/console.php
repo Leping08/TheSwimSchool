@@ -46,6 +46,3 @@ Schedule::call(function () {
 
 // Prune Telescope Table
 Schedule::command('telescope:prune')->weekly();
-
-// https://laravel.com/docs/10.x/upgrade#redis-cache-tags
-Schedule::command('cache:prune-stale-tags')->hourly();
