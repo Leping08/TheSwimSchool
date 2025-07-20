@@ -19,6 +19,8 @@ class CompleteProgressReport extends Action
 
     public $name = 'Complete Report Card';
 
+    public $timeout = 120; // Set timeout to 2 minutes for the browsershot job to complete
+
     /**
      * Perform the action on the given models.
      *
