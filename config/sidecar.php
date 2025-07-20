@@ -35,13 +35,13 @@ return [
      * The default memory for your functions, in megabytes.
      * This can be overridden per function.
      */
-    'memory' => env('SIDECAR_MEMORY', 512),
+    'memory' => env('SIDECAR_MEMORY', 2048),
 
     /*
      * The default ephemeral storage for your functions, in megabytes.
      * This can be overridden per function.
      */
-    'storage' => env('SIDECAR_STORAGE', 512),
+    'storage' => env('SIDECAR_STORAGE', 2048),
 
     /*
      * The default architecture your function runs on.
