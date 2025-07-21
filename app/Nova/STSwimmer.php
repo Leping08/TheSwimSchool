@@ -12,7 +12,6 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Place;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Panel;
@@ -187,7 +186,7 @@ class STSwimmer extends Resource
     protected function addressFields()
     {
         return [
-            Place::make('Address', 'street')->hideFromIndex(),
+            Text::make('Address', 'street')->hideFromIndex(),
             Text::make('City', 'city')->hideFromIndex(),
             Text::make('State', 'state')->hideFromIndex(),
             Text::make('Postal Code', 'zip')->hideFromIndex(),
