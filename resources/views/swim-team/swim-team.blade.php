@@ -169,7 +169,7 @@
                                 School Year Practice Schedule
                             </h2>
                             <div class="uk-margin">
-                                Runs <b>August 19th-May 22nd</b>:
+                                Runs <b>August 12th-May 21st</b>:
                             </div>
                             <ul class="uk-list uk-list-bullet">
                                 <li><b>White Team:</b> Mon/Wed 4:30PM-5:15PM OR 5:30PM-6:15PM, Tues/Thurs 6:30PM-7:15PM & Sat 9:30AM-10:15AM</li>
