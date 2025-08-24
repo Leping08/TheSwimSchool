@@ -288,13 +288,28 @@
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m">
                         <div>
                             <div class="uk-margin">
-                                Download the swim meet schedules.
-                            </div>
-                            <div class="uk-margin">
-                                <a target="_blank" title="Parrish Swim Team" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS School Year 2024-2025 Developmental Swim Meet Schedule.pdf') }}" download="PBS School Year 2024-2025 Developmental Swim Meet Schedule.pdf">Developmental School Year Schedule</a>
-                            </div>
-                            <div>
-                                <a target="_blank" title="Parrish Swim Team Schedule" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Summer_2025_Swim_Meet_Schedule.pdf') }}" download="PBS_Summer_2025_Swim_Meet_Schedule.pdf">Developmental Summer Schedule</a>
+                                <div class="uk-margin">
+                                    Download the {{ config('swim-team.name') }} developmental swim meet schedule below.
+                                </div>
+                                <div>
+                                    <a target="_blank" title="Developmental Meet Schedule" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule.pdf') }}" download="Developmental_Meet_Schedule.pdf">Developmental Meet Schedule</a>
+                                    @auth
+                                    <button class="uk-button uk-button-secondary uk-margin-small-left" type="button" uk-toggle="target: #edit-meet-schedule-modal">Edit</button>
+                                    <div id="edit-meet-schedule-modal" uk-modal>
+                                        <div class="uk-modal-dialog uk-modal-body">
+                                            <h2 class="uk-modal-title">Upload New Meet Schedule PDF</h2>
+                                            <form method="POST" action="{{ route('swim-team.meet-schedule.upload') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="uk-margin">
+                                                    <input class="uk-input" type="file" name="meet_schedule_pdf" accept="application/pdf" required>
+                                                </div>
+                                                <button class="uk-button uk-button-primary" type="submit">Upload</button>
+                                                <button class="uk-button uk-button-secondary uk-modal-close" type="button">Cancel</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endauth
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -311,8 +326,8 @@
                 <div class="uk-grid-margin uk-grid" uk-grid="">
                     <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                         <div class="">
-                            <div>
-                                <div class="uk-margin">Check out the current {{ config('swim-team.name') }} swim team record holders.</div>
+                            <div class="uk-margin"> 
+                                Check out the current {{ config('swim-team.name') }} swim team record holders.
                             </div>
                             <div>
                                 <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-right" href="{{ Storage::disk('s3')->url('pdf/PBS_Team_Records.pdf') }}" target="_blank" rel="noopener" download="PBS_Team_Records.pdf">Download Records</a>

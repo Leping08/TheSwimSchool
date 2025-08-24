@@ -70,6 +70,8 @@ Route::get('/roster', [\App\Http\Controllers\SwimTeam\RosterController::class, '
 
 // Record Holders PDF upload
 Route::post('/swim-team/records/upload', [\App\Http\Controllers\SwimTeam\RecordsController::class, 'upload'])->name('swim-team.records.upload')->middleware('auth');
+// Meet Schedule PDF upload
+Route::post('/swim-team/meet-schedule/upload', [\App\Http\Controllers\SwimTeam\MeetScheduleController::class, 'upload'])->name('swim-team.meet-schedule.upload')->middleware('auth');
 
 /*
  * Swim Team Registration
