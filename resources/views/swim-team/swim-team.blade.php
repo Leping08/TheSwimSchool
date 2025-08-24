@@ -292,7 +292,7 @@
                                     Download the {{ config('swim-team.name') }} developmental swim meet schedule below.
                                 </div>
                                 <div>
-                                    <a target="_blank" title="Developmental Meet Schedule" class="uk-button uk-button-primary" href="{{ asset('pdf/PBS_Swim_Meet_Schedule.pdf') }}" download="Developmental_Meet_Schedule.pdf">Developmental Meet Schedule</a>
+                                    <a title="Developmental Meet Schedule" class="uk-button uk-button-primary" href="{{ Storage::disk('s3')->url('pdf/PBS_Swim_Meet_Schedule.pdf') }}" target="_blank" rel="noopener" download="PBS_Swim_Meet_Schedule.pdf">Developmental Meet Schedule</a>
                                     @auth
                                     <button class="uk-button uk-button-secondary uk-margin-small-left" type="button" uk-toggle="target: #edit-meet-schedule-modal">Edit</button>
                                     <div id="edit-meet-schedule-modal" uk-modal>
