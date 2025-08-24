@@ -278,7 +278,7 @@
     <div class="uk-section-default uk-section-overlap uk-section uk-section-small">
         <div class="uk-container">
             <div class="uk-width-1-1@m uk-margin-top">
-                <h2 class="uk-heading-line"><span>Swim Meet Schedules</span></h2>
+                <h2 id="swim-meet-schedules" class="uk-heading-line"><span>Swim Meet Schedules</span></h2>
                 <div class="uk-child-width-expand@s" uk-grid>
                     <div class="uk-width-expand@m uk-first-column">
                         <div class="uk-margin">
