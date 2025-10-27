@@ -172,14 +172,24 @@
                                 Runs <b>August 12th-May 21st</b>:
                             </div>
                             <ul class="uk-list uk-list-bullet">
-                                <li><b>White Team:</b> Mon/Wed 4:30PM-5:15PM OR 5:30PM-6:15PM, Tues/Thurs 6:30PM-7:15PM & Sat 9:30AM-10:15AM</li>
+                                <li>
+                                    <b>White Team:</b> Mon/Wed 4:30PM-5:15PM &amp; Tues/Thurs 6:15PM-7:00PM & Sat 9:00AM-9:45AM<br>
+                                </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
-                                <li><b>Gray Team:</b> Mon/Wed 4:30PM-5:30PM OR 5:30PM-6:30PM, Tues/Thurs 6:30PM-7:30PM & Sat 9:30AM-10:30AM</li>
+                                <li>
+                                    <b>Gray Team:</b> Mon/Wed 4:30PM-5:30PM &amp; Tues/Thurs 6:00PM-7:00PM & Sat 8:00AM-9:00AM<br>
+                                </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li><b>Blue Team:</b> Mon/Wed 5:00PM-6:30PM, Tues/Thurs 6:30PM-8:00PM & Sat 9:30AM-11:00AM</li>
+                                <li>
+                                    <b>Blue Team:</b> Mon/Wed 5:30PM-7:00PM &amp; Tues/Thurs 4:30PM-6:00PM & Sat 8:00AM-9:30AM<br>
+                                </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
-                                <li><b>Senior Team:</b> Mon/Wed 5:00AM-6:30AM, Mon/Wed 4:30PM-6:30PM, Tues/Thurs 6:00PM-8:00PM (Dry land training 6:00PM-6:30PM), Sat 9:00AM-11:00AM</li>
-                                <li class="uk-margin-left"><b>Goal:</b> 5-6 practices per week</li>
+                                <li>
+                                    <b>Senior Team:</b> Mon/Wed 5:00PM-7:00PM &amp; Tues/Thurs 4:30PM-6:30PM &amp; Sat 8:00AM-10:00AM (Be prepared for dry land training every practice)<br>
+                                </li>
+                                <li class="uk-margin-left">
+                                    <b>Goal:</b> 5-6 practices per week
+                                </li>
                             </ul>
                         </div>
 
@@ -206,7 +216,9 @@
                                 <li>
                                     <b>Senior Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-10:00AM &amp; Tues/Thurs 4:30PM-6:30PM<br>
                                 </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 5-6 practices per week</li>
+                                <li class="uk-margin-left">
+                                    <b>Goal:</b> 5-6 practices per week
+                                </li>
                             </ul>
                         </div>
                     </div>
