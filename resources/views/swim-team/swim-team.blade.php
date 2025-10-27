@@ -187,9 +187,7 @@
                                 <li>
                                     <b>Senior Team:</b> Mon/Wed 5:00PM-7:00PM &amp; Tues/Thurs 4:30PM-6:30PM &amp; Sat 8:00AM-10:00AM (Be prepared for dry land training every practice)<br>
                                 </li>
-                                <li class="uk-margin-left">
-                                    <b>Goal:</b> 5-6 practices per week
-                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
                             </ul>
                         </div>
 
@@ -216,9 +214,7 @@
                                 <li>
                                     <b>Senior Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-10:00AM &amp; Tues/Thurs 4:30PM-6:30PM<br>
                                 </li>
-                                <li class="uk-margin-left">
-                                    <b>Goal:</b> 5-6 practices per week
-                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 5-6 practices per week</li>
                             </ul>
                         </div>
                     </div>
