@@ -27,7 +27,7 @@
                         <div class="uk-card uk-card-default uk-card-body uk-margin-top">
                             <h5>Realhab Physical Therapy</h5>
                             <ul class="uk-list uk-list-bullet">
-                                <li>Weekday evening and weekend lessons</li>
+                                <li>Weekday AM & PM and Weekend AM lessons</li>
                                 <li>Heated pool</li>
                                 <li>Year Round</li>
                                 <li>Indoor</li>
@@ -39,7 +39,7 @@
                         <div class="uk-card uk-card-default uk-card-body uk-margin-top">
                             <h5>Lincoln Aquatic Center</h5>
                             <ul class="uk-list uk-list-bullet">
-                                <li>Weekday morning lessons</li>
+                                <li>Weekday AM lessons</li>
                                 <li>Heated pool</li>
                                 <li>Seasonal</li>
                                 <li>Outdoor</li>
@@ -70,18 +70,18 @@
                     <div class="uk-grid-small uk-grid-match uk-child-width-expand@s" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Weekday Session 8-30 Min Classes ($15.00 Per Class)</h5>
+                                <h5>Weekday Session 8-30 Min Classes ($20.00 Per Class)</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>$120 Per Session</li>
+                                    <li>$160 Per Session</li>
                                     <li>No Registration Fees</li>
                                 </ul>
                             </div>
                         </div>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body">
-                                <h5>Weekend Session 6-30 Min Classes ($15.00 Per Class)</h5>
+                                <h5>Weekend Session 6-30 Min Classes ($20.00 Per Class)</h5>
                                 <ul class="uk-list uk-list-bullet">
-                                    <li>$90 Per Session</li>
+                                    <li>$120 Per Session</li>
                                     <li>No Registration Fees</li>
                                 </ul>
                             </div>

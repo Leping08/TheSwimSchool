@@ -57,7 +57,7 @@ class CreatePoolSessionsForPrivateLessons extends Action
         return [
             DateTime::make('Start Date and Time', 'start_date_time'),
             DateTime::make('End Date and Time', 'end_date_time'),
-            Number::make('Price', 'price')->default(35),
+            Number::make('Price', 'price')->default(45),
             BooleanGroup::make('Days', 'days')->options(DaysOfTheWeek::all()->mapWithKeys(function ($item) {
                 return [$item['id'] => $item['day']];
             }))->hideFalseValues()->onlyOnForms()->hideFromDetail()->hideWhenUpdating(),
