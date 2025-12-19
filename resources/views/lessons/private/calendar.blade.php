@@ -58,16 +58,35 @@
                 </div>
             </div>
 
+            <div class="uk-grid-margin uk-grid" uk-grid="">
+                <div class="uk-width-4-4@m uk-first-column uk-margin">
+                    <h2 class="uk-heading-bullet">Pricing</h2>
+                    <p>Pricing is $45.00 per private lesson. Each lesson is 20 minutes.</p>
+                </div>
+            </div>
+
             @if (config('season.private.season'))
-                <div class="uk-grid-margin uk-grid uk-margin-large-top" uk-grid="">
+                <div class="uk-grid-margin uk-grid" uk-grid="">
                     <div class="uk-width-4-4@m uk-first-column uk-margin">
                         <h2 class="uk-heading-bullet">Registration</h2>
+                        <p>
+                            Registration opens on the 25th of each month for the next month's available lessons and is first
+                            come first serve. Select the desired amount of private lesson time slots from the calendar below
+                            by clicking on each one and checkout with one transaction.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="uk-grid-margin uk-grid" uk-grid="">
+                    <div class="uk-width-4-4@m uk-first-column uk-margin">
+                        <h2 class="uk-heading-bullet">Description</h2>
                         <div class="uk-grid-item-match uk-flex-middle">
                             <div class="uk-panel uk-width-1-1">
                                 <div class="uk-margin">
-                                    <div class="uk-dropcap">
+                                    <div class="">
                                         Whether you are a beginner swimmer, a child preparing to join a <a
-                                            title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>, or a
+                                            title="Parrish Swim Team" href="{{ route('swim-team.index') }}">swim team</a>,
+                                        or a
                                         triathlete looking to improve your technique, private swim lessons can be customized
                                         to your specific needs to help you achieve your goals quickly. These lessons are
                                         conducted one on one with an instructor.
@@ -75,7 +94,8 @@
                                     <div>
                                         We recommend participants under two years of age enroll in our group class <a
                                             title="Parrish Swim Team" href="{{ route('groups.lessons.index') }}">Parent &
-                                        Infant program</a> first prior to private lessons. For children under 2.5 years of age,
+                                            Infant program</a> first prior to private lessons. For children under 2.5 years
+                                        of age,
                                         we require a parent or trusted adult also get in the water to assist with private
                                         lessons. While our goal is certainly to teach your child to swim, we are not ISR
                                         certified instructors and do not specialize in the infant survival technique.
@@ -83,12 +103,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <p>
-                            Registration opens on the 25th of each month for the next month's available lessons and is first
-                            come first serve. Select the desired amount of private lesson time slots from the calendar below
-                            and check out with one transaction.
-                        </p>
+                    </div>
                 </div>
 
 
