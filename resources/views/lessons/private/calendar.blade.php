@@ -71,8 +71,8 @@
                         <h2 class="uk-heading-bullet">Registration</h2>
                         <p>
                             Registration opens on the 25th of each month for the next month's available lessons and is first
-                            come first serve. Select the desired amount of private lesson time slots from the calendar below
-                            by clicking on each one and checkout with one transaction.
+                            come, first served. Select the desired amount of private lesson time slots from the calendar
+                            below by clicking on each one and checkout with one transaction.
                         </p>
                     </div>
                 </div>
