@@ -21,7 +21,7 @@ class Seasons extends Seeder
             'Winter',
         ];
 
-        $years = range(2017, 2025);
+        $years = range(2017, 2075);
 
         foreach ($years as $year) {
             foreach ($seasons as $season) {
