@@ -36,34 +36,20 @@
             <div class="uk-grid-margin uk-grid" uk-grid="">
                 <div class="uk-grid-item-match uk-flex-middle uk-width-3-4@m uk-first-column">
                     <div class="uk-panel">
-                        <h2 class="uk-heading-line"><span>Tryouts</span></h2>
+                        <h2 class="uk-heading-line"><span>Tryouts/Level Placement</span></h2>
                         <div class="uk-dropcap uk-margin">
                             <p>
-                                Come join our team! We are a year round swim team with four program levels based on age and ability. All interested participants must register for and complete one of our available tryout sessions. There is no fee to tryout for the team. Each tryout session will take approximately one hour.
+                                Come join our team! We are a year round swim club offering three developmental levels and three USA competitive levels within our program. All those interested in joining our team must register for and complete one of our available tryout/level placement sessions. There is no fee for this. Each tryout/level placement session will take approximately one hour.
                             </p>
                             <p>
-                                <b>Minimum Requirement</b>: Each child must be able to swim at least one full individual length without stopping (25 yards) of each of the four competitive swim strokes (freestyle, backstroke, breaststroke, and butterfly) to be eligible for participation on the team. Each stroke will be demonstrated at the tryout prior to having the children attempt them.
+                                <b>Minimum Requirement</b>: To be eligible for participation on our swim team, each child must be able to complete a 100 yard IM (Individual Medley) independently without stopping. This is 25 yards of each of the four competitive swim strokes in the following order: butterfly, backstroke, breaststroke, and freestyle.
                             </p>
-
-                            {{-- <p>
-                                Need to learn the strokes first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available now to get your child ready for their tryout.
-                            </p> --}}
-                            {{-- <p>
-                                Registration for swim team tryouts opens on May 1st. All interested participants including returning swim team members must register and attend one of the available tryout options. There is no fee to tryout for the swim team. Tryouts are being held at our indoor pool location, Realhab Physical Therapy, Aquatics & Wellness Center, 12159 US-301, Parrish (while the Lincoln Aquatics Center construction is being completed). Each tryout session will take approximately one hour.
+                            <p>
+                                Need to learn the strokes and/or build up your stamina first to be prepared for a tryout? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available to get your child tryout ready!
                             </p>
-                            <ul class="uk-list uk-list-bullet">
-                                <li>Tuesday, May 17th 7:15PM</li>
-                                <li>Thursday, May 19th 7:15PM</li>
-                                <li>Friday, May 20th 4:30PM</li>
-                                <li>Friday, May 20th 5:30PM</li>
-                                <li>Friday, May 20th 6:30PM</li>
-                            </ul> --}}
                             <div>
-                                <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">Sign Up for Tryouts</a>
+                                <a class="uk-button uk-button-primary" href="{{ route('swim-team.tryouts.index') }}">SIGN UP FOR TRYOUTS</a>
                             </div>
-                            <p>
-                                Need some practice first? We have <a href="{{ route('groups.lessons.index') }}">group</a> and <a href="{{ route('private_lesson.index') }}">private swim lesson</a> options available to get your child ready for their tryout.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -121,22 +107,41 @@
                 <div class="uk-grid-item-match uk-flex-middle uk-width-2-3@m uk-first-column">
                     <div class="uk-panel">
                         <div class="uk-margin">
-                            There is a $100 Registration/Apparel Fee per swimmer. As part of this fee, each swimmer will receive one team swimsuit, cap, t-shirt, water bottle and drawstring bag.
+                            <b>Registration/Apparel Fee:</b> There is a $100 Registration/Apparel Fee per swimmer. As part of this fee, each swimmer will receive a team drawstring bag with one team swimsuit, one team t-shirt, and two team swim caps.
                         </div>
                         <div class="uk-margin">
-                            A recurring monthly fee will be applied on the 1st of each month per swimmer based on their assigned program level. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration.
+                            <b>Monthly Program Fees:</b> A recurring monthly fee will be applied on the 1st of each month per swimmer based on their assigned program level. A multiple child discount of 10% will be applied when applicable. The monthly fees are based on the current practice schedule frequency and duration.
+                        </div>
+                        <div class="uk-margin">
+                            <b>Developmental Levels:</b>
                         </div>
                         <ul class="uk-list uk-list-bullet">
                             <li><b>White Team:</b> $125</li>
                             <li><b>Gray Team:</b> $135</li>
-                            <li><b>Blue Team:</b> $150</li>
-                            <li><b>Senior Team:</b> $165</li>
+                            <li><b>Blue Team:</b> $145</li>
                         </ul>
-                        <div class="uk-margin">*Parent Non-Volunteer Fee per swimmer (optional): $100</div>
-                        {{-- <div class="uk-margin">
-                            You can find all official {{ config('swim-team.name') }} apparel for the swim season at our team apparel store below.
+                        <div class="uk-margin">
+                            There are no additional fees for developmental swim meets. However, there is a parent volunteer requirement for all developmental swim meets attended.
                         </div>
-                        <a class="uk-button uk-button-primary" target="_blank" href="https://www.destinationathlete.com/teams/store.aspx?team=2159&dept=2173">Team Apparel Store</a> --}}
+                        <div class="uk-margin">
+                            <b>USA Competitive Levels:</b>
+                        </div>
+                        <ul class="uk-list uk-list-bullet">
+                            <li><b>Bronze Team:</b> $160</li>
+                            <li><b>Silver Team:</b> $175</li>
+                            <li><b>Gold Team:</b> $175</li>
+                        </ul>
+                        <div class="uk-margin">
+                            <b>USA Membership Fee:</b> For all USA Competitive Levels there is a required annual USA membership and fee ($97) that must be completed and paid online at the time of joining the team prior to attending the first swim practice.
+                        </div>
+                        <div class="uk-margin">
+                            <b>Swim Meet Assessment Fees:</b> For all USA Competitive Levels there is a required quarterly swim meet assessment fee charged on January 15th, April 15th, July 15th and October 15th as follows to cover swim meet entry costs.
+                        </div>
+                        <ul class="uk-list uk-list-bullet">
+                            <li><b>Bronze Team:</b> $150 (Must attend at least 5 meets per year.)</li>
+                            <li><b>Silver Team:</b> $175 (Must attend at least 8 meets per year.)</li>
+                            <li><b>Gold Team:</b> $200 (Must attend at least 10 meets per year.)</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -169,54 +174,45 @@
                                 School Year Practice Schedule
                             </h2>
                             <div class="uk-margin">
-                                Runs <b>August 12th-May 21st</b>:
+                                Runs <b>August 12th-May 21st</b>
+                            </div>
+                            <div class="uk-margin">
+                                <b>Developmental Team</b>
                             </div>
                             <ul class="uk-list uk-list-bullet">
                                 <li>
-                                    <b>White Team:</b> Mon/Wed 4:30PM-5:15PM &amp; Tues/Thurs 6:15PM-7:00PM & Sat 9:00AM-9:45AM<br>
+                                    <b>White Team:</b> Mon/Wed 4:30PM-5:15PM &amp; Tues/Thurs 6:15PM-7:00PM &amp; Sat 9:00AM-9:45AM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
                                 <li>
-                                    <b>Gray Team:</b> Mon/Wed 4:30PM-5:30PM &amp; Tues/Thurs 6:00PM-7:00PM & Sat 8:00AM-9:00AM<br>
+                                    <b>Gray Team:</b> Mon/Wed 4:30PM-5:30PM &amp; Tues/Thurs 6:00PM-7:00PM &amp; Sat 8:00AM-9:00AM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li>
-                                    <b>Blue Team:</b> Mon/Wed 5:30PM-7:00PM &amp; Tues/Thurs 4:30PM-6:00PM & Sat 8:00AM-9:30AM<br>
+                                    <b>Blue Team:</b> Mon/Wed 4:30PM-5:45PM &amp; Tues/Thurs 5:45PM-7:00PM &amp; Sat 8:00AM-9:15AM<br>
                                 </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
+                            </ul>
+                            <div class="uk-margin">
+                                <b>USA Competitive Team</b>
+                            </div>
+                            <ul class="uk-list uk-list-bullet">
                                 <li>
-                                    <b>Senior Team:</b> Mon/Wed 5:00PM-7:00PM &amp; Tues/Thurs 4:30PM-6:30PM &amp; Sat 8:00AM-10:00AM (Be prepared for dry land training every practice)<br>
+                                    <b>Bronze Team:</b> Mon/Wed 5:30PM-7:00PM &amp; Tues/Thurs 4:30PM-6:00PM &amp; Sat 8:00AM-9:30AM<br>
                                 </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-5 practices per week</li>
+                                <li>
+                                    <b>Silver Team:</b> Mon/Wed 5:00PM-7:00PM &amp; Tues/Thurs 5:00AM-6:30AM &amp; Tues/Thurs 4:30PM-6:30PM &amp; Sat 8:00AM-10:00AM (Be prepared for dry land training every practice)<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 4-6 practices per week</li>
+                                <li>
+                                    <b>Gold Team:</b> Mon/Wed 5:00PM-7:00PM &amp; Tues/Thurs 5:00AM-6:30AM &amp; Tues/Thurs 4:30PM-6:30PM &amp; Sat 8:00AM-10:00AM (Be prepared for dry land training every practice)<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 5-7 practices per week</li>
                             </ul>
                         </div>
 
-                        <div class="uk-panel">
-                            <h2>
-                                Summer Practice Schedule
-                            </h2>
-                            <div class="uk-margin">
-                                Runs <b>June 2nd-August 2nd</b>:
-                            </div>
-                            <ul class="uk-list uk-list-bullet">
-                                <li>
-                                    <b>White Team:</b> Mon/Tues/Wed/Thurs/Fri 9:00AM-9:45AM &amp; Tues/Thurs 4:45PM-5:30PM<br>
-                                </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
-                                <li>
-                                    <b>Gray Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-9:00AM &amp; Tues/Thurs 5:30PM-6:30PM<br>
-                                </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li>
-                                    <b>Blue Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-9:30AM &amp; Tues/Thurs 5:00PM-6:30PM<br>
-                                </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
-                                <li>
-                                    <b>Senior Team:</b> Mon/Tues/Wed/Thurs/Fri 8:00AM-10:00AM &amp; Tues/Thurs 4:30PM-6:30PM<br>
-                                </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 5-6 practices per week</li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
 
