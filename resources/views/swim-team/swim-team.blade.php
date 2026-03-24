@@ -293,7 +293,7 @@
                         <div>
                             <div class="uk-margin">
                                 <div class="uk-margin">
-                                    Download the {{ config('swim-team.name') }} developmental swim meet schedule below.
+                                    Download the {{ config('swim-team.name') }} developmental and/or USA competitive swim meet schedules below.
                                 </div>
                                 <div>
                                     <a title="Developmental Meet Schedule" class="uk-button uk-button-primary" href="{{ Storage::disk('s3')->url('pdf/PBS_Swim_Meet_Schedule.pdf') }}" target="_blank" rel="noopener" download="PBS_Swim_Meet_Schedule.pdf">Developmental Meet Schedule</a>
@@ -313,6 +313,9 @@
                                         </div>
                                     </div>
                                     @endauth
+                                </div>
+                                <div class="uk-margin-top">
+                                    <a title="USA Competitive Meet Schedule" class="uk-button uk-button-primary" href="https://docs.google.com/document/d/15bRy6yjvp6h3KfTXcA6DWdFlu99TEmxWGn8GSofLVRM/edit?usp=sharing" target="_blank" rel="noopener" download="PBS_USA_Competitive_Swim_Meet_Schedule.pdf">USA Competitive Meet Schedule</a>
                                 </div>
                             </div>
                         </div>
