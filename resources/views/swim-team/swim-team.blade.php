@@ -314,8 +314,24 @@
                                     </div>
                                     @endauth
                                 </div>
-                                <div class="uk-margin-top">
-                                    <a title="USA Competitive Meet Schedule" class="uk-button uk-button-primary" href="https://docs.google.com/document/d/15bRy6yjvp6h3KfTXcA6DWdFlu99TEmxWGn8GSofLVRM/edit?usp=sharing" target="_blank" rel="noopener" download="PBS_USA_Competitive_Swim_Meet_Schedule.pdf">USA Competitive Meet Schedule</a>
+                                <div class="uk-margin-small-top">
+                                    <a title="USA Competitive Meet Schedule" class="uk-button uk-button-primary" href="{{ Storage::disk('s3')->url('pdf/PBS_USA_Competitive_Swim_Meet_Schedule.pdf') }}" target="_blank" rel="noopener" download="PBS_USA_Competitive_Swim_Meet_Schedule.pdf">USA Competitive Meet Schedule</a>
+                                    @auth
+                                    <button class="uk-button uk-button-secondary uk-margin-small-left" type="button" uk-toggle="target: #edit-usa-meet-schedule-modal">Edit</button>
+                                    <div id="edit-usa-meet-schedule-modal" uk-modal>
+                                        <div class="uk-modal-dialog uk-modal-body">
+                                            <h2 class="uk-modal-title">Upload New USA Competitive Meet Schedule PDF</h2>
+                                            <form method="POST" action="{{ route('swim-team.usa-meet-schedule.upload') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="uk-margin">
+                                                    <input class="uk-input" type="file" name="usa_meet_schedule_pdf" accept="application/pdf" required>
+                                                </div>
+                                                <button class="uk-button uk-button-primary" type="submit">Upload</button>
+                                                <button class="uk-button uk-button-secondary uk-modal-close" type="button">Cancel</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endauth
                                 </div>
                             </div>
                         </div>

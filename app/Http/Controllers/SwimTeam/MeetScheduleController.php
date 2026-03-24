@@ -23,4 +23,20 @@ class MeetScheduleController extends Controller
 
         return redirect()->back()->with('success', 'Meet schedule PDF updated successfully!')->withFragment('swim-meet-schedules');
     }
+
+    /**
+     * Handle the upload of the USA competitive meet schedule PDF.
+     */
+    public function uploadUsaCompetitive(Request $request)
+    {
+        $request->validate([
+            'usa_meet_schedule_pdf' => 'required|file|mimes:pdf|max:10240',
+        ]);
+
+        $file = $request->file('usa_meet_schedule_pdf');
+        $filename = 'PBS_USA_Competitive_Swim_Meet_Schedule.pdf';
+        Storage::disk('s3')->putFileAs('pdf', $file, $filename, ['visibility' => 'public']);
+
+        return redirect()->back()->with('success', 'USA competitive meet schedule PDF updated successfully!')->withFragment('swim-meet-schedules');
+    }
 }
