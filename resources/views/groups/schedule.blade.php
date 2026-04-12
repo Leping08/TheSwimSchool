@@ -71,8 +71,8 @@
                             <td>March 9th</td>
                         </tr>
                         <tr>
-                            <td>April 20th-May 14th</td>
-                            <td>April 13th</td>
+                            <td>April 27th-May 21st</td>
+                            <td>April 20th</td>
                         </tr>
                     </tbody>
                 </table>
