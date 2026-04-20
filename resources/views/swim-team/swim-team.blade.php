@@ -211,6 +211,48 @@
                                 <li class="uk-margin-left"><b>Goal:</b> 5-7 practices per week</li>
                             </ul>
                         </div>
+                        <div class="uk-panel uk-margin-large-top">
+                            <h2>
+                                Summer Practice Schedule
+                            </h2>
+                            <div class="uk-margin">
+                                Runs <b>June 1st-August 1st</b>
+                            </div>
+                            <div class="uk-margin">
+                                <b>Developmental Team</b>
+                            </div>
+                            <ul class="uk-list uk-list-bullet">
+                                <li>
+                                    <b>White Team:</b> Mon/Tues/Wed/Thur/Fri 9:00AM-9:45AM &amp; Tues/Thurs 5:00PM-5:45PM<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
+                                <li>
+                                    <b>Gray Team:</b> Mon/Tues/Wed/Thur/Fri 9:00AM-10:00AM &amp; Tues/Thurs 5:00PM-6:00PM<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
+                                <li>
+                                    <b>Blue Team:</b> Mon/Tues/Wed/Thur/Fri 8:30AM-9:45AM &amp; Tues/Thurs 5:00PM-6:15PM<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
+                            </ul>
+                            <div class="uk-margin">
+                                <b>USA Competitive Team</b>
+                            </div>
+                            <ul class="uk-list uk-list-bullet">
+                                <li>
+                                    <b>Bronze Team:</b> Mon/Tues/Wed/Fri 7:00AM-8:30AM, Tues/Thurs 5:00PM-6:30PM, &amp; *Thurs 6:30AM-8:00AM @ GT Bray for Long Course Practice<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-5 practices per week</li>
+                                <li>
+                                    <b>Silver Team:</b> Mon/Tues/Wed/Fri 7:00AM-9:00AM, Tues/Thurs 5:00PM-6:00PM, &amp; *Thurs 6:30AM-8:00AM @ GT Bray for Long Course Practice (Be prepared for dry land training every practice)<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 4-6 practices per week</li>
+                                <li>
+                                    <b>Gold Team:</b> Mon/Tues/Wed/Fri 7:00AM-9:00AM, Tues/Thurs 5:00PM-6:00PM, &amp; *Thurs 6:30AM-8:00AM @ GT Bray for Long Course Practice (Be prepared for dry land training every practice)<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 5-7 practices per week</li>
+                            </ul>
+                        </div>
 
 
                     </div>
