@@ -21,7 +21,8 @@
 
             <div class="uk-width-1-1@m uk-first-column uk-margin-top">
                 <h2 class="uk-heading-line"><span>Locations</span></h2>
-                <p>Group Lessons take place at two different locations. Realhab Physical Therapy and Lincoln Aquatic Center.</p>
+                {{-- <p>Group Lessons take place at two different locations. Realhab Physical Therapy and Lincoln Aquatic Center.</p> --}}
+                <p>Group Lessons take place at Realhab Physical Therapy, located at 12159 US 301 North in Parrish.</p>
                 <div class="uk-grid-small uk-grid-match uk-child-width-expand@s uk-grid">
                     <div class="uk-first-column">
                         <div class="uk-card uk-card-default uk-card-body uk-margin-top">
@@ -35,7 +36,7 @@
                             <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Realhab&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div>
+                    {{-- <div>
                         <div class="uk-card uk-card-default uk-card-body uk-margin-top">
                             <h5>Lincoln Aquatic Center</h5>
                             <ul class="uk-list uk-list-bullet">
@@ -46,7 +47,7 @@
                             </ul>
                             <iframe height="300" class="uk-width-1-1" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Lincoln_Aquatic_Center&key={{config('google.maps.api_key')}}&zoom=12" allowfullscreen></iframe>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
