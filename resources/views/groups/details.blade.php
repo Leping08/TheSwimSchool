@@ -156,7 +156,7 @@ Lessons
                             </div>
                             <div class="uk-card-body">
                                 <div class="card-text">
-                                    <p>Check out the <a title="{{ config('swim-team.full-name') }}" href="{{ route('groups.schedule.index') }}">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>
+                                    <p>Check out the <a title="{{ config('swim-team.full-name') }}" href="{{ Storage::disk('s3')->url('pdf/Group_Lesson_Schedule.pdf') }}" target="_blank" rel="noopener">Group Lesson Sessions & Registration Schedule</a> to find out when our next session registration will be available.</p>
                                 </div>
 {{--                                <div class="card-text">--}}
 {{--                                    <p>Registration will open for our next session of swim lessons {{config('season.groups.next_season.registration_open')}}. Please check back at another time.<br>--}}

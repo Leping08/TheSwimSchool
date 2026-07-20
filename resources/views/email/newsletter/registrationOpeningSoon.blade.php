@@ -4,7 +4,7 @@
 
 @component('mail::panel')
 # 2021 Swim Season Is Almost Here!
-We can’t wait to splash around and make waves at the pool again as soon as the water warms up! Our <a href="{{ route('groups.schedule.index') }}">2021 session schedule</a> is now available to view on the website and registration will open for our first session of group classes, private lessons and spring swim club on Monday, March 15th. We are also very excited to announce that we WILL be able to have a summer swim team season this year! Stay tuned for more swim team details coming in April.
+We can’t wait to splash around and make waves at the pool again as soon as the water warms up! Our <a href="{{ Storage::disk('s3')->url('pdf/Group_Lesson_Schedule.pdf') }}">2021 session schedule</a> is now available to view on the website and registration will open for our first session of group classes, private lessons and spring swim club on Monday, March 15th. We are also very excited to announce that we WILL be able to have a summer swim team season this year! Stay tuned for more swim team details coming in April.
 @endcomponent
 
 @component('mail::button', ['url' => config('app.url').'?utm_source=newsletter&utm_medium=email&utm_campaign=spring_lesson_registration_coming_soon'])

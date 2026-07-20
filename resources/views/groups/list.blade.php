@@ -19,6 +19,13 @@
                 </div>
             @endif
 
+            @if(session('success'))
+                <div class="uk-alert-success" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="uk-width-1-1@m uk-first-column uk-margin-top">
                 <h2 class="uk-heading-line"><span>Locations</span></h2>
                 {{-- <p>Group Lessons take place at two different locations. Realhab Physical Therapy and Lincoln Aquatic Center.</p> --}}
@@ -59,7 +66,25 @@
 
                         <p>Class times vary per level and session based on facility and instructor availability, so the specific class times are not available until registration opens for each session. Once registration opens, it is completed online through the Levels by clicking on the “Find Classes” button.</p>
 
-                        <p><a title="Group Swimming Lessons Schedule" class="uk-button uk-button-primary" href="{{ route('groups.schedule.index') }}">Registration Schedule</a></p>
+                        <p>
+                            <a title="Group Swimming Lessons Schedule" class="uk-button uk-button-primary" href="{{ Storage::disk('s3')->url('pdf/Group_Lesson_Schedule.pdf') }}" target="_blank" rel="noopener" download="Group_Lesson_Schedule.pdf">Download Schedule</a>
+                            @auth
+                            <button class="uk-button uk-button-secondary uk-margin-small-left" type="button" uk-toggle="target: #edit-group-schedule-modal">Edit</button>
+                            <div id="edit-group-schedule-modal" uk-modal>
+                                <div class="uk-modal-dialog uk-modal-body">
+                                    <h2 class="uk-modal-title">Upload New Group Lesson Schedule PDF</h2>
+                                    <form method="POST" action="{{ route('groups.schedule.upload') }}" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="uk-margin">
+                                            <input class="uk-input" type="file" name="group_schedule_pdf" accept="application/pdf" required>
+                                        </div>
+                                        <button class="uk-button uk-button-primary" type="submit">Upload</button>
+                                        <button class="uk-button uk-button-secondary uk-modal-close" type="button">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                            @endauth
+                        </p>
                     </div>
                 </div>
             </div>
