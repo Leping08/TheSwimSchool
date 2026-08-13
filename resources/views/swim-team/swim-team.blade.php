@@ -174,22 +174,22 @@
                                 School Year Practice Schedule
                             </h2>
                             <div class="uk-margin">
-                                Runs <b>August 12th-May 21st</b>
+                                Runs <b>August 11th-November 5th</b>
                             </div>
                             <div class="uk-margin">
                                 <b>Developmental Team</b>
                             </div>
                             <ul class="uk-list uk-list-bullet">
                                 <li>
-                                    <b>White Team:</b> Mon/Wed 4:30PM-5:15PM &amp; Tues/Thurs 6:15PM-7:00PM &amp; Sat 9:00AM-9:45AM<br>
+                                    <b>White Team:</b> Mon/Wed 4:45PM-5:30PM &amp; Tues/Thurs 6:15PM-7:00PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
                                 <li>
-                                    <b>Gray Team:</b> Mon/Wed 4:30PM-5:30PM &amp; Tues/Thurs 6:00PM-7:00PM &amp; Sat 8:00AM-9:00AM<br>
+                                    <b>Gray Team:</b> Mon/Wed 6:00PM-7:00PM &amp; Tues/Thurs 4:30PM-5:30PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li>
-                                    <b>Blue Team:</b> Mon/Wed 4:30PM-5:45PM &amp; Tues/Thurs 5:45PM-7:00PM &amp; Sat 8:00AM-9:15AM<br>
+                                    <b>Blue Team:</b> Mon/Tues/Wed/Thurs 5:30PM-6:45PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                             </ul>
@@ -198,17 +198,17 @@
                             </div>
                             <ul class="uk-list uk-list-bullet">
                                 <li>
-                                    <b>Bronze Team:</b> Mon/Wed 5:30PM-7:00PM &amp; Tues/Thurs 4:30PM-6:00PM &amp; Sat 8:00AM-9:30AM<br>
+                                    <b>Bronze Team:</b> Mon/Tues/Wed/Thurs 5:30PM-7:00PM<br>
                                 </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 3-5 practices per week</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li>
-                                    <b>Silver Team:</b> Mon/Wed 5:00PM-7:00PM &amp; Tues/Thurs 5:00AM-6:30AM &amp; Tues/Thurs 4:30PM-6:30PM &amp; Sat 8:00AM-10:00AM (Be prepared for dry land training every practice)<br>
+                                    <b>Silver Team:</b> Mon/Tues/Wed/Thurs 4:30PM-6:30PM (Be prepared for dry land training every practice)<br>
                                 </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 4-6 practices per week</li>
+                                <li class="uk-margin-left"><b>Goal:</b> All 4 practices per week</li>
                                 <li>
-                                    <b>Gold Team:</b> Mon/Wed 5:00PM-7:00PM &amp; Tues/Thurs 5:00AM-6:30AM &amp; Tues/Thurs 4:30PM-6:30PM &amp; Sat 8:00AM-10:00AM (Be prepared for dry land training every practice)<br>
+                                    <b>Gold Team:</b> Mon/Tues/Wed/Thurs 4:30PM-6:30PM (Be prepared for dry land training every practice)<br>
                                 </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 5-7 practices per week</li>
+                                <li class="uk-margin-left"><b>Goal:</b> All 4 practices per week</li>
                             </ul>
                         </div>
                         <div class="uk-panel uk-margin-large-top">
@@ -395,16 +395,35 @@
                                 Check out the current {{ config('swim-team.name') }} swim team record holders.
                             </div>
                             <div>
-                                <a title="Parrish Swim Team" class="uk-button uk-button-primary uk-margin-right" href="{{ Storage::disk('s3')->url('pdf/PBS_Team_Records.pdf') }}" target="_blank" rel="noopener" download="PBS_Team_Records.pdf">Download Records</a>
+                                <a title="Short Course Records" class="uk-button uk-button-primary" href="{{ Storage::disk('s3')->url('pdf/PBS_Team_Records.pdf') }}" target="_blank" rel="noopener" download="PBS_Team_Records.pdf">Short Course Records</a>
                                 @auth
                                 <button class="uk-button uk-button-secondary uk-margin-small-left" type="button" uk-toggle="target: #edit-records-modal">Edit</button>
                                 <div id="edit-records-modal" uk-modal>
                                     <div class="uk-modal-dialog uk-modal-body">
-                                        <h2 class="uk-modal-title">Upload New Records PDF</h2>
+                                        <h2 class="uk-modal-title">Upload New Short Course Records PDF</h2>
                                         <form method="POST" action="{{ route('swim-team.records.upload') }}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="uk-margin">
                                                 <input class="uk-input" type="file" name="records_pdf" accept="application/pdf" required>
+                                            </div>
+                                            <button class="uk-button uk-button-primary" type="submit">Upload</button>
+                                            <button class="uk-button uk-button-secondary uk-modal-close" type="button">Cancel</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                @endauth
+                            </div>
+                            <div class="uk-margin-small-top">
+                                <a title="Long Course Records" class="uk-button uk-button-primary" href="{{ Storage::disk('s3')->url('pdf/PBS_Team_Records_Long_Course.pdf') }}" target="_blank" rel="noopener" download="PBS_Team_Records_Long_Course.pdf">Long Course Records</a>
+                                @auth
+                                <button class="uk-button uk-button-secondary uk-margin-small-left" type="button" uk-toggle="target: #edit-long-course-records-modal">Edit</button>
+                                <div id="edit-long-course-records-modal" uk-modal>
+                                    <div class="uk-modal-dialog uk-modal-body">
+                                        <h2 class="uk-modal-title">Upload New Long Course Records PDF</h2>
+                                        <form method="POST" action="{{ route('swim-team.long-course-records.upload') }}" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="uk-margin">
+                                                <input class="uk-input" type="file" name="long_course_records_pdf" accept="application/pdf" required>
                                             </div>
                                             <button class="uk-button uk-button-primary" type="submit">Upload</button>
                                             <button class="uk-button uk-button-secondary uk-modal-close" type="button">Cancel</button>

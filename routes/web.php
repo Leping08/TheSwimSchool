@@ -89,6 +89,8 @@ Route::get('/roster', [RosterController::class, 'index'])->name('swim-team.roste
 
 // Record Holders PDF upload
 Route::post('/swim-team/records/upload', [RecordsController::class, 'upload'])->name('swim-team.records.upload')->middleware('auth');
+// Long Course Record Holders PDF upload
+Route::post('/swim-team/long-course-records/upload', [RecordsController::class, 'uploadLongCourse'])->name('swim-team.long-course-records.upload')->middleware('auth');
 // Meet Schedule PDF upload
 Route::post('/swim-team/meet-schedule/upload', [MeetScheduleController::class, 'upload'])->name('swim-team.meet-schedule.upload')->middleware('auth');
 // USA Competitive Meet Schedule PDF upload
