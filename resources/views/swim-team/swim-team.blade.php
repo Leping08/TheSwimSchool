@@ -118,7 +118,6 @@
                         <ul class="uk-list uk-list-bullet">
                             <li><b>White Team:</b> $125</li>
                             <li><b>Gray Team:</b> $135</li>
-                            <li><b>Blue Team:</b> $145</li>
                         </ul>
                         <div class="uk-margin">
                             There are no additional fees for developmental swim meets. However, there is a parent volunteer requirement for all developmental swim meets attended.
@@ -127,6 +126,7 @@
                             <b>USA Competitive Levels:</b>
                         </div>
                         <ul class="uk-list uk-list-bullet">
+                            <li><b>Blue Team:</b> $145</li>
                             <li><b>Bronze Team:</b> $160</li>
                             <li><b>Silver Team:</b> $175</li>
                             <li><b>Gold Team:</b> $175</li>
@@ -135,13 +135,8 @@
                             <b>USA Membership Fee:</b> For all USA Competitive Levels there is a required annual USA membership and fee ($97) that must be completed and paid online at the time of joining the team prior to attending the first swim practice.
                         </div>
                         <div class="uk-margin">
-                            <b>Swim Meet Assessment Fees:</b> For all USA Competitive Levels there is a required quarterly swim meet assessment fee charged on January 15th, April 15th, July 15th and October 15th as follows to cover swim meet entry costs.
+                            <b>Swim Meet Fees:</b> For all USA level swim meets, there are entry fees charged per meet based on the number of days a swimmer attends and the number of events a swimmer enters.
                         </div>
-                        <ul class="uk-list uk-list-bullet">
-                            <li><b>Bronze Team:</b> $150 (Must attend at least 5 meets per year.)</li>
-                            <li><b>Silver Team:</b> $175 (Must attend at least 8 meets per year.)</li>
-                            <li><b>Gold Team:</b> $200 (Must attend at least 10 meets per year.)</li>
-                        </ul>
                     </div>
                 </div>
 
