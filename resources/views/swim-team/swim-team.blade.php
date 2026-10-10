@@ -169,9 +169,6 @@
                                 School Year Practice Schedule
                             </h2>
                             <div class="uk-margin">
-                                Runs <b>August 11th-November 5th</b>
-                            </div>
-                            <div class="uk-margin">
                                 <b>Developmental Team</b>
                             </div>
                             <ul class="uk-list uk-list-bullet">
@@ -183,15 +180,15 @@
                                     <b>Gray Team:</b> Mon/Wed 6:00PM-7:00PM &amp; Tues/Thurs 4:30PM-5:30PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li>
-                                    <b>Blue Team:</b> Mon/Tues/Wed/Thurs 5:30PM-6:45PM<br>
-                                </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                             </ul>
                             <div class="uk-margin">
                                 <b>USA Competitive Team</b>
                             </div>
                             <ul class="uk-list uk-list-bullet">
+                                <li>
+                                    <b>Blue Team:</b> Mon/Tues/Wed/Thurs 5:30PM-6:45PM<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li>
                                     <b>Bronze Team:</b> Mon/Tues/Wed/Thurs 5:30PM-7:00PM<br>
                                 </li>
@@ -225,15 +222,15 @@
                                     <b>Gray Team:</b> Mon/Tues/Wed/Thur/Fri 9:00AM-10:00AM &amp; Tues/Thurs 5:00PM-6:00PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
-                                <li>
-                                    <b>Blue Team:</b> Mon/Tues/Wed/Thur/Fri 8:30AM-9:45AM &amp; Tues/Thurs 5:00PM-6:15PM<br>
-                                </li>
-                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                             </ul>
                             <div class="uk-margin">
                                 <b>USA Competitive Team</b>
                             </div>
                             <ul class="uk-list uk-list-bullet">
+                                <li>
+                                    <b>Blue Team:</b> Mon/Tues/Wed/Thur/Fri 8:30AM-9:45AM &amp; Tues/Thurs 5:00PM-6:15PM<br>
+                                </li>
+                                <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li>
                                     <b>Bronze Team:</b> Mon/Tues/Wed/Fri 7:00AM-8:30AM, Tues/Thurs 5:00PM-6:30PM, &amp; *Thurs 6:30AM-8:00AM @ GT Bray for Long Course Practice<br>
                                 </li>
