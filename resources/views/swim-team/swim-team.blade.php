@@ -127,8 +127,8 @@
                         </div>
                         <ul class="uk-list uk-list-bullet">
                             <li><b>Blue Team:</b> $145</li>
-                            <li><b>Bronze Team:</b> $160</li>
-                            <li><b>Silver Team:</b> $175</li>
+                            <li><b>Bronze Team:</b> $145</li>
+                            <li><b>Silver Team:</b> $165</li>
                             <li><b>Gold Team:</b> $175</li>
                         </ul>
                         <div class="uk-margin">
@@ -173,11 +173,11 @@
                             </div>
                             <ul class="uk-list uk-list-bullet">
                                 <li>
-                                    <b>White Team:</b> Mon/Wed 4:45PM-5:30PM &amp; Tues/Thurs 6:15PM-7:00PM<br>
+                                    <b>White Team:</b> Mon/Wed 4:30PM-5:15PM &amp; Tues/Thurs 6:45PM-7:30PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 2-3 practices per week</li>
                                 <li>
-                                    <b>Gray Team:</b> Mon/Wed 6:00PM-7:00PM &amp; Tues/Thurs 4:30PM-5:30PM<br>
+                                    <b>Gray Team:</b> Mon/Wed 6:30PM-7:30PM &amp; Tues/Thurs 4:30PM-5:30PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                             </ul>
@@ -186,21 +186,21 @@
                             </div>
                             <ul class="uk-list uk-list-bullet">
                                 <li>
-                                    <b>Blue Team:</b> Mon/Tues/Wed/Thurs 5:30PM-6:45PM<br>
+                                    <b>Blue Team:</b> Mon/Wed 5:15PM-6:30PM &amp; Tues/Thurs 5:30PM-6:45PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li>
-                                    <b>Bronze Team:</b> Mon/Tues/Wed/Thurs 5:30PM-7:00PM<br>
+                                    <b>Bronze Team:</b> Mon/Wed 5:15PM-6:30PM &amp; Tues/Thurs 5:30PM-6:45PM<br>
                                 </li>
                                 <li class="uk-margin-left"><b>Goal:</b> 3-4 practices per week</li>
                                 <li>
-                                    <b>Silver Team:</b> Mon/Tues/Wed/Thurs 4:30PM-6:30PM (Be prepared for dry land training every practice)<br>
+                                    <b>Silver Team:</b> Mon/Wed 6:00PM-7:30PM, Tues/Thurs 5:00AM-6:30AM &amp; Tues/Thurs 4:30PM-6:30PM (Be prepared for dry land training every practice)<br>
                                 </li>
-                                <li class="uk-margin-left"><b>Goal:</b> All 4 practices per week</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 4-5 practices per week</li>
                                 <li>
-                                    <b>Gold Team:</b> Mon/Tues/Wed/Thurs 4:30PM-6:30PM (Be prepared for dry land training every practice)<br>
+                                    <b>Gold Team:</b> Mon/Wed 4:00PM-6:00PM, Tues/Thurs 5:00AM-6:30AM &amp; Tues/Thurs 4:30PM-6:30PM (Be prepared for dry land training every practice)<br>
                                 </li>
-                                <li class="uk-margin-left"><b>Goal:</b> All 4 practices per week</li>
+                                <li class="uk-margin-left"><b>Goal:</b> 5-6 practices per week</li>
                             </ul>
                         </div>
                         <div class="uk-panel uk-margin-large-top">

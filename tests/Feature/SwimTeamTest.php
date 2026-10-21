@@ -11,6 +11,7 @@ use App\STSwimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -236,5 +237,46 @@ class SwimTeamTest extends TestCase
         $this->assertDatabaseMissing('email_lists', [
             'email' => $athlete->email,
         ]);
+    }
+
+    #[Test]
+    public function the_swim_team_page_shows_the_usa_competitive_level_pricing()
+    {
+        Storage::fake('s3');
+
+        $this->get(route('swim-team.index'))
+            ->assertOk()
+            ->assertSeeInOrder([
+                '<b>USA Competitive Levels:</b>',
+                '<b>Blue Team:</b> $145',
+                '<b>Bronze Team:</b> $145',
+                '<b>Silver Team:</b> $165',
+                '<b>Gold Team:</b> $175',
+            ], false);
+    }
+
+    #[Test]
+    public function the_swim_team_page_shows_the_school_year_practice_schedule()
+    {
+        Storage::fake('s3');
+
+        $this->get(route('swim-team.index'))
+            ->assertOk()
+            ->assertSeeInOrder([
+                'School Year Practice Schedule',
+                '<b>White Team:</b> Mon/Wed 4:30PM-5:15PM &amp; Tues/Thurs 6:45PM-7:30PM',
+                '<b>Goal:</b> 2-3 practices per week',
+                '<b>Gray Team:</b> Mon/Wed 6:30PM-7:30PM &amp; Tues/Thurs 4:30PM-5:30PM',
+                '<b>Goal:</b> 3-4 practices per week',
+                '<b>Blue Team:</b> Mon/Wed 5:15PM-6:30PM &amp; Tues/Thurs 5:30PM-6:45PM',
+                '<b>Goal:</b> 3-4 practices per week',
+                '<b>Bronze Team:</b> Mon/Wed 5:15PM-6:30PM &amp; Tues/Thurs 5:30PM-6:45PM',
+                '<b>Goal:</b> 3-4 practices per week',
+                '<b>Silver Team:</b> Mon/Wed 6:00PM-7:30PM, Tues/Thurs 5:00AM-6:30AM &amp; Tues/Thurs 4:30PM-6:30PM (Be prepared for dry land training every practice)',
+                '<b>Goal:</b> 4-5 practices per week',
+                '<b>Gold Team:</b> Mon/Wed 4:00PM-6:00PM, Tues/Thurs 5:00AM-6:30AM &amp; Tues/Thurs 4:30PM-6:30PM (Be prepared for dry land training every practice)',
+                '<b>Goal:</b> 5-6 practices per week',
+                'Summer Practice Schedule',
+            ], false);
     }
 }
