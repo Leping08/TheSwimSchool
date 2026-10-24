@@ -58,7 +58,5 @@
 
     <!-- Font Awesome CDN -->
     <script src="https://use.fontawesome.com/2df15bc632.js"></script>
-    <!-- UIkit Icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
 </body>
 </html>
