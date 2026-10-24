@@ -82,7 +82,7 @@
 <div class="tm-header uk-visible@m">
     <div class="uk-navbar-container" uk-sticky cls-active="uk-active uk-navbar-sticky">
         <div class="uk-container uk-container-expand">
-            <nav class="uk-navbar" uk-navbar>
+            <nav class="uk-navbar" uk-navbar="delay-show: 100">
                 <div class="uk-navbar-left">
                     <a title="Swim Lessons near Ellenton" class="uk-navbar-item uk-logo" href="{{ route('home.index') }}">
                         <img src="{{ asset('/img/logos/the-swim-school.png') }}" class="uk-responsive-height" style="max-width: 60%;" alt="Bradenton Swim Lessons">
