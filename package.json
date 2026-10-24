@@ -1,36 +1,25 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
+        "@vitejs/plugin-vue": "^6.0.10",
         "axios": "^1.20.0",
-        "cross-env": "^5.2.1",
-        "laravel-mix": "^6.0.49",
         "laravel-vapor": "^0.7.1",
-        "resolve-url-loader": "^5.0.0",
+        "laravel-vite-plugin": "^3.2.0",
         "sass": "^1.106.1",
-        "sass-loader": "^11.0.1",
-        "vue": "^2.7.16",
-        "vue-loader": "^15.11.1",
-        "vue-template-compiler": "^2.7.16",
-        "webpack": "~5.105.4"
+        "vite": "^8.3.5",
+        "vue": "^3.5.44"
     },
     "dependencies": {
-        "@fullcalendar/core": "^4.4.0",
-        "@fullcalendar/daygrid": "^4.4.0",
-        "@fullcalendar/interaction": "^4.4.0",
-        "@fullcalendar/list": "^4.4.0",
-        "@fullcalendar/timegrid": "^4.4.0",
-        "@fullcalendar/vue": "^4.4.0",
-        "moment": "^2.31.0",
-        "vue-moment": "^4.1.0",
-        "vue-resource": "^1.5.1"
+        "@fullcalendar/core": "^6.1.22",
+        "@fullcalendar/daygrid": "^6.1.22",
+        "@fullcalendar/interaction": "^6.1.22",
+        "@fullcalendar/list": "^6.1.22",
+        "@fullcalendar/timegrid": "^6.1.22",
+        "@fullcalendar/vue3": "^6.1.22"
     }
 }

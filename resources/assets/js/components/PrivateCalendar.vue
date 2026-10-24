@@ -1,19 +1,7 @@
 <template>
     <div class="">
         <div class="uk-grid uk-width-1-1">
-            <FullCalendar
-                    class="uk-width-3-4@m uk-margin-bottom"
-                    :height="600"
-                    :plugins="calendarPlugins"
-                    :events="calendarEvents"
-                    :event-time-format="{ hour12: true, hour: 'numeric', minute: '2-digit' }"
-                    @eventClick="eventClicked"
-                    :header="{
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                    }"
-            ></FullCalendar>
+            <FullCalendar class="uk-width-3-4@m uk-margin-bottom" :options="calendarOptions"></FullCalendar>
             <div class="uk-width-1-4@m">
                 <div v-if="instructors.length" class="uk-card uk-card-default uk-card-body">
                     <h3 class="uk-heading-bullet">Instructors</h3>
@@ -53,10 +41,11 @@
 </template>
 
 <script>
-    import FullCalendar from '@fullcalendar/vue'
-    import dayGrid from '@fullcalendar/daygrid'
-    import timeGrid from '@fullcalendar/timegrid'
-    import interaction from '@fullcalendar/interaction'
+    import FullCalendar from '@fullcalendar/vue3';
+    import dayGridPlugin from '@fullcalendar/daygrid';
+    import timeGridPlugin from '@fullcalendar/timegrid';
+    import interactionPlugin from '@fullcalendar/interaction';
+    import { parseDate } from '../dates';
 
     export default {
         components: {
@@ -68,89 +57,58 @@
         name: "PrivateCalendar",
         data() {
             return {
-                calendarPlugins: [
-                    dayGrid,
-                    timeGrid,
-                    interaction
-                ],
-                calendarEvents: [],
-                cart: [],
-                price: 0,
-                alreadyInCart: false
+                sessions: JSON.parse(this.events),
+                cart: []
             }
         },
-        created() {
-            this.calendarEvents = JSON.parse(this.events).map(function(event) {
-                return {
-                    id: event.id,
-                    start: Date.parse(event.start),
-                    end: Date.parse(event.end),
-                    color: event.instructor.hex_color,
-                    price: event.price,
-                    extendedProps: {
-                        // Custom data goes here
-                        location: event.location
-                    }
-                };
-            });
-        },
         methods: {
-            eventClicked: function (event) {
-                //Check if the event being added to the cart is a duplicate
-                if(this.duplicates(event.event.id)) {
+            eventClicked: function (info) {
+                if (this.cart.some(item => item.id === info.event.id)) {
                     return;
                 }
 
-                //Add the event to the cart
                 this.cart.push({
-                    'id': event.event.id,
-                    'start': event.event.start,
-                    'end': event.event.end,
-                    'location_name': event.event.extendedProps.location.name,
-                    'price': event.event.extendedProps.price ?? 35
+                    'id': info.event.id,
+                    'start': info.event.start,
+                    'end': info.event.end,
+                    'location_name': info.event.extendedProps.location.name,
+                    'price': info.event.extendedProps.price ?? 35
                 });
-
-                //Set the color of the selected item
-                this.calendarEvents.forEach(function (item) {
-                    if(item.id === event.event.id) {
-                        item.color = '#7a9fea';
-                    }
-                })
             },
             remove: function (event) {
-                //Remove the event from the cart
-                this.cart = this.cart.filter(function (item) {
-                    return !(item.id === event.id);
-                });
-
-                //Set the color back to the instructor color
-                this.calendarEvents.forEach((item) => {
-                    if(item.id === event.id) {
-                        JSON.parse(this.events).map((original_event) => {
-                            if (item.id === original_event.id) {
-                                item.color = original_event.instructor.hex_color;
-                            }
-                        });
-                    }
-                });
-            },
-            duplicates: function (event_id) {
-                let length =  this.cart.filter(function (item) {
-                    return (item.id === event_id);
-                }).length;
-                return !!length;
+                this.cart = this.cart.filter(item => item.id !== event.id);
             }
         },
         computed: {
+            calendarOptions: function () {
+                return {
+                    plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+                    height: 600,
+                    eventTimeFormat: { hour12: true, hour: 'numeric', minute: '2-digit' },
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    eventClick: this.eventClicked,
+                    events: this.sessions.map(session => ({
+                        id: String(session.id),
+                        start: parseDate(session.start),
+                        end: parseDate(session.end),
+                        color: this.cart.some(item => item.id === String(session.id)) ? '#7a9fea' : session.instructor.hex_color,
+                        price: session.price,
+                        extendedProps: {
+                            location: session.location
+                        }
+                    }))
+                };
+            },
             poolSessionIds: function () {
-                return this.cart.map(function (item) {
-                    return item.id;
-                });
+                return this.cart.map(item => item.id);
             },
             instructors: function () {
-                let instructors = JSON.parse(this.events).map(event => event.instructor);
                 const seen = new Set();
-                return instructors.filter(instructor => {
+                return this.sessions.map(session => session.instructor).filter(instructor => {
                     const duplicate = seen.has(instructor.id);
                     seen.add(instructor.id);
                     return !duplicate;
@@ -161,20 +119,9 @@
             }
         },
         watch: {
-            cart: {
-                handler: function (after, before) {
-                    window.cartLength = Object.keys(after).length;
-                    window.price = this.cartPrice;
-                },
-                deep: true
+            cartPrice: function (price) {
+                window.cartPrice = price;
             }
         }
     }
 </script>
-
-<style scoped>
-    @import '~@fullcalendar/core/main.css';
-    @import '~@fullcalendar/daygrid/main.css';
-    @import '~@fullcalendar/timegrid/main.css';
-    @import '~@fullcalendar/list/main.css';
-</style>
