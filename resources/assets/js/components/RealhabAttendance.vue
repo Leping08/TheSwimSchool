@@ -48,7 +48,7 @@
                                         </div>
                                     </td>
                                     <td>{{ pool_session.filtered_attendances.length }}</td>
-                                    <td>{{ pool_session.start | readableDateTime }} - {{ pool_session.end | readableTime }}</td>
+                                    <td>{{ formatMonthDayTime(pool_session.start) }} - {{ formatTime(pool_session.end) }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -60,7 +60,8 @@
 </template>
 
 <script>
-    import moment from 'moment'
+    import { formatMonthDayTime, formatTime, isoWeekRange, isoWeekString } from '../dates';
+
     export default {
         name: "realhab-attendance",
         props: [
@@ -73,17 +74,6 @@
                 urlParams: new URLSearchParams(window.location.search),
                 week: '',
                 sortedSessions: []
-            }
-        },
-        filters: {
-            yearsOld: function (value) {
-                return moment().diff(value, 'year');
-            },
-            readableDateTime: function (value) {
-                return moment(value).format('MM/DD h:mm a');
-            },
-            readableTime: function (value) {
-                return moment(value).format('h:mm a');
             }
         },
         created() {
@@ -107,11 +97,12 @@
 
             // Get the week from the url query string
             if (this.urlParams.has('start') && this.urlParams.has('end')) {
-                let start = this.urlParams.get('start');
-                this.week = `${moment(start).format('YYYY')}-W${moment(start).week()}`;
+                this.week = isoWeekString(this.urlParams.get('start'));
             }
         },
         methods: {
+            formatMonthDayTime,
+            formatTime,
             lessonTypeChanged() {
                 // Update the url query string
                 this.urlParams.set('type', this.lesson_type);
@@ -122,11 +113,9 @@
             weekChanged() {
                 // Update the url query string
                 // Get the start and end date form the week
-                let [year, week] = this.week.split('-W');
-                let startDate = moment().isoWeekYear(year).isoWeek(week).startOf('isoWeek').format('YYYY-MM-DD');
-                let endDate = moment().isoWeekYear(year).isoWeek(week).endOf('isoWeek').format('YYYY-MM-DD');
-                this.urlParams.set('start', startDate);
-                this.urlParams.set('end', endDate);
+                let { start, end } = isoWeekRange(this.week);
+                this.urlParams.set('start', start);
+                this.urlParams.set('end', end);
                 window.history.replaceState({}, '', `${location.pathname}?${this.urlParams}`);
                 // reload the page
                 location.reload();

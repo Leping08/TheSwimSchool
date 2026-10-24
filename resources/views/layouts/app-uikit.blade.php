@@ -14,8 +14,8 @@
     @yield('seo')
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <!-- Styles & Scripts -->
+    @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
     <!-- Uikit JS -->
     <script src="{{asset('js/uikit.js')}}"></script>
     <script src="{{asset('js/uikit-icons.js')}}"></script>
@@ -56,8 +56,6 @@
 
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
     <!-- Font Awesome CDN -->
     <script src="https://use.fontawesome.com/2df15bc632.js"></script>
     <!-- UIkit Icons -->

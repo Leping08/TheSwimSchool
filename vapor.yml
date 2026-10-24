@@ -12,7 +12,7 @@ environments:
         build:
             - 'composer install --no-dev'
             - 'php artisan event:cache'
-            - 'npm ci && npm run prod && rm -rf node_modules'
+            - 'npm ci && npm run build && rm -rf node_modules'
             # - 'php artisan sidecar:deploy --env=production'
         deploy:
             - 'php artisan migrate --force'
@@ -28,7 +28,7 @@ environments:
         build:
             - 'composer install --no-dev'
             - 'php artisan event:cache'
-            - 'npm ci && npm run prod && rm -rf node_modules'
+            - 'npm ci && npm run build && rm -rf node_modules'
             # - 'php artisan sidecar:deploy --env=staging'
         deploy:
             - 'php artisan migrate --force'

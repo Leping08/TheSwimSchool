@@ -1,30 +1,24 @@
-//Libraries
-import Vue from 'vue';
-import VueMoment from 'vue-moment'
-import moment from 'moment'
+import { createApp } from 'vue';
 
-//Components
-//import privateLessonRequestForm from './components/PrivateLessonRequestForm.vue'
-import swimTeamRoster from './components/SwimTeamRoster.vue'
-import promo_code from './components/promoCode.vue'
-import privateCalendar from './components/PrivateCalendar.vue'
-import instructorCalendar from './components/InstructorCalendar.vue'
-import emailEdit from './components/EmailEdit.vue'
-import realhabAttendance from './components/RealhabAttendance.vue'
+import SwimTeamRoster from './components/SwimTeamRoster.vue';
+import PromoCode from './components/promoCode.vue';
+import PrivateCalendar from './components/PrivateCalendar.vue';
+import InstructorCalendar from './components/InstructorCalendar.vue';
+import EmailEdit from './components/EmailEdit.vue';
+import RealhabAttendance from './components/RealhabAttendance.vue';
 
-Vue.use(VueMoment, {
-    moment,
-});
-
-new Vue({
-    el: '#app',
+const app = createApp({
     components: {
-        swimTeamRoster,
-        //privateLessonRequestForm,
-        privateCalendar,
-        instructorCalendar,
-        promo_code: promo_code,
-        emailEdit,
-        realhabAttendance
-    }
+        SwimTeamRoster,
+        PrivateCalendar,
+        InstructorCalendar,
+        promo_code: PromoCode,
+        EmailEdit,
+        RealhabAttendance,
+    },
 });
+
+// The Blade page inside #app is compiled as the root template; keep Vue 2's whitespace handling so inline spacing doesn't change.
+app.config.compilerOptions.whitespace = 'preserve';
+
+app.mount('#app');

@@ -127,8 +127,8 @@
 </template>
 
 <script>
-  window.Vapor = require('laravel-vapor');
   import axios from 'axios';
+  import Vapor from 'laravel-vapor';
   export default {
     data() {
       return {

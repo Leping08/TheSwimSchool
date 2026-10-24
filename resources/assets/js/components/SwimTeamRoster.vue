@@ -35,8 +35,8 @@
                                 <tr :class="{'stripe-list': index % 2 === 0 }">
                                     <td>{{swimmer.firstName}} {{swimmer.lastName}}</td>
                                     <td>{{swimmer.phone}}</td>
-                                    <td>{{swimmer.birthDate | moment("MM/DD/YY")}}</td>
-                                    <td>{{swimmer.birthDate | yearsOld }}</td>
+                                    <td>{{ formatShortDate(swimmer.birthDate) }}</td>
+                                    <td>{{ yearsOld(swimmer.birthDate) }}</td>
                                     <td>{{swimmer.email}}</td>
                                     <td>{{swimmer.emergencyName}}</td>
                                     <td>{{swimmer.emergencyPhone}}</td>
@@ -51,7 +51,8 @@
 </template>
 
 <script>
-    import moment from 'moment'
+    import { formatShortDate, yearsOld } from '../dates';
+
     export default {
         name: "swim-team-roster",
         props: [
@@ -65,15 +66,12 @@
                 selectedSeasonId: 0
             }
         },
-        filters: {
-            yearsOld: function (value) {
-                return moment().diff(value, 'year');
-            }
-        },
         created() {
             this.selectedSeasonId = this.currentseason[0].id
         },
         methods: {
+            formatShortDate,
+            yearsOld,
             filteredSwimmers(level_id) {
                 return this.swimmers.filter(swimmer => swimmer.s_t_season_id === this.selectedSeasonId && swimmer.s_t_level_id === level_id)
             }
