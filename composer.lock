@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57dec27f338c13c09964f134553a7a72",
+    "content-hash": "c7941ee17905634c83b3d5e51dfc0ef8",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -1972,20 +1972,20 @@
         },
         {
             "name": "laravel/nova",
-            "version": "5.11.1",
+            "version": "5.9.5",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "fb867d9339151616746e924231c4a9700da214c9"
+                "reference": "97d6c21ba193b925d00b90dc2c4da85860f9e81c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-fb867d9339151616746e924231c4a9700da214c9-zip-f97236.zip",
-                "reference": "fb867d9339151616746e924231c4a9700da214c9",
-                "shasum": "9220db2acfd144259baa9bdff745b6d16918f731"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-97d6c21ba193b925d00b90dc2c4da85860f9e81c-zip-2ae445.zip",
+                "reference": "97d6c21ba193b925d00b90dc2c4da85860f9e81c",
+                "shasum": "bfb2c872a362fcf70d95266753d230f9a1f88689"
             },
             "require": {
-                "brick/money": "^0.8|^0.9|^0.10|^0.11|^0.12|^0.13|^0.14",
+                "brick/money": "^0.8|^0.9|^0.10|^0.11|^0.12|^0.13",
                 "ext-json": "*",
                 "illuminate/filesystem": "^10.48.29|^11.44.1|^12.1.1|^13.0.0",
                 "illuminate/support": "^10.48.29|^11.44.1|^12.1.1|^13.0.0",
@@ -2001,7 +2001,6 @@
                 "symfony/console": "^6.4.14|^7.0.3|^8.0.0",
                 "symfony/deprecation-contracts": "^2.5|^3.0",
                 "symfony/finder": "^6.4.13|^7.0.3|^8.0.0",
-                "symfony/html-sanitizer": "^6.4.14|^7.0.3|^8.0.0",
                 "symfony/http-foundation": "^6.4.13|^7.0.3|^8.0.0",
                 "symfony/polyfill-intl-icu": "^1.33",
                 "symfony/polyfill-php82": "^1.33",
@@ -2151,10 +2150,10 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v5.11.1",
+                "source": "https://github.com/laravel/nova/tree/v5.9.5",
                 "issues": "https://github.com/laravel/nova/issues"
             },
-            "time": "2026-10-12T06:05:19+00:00"
+            "time": "2026-07-15T08:22:46+00:00"
         },
         {
             "name": "laravel/passkeys",
@@ -3368,73 +3367,6 @@
                 }
             ],
             "time": "2026-04-11T18:38:28+00:00"
-        },
-        {
-            "name": "masterminds/html5",
-            "version": "2.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Masterminds/html5-php.git",
-                "reference": "a1e7a2f88ee13635d86fc61cfbdf2306a76ddfc7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/a1e7a2f88ee13635d86fc61cfbdf2306a76ddfc7",
-                "reference": "a1e7a2f88ee13635d86fc61cfbdf2306a76ddfc7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6 || ^7 || ^8 || ^9 || ^10"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Masterminds\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Butcher",
-                    "email": "technosophos@gmail.com"
-                },
-                {
-                    "name": "Matt Farina",
-                    "email": "matt@mattfarina.com"
-                },
-                {
-                    "name": "Asmir Mustafic",
-                    "email": "goetas@gmail.com"
-                }
-            ],
-            "description": "An HTML5 parser and serializer.",
-            "homepage": "http://masterminds.github.io/html5-php",
-            "keywords": [
-                "HTML5",
-                "dom",
-                "html",
-                "parser",
-                "querypath",
-                "serializer",
-                "xml"
-            ],
-            "support": {
-                "issues": "https://github.com/Masterminds/html5-php/issues",
-                "source": "https://github.com/Masterminds/html5-php/tree/2.11.0"
-            },
-            "time": "2026-08-18T06:18:41+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6557,80 +6489,6 @@
                 }
             ],
             "time": "2026-09-26T06:31:10+00:00"
-        },
-        {
-            "name": "symfony/html-sanitizer",
-            "version": "v7.4.20",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/html-sanitizer.git",
-                "reference": "0b7605debddc90c7c9d4e9c1b6eb520a248f26dc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/html-sanitizer/zipball/0b7605debddc90c7c9d4e9c1b6eb520a248f26dc",
-                "reference": "0b7605debddc90c7c9d4e9c1b6eb520a248f26dc",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "league/uri": "^6.5|^7.0",
-                "masterminds/html5": "^2.7.2",
-                "php": ">=8.2",
-                "symfony/deprecation-contracts": "^2.5|^3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\HtmlSanitizer\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Titouan Galopin",
-                    "email": "galopintitouan@gmail.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Provides an object-oriented API to sanitize untrusted HTML input for safe insertion into a document's DOM.",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "Purifier",
-                "html",
-                "sanitizer"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/html-sanitizer/tree/v7.4.20"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/nicolas-grekas",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2026-09-28T05:21:23+00:00"
         },
         {
             "name": "symfony/http-client",
