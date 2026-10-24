@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+
 return [
 
     /*
@@ -62,7 +64,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => User::class,
         ],
 
         // 'users' => [
@@ -125,8 +127,7 @@ return [
         'derek@deltavcreative.com',
         'theswimschoolfl@gmail.com',
         'jaciedyer@icloud.com',
-        'lswoveland1@gmail.com',
-        'jmlombard24@gmail.com',
+        'mollyehrhardt@gmail.com',
     ],
 
     'superAdminEmails' => [
