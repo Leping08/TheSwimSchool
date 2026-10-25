@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -59,6 +60,8 @@ class LessonsTest extends TestCase
     #[Test]
     public function a_user_can_see_the_groups_for_each_lesson()
     {
+        Storage::fake('s3');
+
         $registrationOpen = Lesson::factory()->create([
             'class_start_date' => Carbon::tomorrow(),
             'registration_open' => Carbon::yesterday(),
@@ -84,6 +87,7 @@ class LessonsTest extends TestCase
         ]);
 
         $this->get(route('groups.lessons.index'))
+            ->assertOk()
             ->assertSee($registrationOpen->Group->type)
             ->assertSee($registrationOpen->Group->description)
             ->assertSee($lessonFinished->Group->type)
