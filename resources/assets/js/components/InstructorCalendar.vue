@@ -85,7 +85,11 @@
                     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
                     height: 600,
                     nowIndicator: true,
-                    dayMaxEvents: true,
+                    dayMaxEvents: 1,
+                    eventDisplay: 'block',
+                    views: {
+                        timeGrid: { displayEventEnd: false }
+                    },
                     headerToolbar: {
                         left: 'prev,next today',
                         center: 'title',
@@ -181,3 +185,15 @@
         }
     }
 </script>
+
+<style scoped>
+    :deep(.fc-col-header-cell-cushion),
+    :deep(.fc-daygrid-day-number),
+    :deep(.fc-list-day-cushion a) {
+        color: inherit;
+    }
+
+    :deep(.fc-col-header-cell-cushion) {
+        padding: 0 4px;
+    }
+</style>
