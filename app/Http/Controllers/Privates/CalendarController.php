@@ -6,18 +6,24 @@ use App\Banner;
 use App\Http\Controllers\Controller;
 use App\Library\Helpers\SeasonHelpers;
 use App\Library\NewsLetter\NewsLetter;
-use App\Library\StripeCharge;
+use App\Library\StripePayment;
 use App\Mail\Privates\PrivateLessonSignUp;
 use App\PoolSession;
 use App\PrivateLesson;
 use App\PrivateSwimmer;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Stripe\Exception\CardException;
+use Stripe\PaymentIntent;
 
 class CalendarController extends Controller
 {
+    public function __construct(private StripePayment $stripePayment) {}
+
     public function index()
     {
         $private_pool_sessions = PoolSession::with(['instructor:id,name,hex_color', 'location:id,name'])->privateLessonsAvailable()->startConditionallyNextMonth()->get();
@@ -26,9 +32,9 @@ class CalendarController extends Controller
         return view('lessons.private.calendar', ['events' => $private_pool_sessions, 'banner' => $banner]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $registration = $request->validate([
             'first_name' => 'required|string|max:191',
             'last_name' => 'required|string|max:191',
             'birth_date' => 'required|date|before:today',
@@ -43,121 +49,153 @@ class CalendarController extends Controller
             'emergency_relationship' => 'required|max:191',
             'emergency_phone' => 'required|max:20',
             'pool_session_ids' => 'required',
-            'stripe_token' => 'required',
+            'email_updates' => 'nullable|string',
+            'payment_method' => 'required|string',
         ]);
 
-        // Check if the length of the pool session string is just one.
-        // This would be when someone only picks one lesson.
-        if (strlen(request()->pool_session_ids) == 1) {
-            $pool_session_ids = collect(request()->pool_session_ids);
-        } else {
-            $pool_session_ids = explode(',', request()->pool_session_ids);
+        $poolSessionIds = array_values(array_unique(array_filter(explode(',', $registration['pool_session_ids']))));
+
+        $availablePoolSessions = PoolSession::privateLessonsAvailable()->whereIn('id', $poolSessionIds)->get();
+
+        if (empty($poolSessionIds) || $availablePoolSessions->count() !== count($poolSessionIds)) {
+            Log::error('One of the pool session ids '.implode(',', $poolSessionIds).' has already been taken. Redirecting back.');
+            session()->flash('warning', 'Sorry, one of the classes was already taken.');
+
+            return redirect(route('private_lesson.index'));
         }
 
-        // Check the length of the array of pool session id's
-        if (! (count($pool_session_ids) >= 1)) {
-            Log::warning("Someone went wrong with lesson selection. Pool session ids array: $pool_session_ids");
-            session()->flash('warning', 'Something went wrong with the lesson selection.');
+        // Pool sessions without a price cost $35
+        $price = $availablePoolSessions->sum(fn (PoolSession $poolSession) => $poolSession->price ?? 35);
 
-            return redirect()->back();
+        try {
+            $paymentIntent = $this->stripePayment->charge(
+                $registration['payment_method'],
+                $price,
+                $registration['email'],
+                'Private swim lessons for '.$registration['first_name'].' '.$registration['last_name'].' through The Swim School.',
+                route('private_lesson.payment-complete'),
+            );
+        } catch (CardException $exception) {
+            Log::warning('Private lesson payment declined: '.$exception->getMessage());
+            session()->flash('error', 'Oops, something went wrong with the payment. '.$exception->getMessage());
+
+            return back()->withInput();
+        } catch (\Exception $exception) {
+            Log::error('Private lesson payment error: '.$exception->getMessage());
+            session()->flash('error', 'Oops, something went wrong with the payment. Please try again or call us.');
+
+            return back()->withInput();
         }
 
-        // Make sure the pool sessions are still available
-        foreach ($pool_session_ids as $pool_session_id) {
-            $lesson = PoolSession::PrivateLessonsAvailable()->where('id', '=', $pool_session_id)->get();
-            if ($lesson->isEmpty()) { // Check if lesson has already been taken
-                Log::error("Pool Session Id $pool_session_id has already been taken. Redirecting back.");
-                session()->flash('warning', 'Sorry, one of the classes was already taken.');
+        if (StripePayment::requiresRedirect($paymentIntent)) {
+            session()->put("private_lesson_payments.{$paymentIntent->id}", [
+                'registration' => $registration,
+                'pool_session_ids' => $poolSessionIds,
+                'price' => $price,
+            ]);
 
-                return redirect(route('private_lesson.index'));
+            return redirect()->away(StripePayment::redirectUrl($paymentIntent));
+        }
+
+        return $this->completeRegistration($registration, $poolSessionIds, $paymentIntent);
+    }
+
+    /**
+     * Stripe redirects here after the customer finishes 3D Secure.
+     */
+    public function paymentComplete(Request $request): RedirectResponse
+    {
+        $paymentIntentId = (string) $request->query('payment_intent');
+        $pendingPayment = session()->pull("private_lesson_payments.{$paymentIntentId}");
+
+        if (! $pendingPayment) {
+            if ($paymentIntentId && PrivateSwimmer::where('stripe_charge_id', $paymentIntentId)->exists()) {
+                return redirect()->route('pages.thank-you');
             }
+
+            Log::error("No pending private lesson sign up found for payment intent: {$paymentIntentId}");
+            session()->flash('warning', 'Something went wrong with your registration. Please call us and we will get you signed up.');
+
+            return redirect()->route('private_lesson.index');
         }
 
-        // Get all the pool session in the pool_session_ids array
-        $poolSessions = PoolSession::whereIn('id', $pool_session_ids)->get();
+        $paymentIntent = $this->stripePayment->retrieve($paymentIntentId);
 
-        // Loop ove the pool sessions
-        // If the price is null set the price to 35
-        $poolSessions = $poolSessions->map(function ($poolSession) {
-            if ($poolSession->price == null) {
-                $poolSession->price = 35;
+        if (! StripePayment::isPaid($paymentIntent, $pendingPayment['price'])) {
+            Log::warning("Private lesson payment {$paymentIntentId} was not completed. Status: {$paymentIntent->status}");
+            session()->flash('error', 'Oops, something went wrong with the payment. Your card was not charged, please try again.');
+
+            return redirect()->route('private_lesson.index');
+        }
+
+        return $this->completeRegistration($pendingPayment['registration'], $pendingPayment['pool_session_ids'], $paymentIntent);
+    }
+
+    /**
+     * @param  array<string, mixed>  $registration  Validated sign up data
+     * @param  array<int, string>  $poolSessionIds
+     */
+    private function completeRegistration(array $registration, array $poolSessionIds, PaymentIntent $paymentIntent): RedirectResponse
+    {
+        $privateSwimmer = DB::transaction(function () use ($registration, $poolSessionIds, $paymentIntent) {
+            $poolSessions = PoolSession::privateLessonsAvailable()->whereIn('id', $poolSessionIds)->lockForUpdate()->get();
+
+            // Someone else may have taken a session while this customer was paying
+            if ($poolSessions->count() !== count($poolSessionIds)) {
+                return null;
             }
 
-            return $poolSession;
+            $privateLesson = PrivateLesson::create([
+                'season_id' => SeasonHelpers::currentSeason()->id,
+            ]);
+
+            $privateSwimmer = PrivateSwimmer::create([
+                'first_name' => $registration['first_name'],
+                'last_name' => $registration['last_name'],
+                'birth_date' => Carbon::parse($registration['birth_date']),
+                'email' => $registration['email'],
+                'phone' => $registration['phone'],
+                'parent' => $registration['parent'] ?? null,
+                'notes' => null,
+                'street' => $registration['street'],
+                'city' => $registration['city'],
+                'state' => $registration['state'],
+                'zip' => $registration['zip'],
+                'emergency_name' => $registration['emergency_name'],
+                'emergency_relationship' => $registration['emergency_relationship'],
+                'emergency_phone' => $registration['emergency_phone'],
+                'stripe_charge_id' => $paymentIntent->id,
+                'private_lesson_id' => $privateLesson->id,
+            ]);
+
+            foreach ($poolSessions as $poolSession) {
+                $poolSession->pool_session_id = $privateLesson->id;
+                $poolSession->pool_session_type = PrivateLesson::class;
+                $poolSession->save();
+            }
+
+            return $privateSwimmer;
         });
 
-        // Get the total price of all the pool sessions
-        $price = $poolSessions->sum('price');
+        if (! $privateSwimmer) {
+            Log::warning('One of the pool session ids '.implode(',', $poolSessionIds)." was taken during payment. Refunding payment intent: {$paymentIntent->id}");
+            $this->stripePayment->refund($paymentIntent);
+            session()->flash('warning', 'Sorry, one of the classes was already taken. Your payment has been refunded.');
 
-        // Charge the card
-        try {
-            $stripe_charge = (new StripeCharge(
-                request()->stripe_token,
-                $price,
-                request()->email,
-                'Private swim lessons for '.request()->first_name.' '.request()->last_name.' through The Swim School.'
-            ))->charge();
-            $stripe_charge_id = $stripe_charge->id;
-        } catch (\Exception $exception) {
-            return back();
+            return redirect()->route('private_lesson.index');
         }
 
-        // Create the lesson
-        $private_lesson = PrivateLesson::create([
-            'season_id' => SeasonHelpers::currentSeason()->id,
-        ]);
-
-        $birthDate = Carbon::parse(request()->birth_date);
-
-        // Create the swimmer
-        $private_swimmer = PrivateSwimmer::create([
-            'first_name' => request()->first_name,
-            'last_name' => request()->last_name,
-            'birth_date' => $birthDate,
-            'email' => request()->email,
-            'phone' => request()->phone,
-            'parent' => request()->parent,
-            'notes' => null,
-            'street' => request()->street,
-            'city' => request()->city,
-            'state' => request()->state,
-            'zip' => request()->zip,
-            'emergency_name' => request()->emergency_name,
-            'emergency_relationship' => request()->emergency_relationship,
-            'emergency_phone' => request()->emergency_phone,
-            'stripe_charge_id' => $stripe_charge_id,
-            'private_lesson_id' => $private_lesson->id,
-        ]);
-
-        // Assign the pool sessions
-        foreach ($pool_session_ids as $pool_session_id) {
-            $pool_session = PoolSession::PrivateLessonsAvailable()->find($pool_session_id);
-            if (! $pool_session) {
-                Log::warning("Someone has already taken the pool session id: $pool_session_id");
-                session()->flash('warning', 'Sorry, one of the classes was already taken.');
-
-                // TODO: Refund the swimmer the charge or schedule different pool sessions, possibly an email here
-                return redirect()->back();
-            }
-            $pool_session->pool_session_id = $private_lesson->id;
-            $pool_session->pool_session_type = PrivateLesson::class;
-            $pool_session->save();
-        }
-
-        // subscribe to the news letter
-        if (request()->email_updates == 'on') {
-            NewsLetter::subscribe(request()->email);
+        if (($registration['email_updates'] ?? null) == 'on') {
+            NewsLetter::subscribe($registration['email']);
         }
 
         try {
-            Mail::to($private_swimmer->email)->send(new PrivateLessonSignUp($private_lesson));
-            Log::info("Sending private lesson sign up email to $private_swimmer->email");
+            Mail::to($privateSwimmer->email)->send(new PrivateLessonSignUp($privateSwimmer->lesson));
+            Log::info("Sending private lesson sign up email to $privateSwimmer->email");
         } catch (\Exception $e) {
-            Log::error("Error trying to send private lesson sign up email to $private_swimmer->email. Error:".$e->getMessage());
+            Log::error("Error trying to send private lesson sign up email to $privateSwimmer->email. Error:".$e->getMessage());
         }
 
-        // TODO: send admin email saying the lesson is full???
-        // TODO Add logging in here
         session()->flash('success', 'Thanks for signing up! Please check your email for a confirmation.');
 
         return redirect()->route('pages.thank-you');

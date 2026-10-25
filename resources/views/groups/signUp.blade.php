@@ -73,35 +73,6 @@ Sign Up
                 </div>
                 <hr class="uk-width-1-1">
 
-                <script src="https://checkout.stripe.com/checkout.js"></script>
-                <script>
-                    let form = null;
-                    document.addEventListener('DOMContentLoaded', function() {
-                        form = document.getElementById('sign-up');
-                        console.log(form);
-                    }, false);
-
-                     function openStripeCheckout() {
-                        StripeCheckout.open({
-                            name: 'The Swim School',
-                            description: '{{$lesson->group->type}}',
-                            amount: {{$lesson->price * 100}},
-                            key: '{{config('services.stripe.key')}}',
-                            image: '{{ asset('/img/logos/TSS_png.png') }}',
-                            locale: 'auto',
-                            token: function (token) {
-                                console.log(token.id);
-                                let hiddenInput = document.createElement('input');
-                                hiddenInput.setAttribute('type', 'hidden');
-                                hiddenInput.setAttribute('name', 'stripeToken');
-                                hiddenInput.setAttribute('value', token.id);
-                                form.appendChild(hiddenInput);
-                                // Submit the form
-                                form.submit();
-                            }
-                        })
-                    }
-                </script>
 
                 <form class="uk-grid-small" id="sign-up" uk-grid action="{{ route('groups.swimmers.store', [$lesson, $lesson->group]) }}" method="POST">
                     {{ csrf_field() }}
@@ -232,9 +203,7 @@ Sign Up
                         </div>
                     </div>
 
-                    <div class="uk-margin uk-width-1-1@s">
-                        <button class="uk-button uk-button-primary" onclick="event.preventDefault(); if(form.reportValidity()){openStripeCheckout();}">Checkout</button>
-                    </div>
+                    @include('partials.stripe-payment', ['formId' => 'sign-up', 'amount' => $lesson->price])
                 </form>
             </div>
         </div>

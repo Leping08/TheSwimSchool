@@ -53,6 +53,9 @@ Route::get('/lessons', [LessonsController::class, 'index'])->name('groups.lesson
 // Upload a new group lesson schedule PDF (admin only)
 Route::post('/lessons/schedule/upload', [ScheduleController::class, 'upload'])->name('groups.schedule.upload')->middleware('auth');
 
+// Finish a group lesson sign up after 3D Secure
+Route::get('/lessons/payment-complete', [SwimmerController::class, 'paymentComplete'])->name('groups.swimmers.payment-complete');
+
 // List details of the group lesson
 Route::get('/lessons/{group}', [LessonsController::class, 'show'])->name('groups.lessons.show');
 
@@ -124,6 +127,9 @@ Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact
 Route::get('/private-semi-private', [CalendarController::class, 'index'])->name('private_lesson.index');
 
 Route::post('/private-semi-private', [CalendarController::class, 'store'])->name('private_lesson.store');
+
+// Finish a private lesson sign up after 3D Secure
+Route::get('/private-semi-private/payment-complete', [CalendarController::class, 'paymentComplete'])->name('private_lesson.payment-complete');
 
 /*
  * Email marketing unsubscribe page
