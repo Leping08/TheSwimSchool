@@ -196,4 +196,8 @@
     :deep(.fc-col-header-cell-cushion) {
         padding: 0 4px;
     }
+
+    .uk-modal {
+        z-index: 10000;
+    }
 </style>

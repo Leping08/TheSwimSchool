@@ -84,6 +84,7 @@
                 return {
                     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
                     height: 600,
+                    eventDisplay: 'block',
                     eventTimeFormat: { hour12: true, hour: 'numeric', minute: '2-digit' },
                     headerToolbar: {
                         left: 'prev,next today',
@@ -125,3 +126,14 @@
         }
     }
 </script>
+
+<style scoped>
+    :deep(.fc-col-header-cell-cushion),
+    :deep(.fc-daygrid-day-number) {
+        color: inherit;
+    }
+
+    :deep(.fc-col-header-cell-cushion) {
+        padding: 0 4px;
+    }
+</style>
