@@ -38,7 +38,8 @@ class LessonSignUp extends FormRequest
             'emergencyRelationship' => 'required|max:191',
             'emergencyPhone' => 'required|max:20',
             'lesson_id' => 'required|integer',
-            'stripeToken' => 'required',
+            'emailUpdates' => 'nullable|string',
+            'payment_method' => 'required|string',
         ];
     }
 
@@ -46,7 +47,7 @@ class LessonSignUp extends FormRequest
     {
         return [
             'lesson_id.required' => 'The lesson seems to be missing. Refresh the page and try that again.',
-            'stripeToken.required' => 'Something went wrong with stripe try that again.',
+            'payment_method.required' => 'Something went wrong with stripe try that again.',
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Group;
 use App\Lesson;
+use App\Library\StripePayment;
 use App\Mail\Groups\SignUp;
 use App\Swimmer;
 use Carbon\Carbon;
@@ -11,6 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
 use PHPUnit\Framework\Attributes\Test;
+use Stripe\StripeClient;
 use Tests\TestCase;
 
 class LessonsTest extends TestCase
@@ -240,7 +242,7 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_visa',
+            'payment_method' => 'pm_card_visa',
         ];
 
         $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
@@ -285,7 +287,7 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_visa',
+            'payment_method' => 'pm_card_visa',
         ];
 
         $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
@@ -332,7 +334,7 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_visa',
+            'payment_method' => 'pm_card_visa',
         ];
 
         $this->assertTrue($lesson->isFull());
@@ -363,7 +365,7 @@ class LessonsTest extends TestCase
             'emergencyPhone' => '999-999-9999',
             'emailUpdates' => 'off',
             'lesson_id' => $lesson->id,
-            'stripeToken' => 'tok_chargeDeclined', // This is a declined card
+            'payment_method' => 'pm_card_chargeDeclined', // This is a declined card
         ];
 
         $this->get(route('groups.lessons.create', [$lesson->group, $lesson]))
@@ -378,5 +380,108 @@ class LessonsTest extends TestCase
         $response->assertSessionHas('error', 'Oops, something went wrong with the payment. Your card was declined.');
 
         $this->assertEquals(0, Swimmer::all()->count());
+    }
+
+    #[Test]
+    public function a_swimmer_is_sent_to_their_bank_when_the_card_requires_3d_secure()
+    {
+        $lesson = Lesson::factory()->create();
+
+        $response = $this->post(route('groups.swimmers.store', [$lesson->group, $lesson]), $this->signUpAttributes($lesson, 'pm_card_threeDSecure2Required'));
+
+        $this->assertStringStartsWith('https://hooks.stripe.com/', $response->headers->get('Location'));
+        $this->assertCount(1, session('group_lesson_payments'));
+        $this->assertEquals(0, Swimmer::all()->count());
+    }
+
+    #[Test]
+    public function a_swimmer_is_enrolled_once_after_completing_3d_secure()
+    {
+        Mail::fake();
+
+        $lesson = Lesson::factory()->create();
+        $paymentIntent = (new StripePayment)->charge('pm_card_visa', $lesson->price, 'test@example.com', 'Test', route('groups.swimmers.payment-complete'));
+        $attributes = $this->signUpAttributes($lesson, 'pm_card_visa');
+
+        $this->withSession(['group_lesson_payments' => [$paymentIntent->id => ['swimmer' => $attributes, 'price' => $lesson->price]]])
+            ->get(route('groups.swimmers.payment-complete', ['payment_intent' => $paymentIntent->id]))
+            ->assertRedirect(route('pages.thank-you'));
+
+        $this->assertDatabaseHas('swimmers', [
+            'firstName' => $attributes['firstName'],
+            'lesson_id' => $lesson->id,
+            'stripeChargeId' => $paymentIntent->id,
+        ]);
+        Mail::assertSent(SignUp::class);
+
+        // Refreshing the return page does not enroll the swimmer twice
+        $this->get(route('groups.swimmers.payment-complete', ['payment_intent' => $paymentIntent->id]))
+            ->assertRedirect(route('pages.thank-you'));
+
+        $this->assertEquals(1, Swimmer::all()->count());
+    }
+
+    #[Test]
+    public function a_swimmer_is_not_enrolled_when_3d_secure_is_not_completed()
+    {
+        $lesson = Lesson::factory()->create();
+        $paymentIntent = (new StripePayment)->charge('pm_card_threeDSecure2Required', $lesson->price, 'test@example.com', 'Test', route('groups.swimmers.payment-complete'));
+
+        $this->withSession(['group_lesson_payments' => [$paymentIntent->id => ['swimmer' => $this->signUpAttributes($lesson, 'pm_card_threeDSecure2Required'), 'price' => $lesson->price]]])
+            ->get(route('groups.swimmers.payment-complete', ['payment_intent' => $paymentIntent->id]))
+            ->assertRedirect(route('groups.lessons.create', [$lesson->group, $lesson]))
+            ->assertSessionHas('error');
+
+        $this->assertEquals(0, Swimmer::all()->count());
+    }
+
+    #[Test]
+    public function a_swimmer_is_refunded_when_the_lesson_fills_up_during_3d_secure()
+    {
+        $lesson = Lesson::factory()->create(['class_size' => 0]);
+        $paymentIntent = (new StripePayment)->charge('pm_card_visa', $lesson->price, 'test@example.com', 'Test', route('groups.swimmers.payment-complete'));
+
+        $this->withSession(['group_lesson_payments' => [$paymentIntent->id => ['swimmer' => $this->signUpAttributes($lesson, 'pm_card_visa'), 'price' => $lesson->price]]])
+            ->get(route('groups.swimmers.payment-complete', ['payment_intent' => $paymentIntent->id]))
+            ->assertRedirect(route('groups.lessons.create', [$lesson->group, $lesson]))
+            ->assertSessionHas('danger', 'Sorry the lesson filled up while you were paying. Your payment has been refunded.');
+
+        $this->assertEquals(0, Swimmer::all()->count());
+        $this->assertTrue((new StripeClient(config('services.stripe.secret')))->paymentIntents->retrieve($paymentIntent->id, ['expand' => ['latest_charge']])->latest_charge->refunded);
+    }
+
+    #[Test]
+    public function a_swimmer_can_not_complete_a_payment_that_has_no_pending_sign_up()
+    {
+        $this->get(route('groups.swimmers.payment-complete', ['payment_intent' => 'pi_unknown']))
+            ->assertRedirect(route('groups.lessons.index'))
+            ->assertSessionHas('danger');
+
+        $this->assertEquals(0, Swimmer::all()->count());
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function signUpAttributes(Lesson $lesson, string $paymentMethod): array
+    {
+        return [
+            'firstName' => $this->faker->firstName,
+            'lastName' => $this->faker->lastName,
+            'birthDate' => Carbon::yesterday()->toDateString(),
+            'email' => $this->faker->email,
+            'phone' => '9998887777',
+            'parent' => $this->faker->name,
+            'street' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->word,
+            'zip' => $this->faker->numberBetween(10000, 90000),
+            'emergencyName' => $this->faker->name,
+            'emergencyRelationship' => $this->faker->word,
+            'emergencyPhone' => '999-999-9999',
+            'emailUpdates' => 'off',
+            'lesson_id' => $lesson->id,
+            'payment_method' => $paymentMethod,
+        ];
     }
 }

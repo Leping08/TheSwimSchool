@@ -19,11 +19,8 @@
     <!-- Uikit JS -->
     <script src="{{asset('js/uikit.js')}}"></script>
     <script src="{{asset('js/uikit-icons.js')}}"></script>
-    {{--TODO: Find out if the STRIPE_PUBLIC is still needed--}}
     <script>
-        window.laravelConfig = JSON.parse('{!! json_encode([
-            'STRIPE_PUBLIC' => env('STRIPE_PUBLIC')
-        ]) !!}');
+        window.laravelConfig = @json(['STRIPE_PUBLIC' => config('services.stripe.key')]);
     </script>
 </head>
 <body>

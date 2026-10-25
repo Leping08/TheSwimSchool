@@ -256,6 +256,17 @@ class SwimTeamTest extends TestCase
     }
 
     #[Test]
+    public function the_layout_gives_the_swim_team_checkout_the_configured_stripe_public_key()
+    {
+        Storage::fake('s3');
+        config(['services.stripe.key' => 'pk_test_configured_key']);
+
+        $this->get(route('swim-team.index'))
+            ->assertOk()
+            ->assertSee('window.laravelConfig = {"STRIPE_PUBLIC":"pk_test_configured_key"};', false);
+    }
+
+    #[Test]
     public function the_swim_team_page_shows_the_school_year_practice_schedule()
     {
         Storage::fake('s3');

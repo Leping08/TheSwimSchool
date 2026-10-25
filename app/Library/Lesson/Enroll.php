@@ -4,96 +4,62 @@ namespace App\Library\Lesson;
 
 use App\Lesson;
 use App\Library\NewsLetter\NewsLetter;
-use App\Library\StripeCharge;
 use App\Mail\Admin\ClassFull;
 use App\Mail\Groups\SignUp;
 use App\Swimmer;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redirect;
 
 /**
+ * Enroll a swimmer in a group lesson after their payment has succeeded.
+ *
  *** Validate data                        - separate class Laravel FormRequest
- *** Check if lesson if full              - separate class lesson->isFull()
- *** Process the payment                  - separate class (new StripeCharge($token, $price, $email, $description))->pay()
- *     Promo code logic                 - separate class ??????
+ *** Check if lesson is full and process the payment - Groups\SwimmerController
  *** Create the swimmer
  *** Subscribe to news letter             - separate class NewsLetter::subscribe($email)
  *** Send class sign up email
  *** Send class full email to admin       - separate class
  * Flash success
- * Redirect back to lesson they signed up for
  */
 class Enroll
 {
-    public function handle()
+    /**
+     * @param  array<string, mixed>  $swimmerData  Validated LessonSignUp data
+     */
+    public function handle(array $swimmerData, Lesson $lesson, string $paymentIntentId): Swimmer
     {
-        // Validation happens on the controller
-        if ($this->isFull()) {
-            Log::warning('Someone tried to sign up for a lesson that is full.');
-            session()->flash('danger', 'Sorry the lesson is full.');
-
-            return back();
-        }
-        $lesson = $this->getLesson();
-        $chargeId = $this->processPayment($lesson);
-        $swimmer = $this->createSwimmer($chargeId);
-        $this->subscribeToNewsLetter();
+        $swimmer = $this->createSwimmer($swimmerData, $paymentIntentId);
+        $this->subscribeToNewsLetter($swimmerData);
         $this->sendClassSignUpEmail($swimmer);
         $this->sendClassFullEmail($lesson);
         $this->flashSuccess($swimmer);
+
+        return $swimmer;
     }
 
-    public function isFull()
-    {
-        if ($this->getLesson()->isFull()) {
-            session()->flash('danger', 'Sorry the lesson is full.');
-            Log::warning('Someone tried to sign up for a lesson that is full.');
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public function getLesson(): Lesson
-    {
-        return Lesson::findOrFail(request()->lesson_id);
-    }
-
-    public function processPayment(Lesson $lesson)
-    {
-        return (new StripeCharge(
-            request()->stripeToken,
-            $this->applyPromoCode($lesson->price),
-            request()->email,
-            $lesson->group->type.' swim lessons for '.request()->firstName.' '.request()->lastName.' through The Swim School.'
-        ))->charge()->id;
-    }
-
-    public function applyPromoCode(int $price)
-    {
-        // TODO DO PROMO CODE STUFF
-        return $price;
-    }
-
-    public function subscribeToNewsLetter()
-    {
-        if (request()->emailUpdates == 'on') {
-            NewsLetter::subscribe(request()->email);
-        }
-    }
-
-    public function createSwimmer(string $chargeId)
+    /**
+     * @param  array<string, mixed>  $swimmerData
+     */
+    public function createSwimmer(array $swimmerData, string $paymentIntentId): Swimmer
     {
         // TODO: Logic to check the age of the swimmer against what the lesson age is
-        request()->merge([
-            'birthDate' => Carbon::parse(request()->birthDate),
-            'stripeChargeId' => $chargeId,
+        return Swimmer::create([
+            ...Arr::except($swimmerData, ['payment_method', 'emailUpdates']),
+            'birthDate' => Carbon::parse($swimmerData['birthDate']),
+            'stripeChargeId' => $paymentIntentId,
         ]);
+    }
 
-        return Swimmer::create(request()->all());
+    /**
+     * @param  array<string, mixed>  $swimmerData
+     */
+    public function subscribeToNewsLetter(array $swimmerData): void
+    {
+        if (($swimmerData['emailUpdates'] ?? null) == 'on') {
+            NewsLetter::subscribe($swimmerData['email']);
+        }
     }
 
     public function sendClassSignUpEmail(Swimmer $swimmer)
