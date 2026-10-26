@@ -263,6 +263,15 @@
                                         return response.json();
                                     });
                                 
+                                // Show the result under the promo code field, the same as the Apply button
+                                window.dispatchEvent(new CustomEvent('promo-code-checked', {
+                                    detail: { code: promoCode, discountPercent: promoResponse },
+                                }));
+
+                                if (promoResponse <= 0) {
+                                    return;
+                                }
+
                                 // Store free user
                                 if (promoResponse >= 100) {
                                     let saveSwimmerResponse = await fetch('/api/swim-team/swimmer/promo-code', {
@@ -319,11 +328,9 @@
 
                         // Fetches a payment intent and captures the client secret
                         async function initialize(data) {
-                            // todo add try catch here
-                            // todo handel backend errors better here. Right now its just a 302 and does nothing
-                            const { clientSecret } = await fetch("/api/stripe-token/payment-intent/swimmer", {
+                            const response = await fetch("/api/stripe-token/payment-intent/swimmer", {
                                 method: "POST",
-                                headers: { "Content-Type": "application/json" },
+                                headers: { "Content-Type": "application/json", "Accept": "application/json" },
                                 body: JSON.stringify({
                                     name: data.name,
                                     email: data.email,
@@ -331,9 +338,15 @@
                                     level_id: data.level_id,
                                     promo_code: data.promo_code
                                 }),
-                            }).then((r) => r.json());
+                            });
+                            const body = await response.json();
+
+                            if (!response.ok) {
+                                showMessage(body.message || "Something went wrong. Please try again.");
+                                return;
+                            }
                     
-                            elements = stripe.elements({ clientSecret });
+                            elements = stripe.elements({ clientSecret: body.clientSecret });
                     
                             const paymentElement = elements.create("payment");
                             paymentElement.mount("#payment-element");

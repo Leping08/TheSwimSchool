@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Athlete;
+use App\Mail\SwimTeam\STSignUp;
 use App\PromoCode;
 use App\STLevel;
 use App\STSeason;
+use App\STSwimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use PHPUnit\Framework\Attributes\Test;
 use Stripe\PaymentIntent;
 use Stripe\StripeClient;
@@ -109,6 +112,77 @@ class AthleteTest extends TestCase
         $paymentIntent = $this->createPaymentIntent($athlete, ['promo_code' => $promoCode->code]);
 
         $this->assertEquals(7500, $paymentIntent->amount);
+    }
+
+    #[Test]
+    public function the_athlete_payment_intent_rejects_a_promo_code_that_does_not_exist()
+    {
+        $athlete = Athlete::factory()->create(['s_t_level' => STLevel::factory()]);
+
+        $this->postJson(route('api.athlete.payment-intent'), [
+            'name' => $athlete->firstName.' '.$athlete->lastName,
+            'email' => $athlete->email,
+            'athlete_hash' => $athlete->hash,
+            'level_id' => $athlete->s_t_level,
+            'promo_code' => 'not-a-real-code',
+        ])->assertUnprocessable()
+            ->assertJsonValidationErrors(['promo_code' => 'The promo code you entered is not valid.']);
+    }
+
+    #[Test]
+    public function an_athlete_is_registered_once_when_the_payment_page_is_refreshed()
+    {
+        Mail::fake();
+
+        STSeason::factory()->create();
+        $athlete = Athlete::factory()->create(['s_t_level' => STLevel::factory()]);
+        $paymentIntent = $this->createPaidPaymentIntent(10000);
+        $paymentCompleteUrl = route('swim-team.swimmer.create', ['hash' => $athlete->hash, 'payment_intent' => $paymentIntent->id]);
+
+        $this->get($paymentCompleteUrl)->assertRedirect(route('swim-team.thank-you'));
+        $this->get($paymentCompleteUrl)->assertRedirect(route('swim-team.thank-you'));
+
+        $this->assertEquals(1, STSwimmer::where('email', $athlete->email)->count());
+        $this->assertStringContainsString($paymentIntent->id, STSwimmer::where('email', $athlete->email)->first()->notes);
+        Mail::assertSent(STSignUp::class, 1);
+    }
+
+    #[Test]
+    public function an_athlete_is_not_registered_when_the_payment_did_not_go_through()
+    {
+        Mail::fake();
+
+        STSeason::factory()->create();
+        $athlete = Athlete::factory()->create(['s_t_level' => STLevel::factory()]);
+        $paymentIntent = $this->createUnpaidPaymentIntent(10000);
+
+        $this->get(route('swim-team.swimmer.create', ['hash' => $athlete->hash, 'payment_intent' => $paymentIntent->id]))
+            ->assertRedirect(route('swim-team.swimmer.show', ['hash' => $athlete->hash]))
+            ->assertSessionHas('error', 'Your payment did not go through. Please try again.');
+
+        $this->assertDatabaseMissing('s_t_swimmers', ['email' => $athlete->email]);
+        Mail::assertNothingSent();
+    }
+
+    #[Test]
+    public function an_athlete_is_not_registered_without_a_real_payment_intent()
+    {
+        Mail::fake();
+
+        STSeason::factory()->create();
+        $athlete = Athlete::factory()->create(['s_t_level' => STLevel::factory()]);
+        $signUpPage = route('swim-team.swimmer.show', ['hash' => $athlete->hash]);
+
+        $this->get(route('swim-team.swimmer.create', ['hash' => $athlete->hash]))
+            ->assertRedirect($signUpPage)
+            ->assertSessionHas('error');
+
+        $this->get(route('swim-team.swimmer.create', ['hash' => $athlete->hash, 'payment_intent' => 'pi_does_not_exist']))
+            ->assertRedirect($signUpPage)
+            ->assertSessionHas('error');
+
+        $this->assertDatabaseMissing('s_t_swimmers', ['email' => $athlete->email]);
+        Mail::assertNothingSent();
     }
 
     #[Test]

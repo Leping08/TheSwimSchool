@@ -6,9 +6,14 @@ use App\PromoCode;
 use App\STLevel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Stripe\StripeClient;
 
 class StripePaymentIntentController extends Controller
 {
+    private const VALIDATION_MESSAGES = [
+        'promo_code.exists' => 'The promo code you entered is not valid.',
+    ];
+
     public function store(Request $request)
     {
         $request->validate([
@@ -16,8 +21,8 @@ class StripePaymentIntentController extends Controller
             'email' => ['required', 'email', 'min:2', 'max:255'],
             'swimmer_id' => ['required', 'integer'],
             'level_id' => ['required', 'integer'],
-            // 'promo_code' => ['sometimes', 'string', 'min:2', 'max:255'], // todo figure out the promo code validation better
-        ]);
+            'promo_code' => ['nullable', 'string', 'exists:promo_codes,code'],
+        ], self::VALIDATION_MESSAGES);
 
         $level = STLevel::find($request->get('level_id'));
         $price = 50; // hard coded for now
@@ -29,7 +34,7 @@ class StripePaymentIntentController extends Controller
         }
 
         // This is your test secret API key.
-        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
+        $stripe = new StripeClient(config('services.stripe.secret'));
 
         // todo add try catch logic
         // Alternatively, set up a webhook to listen for the payment_intent.succeeded event
@@ -69,7 +74,8 @@ class StripePaymentIntentController extends Controller
             'email' => ['required', 'email', 'min:2', 'max:255'],
             'athlete_hash' => ['required', 'string'], // todo remove this? not being used for anything
             'level_id' => ['required', 'integer'],
-        ]);
+            'promo_code' => ['nullable', 'string', 'exists:promo_codes,code'],
+        ], self::VALIDATION_MESSAGES);
 
         $level = STLevel::find($request->get('level_id'));
         $price = 100; // hard coded but the promo code applies if there is one
@@ -81,7 +87,7 @@ class StripePaymentIntentController extends Controller
         }
 
         // This is your test secret API key.
-        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
+        $stripe = new StripeClient(config('services.stripe.secret'));
 
         // todo add try catch logic
         // Create a new customer

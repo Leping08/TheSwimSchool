@@ -50,7 +50,11 @@
             discount_percent: 0
         }),
         mounted() {
-
+            // The checkout button checks the code too, so show its result here like Apply does
+            window.addEventListener('promo-code-checked', this.onPromoCodeChecked);
+        },
+        unmounted() {
+            window.removeEventListener('promo-code-checked', this.onPromoCodeChecked);
         },
         methods: {
             checkPromoCode: function () {
@@ -62,19 +66,20 @@
                     code: this.code
                 })
                 .then((response) => {
-                    if(response.data){
-                        this.success = true;
-                        this.fail = false;
-                        this.discount_percent = response.data;
-                    } else {
-                        this.success = false;
-                        this.fail = true;
-                    }
+                    this.showResult(this.code, response.data);
                 })
                 .catch((error) => {
-                    this.success = false;
-                    this.fail = true;
+                    this.showResult(this.code, 0);
                 });
+            },
+            onPromoCodeChecked: function (event) {
+                this.showResult(event.detail.code, event.detail.discountPercent);
+            },
+            showResult: function (code, discountPercent) {
+                this.submittedCode = code;
+                this.success = discountPercent > 0;
+                this.fail = !this.success;
+                this.discount_percent = this.success ? discountPercent : 0;
             }
         }
     }
