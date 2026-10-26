@@ -18,10 +18,15 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Stripe\Exception\ApiErrorException;
+use Stripe\PaymentIntent;
+use Stripe\StripeClient;
 
 class SwimmerController extends Controller
 {
     use Promo;
+
+    private const PAYMENT_FAILED_MESSAGE = 'Your payment did not go through. Please try again.';
 
     /**
      * @param  STLevel  $level
@@ -56,6 +61,13 @@ class SwimmerController extends Controller
 
         // check if the promo code is valid
         $promoCode = PromoCode::where('code', '=', $request->get('promo_code'))->first();
+
+        if (! $promoCode) {
+            return response()->json([
+                'success' => false,
+                'message' => 'The promo code you entered is not valid.',
+            ]);
+        }
 
         // check if the percentage off is over 100% and if so set the note in the swimmer details
         if ($promoCode->discount_percent >= 100) {
@@ -115,8 +127,18 @@ class SwimmerController extends Controller
      */
     public function store2(Request $request, STLevel $level, STSwimmer $swimmer)
     {
-        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
-        $paymentIntent = $stripe->paymentIntents->retrieve($request->query('payment_intent'));
+        $paymentIntent = $this->paidPaymentIntent($request->query('payment_intent'));
+
+        if (! $paymentIntent) {
+            return redirect()
+                ->route('swim-team.swimmer.register', ['level' => $level, 'swimmer' => $swimmer])
+                ->with('error', self::PAYMENT_FAILED_MESSAGE);
+        }
+
+        // the page was refreshed or the payment was already used
+        if ($this->paymentIntentAlreadyUsed($paymentIntent)) {
+            return redirect()->route('swim-team.thank-you');
+        }
 
         // update the swimmer notes with the stripe data
         $swimmer->notes = json_encode([
@@ -271,8 +293,18 @@ class SwimmerController extends Controller
 
         $request = request();
 
-        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
-        $paymentIntent = $stripe->paymentIntents->retrieve($request->query('payment_intent'));
+        $paymentIntent = $this->paidPaymentIntent($request->query('payment_intent'));
+
+        if (! $paymentIntent) {
+            return redirect()
+                ->route('swim-team.swimmer.show', ['hash' => $hash])
+                ->with('error', self::PAYMENT_FAILED_MESSAGE);
+        }
+
+        // the page was refreshed or the payment was already used
+        if ($this->paymentIntentAlreadyUsed($paymentIntent)) {
+            return redirect()->route('swim-team.thank-you');
+        }
 
         // create a swimmer from the athlete data
         $swimmer = STSwimmer::create([
@@ -305,5 +337,36 @@ class SwimmerController extends Controller
 
         // redirect to thank you page
         return redirect()->route('swim-team.thank-you');
+    }
+
+    /**
+     * Get the payment intent Stripe sent the customer back with, as long as the payment went through.
+     */
+    private function paidPaymentIntent(?string $paymentIntentId): ?PaymentIntent
+    {
+        if (! $paymentIntentId) {
+            return null;
+        }
+
+        try {
+            $paymentIntent = (new StripeClient(config('services.stripe.secret')))->paymentIntents->retrieve($paymentIntentId);
+        } catch (ApiErrorException $exception) {
+            Log::warning("Could not retrieve swim team payment intent $paymentIntentId: {$exception->getMessage()}");
+
+            return null;
+        }
+
+        if (! in_array($paymentIntent->status, [PaymentIntent::STATUS_SUCCEEDED, PaymentIntent::STATUS_PROCESSING], true)) {
+            Log::warning("Swim team payment intent $paymentIntentId has status $paymentIntent->status.");
+
+            return null;
+        }
+
+        return $paymentIntent;
+    }
+
+    private function paymentIntentAlreadyUsed(PaymentIntent $paymentIntent): bool
+    {
+        return STSwimmer::where('notes', 'like', '%"'.$paymentIntent->id.'"%')->exists();
     }
 }

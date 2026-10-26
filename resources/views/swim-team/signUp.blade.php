@@ -246,6 +246,11 @@
                                         return response.json();
                                     });
                                 
+                                if (promoResponse <= 0) {
+                                    showMessage("The promo code you entered is not valid.");
+                                    return;
+                                }
+
                                 // Create the swimmer from the athlete data with a free promo code
                                 if (promoResponse >= 100) {
                                     let saveSwimmerResponse = await fetch('/api/swim-team/athlete/promo-code', {
@@ -303,10 +308,9 @@
 
                         // Fetches a payment intent and captures the client secret
                         async function initialize(data) {
-                            // todo add try catch here
-                            const { clientSecret } = await fetch("/api/stripe-token/payment-intent/athlete", {
+                            const response = await fetch("/api/stripe-token/payment-intent/athlete", {
                                 method: "POST",
-                                headers: { "Content-Type": "application/json" },
+                                headers: { "Content-Type": "application/json", "Accept": "application/json" },
                                 body: JSON.stringify({
                                     name: data.name,
                                     email: data.email,
@@ -314,9 +318,15 @@
                                     level_id: data.level_id,
                                     promo_code: data.promo_code
                                 }),
-                            }).then((r) => r.json());
+                            });
+                            const body = await response.json();
+
+                            if (!response.ok) {
+                                showMessage(body.message || "Something went wrong. Please try again.");
+                                return;
+                            }
                     
-                            elements = stripe.elements({ clientSecret });
+                            elements = stripe.elements({ clientSecret: body.clientSecret });
                     
                             const paymentElement = elements.create("payment");
                             paymentElement.mount("#payment-element");
