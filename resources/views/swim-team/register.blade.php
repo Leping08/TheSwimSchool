@@ -263,8 +263,12 @@
                                         return response.json();
                                     });
                                 
+                                // Show the result under the promo code field, the same as the Apply button
+                                window.dispatchEvent(new CustomEvent('promo-code-checked', {
+                                    detail: { code: promoCode, discountPercent: promoResponse },
+                                }));
+
                                 if (promoResponse <= 0) {
-                                    showMessage("The promo code you entered is not valid.");
                                     return;
                                 }
 
